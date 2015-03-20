@@ -62,7 +62,8 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UnitSearchPath>\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\Worddriver;\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\Worddriver\Word97;\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\Worddriver\Word2003;\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\Worddriver\Word2007;\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\Worddriver\WordXP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_ExeOutput>\\psf\Home\my data\KTL\Software\GitHub\SAMS\</DCC_ExeOutput>
+        <DCC_UnitSearchPath>Z:\my data\KTL\Software\GitHub\SAMS\Worddriver;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_UsePackage>SMExportXE7;office2K;$(DCC_UsePackage)</DCC_UsePackage>
         <Icon_MainIcon>SAMS_v1_Icon.ico</Icon_MainIcon>
         <DCC_Namespace>Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -140,12 +141,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="SAMS_v1.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>SAMS_v1.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="SAMS_v1.todo" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="SAMS_v1.todo" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -164,7 +160,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="SAMS_v1.todo" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="SAMS_v1.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>SAMS_v1.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_v1.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>SAMS_v1.exe</RemoteName>

@@ -239,7 +239,32 @@ function Tdm.AddNewProjectByUserNr(user_nr, project_name: string): String;
 // that is associated to the user_nr
 // function returns the project_nr of the newly created project
 // or 'none' if no project was created
+Var
+  ADOCmd: TADOCommand;
 begin
+ // insert project into project_t
+ if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+      ADOCmd:= TADOCommand.Create(nil);       // create new command object
+      try
+        ADOCmd.Connection:=adoConnKTL;        // set DB connection
+        ADOCmd.Parameters.Clear;              // clear all Parameters
+        ADOCmd.CommandType:=cmdtext;          // set command type to text
+        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ');';    // set query text
+        ShowMessage(ADOCmd.CommandText);
+        //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
+        //ADOCmd.Execute; // issue command (no result set must be returned)
+      except
+        ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
+        //result:=true;
+      end;
+      ADOCmd.Free;                            // cleanup command object
+      //result:= false;
+    end
+  else begin
+        ShowMessage('Database not connected.');   //Database is not connected
+        //result:= true;
+      end;
+
  (*
       IF InsertIntoDB('project_t', 'project', project_name) THEN BEGIN
         // some error orrured while inserting new data

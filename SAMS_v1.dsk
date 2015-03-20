@@ -16,26 +16,28 @@ File_13=TSourceModule,'C:\Delphi Addons\Worddriver\WordDriver.pas',0,1,1,33,21,0
 File_14=TSourceModule,'c:\program files\embarcadero\studio\15.0\SOURCE\RTL\SYS\System.pas',0,1,29893,1,29910,0,0,,
 
 [Modules]
-Module0=\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas
-Module1=Z:\my data\KTL\Software\Delphi\Projects\SAMS\_dm.pas
-Module2=Z:\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_v1.dproj
+Module0=Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas
+Module1=\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas
+Module2=Z:\my data\KTL\Software\Delphi\Projects\SAMS\_dm.pas
 Module3=c:\program files\embarcadero\studio\15.0\source\data\Data.DB.pas
 Module4=Z:\my data\KTL\Software\Delphi\Projects\SAMS\About.pas
 Count=5
 EditWindowCount=1
 
+[Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
 [\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas]
 ModuleType=TSourceModule
 FormState=1
-FormOnTop=1
+FormOnTop=0
 
 [Z:\my data\KTL\Software\Delphi\Projects\SAMS\_dm.pas]
 ModuleType=TSourceModule
 FormState=1
 FormOnTop=0
-
-[Z:\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_v1.dproj]
-ModuleType=TBaseProject
 
 [c:\program files\embarcadero\studio\15.0\source\data\Data.DB.pas]
 ModuleType=TSourceModule
@@ -49,7 +51,7 @@ FormOnTop=0
 
 [EditWindow0]
 ViewCount=5
-CurrentEditView=\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas
+CurrentEditView=Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas
 View0=0
 View1=1
 View2=2
@@ -87,15 +89,26 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas
-CursorX=21
-CursorY=2086
+CursorX=19
+CursorY=2088
 TopLine=2068
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas
 
 [View1]
+CustomEditViewType=TEditView
+Module=Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas
+CursorX=9
+CursorY=261
+TopLine=234
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas
+
+[View2]
 CustomEditViewType=TEditView
 Module=c:\program files\embarcadero\studio\15.0\source\data\Data.DB.pas
 CursorX=1
@@ -106,7 +119,7 @@ Elisions=
 Bookmarks=
 EditViewName=c:\program files\embarcadero\studio\15.0\source\data\Data.DB.pas
 
-[View2]
+[View3]
 CustomEditViewType=TEditView
 Module=Z:\my data\KTL\Software\Delphi\Projects\SAMS\About.pas
 CursorX=3
@@ -116,17 +129,6 @@ LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
-
-[View3]
-CustomEditViewType=TEditView
-Module=Z:\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_v1.dpr
-CursorX=1
-CursorY=25
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=Z:\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_v1.dpr
 
 [View4]
 CustomEditViewType=TEditView
@@ -350,11 +352,6 @@ LRDockWidth=1897
 Dockable=1
 StayOnTop=0
 SplitPos=111
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=Action,Action
-ExpandedItems=DataSource=0,Font=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,ListSource=0,Connection=0,Anchors=0,Constraints=0,ImageMargins=0
 
 [TFileExplorerForm]
 PercentageSizes=1

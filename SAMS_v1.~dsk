@@ -87,8 +87,8 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=\\psf\Home\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_Main.pas
-CursorX=31
-CursorY=2079
+CursorX=21
+CursorY=2086
 TopLine=2068
 LeftCol=1
 Elisions=
@@ -131,9 +131,9 @@ EditViewName=Z:\my data\KTL\Software\Delphi\Projects\SAMS\SAMS_v1.dpr
 [View4]
 CustomEditViewType=TEditView
 Module=Z:\my data\KTL\Software\Delphi\Projects\SAMS\_dm.pas
-CursorX=8
-CursorY=313
-TopLine=289
+CursorX=4
+CursorY=243
+TopLine=227
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -350,6 +350,11 @@ LRDockWidth=1897
 Dockable=1
 StayOnTop=0
 SplitPos=111
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Action,Action
+ExpandedItems=DataSource=0,Font=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,ListSource=0,Connection=0,Anchors=0,Constraints=0,ImageMargins=0
 
 [TFileExplorerForm]
 PercentageSizes=1
