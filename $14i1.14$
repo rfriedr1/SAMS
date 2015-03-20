@@ -1,0 +1,16 @@
+Plot
+{
+ D_Sequence "Napoli"
+ {
+  First;
+  ! R_Date "Hd-24360 Ring 1-15" 2161 22; Gap 26;
+! rm 22
+  R_Date "Hd-24580 Ring 15-30" 2024 21; Gap 12;
+! rm 34
+  R_Date "Hd-24381 Ring 28-40" 2054 20; Gap 26;
+! rm 60
+  R_Date "Hd-24374 Ring 50-70" 2055 20; Gap 10;
+!rm 70 
+  R_Date "Hd-24351 Ring 60-80" 2048 20;
+ };
+};

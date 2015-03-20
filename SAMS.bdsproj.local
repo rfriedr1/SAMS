@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2009.05.15 15:41:32.203.bdsproj,C:\OfficeDateien\Borland Studio Projects\DB_AMS\WIN2kAPP.bdsproj=C:\OfficeDateien\Borland Studio Projects\DB_AMS\MAMS.bdsproj</Transaction>
+    <Transaction>2009.05.15 16:08:50.984.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\W2kMain.pas=C:\OfficeDateien\Borland Studio Projects\DB_AMS\KTL_Main.pas</Transaction>
+    <Transaction>2009.05.15 16:08:50.984.dfm,C:\OfficeDateien\Borland Studio Projects\DB_AMS\W2kMain.dfm=C:\OfficeDateien\Borland Studio Projects\DB_AMS\KTL_Main.dfm</Transaction>
+    <Transaction>2009.09.30 10:20:02.921.bdsproj,C:\OfficeDateien\Borland Studio Projects\DB_AMS\MAMS.bdsproj=C:\OfficeDateien\Borland Studio Projects\DB_AMS\SAMS.bdsproj</Transaction>
+    <Transaction>2009.09.30 10:20:21.515.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\KTL_Main.pas=C:\OfficeDateien\Borland Studio Projects\DB_AMS\SAMS_Main.pas</Transaction>
+    <Transaction>2009.09.30 10:20:21.515.dfm,C:\OfficeDateien\Borland Studio Projects\DB_AMS\KTL_Main.dfm=C:\OfficeDateien\Borland Studio Projects\DB_AMS\SAMS_Main.dfm</Transaction>
+    <Transaction>2009.10.01 16:46:18.984.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\Unit1.pas=C:\OfficeDateien\Borland Studio Projects\DB_AMS\_ImportOld.pas</Transaction>
+    <Transaction>2009.10.01 16:48:41.078.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\Unit1.pas=C:\OfficeDateien\Borland Studio Projects\DB_AMS\_ImportOldDB.pas</Transaction>
+    <Transaction>2009.10.01 16:48:41.078.dfm,C:\OfficeDateien\Borland Studio Projects\DB_AMS\Unit1.dfm=C:\OfficeDateien\Borland Studio Projects\DB_AMS\_ImportOldDB.dfm</Transaction>
+    <Transaction>2009.10.01 20:08:10.203.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\_ImportOld.pas=</Transaction>
+    <Transaction>2009.10.01 20:08:15.718.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\_ImportOldDB.pas=</Transaction>
+    <Transaction>2009.10.01 20:08:15.718.dfm,C:\OfficeDateien\Borland Studio Projects\DB_AMS\_ImportOldDB.dfm=</Transaction>
+    <Transaction>2009.11.18 20:18:24.609.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\About.pas=C:\OfficeDateien\Borland Studio Projects\SAMS\About.pas</Transaction>
+    <Transaction>2009.11.18 20:18:24.609.dfm,C:\OfficeDateien\Borland Studio Projects\DB_AMS\About.dfm=C:\OfficeDateien\Borland Studio Projects\SAMS\About.dfm</Transaction>
+    <Transaction>2009.11.20 16:57:22.375.bdsproj,C:\OfficeDateien\Borland Studio Projects\DB_AMS\SAMS.bdsproj=C:\OfficeDateien\Borland Studio Projects\SAMS\SAMS_v1.bdsproj</Transaction>
+    <Transaction>2009.11.20 16:58:03.765.pas,C:\OfficeDateien\Borland Studio Projects\DB_AMS\SAMS_Main.pas=C:\OfficeDateien\Borland Studio Projects\SAMS\SAMS_Main.pas</Transaction>
+    <Transaction>2009.11.20 16:58:03.765.dfm,C:\OfficeDateien\Borland Studio Projects\DB_AMS\SAMS_Main.dfm=C:\OfficeDateien\Borland Studio Projects\SAMS\SAMS_Main.dfm</Transaction>
+    <Transaction>2009.11.20 18:24:55.625.pas,C:\OfficeDateien\Borland Studio Projects\SAMS\Unit1.pas=C:\OfficeDateien\Borland Studio Projects\SAMS\_InputSamples.pas</Transaction>
+    <Transaction>2009.11.20 18:24:55.625.dfm,C:\OfficeDateien\Borland Studio Projects\SAMS\Unit1.dfm=C:\OfficeDateien\Borland Studio Projects\SAMS\_InputSamples.dfm</Transaction>
+    <Transaction>2009.12.03 21:08:31.921.pas,C:\OfficeDateien\Borland Studio Projects\SAMS\_InputSamples.pas=</Transaction>
+    <Transaction>2009.12.03 21:08:31.921.dfm,C:\OfficeDateien\Borland Studio Projects\SAMS\_InputSamples.dfm=</Transaction>
+    <Transaction>2009.12.15 14:35:11.484.pas,C:\OfficeDateien\Borland Studio Projects\SAMS\Unit1.pas=C:\OfficeDateien\Borland Studio Projects\SAMS\_dm.pas</Transaction>
+    <Transaction>2009.12.15 14:41:50.562.pas,C:\OfficeDateien\Borland Studio Projects\SAMS\Unit2.pas=C:\OfficeDateien\Borland Studio Projects\SAMS\_dm.pas</Transaction>
+    <Transaction>2009.12.15 14:41:50.562.dfm,C:\OfficeDateien\Borland Studio Projects\SAMS\Unit2.dfm=C:\OfficeDateien\Borland Studio Projects\SAMS\_dm.dfm</Transaction>
+    <Transaction>2012.02.18 17:46:53.382.bdsproj,C:\Users\bkromer\Borland Studio Projects\SAMS\SAMS_v1.bdsproj=C:\Users\bkromer\Borland Studio Projects\SAMS\SAMS.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
