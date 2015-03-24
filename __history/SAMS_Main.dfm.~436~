@@ -1,6 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
+  ActiveControl = grdProjects
   Caption = 'SAMS '
   ClientHeight = 785
   ClientWidth = 1295
@@ -236,7 +237,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1295
     Height = 711
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -983,7 +984,8 @@ object frmMAMS: TfrmMAMS
             ParentShowHint = False
             ShowHint = True
             TabOrder = 3
-            Visible = False
+            WordWrap = True
+            OnClick = btnAddNewProjectClick
           end
           object btnAddNewSamples: TButton
             Left = 554
@@ -3271,7 +3273,7 @@ object frmMAMS: TfrmMAMS
           Width = 210
           Height = 389
           Align = alClient
-          Caption = 'Project data'
+          Caption = 'Project Info'
           TabOrder = 1
           object Label32: TLabel
             Left = 12
@@ -3282,28 +3284,28 @@ object frmMAMS: TfrmMAMS
           end
           object Label31: TLabel
             Left = 14
-            Top = 122
+            Top = 135
             Width = 63
             Height = 13
             Caption = 'Project name'
           end
           object Label24: TLabel
             Left = 12
-            Top = 283
+            Top = 311
             Width = 54
             Height = 13
             Caption = 'MA number'
           end
           object Label93: TLabel
             Left = 12
-            Top = 231
+            Top = 267
             Width = 36
             Height = 13
             Caption = 'Report '
           end
           object Label97: TLabel
             Left = 12
-            Top = 166
+            Top = 179
             Width = 74
             Height = 13
             Caption = 'Project Number'
@@ -3317,7 +3319,7 @@ object frmMAMS: TfrmMAMS
           end
           object edtSampleProjectName: TDBEdit
             Left = 12
-            Top = 137
+            Top = 150
             Width = 173
             Height = 21
             TabStop = False
@@ -3339,7 +3341,7 @@ object frmMAMS: TfrmMAMS
           end
           object edtInvoiceNr: TDBEdit
             Left = 12
-            Top = 298
+            Top = 326
             Width = 173
             Height = 21
             TabStop = False
@@ -3350,7 +3352,7 @@ object frmMAMS: TfrmMAMS
           end
           object edtReport: TDBEdit
             Left = 12
-            Top = 246
+            Top = 282
             Width = 173
             Height = 21
             TabStop = False
@@ -3361,7 +3363,7 @@ object frmMAMS: TfrmMAMS
           end
           object edtProjectNr: TDBEdit
             Left = 12
-            Top = 180
+            Top = 193
             Width = 84
             Height = 21
             TabStop = False
@@ -3383,7 +3385,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnChangeProject: TButton
             Left = 102
-            Top = 179
+            Top = 192
             Width = 43
             Height = 23
             Hint = 'Changes the associated project of that sample.'
@@ -4060,12 +4062,11 @@ object frmMAMS: TfrmMAMS
             OnClick = chkSamplingThisYearClick
           end
           object chkNotToBeDated: TDBCheckBox
-            Left = 118
+            Left = 17
             Top = 526
             Width = 97
             Height = 17
             TabStop = False
-            Alignment = taLeftJustify
             Caption = 'not to be dated'
             DataField = 'not_tobedated'
             DataSource = dm.dsSampleInfo
@@ -4671,7 +4672,7 @@ object frmMAMS: TfrmMAMS
           Top = 301
           Width = 381
           Height = 24
-          DataField = 'phone_1'
+          DataField = 'phone_2'
           DataSource = dm.dsUserInfo
           TabOrder = 10
         end
@@ -6288,7 +6289,7 @@ object frmMAMS: TfrmMAMS
     Left = 1136
     Top = 152
     Bitmap = {
-      494C010110001300880110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300940110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7061,7 +7062,7 @@ object frmMAMS: TfrmMAMS
     Left = 1192
     Top = 152
     Bitmap = {
-      494C01013D004000880118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000940118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11826,7 +11827,7 @@ object frmMAMS: TfrmMAMS
     Left = 1248
     Top = 152
     Bitmap = {
-      494C01014B004F00880120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00940120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

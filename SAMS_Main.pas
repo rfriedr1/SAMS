@@ -1801,7 +1801,7 @@ begin
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
         Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
-          ClipBoard.SetTextBuf(PChar(SQL.Text));
+          //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
     end;
@@ -1861,7 +1861,7 @@ begin
     ' stop= ' + PrepStop +
     ' WHERE sample_nr=' + IntToStr(sample_nr) +
     ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
-  ClipBoard.SetTextBuf(PChar(s));
+  //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
 

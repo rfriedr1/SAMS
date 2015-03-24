@@ -163,6 +163,7 @@ type
   private
    //
   public
+    function AddNewProjectByUserNr(user_nr, project_name: string): String;
     function AddNewUser: String;
     function CheckExistingDBValue(table, column, value:string) : boolean;
     function CheckProjectOfUser_nr(project_name: string; user_nr: integer): boolean;
@@ -182,6 +183,7 @@ type
     procedure GetNOxaBlank(Oxa : boolean);
     function GetPretreatStepNrBySampleNr(sample_nr, prep_nr : integer; const method : string) : integer;
     function GetProjectNrBySampleNr(sample_nr : integer) : integer;
+    function GetProjectNrByProject(project_name: string): string;
     function GetProjectByProjectNr(project_nr: integer): string;
     procedure GetProjectsSinceYear(StartYear : integer);
     function GetUserByProjectNr(project_nr: integer): string;
@@ -232,6 +234,53 @@ begin
 end;
 
 
+function Tdm.AddNewProjectByUserNr(user_nr, project_name: string): String;
+// add a new project to the project_t (only project_name)
+// that is associated to the user_nr
+// function returns the project_nr of the newly created project
+// or 'none' if no project was created
+Var
+  ADOCmd: TADOCommand;
+begin
+ // insert project into project_t
+ if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+      ADOCmd:= TADOCommand.Create(nil);       // create new command object
+      try
+        ADOCmd.Connection:=adoConnKTL;        // set DB connection
+        ADOCmd.Parameters.Clear;              // clear all Parameters
+        ADOCmd.CommandType:=cmdtext;          // set command type to text
+        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ');';    // set query text
+        ShowMessage(ADOCmd.CommandText);
+        //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
+        //ADOCmd.Execute; // issue command (no result set must be returned)
+      except
+        ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
+        //result:=true;
+      end;
+      ADOCmd.Free;                            // cleanup command object
+      //result:= false;
+    end
+  else begin
+        ShowMessage('Database not connected.');   //Database is not connected
+        //result:= true;
+      end;
+
+ (*
+      IF InsertIntoDB('project_t', 'project', project_name) THEN BEGIN
+        // some error orrured while inserting new data
+        ShowMessage('Error inserting new project.');
+        Result:='none'
+      END
+      ELSE begin
+        // data inserted without any error
+        ShowMessage('New project created.');  // show message
+        Result:= dm.GetProjectNrByProject(project_name);// return project_nr of the newly created project
+      end;
+    END;
+ *)
+end;
+
+
 
 function Tdm.AddNewUser: String;
 // add a new user to the user_t (only last_name and user_nr)
@@ -241,8 +290,6 @@ function Tdm.AddNewUser: String;
 // or 'none' if no user was created
 Var
   last_name: string;
-  ADOCmd: TADOCommand;
-  ADODataSet: TADODataSet;
 begin
  last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
   // check if a valid string was given
@@ -308,9 +355,9 @@ var
 begin
    with qryDb do begin
      Close;
-     SQL.Text := 'SELECT project FROM project_t INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project=' + #34 + project_name + #34 + ' AND user_nr=' + IntToStr(user_nr) + ';';
+     SQL.Text := 'SELECT project FROM project_t INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project=' + #34 + project_name + #34 + ' AND project_t.user_nr=' + IntToStr(user_nr) + ';';
      s := SQL.Text;
-     ShowMessage(s);
+     //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
      Open;
      if Fields.Fields[0].AsString=project_name then begin
@@ -662,6 +709,20 @@ begin
    with qryDb do begin
      Close;
      SQL.Text := 'SELECT project FROM project_t WHERE project_nr='+IntToStr(project_nr) + ';';
+     s := SQL.Text;
+     //ClipBoard.SetTextBuf(PChar(s));
+     Open;
+     Result := Fields.Fields[0].AsString;
+   end;
+end;
+
+function Tdm.GetProjectNrByProject(project_name: string): string;
+var
+  s : string;
+begin
+   with qryDb do begin
+     Close;
+     SQL.Text := 'SELECT project_nr FROM project_t WHERE project='+ project_name + ';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      Open;

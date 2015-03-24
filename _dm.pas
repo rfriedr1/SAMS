@@ -879,7 +879,7 @@ begin
 //        ' AND preparation_t.prep_nr=1 AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
-        ClipBoard.SetTextBuf(PChar(s));
+        //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         Open;
       end;

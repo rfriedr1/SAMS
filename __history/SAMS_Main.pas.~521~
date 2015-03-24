@@ -899,6 +899,7 @@ type
     procedure btnAddNewUserClick(Sender: TObject);
     procedure edtWeightEndExit(Sender: TObject);
     procedure btnChangeProjectClick(Sender: TObject);
+    procedure btnAddNewProjectClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -2064,25 +2065,58 @@ begin
 
 end;
 
+procedure TfrmMAMS.btnAddNewProjectClick(Sender: TObject);
+// create new project for the selected user
+Var
+  user_nr, project_name: string;
+  Proj_exists: boolean;
+begin
+  user_nr:= cmbSubmitterNameProject.KeyValue;   // read the user_nr of the currently selected user
+  project_name := InputBox('Add New Project', 'Project Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
+
+  if project_name<>'' then begin //check if a project_name was actually given
+      //check if project for this user already exists
+      Proj_exists:= dm.CheckProjectOfUser_nr(project_name, user_nr.ToInteger());
+      if Proj_exists then begin
+        ShowMessage('Projekt exists already!');
+      end
+      else begin
+        // add new project
+        ShowMessage('Projekt does not exist yet.');
+        dm.AddNewProjectByUserNr(user_nr, project_name);
+      end;
+  end;
+
+end;
+
 procedure TfrmMAMS.btnAddNewUser2Click(Sender: TObject);
 // create a new user in the user table
 // only adds a new last name and user_nr
+VAR
+  s: String;
 begin
-   dm.AddNewUser;
-   StatusBar.Panels[2].Text:='reloading user data...';
-   dm.tblUser.Close; dm.tblUser.Open;       //update list of users from the DB by closing na dopening the query
-   pgtMain.ActivePage:=tbsUserInfo;    //switch to user info page in order to enter the new user info
-   StatusBar.Panels[2].Text:='';
-   //cmbUsernameUserInfo.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+   s:=dm.AddNewUser;                         // add new user; returns user_nr of the newly created user
+   if s<>'none' then begin
+      StatusBar.Panels[2].Text:='reloading user data...';
+      dm.tblUser.Close; dm.tblUser.Open;       //update list of users from the DB by closing na dopening the query
+      pgtMain.ActivePage:=tbsUserInfo;    //switch to user info page in order to enter the new user info
+      StatusBar.Panels[2].Text:='';
+      cmbUsernameUserInfo.KeyValue:= strtoint(s); // dropdown list to correct user_nr
+   end;
 end;
 
 procedure TfrmMAMS.btnAddNewUserClick(Sender: TObject);
 // adds new user to user_t
+VAR
+  s:string;
 begin
-  dm.AddNewUser;    //insert new user into DB
-  StatusBar.Panels[2].Text:='reloading user data...';
-  dm.tblUser.Close; dm.tblUser.Open;  //get list of users from the DB again
-  StatusBar.Panels[2].Text:='';
+  s:= dm.AddNewUser;    //insert new user into DB
+  if s<>'none' then begin
+      StatusBar.Panels[2].Text:='reloading user data...';
+      dm.tblUser.Close; dm.tblUser.Open;  //get list of users from the DB again
+      StatusBar.Panels[2].Text:='';
+      cmbUsernameUserInfo.KeyValue:= strtoint(s); // dropdown list to correct user_nr
+  end;
 end;
 
 procedure TfrmMAMS.btnAdminClick(Sender: TObject);
@@ -5008,11 +5042,9 @@ begin
   saveDialog.Options := [ofOverwritePrompt];
 
   // Execute an open file dialog.
-  if SaveDialog.Execute then
-    //First check if the file exists.
-    if FileExists(SaveDialog.FileName) then
+  if SaveDialog.Execute then begin
       MemoDBPlotQuery.Lines.SaveToFile(SaveDialog.FileName);
-
+  end;
   saveDialog.Free;
 end;
 
