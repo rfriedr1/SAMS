@@ -249,7 +249,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1287
         Height = 639
-        ActivePage = wizStartPage
+        ActivePage = wizFinalPage
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1

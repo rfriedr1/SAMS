@@ -2115,8 +2115,9 @@ begin
         buttonSelected:=MessageDlg('SAmple does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
         if buttonSelected=mrOK then begin
               sample_nr:= dm.AddNewSampleByProjectNr(project_nr, sample_name);  //add new sample and return sample number
-              // add new prep to this samples
-              // add new target to this samples
+              //showmessage(sample_nr);
+              dm.CreateBlankPrepRecord(sample_nr.ToInteger, 1); // add new prep to this samples
+              dm.CreateBlankTargetRecord(sample_nr.ToInteger, 1, 1); // add new target to this samples
               GetSamples; // reload Sample list
         end;
       end;
@@ -2970,6 +2971,7 @@ begin
       dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
       dm.qryDB.Open;
       sample_nr := 0;
+      // insert new prep for this samples
       if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
       with grdPreviewSamples do begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
@@ -2978,7 +2980,7 @@ begin
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
         end
-        else begin // prep_end setzen
+        else begin // set prep_end date since sample type doesn't need any prep steps
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
             'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
           for PrepCol := SamplePrep1Col to SamplePrep5Col do begin

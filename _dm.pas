@@ -295,7 +295,7 @@ begin
         result:='none';
       end;
       ADOCmd.Free;                            // cleanup command object
-      //result:= GetSampleNrBySampleNameAndProjectNr(sample_name, project_nr);
+      result:= GetSampleNrBySampleNameAndProjectNr(sample_name, project_nr);
     end
   else begin
         ShowMessage('Database not connected.');   //Database is not connected
@@ -483,6 +483,7 @@ begin
 end;
 
 procedure Tdm.CreateBlankPrepRecord(SampleNr, PrepNr: integer);
+//creates a blank prep record in the preparation_t for this sample_nr
 begin
   adoCmd.CommandText :=
        'INSERT INTO preparation_t  (prep_nr, sample_nr) VALUES (' +
