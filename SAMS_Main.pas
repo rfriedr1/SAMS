@@ -3918,9 +3918,11 @@ begin
 end;
 
 procedure TfrmMAMS.cmbSubmitterNameProjectCloseUp(Sender: TObject);
+// when dropdown list closes, show the projects associated to this user
 begin
   GetProjects;
   cmbUsernameUserInfo.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list in user info to correct user_nr in case user switches to this page
+  btnAddNewProject.Visible:=true;
 end;
 
 procedure TfrmMAMS.cmbSubmitterNameProjectKeyUp(Sender: TObject; var Key: Word;

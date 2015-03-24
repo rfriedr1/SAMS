@@ -899,6 +899,7 @@ type
     procedure btnAddNewUserClick(Sender: TObject);
     procedure edtWeightEndExit(Sender: TObject);
     procedure btnChangeProjectClick(Sender: TObject);
+    procedure btnAddNewProjectClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1800,7 +1801,7 @@ begin
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
         Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
-          ClipBoard.SetTextBuf(PChar(SQL.Text));
+          //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
     end;
@@ -1860,7 +1861,7 @@ begin
     ' stop= ' + PrepStop +
     ' WHERE sample_nr=' + IntToStr(sample_nr) +
     ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
-  ClipBoard.SetTextBuf(PChar(s));
+  //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
 
@@ -2061,6 +2062,30 @@ begin
 //  gbxBatch.Enabled := false;
 
   GetAvailableOxasBlanks; //get Oxas and Blanks that are currently available for analysis (graphitized)
+
+end;
+
+procedure TfrmMAMS.btnAddNewProjectClick(Sender: TObject);
+// create new project for the selected user
+Var
+  user_nr, project_name: string;
+  Proj_exists: boolean;
+begin
+  user_nr:= cmbSubmitterNameProject.KeyValue;   // read the user_nr of the currently selected user
+  project_name := InputBox('Add New Project', 'Project Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
+
+  if project_name<>'' then begin //check if a project_name was actually given
+      //check if project for this user already exists
+      Proj_exists:= dm.CheckProjectOfUser_nr(project_name, user_nr.ToInteger());
+      if Proj_exists then begin
+        ShowMessage('Projekt exists already!');
+      end
+      else begin
+        // add new project
+        ShowMessage('Projekt does not exist yet.');
+        dm.AddNewProjectByUserNr(user_nr, project_name);
+      end;
+  end;
 
 end;
 
