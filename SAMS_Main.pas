@@ -2068,8 +2068,9 @@ end;
 procedure TfrmMAMS.btnAddNewProjectClick(Sender: TObject);
 // create new project for the selected user
 Var
-  user_nr, project_name: string;
+  user_nr, project_name, project_nr: string;
   Proj_exists: boolean;
+  buttonSelected : Integer;
 begin
   user_nr:= cmbSubmitterNameProject.KeyValue;   // read the user_nr of the currently selected user
   project_name := InputBox('Add New Project', 'Project Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
@@ -2082,8 +2083,11 @@ begin
       end
       else begin
         // add new project
-        ShowMessage('Projekt does not exist yet.');
-        dm.AddNewProjectByUserNr(user_nr, project_name);
+        buttonSelected:=MessageDlg('Projekt does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
+        if buttonSelected=mrOK then begin
+              project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);  //add new project and return project number
+              GetProjects; // reload projects list
+        end;
       end;
   end;
 

@@ -183,6 +183,7 @@ type
     procedure GetNOxaBlank(Oxa : boolean);
     function GetPretreatStepNrBySampleNr(sample_nr, prep_nr : integer; const method : string) : integer;
     function GetProjectNrBySampleNr(sample_nr : integer) : integer;
+    function GetProjectNrByProject(project_name: string): string;
     function GetProjectByProjectNr(project_nr: integer): string;
     procedure GetProjectsSinceYear(StartYear : integer);
     function GetUserByProjectNr(project_nr: integer): string;
@@ -240,28 +241,30 @@ function Tdm.AddNewProjectByUserNr(user_nr, project_name: string): String;
 // or 'none' if no project was created
 Var
   ADOCmd: TADOCommand;
-  ADODataSet: TADODataSet;
 begin
- (*last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
-  // check if a valid string was given
- IF last_name <> '' THEN BEGIN
-    //check if the name already exists
-    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN BEGIN
-      ShowMessage('Last Name already exists! Use a new last name. '); // last_name already exists
-    END
-    ELSE BEGIN
-      IF InsertIntoDB('user_t', 'last_name', last_name) THEN BEGIN
-        // some error orrured while inserting new data
-        ShowMessage('Error inserting new user.'); // last_name does not exist -> insert new user into db
-        Result:='none'
-      END
-      ELSE begin
-        // data inserted without any error
-        ShowMessage('New user created.');  // show message
-        Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+ // insert project into project_t
+ if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+      ADOCmd:= TADOCommand.Create(nil);       // create new command object
+      try
+        ADOCmd.Connection:=adoConnKTL;        // set DB connection
+        ADOCmd.Parameters.Clear;              // clear all Parameters
+        ADOCmd.CommandType:=cmdtext;          // set command type to text
+        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ');';    // set query text
+        //ShowMessage(ADOCmd.CommandText);
+        //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
+        //ADOCmd.Execute; // issue command (no result set must be returned)
+      except
+        ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
+        //result:=true;
       end;
-    END;
- end; *)
+      ADOCmd.Free;                            // cleanup command object
+      //result:= false;
+    end
+  else begin
+        ShowMessage('Database not connected.');   //Database is not connected
+        result:= 'none';
+      end;
+
 end;
 
 
@@ -274,8 +277,6 @@ function Tdm.AddNewUser: String;
 // or 'none' if no user was created
 Var
   last_name: string;
-  ADOCmd: TADOCommand;
-  ADODataSet: TADODataSet;
 begin
  last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
   // check if a valid string was given
@@ -702,6 +703,20 @@ begin
    end;
 end;
 
+function Tdm.GetProjectNrByProject(project_name: string): string;
+var
+  s : string;
+begin
+   with qryDb do begin
+     Close;
+     SQL.Text := 'SELECT project_nr FROM project_t WHERE project='+ project_name + ';';
+     s := SQL.Text;
+     //ClipBoard.SetTextBuf(PChar(s));
+     Open;
+     Result := Fields.Fields[0].AsString;
+   end;
+end;
+
 function Tdm.GetUserByProjectNr(project_nr: integer): string;
 var
   s : string;
@@ -851,7 +866,7 @@ begin
 //        ' AND preparation_t.prep_nr=1 AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
-        ClipBoard.SetTextBuf(PChar(s));
+        //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         Open;
       end;

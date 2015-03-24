@@ -1801,7 +1801,7 @@ begin
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
         Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
-          ClipBoard.SetTextBuf(PChar(SQL.Text));
+          //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
     end;
@@ -1861,7 +1861,7 @@ begin
     ' stop= ' + PrepStop +
     ' WHERE sample_nr=' + IntToStr(sample_nr) +
     ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
-  ClipBoard.SetTextBuf(PChar(s));
+  //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
 
@@ -2068,12 +2068,27 @@ end;
 procedure TfrmMAMS.btnAddNewProjectClick(Sender: TObject);
 // create new project for the selected user
 Var
-  s, project_name: string;
+  user_nr, project_name, project_nr: string;
+  Proj_exists: boolean;
+  buttonSelected : Integer;
 begin
-  s:= cmbSubmitterNameProject.KeyValue;   // read the user_nr of the currently selected user
-  project_name := InputBox('Add New Porject', 'Project Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
+  user_nr:= cmbSubmitterNameProject.KeyValue;   // read the user_nr of the currently selected user
+  project_name := InputBox('Add New Project', 'Project Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
 
-  //check if project for this user already exists
+  if project_name<>'' then begin //check if a project_name was actually given
+      //check if project for this user already exists
+      Proj_exists:= dm.CheckProjectOfUser_nr(project_name, user_nr.ToInteger());
+      if Proj_exists then begin
+        ShowMessage('Projekt exists already!');
+      end
+      else begin
+        // add new project
+        buttonSelected:=MessageDlg('Projekt does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
+        if buttonSelected=mrOK then begin
+              project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);
+        end;
+      end;
+  end;
 
 end;
 
@@ -3906,9 +3921,11 @@ begin
 end;
 
 procedure TfrmMAMS.cmbSubmitterNameProjectCloseUp(Sender: TObject);
+// when dropdown list closes, show the projects associated to this user
 begin
   GetProjects;
   cmbUsernameUserInfo.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list in user info to correct user_nr in case user switches to this page
+  btnAddNewProject.Visible:=true;
 end;
 
 procedure TfrmMAMS.cmbSubmitterNameProjectKeyUp(Sender: TObject; var Key: Word;
