@@ -2068,7 +2068,7 @@ end;
 procedure TfrmMAMS.btnAddNewProjectClick(Sender: TObject);
 // create new project for the selected user
 Var
-  user_nr, project_name: string;
+  user_nr, project_name, project_nr: string;
   Proj_exists: boolean;
   buttonSelected : Integer;
 begin
@@ -2084,7 +2084,10 @@ begin
       else begin
         // add new project
         buttonSelected:=MessageDlg('Projekt does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
-        if buttonSelected=mrOK then dm.AddNewProjectByUserNr(user_nr, project_name);
+        if buttonSelected=mrOK then begin
+              project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);  //add new project and return project number
+              GetProjects; // reload projects list
+        end;
       end;
   end;
 
@@ -3781,6 +3784,7 @@ begin
   end;
 
   pgtSample.ActivePageIndex:=0;  //show the project_data page (Index=0)
+  btnAddNewSamples.Visible:=true;   //show add samples button
 
 //  spltSampleSamples.Visible := true;
 end;

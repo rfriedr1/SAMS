@@ -900,6 +900,7 @@ type
     procedure edtWeightEndExit(Sender: TObject);
     procedure btnChangeProjectClick(Sender: TObject);
     procedure btnAddNewProjectClick(Sender: TObject);
+    procedure btnAddNewSamplesClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -940,6 +941,7 @@ type
     procedure FillCds;
     function GetFileName: string;
     procedure GetProjects;
+    procedure GetSamples;
     procedure SetFileName(const Value: string);
     procedure SetValues(const Value: TStrings);
     procedure InsertNewSamplesInDb;
@@ -2087,6 +2089,35 @@ begin
         if buttonSelected=mrOK then begin
               project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);  //add new project and return project number
               GetProjects; // reload projects list
+        end;
+      end;
+  end;
+
+end;
+
+procedure TfrmMAMS.btnAddNewSamplesClick(Sender: TObject);
+Var
+  project_nr, sample_nr, sample_name: string;
+  Sample_exists: boolean;
+  buttonSelected : Integer;
+begin
+  project_nr:= grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString;   // read the project_nr of the currently selected project
+  sample_name := InputBox('Add New Sample', 'Sample Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
+
+  if sample_name<>'' then begin //check if a sample name was actually given
+      //check if sample for this project already exists
+      Sample_exists:= dm.CheckSampleOfProjectNr(sample_name, project_nr);
+      if Sample_exists then begin
+        ShowMessage('Sample exists already!');
+      end
+      else begin
+        // add new sample
+        buttonSelected:=MessageDlg('SAmple does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
+        if buttonSelected=mrOK then begin
+              sample_nr:= dm.AddNewSampleByProjectNr(project_nr, sample_name);  //add new sample and return sample number
+              // add new prep to this samples
+              // add new target to this samples
+              GetSamples; // reload Sample list
         end;
       end;
   end;
@@ -3759,14 +3790,13 @@ begin
   end;
 end;
 
-procedure TfrmMAMS.grdProjectsCellClick(Column: TColumn);
-// clicking on the project grid
-// things that happen when selecting a project
-var
-  s: string;
+procedure TfrmMAMS.GetSamples;
+Var
+  s:string;
+//performs a query of the database for all samples
+//of the selected project in the project list
+// query results is displayed in the SampleOfPorject Grid
 begin
-  grdSamplesOfProject.Visible := true;
-  dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString);
   with dm.qrySamplesOfProject do begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  '
       + 'FROM sample_t '
@@ -3782,8 +3812,35 @@ begin
     grdSamplesOfProject.Columns[3].Width := 80;
     grdSamplesOfProject.Columns[4].Width := 80;
   end;
+end;
+
+procedure TfrmMAMS.grdProjectsCellClick(Column: TColumn);
+// clicking on the project grid
+// things that happen when selecting a project
+var
+  s: string;
+begin
+  grdSamplesOfProject.Visible := true;
+  dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString);  // query database for all project info
+  GetSamples; // queries the database for all samples of this project and displays them in the SampleOfProject Grid
+  (*with dm.qrySamplesOfProject do begin
+    SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  '
+      + 'FROM sample_t '
+      + 'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr '
+      + 'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr '
+      + 'WHERE project_t.project_nr=' + #34 + dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsString + #34 + ';'; ;
+    s := SQL.Text;
+    //   ClibBoard.SetTextBuf(PChar(s));
+    Open;
+    grdSamplesOfProject.Columns[0].Width := 60;
+    grdSamplesOfProject.Columns[1].Width := 100;
+    grdSamplesOfProject.Columns[2].Width := 80;
+    grdSamplesOfProject.Columns[3].Width := 80;
+    grdSamplesOfProject.Columns[4].Width := 80;
+  end; *)
 
   pgtSample.ActivePageIndex:=0;  //show the project_data page (Index=0)
+  btnAddNewSamples.Visible:=true;   //show add samples button
 
 //  spltSampleSamples.Visible := true;
 end;

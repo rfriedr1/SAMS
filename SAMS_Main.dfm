@@ -999,6 +999,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 4
             Visible = False
+            OnClick = btnAddNewSamplesClick
           end
         end
         object Panel33: TPanel

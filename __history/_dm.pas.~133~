@@ -167,6 +167,7 @@ type
     function AddNewUser: String;
     function CheckExistingDBValue(table, column, value:string) : boolean;
     function CheckProjectOfUser_nr(project_name: string; user_nr: integer): boolean;
+    function CheckSampleOfProjectNr(sample_name, project_nr: string): boolean;
     function InsertIntoDB(table, column, value: string): boolean;
     procedure CheckProjectStatus;
     procedure CreateBlankPrepRecord(SampleNr, PrepNr : integer);
@@ -183,7 +184,7 @@ type
     procedure GetNOxaBlank(Oxa : boolean);
     function GetPretreatStepNrBySampleNr(sample_nr, prep_nr : integer; const method : string) : integer;
     function GetProjectNrBySampleNr(sample_nr : integer) : integer;
-    function GetProjectNrByProject(project_name: string): string;
+    function GetProjectNrByProjectAndUserNr(project_name, user_nr: string): string;
     function GetProjectByProjectNr(project_nr: integer): string;
     procedure GetProjectsSinceYear(StartYear : integer);
     function GetUserByProjectNr(project_nr: integer): string;
@@ -250,34 +251,21 @@ begin
         ADOCmd.Parameters.Clear;              // clear all Parameters
         ADOCmd.CommandType:=cmdtext;          // set command type to text
         ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ');';    // set query text
-        ShowMessage(ADOCmd.CommandText);
+        //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
-        //ADOCmd.Execute; // issue command (no result set must be returned)
+        ADOCmd.Execute; // issue command (no result set must be returned)
       except
         ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
-        //result:=true;
+        result:='none';
       end;
       ADOCmd.Free;                            // cleanup command object
-      result:= false;
+      result:= GetProjectNrByProjectAndUserNr(project_name, user_nr);
     end
   else begin
         ShowMessage('Database not connected.');   //Database is not connected
-        //result:= true;
+        result:= 'none';
       end;
 
- (*
-      IF InsertIntoDB('project_t', 'project', project_name) THEN BEGIN
-        // some error orrured while inserting new data
-        ShowMessage('Error inserting new project.');
-        Result:='none'
-      END
-      ELSE begin
-        // data inserted without any error
-        ShowMessage('New project created.');  // show message
-        Result:= dm.GetProjectNrByProject(project_name);// return project_nr of the newly created project
-      end;
-    END;
- *)
 end;
 
 
@@ -369,6 +357,29 @@ begin
      //Result := Fields.Fields[0].AsString;
    end;
 end;
+
+function Tdm.CheckSampleOfProjectNr(sample_name, project_nr: string): boolean;
+// checks if the sample_name (user_label) exists within the selected project_nr
+var
+  s : string;
+begin
+   with qryDb do begin
+     Close;
+     SQL.Text := 'SELECT user_label FROM sample_t WHERE user_label=' + #34 + sample_name + #34 + ' AND project_nr=' + #34 + project_nr + #34 +';';
+     s := SQL.Text;
+     //ShowMessage(s);
+     //ClipBoard.SetTextBuf(PChar(s));
+     Open;
+     if Fields.Fields[0].AsString=sample_name then begin
+        Result:=true;
+     end
+     else begin
+       Result:=false;
+     end;
+     //Result := Fields.Fields[0].AsString;
+   end;
+end;
+
 
 function Tdm.InsertIntoDB(table, column, value: string): boolean;
 // insert "value" of "column" into "table"
@@ -716,13 +727,15 @@ begin
    end;
 end;
 
-function Tdm.GetProjectNrByProject(project_name: string): string;
+function Tdm.GetProjectNrByProjectAndUserNr(project_name, user_nr: string): string;
+// returns the project_nr of the project_name
+// user_nr needs to be give because project_name is not unique
 var
   s : string;
 begin
    with qryDb do begin
      Close;
-     SQL.Text := 'SELECT project_nr FROM project_t WHERE project='+ project_name + ';';
+     SQL.Text := 'SELECT project_nr FROM project_t WHERE project='+ #34 + project_name + #34 + ' AND user_nr=' + #34 + user_nr + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      Open;
@@ -879,7 +892,7 @@ begin
 //        ' AND preparation_t.prep_nr=1 AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
-        ClipBoard.SetTextBuf(PChar(s));
+        //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         Open;
       end;

@@ -164,9 +164,11 @@ type
    //
   public
     function AddNewProjectByUserNr(user_nr, project_name: string): String;
+    function AddNewSampleByProjectNr(project_nr, sample_name: string): String;
     function AddNewUser: String;
     function CheckExistingDBValue(table, column, value:string) : boolean;
     function CheckProjectOfUser_nr(project_name: string; user_nr: integer): boolean;
+    function CheckSampleOfProjectNr(sample_name, project_nr: string): boolean;
     function InsertIntoDB(table, column, value: string): boolean;
     procedure CheckProjectStatus;
     procedure CreateBlankPrepRecord(SampleNr, PrepNr : integer);
@@ -186,6 +188,7 @@ type
     function GetProjectNrByProjectAndUserNr(project_name, user_nr: string): string;
     function GetProjectByProjectNr(project_nr: integer): string;
     procedure GetProjectsSinceYear(StartYear : integer);
+    function GetSampleNrBySampleNameAndProjectNr(sample_name, project_nr: string): string;
     function GetUserByProjectNr(project_nr: integer): string;
     function GetUserNrByLastName(last_name: string): String;
     procedure GetSamplesAvailableForPrep(const method : string);
@@ -259,6 +262,40 @@ begin
       end;
       ADOCmd.Free;                            // cleanup command object
       result:= GetProjectNrByProjectAndUserNr(project_name, user_nr);
+    end
+  else begin
+        ShowMessage('Database not connected.');   //Database is not connected
+        result:= 'none';
+      end;
+
+end;
+
+
+function Tdm.AddNewSampleByProjectNr(project_nr, sample_name: string): String;
+// add a new sample to the sample_t (only user_label)
+// that is associated to the preoject_nr
+// function returns the sample_nr of the newly created sample
+// or 'none' if no sample was created
+Var
+  ADOCmd: TADOCommand;
+begin
+ // insert sample into sample_t
+ if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+      ADOCmd:= TADOCommand.Create(nil);       // create new command object
+      try
+        ADOCmd.Connection:=adoConnKTL;        // set DB connection
+        ADOCmd.Parameters.Clear;              // clear all Parameters
+        ADOCmd.CommandType:=cmdtext;          // set command type to text
+        ADOCmd.CommandText:='INSERT INTO sample_t (user_label, project_nr) VALUES ( '  + #34 + sample_name + #34 + ',' + #34 + project_nr + #34 + ');';    // set query text
+        //ShowMessage(ADOCmd.CommandText);
+        //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
+        ADOCmd.Execute; // issue command (no result set must be returned)
+      except
+        ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
+        result:='none';
+      end;
+      ADOCmd.Free;                            // cleanup command object
+      //result:= GetSampleNrBySampleNameAndProjectNr(sample_name, project_nr);
     end
   else begin
         ShowMessage('Database not connected.');   //Database is not connected
@@ -356,6 +393,29 @@ begin
      //Result := Fields.Fields[0].AsString;
    end;
 end;
+
+function Tdm.CheckSampleOfProjectNr(sample_name, project_nr: string): boolean;
+// checks if the sample_name (user_label) exists within the selected project_nr
+var
+  s : string;
+begin
+   with qryDb do begin
+     Close;
+     SQL.Text := 'SELECT user_label FROM sample_t WHERE user_label=' + #34 + sample_name + #34 + ' AND project_nr=' + #34 + project_nr + #34 +';';
+     s := SQL.Text;
+     //ShowMessage(s);
+     //ClipBoard.SetTextBuf(PChar(s));
+     Open;
+     if Fields.Fields[0].AsString=sample_name then begin
+        Result:=true;
+     end
+     else begin
+       Result:=false;
+     end;
+     //Result := Fields.Fields[0].AsString;
+   end;
+end;
+
 
 function Tdm.InsertIntoDB(table, column, value: string): boolean;
 // insert "value" of "column" into "table"
@@ -719,6 +779,22 @@ begin
    end;
 end;
 
+function Tdm.GetSampleNrBySampleNameAndProjectNr(sample_name, project_nr: string): string;
+// returns the sample_nr of the sample (user_label)
+// project_nr needs to be give because sample_name (user_label) is not unique
+var
+  s : string;
+begin
+   with qryDb do begin
+     Close;
+     SQL.Text := 'SELECT sample_nr FROM sample_t WHERE user_label='+ #34 + sample_name + #34 + ' AND project_nr=' + #34 + project_nr + #34 +';';
+     s := SQL.Text;
+     //ClipBoard.SetTextBuf(PChar(s));
+     Open;
+     Result := Fields.Fields[0].AsString;
+   end;
+end;
+
 function Tdm.GetUserByProjectNr(project_nr: integer): string;
 var
   s : string;
@@ -922,6 +998,7 @@ end;
 
 
 procedure Tdm.QueryProject(const ProjectName: string);
+// returns all info about this project
 begin
   with qryProject do begin
     SQL.Text := 'SELECT * FROM project_t WHERE project='+#34+ProjectName+#34+';';
