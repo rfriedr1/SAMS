@@ -37,7 +37,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart;
 
 const
-  myVersion = '1.5.4 March-4-2015';
+  myVersion = '1.5.5 March-25-2015';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -2131,7 +2131,8 @@ procedure TfrmMAMS.btnAddNewUser2Click(Sender: TObject);
 VAR
   s: String;
 begin
-   s:=dm.AddNewUser;                         // add new user; returns user_nr of the newly created user
+   s:=dm.AddNewUser;
+   //ShowMessage('test');                         // add new user; returns user_nr of the newly created user
    if s<>'none' then begin
       StatusBar.Panels[2].Text:='reloading user data...';
       dm.tblUser.Close; dm.tblUser.Open;       //update list of users from the DB by closing na dopening the query

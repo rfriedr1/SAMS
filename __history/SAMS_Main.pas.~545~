@@ -37,7 +37,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart;
 
 const
-  myVersion = '1.5.4 March-4-2015';
+  myVersion = '1.5.5 March-25-2015';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -941,6 +941,7 @@ type
     procedure FillCds;
     function GetFileName: string;
     procedure GetProjects;
+    procedure GetSamples;
     procedure SetFileName(const Value: string);
     procedure SetValues(const Value: TStrings);
     procedure InsertNewSamplesInDb;
@@ -2113,8 +2114,11 @@ begin
         // add new sample
         buttonSelected:=MessageDlg('SAmple does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
         if buttonSelected=mrOK then begin
-              sample_nr:=dm.AddNewSampleByProjectNr(project_nr, sample_name);  //add new sample and return sample number
-              //GetProjects; // reload Sample list
+              sample_nr:= dm.AddNewSampleByProjectNr(project_nr, sample_name);  //add new sample and return sample number
+              //showmessage(sample_nr);
+              dm.CreateBlankPrepRecord(sample_nr.ToInteger, 1); // add new prep to this samples
+              dm.CreateBlankTargetRecord(sample_nr.ToInteger, 1, 1); // add new target to this samples
+              GetSamples; // reload Sample list
         end;
       end;
   end;
@@ -2127,7 +2131,8 @@ procedure TfrmMAMS.btnAddNewUser2Click(Sender: TObject);
 VAR
   s: String;
 begin
-   s:=dm.AddNewUser;                         // add new user; returns user_nr of the newly created user
+   s:=dm.AddNewUser;
+   ShowMessage('test');                         // add new user; returns user_nr of the newly created user
    if s<>'none' then begin
       StatusBar.Panels[2].Text:='reloading user data...';
       dm.tblUser.Close; dm.tblUser.Open;       //update list of users from the DB by closing na dopening the query
@@ -2967,6 +2972,7 @@ begin
       dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
       dm.qryDB.Open;
       sample_nr := 0;
+      // insert new prep for this samples
       if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
       with grdPreviewSamples do begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
@@ -2975,7 +2981,7 @@ begin
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
         end
-        else begin // prep_end setzen
+        else begin // set prep_end date since sample type doesn't need any prep steps
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
             'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
           for PrepCol := SamplePrep1Col to SamplePrep5Col do begin
@@ -3787,14 +3793,13 @@ begin
   end;
 end;
 
-procedure TfrmMAMS.grdProjectsCellClick(Column: TColumn);
-// clicking on the project grid
-// things that happen when selecting a project
-var
-  s: string;
+procedure TfrmMAMS.GetSamples;
+Var
+  s:string;
+//performs a query of the database for all samples
+//of the selected project in the project list
+// query results is displayed in the SampleOfPorject Grid
 begin
-  grdSamplesOfProject.Visible := true;
-  dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString);
   with dm.qrySamplesOfProject do begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  '
       + 'FROM sample_t '
@@ -3810,6 +3815,32 @@ begin
     grdSamplesOfProject.Columns[3].Width := 80;
     grdSamplesOfProject.Columns[4].Width := 80;
   end;
+end;
+
+procedure TfrmMAMS.grdProjectsCellClick(Column: TColumn);
+// clicking on the project grid
+// things that happen when selecting a project
+var
+  s: string;
+begin
+  grdSamplesOfProject.Visible := true;
+  dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString);  // query database for all project info
+  GetSamples; // queries the database for all samples of this project and displays them in the SampleOfProject Grid
+  (*with dm.qrySamplesOfProject do begin
+    SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  '
+      + 'FROM sample_t '
+      + 'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr '
+      + 'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr '
+      + 'WHERE project_t.project_nr=' + #34 + dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsString + #34 + ';'; ;
+    s := SQL.Text;
+    //   ClibBoard.SetTextBuf(PChar(s));
+    Open;
+    grdSamplesOfProject.Columns[0].Width := 60;
+    grdSamplesOfProject.Columns[1].Width := 100;
+    grdSamplesOfProject.Columns[2].Width := 80;
+    grdSamplesOfProject.Columns[3].Width := 80;
+    grdSamplesOfProject.Columns[4].Width := 80;
+  end; *)
 
   pgtSample.ActivePageIndex:=0;  //show the project_data page (Index=0)
   btnAddNewSamples.Visible:=true;   //show add samples button

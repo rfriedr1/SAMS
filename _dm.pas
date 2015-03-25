@@ -352,7 +352,8 @@ if adoConnKTL.Connected then begin            // only perform command if connect
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
         ADOCmd.Parameters.Clear;              // clear all Parameters
         ADOCmd.CommandType:=cmdtext;          // set command type to text
-        ADOCmd.CommandText:='SELECT DISTINCT' + column + ' FROM ' + table + ' WHERE ' + column + ' = ' + #34 + value + #34 + ';';    // set query text
+        ADOCmd.CommandText:='SELECT DISTINCT ' + column + ' FROM ' + table + ' WHERE ' + column + ' = ' + #34 + value + #34 + ';';    // set query text
+        //ShowMessage(ADOCmd.CommandText);
         ADODataSet.Recordset:=ADOCmd.Execute; // issue command query and assign result to the dataset (use this onl if there is a result set returned)
       except
         ShowMessage('Unknown error encountered while checking DB for existing value.');   //somehting went wrong
@@ -814,9 +815,9 @@ function Tdm.GetUserNrByLastName(last_name: string): String;
 var
   s : string;
 begin
-   with qryDb do begin
+  with qryDb do begin
      Close;
-     SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + last_name + ';';
+     SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + last_name + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      Open;
