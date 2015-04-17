@@ -37,7 +37,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart;
 
 const
-  myVersion = '1.5.4 March-4-2015';
+  myVersion = '1.5.5 March-25-2015';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -2115,6 +2115,9 @@ begin
         buttonSelected:=MessageDlg('SAmple does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
         if buttonSelected=mrOK then begin
               sample_nr:= dm.AddNewSampleByProjectNr(project_nr, sample_name);  //add new sample and return sample number
+              //showmessage(sample_nr);
+              dm.CreateBlankPrepRecord(sample_nr.ToInteger, 1); // add new prep to this samples
+              dm.CreateBlankTargetRecord(sample_nr.ToInteger, 1, 1); // add new target to this samples
               GetSamples; // reload Sample list
         end;
       end;
@@ -2128,7 +2131,8 @@ procedure TfrmMAMS.btnAddNewUser2Click(Sender: TObject);
 VAR
   s: String;
 begin
-   s:=dm.AddNewUser;                         // add new user; returns user_nr of the newly created user
+   s:=dm.AddNewUser;
+   //ShowMessage('test');                         // add new user; returns user_nr of the newly created user
    if s<>'none' then begin
       StatusBar.Panels[2].Text:='reloading user data...';
       dm.tblUser.Close; dm.tblUser.Open;       //update list of users from the DB by closing na dopening the query
@@ -2968,6 +2972,7 @@ begin
       dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
       dm.qryDB.Open;
       sample_nr := 0;
+      // insert new prep for this samples
       if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
       with grdPreviewSamples do begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
@@ -2976,7 +2981,7 @@ begin
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
         end
-        else begin // prep_end setzen
+        else begin // set prep_end date since sample type doesn't need any prep steps
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
             'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
           for PrepCol := SamplePrep1Col to SamplePrep5Col do begin
@@ -5821,7 +5826,7 @@ begin
   end;
   with dm.qryTarget do begin
     SQL.Text := 'SELECT target_nr, magazine, position, catalyst, co2_init, co2_final, ' +
-      'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, conc_c, conc_c/conc_n*14/12 as cn_ratio, weight_end/weight_start*100 AS collpc ' +
+      'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, conc_c, conc_c/conc_n*14/12 as cn_ratio, weight_end/weight_start*100 AS collpc, target_comment ' +
       'FROM target_t ' +
       'INNER JOIN preparation_t ON preparation_t.sample_nr=target_t.sample_nr ' +
       'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';

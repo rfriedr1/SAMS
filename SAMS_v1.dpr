@@ -15,6 +15,7 @@ uses
 
 begin
   Application.Initialize;
+  Application.Title := 'SAMS';
   TStyleManager.TrySetStyle('Turquoise Gray');
   Application.CreateForm(TfrmMAMS, frmMAMS);
   Application.CreateForm(TAboutBox, AboutBox);

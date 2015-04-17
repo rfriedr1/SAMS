@@ -1070,18 +1070,26 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 689
           Height = 637
-          ActivePage = tbsProject
+          ActivePage = tbsSampleOfProject
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           OnChange = pgtSampleChange
           object tbsProject: TTabSheet
             Caption = 'Project data'
             ImageIndex = 3
+            ExplicitTop = 24
+            ExplicitHeight = 609
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
               Width = 312
-              Height = 609
+              Height = 603
               Align = alLeft
               Caption = 'Project'
               Font.Charset = DEFAULT_CHARSET
@@ -1091,6 +1099,7 @@ object frmMAMS: TfrmMAMS
               Font.Style = []
               ParentFont = False
               TabOrder = 0
+              ExplicitHeight = 609
               object Label26: TLabel
                 Left = 39
                 Top = 74
@@ -1276,18 +1285,21 @@ object frmMAMS: TfrmMAMS
           end
           object tbsSampleOfProject: TTabSheet
             Caption = 'Sample data'
+            ExplicitTop = 24
+            ExplicitHeight = 609
             object gbxSampleRight: TGroupBox
               Left = 353
               Top = 0
               Width = 328
-              Height = 609
+              Height = 603
               Align = alClient
               TabOrder = 0
+              ExplicitHeight = 609
               object GroupBox35: TGroupBox
                 Left = 2
-                Top = 15
+                Top = 21
                 Width = 324
-                Height = 363
+                Height = 384
                 Align = alTop
                 Caption = 'Target'
                 Font.Charset = DEFAULT_CHARSET
@@ -1295,27 +1307,68 @@ object frmMAMS: TfrmMAMS
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = []
+                Padding.Top = 10
                 ParentFont = False
                 TabOrder = 0
-                object grdTarget: TMdRecordView
+                ExplicitTop = 0
+                object gbxTargetData: TGroupBox
                   Left = 2
-                  Top = 15
-                  Width = 320
-                  Height = 346
-                  DataSource = dm.dsTarget
-                  Align = alClient
-                  DefaultColWidth = 80
+                  Top = 25
+                  Width = 199
+                  Height = 357
+                  Align = alLeft
+                  Caption = 'Data'
                   TabOrder = 0
-                  ColWidths = (
-                    80
-                    218)
+                  ExplicitTop = 15
+                  ExplicitHeight = 346
+                  object grdTarget: TMdRecordView
+                    Left = 2
+                    Top = 15
+                    Width = 195
+                    Height = 340
+                    DataSource = dm.dsTarget
+                    Align = alClient
+                    DefaultColWidth = 80
+                    TabOrder = 0
+                    ExplicitWidth = 179
+                    ExplicitHeight = 329
+                    ColWidths = (
+                      80
+                      93)
+                  end
+                end
+                object gbxTargetComment: TGroupBox
+                  Left = 201
+                  Top = 25
+                  Width = 121
+                  Height = 357
+                  Align = alClient
+                  Caption = 'Comment'
+                  TabOrder = 1
+                  ExplicitLeft = 187
+                  ExplicitTop = 15
+                  ExplicitWidth = 135
+                  ExplicitHeight = 346
+                  object DBMemoTargetComment: TDBMemo
+                    Left = 2
+                    Top = 15
+                    Width = 117
+                    Height = 340
+                    Align = alClient
+                    DataField = 'target_comment'
+                    DataSource = dm.dsTarget
+                    TabOrder = 0
+                    ExplicitLeft = 24
+                    ExplicitWidth = 120
+                    ExplicitHeight = 329
+                  end
                 end
               end
               object GroupBox36: TGroupBox
                 Left = 2
-                Top = 378
+                Top = 405
                 Width = 324
-                Height = 229
+                Height = 196
                 Align = alClient
                 Caption = 'Dates'
                 Font.Charset = DEFAULT_CHARSET
@@ -1325,20 +1378,23 @@ object frmMAMS: TfrmMAMS
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 1
+                ExplicitTop = 378
+                ExplicitHeight = 229
               end
             end
             object gbxSampleLeft: TGroupBox
               Left = 0
               Top = 0
               Width = 353
-              Height = 609
+              Height = 603
               Align = alLeft
               TabOrder = 1
+              ExplicitHeight = 609
               object gbxSelectPretreatment: TGroupBox
                 Left = 2
-                Top = 378
+                Top = 402
                 Width = 349
-                Height = 229
+                Height = 199
                 Align = alClient
                 Caption = 'Pretreatment'
                 Font.Charset = DEFAULT_CHARSET
@@ -1346,34 +1402,42 @@ object frmMAMS: TfrmMAMS
                 Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = []
+                Padding.Top = 10
                 ParentFont = False
                 TabOrder = 0
+                ExplicitTop = 378
+                ExplicitHeight = 229
                 object pnlPretreat: TPanel
                   Left = 2
-                  Top = 15
+                  Top = 25
                   Width = 345
-                  Height = 212
+                  Height = 172
                   Align = alClient
                   Anchors = [akBottom]
                   Caption = 'pnlPretreat'
                   TabOrder = 0
+                  ExplicitTop = 15
+                  ExplicitHeight = 212
                   object GroupBox29: TGroupBox
                     Left = 1
                     Top = 1
                     Width = 192
-                    Height = 210
+                    Height = 170
                     Align = alLeft
                     Caption = 'Steps'
                     TabOrder = 0
+                    ExplicitTop = 20
+                    ExplicitHeight = 152
                     object grdShowPrepSteps: TMdRecordView
                       Left = 2
                       Top = 15
                       Width = 188
-                      Height = 193
+                      Height = 153
                       DataSource = dm.dsPrepSteps
                       Align = alClient
                       DefaultColWidth = 80
                       TabOrder = 0
+                      ExplicitHeight = 193
                       ColWidths = (
                         80
                         86)
@@ -1383,28 +1447,30 @@ object frmMAMS: TfrmMAMS
                     Left = 193
                     Top = 1
                     Width = 151
-                    Height = 210
+                    Height = 170
                     Align = alClient
                     Caption = 'Comment'
                     TabOrder = 1
+                    ExplicitHeight = 210
                     object DBMemo2: TDBMemo
                       Left = 2
                       Top = 15
                       Width = 147
-                      Height = 193
+                      Height = 153
                       Align = alClient
                       DataField = 'prep_comment'
                       DataSource = dm.dsPrepSteps
                       TabOrder = 0
+                      ExplicitHeight = 193
                     end
                   end
                 end
               end
               object GroupBox34: TGroupBox
                 Left = 2
-                Top = 15
+                Top = 21
                 Width = 349
-                Height = 363
+                Height = 381
                 Align = alTop
                 Caption = 'Sample'
                 Font.Charset = DEFAULT_CHARSET
@@ -1414,15 +1480,17 @@ object frmMAMS: TfrmMAMS
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 1
+                ExplicitTop = 3
                 object grdSample: TMdRecordView
                   Left = 2
                   Top = 15
                   Width = 345
-                  Height = 346
+                  Height = 364
                   DataSource = dm.dsSample
                   Align = alClient
                   DefaultColWidth = 80
                   TabOrder = 0
+                  ExplicitHeight = 346
                   ColWidths = (
                     80
                     243)
@@ -1433,11 +1501,13 @@ object frmMAMS: TfrmMAMS
           object tbsFoto: TTabSheet
             Caption = 'Sample foto'
             ImageIndex = 1
+            ExplicitTop = 24
+            ExplicitHeight = 609
             object SampleFoto: TImage
               Left = 0
               Top = 41
               Width = 681
-              Height = 568
+              Height = 562
               Align = alClient
               Stretch = True
               ExplicitLeft = -1
@@ -1457,6 +1527,8 @@ object frmMAMS: TfrmMAMS
           object TabSheet5: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
+            ExplicitTop = 24
+            ExplicitHeight = 609
             object JvImage1: TJvImage
               Left = 116
               Top = 29
@@ -1467,6 +1539,8 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
+            ExplicitTop = 24
+            ExplicitHeight = 609
           end
         end
       end
@@ -6291,7 +6365,7 @@ object frmMAMS: TfrmMAMS
     Left = 1136
     Top = 152
     Bitmap = {
-      494C010110001300980110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300A80110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7064,7 +7138,7 @@ object frmMAMS: TfrmMAMS
     Left = 1192
     Top = 152
     Bitmap = {
-      494C01013D004000980118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000A80118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11829,7 +11903,7 @@ object frmMAMS: TfrmMAMS
     Left = 1248
     Top = 152
     Bitmap = {
-      494C01014B004F00980120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00A80120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

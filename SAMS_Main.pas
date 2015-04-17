@@ -660,6 +660,9 @@ type
     btnDBPlotSaveQuery: TButton;
     btnAddNewUser2: TButton;
     btnChangeProject: TButton;
+    gbxTargetData: TGroupBox;
+    gbxTargetComment: TGroupBox;
+    DBMemoTargetComment: TDBMemo;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -5826,7 +5829,7 @@ begin
   end;
   with dm.qryTarget do begin
     SQL.Text := 'SELECT target_nr, magazine, position, catalyst, co2_init, co2_final, ' +
-      'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, conc_c, conc_c/conc_n*14/12 as cn_ratio, weight_end/weight_start*100 AS collpc ' +
+      'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, conc_c, conc_c/conc_n*14/12 as cn_ratio, weight_end/weight_start*100 AS collpc, target_comment ' +
       'FROM target_t ' +
       'INNER JOIN preparation_t ON preparation_t.sample_nr=target_t.sample_nr ' +
       'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
