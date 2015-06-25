@@ -1,7 +1,6 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = grdProjects
   Caption = 'SAMS '
   ClientHeight = 707
   ClientWidth = 1288
@@ -237,7 +236,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1288
     Height = 633
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsAdmin
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -919,32 +918,17 @@ object frmMAMS: TfrmMAMS
           Align = alClient
           Padding.Top = 15
           TabOrder = 0
-          object grdProjects: TDBGrid
-            Left = 2
-            Top = 33
-            Width = 588
-            Height = 232
-            Align = alTop
-            DataSource = dm.dsProjectsOfUser
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-            TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -13
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            OnCellClick = grdProjectsCellClick
-          end
           object grdSamplesOfProject: TDBGrid
             Left = 2
-            Top = 304
+            Top = 277
             Width = 588
-            Height = 197
-            Align = alCustom
-            Anchors = [akLeft, akTop, akBottom]
+            Height = 224
+            Margins.Top = 0
+            Align = alBottom
+            Anchors = [akLeft, akTop, akRight, akBottom]
             DataSource = dm.dsSamplesOfProject
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-            TabOrder = 1
+            TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -13
@@ -962,7 +946,7 @@ object frmMAMS: TfrmMAMS
             Width = 588
             Height = 41
             Align = alBottom
-            TabOrder = 2
+            TabOrder = 1
             DesignSize = (
               588
               41)
@@ -980,32 +964,48 @@ object frmMAMS: TfrmMAMS
               OnClick = btn_report_pageClick
             end
           end
-          object btnAddNewProject: TButton
-            Left = 555
-            Top = 10
-            Width = 33
-            Height = 25
-            Hint = 'adds a new Project to the selected user'
-            Caption = '+'
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 3
-            Visible = False
-            WordWrap = True
-            OnClick = btnAddNewProjectClick
-          end
           object btnAddNewSamples: TButton
             Left = 554
-            Top = 280
+            Top = 251
             Width = 35
             Height = 25
             Hint = 'add new sample to the selected project'
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
-            TabOrder = 4
+            TabOrder = 2
             Visible = False
             OnClick = btnAddNewSamplesClick
+          end
+          object grdProjects: TDBGrid
+            Left = 2
+            Top = 33
+            Width = 588
+            Height = 204
+            Align = alTop
+            DataSource = dm.dsProjectsOfUser
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            TabOrder = 3
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -13
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            OnCellClick = grdProjectsCellClick
+          end
+          object btnAddNewProject: TButton
+            Left = 556
+            Top = 6
+            Width = 33
+            Height = 25
+            Hint = 'adds a new Project to the selected user'
+            Caption = '+'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 4
+            Visible = False
+            WordWrap = True
+            OnClick = btnAddNewProjectClick
           end
         end
         object Panel33: TPanel
@@ -1076,7 +1076,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 682
           Height = 603
-          ActivePage = tbsSampleOfProject
+          ActivePage = tbsProject
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1112,7 +1112,7 @@ object frmMAMS: TfrmMAMS
               end
               object Label67: TLabel
                 Left = 73
-                Top = 276
+                Top = 372
                 Width = 29
                 Height = 13
                 Caption = 'Letter'
@@ -1140,7 +1140,7 @@ object frmMAMS: TfrmMAMS
               end
               object Label40: TLabel
                 Left = 28
-                Top = 309
+                Top = 405
                 Width = 74
                 Height = 13
                 Caption = 'Invoice number'
@@ -1159,9 +1159,16 @@ object frmMAMS: TfrmMAMS
                 Height = 13
                 Caption = 'Project name'
               end
+              object lbl_ProjectComment: TLabel
+                Left = 57
+                Top = 284
+                Width = 45
+                Height = 13
+                Caption = 'Comment'
+              end
               object chkAllowChangesProject: TCheckBox
                 Left = 120
-                Top = 385
+                Top = 433
                 Width = 86
                 Height = 17
                 Alignment = taLeftJustify
@@ -1184,7 +1191,7 @@ object frmMAMS: TfrmMAMS
               end
               object btnSaveInvoiceNr: TButton
                 Left = 212
-                Top = 381
+                Top = 429
                 Width = 75
                 Height = 25
                 Hint = 'Updates the database with the new Project data'
@@ -1196,7 +1203,7 @@ object frmMAMS: TfrmMAMS
               end
               object DBEdit_Letter: TDBEdit
                 Left = 116
-                Top = 272
+                Top = 369
                 Width = 173
                 Height = 21
                 DataField = 'letter'
@@ -1248,7 +1255,7 @@ object frmMAMS: TfrmMAMS
               end
               object DBEdit_InvoiceNumber: TDBEdit
                 Left = 116
-                Top = 304
+                Top = 401
                 Width = 173
                 Height = 21
                 DataField = 'invoice_nr'
@@ -1283,6 +1290,15 @@ object frmMAMS: TfrmMAMS
                 DataSource = dm.dsProject
                 Enabled = False
                 TabOrder = 9
+              end
+              object DBMemo_ProjectComment: TDBMemo
+                Left = 115
+                Top = 281
+                Width = 174
+                Height = 52
+                DataField = 'project_comment'
+                DataSource = dm.dsProject
+                TabOrder = 10
               end
             end
           end
@@ -4989,9 +5005,9 @@ object frmMAMS: TfrmMAMS
         TabOrder = 1
         object lbExportHeader: TJvMarkupLabel
           Left = 2
-          Top = 352
+          Top = 392
           Width = 405
-          Height = 315
+          Height = 275
           Text = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -5009,11 +5025,12 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 15
           Width = 405
-          Height = 322
+          Height = 362
           Align = alTop
           ColCount = 4
-          RowCount = 12
+          RowCount = 15
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+          ScrollBars = ssVertical
           TabOrder = 0
           OnExit = grdReportHeadingsExit
           Alignment = taLeftJustify
@@ -5025,7 +5042,7 @@ object frmMAMS: TfrmMAMS
         end
         object Panel23: TPanel
           Left = 2
-          Top = 337
+          Top = 377
           Width = 405
           Height = 15
           Align = alTop
@@ -5522,7 +5539,7 @@ object frmMAMS: TfrmMAMS
         Width = 216
         Height = 605
         Align = alLeft
-        Caption = 'Number measured samples (arch)'
+        Caption = 'Number measured samples'
         TabOrder = 0
         object Panel28: TPanel
           Left = 2
@@ -5536,7 +5553,7 @@ object frmMAMS: TfrmMAMS
             Top = 15
             Width = 57
             Height = 21
-            Value = 2014.000000000000000000
+            Value = 2015.000000000000000000
             TabOrder = 0
           end
           object btnMonthStat: TButton
@@ -5544,7 +5561,10 @@ object frmMAMS: TfrmMAMS
             Top = 14
             Width = 75
             Height = 25
+            Hint = 'get numbers of samples per month'
             Caption = 'Update'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 1
             OnClick = btnMonthStatClick
           end
@@ -6368,7 +6388,7 @@ object frmMAMS: TfrmMAMS
     Left = 1136
     Top = 152
     Bitmap = {
-      494C010110001300B00110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300D00110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7141,7 +7161,7 @@ object frmMAMS: TfrmMAMS
     Left = 1192
     Top = 152
     Bitmap = {
-      494C01013D004000B00118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000D00118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11906,7 +11926,7 @@ object frmMAMS: TfrmMAMS
     Left = 1248
     Top = 152
     Bitmap = {
-      494C01014B004F00B00120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00D00120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

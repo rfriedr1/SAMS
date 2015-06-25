@@ -178,6 +178,7 @@ type
     function GetAllPlanned(ShowOnHold : boolean) : integer;
     function GetAllWaitingForGraph : integer;
     function GetArchSamplesOfMonth(Year, Month : word) : integer;
+    function GetAllSamplesOfMonth(Year, Month : word) : integer;
     procedure GetMagazineData(Magazine : string);
     function GetMaxPrepNrBySampleNr(sample_nr : integer) : integer;
     function GetMaxSampleNr : integer;
@@ -592,6 +593,7 @@ begin
 end;
 
 function Tdm.GetArchSamplesOfMonth(Year, Month: word): integer;
+// get number of archaeologic samples per month
 var
   MoStart, MoEnd : TDateTime;
   s1, s2 : string;
@@ -607,6 +609,29 @@ begin
                 ' AND (target_pressed BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34  +
                 ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type="arch" ';
+    Open;
+//    ClipBoard.AsText := SQL.Text;
+    Result := RecordCount;
+  end;
+end;
+
+function Tdm.GetAllSamplesOfMonth(Year, Month: word): integer;
+// returns the number of all samples per month (not blanks or oxas)
+var
+  MoStart, MoEnd : TDateTime;
+  s1, s2 : string;
+begin
+  MoStart := EncodeDate(Year, Month,1);
+  MoEnd := EndOfAMonth(Year, Month);
+  s1 := FormatDateTime('YYYY-MM-DD', DateOf(MoStart));
+  s2 := FormatDateTime('YYYY-MM-DD', DateOf(MoEnd));
+  with qryDb do begin
+    SQL.Text := 'SELECT DISTINCT sample_t.sample_nr FROM sample_t ' +
+                ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
+                ' WHERE sample_t.c14_age IS NOT NULL ' +
+                ' AND (target_pressed BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34  +
+                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
+                ' AND sample_t.type NOT IN("blank","oxa1","oxa","oxa2") ';
     Open;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;

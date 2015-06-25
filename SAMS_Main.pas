@@ -663,6 +663,8 @@ type
     gbxTargetData: TGroupBox;
     gbxTargetComment: TGroupBox;
     DBMemoTargetComment: TDBMemo;
+    lbl_ProjectComment: TLabel;
+    DBMemo_ProjectComment: TDBMemo;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1167,7 +1169,7 @@ var
 begin
 
 // old way of doing it using worddriver
-  CreateCds(rgpReportLanguage.Itemindex = 0);
+  CreateCds(rgpReportLanguage.Itemindex = 0); //create in memory DB
   FillCds;
 
 // ###### part 1 get get and fill in info about user
@@ -2578,7 +2580,8 @@ var
 begin
   sum := 0;
   for i := 1 to 12 do begin
-    n := dm.GetArchSamplesOfMonth(trunc(edtMonthStat.Value), i);
+    //n := dm.GetArchSamplesOfMonth(trunc(edtMonthStat.Value), i);
+    n := dm.GetAllSamplesOfMonth(trunc(edtMonthStat.Value), i);
     stgMonthStat.Cells[0, i] := IntToStr(i);
     stgMonthStat.Cells[1, i] := IntToStr(n);
     sum := sum + n;
@@ -3082,8 +3085,8 @@ begin
       s := 'SELECT sample_nr, user_label,user_label_nr,user_desc1,' +
              4          5         6           7
         'user_desc2, C14_age, C14_age_sig, av_dc13, ' +
-           8           9     10       11           12
-      ' Cal1sMin, Cal1sMax,Cal2sMin,Cal2sMax, project_t.project ' + 'FROM sample_t ' +
+           8           9     10       11           12              13       14
+      ' Cal1sMin, Cal1sMax,Cal2sMin,Cal2sMax, project_t.project, av_fm, av_fm_sig ' + 'FROM sample_t ' +
 }
         cdsExport.Fields.Fields[0].Value := dm.qrySampleOfSubmitter.Fields.Fields[0].AsInteger; // sample_nr
         for i := 1 to 4 do cdsExport.Fields.Fields[i].Value := dm.qrySampleOfSubmitter.Fields.Fields[i].AsString;
@@ -3103,6 +3106,10 @@ begin
         end;
         for i := 10 to 12 do begin       //was 10 to 12
           s := Format('%4.1f', [dm.qrySampleOfSubmitter.Fields.Fields[i + 5].AsFloat]);
+          cdsExport.Fields.Fields[i].Value := s;
+        end;
+        for i := 13 to 14 do begin       //for av_fm and av_fm_sig
+          s := Format('%5.3f', [dm.qrySampleOfSubmitter.Fields.Fields[i].AsFloat]);
           cdsExport.Fields.Fields[i].Value := s;
         end;
 //        clData.Fields.Fields[0] as TDateTimeField).DisplayFormat := 'tt';
@@ -4160,6 +4167,20 @@ begin
         Name := grdReportHeadings.cells[3, 11] //%collagen
       else
         Name := grdReportHeadings.cells[2, 11];
+      DataType := ftString;
+    end;
+    with AddFieldDef do begin
+      if German then
+        Name := grdReportHeadings.cells[3, 12] //%av_fm
+      else
+        Name := grdReportHeadings.cells[2, 12];
+      DataType := ftString;
+    end;
+    with AddFieldDef do begin
+      if German then
+        Name := grdReportHeadings.cells[3, 13] //%av_fm_sig
+      else
+        Name := grdReportHeadings.cells[2, 13];
       DataType := ftString;
     end;
   end;
@@ -5506,7 +5527,7 @@ begin
   end;
   with dm.qryDB, grdReportHeadings do begin
     SQL.Text := 'SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
-      'user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc ' +
+      'user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig ' +
       'FROM sample_t ' +
       'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
