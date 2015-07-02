@@ -26,12 +26,12 @@ EditWindowCount=1
 [\\psf\Home\my data\KTL\Software\GitHub\SAMS\SAMS_Main.pas]
 ModuleType=TSourceModule
 FormState=1
-FormOnTop=1
+FormOnTop=0
 
 [Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas]
 ModuleType=TSourceModule
 FormState=1
-FormOnTop=1
+FormOnTop=0
 
 [\\psf\Home\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas]
 ModuleType=TSourceModule
@@ -90,13 +90,13 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=\\psf\Home\my data\KTL\Software\GitHub\SAMS\SAMS_Main.pas
-CursorX=25
+CursorX=7
 CursorY=2583
 TopLine=2577
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=\\psf\Home\my data\KTL\Software\GitHub\SAMS\SAMS_Main.pas
 
 [View2]
 CustomEditViewType=TEditView
@@ -342,11 +342,6 @@ LRDockWidth=1892
 Dockable=1
 StayOnTop=0
 SplitPos=111
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=ShowHint,
-ExpandedItems=Anchors=0,BevelEdges=0,CheckOptions=0,ClipboardCommands=0,Constraints=0,Font=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,ImageMargins=0,StyleElements=0
 
 [TFileExplorerForm]
 PercentageSizes=1

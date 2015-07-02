@@ -34,7 +34,8 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   JvImage, JvWizardRouteMapList, JvWizard, JvExGrids, JvStringGrid, JvMarkupLabel,
   WordDriver, (*DBClient, *) Provider, MidasLib, (*Spin,*)
   JvInspector, frxDesgn, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
-  VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart;
+  VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
+  System.ImageList;
 
 const
   myVersion = '1.5.5 March-25-2015';
@@ -1169,7 +1170,7 @@ var
 begin
 
 // old way of doing it using worddriver
-  CreateCds(rgpReportLanguage.Itemindex = 0);
+  CreateCds(rgpReportLanguage.Itemindex = 0); //create in memory DB
   FillCds;
 
 // ###### part 1 get get and fill in info about user
@@ -2579,8 +2580,10 @@ var
   i, n, sum: integer;
 begin
   sum := 0;
-  for i := 1 to 12 do begin
-    n := dm.GetArchSamplesOfMonth(trunc(edtMonthStat.Value), i);
+  for i := 1 to 12 do
+  begin
+    //n := dm.GetArchSamplesOfMonth(trunc(edtMonthStat.Value), i);
+    n := dm.GetAllSamplesOfMonth(trunc(edtMonthStat.Value), i);
     stgMonthStat.Cells[0, i] := IntToStr(i);
     stgMonthStat.Cells[1, i] := IntToStr(n);
     sum := sum + n;
@@ -2593,7 +2596,8 @@ var
   MaxPrepNr, MaxTargetNr: integer;
 begin
   if (MessageDlg('Creating one more preparation nr.; ' +
-    'do you want to continue ?', mtConfirmation, [mbYes, mbNo], 0) in [mrYes]) then begin
+    'do you want to continue ?', mtConfirmation, [mbYes, mbNo], 0) in [mrYes]) then
+  begin
     MaxPrepNr := dm.GetMaxPrepNrBySampleNr(round(edtSampleNr.Value));
     dm.CreateBlankPrepRecord(round(edtSampleNr.Value), succ(MaxPrepNr));
     dm.CreateBlankTargetRecord(round(edtSampleNr.Value), succ(MaxPrepNr), 1);
@@ -3084,8 +3088,8 @@ begin
       s := 'SELECT sample_nr, user_label,user_label_nr,user_desc1,' +
              4          5         6           7
         'user_desc2, C14_age, C14_age_sig, av_dc13, ' +
-           8           9     10       11           12
-      ' Cal1sMin, Cal1sMax,Cal2sMin,Cal2sMax, project_t.project ' + 'FROM sample_t ' +
+           8           9     10       11           12              13       14
+      ' Cal1sMin, Cal1sMax,Cal2sMin,Cal2sMax, project_t.project, av_fm, av_fm_sig ' + 'FROM sample_t ' +
 }
         cdsExport.Fields.Fields[0].Value := dm.qrySampleOfSubmitter.Fields.Fields[0].AsInteger; // sample_nr
         for i := 1 to 4 do cdsExport.Fields.Fields[i].Value := dm.qrySampleOfSubmitter.Fields.Fields[i].AsString;
@@ -3105,6 +3109,10 @@ begin
         end;
         for i := 10 to 12 do begin       //was 10 to 12
           s := Format('%4.1f', [dm.qrySampleOfSubmitter.Fields.Fields[i + 5].AsFloat]);
+          cdsExport.Fields.Fields[i].Value := s;
+        end;
+        for i := 13 to 14 do begin       //for av_fm and av_fm_sig
+          s := Format('%5.3f', [dm.qrySampleOfSubmitter.Fields.Fields[i].AsFloat]);
           cdsExport.Fields.Fields[i].Value := s;
         end;
 //        clData.Fields.Fields[0] as TDateTimeField).DisplayFormat := 'tt';
@@ -3232,9 +3240,11 @@ end;
 procedure TfrmMAMS.FillTypeBox;
 begin
   lbxTypes.Clear;
-  with dm.tblTypes do begin
+  with dm.tblTypes do
+  begin
     First;
-    while not EOF do begin
+    while not EOF do
+    begin
       lbxTypes.Items.Add(Fields.FieldByName('type').AsString);
       Next;
     end;
@@ -3252,13 +3262,15 @@ begin
     bmp.handle := LoadBitmap(0, PChar(OBM_CHECKBOXES));
     // bmp now has a 4x3 bitmap of divers state images
     // used by checkboxes and radiobuttons
-    with FNoCheck do begin
+    with FNoCheck do
+    begin
       // the first subimage is the unchecked box
       width := bmp.width div 4;
       height := bmp.height div 3;
       canvas.copyrect(canvas.cliprect, bmp.canvas, canvas.cliprect);
     end;
-    with FCheck do begin
+    with FCheck do
+    begin
       // the second subimage is the checked box
       width := bmp.width div 4;
       height := bmp.height div 3;
@@ -3288,21 +3300,26 @@ begin
         dm.DeleteFromDb(round(edtSampleNr.Value));
 
   // if in tbsSAmpleInfo and ESC set focus to edtSampleNr
-  if pgtMain.ActivePage = tbsSampleInfo then begin
+  if pgtMain.ActivePage = tbsSampleInfo then
+  begin
     if Key = vk_ESCAPE then edtSampleNr.SetFocus;
   end;
 
     // if in tbsSAmpleInfo and + increase SampleNr
-  if pgtMain.ActivePage = tbsSampleInfo then begin
-    if Key = vk_ADD then begin
+  if pgtMain.ActivePage = tbsSampleInfo then
+  begin
+    if Key = vk_ADD then
+    begin
           edtSampleNr.Value:= round(edtSampleNr.Value)+1;
           DoSampleInfo;
     end;
   end;
 
     // if in tbsSAmpleInfo and - degrease SampleNr
-  if pgtMain.ActivePage = tbsSampleInfo then begin
-    if Key = vk_SUBTRACT then begin
+  if pgtMain.ActivePage = tbsSampleInfo then
+  begin
+    if Key = vk_SUBTRACT then
+    begin
           edtSampleNr.Value:= round(edtSampleNr.Value)-1;
           DoSampleInfo;
     end;
@@ -3318,9 +3335,11 @@ var
   sample_nr, steps: integer;
   method: string;
 begin
-  if rgpLabTask.ItemIndex = 0 then begin
+  if rgpLabTask.ItemIndex = 0 then
+  begin
     lbxPrepSteps.Clear;
-    with dm.qrySamplesOfLabTask do begin
+    with dm.qrySamplesOfLabTask do
+    begin
       SQL.Text := 'SELECT sample_t.sample_nr, user_label, user_label_nr  '
         + 'FROM sample_t '
         + ' INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr '
@@ -3331,12 +3350,14 @@ begin
     end;
     grdSamplesOfLabTask.Visible := true;
 //  grdSamplesOfLabTask.Top := 130;
-    with dm.qryDb1 do begin
+    with dm.qryDb1 do
+    begin
       sample_nr := dm.qrySamplesOfLabTask.FieldByName('sample_nr').AsInteger;
       SQL.Text := 'SELECT step1_method, step2_method, step3_method,step4_method,' +
         'step5_method FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr);
       Open; // muss noch um mehrere preps erweitert werden
-      for steps := 0 to 4 do begin
+      for steps := 0 to 4 do
+      begin
         method := dm.qryDb1.Fields.Fields[steps].AsString;
         if length(method) > 0 then lbxPrepSteps.Items.Add(method);
       end;
@@ -3354,7 +3375,8 @@ begin
   end
   else begin
     lbxPrepSteps.Clear;
-    with dm.qrySamplesOfLabTask do begin
+    with dm.qrySamplesOfLabTask do
+    begin
       SQL.Text := 'SELECT sample_t.sample_nr, user_label, user_label_nr  '
         + 'FROM sample_t '
         + ' INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr '
@@ -3444,8 +3466,10 @@ begin
   btnTransferTargetData.Enabled := false;
   i := grdMagazineData.DataSource.DataSet.FieldByName('target_nr').AsInteger;
   n := grdMagazineData.DataSource.DataSet.FieldByName('prep_nr').AsInteger;
-  if (i > 1) or (n > 1) then begin
-    with dm.qryTargetData do begin // get user_nr from user_t
+  if (i > 1) or (n > 1) then
+  begin
+    with dm.qryTargetData do
+    begin // get user_nr from user_t
       Close;
       snr := IntToStr(grdMagazineData.DataSource.DataSet.FieldByName('sample_nr').AsInteger);
       SQL.Text := 'SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13' +
@@ -3454,10 +3478,12 @@ begin
       s := SQL.Text;
 //      ClipBoard.SetTextBuf(PChar(s));
       Open;
-      if RecordCount > 0 then begin
+      if RecordCount > 0 then
+      begin
         j := RecordCount;
         StrGrdTargetData.Clear;
-        with StrGrdTargetData {, grdTargetData} do begin
+        with StrGrdTargetData {, grdTargetData} do
+        begin
           ColCount := 8;
           RowCount := j + 1;
           ColWidths[0] := 60; //sample
@@ -3468,33 +3494,41 @@ begin
           ColWidths[5] := 100; //c14age_sig
           ColWidths[6] := 90; //d13c
           ColWidths[7] := 30;
-          for m := 0 to FieldCount - 1 do begin
+          for m := 0 to FieldCount - 1 do
+          begin
             Cells[m, 0] := Fields[m].DisplayName;
           end;
           First;
-          while not Eof do begin
-            for m := 0 to 3 do begin
+          while not Eof do
+          begin
+            for m := 0 to 3 do
+            begin
               s := Fields[m].AsString;
               Cells[m, RecNo] := s;
             end;
             s := cells[0, 1];
-            for m := 4 to 5 do begin
+            for m := 4 to 5 do
+            begin
               s := Fields[m].AsString;
-              if Length(s) > 0 then begin
+              if Length(s) > 0 then
+              begin
                 f := StrToFloat(s);
                 Cells[m, RecNo] := Format('%8.0f', [f]);
               end;
             end;
-            for m := 6 to 6 do begin
+            for m := 6 to 6 do
+            begin
               s := Fields[m].AsString;
-              if Length(s) > 0 then begin
+              if Length(s) > 0 then
+              begin
                 f := StrToFloat(s);
                 Cells[m, RecNo] := Format('%6.4f', [f]);
               end;
             end;
             Next;
           end;
-          for m := 1 to RowCount - 1 do begin
+          for m := 1 to RowCount - 1 do
+          begin
             if (Length(Cells[4, m]) <> 0) then //hat c14age
               ToggleCheckbox(7, m);
           end;
@@ -3533,7 +3567,8 @@ begin
       Canvas.Brush.Color := clWhite;
     end;
 
-    for i := 0 to grdMagazineData.FieldCount - 1 do begin
+    for i := 0 to grdMagazineData.FieldCount - 1 do
+    begin
       if (SampleTrans[i] = true) and not ((j > 1) or (m > 1)) then
       begin
         Canvas.Brush.Color := clLime; // << hier an deine Query anpassen ...
@@ -3562,7 +3597,8 @@ begin
   btnTransferTargetData.Enabled := false;
   Mag := dm.qryMagazines.FieldByName('magazine').AsString;
   lbMagazine.Caption := Mag;
-  with dm.qryDB do begin
+  with dm.qryDB do
+  begin
     Close;
     SQL.Text := 'SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t ' +
       ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
@@ -3572,7 +3608,8 @@ begin
     SetLength(SampleTrans, RecordCount + 1);
     for j := 0 to Length(SampleTrans) - 1 do
       SampleTrans[j] := false;
-    with grdMagazineData do begin
+    with grdMagazineData do
+    begin
       Columns[0].Width := 40;
       Columns[1].Width := 140;
       Columns[2].Width := 120;
@@ -3712,10 +3749,13 @@ var
   MaterialFillDone, TypeFillDone: boolean;
 begin
   case DragSource of
-    drgMaterial: begin
-        with grdPreviewSamples do begin
+    drgMaterial:
+    begin
+        with grdPreviewSamples do
+        begin
           MouseToCell(x, y, c, r);
-          if r > 0 then begin
+          if r > 0 then
+          begin
             if SetCurrentToAll then
               for i := 1 to RowCount - 1 do Cells[c, i] := CurrentMaterial
             else
@@ -3731,10 +3771,13 @@ begin
         else
           wizSelectMaterial.EnableButton(bkNext, false);
       end;
-    drgFraction: begin
-        with grdPreviewSamples do begin
+    drgFraction:
+    begin
+        with grdPreviewSamples do
+        begin
           MouseToCell(x, y, c, r);
-          if r > 0 then begin
+          if r > 0 then
+          begin
             if SetCurrentToAll then
               for i := 1 to RowCount - 1 do Cells[c, i] := CurrentFraction
             else
@@ -3750,10 +3793,13 @@ begin
         else
           wizSelectMaterial.EnableButton(bkNext, false);
       end;
-    drgType: begin
-        with grdPreviewSamples do begin
+    drgType:
+    begin
+        with grdPreviewSamples do
+        begin
           MouseToCell(x, y, c, r);
-          if r > 0 then begin
+          if r > 0 then
+          begin
             if SetCurrentToAll then
               for i := 1 to RowCount - 1 do Cells[c, i] := CurrentType
             else
@@ -3769,10 +3815,13 @@ begin
         else
           wizSelectType.EnableButton(bkNext, false);
       end;
-    drgPrep: begin
-        with grdPreviewSamples do begin
+    drgPrep:
+    begin
+        with grdPreviewSamples do
+        begin
           MouseToCell(x, y, c, r);
-          if r > 0 then begin
+          if r > 0 then
+          begin
             if SetCurrentToAll then
               for i := 1 to RowCount - 1 do Cells[c, i] := CurrentPrep
             else
@@ -4173,7 +4222,7 @@ begin
     end;
     with AddFieldDef do begin
       if German then
-        Name := grdReportHeadings.cells[3, 13] //%cav_fm_sig
+        Name := grdReportHeadings.cells[3, 13] //%av_fm_sig
       else
         Name := grdReportHeadings.cells[2, 13];
       DataType := ftString;

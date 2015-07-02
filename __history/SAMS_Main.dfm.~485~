@@ -916,13 +916,14 @@ object frmMAMS: TfrmMAMS
           Width = 592
           Height = 544
           Align = alClient
+          Padding.Top = 15
           TabOrder = 0
-          ExplicitTop = 10
           object grdSamplesOfProject: TDBGrid
             Left = 2
-            Top = 289
+            Top = 277
             Width = 588
-            Height = 212
+            Height = 224
+            Margins.Top = 0
             Align = alBottom
             Anchors = [akLeft, akTop, akRight, akBottom]
             DataSource = dm.dsSamplesOfProject
@@ -965,7 +966,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnAddNewSamples: TButton
             Left = 554
-            Top = 265
+            Top = 251
             Width = 35
             Height = 25
             Hint = 'add new sample to the selected project'
@@ -976,44 +977,35 @@ object frmMAMS: TfrmMAMS
             Visible = False
             OnClick = btnAddNewSamplesClick
           end
-          object GroupBox_Projects: TGroupBox
+          object grdProjects: TDBGrid
             Left = 2
-            Top = 18
+            Top = 33
             Width = 588
-            Height = 241
+            Height = 204
             Align = alTop
+            DataSource = dm.dsProjectsOfUser
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 3
-            ExplicitTop = 33
-            object btnAddNewProject: TButton
-              Left = 552
-              Top = 13
-              Width = 33
-              Height = 25
-              Hint = 'adds a new Project to the selected user'
-              Caption = '+'
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-              Visible = False
-              WordWrap = True
-              OnClick = btnAddNewProjectClick
-            end
-            object grdProjects: TDBGrid
-              Left = 2
-              Top = 41
-              Width = 584
-              Height = 198
-              Align = alBottom
-              DataSource = dm.dsProjectsOfUser
-              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-              TabOrder = 1
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -13
-              TitleFont.Name = 'Tahoma'
-              TitleFont.Style = []
-              OnCellClick = grdProjectsCellClick
-            end
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -13
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            OnCellClick = grdProjectsCellClick
+          end
+          object btnAddNewProject: TButton
+            Left = 556
+            Top = 6
+            Width = 33
+            Height = 25
+            Hint = 'adds a new Project to the selected user'
+            Caption = '+'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 4
+            Visible = False
+            WordWrap = True
+            OnClick = btnAddNewProjectClick
           end
         end
         object Panel33: TPanel
@@ -1084,7 +1076,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 682
           Height = 603
-          ActivePage = tbsProject
+          ActivePage = tbsSampleOfProject
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1348,20 +1340,6 @@ object frmMAMS: TfrmMAMS
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  object grdTarget: TMdRecordView
-                    Left = 2
-                    Top = 15
-                    Width = 203
-                    Height = 316
-                    DataSource = dm.dsTarget
-                    Align = alClient
-                    DefaultColWidth = 80
-                    DefaultRowHeight = 18
-                    TabOrder = 0
-                    ColWidths = (
-                      80
-                      101)
-                  end
                 end
                 object gbxTargetComment: TGroupBox
                   Left = 209
@@ -1450,20 +1428,6 @@ object frmMAMS: TfrmMAMS
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    object grdShowPrepSteps: TMdRecordView
-                      Left = 2
-                      Top = 15
-                      Width = 204
-                      Height = 144
-                      DataSource = dm.dsPrepSteps
-                      Align = alClient
-                      DefaultColWidth = 80
-                      DefaultRowHeight = 18
-                      TabOrder = 0
-                      ColWidths = (
-                        80
-                        102)
-                    end
                   end
                   object GroupBox32: TGroupBox
                     Left = 209
@@ -1507,26 +1471,6 @@ object frmMAMS: TfrmMAMS
                 Padding.Top = 10
                 ParentFont = False
                 TabOrder = 1
-                object grdSample: TMdRecordView
-                  Left = 2
-                  Top = 28
-                  Width = 345
-                  Height = 328
-                  DataSource = dm.dsSample
-                  Align = alClient
-                  DefaultColWidth = 80
-                  DefaultRowHeight = 18
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 0
-                  ColWidths = (
-                    80
-                    243)
-                end
               end
             end
           end
@@ -5547,7 +5491,7 @@ object frmMAMS: TfrmMAMS
         Width = 216
         Height = 605
         Align = alLeft
-        Caption = 'Number measured samples (arch)'
+        Caption = 'Number measured samples'
         TabOrder = 0
         object Panel28: TPanel
           Left = 2
@@ -5561,7 +5505,7 @@ object frmMAMS: TfrmMAMS
             Top = 15
             Width = 57
             Height = 21
-            Value = 2014.000000000000000000
+            Value = 2015.000000000000000000
             TabOrder = 0
           end
           object btnMonthStat: TButton
@@ -5569,7 +5513,10 @@ object frmMAMS: TfrmMAMS
             Top = 14
             Width = 75
             Height = 25
+            Hint = 'get numbers of samples per month'
             Caption = 'Update'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 1
             OnClick = btnMonthStatClick
           end
@@ -6393,7 +6340,7 @@ object frmMAMS: TfrmMAMS
     Left = 1136
     Top = 152
     Bitmap = {
-      494C010110001300C40110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300E80110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7166,7 +7113,7 @@ object frmMAMS: TfrmMAMS
     Left = 1192
     Top = 152
     Bitmap = {
-      494C01013D004000C40118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000E80118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11931,7 +11878,7 @@ object frmMAMS: TfrmMAMS
     Left = 1248
     Top = 152
     Bitmap = {
-      494C01014B004F00C40120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00E80120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
