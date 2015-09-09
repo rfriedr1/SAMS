@@ -6,12 +6,17 @@ uses
   About in 'About.pas' {AboutBox},
   _dm in '_dm.pas' {dm: TDataModule},
   MdRView in 'MdRView.pas',
-  _LogSQL in '_LogSQL.pas' {frmLogSql};
+  _LogSQL in '_LogSQL.pas' {frmLogSql},
+  WordDriver in 'Worddriver\WordDriver.pas',
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.RES}
 
 begin
   Application.Initialize;
+  Application.Title := 'SAMS';
+  TStyleManager.TrySetStyle('Turquoise Gray');
   Application.CreateForm(TfrmMAMS, frmMAMS);
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(Tdm, dm);
@@ -19,4 +24,4 @@ begin
   //  Application.CreateForm(TfrmInputNewSamples, frmInputNewSamples);
   Application.Run;
 end.
- 
+

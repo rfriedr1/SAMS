@@ -38,7 +38,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList;
 
 const
-  myVersion = '1.5.6 July-2-2015';
+  myVersion = '1.5.6 July-3-2015';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -666,6 +666,7 @@ type
     DBMemoTargetComment: TDBMemo;
     lbl_ProjectComment: TLabel;
     DBMemo_ProjectComment: TDBMemo;
+    Series1: TPointSeries;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -5460,6 +5461,7 @@ begin
   end;
 end;
 
+
 procedure TfrmMAMS.SetupCommonPretreatment;
 begin
 //  gbxSelectPretreatment.Parent := pnlSetCommonPretreatment;
@@ -5900,30 +5902,24 @@ end;
 procedure TfrmMAMS.GetSampleofUserProject;
 var
   i, sample_nr: integer;
-  s: string;
 begin
   sample_nr := dm.dsSamplesOfProject.DataSet.FieldByName('sample_nr').AsInteger;
+  // Query Sample Info by SampleNr
   dm.QuerySampleBySampleNr(sample_nr);
-  pgtSample.ActivePage := tbsSampleOfProject;
   SetupPretreatmentStepsGrid;
+  //Query the Prep Information by SampleNr
   dm.QueryPrepStepsBySampleNr(sample_nr);
   with grdShowPrepSteps do
   begin
-    RowHeights[8] := 5;
+    RowHeights[8] := 3;
   end;
-  with dm.qryTarget do
-  begin
-    SQL.Text := 'SELECT target_nr, magazine, position, catalyst, co2_init, co2_final, ' +
-      'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, conc_c, conc_c/conc_n*14/12 as cn_ratio, weight_end/weight_start*100 AS collpc, target_comment ' +
-      'FROM target_t ' +
-      'INNER JOIN preparation_t ON preparation_t.sample_nr=target_t.sample_nr ' +
-      'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
-    s := SQL.Text;
-    //   ClibBoard.SetTextBuf(PChar(s));
-    Open;
-  end;
+  // query Target info by SampleNr
+  dm.QueryTargetInfoBySampleNr(sample_nr);
+  // set tab with sample Info to active
+  pgtSample.ActivePage := tbsSampleOfProject;
   gbxSampleRight.Visible := true;
   gbxSampleLeft.Visible := true;
+  // set sample_nr in the SampleDetail page to the current selected sample
   edtSampleNr.Text := IntToStr(sample_nr);
 end;
 

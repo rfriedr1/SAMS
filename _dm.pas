@@ -199,6 +199,7 @@ type
     procedure GetGraphWeight(SampleNr, PrepNr, TargetNr : integer);
     function QueryInvoiceUser(const LastName, Institute, Organisation : string) : integer;
     procedure QueryPrepStepsBySampleNr(sample_nr : integer);
+    procedure QueryTargetInfoBySampleNr(sample_nr: Integer);
     procedure QueryProject(const ProjectName : string);
     procedure QuerySampleBySampleNr(sample_nr : integer);
     procedure SetGraphDate;
@@ -1023,6 +1024,24 @@ begin
   end;
 end;
 
+procedure Tdm.QueryTargetInfoBySampleNr(sample_nr: Integer);
+var
+  s: string;
+begin
+  // query the target information
+  with dm.qryTarget do
+  begin
+    SQL.Text := 'SELECT target_nr, magazine, position, catalyst, co2_init, co2_final, ' +
+    'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, round(conc_c,1) AS conc_c,' +
+    'round(conc_c/conc_n*14/12,1) as cn_ratio, round(weight_end/weight_start*100,1) AS collpc, target_comment ' +
+    'FROM target_t ' + 'INNER JOIN preparation_t ON preparation_t.sample_nr=target_t.sample_nr ' +
+    'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
+    s := SQL.Text;
+    //   ClibBoard.SetTextBuf(PChar(s));
+    Open;
+  end;
+end;
+
 
 procedure Tdm.QueryProject(const ProjectName: string);
 // returns all info about this project
@@ -1038,7 +1057,7 @@ begin
   with qrySample do begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, user_comment, ' +
       'material, weight, residue, not_tobedated, old_info,' +
-      'c14_age,c14_age_sig  ' +
+      'round(c14_age,0) AS C14_age, round(c14_age_sig,0) AS C14_age_sig  ' +
       'FROM sample_t ' +
       'WHERE sample_t.sample_nr=' + IntToStr(sample_nr) + ';';
 //    strClipBoard := SQL.Text;
