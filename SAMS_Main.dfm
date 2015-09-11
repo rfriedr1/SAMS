@@ -236,7 +236,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 626
-    ActivePage = tbsAdmin
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -920,12 +920,12 @@ object frmMAMS: TfrmMAMS
           TabOrder = 0
           object grdSamplesOfProject: TDBGrid
             Left = 2
-            Top = 217
+            Top = 279
             Width = 588
-            Height = 277
+            Height = 206
             Margins.Top = 0
-            Align = alBottom
-            Anchors = [akLeft, akTop, akRight, akBottom]
+            Align = alCustom
+            Anchors = [akLeft, akBottom]
             DataSource = dm.dsSamplesOfProject
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 0
@@ -2953,6 +2953,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'co2_init'
             DataSource = dm.dsSampleInfo
             TabOrder = 0
+            OnChange = edtCO2initChange
             OnClick = edtWeightCombustionClick
           end
           object edtCO2final: TDBEdit
@@ -2964,6 +2965,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'co2_final'
             DataSource = dm.dsSampleInfo
             TabOrder = 1
+            OnChange = edtCO2finalChange
             OnClick = edtWeightCombustionClick
           end
           object edtH2init: TDBEdit
@@ -2975,6 +2977,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'hydro_init'
             DataSource = dm.dsSampleInfo
             TabOrder = 2
+            OnChange = edtH2initChange
             OnClick = edtWeightCombustionClick
           end
           object edtH2final: TDBEdit
@@ -2986,6 +2989,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'hydro_final'
             DataSource = dm.dsSampleInfo
             TabOrder = 3
+            OnChange = edtH2finalChange
             OnClick = edtWeightCombustionClick
           end
           object edtReactTime: TDBEdit
@@ -2997,6 +3001,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'react_time'
             DataSource = dm.dsSampleInfo
             TabOrder = 5
+            OnChange = edtReactTimeChange
             OnClick = edtWeightCombustionClick
           end
           object edtTargetPressed: TJvDBDateTimePicker
@@ -3008,7 +3013,7 @@ object frmMAMS: TfrmMAMS
             Time = 40210.397922083340000000
             TabOrder = 6
             TabStop = False
-            OnChange = edtWeightCombustionClick
+            OnChange = edtTargetPressedChange
             DropDownDate = 40209.000000000000000000
             NullText = 'not set'
             DataField = 'target_pressed'
@@ -3026,7 +3031,7 @@ object frmMAMS: TfrmMAMS
             TabOrder = 7
             ValueChecked = '1'
             ValueUnchecked = '0'
-            OnClick = edtWeightCombustionClick
+            OnClick = chkTargetDiscardedClick
           end
           object edtCatalyst: TDBEdit
             Left = 80
@@ -3037,6 +3042,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'catalyst'
             DataSource = dm.dsSampleInfo
             TabOrder = 8
+            OnChange = edtCatalystChange
             OnClick = edtWeightCombustionClick
           end
           object edtWeightCombustion: TDBEdit
@@ -3059,7 +3065,7 @@ object frmMAMS: TfrmMAMS
             Time = 40210.397922083340000000
             TabOrder = 9
             TabStop = False
-            OnChange = edtWeightCombustionClick
+            OnChange = edtGraphDateChange
             DropDownDate = 40209.000000000000000000
             NullText = 'not set'
             DataField = 'graphitized'
@@ -3074,7 +3080,7 @@ object frmMAMS: TfrmMAMS
             DataField = 'graph_batch'
             DataSource = dm.dsSampleInfo
             TabOrder = 10
-            OnChange = edtWeightCombustionClick
+            OnChange = edtGraphBatchChange
           end
           object edtGraphitized: TJvDBDateTimePicker
             Left = 80
@@ -3085,11 +3091,23 @@ object frmMAMS: TfrmMAMS
             Time = 40210.397922083340000000
             TabOrder = 11
             TabStop = False
-            OnChange = edtWeightCombustionClick
+            OnChange = edtGraphitizedChange
             DropDownDate = 40209.000000000000000000
             NullText = 'not set'
-            DataField = 'target_pressed'
+            DataField = 'graph_date'
             DataSource = dm.dsSampleInfo
+          end
+          object btnFillDateToday: TButton
+            Left = 179
+            Top = 206
+            Width = 27
+            Height = 19
+            Hint = 'set fields to days date'
+            Caption = 'T'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 12
+            OnClick = btnFillDateTodayClick
           end
         end
         object GroupBox9: TGroupBox
@@ -6389,7 +6407,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300080210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300180210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7162,7 +7180,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000080218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000180218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11927,7 +11945,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00080220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00180220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

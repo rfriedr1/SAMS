@@ -91,7 +91,7 @@ object dm: Tdm
     LoginPrompt = False
     Provider = 'MSDASQL.1'
     OnExecuteComplete = adoConnKTLExecuteComplete
-    Left = 287
+    Left = 55
     Top = 16
   end
   object tblUser: TADOTable

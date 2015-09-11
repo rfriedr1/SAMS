@@ -38,7 +38,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList;
 
 const
-  myVersion = '1.5.5 March-25-2015';
+  myVersion = '1.5.6 July-3-2015';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -159,6 +159,7 @@ type
     gbxSampleRight: TGroupBox;
     GroupBox35: TGroupBox;
     grdTarget: TMdRecordView;
+    grdShowPrepSteps: TMdRecordView;
     GroupBox36: TGroupBox;
     gbxSampleLeft: TGroupBox;
     gbxSelectPretreatment: TGroupBox;
@@ -249,7 +250,6 @@ type
     wizSelectType: TJvWizardInteriorPage;
     pnlSetType: TPanel;
     lbxTypes: TListBox;
-    grdShowPrepSteps: TMdRecordView;
     ToolButton2: TToolButton;
     tbsUserInfo: TTabSheet;
     btnSetSampleReadyForGraph: TBitBtn;
@@ -666,6 +666,7 @@ type
     DBMemoTargetComment: TDBMemo;
     lbl_ProjectComment: TLabel;
     DBMemo_ProjectComment: TDBMemo;
+    Series1: TPointSeries;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -5290,18 +5291,22 @@ begin
   dm.qrySampleOfSubmitter.Close;
   s1 := FormatDateTime('YYYY-MM-DD', EncodeDate(round(edtStartYear.Value), 1, 1));
   s2 := FormatDateTime('YYYY-MM-DD', EncodeDate(round(edtEndYear.Value), 12, 31));
-  with dm.qryProjectsOfUser do begin     //get all projects of the selected user
-    if chkAllProjects.Checked then begin
+  with dm.qryProjectsOfUser do
+  begin     //get all projects of the selected user
+    if chkAllProjects.Checked then
+    begin
       SQL.Text := 'SELECT project_nr, in_date, desired_date, project,invoice FROM project_t ' +
         'WHERE user_nr=' + IntToStr(cmbSubmNameReport.KeyValue) +
         ' AND (in_date BETWEEN ' + '"' + s1 + '"' + ' AND ' + '"' + s2 + '"' + ');';
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
       Open;
-      if RecordCount > 0 then begin
+      if RecordCount > 0 then
+      begin
         ProjectNrList := '(';
         First;
-        while not EOF do begin
+        while not EOF do
+        begin
           ProjectNrList := ProjectNrList + dm.qryProjectsOfUser.Fields.Fields[0].AsString + ',';
           Next;
         end;
@@ -5310,8 +5315,10 @@ begin
         ProjectNrList := ProjectNrList + ')';
       end;
     end
-    else begin
-      if Length(cmbProjectOfReport.Text) > 0 then begin
+    else
+    begin
+      if Length(cmbProjectOfReport.Text) > 0 then
+      begin
         ProjectNrList := '(' + IntToStr(cmbProjectOfReport.KeyValue) + ')';
         lblReport.Caption := 'Project: ' + IntToStr(cmbProjectOfReport.KeyValue);
         dm.qryProjectsOfUser.SQL.Text := 'SELECT AuftragsNr, project_nr, project, in_date, desired_date FROM project_t ' +
@@ -5320,14 +5327,16 @@ begin
         //ClipBoard.SetTextBuf(PChar(s));
         dm.qryProjectsOfUser.Open;
         // get and save order number etc etc
-        if dm.qryProjectsOfUser.RecordCount > 0 then begin
+        if dm.qryProjectsOfUser.RecordCount > 0 then
+        begin
           OrderNr := dm.qryProjectsOfUser.Fields.Fields[0].AsInteger;
           ProjectNameReport := dm.qryProjectsOfUser.Fields.Fields[2].AsString;
           ProjectInDate := dm.qryProjectsOfUser.Fields.Fields[3].AsString;
           //ShowMessage(IntToStr(OrderNr) + ProjectNameReport + ProjectInDate);
         end;
       end
-      else begin
+      else
+      begin
         ShowMessage('No user project selected');
         Exit;
       end;
@@ -5341,11 +5350,14 @@ begin
   // Now the results are pulled from the target table so that every prep and every
   // target is shown.
   // Halle Export is still using the old way, displaying only the samples_t
-  if dm.qryProjectsOfUser.RecordCount > 0 then begin
-    with dm.qrySampleOfSubmitter do begin
+  if dm.qryProjectsOfUser.RecordCount > 0 then
+  begin
+    with dm.qrySampleOfSubmitter do
+    begin
       Close;
       SQL.Clear;
-      if not DoExportHalle then begin
+      if not DoExportHalle then
+      begin
         s := 'SELECT DISTINCT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
           'user_desc2, target_t.C14_age, target_t.C14_age_sig, target_t.dc13*1000 as dc13, ' +
           ' target_t.Cal1sMin, target_t.Cal1sMax, target_t.Cal2sMin, target_t.Cal2sMax,' +
@@ -5363,11 +5375,14 @@ begin
           ' AND ( sample_t.sample_nr >= ' +
           IntToStr(round(edtStartAna.Value)) + ')' + ' AND ( sample_t.sample_nr <= ' +
           IntToStr(round(edtEndAna.Value)) + ')';
-        if radgrpStatus.ItemIndex < 3 then begin
-          if radgrpStatus.ItemIndex = 0 then begin
+        if radgrpStatus.ItemIndex < 3 then
+        begin
+          if radgrpStatus.ItemIndex = 0 then
+          begin
             s := s + ' AND  ( target_t.C14_age IS NOT NULL)';
           end
-          else begin
+          else
+          begin
             if radgrpStatus.ItemIndex = 2 then
               s := s + ' AND  ( target_t.C14_age IS NULL) AND NOT (not_tobedated) '
             else
@@ -5376,7 +5391,8 @@ begin
         end;
         SQL.Add(s + ' ORDER BY  sample_t.sample_nr');
       end
-      else begin
+      else
+      begin
 //      Probennr. Labor	BP-Ergebnis	+/-	delta13C	cal max 1sigma	cal min 1sigma 	cal max 2sigma	cal min 2sigma
 //     Kollagengehalt (%)	C:N ratio	F14C	Magazin
         s := 'SELECT DISTINCT sample_t.sample_nr, ' +
@@ -5416,7 +5432,8 @@ begin
       TFloatField(FieldByName('collpc')).DisplayFormat := '0.0';
       if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then TFloatField(FieldByName('ANA')).DisplayFormat := '0.0';
     end;
-    with grdSamplesOfSubmitter do begin
+    with grdSamplesOfSubmitter do
+    begin
       Columns[0].Width := 55;
       //Columns[1].Width := 55;
       Columns[1].Width := 140;
@@ -5444,6 +5461,7 @@ begin
   end;
 end;
 
+
 procedure TfrmMAMS.SetupCommonPretreatment;
 begin
 //  gbxSelectPretreatment.Parent := pnlSetCommonPretreatment;
@@ -5453,8 +5471,10 @@ end;
 procedure TfrmMAMS.SetupInsertSamplesWizard;
 begin
   wizInputSamples.ActivePage := wizStartPage;
-  with edtNewSamplesFilename do begin
-    if Length(Filename) > 0 then begin // strip previously used filename
+  with edtNewSamplesFilename do
+  begin
+    if Length(Filename) > 0 then
+    begin // strip previously used filename
       InitialDir := ExtractFilePath(Filename);
       Filename := 'Select *.csv';
     end;
@@ -5882,28 +5902,24 @@ end;
 procedure TfrmMAMS.GetSampleofUserProject;
 var
   i, sample_nr: integer;
-  s: string;
 begin
   sample_nr := dm.dsSamplesOfProject.DataSet.FieldByName('sample_nr').AsInteger;
+  // Query Sample Info by SampleNr
   dm.QuerySampleBySampleNr(sample_nr);
-  pgtSample.ActivePage := tbsSampleOfProject;
   SetupPretreatmentStepsGrid;
+  //Query the Prep Information by SampleNr
   dm.QueryPrepStepsBySampleNr(sample_nr);
-  with grdShowPrepSteps do begin
-    RowHeights[8] := 5;
+  with grdShowPrepSteps do
+  begin
+    RowHeights[8] := 3;
   end;
-  with dm.qryTarget do begin
-    SQL.Text := 'SELECT target_nr, magazine, position, catalyst, co2_init, co2_final, ' +
-      'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, conc_c, conc_c/conc_n*14/12 as cn_ratio, weight_end/weight_start*100 AS collpc, target_comment ' +
-      'FROM target_t ' +
-      'INNER JOIN preparation_t ON preparation_t.sample_nr=target_t.sample_nr ' +
-      'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
-    s := SQL.Text;
-    //   ClibBoard.SetTextBuf(PChar(s));
-    Open;
-  end;
+  // query Target info by SampleNr
+  dm.QueryTargetInfoBySampleNr(sample_nr);
+  // set tab with sample Info to active
+  pgtSample.ActivePage := tbsSampleOfProject;
   gbxSampleRight.Visible := true;
   gbxSampleLeft.Visible := true;
+  // set sample_nr in the SampleDetail page to the current selected sample
   edtSampleNr.Text := IntToStr(sample_nr);
 end;
 

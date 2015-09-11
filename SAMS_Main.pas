@@ -667,6 +667,7 @@ type
     lbl_ProjectComment: TLabel;
     DBMemo_ProjectComment: TDBMemo;
     Series1: TPointSeries;
+    btnFillDateToday: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -908,6 +909,18 @@ type
     procedure btnChangeProjectClick(Sender: TObject);
     procedure btnAddNewProjectClick(Sender: TObject);
     procedure btnAddNewSamplesClick(Sender: TObject);
+    procedure btnFillDateTodayClick(Sender: TObject);
+    procedure edtGraphDateChange(Sender: TObject);
+    procedure edtTargetPressedChange(Sender: TObject);
+    procedure edtGraphitizedChange(Sender: TObject);
+    procedure edtCatalystChange(Sender: TObject);
+    procedure edtCO2initChange(Sender: TObject);
+    procedure edtCO2finalChange(Sender: TObject);
+    procedure edtH2initChange(Sender: TObject);
+    procedure edtH2finalChange(Sender: TObject);
+    procedure edtReactTimeChange(Sender: TObject);
+    procedure edtGraphBatchChange(Sender: TObject);
+    procedure chkTargetDiscardedClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1751,11 +1764,13 @@ end;
 
 
 procedure TfrmMAMS.btnSaveChangesGraphClick(Sender: TObject);
+// updates the database with the current data in the fields
 var
   s, cmd: string;
 begin
   if TargetDataChanged then
-    with dm.adoCmd do begin
+    with dm.adoCmd do
+    begin
       cmd := 'UPDATE target_t SET ';
       s := edtWeightCombustion.Text;
       s := ReplaceStr(s, ',', '.');
@@ -1783,11 +1798,21 @@ begin
       s := edtReactTime.Text;
       s := ReplaceStr(s, ',', '.');
       if Length(s) > 0 then cmd := cmd + ' ,react_time=' + s;
+
+      // saves graph dates if entered
+      if edtGraphDate.Date > 0 then
+      begin
       s := FormatDateTime('YYYY-MM-DD', DateOf(edtGraphDate.Date));
-      if edtGraphDate.Date > 0 then cmd := cmd + ' ,graph_date=' + #34 + s + #34;
-      s := FormatDateTime('YYYY-MM-DD', DateOf(edtTargetPressed.Date));
-      if (edtTargetPressed.Date > 0) or (edtGraphitized.Date>0) then begin
+      cmd := cmd + ' ,graph_date=' + #34 + s + #34;
+      end;
+      if (edtTargetPressed.Date > 0) then
+      begin
+        s := FormatDateTime('YYYY-MM-DD', DateOf(edtTargetPressed.Date));
         cmd := cmd + ' ,target_pressed=' + #34 + s + #34;
+      end;
+      if (edtGraphitized.Date > 0) then
+      begin
+        s := FormatDateTime('YYYY-MM-DD', DateOf(edtGraphitized.Date));
         cmd := cmd + ' ,graphitized=' + #34 + s + #34;
       end;
       s := edtGraphBatch.Text;
@@ -1804,7 +1829,8 @@ begin
         ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
       CommandText := cmd;
       Execute;
-      with dm.qryTest do begin
+      with dm.qryTest do
+      begin
         SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo ' +
           ' WHERE sample_nr=' + IntToStr(round(edtSampleNr.Value)) +
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
@@ -2457,6 +2483,19 @@ begin
   end;
 end;
 
+procedure TfrmMAMS.btnFillDateTodayClick(Sender: TObject);
+// sets the date fiedls to todays date
+
+begin
+  edtGraphDate.Date := Now;
+  edtTargetPressed.Date := Now;
+  edtGraphitized.Date := Now;
+
+  //set flag to true
+  TargetDataChanged := true;
+
+end;
+
 procedure TfrmMAMS.tnstorClick(Sender: TObject);
 begin
   with ExcelExport do begin
@@ -2629,6 +2668,11 @@ begin
   btnSaveBatch.Enabled := (Length(edtBatchName.Text) > 0) and (lbxBatch.Items.Count > 0);
 end;
 
+procedure TfrmMAMS.edtCatalystChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
 procedure TfrmMAMS.edtChangeDBClick(Sender: TObject);
 begin
   if dm.adoConnKTL.Connected then
@@ -2646,6 +2690,41 @@ begin
 //  else
 end;
 
+procedure TfrmMAMS.edtCO2finalChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtCO2initChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtGraphBatchChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtGraphDateChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtGraphitizedChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtH2finalChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtH2initChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
 procedure TfrmMAMS.edtNewSamplesFilenameAfterDialog(Sender: TObject;
   var AName: string; var AAction: Boolean);
 begin
@@ -2659,6 +2738,11 @@ begin
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
 end;
 
+
+procedure TfrmMAMS.edtReactTimeChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
 
 procedure TfrmMAMS.edtSampleNrKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
@@ -2741,6 +2825,11 @@ procedure TfrmMAMS.edtSubmNameExit(Sender: TObject);
 begin
 //  dm.tblUser.IndexFieldNames := 'user_nr';
   if pgtMain.ActivePage = tbsUserReport then btnQuerySubmitter.SetFocus;
+end;
+
+procedure TfrmMAMS.edtTargetPressedChange(Sender: TObject);
+begin
+  TargetDataChanged := true;
 end;
 
 procedure TfrmMAMS.edtWeightEndChange(Sender: TObject);
@@ -4003,16 +4092,23 @@ begin
   GetPlanned;
 end;
 
+procedure TfrmMAMS.chkTargetDiscardedClick(Sender: TObject);
+begin
+  TargetDataChanged := true;
+end;
+
 procedure TfrmMAMS.ClearInsertSampleGrids;
 var
   aCol, aRow: integer;
 begin
-  with grdPreviewUser do begin
+  with grdPreviewUser do
+  begin
     grdPreviewUser.ColCount := 3; // could have been rest by previous list
     for aRow := 1 to RowCount - 1 do
       for aCol := 1 to Colcount - 1 do cells[aCol, aRow] := '';
   end;
-  with grdPreviewSamples do begin
+  with grdPreviewSamples do
+  begin
     for aRow := 0 to RowCount - 1 do
       for aCol := 0 to Colcount - 1 do cells[aCol, aRow] := '';
   end;
