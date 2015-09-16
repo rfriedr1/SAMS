@@ -163,7 +163,6 @@ type
     GroupBox36: TGroupBox;
     gbxSampleLeft: TGroupBox;
     gbxSelectPretreatment: TGroupBox;
-    pnlPretreat: TPanel;
     GroupBox29: TGroupBox;
     GroupBox32: TGroupBox;
     GroupBox34: TGroupBox;

@@ -236,7 +236,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 626
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -925,7 +925,7 @@ object frmMAMS: TfrmMAMS
             Height = 206
             Margins.Top = 0
             Align = alCustom
-            Anchors = [akLeft, akBottom]
+            Anchors = [akLeft, akTop, akBottom]
             DataSource = dm.dsSamplesOfProject
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 0
@@ -1418,67 +1418,67 @@ object frmMAMS: TfrmMAMS
                 Padding.Top = 5
                 ParentFont = False
                 TabOrder = 0
-                object pnlPretreat: TPanel
+                object GroupBox29: TGroupBox
                   Left = 2
                   Top = 23
-                  Width = 345
+                  Width = 208
+                  Height = 156
+                  Align = alLeft
+                  Caption = 'Steps'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 0
+                  ExplicitLeft = 1
+                  ExplicitTop = 1
+                  ExplicitHeight = 154
+                  object grdShowPrepSteps: TMdRecordView
+                    Left = 2
+                    Top = 15
+                    Width = 204
+                    Height = 139
+                    DataSource = dm.dsPrepSteps
+                    Align = alClient
+                    DefaultRowHeight = 18
+                    TabOrder = 0
+                    ExplicitHeight = 137
+                    ColWidths = (
+                      64
+                      118)
+                  end
+                end
+                object GroupBox32: TGroupBox
+                  Left = 210
+                  Top = 23
+                  Width = 137
                   Height = 156
                   Align = alClient
-                  Anchors = [akBottom]
-                  Caption = 'pnlPretreat'
-                  TabOrder = 0
-                  object GroupBox29: TGroupBox
-                    Left = 1
-                    Top = 1
-                    Width = 208
-                    Height = 154
-                    Align = alLeft
-                    Caption = 'Steps'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -11
-                    Font.Name = 'Tahoma'
-                    Font.Style = []
-                    ParentFont = False
-                    TabOrder = 0
-                    object grdShowPrepSteps: TMdRecordView
-                      Left = 2
-                      Top = 15
-                      Width = 204
-                      Height = 137
-                      DataSource = dm.dsPrepSteps
-                      Align = alClient
-                      DefaultRowHeight = 18
-                      TabOrder = 0
-                      ColWidths = (
-                        64
-                        118)
-                    end
-                  end
-                  object GroupBox32: TGroupBox
-                    Left = 209
-                    Top = 1
-                    Width = 135
-                    Height = 154
+                  Caption = 'Comment'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 1
+                  ExplicitLeft = 1
+                  ExplicitTop = 1
+                  ExplicitWidth = 135
+                  ExplicitHeight = 154
+                  object DBMemo2: TDBMemo
+                    Left = 2
+                    Top = 15
+                    Width = 133
+                    Height = 139
                     Align = alClient
-                    Caption = 'Comment'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -11
-                    Font.Name = 'Tahoma'
-                    Font.Style = []
-                    ParentFont = False
-                    TabOrder = 1
-                    object DBMemo2: TDBMemo
-                      Left = 2
-                      Top = 15
-                      Width = 131
-                      Height = 137
-                      Align = alClient
-                      DataField = 'prep_comment'
-                      DataSource = dm.dsPrepSteps
-                      TabOrder = 0
-                    end
+                    DataField = 'prep_comment'
+                    DataSource = dm.dsPrepSteps
+                    TabOrder = 0
+                    ExplicitWidth = 131
+                    ExplicitHeight = 137
                   end
                 end
               end
@@ -6407,7 +6407,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300180210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013001C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7180,7 +7180,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000180218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D0040001C0218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11945,7 +11945,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00180220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F001C0220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
