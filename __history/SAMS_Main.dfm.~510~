@@ -236,7 +236,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 626
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsUserInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -925,7 +925,7 @@ object frmMAMS: TfrmMAMS
             Height = 206
             Margins.Top = 0
             Align = alCustom
-            Anchors = [akLeft, akBottom]
+            Anchors = [akLeft, akTop, akBottom]
             DataSource = dm.dsSamplesOfProject
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 0
@@ -1418,67 +1418,57 @@ object frmMAMS: TfrmMAMS
                 Padding.Top = 5
                 ParentFont = False
                 TabOrder = 0
-                object pnlPretreat: TPanel
+                object GroupBox29: TGroupBox
                   Left = 2
                   Top = 23
-                  Width = 345
+                  Width = 208
+                  Height = 156
+                  Align = alLeft
+                  Caption = 'Steps'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 0
+                  object grdShowPrepSteps: TMdRecordView
+                    Left = 2
+                    Top = 15
+                    Width = 204
+                    Height = 139
+                    DataSource = dm.dsPrepSteps
+                    Align = alClient
+                    DefaultRowHeight = 18
+                    TabOrder = 0
+                    ColWidths = (
+                      64
+                      118)
+                  end
+                end
+                object GroupBox32: TGroupBox
+                  Left = 210
+                  Top = 23
+                  Width = 137
                   Height = 156
                   Align = alClient
-                  Anchors = [akBottom]
-                  Caption = 'pnlPretreat'
-                  TabOrder = 0
-                  object GroupBox29: TGroupBox
-                    Left = 1
-                    Top = 1
-                    Width = 208
-                    Height = 154
-                    Align = alLeft
-                    Caption = 'Steps'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -11
-                    Font.Name = 'Tahoma'
-                    Font.Style = []
-                    ParentFont = False
-                    TabOrder = 0
-                    object grdShowPrepSteps: TMdRecordView
-                      Left = 2
-                      Top = 15
-                      Width = 204
-                      Height = 137
-                      DataSource = dm.dsPrepSteps
-                      Align = alClient
-                      DefaultRowHeight = 18
-                      TabOrder = 0
-                      ColWidths = (
-                        64
-                        118)
-                    end
-                  end
-                  object GroupBox32: TGroupBox
-                    Left = 209
-                    Top = 1
-                    Width = 135
-                    Height = 154
+                  Caption = 'Comment'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 1
+                  object DBMemo2: TDBMemo
+                    Left = 2
+                    Top = 15
+                    Width = 133
+                    Height = 139
                     Align = alClient
-                    Caption = 'Comment'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -11
-                    Font.Name = 'Tahoma'
-                    Font.Style = []
-                    ParentFont = False
-                    TabOrder = 1
-                    object DBMemo2: TDBMemo
-                      Left = 2
-                      Top = 15
-                      Width = 131
-                      Height = 137
-                      Align = alClient
-                      DataField = 'prep_comment'
-                      DataSource = dm.dsPrepSteps
-                      TabOrder = 0
-                    end
+                    DataField = 'prep_comment'
+                    DataSource = dm.dsPrepSteps
+                    TabOrder = 0
                   end
                 end
               end
@@ -1885,21 +1875,25 @@ object frmMAMS: TfrmMAMS
         Width = 297
         Height = 598
         Align = alLeft
-        Caption = 'Batch'
+        Caption = 'Batch Information'
         TabOrder = 0
         object Panel9: TPanel
           Left = 2
-          Top = 78
+          Top = 69
           Width = 293
           Height = 49
           Align = alTop
           TabOrder = 0
+          ExplicitTop = 78
           object btnLoadBatch: TButton
             Left = 83
             Top = 6
             Width = 113
             Height = 33
-            Caption = 'Load batch'
+            Hint = 'get batches from database'
+            Caption = 'Load batches'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
             OnClick = btnLoadBatchClick
           end
@@ -1908,19 +1902,20 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 18
           Width = 293
-          Height = 60
+          Height = 51
           Align = alTop
           Columns = 2
-          ItemIndex = 0
+          ItemIndex = 1
           Items.Strings = (
             'Pretreatment'
             'Graphitisation')
           TabOrder = 1
           OnClick = rgpLabTaskClick
+          ExplicitTop = 25
         end
         object grdActiveBatches: TJvDBGrid
           Left = 2
-          Top = 127
+          Top = 118
           Width = 293
           Height = 275
           Align = alTop
@@ -1942,9 +1937,9 @@ object frmMAMS: TfrmMAMS
         end
         object grdSamplesOfLabTask: TJvDBGrid
           Left = 2
-          Top = 402
+          Top = 393
           Width = 293
-          Height = 194
+          Height = 203
           Align = alClient
           DataSource = dm.dsSamplesOfLabtask
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -4574,21 +4569,21 @@ object frmMAMS: TfrmMAMS
         ParentFont = False
         TabOrder = 0
         object Label73: TLabel
-          Left = 59
-          Top = 53
+          Left = 61
+          Top = 54
           Width = 65
           Height = 16
           Caption = 'First  name'
         end
         object Label74: TLabel
-          Left = 55
-          Top = 83
+          Left = 54
+          Top = 82
           Width = 72
           Height = 16
           Caption = 'Organisation'
         end
         object Label75: TLabel
-          Left = 78
+          Left = 80
           Top = 111
           Width = 46
           Height = 16
@@ -4603,20 +4598,20 @@ object frmMAMS: TfrmMAMS
         end
         object Label77: TLabel
           Left = 69
-          Top = 159
+          Top = 163
           Width = 57
           Height = 16
           Caption = 'Address 2'
         end
         object Label78: TLabel
-          Left = 35
+          Left = 33
           Top = 192
           Width = 93
           Height = 16
           Caption = 'Postal Code/City'
         end
         object Label80: TLabel
-          Left = 78
+          Left = 82
           Top = 220
           Width = 44
           Height = 16
@@ -4670,6 +4665,13 @@ object frmMAMS: TfrmMAMS
           Width = 45
           Height = 16
           Caption = 'Account'
+        end
+        object Label101: TLabel
+          Left = 66
+          Top = 23
+          Width = 60
+          Height = 16
+          Caption = 'Last Name'
         end
         object DBEdit12: TDBEdit
           Left = 132
@@ -6407,7 +6409,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300180210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300240210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7180,7 +7182,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000180218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000240218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11945,7 +11947,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00180220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00240220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

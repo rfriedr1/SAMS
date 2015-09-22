@@ -608,7 +608,8 @@ begin
                 ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
                 ' WHERE sample_t.c14_age IS NOT NULL ' +
                 ' AND (target_pressed BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34  +
-                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
+                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
+                ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type="arch" ';
     Open;
 //    ClipBoard.AsText := SQL.Text;
@@ -631,7 +632,8 @@ begin
                 ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
                 ' WHERE sample_t.c14_age IS NOT NULL ' +
                 ' AND (target_pressed BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34  +
-                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
+                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
+                ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type NOT IN("blank","oxa1","oxa","oxa2") ';
     Open;
 //    ClipBoard.AsText := SQL.Text;

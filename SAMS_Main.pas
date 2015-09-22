@@ -667,6 +667,7 @@ type
     DBMemo_ProjectComment: TDBMemo;
     Series1: TPointSeries;
     btnFillDateToday: TButton;
+    Label101: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -2598,7 +2599,7 @@ begin
     with dm.qryActiveBatches do begin
       Close;
       SQL.Text := 'SELECT DISTINCT batch FROM preparation_t WHERE batch IS NOT NULL AND ' +
-        'prep_end IS NULL;';
+        'prep_end IS NULL ORDER BY batch;';
       Open;
     end;
     grdActiveBatches.Visible := true;
@@ -2606,8 +2607,10 @@ begin
   else begin
     with dm.qryActiveBatches do begin
       Close;
-      SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL AND ' +
-        'graph_date IS NULL;';
+      //SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL AND ' +
+      //  'graph_date IS NULL AND graphitized IS NULL ORDER BY graph_batch asc;';
+      SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL ' +
+        'ORDER BY graph_date desc;';
       Open;
       grdActiveBatches.Visible := true;
     end;

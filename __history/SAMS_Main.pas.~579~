@@ -163,7 +163,6 @@ type
     GroupBox36: TGroupBox;
     gbxSampleLeft: TGroupBox;
     gbxSelectPretreatment: TGroupBox;
-    pnlPretreat: TPanel;
     GroupBox29: TGroupBox;
     GroupBox32: TGroupBox;
     GroupBox34: TGroupBox;
@@ -2607,8 +2606,10 @@ begin
   else begin
     with dm.qryActiveBatches do begin
       Close;
+      //SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL AND ' +
+      //  'graph_date IS NULL ORDER BY graph_batch asc;';
       SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL AND ' +
-        'graph_date IS NULL;';
+        'ORDER BY graph_batch asc;';
       Open;
       grdActiveBatches.Visible := true;
     end;
