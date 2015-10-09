@@ -668,6 +668,7 @@ type
     Series1: TPointSeries;
     btnFillDateToday: TButton;
     Label101: TLabel;
+    lbl_Project_NumberOfSamples: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -3942,11 +3943,12 @@ end;
 procedure TfrmMAMS.GetSamples;
 Var
   s:string;
-//performs a query of the database for all samples
-//of the selected project in the project list
+// performs a query of the database for all samples
+// of the selected project in the project list
 // query results is displayed in the SampleOfPorject Grid
 begin
-  with dm.qrySamplesOfProject do begin
+  with dm.qrySamplesOfProject do
+  begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  '
       + 'FROM sample_t '
       + 'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr '
@@ -3960,6 +3962,7 @@ begin
     grdSamplesOfProject.Columns[2].Width := 80;
     grdSamplesOfProject.Columns[3].Width := 80;
     grdSamplesOfProject.Columns[4].Width := 80;
+    lbl_Project_NumberOfSamples.Caption:='# Samples: ' + grdSamplesOfProject.DataSource.DataSet.RecordCount.ToString;
   end;
 end;
 
@@ -3972,6 +3975,7 @@ begin
   grdSamplesOfProject.Visible := true;
   dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString);  // query database for all project info
   GetSamples; // queries the database for all samples of this project and displays them in the SampleOfProject Grid
+
   (*with dm.qrySamplesOfProject do begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  '
       + 'FROM sample_t '
@@ -3990,6 +3994,7 @@ begin
 
   pgtSample.ActivePageIndex:=0;  //show the project_data page (Index=0)
   btnAddNewSamples.Visible:=true;   //show add samples button
+  lbl_Project_NumberOfSamples.Visible:=true; // show number of samples
 
 //  spltSampleSamples.Visible := true;
 end;

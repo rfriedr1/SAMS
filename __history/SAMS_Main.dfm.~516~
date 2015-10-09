@@ -236,7 +236,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 626
-    ActivePage = tbsLabTasks
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1875,11 +1875,11 @@ object frmMAMS: TfrmMAMS
         Width = 297
         Height = 598
         Align = alLeft
-        Caption = 'Batch'
+        Caption = 'Batch Information'
         TabOrder = 0
         object Panel9: TPanel
           Left = 2
-          Top = 78
+          Top = 69
           Width = 293
           Height = 49
           Align = alTop
@@ -1889,7 +1889,10 @@ object frmMAMS: TfrmMAMS
             Top = 6
             Width = 113
             Height = 33
-            Caption = 'Load batch'
+            Hint = 'get batches from database'
+            Caption = 'Load batches'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
             OnClick = btnLoadBatchClick
           end
@@ -1898,10 +1901,10 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 18
           Width = 293
-          Height = 60
+          Height = 51
           Align = alTop
           Columns = 2
-          ItemIndex = 0
+          ItemIndex = 1
           Items.Strings = (
             'Pretreatment'
             'Graphitisation')
@@ -1910,7 +1913,7 @@ object frmMAMS: TfrmMAMS
         end
         object grdActiveBatches: TJvDBGrid
           Left = 2
-          Top = 127
+          Top = 118
           Width = 293
           Height = 275
           Align = alTop
@@ -1932,9 +1935,9 @@ object frmMAMS: TfrmMAMS
         end
         object grdSamplesOfLabTask: TJvDBGrid
           Left = 2
-          Top = 402
+          Top = 393
           Width = 293
-          Height = 194
+          Height = 203
           Align = alClient
           DataSource = dm.dsSamplesOfLabtask
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -4564,21 +4567,21 @@ object frmMAMS: TfrmMAMS
         ParentFont = False
         TabOrder = 0
         object Label73: TLabel
-          Left = 59
-          Top = 53
+          Left = 61
+          Top = 54
           Width = 65
           Height = 16
           Caption = 'First  name'
         end
         object Label74: TLabel
-          Left = 55
-          Top = 83
+          Left = 54
+          Top = 82
           Width = 72
           Height = 16
           Caption = 'Organisation'
         end
         object Label75: TLabel
-          Left = 78
+          Left = 80
           Top = 111
           Width = 46
           Height = 16
@@ -4593,20 +4596,20 @@ object frmMAMS: TfrmMAMS
         end
         object Label77: TLabel
           Left = 69
-          Top = 159
+          Top = 163
           Width = 57
           Height = 16
           Caption = 'Address 2'
         end
         object Label78: TLabel
-          Left = 35
+          Left = 33
           Top = 192
           Width = 93
           Height = 16
           Caption = 'Postal Code/City'
         end
         object Label80: TLabel
-          Left = 78
+          Left = 82
           Top = 220
           Width = 44
           Height = 16
@@ -4660,6 +4663,13 @@ object frmMAMS: TfrmMAMS
           Width = 45
           Height = 16
           Caption = 'Account'
+        end
+        object Label101: TLabel
+          Left = 66
+          Top = 23
+          Width = 60
+          Height = 16
+          Caption = 'Last Name'
         end
         object DBEdit12: TDBEdit
           Left = 132
@@ -6139,9 +6149,8 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 15
           Width = 229
-          Height = 567
-          Align = alTop
-          Anchors = [akLeft, akTop, akRight, akBottom]
+          Height = 468
+          Align = alClient
           DataSource = dm.dsDBPlot
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -6397,7 +6406,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300240210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300300210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7067,16 +7076,16 @@ object frmMAMS: TfrmMAMS
   object LoadDialog: TOpenDialog
     DefaultExt = 'rtf'
     Filter = 'All Files (*.*)|*.*'
-    Left = 640
-    Top = 64
+    Left = 592
+    Top = 72
   end
   object SaveDialog: TSaveDialog
     DefaultExt = 'rtf'
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 952
-    Top = 64
+    Left = 928
+    Top = 72
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -7111,8 +7120,8 @@ object frmMAMS: TfrmMAMS
       'edtSMTPServer.Text'
       'MemoDBPlotQuery.Lines')
     StoredValues = <>
-    Left = 296
-    Top = 56
+    Left = 288
+    Top = 72
   end
   object JvAppIniFileStorage1: TJvAppIniFileStorage
     StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
@@ -7120,8 +7129,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'Persistent.ini'
     DefaultSection = 'NewSamplesInput'
     SubStorages = <>
-    Left = 224
-    Top = 32
+    Left = 184
+    Top = 72
   end
   object WordExport: TJvDBGridWordExport
     Caption = 'Exporting to MS Word...'
@@ -7130,8 +7139,8 @@ object frmMAMS: TfrmMAMS
     Silent = False
     WordFormat = wdTableFormatGrid4
     Visible = True
-    Left = 736
-    Top = 56
+    Left = 672
+    Top = 72
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -7147,22 +7156,22 @@ object frmMAMS: TfrmMAMS
     Footer.Strings = (
       '</body></html>')
     DocTitle = 'Grid to HTML Export'
-    Left = 792
-    Top = 64
+    Left = 736
+    Top = 72
   end
   object XMLExport: TJvDBGridXMLExport
     Grid = grdTypes
     FileName = 'c:\temp\report.xml'
-    Left = 848
-    Top = 40
+    Left = 792
+    Top = 72
   end
   object ExcelExport: TJvDBGridExcelExport
     Caption = 'Exporting to MS Excel...'
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 872
-    Top = 64
+    Left = 856
+    Top = 72
   end
   object ImageList2: TImageList
     Height = 24
@@ -7170,7 +7179,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000240218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000300218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11935,7 +11944,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00240220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00300220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -21977,12 +21986,13 @@ object frmMAMS: TfrmMAMS
   object cdsExport: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 976
-    Top = 8
+    Left = 984
+    Top = 72
   end
   object dsExport: TDataSource
     DataSet = cdsExport
-    Left = 1016
+    Left = 984
+    Top = 120
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
