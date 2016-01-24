@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2013.09.02 13:36:22.405.pas,C:\Users\bkromer\Documents\Borland Studio Projects\Unit5.pas=C:\Users\bkromer\Borland Studio Projects\SAMS\GetOxasBlanksMain.pas</Transaction>
-    <Transaction>2013.09.02 13:36:22.405.dfm,C:\Users\bkromer\Documents\Borland Studio Projects\Unit5.dfm=C:\Users\bkromer\Borland Studio Projects\SAMS\GetOxasBlanksMain.dfm</Transaction>
-    <Transaction>2013.09.02 13:36:29.893.bdsproj,C:\Users\bkromer\Documents\Borland Studio Projects\Project5.bdsproj=C:\Users\bkromer\Borland Studio Projects\SAMS\GetOxasBlanks.bdsproj</Transaction>
-  </Transactions>
-</BorlandProject>
