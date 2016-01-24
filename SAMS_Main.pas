@@ -38,7 +38,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList;
 
 const
-  myVersion = '1.5.6 July-3-2015';
+  myVersion = '1.5.7 Jan-21-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -261,34 +261,22 @@ type
     ToolButton4: TToolButton;
     actTables: TAction;
     gbxSampleIdetification: TGroupBox;
-    Panel12: TPanel;
     gbxTarget: TGroupBox;
     gbxAdministration: TGroupBox;
-    GroupBox23: TGroupBox;
+    gbxAnaResults: TGroupBox;
     gbxSampleInfo: TGroupBox;
     btnDoSampleQuery: TBitBtn;
     Label29: TLabel;
     edtSampleNr: TJvValidateEdit;
-    gbxAdmin: TGroupBox;
-    gbxProject: TGroupBox;
-    Label32: TLabel;
-    edtSampleProjectName: TDBEdit;
-    edtSampleUser: TDBEdit;
-    Label31: TLabel;
     Label37: TLabel;
     Label39: TLabel;
     gbxSamplePretreatment: TGroupBox;
     gbxSamplePretreatSteps: TGroupBox;
-    pnlSamplePrepEnd: TPanel;
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
     pnlSampleInfoPrep: TPanel;
-    GroupBox18: TGroupBox;
-    Panel5: TPanel;
-    GroupBox20: TGroupBox;
-    pnlStepsSampleInfo: TPanel;
-    JvMarkupLabel4: TJvMarkupLabel;
+    gbxPrepSteps: TGroupBox;
     lbxDefinePrepSteps: TListBox;
     edtSampleInfoInDate: TJvDBDateTimePicker;
     edtSampleInfoDesiredDate: TJvDBDateTimePicker;
@@ -303,16 +291,6 @@ type
     GroupBox24: TGroupBox;
     tbsLabStats: TTabSheet;
     gbxInPrep: TGroupBox;
-    Panel15: TPanel;
-    Label42: TLabel;
-    lbPrepNr: TLabel;
-    edtSamplePrepNr: TJvSpinEdit;
-    btnNewPrep: TBitBtn;
-    Panel11: TPanel;
-    lbTarget: TLabel;
-    lbTargetnr: TLabel;
-    edtSampleTargetNr: TJvSpinEdit;
-    btnNewTarget: TBitBtn;
     pnlPrepChoice: TPanel;
     Label25: TLabel;
     cmbPretreatMethod: TDBLookupComboBox;
@@ -335,7 +313,6 @@ type
     chkAllowChangesGraph: TCheckBox;
     btnSaveChangesGraph: TBitBtn;
     GroupBox8: TGroupBox;
-    gbxUserSuppliedInformation: TGroupBox;
     Label30: TLabel;
     Label33: TLabel;
     Label34: TLabel;
@@ -408,8 +385,6 @@ type
     Panel23: TPanel;
     lbExportHeader: TJvMarkupLabel;
     Button5: TButton;
-    edtInvoiceNr: TDBEdit;
-    Label24: TLabel;
     tbsProject: TTabSheet;
     GroupBox3: TGroupBox;
     Label26: TLabel;
@@ -437,9 +412,7 @@ type
     tnstor: TButton;
     Label68: TLabel;
     DBEdit16: TDBEdit;
-    pnlWeightBeforePrep: TPanel;
     Label69: TLabel;
-    Panel14: TPanel;
     Label70: TLabel;
     edtWeightEnd: TDBEdit;
     edtWeightStart: TDBEdit;
@@ -506,7 +479,6 @@ type
     DBEdit9: TDBEdit;
     DBEdit10: TDBEdit;
     DBEdit11: TDBEdit;
-    GroupBox9: TGroupBox;
     memTargetComments: TDBMemo;
     DBMemo2: TDBMemo;
     CheckBox1: TCheckBox;
@@ -541,8 +513,6 @@ type
     Label92: TLabel;
     btnTransferAgeToSample: TButton;
     JvDBStatusLabel7: TJvDBStatusLabel;
-    edtReport: TDBEdit;
-    Label93: TLabel;
     btnCheckProjectStatus: TButton;
     lblProject: TLabel;
     GroupBox1: TGroupBox;
@@ -627,11 +597,7 @@ type
     Panel33: TPanel;
     GroupBox26: TGroupBox;
     StaticText1: TStaticText;
-    edtProjectNr: TDBEdit;
-    Label97: TLabel;
     DBEdit_UserNr: TDBEdit;
-    edtUserNr: TDBEdit;
-    Label3: TLabel;
     DBEdit_AssocUserNr: TDBEdit;
     Label16: TLabel;
     chkAllowChangesProject: TCheckBox;
@@ -659,7 +625,6 @@ type
     btnDBPlotLoadQuery: TButton;
     btnDBPlotSaveQuery: TButton;
     btnAddNewUser2: TButton;
-    btnChangeProject: TButton;
     gbxTargetData: TGroupBox;
     gbxTargetComment: TGroupBox;
     DBMemoTargetComment: TDBMemo;
@@ -669,6 +634,32 @@ type
     btnFillDateToday: TButton;
     Label101: TLabel;
     lbl_Project_NumberOfSamples: TLabel;
+    Panel15: TGroupBox;
+    Label42: TLabel;
+    lbPrepNr: TLabel;
+    edtSamplePrepNr: TJvSpinEdit;
+    btnNewPrep: TBitBtn;
+    Panel11: TGroupBox;
+    lbTarget: TLabel;
+    lbTargetnr: TLabel;
+    edtSampleTargetNr: TJvSpinEdit;
+    btnNewTarget: TBitBtn;
+    GroupBox19: TGroupBox;
+    Label32: TLabel;
+    Label31: TLabel;
+    Label24: TLabel;
+    Label93: TLabel;
+    Label97: TLabel;
+    Label3: TLabel;
+    edtSampleProjectName: TDBEdit;
+    edtSampleUser: TDBEdit;
+    edtInvoiceNr: TDBEdit;
+    edtReport: TDBEdit;
+    edtProjectNr: TDBEdit;
+    edtUserNr: TDBEdit;
+    btnChangeProject: TButton;
+    Label102: TLabel;
+    Label103: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -901,6 +892,7 @@ type
     procedure chkAllowChangesProjectClick(Sender: TObject);
     procedure btnDBPlotClick(Sender: TObject);
     procedure btnPlotQueryClick(Sender: TObject);
+    procedure DBChartSeriesGetMarkText(Sender:TChartSeries; ValueIndex:Integer; var MarkText:String);
     procedure GetAvailableOxasBlanks;
     procedure btnDBPlotSaveQueryClick(Sender: TObject);
     procedure btnDBPlotLoadQueryClick(Sender: TObject);
@@ -922,6 +914,9 @@ type
     procedure edtReactTimeChange(Sender: TObject);
     procedure edtGraphBatchChange(Sender: TObject);
     procedure chkTargetDiscardedClick(Sender: TObject);
+    procedure DBChartClickSeries(Sender: TCustomChart; Series: TChartSeries;
+      ValueIndex: Integer; Button: TMouseButton; Shift: TShiftState; X,
+      Y: Integer);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1207,7 +1202,7 @@ begin
   with FWord do begin
     SaveFileName := edtSaveReportAs.FileName;
 //    FileName := 'C:\Temp\SAMS\C14AgeTableTemplate.doc';
-    FileName := edtWordTemplate.Text;
+    FileName := edtWordTemplate.Filename;    //used to be edtWordTemplate.Text
     Save := true;
     KeepWordOpen := true;
     OutPutDir := edtSaveReportAs.InitialDir;
@@ -1503,7 +1498,8 @@ VAR
   xlabel, ylabel: String;
   xvalue, yvalue: Extended;
 begin
-  with dm.qryDBPlot do begin
+  with dm.qryDBPlot do
+  begin
   //'SELECT magazine, fm from target_t WHERE magazine like "%HD%" order by magazine';
     SQL.Text := MemoDBPlotQuery.Lines.Text;
     Open;
@@ -1514,12 +1510,13 @@ begin
       end;
 *)
   end;
+
   JvFormStorage1.SaveFormPlacement; // perform a save of all form values of SAMS including the query so it will be retrieved the next time automatically
 
   //Plot Data in DBChart
     DBChart.ClearChart;                     //clear the chart
     DBChart.AddSeries(TpointSeries);        // add new data series TPoint Style
-    DBChart.Series[0].Depth:=0;
+    DBChart.Series[0].Depth:=0;             // Format the display style
     DBChart.Series[0].HasZValues:= false;
     DBChart.LeftWall.Visible:=false;
     DBChart.BottomWall.Visible:=false;
@@ -1535,17 +1532,63 @@ begin
 
     //add datapoints from the DBGrid, go through all the data in the DBGrid and send to the plot
     DBGridDBPlot.DataSource.DataSet.First;   // go to the first datapoint in the dataset
-    for i := 0 to DBGridDBPlot.DataSource.DataSet.RecordCount do begin
+    for i := 0 to DBGridDBPlot.DataSource.DataSet.RecordCount-1 do begin
       if NOT TryStrToFloat(DBGridDBPlot.DataSource.DataSet.FieldByName(xlabel).AsString, xvalue) then xvalue:=i; //try to convert x-value to a number, if it doesn't work use index i as value
       yvalue:= DBGridDBPlot.DataSource.DataSet.FieldByName(ylabel).AsExtended; //get y value from dataset
       DBChart.Series[0].AddXY(xvalue,yvalue,'',clTeeColor);  //add xy to plot
       DBGridDBPlot.DataSource.DataSet.Next;  // move to the next datapoint in the dataset
     end;
+
+
+    //DBChart.Series[0].Marks.Visible:=true;   //display the Text on the data points (marks)
+    //DBChart.Series[0].OnGetMarkText:=DBChartSeriesGetMarkText;  // generate the text on the datapoints (marks)
+
     //s.XValues:= dm.qryDBPlot.FieldByName('magazine').Text;
     //s.YValues := dm.qryDBPlot.FieldByName('fm').Text;
     //s.XValues.ValueSource := dm.qryDBPlot.FieldByName('magazine').Text;
     //s.YValues.ValueSource := dm.qryDBPlot.FieldByName('fm').Text;
 end;
+
+procedure TfrmMAMS.DBChartClickSeries(Sender: TCustomChart;
+  Series: TChartSeries; ValueIndex: Integer; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+// when clicking on a datapoint the x and y data of the
+// datapoint is displayed next to the cursor
+VAR i: integer;
+begin
+  with (Sender AS TChart) do
+  begin
+    Repaint;
+    Canvas.Brush.Style := bsSolid;
+    Canvas.Pen.Color := clBlack;
+    Canvas.Brush.Color := clWhite;
+    //Canvas.TextOut(X+10,Y,Sender.Series[0].GetHorizAxis.LabelValue(ValueIndex)+','+Sender.Series[0].GetVertAxis.LabelValue(ValueIndex));
+    Canvas.TextOut(X+10,Y,Sender.Series[0].XValue[ValueIndex].ToString()+','+Sender.Series[0].YValue[ValueIndex].ToString());
+
+    DBGridDBPlot.SetFocus;
+    //locate the clicked data point in the table by locating the x and y values
+    if DBGridDBPlot.DataSource.DataSet.Locate(DBGridDBPlot.Columns.Items[0].FieldName+';'+DBGridDBPlot.Columns.Items[1].FieldName,VarArrayOf([Sender.Series[0].XValue[ValueIndex],Sender.Series[0].YValue[ValueIndex]]),[loCaseInsensitive]) = false Then
+       ShowMessage(DBGridDBPlot.Columns.Items[0].FieldName +';'+ DBGridDBPlot.Columns.Items[1].FieldName + ' and '+Sender.Series[0].XValue[ValueIndex].ToString + ',' + Sender.Series[0].YValue[ValueIndex].ToString );
+
+    //DBGridDBPlot.SetFocus;
+    //DBGridDBPlot.DataSource.DataSet.First;
+    //DBGridDBPlot.DataSource.DataSet.Locate();
+    //DBGridDBPlot.DataSource.DataSet.MoveBy(ValueIndex); // go to index of selected data point
+    //DBGridDBPlot.SelectedRows.CurrentRowSelected:=true;
+
+  end;
+end;
+
+procedure TfrmMAMS.DBChartSeriesGetMarkText(Sender:TChartSeries; ValueIndex:Integer; var MarkText:String);
+// this procedure generates the MarksText, the text that
+// is displayed on the datapoint
+begin
+  DBGridDBPlot.DataSource.DataSet.First;  //go to first record
+  DBGridDBPlot.DataSource.DataSet.MoveBy(ValueIndex); //move to the reecord that is is equal to the datapoint
+  MarkText:=DBGridDBPlot.Fields[0].Text;  //get value from database
+  //if (ValueIndex<>Sender.Count-1) then MarkText:='';
+end;
+
 
 procedure TfrmMAMS.btnNowEndClick(Sender: TObject);
 begin
@@ -2032,10 +2075,7 @@ end;
 
 procedure TfrmMAMS.actSampleInfoExecute(Sender: TObject);
 begin
-  gbxUserSuppliedInformation.Enabled := false;
   pnlGraph.Enabled := false;
-  gbxAdmin.Enabled := false;
-  gbxProject.Enabled := false;
   chkAllowChangesInAdmin.Checked := false;
   chkAllowChangesInUserSuppliedInfos.Checked := false;
   chkAllowChangesInPrep.Checked := false;
@@ -2528,7 +2568,8 @@ end;
 procedure TfrmMAMS.btnInsertExistingUserClick(Sender: TObject);
 begin
   if (MessageDlg('User details of user ' + IntToStr(glbUserNr) + ' will be used; do you want to continue ?',
-    mtConfirmation, [mbYes, mbNo], 0) = mrYes) then begin
+    mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
+    begin
     wizInputInvoiceAddress.EnableButton(bkNext, true);
     UserExists := true;
     wizInputSamples.SelectNextPage;
@@ -2869,7 +2910,8 @@ begin
       Age := Fields.FieldByName('C14_age').AsInteger;
       Err := Fields.FieldByName('C14_age_sig').AsInteger;
 //      Line := 'MAMS ' + Fields.FieldByName('sample_nr').AsString + ' ' + Fields.FieldByName('user_label').AsString;
-      Line := Fields.FieldByName('user_label').AsString;
+      //Line := Fields.FieldByName('user_label').AsString;
+      Line := Fields.FieldByName('sample_nr').AsString;
       //Line := Line + #9 + IntToStr(Age) + #9 + IntToStr(Err);  //old way of doing it. values with tabs in between
       Line := 'R_date(' + '"' + Line + '",' + IntToStr(Age) + ',' + IntToStr(Err)+');';
       //      WriteLn(OutF,Line);
@@ -2900,8 +2942,10 @@ begin
 
   lbWizFinalPage.Text := '';
 // insert User into DB
-  if not UserExists then begin
-    with grdPreviewUser do begin
+  if not UserExists then
+  begin
+    with grdPreviewUser do
+    begin
       User.FirstName := cells[1, 1];
       User.LastName := cells[1, 2];
       User.Organisation := cells[1, 3];
@@ -2913,7 +2957,8 @@ begin
       + 'fax,'
       + 'email,www,invoice, correspondance)'
       + ' VALUES (';
-    for Arow := 1 to 13 do begin // first_name to email
+    for Arow := 1 to 13 do
+    begin // first_name to email
       if Length(grdPreviewUser.cells[1, Arow]) > 0 then
         s := s + #34 + grdPreviewUser.cells[1, Arow] + #34 + ','
       else
@@ -2934,7 +2979,8 @@ begin
     dm.tblUser.Close;
     dm.tblUser.Open;
 
-    with dm.qryDb do begin // get user_nr from user_t
+    with dm.qryDb do
+    begin // get user_nr from user_t
       Close;
       SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
         ' AND first_name=' + #34 + User.FirstName + #34;
@@ -2943,15 +2989,19 @@ begin
       if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
     end;
   end
-  else begin
+  else
+  begin
     lbWizFinalPage.Text := '<b> User already known </b><br>';
     user_nr := glbUserNr;
   end;
   // get user_nr
 //insert Invoice Information
-  if not SameAddressForInvoice then begin // insert invoice user
-    if not InvoiceExists then begin
-      with grdInvoiceAddress do begin
+  if not SameAddressForInvoice then
+   begin // insert invoice user
+    if not InvoiceExists then
+    begin
+      with grdInvoiceAddress do
+      begin
         Invoice.LastName := cells[1, 2];
         InVoice.Institute := cells[1, 4];
         Invoice.Organisation := cells[1, 3];
@@ -2963,7 +3013,8 @@ begin
         + 'fax,'
         + 'email,www, invoice, correspondance)'
         + ' VALUES (';
-      for Arow := 1 to 13 do begin // first_name to email
+      for Arow := 1 to 13 do
+      begin // first_name to email
         if Length(grdInvoiceAddress.cells[1, Arow]) > 0 then
           s := s + #34 + grdInvoiceAddress.cells[1, Arow] + #34 + ','
         else
@@ -2978,7 +3029,8 @@ begin
       //   ClibBoard.SetTextBuf(PChar(s));
       dm.adoCmd.Execute;
       lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> New invoice user created </b><br><br>';
-      with dm.qryDb do begin // get user_nr from user_t
+      with dm.qryDb do
+      begin // get user_nr from user_t
         Close;
         SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + Invoice.LastName + #34 +
           ' AND organisation=' + #34 + Invoice.Organisation + #34;
@@ -2987,14 +3039,16 @@ begin
         if RecordCount > 0 then glbInvoiceNr := FieldByName('user_nr').AsInteger;
       end;
     end
-    else begin
+    else
+    begin
       lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Invoice user already known </b><br><br>';
     end;
   end;
 
 //Import Project Data
   CheckProjectExists;
-  if not ProjectExists then begin // insert project
+  if not ProjectExists then
+  begin // insert project
     desired_date_str := FormatDateTime('YYYY-MM-DD', edtDesiredDate.Date);
     in_date_str := FormatDateTime('YYYY-MM-DD', edtInDate.Date);
     if glbInvoiceNr > 0 then
@@ -3034,8 +3088,10 @@ begin
   if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
 
 // insert samples into database
-  with grdPreviewSamples do begin // insert samples
-    for Arow := 1 to RowCount - 1 do begin
+  with grdPreviewSamples do
+  begin // insert samples
+    for Arow := 1 to RowCount - 1 do
+    begin
       s := 'INSERT INTO sample_t (project_nr,user_label,user_label_nr,user_desc1, user_desc2,' +
         'sample_t.weight,user_comment,material,fraction, type, sampling_date) VALUES(' +
         IntToStr(project_nr);
@@ -3044,7 +3100,8 @@ begin
           s := s + ',' + #34 + cells[ACol, Arow] + #34
         else
           s := s + ',' + 'NULL';
-      if length(cells[5, ARow]) > 0 then begin // weight
+      if length(cells[5, ARow]) > 0 then
+      begin // weight
         strWeight := cells[5, Arow];
         if FormatSettings.DecimalSeparator = ',' then // deutsches Windows
           if Pos('.', strWeight) > 0 then strWeight := ReplaceStr(strWeight, '.', ',');
@@ -3060,7 +3117,8 @@ begin
       s := s + ',' + #34 + cells[MaterialCol, Arow] + #34;
       s := s + ',' + #34 + cells[FractionCol, Arow] + #34;
       s := s + ',' + #34 + cells[TypeCol, Arow] + #34;
-      with grdPreviewSamples do begin
+      with grdPreviewSamples do
+      begin
         if Pos('co2atm', cells[TypeCol, Arow]) > 0 then
           s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', StartOfTheYear(Date)) + #34
         else
@@ -3076,17 +3134,21 @@ begin
       sample_nr := 0;
       // insert new prep for this samples
       if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
-      with grdPreviewSamples do begin
+      with grdPreviewSamples do
+      begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
-          (Pos('graphite', cells[MaterialCol, Arow]) > 0) then begin
+          (Pos('graphite', cells[MaterialCol, Arow]) > 0) then
+          begin
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method, prep_end) VALUES(1,' +
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
         end
-        else begin // set prep_end date since sample type doesn't need any prep steps
+        else
+        begin // set prep_end date since sample type doesn't need any prep steps
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
             'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
-          for PrepCol := SamplePrep1Col to SamplePrep5Col do begin
+          for PrepCol := SamplePrep1Col to SamplePrep5Col do
+          begin
             if Length(cells[PrepCol, aRow]) > 0 then
               s := s + ',' + #34 + cells[PrepCol, aRow] + #34
             else
@@ -3098,7 +3160,8 @@ begin
         dm.adoCmd.Execute;
         s := 'INSERT INTO target_t  (target_nr, prep_nr, sample_nr, graphitized)'
           + ' VALUES (1,1,' + IntTostr(sample_nr);
-        with grdPreviewSamples do begin
+        with grdPreviewSamples do
+        begin
           if Pos('graphite', cells[MaterialCol, Arow]) > 0 then
             s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date)) + #34
           else
@@ -3110,12 +3173,19 @@ begin
         dm.adoCmd.Execute;
       end;
     end;
+    // display sample number in dialog for this sample
   end;
-  with dm.qryDB do begin
+
+
+  with dm.qryDB do
+  begin
     SQL.Text := 'SELECT last_name, first_name FROM user_t where user_nr=' + IntTostr(user_nr);
     Open;
   end;
-{
+
+
+  // send email to user in order to confirm sample receipt
+  {
   edtMailTo.Text := grdPreviewUser.Cells[1, 13];
   with MailMemo.Lines do begin
     if rgpMailLanguage.ItemIndex = 0 then begin
@@ -3135,7 +3205,7 @@ begin
       Add('We confirm to have received the samples listed below.');
       Add('This is an auto-generated mail.');
       Add(' ');
-      Add('best regards');
+      Add('Best regards');
       Add(' The Team of the Klaus-Tschira-Laboratory');
       Add(' ');
     end;
@@ -4016,14 +4086,10 @@ procedure TfrmMAMS.chkAllowChangesInAdminClick(Sender: TObject);
 begin
   btnSaveChangesAdmin.Enabled := chkAllowChangesInAdmin.Checked;
   if chkAllowChangesInAdmin.Checked then begin
-    gbxAdmin.Enabled := true;
-    gbxProject.Enabled := true;
     cmbProjectStatus.Enabled := true;
     btnChangeProject.Enabled:=true;
   end
   else begin
-    gbxAdmin.Enabled := false;
-    gbxProject.Enabled := false;
     cmbProjectStatus.Enabled := false;
     btnChangeProject.Enabled:=false;
   end;
@@ -4034,7 +4100,6 @@ procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
 begin
   btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
   pnlSampleInfoPrep.Enabled := chkAllowChangesInPrep.Checked;
-  pnlSamplePrepEnd.Enabled := chkAllowChangesInPrep.Checked;
   gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
   WeightsChanged := false;
 end;
@@ -4043,7 +4108,6 @@ procedure TfrmMAMS.chkAllowChangesInUserSuppliedInfosClick(Sender: TObject);
 begin
   btnSaveChangesUserSuppliedInfo.Enabled := chkAllowChangesInUserSuppliedInfos.Checked;
   if chkAllowChangesInUserSuppliedInfos.Checked then begin
-    gbxUserSuppliedInformation.Enabled := true;
   end;
 end;
 
@@ -4651,14 +4715,16 @@ var
   i, k, Row: integer;
   end_found, Entry_empty: boolean;
 begin
-  if Length(FName) > 0 then begin
+  if Length(FName) > 0 then
+  begin
     grdPreviewUser.Visible := true;
     grdPreviewSamples.Visible := true;
     AssignFile(InF, FName);
     Reset(InF);
     Row := 1;
     SameAddressForInvoice := false;
-    with grdPreviewUser do begin
+    with grdPreviewUser do
+    begin
 //      Selection := NoSelection;
       ColWidths[0] := 180;
       cells[1, 0] := 'user;  * required';
@@ -4680,7 +4746,8 @@ begin
       cells[0, 15] := 'invoice';
       ColCount := 2;
     end;
-    with grdInvoiceAddress do begin
+    with grdInvoiceAddress do
+    begin
 //      Selection := NoSelection;
       ColWidths[0] := 180;
       ColWidths[1] := 250;
@@ -4721,16 +4788,19 @@ begin
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
     until Pos('first name', s1) > 0;
-    while not EOF(InF) and not end_found do begin
+    while not EOF(InF) and not end_found do
+    begin
       end_found := false;
       repeat // read user data
         while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
         s1 := ExtractWord(1, s, [';']); // read 1st col
-        if pos('accounting', s1) > 0 then begin
+        if pos('accounting', s1) > 0 then
+        begin
           end_found := true;
           s2 := trim(ExtractWord(2, s, [';'])); // get user data
           s2 := UpperCase(s2);
-          if (Pos('JA', s2) > 0) or (Pos('YES', s2) > 0) then begin
+          if (Pos('JA', s2) > 0) or (Pos('YES', s2) > 0) then
+          begin
             SameAddressForInvoice := true;
           end;
         end;
@@ -4738,7 +4808,8 @@ begin
         dm.tblUser.IndexFieldNames := 'last_name';
         s2 := trim(ExtractWord(2, s, [';'])); // get user data
         s2 := copy(s2, 1, 40);
-        if Length(s2) > 0 then begin
+        if Length(s2) > 0 then
+        begin
           if Pos('first name', s1) > 0 then grdPreviewUser.Cells[1, 1] := s2;
           if Pos('last name', s1) > 0 then grdPreviewUser.Cells[1, 2] := s2;
           if Pos('organisation', s1) > 0 then grdPreviewUser.Cells[1, 3] := s2;
@@ -4759,7 +4830,8 @@ begin
       until end_found;
     end;
     UserExists := false;
-    with wizStartPage do begin
+    with wizStartPage do
+    begin
       Title.Text := '';
       EnableButton(bkNext, false);
     end;
@@ -4768,26 +4840,31 @@ begin
     glbUserNr := 0;
     surname := grdPreviewUser.Cells[1, 2];
     UserExists := dm.tblUser.Locate('last_name', surname, [loPartialKey]);
-    if UserExists then begin
+    if UserExists then
+    begin
       btnInsertExistingUser.Enabled := true;
       glbUserNr := dm.tblUser.FieldByName('user_nr').AsInteger;
     end;
-    if not SameAddressForInvoice then begin
+    if not SameAddressForInvoice then
+    begin
       repeat // now parse user, skip header
         Readln(InF, s);
         s1 := ExtractWord(1, s, [';']);
       until Pos('institution', s1) > 0;
       end_found := false;
-      while not EOF(InF) and not end_found do begin
+      while not EOF(InF) and not end_found do
+      begin
         end_found := false;
         repeat // read user data
           while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
           s1 := ExtractWord(1, s, [';']); // read 1st col
-          if pos('www', s1) > 0 then begin
+          if pos('www', s1) > 0 then
+          begin
             end_found := true;
           end;
           s2 := trim(ExtractWord(2, s, [';'])); // get user data
-          if Length(s2) > 0 then begin
+          if Length(s2) > 0 then
+          begin
             if Pos('first name', s1) > 0 then grdInvoiceAddress.Cells[1, 1] := s2;
             if Pos('last name', s1) > 0 then grdInvoiceAddress.Cells[1, 2] := s2;
             if Pos('organisation', s1) > 0 then grdInvoiceAddress.Cells[1, 3] := s2;
@@ -4809,15 +4886,18 @@ begin
       end;
     end;
     surname := grdPreviewUser.Cells[1, 3];
-    if dm.tblInvoice.Locate('organisation', surname, [loPartialKey]) then begin
+    if dm.tblInvoice.Locate('organisation', surname, [loPartialKey]) then
+    begin
       btnInsertSelectedInvoice.Enabled := true;
       glbInvoiceNr := dm.tblInvoice.FieldByName('user_nr').AsInteger;
     end
-    else begin
+    else
+    begin
       btnInsertSelectedInvoice.Enabled := false;
       glbInvoiceNr := 0;
     end;
-    if Length(ProjectName) = 0 then begin
+    if Length(ProjectName) = 0 then
+    begin
       ShowMessage('Project name cannot be empty; you may add a project name later on in the project page of this wizard');
     end;
     Row := 1;
@@ -4825,26 +4905,31 @@ begin
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
     until Pos('required', s1) > 0;
-    while not EOF(InF) do begin // now parse samples
+    while not EOF(InF) do
+    begin // now parse samples
       ReadLn(InF, s);
       s1 := ExtractWord(1, s, [';']); // read sample name
       s1 := copy(s1, 1, 40);
-      if Length(s1) > 0 then begin
+      if Length(s1) > 0 then
+      begin
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]); // once does not do all
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
         k := WordCount(s, [';']);
-        for i := 2 to k do begin
+        for i := 2 to k do
+        begin
           s2 := ExtractWord(i, s, [';']);
           if i < 7 then
             s2 := copy(s2, 1, 40)
           else
             s2 := copy(s2, 1, 100);
-          if s2 <> ' ' then begin
+          if s2 <> ' ' then
+          begin
             grdPreviewSamples.Cells[i, Row] := s2;
           end;
         end;
-        if not Entry_Empty then begin
+        if not Entry_Empty then
+        begin
           grdPreviewSamples.Cells[0, Row] := IntToStr(Row);
           grdPreviewSamples.Cells[1, Row] := s1;
           inc(Row);

@@ -1,0 +1,4 @@
+SELECT magazine, fm, fm_sig, user_label
+from target_v
+WHERE (user_label like "%Pferd%" AND fm IS NOT NULL AND fm>0.9 )
+order by magazine;
