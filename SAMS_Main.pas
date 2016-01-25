@@ -35,7 +35,8 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   WordDriver, (*DBClient, *) Provider, MidasLib, (*Spin,*)
   JvInspector, frxDesgn, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
-  System.ImageList;
+  System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
+  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin;
 
 const
   myVersion = '1.5.7 Jan-21-2016';
@@ -660,6 +661,9 @@ type
     btnChangeProject: TButton;
     Label102: TLabel;
     Label103: TLabel;
+    SSLHandler: TIdSSLIOHandlerSocketOpenSSL;
+    IdUserPassProvider1: TIdUserPassProvider;
+    IdSASLLogin1: TIdSASLLogin;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1280,7 +1284,6 @@ const olMailItem = 0;
 
 procedure TfrmMAMS.btnSendMailClick(Sender: TObject);
 var
-  Outlook: OLEVariant;
   MailItem: OLEVariant;
 begin
   with mesgMessage do begin
@@ -1292,6 +1295,7 @@ begin
   end;
   with smtpSendMail do begin
     Host := trim(edtSMTPServer.Text);
+    Username :=trim(edtMailFrom.Text);
     Connect;
     try
       Send(mesgMessage);
@@ -1300,23 +1304,6 @@ begin
     end;
     Disconnect;
   end;
-
-{   try
-    Outlook:=GetActiveOleObject('Outlook.Application') ;
-   except
-    Outlook:=CreateOleObject('Outlook.Application') ;
-   end;
-   MailItem := Outlook.CreateItem(olMailItem) ;
-   with MailItem do begin
-    Recipients.Add('delphi@aboutguide.com') ;
-    Subject := 'Subject: Outlook Mail From Delphi';
-    Body := 'Welcome to my homepage: http://delphi.about.com';
-    Attachments.Add('C:\Windows\Win.ini') ;
-    Send;
-   end;
-    Outlook := Unassigned;
- end;
- }
 end;
 
 procedure TfrmMAMS.btnSendMailEnglishClick(Sender: TObject);
@@ -2927,7 +2914,7 @@ end;
 
 procedure TfrmMAMS.InsertNewSamplesInDb;
 // used for sample import using a wizzard
-//Insert SAmples into Database
+// Insert SAmples into Database
 var
   Sample_nr, user_nr, Acol, Arow, PrepCol, i: integer;
   project_nr: integer;
@@ -2941,7 +2928,7 @@ begin
 //  insert new samples
 
   lbWizFinalPage.Text := '';
-// insert User into DB
+// insert User into DB if user is new
   if not UserExists then
   begin
     with grdPreviewUser do
@@ -2958,7 +2945,7 @@ begin
       + 'email,www,invoice, correspondance)'
       + ' VALUES (';
     for Arow := 1 to 13 do
-    begin // first_name to email
+    begin // insert values for first_name to email into query
       if Length(grdPreviewUser.cells[1, Arow]) > 0 then
         s := s + #34 + grdPreviewUser.cells[1, Arow] + #34 + ','
       else
@@ -2971,14 +2958,16 @@ begin
     if SameAddressForInvoice then
       s := s + '1,1);'
     else
-      s := s + '0,1);';
+      s := s + '0,1);'; //query ends here
     dm.adoCmd.CommandText := s;
     //ClipBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
     lbWizFinalPage.Text := '<b> New user created </b><br><br>';
+    //reload user table in order to update new user
     dm.tblUser.Close;
     dm.tblUser.Open;
 
+    // retunr user_nr of the new user
     with dm.qryDb do
     begin // get user_nr from user_t
       Close;
@@ -2990,12 +2979,13 @@ begin
     end;
   end
   else
+  // user already exists
   begin
     lbWizFinalPage.Text := '<b> User already known </b><br>';
     user_nr := glbUserNr;
   end;
-  // get user_nr
-//insert Invoice Information
+
+  //insert Invoice Information
   if not SameAddressForInvoice then
    begin // insert invoice user
     if not InvoiceExists then
@@ -3046,7 +3036,9 @@ begin
   end;
 
 //Import Project Data
+  //check if this user already has a project with the same name
   CheckProjectExists;
+  // project doesn't exists yet
   if not ProjectExists then
   begin // insert project
     desired_date_str := FormatDateTime('YYYY-MM-DD', edtDesiredDate.Date);
@@ -3075,33 +3067,40 @@ begin
     //   ClibBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
     lbWizFinalPage.Text := lbWizFinalPage.Text + '<br><b> New project created </b><br>';
+    //update list of projects
     dm.tblProjects.Close;
     dm.tblProjects.Open;
   end
+  //project exists already
   else
+  begin
     lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Project already known </b><br><br><br>';
+  end;
 
+  // get project number in order to insert the samples
   // PROBLEM PROBLEM PROBLEM PROBLEM
   dm.qryDB.Close; // get project_nr des gerade eingefügten Samples  !!!!!!!!!! project name is NOT unique PROBLEM!!!!
-  dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';// add WHERE project = ' + #34 + ProjectName + #34 + "AND user_nr= '+ #34 + user_nr + #34
+  //dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';// add WHERE project = ' + #34 + ProjectName + #34 + "AND user_nr= '+ #34 + user_nr + #34
+  // new query hopefully solves the problem with non-unique projet names
+  dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + 'AND user_nr= '+ #34 + inttostr(user_nr) + #34 + ';';
   dm.qryDB.Open;
   if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
 
 // insert samples into database
   with grdPreviewSamples do
-  begin // insert samples
+  begin // insert samples one by one at each loop
     for Arow := 1 to RowCount - 1 do
     begin
       s := 'INSERT INTO sample_t (project_nr,user_label,user_label_nr,user_desc1, user_desc2,' +
         'sample_t.weight,user_comment,material,fraction, type, sampling_date) VALUES(' +
         IntToStr(project_nr);
-      for Acol := 1 to 4 do
+      for Acol := 1 to 4 do  //add user_lable, user_label_nr, user_desc1, user_desc2 to the query
         if length(cells[ACol, Arow]) > 0 then
           s := s + ',' + #34 + cells[ACol, Arow] + #34
         else
           s := s + ',' + 'NULL';
       if length(cells[5, ARow]) > 0 then
-      begin // weight
+      begin // add weight to the query
         strWeight := cells[5, Arow];
         if FormatSettings.DecimalSeparator = ',' then // deutsches Windows
           if Pos('.', strWeight) > 0 then strWeight := ReplaceStr(strWeight, '.', ',');
@@ -3112,11 +3111,15 @@ begin
         FormatSettings.DecimalSeparator := SaveDecimalSep;
       end
       else
+      // no weight given
+      begin
         s := s + ',' + 'NULL';
+      end;
       s := s + ',' + #34 + cells[7, Arow] + #34; //user_comment
-      s := s + ',' + #34 + cells[MaterialCol, Arow] + #34;
-      s := s + ',' + #34 + cells[FractionCol, Arow] + #34;
-      s := s + ',' + #34 + cells[TypeCol, Arow] + #34;
+      s := s + ',' + #34 + cells[MaterialCol, Arow] + #34;  //material
+      s := s + ',' + #34 + cells[FractionCol, Arow] + #34;  //fraction
+      s := s + ',' + #34 + cells[TypeCol, Arow] + #34;  //type
+      //add sampling date to the query
       with grdPreviewSamples do
       begin
         if Pos('co2atm', cells[TypeCol, Arow]) > 0 then
@@ -3124,16 +3127,20 @@ begin
         else
           s := s + ',' + 'NULL';
       end;
-      s := s + ');';
+      s := s + ');'; //query ends here
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
       dm.adoCmd.Execute;
       dm.qryDB.Close;
+
+      //get the sample_nr of the just inserted sample = is max(sample_nr)
       dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
       dm.qryDB.Open;
       sample_nr := 0;
-      // insert new prep for this samples
+      // insert new prep for this samples (qryDB stores the max(sample_nr)
+      //assign new sample_nr to the variable from the database
       if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
+
       with grdPreviewSamples do
       begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
@@ -3225,8 +3232,9 @@ begin
     end;
   end;
   }
+
   lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' + IntToStr(grdPreviewSamples.RowCount - 1) +
-    ' new samples added to database </b><br><br>';
+    ' new samples added to database - MAMS: ' + inttostr(sample_nr) + '</b><br><br>';
   wizFinalPage.EnableButton(bkFinish, false);
 //  actSendMailExecute(self);
 end;

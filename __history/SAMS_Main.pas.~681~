@@ -2568,7 +2568,8 @@ end;
 procedure TfrmMAMS.btnInsertExistingUserClick(Sender: TObject);
 begin
   if (MessageDlg('User details of user ' + IntToStr(glbUserNr) + ' will be used; do you want to continue ?',
-    mtConfirmation, [mbYes, mbNo], 0) = mrYes) then begin
+    mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
+    begin
     wizInputInvoiceAddress.EnableButton(bkNext, true);
     UserExists := true;
     wizInputSamples.SelectNextPage;
@@ -2926,7 +2927,7 @@ end;
 
 procedure TfrmMAMS.InsertNewSamplesInDb;
 // used for sample import using a wizzard
-//Insert SAmples into Database
+// Insert SAmples into Database
 var
   Sample_nr, user_nr, Acol, Arow, PrepCol, i: integer;
   project_nr: integer;
@@ -2940,9 +2941,11 @@ begin
 //  insert new samples
 
   lbWizFinalPage.Text := '';
-// insert User into DB
-  if not UserExists then begin
-    with grdPreviewUser do begin
+// insert User into DB if user is new
+  if not UserExists then
+  begin
+    with grdPreviewUser do
+    begin
       User.FirstName := cells[1, 1];
       User.LastName := cells[1, 2];
       User.Organisation := cells[1, 3];
@@ -2954,7 +2957,8 @@ begin
       + 'fax,'
       + 'email,www,invoice, correspondance)'
       + ' VALUES (';
-    for Arow := 1 to 13 do begin // first_name to email
+    for Arow := 1 to 13 do
+    begin // insert values for first_name to email into query
       if Length(grdPreviewUser.cells[1, Arow]) > 0 then
         s := s + #34 + grdPreviewUser.cells[1, Arow] + #34 + ','
       else
@@ -2967,15 +2971,18 @@ begin
     if SameAddressForInvoice then
       s := s + '1,1);'
     else
-      s := s + '0,1);';
+      s := s + '0,1);'; //query ends here
     dm.adoCmd.CommandText := s;
     //ClipBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
     lbWizFinalPage.Text := '<b> New user created </b><br><br>';
+    //reload user table in order to update new user
     dm.tblUser.Close;
     dm.tblUser.Open;
 
-    with dm.qryDb do begin // get user_nr from user_t
+    // retunr user_nr of the new user
+    with dm.qryDb do
+    begin // get user_nr from user_t
       Close;
       SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
         ' AND first_name=' + #34 + User.FirstName + #34;
@@ -2984,15 +2991,20 @@ begin
       if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
     end;
   end
-  else begin
+  else
+  // user already exists
+  begin
     lbWizFinalPage.Text := '<b> User already known </b><br>';
     user_nr := glbUserNr;
   end;
-  // get user_nr
-//insert Invoice Information
-  if not SameAddressForInvoice then begin // insert invoice user
-    if not InvoiceExists then begin
-      with grdInvoiceAddress do begin
+
+  //insert Invoice Information
+  if not SameAddressForInvoice then
+   begin // insert invoice user
+    if not InvoiceExists then
+    begin
+      with grdInvoiceAddress do
+      begin
         Invoice.LastName := cells[1, 2];
         InVoice.Institute := cells[1, 4];
         Invoice.Organisation := cells[1, 3];
@@ -3004,7 +3016,8 @@ begin
         + 'fax,'
         + 'email,www, invoice, correspondance)'
         + ' VALUES (';
-      for Arow := 1 to 13 do begin // first_name to email
+      for Arow := 1 to 13 do
+      begin // first_name to email
         if Length(grdInvoiceAddress.cells[1, Arow]) > 0 then
           s := s + #34 + grdInvoiceAddress.cells[1, Arow] + #34 + ','
         else
@@ -3019,7 +3032,8 @@ begin
       //   ClibBoard.SetTextBuf(PChar(s));
       dm.adoCmd.Execute;
       lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> New invoice user created </b><br><br>';
-      with dm.qryDb do begin // get user_nr from user_t
+      with dm.qryDb do
+      begin // get user_nr from user_t
         Close;
         SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + Invoice.LastName + #34 +
           ' AND organisation=' + #34 + Invoice.Organisation + #34;
@@ -3028,14 +3042,18 @@ begin
         if RecordCount > 0 then glbInvoiceNr := FieldByName('user_nr').AsInteger;
       end;
     end
-    else begin
+    else
+    begin
       lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Invoice user already known </b><br><br>';
     end;
   end;
 
 //Import Project Data
+  //check if this user already has a project with the same name
   CheckProjectExists;
-  if not ProjectExists then begin // insert project
+  // project doesn't exists yet
+  if not ProjectExists then
+  begin // insert project
     desired_date_str := FormatDateTime('YYYY-MM-DD', edtDesiredDate.Date);
     in_date_str := FormatDateTime('YYYY-MM-DD', edtInDate.Date);
     if glbInvoiceNr > 0 then
@@ -3062,21 +3080,30 @@ begin
     //   ClibBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
     lbWizFinalPage.Text := lbWizFinalPage.Text + '<br><b> New project created </b><br>';
+    //update list of projects
     dm.tblProjects.Close;
     dm.tblProjects.Open;
   end
+  //project exists already
   else
+  begin
     lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Project already known </b><br><br><br>';
+  end;
 
   // PROBLEM PROBLEM PROBLEM PROBLEM
   dm.qryDB.Close; // get project_nr des gerade eingefügten Samples  !!!!!!!!!! project name is NOT unique PROBLEM!!!!
   dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';// add WHERE project = ' + #34 + ProjectName + #34 + "AND user_nr= '+ #34 + user_nr + #34
+
+
+
   dm.qryDB.Open;
   if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
 
 // insert samples into database
-  with grdPreviewSamples do begin // insert samples
-    for Arow := 1 to RowCount - 1 do begin
+  with grdPreviewSamples do
+  begin // insert samples
+    for Arow := 1 to RowCount - 1 do
+    begin
       s := 'INSERT INTO sample_t (project_nr,user_label,user_label_nr,user_desc1, user_desc2,' +
         'sample_t.weight,user_comment,material,fraction, type, sampling_date) VALUES(' +
         IntToStr(project_nr);
@@ -3085,7 +3112,8 @@ begin
           s := s + ',' + #34 + cells[ACol, Arow] + #34
         else
           s := s + ',' + 'NULL';
-      if length(cells[5, ARow]) > 0 then begin // weight
+      if length(cells[5, ARow]) > 0 then
+      begin // weight
         strWeight := cells[5, Arow];
         if FormatSettings.DecimalSeparator = ',' then // deutsches Windows
           if Pos('.', strWeight) > 0 then strWeight := ReplaceStr(strWeight, '.', ',');
@@ -3101,7 +3129,8 @@ begin
       s := s + ',' + #34 + cells[MaterialCol, Arow] + #34;
       s := s + ',' + #34 + cells[FractionCol, Arow] + #34;
       s := s + ',' + #34 + cells[TypeCol, Arow] + #34;
-      with grdPreviewSamples do begin
+      with grdPreviewSamples do
+      begin
         if Pos('co2atm', cells[TypeCol, Arow]) > 0 then
           s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', StartOfTheYear(Date)) + #34
         else
@@ -3117,17 +3146,21 @@ begin
       sample_nr := 0;
       // insert new prep for this samples
       if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
-      with grdPreviewSamples do begin
+      with grdPreviewSamples do
+      begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
-          (Pos('graphite', cells[MaterialCol, Arow]) > 0) then begin
+          (Pos('graphite', cells[MaterialCol, Arow]) > 0) then
+          begin
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method, prep_end) VALUES(1,' +
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
         end
-        else begin // set prep_end date since sample type doesn't need any prep steps
+        else
+        begin // set prep_end date since sample type doesn't need any prep steps
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
             'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
-          for PrepCol := SamplePrep1Col to SamplePrep5Col do begin
+          for PrepCol := SamplePrep1Col to SamplePrep5Col do
+          begin
             if Length(cells[PrepCol, aRow]) > 0 then
               s := s + ',' + #34 + cells[PrepCol, aRow] + #34
             else
@@ -3139,7 +3172,8 @@ begin
         dm.adoCmd.Execute;
         s := 'INSERT INTO target_t  (target_nr, prep_nr, sample_nr, graphitized)'
           + ' VALUES (1,1,' + IntTostr(sample_nr);
-        with grdPreviewSamples do begin
+        with grdPreviewSamples do
+        begin
           if Pos('graphite', cells[MaterialCol, Arow]) > 0 then
             s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date)) + #34
           else
@@ -3151,12 +3185,19 @@ begin
         dm.adoCmd.Execute;
       end;
     end;
+    // display sample number in dialog for this sample
   end;
-  with dm.qryDB do begin
+
+
+  with dm.qryDB do
+  begin
     SQL.Text := 'SELECT last_name, first_name FROM user_t where user_nr=' + IntTostr(user_nr);
     Open;
   end;
-{
+
+
+  // send email to user in order to confirm sample receipt
+  {
   edtMailTo.Text := grdPreviewUser.Cells[1, 13];
   with MailMemo.Lines do begin
     if rgpMailLanguage.ItemIndex = 0 then begin
@@ -3176,7 +3217,7 @@ begin
       Add('We confirm to have received the samples listed below.');
       Add('This is an auto-generated mail.');
       Add(' ');
-      Add('best regards');
+      Add('Best regards');
       Add(' The Team of the Klaus-Tschira-Laboratory');
       Add(' ');
     end;
@@ -4071,7 +4112,6 @@ procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
 begin
   btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
   pnlSampleInfoPrep.Enabled := chkAllowChangesInPrep.Checked;
-  pnlSamplePrepEnd.Enabled := chkAllowChangesInPrep.Checked;
   gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
   WeightsChanged := false;
 end;
@@ -4687,14 +4727,16 @@ var
   i, k, Row: integer;
   end_found, Entry_empty: boolean;
 begin
-  if Length(FName) > 0 then begin
+  if Length(FName) > 0 then
+  begin
     grdPreviewUser.Visible := true;
     grdPreviewSamples.Visible := true;
     AssignFile(InF, FName);
     Reset(InF);
     Row := 1;
     SameAddressForInvoice := false;
-    with grdPreviewUser do begin
+    with grdPreviewUser do
+    begin
 //      Selection := NoSelection;
       ColWidths[0] := 180;
       cells[1, 0] := 'user;  * required';
@@ -4716,7 +4758,8 @@ begin
       cells[0, 15] := 'invoice';
       ColCount := 2;
     end;
-    with grdInvoiceAddress do begin
+    with grdInvoiceAddress do
+    begin
 //      Selection := NoSelection;
       ColWidths[0] := 180;
       ColWidths[1] := 250;
@@ -4757,16 +4800,19 @@ begin
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
     until Pos('first name', s1) > 0;
-    while not EOF(InF) and not end_found do begin
+    while not EOF(InF) and not end_found do
+    begin
       end_found := false;
       repeat // read user data
         while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
         s1 := ExtractWord(1, s, [';']); // read 1st col
-        if pos('accounting', s1) > 0 then begin
+        if pos('accounting', s1) > 0 then
+        begin
           end_found := true;
           s2 := trim(ExtractWord(2, s, [';'])); // get user data
           s2 := UpperCase(s2);
-          if (Pos('JA', s2) > 0) or (Pos('YES', s2) > 0) then begin
+          if (Pos('JA', s2) > 0) or (Pos('YES', s2) > 0) then
+          begin
             SameAddressForInvoice := true;
           end;
         end;
@@ -4774,7 +4820,8 @@ begin
         dm.tblUser.IndexFieldNames := 'last_name';
         s2 := trim(ExtractWord(2, s, [';'])); // get user data
         s2 := copy(s2, 1, 40);
-        if Length(s2) > 0 then begin
+        if Length(s2) > 0 then
+        begin
           if Pos('first name', s1) > 0 then grdPreviewUser.Cells[1, 1] := s2;
           if Pos('last name', s1) > 0 then grdPreviewUser.Cells[1, 2] := s2;
           if Pos('organisation', s1) > 0 then grdPreviewUser.Cells[1, 3] := s2;
@@ -4795,7 +4842,8 @@ begin
       until end_found;
     end;
     UserExists := false;
-    with wizStartPage do begin
+    with wizStartPage do
+    begin
       Title.Text := '';
       EnableButton(bkNext, false);
     end;
@@ -4804,26 +4852,31 @@ begin
     glbUserNr := 0;
     surname := grdPreviewUser.Cells[1, 2];
     UserExists := dm.tblUser.Locate('last_name', surname, [loPartialKey]);
-    if UserExists then begin
+    if UserExists then
+    begin
       btnInsertExistingUser.Enabled := true;
       glbUserNr := dm.tblUser.FieldByName('user_nr').AsInteger;
     end;
-    if not SameAddressForInvoice then begin
+    if not SameAddressForInvoice then
+    begin
       repeat // now parse user, skip header
         Readln(InF, s);
         s1 := ExtractWord(1, s, [';']);
       until Pos('institution', s1) > 0;
       end_found := false;
-      while not EOF(InF) and not end_found do begin
+      while not EOF(InF) and not end_found do
+      begin
         end_found := false;
         repeat // read user data
           while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
           s1 := ExtractWord(1, s, [';']); // read 1st col
-          if pos('www', s1) > 0 then begin
+          if pos('www', s1) > 0 then
+          begin
             end_found := true;
           end;
           s2 := trim(ExtractWord(2, s, [';'])); // get user data
-          if Length(s2) > 0 then begin
+          if Length(s2) > 0 then
+          begin
             if Pos('first name', s1) > 0 then grdInvoiceAddress.Cells[1, 1] := s2;
             if Pos('last name', s1) > 0 then grdInvoiceAddress.Cells[1, 2] := s2;
             if Pos('organisation', s1) > 0 then grdInvoiceAddress.Cells[1, 3] := s2;
@@ -4845,15 +4898,18 @@ begin
       end;
     end;
     surname := grdPreviewUser.Cells[1, 3];
-    if dm.tblInvoice.Locate('organisation', surname, [loPartialKey]) then begin
+    if dm.tblInvoice.Locate('organisation', surname, [loPartialKey]) then
+    begin
       btnInsertSelectedInvoice.Enabled := true;
       glbInvoiceNr := dm.tblInvoice.FieldByName('user_nr').AsInteger;
     end
-    else begin
+    else
+    begin
       btnInsertSelectedInvoice.Enabled := false;
       glbInvoiceNr := 0;
     end;
-    if Length(ProjectName) = 0 then begin
+    if Length(ProjectName) = 0 then
+    begin
       ShowMessage('Project name cannot be empty; you may add a project name later on in the project page of this wizard');
     end;
     Row := 1;
@@ -4861,26 +4917,31 @@ begin
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
     until Pos('required', s1) > 0;
-    while not EOF(InF) do begin // now parse samples
+    while not EOF(InF) do
+    begin // now parse samples
       ReadLn(InF, s);
       s1 := ExtractWord(1, s, [';']); // read sample name
       s1 := copy(s1, 1, 40);
-      if Length(s1) > 0 then begin
+      if Length(s1) > 0 then
+      begin
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]); // once does not do all
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
         k := WordCount(s, [';']);
-        for i := 2 to k do begin
+        for i := 2 to k do
+        begin
           s2 := ExtractWord(i, s, [';']);
           if i < 7 then
             s2 := copy(s2, 1, 40)
           else
             s2 := copy(s2, 1, 100);
-          if s2 <> ' ' then begin
+          if s2 <> ' ' then
+          begin
             grdPreviewSamples.Cells[i, Row] := s2;
           end;
         end;
-        if not Entry_Empty then begin
+        if not Entry_Empty then
+        begin
           grdPreviewSamples.Cells[0, Row] := IntToStr(Row);
           grdPreviewSamples.Cells[1, Row] := s1;
           inc(Row);

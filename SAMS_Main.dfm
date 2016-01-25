@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = wizFinalPage
+  ActiveControl = btnSendMail
   Caption = 'SAMS '
   ClientHeight = 768
   ClientWidth = 1227
@@ -237,7 +237,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 694
-    ActivePage = tbsInsertSamples
+    ActivePage = tbsSendMail
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -249,7 +249,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1219
         Height = 666
-        ActivePage = wizFinalPage
+        ActivePage = wizStartPage
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -858,7 +858,7 @@ object frmMAMS: TfrmMAMS
             Left = 17
             Top = 78
             Width = 1048
-            Height = 331
+            Height = 435
             Text = ''
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
@@ -2784,13 +2784,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Graphitization and target'
         TabOrder = 2
-        object Label103: TLabel
-          Left = 8
-          Top = 424
-          Width = 45
-          Height = 13
-          Caption = 'Comment'
-        end
         object Panel20: TPanel
           Left = 2
           Top = 15
@@ -2885,7 +2878,7 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 64
           Width = 216
-          Height = 349
+          Height = 431
           Align = alTop
           BevelKind = bkSoft
           BevelOuter = bvNone
@@ -2966,6 +2959,13 @@ object frmMAMS: TfrmMAMS
             Width = 56
             Height = 13
             Caption = 'graph_date'
+          end
+          object Label103: TLabel
+            Left = 2
+            Top = 339
+            Width = 45
+            Height = 13
+            Caption = 'Comment'
           end
           object edtCO2init: TDBEdit
             Left = 80
@@ -3132,12 +3132,23 @@ object frmMAMS: TfrmMAMS
             TabOrder = 12
             OnClick = btnFillDateTodayClick
           end
+          object memTargetComments: TDBMemo
+            Left = -2
+            Top = 358
+            Width = 216
+            Height = 51
+            TabStop = False
+            DataField = 'target_comment'
+            DataSource = dm.dsSampleInfo
+            TabOrder = 13
+            OnClick = edtWeightCombustionClick
+          end
         end
         object gbxEAData: TGroupBox
           Left = 2
-          Top = 495
+          Top = 501
           Width = 216
-          Height = 103
+          Height = 97
           Align = alBottom
           Caption = 'EA data'
           Enabled = False
@@ -3150,23 +3161,23 @@ object frmMAMS: TfrmMAMS
             Caption = 'C %'
           end
           object Label44: TLabel
-            Left = 18
-            Top = 49
+            Left = 17
+            Top = 44
             Width = 21
             Height = 13
             Caption = 'N %'
           end
           object Label49: TLabel
-            Left = 21
-            Top = 76
+            Left = 20
+            Top = 65
             Width = 18
             Height = 13
             Caption = 'C:N'
           end
           object edtSampleCPercent: TDBEdit
-            Left = 46
+            Left = 45
             Top = 22
-            Width = 50
+            Width = 52
             Height = 21
             TabStop = False
             DataField = 'conc_c'
@@ -3175,7 +3186,7 @@ object frmMAMS: TfrmMAMS
           end
           object edtSampleNPercent: TDBEdit
             Left = 45
-            Top = 46
+            Top = 42
             Width = 52
             Height = 21
             TabStop = False
@@ -3184,9 +3195,9 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
           end
           object edtSampleCNRatio: TDBEdit
-            Left = 47
-            Top = 73
-            Width = 50
+            Left = 45
+            Top = 61
+            Width = 52
             Height = 21
             TabStop = False
             DataField = 'cn_ratio'
@@ -3196,8 +3207,8 @@ object frmMAMS: TfrmMAMS
             TabOrder = 2
           end
           object btnSaveCN: TBitBtn
-            Left = 112
-            Top = 43
+            Left = 103
+            Top = 49
             Width = 92
             Height = 32
             Caption = 'Save'#10'changes'
@@ -3264,17 +3275,6 @@ object frmMAMS: TfrmMAMS
             OnClick = btnSaveCNClick
           end
         end
-        object memTargetComments: TDBMemo
-          Left = 3
-          Top = 438
-          Width = 216
-          Height = 51
-          TabStop = False
-          DataField = 'target_comment'
-          DataSource = dm.dsSampleInfo
-          TabOrder = 3
-          OnClick = edtWeightCombustionClick
-        end
       end
       object gbxAdministration: TGroupBox
         Left = 239
@@ -3286,70 +3286,70 @@ object frmMAMS: TfrmMAMS
         TabOrder = 3
         object Label28: TLabel
           Left = 36
-          Top = 261
+          Top = 281
           Width = 56
           Height = 13
           Caption = 'ReportDate'
         end
         object Label37: TLabel
           Left = 48
-          Top = 222
+          Top = 242
           Width = 44
           Height = 13
           Caption = 'Received'
         end
         object Label39: TLabel
           Left = 55
-          Top = 242
+          Top = 262
           Width = 36
           Height = 13
           Caption = 'Desired'
         end
         object Label53: TLabel
           Left = 59
-          Top = 304
+          Top = 324
           Width = 31
           Height = 13
           Caption = 'Status'
         end
         object Label24: TLabel
           Left = 20
-          Top = 162
+          Top = 182
           Width = 54
           Height = 13
           Caption = 'MA number'
         end
         object Label3: TLabel
           Left = 20
-          Top = 403
+          Top = 423
           Width = 36
           Height = 13
           Caption = 'User Nr'
         end
         object Label31: TLabel
           Left = 22
-          Top = 82
+          Top = 102
           Width = 63
           Height = 13
           Caption = 'Project name'
         end
         object Label32: TLabel
           Left = 20
-          Top = 362
+          Top = 382
           Width = 51
           Height = 13
           Caption = 'User name'
         end
         object Label93: TLabel
           Left = 20
-          Top = 443
+          Top = 463
           Width = 36
           Height = 13
           Caption = 'Report '
         end
         object Label97: TLabel
           Left = 20
-          Top = 123
+          Top = 143
           Width = 74
           Height = 13
           Caption = 'Project Number'
@@ -3451,7 +3451,7 @@ object frmMAMS: TfrmMAMS
         end
         object cmbProjectStatus: TDBLookupComboBox
           Left = 96
-          Top = 299
+          Top = 319
           Width = 97
           Height = 21
           DropDownRows = 20
@@ -3470,7 +3470,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoDesiredDate: TJvDBDateTimePicker
           Left = 98
-          Top = 238
+          Top = 258
           Width = 95
           Height = 21
           Date = 40210.397922083340000000
@@ -3484,7 +3484,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoInDate: TJvDBDateTimePicker
           Left = 98
-          Top = 219
+          Top = 239
           Width = 95
           Height = 21
           Date = 40210.397922083340000000
@@ -3498,7 +3498,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoOutDate: TJvDBDateTimePicker
           Left = 98
-          Top = 257
+          Top = 277
           Width = 95
           Height = 21
           Date = 40210.397922083340000000
@@ -3512,7 +3512,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnChangeProject: TButton
           Left = 110
-          Top = 136
+          Top = 156
           Width = 43
           Height = 23
           Hint = 'Changes the associated project of that sample.'
@@ -3525,7 +3525,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtInvoiceNr: TDBEdit
           Left = 20
-          Top = 177
+          Top = 197
           Width = 173
           Height = 21
           TabStop = False
@@ -3536,7 +3536,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtProjectNr: TDBEdit
           Left = 20
-          Top = 137
+          Top = 157
           Width = 84
           Height = 21
           TabStop = False
@@ -3547,7 +3547,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtReport: TDBEdit
           Left = 20
-          Top = 458
+          Top = 478
           Width = 173
           Height = 21
           TabStop = False
@@ -3558,7 +3558,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleProjectName: TDBEdit
           Left = 20
-          Top = 97
+          Top = 117
           Width = 173
           Height = 21
           TabStop = False
@@ -3569,7 +3569,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleUser: TDBEdit
           Left = 20
-          Top = 377
+          Top = 397
           Width = 173
           Height = 21
           TabStop = False
@@ -3580,7 +3580,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtUserNr: TDBEdit
           Left = 20
-          Top = 418
+          Top = 438
           Width = 85
           Height = 21
           TabStop = False
@@ -4149,7 +4149,7 @@ object frmMAMS: TfrmMAMS
           Left = 16
           Top = 554
           Width = 199
-          Height = 43
+          Height = 21
           TabStop = False
           DataField = 'user_comment'
           DataSource = dm.dsSampleInfo
@@ -4199,6 +4199,27 @@ object frmMAMS: TfrmMAMS
           Ctl3D = True
           ParentCtl3D = False
           TabOrder = 1
+          object Label102: TLabel
+            Left = 2
+            Top = 345
+            Width = 45
+            Height = 13
+            Caption = 'Comment'
+          end
+          object Label69: TLabel
+            Left = 16
+            Top = 307
+            Width = 90
+            Height = 13
+            Caption = 'Weight after prep.'
+          end
+          object Label70: TLabel
+            Left = 15
+            Top = 20
+            Width = 98
+            Height = 13
+            Caption = 'Weight before prep.'
+          end
           object pnlSampleInfoPrep: TPanel
             Left = 2
             Top = 15
@@ -4207,165 +4228,144 @@ object frmMAMS: TfrmMAMS
             Align = alClient
             Enabled = False
             TabOrder = 0
-            object Label70: TLabel
+          end
+          object edtWeightEnd: TDBEdit
+            Left = 113
+            Top = 303
+            Width = 60
+            Height = 21
+            DataField = 'weight_end'
+            DataSource = dm.dsWeights
+            TabOrder = 1
+            OnChange = edtWeightEndChange
+            OnExit = edtWeightEndExit
+          end
+          object edtWeightStart: TDBEdit
+            Left = 119
+            Top = 17
+            Width = 60
+            Height = 21
+            DataField = 'weight_start'
+            DataSource = dm.dsWeights
+            TabOrder = 2
+          end
+          object gbxPrepSteps: TGroupBox
+            Left = 1
+            Top = 66
+            Width = 184
+            Height = 215
+            Caption = 'Prep Steps'
+            TabOrder = 3
+            object Label54: TLabel
               Left = 15
-              Top = 20
-              Width = 98
+              Top = 47
+              Width = 13
               Height = 13
-              Caption = 'Weight before prep.'
+              Caption = '1 :'
             end
-            object Label69: TLabel
-              Left = 16
-              Top = 307
-              Width = 90
-              Height = 13
-              Caption = 'Weight after prep.'
-            end
-            object Label102: TLabel
-              Left = 2
-              Top = 345
-              Width = 45
-              Height = 13
-              Caption = 'Comment'
-            end
-            object gbxPrepSteps: TGroupBox
-              Left = 1
+            object Label55: TLabel
+              Left = 15
               Top = 66
-              Width = 184
-              Height = 215
-              Caption = 'Prep Steps'
-              TabOrder = 1
-              object Label54: TLabel
-                Left = 15
-                Top = 47
-                Width = 13
-                Height = 13
-                Caption = '1 :'
-              end
-              object Label55: TLabel
-                Left = 15
-                Top = 66
-                Width = 13
-                Height = 13
-                Caption = '2 :'
-              end
-              object Label56: TLabel
-                Left = 15
-                Top = 86
-                Width = 13
-                Height = 13
-                Caption = '3 :'
-              end
-              object Label57: TLabel
-                Left = 15
-                Top = 106
-                Width = 13
-                Height = 13
-                Caption = '4 :'
-              end
-              object Label58: TLabel
-                Left = 15
-                Top = 126
-                Width = 13
-                Height = 13
-                Caption = '5 :'
-              end
-              object edtSampPrep1: TEdit
-                Left = 34
-                Top = 43
-                Width = 144
-                Height = 21
-                TabStop = False
-                TabOrder = 0
-                Text = 'edtSampPrep1'
-                OnDragDrop = edtSampPrep1DragDrop
-                OnDragOver = edtSampPrep1DragOver
-              end
-              object edtSampPrep2: TEdit
-                Left = 34
-                Top = 63
-                Width = 144
-                Height = 21
-                TabStop = False
-                TabOrder = 1
-                Text = 'edtSampPrep2'
-                OnDragDrop = edtSampPrep2DragDrop
-                OnDragOver = edtSampPrep1DragOver
-              end
-              object edtSampPrep3: TEdit
-                Left = 34
-                Top = 83
-                Width = 144
-                Height = 21
-                TabStop = False
-                TabOrder = 2
-                Text = 'edtSampPrep3'
-                OnDragDrop = edtSampPrep3DragDrop
-                OnDragOver = edtSampPrep1DragOver
-              end
-              object edtSampPrep4: TEdit
-                Left = 34
-                Top = 103
-                Width = 144
-                Height = 21
-                TabStop = False
-                TabOrder = 3
-                Text = 'edtSampPrep4'
-                OnDragDrop = edtSampPrep4DragDrop
-                OnDragOver = edtSampPrep1DragOver
-              end
-              object edtSampPrep5: TEdit
-                Left = 34
-                Top = 123
-                Width = 144
-                Height = 21
-                TabStop = False
-                TabOrder = 4
-                Text = 'edtSampPrep5'
-                OnDragDrop = edtSampPrep5DragDrop
-                OnDragOver = edtSampPrep1DragOver
-              end
+              Width = 13
+              Height = 13
+              Caption = '2 :'
             end
-            object lbxSteps: TListBox
-              Left = 185
-              Top = 8
-              Width = 118
-              Height = 329
+            object Label56: TLabel
+              Left = 15
+              Top = 86
+              Width = 13
+              Height = 13
+              Caption = '3 :'
+            end
+            object Label57: TLabel
+              Left = 15
+              Top = 106
+              Width = 13
+              Height = 13
+              Caption = '4 :'
+            end
+            object Label58: TLabel
+              Left = 15
+              Top = 126
+              Width = 13
+              Height = 13
+              Caption = '5 :'
+            end
+            object edtSampPrep1: TEdit
+              Left = 34
+              Top = 43
+              Width = 144
+              Height = 21
               TabStop = False
-              ItemHeight = 13
               TabOrder = 0
-              OnMouseDown = lbxStepsMouseDown
+              Text = 'edtSampPrep1'
+              OnDragDrop = edtSampPrep1DragDrop
+              OnDragOver = edtSampPrep1DragOver
             end
-            object edtWeightStart: TDBEdit
-              Left = 119
-              Top = 17
-              Width = 60
+            object edtSampPrep2: TEdit
+              Left = 34
+              Top = 63
+              Width = 144
               Height = 21
-              DataField = 'weight_start'
-              DataSource = dm.dsWeights
-              TabOrder = 2
-            end
-            object edtWeightEnd: TDBEdit
-              Left = 113
-              Top = 303
-              Width = 60
-              Height = 21
-              DataField = 'weight_end'
-              DataSource = dm.dsWeights
-              TabOrder = 3
-              OnChange = edtWeightEndChange
-              OnExit = edtWeightEndExit
-            end
-            object memPrepComments: TDBMemo
-              Left = 2
-              Top = 364
-              Width = 300
-              Height = 53
               TabStop = False
-              DataField = 'prep_comment'
-              DataSource = dm.dsSampleInfo
-              TabOrder = 4
+              TabOrder = 1
+              Text = 'edtSampPrep2'
+              OnDragDrop = edtSampPrep2DragDrop
+              OnDragOver = edtSampPrep1DragOver
             end
+            object edtSampPrep3: TEdit
+              Left = 34
+              Top = 83
+              Width = 144
+              Height = 21
+              TabStop = False
+              TabOrder = 2
+              Text = 'edtSampPrep3'
+              OnDragDrop = edtSampPrep3DragDrop
+              OnDragOver = edtSampPrep1DragOver
+            end
+            object edtSampPrep4: TEdit
+              Left = 34
+              Top = 103
+              Width = 144
+              Height = 21
+              TabStop = False
+              TabOrder = 3
+              Text = 'edtSampPrep4'
+              OnDragDrop = edtSampPrep4DragDrop
+              OnDragOver = edtSampPrep1DragOver
+            end
+            object edtSampPrep5: TEdit
+              Left = 34
+              Top = 123
+              Width = 144
+              Height = 21
+              TabStop = False
+              TabOrder = 4
+              Text = 'edtSampPrep5'
+              OnDragDrop = edtSampPrep5DragDrop
+              OnDragOver = edtSampPrep1DragOver
+            end
+          end
+          object lbxSteps: TListBox
+            Left = 185
+            Top = 8
+            Width = 118
+            Height = 329
+            TabStop = False
+            ItemHeight = 13
+            TabOrder = 4
+            OnMouseDown = lbxStepsMouseDown
+          end
+          object memPrepComments: TDBMemo
+            Left = 2
+            Top = 364
+            Width = 300
+            Height = 53
+            TabStop = False
+            DataField = 'prep_comment'
+            DataSource = dm.dsSampleInfo
+            TabOrder = 5
           end
         end
         object Panel19: TPanel
@@ -5971,7 +5971,7 @@ object frmMAMS: TfrmMAMS
             EditLabel.Caption = 'SMTP:      '
             LabelPosition = lpLeft
             TabOrder = 4
-            Text = 'freitag.iup.uni-heidelberg.de'
+            Text = 'mbox1.belwue.de'
           end
         end
         object MailMemo: TMemo
@@ -6348,7 +6348,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300AC0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300C80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7121,7 +7121,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000AC0218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000C80218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11886,7 +11886,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00AC0220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00C80220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -21938,10 +21938,16 @@ object frmMAMS: TfrmMAMS
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
-    Password = 'Lagusello'
-    SASLMechanisms = <>
-    Left = 1064
-    Top = 80
+    IOHandler = SSLHandler
+    AuthType = satSASL
+    Host = 'mbox1.belwue.de'
+    Port = 587
+    SASLMechanisms = <
+      item
+        SASL = IdSASLLogin1
+      end>
+    Left = 1008
+    Top = 216
   end
   object mesgMessage: TIdMessage
     AttachmentEncoding = 'UUE'
@@ -21956,5 +21962,26 @@ object frmMAMS: TfrmMAMS
     ConvertPreamble = True
     Left = 1064
     Top = 48
+  end
+  object SSLHandler: TIdSSLIOHandlerSocketOpenSSL
+    Destination = 'mbox1.belwue.de:587'
+    Host = 'mbox1.belwue.de'
+    MaxLineAction = maException
+    Port = 587
+    DefaultPort = 0
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 1060
+    Top = 218
+  end
+  object IdUserPassProvider1: TIdUserPassProvider
+    Left = 1060
+    Top = 330
+  end
+  object IdSASLLogin1: TIdSASLLogin
+    UserPassProvider = IdUserPassProvider1
+    Left = 1060
+    Top = 274
   end
 end
