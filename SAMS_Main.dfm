@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = btnSendMail
+  ActiveControl = DBGrid1
   Caption = 'SAMS '
   ClientHeight = 768
   ClientWidth = 1227
@@ -237,7 +237,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 694
-    ActivePage = tbsSendMail
+    ActivePage = tbsOptions
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -2707,9 +2707,9 @@ object frmMAMS: TfrmMAMS
             OnKeyUp = edtSampleNrKeyUp
           end
           object btnDoSampleQuery: TBitBtn
-            Left = 239
+            Left = 255
             Top = 7
-            Width = 196
+            Width = 180
             Height = 34
             Caption = 'Query'
             Glyph.Data = {
@@ -2773,6 +2773,14 @@ object frmMAMS: TfrmMAMS
             TabStop = False
             WordWrap = True
             OnClick = btnDoSampleQueryClick
+          end
+          object btnSampleNrUpDown: TUpDown
+            Left = 232
+            Top = 11
+            Width = 17
+            Height = 25
+            TabOrder = 2
+            OnClick = btnSampleNrUpDownClick
           end
         end
       end
@@ -4871,32 +4879,18 @@ object frmMAMS: TfrmMAMS
     object tbsOptions: TTabSheet
       Caption = 'Options'
       ImageIndex = 5
-      object Label79: TLabel
-        Left = 442
-        Top = 37
-        Width = 123
-        Height = 13
-        Caption = 'Path to Images on Server'
-      end
-      object Label98: TLabel
-        Left = 442
-        Top = 104
-        Width = 126
-        Height = 13
-        Caption = 'Path to Reports on Server'
-      end
       object GroupBox28: TGroupBox
-        Left = 808
+        Left = 960
         Top = 0
-        Width = 411
+        Width = 259
         Height = 666
         Align = alRight
         Caption = 'Test Only!!!'
         TabOrder = 0
         object DBGrid1: TDBGrid
-          Left = 25
+          Left = 40
           Top = 265
-          Width = 347
+          Width = 204
           Height = 328
           DataSource = dsExport
           TabOrder = 0
@@ -4907,8 +4901,8 @@ object frmMAMS: TfrmMAMS
           TitleFont.Style = []
         end
         object btnTransferC14Age: TButton
-          Left = 29
-          Top = 32
+          Left = 37
+          Top = 36
           Width = 110
           Height = 26
           Caption = 'TransferC14Age'
@@ -4916,8 +4910,8 @@ object frmMAMS: TfrmMAMS
           OnClick = btnTransferC14AgeClick
         end
         object Button5: TButton
-          Left = 29
-          Top = 64
+          Left = 37
+          Top = 68
           Width = 110
           Height = 25
           Caption = 'Test userprofile'
@@ -4925,8 +4919,8 @@ object frmMAMS: TfrmMAMS
           OnClick = Button5Click
         end
         object Button3: TButton
-          Left = 29
-          Top = 95
+          Left = 37
+          Top = 99
           Width = 110
           Height = 25
           Caption = 'Copy MA nr'
@@ -4934,8 +4928,8 @@ object frmMAMS: TfrmMAMS
           OnClick = Button3Click
         end
         object Button6: TButton
-          Left = 29
-          Top = 126
+          Left = 37
+          Top = 130
           Width = 110
           Height = 25
           Caption = '+100 to projectnr'
@@ -4996,27 +4990,90 @@ object frmMAMS: TfrmMAMS
           TabOrder = 1
         end
       end
-      object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
-        Left = 442
-        Top = 56
-        Width = 303
-        Height = 21
-        DialogKind = dkWin32
-        DialogOptions = [sdPrompt]
-        DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+      object OptionsTree: TTreeView
+        Left = 426
+        Top = 160
+        Width = 121
+        Height = 449
+        Indent = 19
         TabOrder = 2
-        Text = 'JvDirEdt_Server_Image_Path'
+        OnClick = OptionsTreeClick
+        Items.NodeData = {
+          03040000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+          00000000000107470065006E006500720061006C002E00000000000000000000
+          00FFFFFFFFFFFFFFFF0000000000000000000000000108440061007400610062
+          00610073006500280000000000000000000000FFFFFFFFFFFFFFFF0000000000
+          00000000000000010550006100740068007300280000000000000000000000FF
+          FFFFFFFFFFFFFF000000000000000000000000010545006D00610069006C00}
       end
-      object JvDirEdt_Server_Report_Path: TJvDirectoryEdit
-        Left = 442
-        Top = 123
-        Width = 303
-        Height = 21
-        DialogKind = dkWin32
-        DialogOptions = [sdPrompt]
-        DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+      object TabOptionsPages: TPageControl
+        Left = 553
+        Top = 160
+        Width = 370
+        Height = 449
+        ActivePage = TabSheet3
         TabOrder = 3
-        Text = 'JvDirEdt_Server_Report_Path'
+        object TabSheet1: TTabSheet
+          Caption = 'TabGeneral'
+        end
+        object TabSheet2: TTabSheet
+          Caption = 'TabDatabase'
+          ImageIndex = 1
+        end
+        object TabSheet3: TTabSheet
+          Caption = 'TabPaths'
+          ImageIndex = 2
+          ExplicitLeft = 12
+          ExplicitTop = 0
+          object Label98: TLabel
+            Left = 20
+            Top = 105
+            Width = 126
+            Height = 13
+            Caption = 'Path to Reports on Server'
+          end
+          object Label79: TLabel
+            Left = 23
+            Top = 53
+            Width = 123
+            Height = 13
+            Caption = 'Path to Images on Server'
+          end
+          object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
+            Left = 19
+            Top = 72
+            Width = 303
+            Height = 21
+            DialogKind = dkWin32
+            DialogOptions = [sdPrompt]
+            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+            TabOrder = 0
+            Text = 'JvDirEdt_Server_Image_Path'
+          end
+          object JvDirEdt_Server_Report_Path: TJvDirectoryEdit
+            Left = 19
+            Top = 124
+            Width = 303
+            Height = 21
+            DialogKind = dkWin32
+            DialogOptions = [sdPrompt]
+            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+            TabOrder = 1
+            Text = 'JvDirEdt_Server_Report_Path'
+          end
+        end
+        object TabSheet4: TTabSheet
+          Caption = 'TabEmail'
+          ImageIndex = 3
+        end
+      end
+      object btnSaveOptions: TButton
+        Left = 854
+        Top = 615
+        Width = 75
+        Height = 25
+        Caption = 'Save'
+        TabOrder = 4
       end
     end
     object tbsTypesMat: TTabSheet
@@ -6348,7 +6405,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300C80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300F00210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7081,8 +7138,8 @@ object frmMAMS: TfrmMAMS
     Silent = False
     WordFormat = wdTableFormatGrid4
     Visible = True
-    Left = 664
-    Top = 168
+    Left = 648
+    Top = 80
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -7121,7 +7178,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000C80218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000F00218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11886,7 +11943,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00C80220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00F00220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -21939,14 +21996,13 @@ object frmMAMS: TfrmMAMS
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
     IOHandler = SSLHandler
-    AuthType = satSASL
     Host = 'mbox1.belwue.de'
     Port = 587
     SASLMechanisms = <
       item
         SASL = IdSASLLogin1
       end>
-    Left = 1008
+    Left = 992
     Top = 216
   end
   object mesgMessage: TIdMessage

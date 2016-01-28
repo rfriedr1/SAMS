@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = btnSendMail
+  ActiveControl = wizFinalPage
   Caption = 'SAMS '
   ClientHeight = 768
   ClientWidth = 1227
@@ -237,7 +237,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 694
-    ActivePage = tbsSendMail
+    ActivePage = tbsInsertSamples
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -2707,9 +2707,9 @@ object frmMAMS: TfrmMAMS
             OnKeyUp = edtSampleNrKeyUp
           end
           object btnDoSampleQuery: TBitBtn
-            Left = 239
+            Left = 255
             Top = 7
-            Width = 196
+            Width = 180
             Height = 34
             Caption = 'Query'
             Glyph.Data = {
@@ -2773,6 +2773,14 @@ object frmMAMS: TfrmMAMS
             TabStop = False
             WordWrap = True
             OnClick = btnDoSampleQueryClick
+          end
+          object btnSampleNrUpDown: TUpDown
+            Left = 232
+            Top = 11
+            Width = 17
+            Height = 25
+            TabOrder = 2
+            OnClick = btnSampleNrUpDownClick
           end
         end
       end
@@ -4886,17 +4894,17 @@ object frmMAMS: TfrmMAMS
         Caption = 'Path to Reports on Server'
       end
       object GroupBox28: TGroupBox
-        Left = 808
+        Left = 960
         Top = 0
-        Width = 411
+        Width = 259
         Height = 666
         Align = alRight
         Caption = 'Test Only!!!'
         TabOrder = 0
         object DBGrid1: TDBGrid
-          Left = 25
+          Left = 40
           Top = 265
-          Width = 347
+          Width = 204
           Height = 328
           DataSource = dsExport
           TabOrder = 0
@@ -4907,8 +4915,8 @@ object frmMAMS: TfrmMAMS
           TitleFont.Style = []
         end
         object btnTransferC14Age: TButton
-          Left = 29
-          Top = 32
+          Left = 37
+          Top = 36
           Width = 110
           Height = 26
           Caption = 'TransferC14Age'
@@ -4916,8 +4924,8 @@ object frmMAMS: TfrmMAMS
           OnClick = btnTransferC14AgeClick
         end
         object Button5: TButton
-          Left = 29
-          Top = 64
+          Left = 37
+          Top = 68
           Width = 110
           Height = 25
           Caption = 'Test userprofile'
@@ -4925,8 +4933,8 @@ object frmMAMS: TfrmMAMS
           OnClick = Button5Click
         end
         object Button3: TButton
-          Left = 29
-          Top = 95
+          Left = 37
+          Top = 99
           Width = 110
           Height = 25
           Caption = 'Copy MA nr'
@@ -4934,8 +4942,8 @@ object frmMAMS: TfrmMAMS
           OnClick = Button3Click
         end
         object Button6: TButton
-          Left = 29
-          Top = 126
+          Left = 37
+          Top = 130
           Width = 110
           Height = 25
           Caption = '+100 to projectnr'
@@ -5017,6 +5025,29 @@ object frmMAMS: TfrmMAMS
         DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
         TabOrder = 3
         Text = 'JvDirEdt_Server_Report_Path'
+      end
+      object OptionsTree: TTreeView
+        Left = 426
+        Top = 160
+        Width = 121
+        Height = 449
+        Indent = 19
+        TabOrder = 4
+      end
+      object OptionsPages: TPageControl
+        Left = 559
+        Top = 160
+        Width = 370
+        Height = 449
+        TabOrder = 5
+      end
+      object btnSaveOptions: TButton
+        Left = 854
+        Top = 615
+        Width = 75
+        Height = 25
+        Caption = 'Save'
+        TabOrder = 6
       end
     end
     object tbsTypesMat: TTabSheet
@@ -5971,7 +6002,7 @@ object frmMAMS: TfrmMAMS
             EditLabel.Caption = 'SMTP:      '
             LabelPosition = lpLeft
             TabOrder = 4
-            Text = 'freitag.iup.uni-heidelberg.de'
+            Text = 'mbox1.belwue.de'
           end
         end
         object MailMemo: TMemo
@@ -6348,7 +6379,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300B80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300E40210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7081,8 +7112,8 @@ object frmMAMS: TfrmMAMS
     Silent = False
     WordFormat = wdTableFormatGrid4
     Visible = True
-    Left = 664
-    Top = 168
+    Left = 648
+    Top = 80
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -7121,7 +7152,7 @@ object frmMAMS: TfrmMAMS
     Left = 1104
     Top = 160
     Bitmap = {
-      494C01013D004000B80218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000E40218001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11886,7 +11917,7 @@ object frmMAMS: TfrmMAMS
     Left = 1144
     Top = 160
     Bitmap = {
-      494C01014B004F00B80220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00E40220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -21938,12 +21969,15 @@ object frmMAMS: TfrmMAMS
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
+    IOHandler = SSLHandler
     Host = 'mbox1.belwue.de'
-    Password = 'P1card.1'
     Port = 587
-    SASLMechanisms = <>
-    Left = 1064
-    Top = 80
+    SASLMechanisms = <
+      item
+        SASL = IdSASLLogin1
+      end>
+    Left = 1008
+    Top = 216
   end
   object mesgMessage: TIdMessage
     AttachmentEncoding = 'UUE'
@@ -21958,5 +21992,26 @@ object frmMAMS: TfrmMAMS
     ConvertPreamble = True
     Left = 1064
     Top = 48
+  end
+  object SSLHandler: TIdSSLIOHandlerSocketOpenSSL
+    Destination = 'mbox1.belwue.de:587'
+    Host = 'mbox1.belwue.de'
+    MaxLineAction = maException
+    Port = 587
+    DefaultPort = 0
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 1060
+    Top = 218
+  end
+  object IdUserPassProvider1: TIdUserPassProvider
+    Left = 1060
+    Top = 330
+  end
+  object IdSASLLogin1: TIdSASLLogin
+    UserPassProvider = IdUserPassProvider1
+    Left = 1060
+    Top = 274
   end
 end

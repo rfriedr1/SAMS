@@ -35,7 +35,8 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   WordDriver, (*DBClient, *) Provider, MidasLib, (*Spin,*)
   JvInspector, frxDesgn, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
-  System.ImageList;
+  System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
+  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin;
 
 const
   myVersion = '1.5.7 Jan-21-2016';
@@ -660,6 +661,17 @@ type
     btnChangeProject: TButton;
     Label102: TLabel;
     Label103: TLabel;
+    SSLHandler: TIdSSLIOHandlerSocketOpenSSL;
+    IdUserPassProvider1: TIdUserPassProvider;
+    IdSASLLogin1: TIdSASLLogin;
+    OptionsTree: TTreeView;
+    TabOptionsPages: TPageControl;
+    btnSaveOptions: TButton;
+    btnSampleNrUpDown: TUpDown;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -914,9 +926,12 @@ type
     procedure edtReactTimeChange(Sender: TObject);
     procedure edtGraphBatchChange(Sender: TObject);
     procedure chkTargetDiscardedClick(Sender: TObject);
-    procedure DBChartClickSeries(Sender: TCustomChart; Series: TChartSeries;
-      ValueIndex: Integer; Button: TMouseButton; Shift: TShiftState; X,
-      Y: Integer);
+    procedure DBChartClickSeries(Sender: TCustomChart;
+  Series: TChartSeries; ValueIndex: Integer; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+    procedure OptionsTreeClick(Sender: TObject);
+    procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
+    procedure OptionsTreeClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -977,7 +992,8 @@ type
     procedure SetupLabPlanPage;
     procedure SetupMaterial;
     procedure SetupNewSamplesGrid;
-    procedure SetupOptions;
+    procedure ReportsSetupOptions;
+    procedure DisplayProgramOptions;
     procedure SetSampleGridForMaterial;
     procedure SetSampleGridForPrep;
     procedure SetSampleGridForType;
@@ -1280,7 +1296,6 @@ const olMailItem = 0;
 
 procedure TfrmMAMS.btnSendMailClick(Sender: TObject);
 var
-  Outlook: OLEVariant;
   MailItem: OLEVariant;
 begin
   with mesgMessage do begin
@@ -1292,6 +1307,7 @@ begin
   end;
   with smtpSendMail do begin
     Host := trim(edtSMTPServer.Text);
+    Username :=trim(edtMailFrom.Text);
     Connect;
     try
       Send(mesgMessage);
@@ -1300,23 +1316,6 @@ begin
     end;
     Disconnect;
   end;
-
-{   try
-    Outlook:=GetActiveOleObject('Outlook.Application') ;
-   except
-    Outlook:=CreateOleObject('Outlook.Application') ;
-   end;
-   MailItem := Outlook.CreateItem(olMailItem) ;
-   with MailItem do begin
-    Recipients.Add('delphi@aboutguide.com') ;
-    Subject := 'Subject: Outlook Mail From Delphi';
-    Body := 'Welcome to my homepage: http://delphi.about.com';
-    Attachments.Add('C:\Windows\Win.ini') ;
-    Send;
-   end;
-    Outlook := Unassigned;
- end;
- }
 end;
 
 procedure TfrmMAMS.btnSendMailEnglishClick(Sender: TObject);
@@ -1732,6 +1731,22 @@ begin
   btnTransferTargetData.enabled := false;
 end;
 
+procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
+begin
+  case Button of
+    btNext:
+    begin
+      edtSampleNr.Value:= round(edtSampleNr.Value)+1;
+      DoSampleInfo;
+    end;
+    btPrev:
+    Begin
+      edtSampleNr.Value:= round(edtSampleNr.Value)-1;
+      DoSampleInfo;
+    End;
+  end;
+end;
+
 procedure TfrmMAMS.btnSaveBatchClick(Sender: TObject);
 var
   i: integer;
@@ -2070,7 +2085,8 @@ end;
 procedure TfrmMAMS.actOptionsExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsOptions;
-  SetupOptions;
+  ReportsSetupOptions;
+  DisplayProgramOptions;
 end;
 
 procedure TfrmMAMS.actSampleInfoExecute(Sender: TObject);
@@ -2934,6 +2950,7 @@ var
   s, desired_date_str, in_date_str, strWeight: string;
   w: double;
   SaveDecimalSep: char;
+  buttonDlg: integer;
 begin
 //  insert user, if new
 //  get user_nr
@@ -2997,6 +3014,7 @@ begin
     lbWizFinalPage.Text := '<b> User already known </b><br>';
     user_nr := glbUserNr;
   end;
+  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> User Nr: ' + inttostr(user_nr) + '</b><br><br><br>';
 
   //insert Invoice Information
   if not SameAddressForInvoice then
@@ -3097,7 +3115,11 @@ begin
   // new query hopefully solves the problem with non-unique projet names
   dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + 'AND user_nr= '+ #34 + inttostr(user_nr) + #34 + ';';
   dm.qryDB.Open;
-  if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
+  if dm.qryDB.RecordCount > 0 then
+  begin
+  project_nr := dm.qryDb.Fields[0].AsInteger;
+  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Project Nr: ' + inttostr(project_nr) + '</b><br><br><br>';
+  end;
 
 // insert samples into database
   with grdPreviewSamples do
@@ -3192,8 +3214,11 @@ begin
         //   ClibBoard.SetTextBuf(PChar(s));
         dm.adoCmd.Execute;
       end;
+      // display sample number in dialog for this sample
+      lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' +
+      ' new sample added to database - MAMS: ' + inttostr(sample_nr) + '</b><br><br>';
     end;
-    // display sample number in dialog for this sample
+  wizFinalPage.EnableButton(bkFinish, false);
   end;
 
 
@@ -3203,40 +3228,38 @@ begin
     Open;
   end;
 
+  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' + IntToStr(grdPreviewSamples.RowCount - 1) +
+    ' new samples added to database' + '</b><br><br>';
+  wizFinalPage.EnableButton(bkFinish, false);
 
-  // send email to user in order to confirm sample receipt
-  {
-  edtMailTo.Text := grdPreviewUser.Cells[1, 13];
-  with MailMemo.Lines do begin
-    if rgpMailLanguage.ItemIndex = 0 then begin
-      Add('Sehr geehrter Herr/Frau ' + dm.dsQryDb.DataSet.FieldByName('last_name').AsString);
-      Add(' ');
-      Add('Wir bestätigen den Eingang der nachfolgend aufgeführten Proben.');
-      Add('Dies ist eine automatisch generierte Mail.');
-      Add(' ');
-      Add('mit freundlichen Grüssen');
-      Add(' Das Team des Klaus-Tschira-Labors');
-      Add(' ');
-    end
-    else begin
-      Add('Dear ' + dm.dsQryDb.DataSet.FieldByName('first_name').AsString + ' ' +
-        dm.dsQryDb.DataSet.FieldByName('last_name').AsString);
+
+//ask whether to send a confirmation email
+//if so the email page will be opened
+  buttonDlg := messagedlg('Send confirmation email?',mtError, mbOKCancel, 0);
+  if buttonDlg = mrOK then
+  begin
+    edtMailSubject.Text := '´C14 sample receipt';
+    edtMailTo.Text := grdPreviewUser.Cells[1, 13];
+  with MailMemo.Lines do
+  begin
+      Add('C14 Sample receipt:');
       Add(' ');
       Add('We confirm to have received the samples listed below.');
-      Add('This is an auto-generated mail.');
+      Add('This is an auto-generated email.');
       Add(' ');
       Add('Best regards');
-      Add(' The Team of the Klaus-Tschira-Laboratory');
-      Add(' ');
-    end;
+      Add('The Team of the Klaus-Tschira C14-Lab');
   end;
-  with dm.qryDB do begin
+  with dm.qryDB do
+  begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2 from sample_t ' +
-      ' WHERE project_nr=' + IntToStr(Project_nr);
+      ' WHERE project_nr=' + IntToStr(project_nr);
     Open;
-    if RecordCount > 0 then begin
+    if RecordCount > 0 then
+    begin
       First;
-      while not EOF do begin
+      while not EOF do
+      begin
         s := 'MAMS ' + Fields.Fields[0].AsString; // sample_nr
         for i := 1 to 4 do s := s + '  ' + Fields.Fields[i].AsString;
         MailMemo.Lines.Add(s);
@@ -3244,12 +3267,10 @@ begin
       end;
     end;
   end;
-  }
+  pgtMain.ActivePage:=tbsSendMail;
+  end;
+  //  actSendMailExecute(self);
 
-  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' + IntToStr(grdPreviewSamples.RowCount - 1) +
-    ' new samples added to database - MAMS: ' + inttostr(sample_nr) + '</b><br><br>';
-  wizFinalPage.EnableButton(bkFinish, false);
-//  actSendMailExecute(self);
 end;
 
 procedure TfrmMAMS.FillCds;
@@ -4724,9 +4745,15 @@ begin
   SetCurrentToAll := false;
   for i := 0 to lbxTypes.Count - 1 do
     if lbxTypes.Selected[i] then CurrentType := lbxTypes.Items[i];
-  DragSource := drgType;
+  Dragsource := drgType;
   if ssCtrl in Shift then SetCurrentToAll := true;
   lbxTypes.BeginDrag(false, 5);
+end;
+
+procedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
+//open the correct Tab in TabOptionsPages
+begin
+   //CASE (Sender AS TPageControl).
 end;
 
 procedure TfrmMAMS.ParseNewSampleFile(const FName: string);
@@ -5784,7 +5811,28 @@ begin
   end;
 end;
 
-procedure TfrmMAMS.SetupOptions;
+procedure TfrmMAMS.DisplayProgramOptions;
+// loads the Program Setup options into
+// the tree display inside of the options tab
+Var node1,node2,node3,node4: TTreeNode;
+begin
+  //a few sttings
+
+
+  //load options from file
+
+  //build tree with option  (so far this will be done in design mode)
+//  node1:=OptionsTree.Items.Add(Nil,'General');
+//  node2:=OptionsTree.Items.Add(Nil,'Database');
+//  node3:=OptionsTree.Items.Add(Nil,'Paths');
+//  node4:=OptionsTree.Items.Add(Nil,'email');
+
+end;
+
+
+procedure TfrmMAMS.ReportsSetupOptions;
+//loads the setup option of the reports
+// and displays them in the optiosn tab
 var
   i: integer;
 begin
@@ -5826,13 +5874,14 @@ begin
   wizFinalPage.EnableButton(bkFinish, true);
 end;
 
-procedure TfrmMAMS.wizFinalPageFinishButtonClick(Sender: TObject;
+procedure TfrmMAMS.wizFinalPageFinishButtonClick(Sender: TObject;  var Stop: Boolean);
 // sample import is done, insert sample into database
-  var Stop: Boolean);
 begin
   wizFinalPage.EnableButton(bkFinish, false);
   lbWizFinalPage.Text := 'Inserting data into database, please wait';
+  //insert the samples into the database
   InsertNewSamplesInDb;
+  //clear the list of samples
   ClearInsertSampleGrids;
   pgtMain.ActivePage := tbsInsertSamples;
 end;
