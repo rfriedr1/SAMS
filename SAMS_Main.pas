@@ -276,7 +276,6 @@ type
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
-    pnlSampleInfoPrep: TPanel;
     gbxPrepSteps: TGroupBox;
     lbxDefinePrepSteps: TListBox;
     edtSampleInfoInDate: TJvDBDateTimePicker;
@@ -672,6 +671,10 @@ type
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
+    chkSampleNoLeftover: TDBCheckBox;
+    chkPrepNoLeftover: TDBCheckBox;
+    edtStorageLoc: TDBEdit;
+    Label104: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1810,7 +1813,8 @@ begin
     'desired_date= ' + #34 + desired_date_str + #34 + ',' +
     'in_date=' + #34 + in_date_str + #34 + ',' +
     'out_date=' + #34 + out_date_str + #34 + ',' +
-    'status=' + #34 + cmbProjectStatus.Text + #34 +
+    'status=' + #34 + cmbProjectStatus.Text + #34 + ',' +
+    'sample_storage_loc=' + #34 + edtStorageLoc.Text + #34 +
     ' WHERE project_nr=' + IntToStr(project_nr) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
@@ -1907,16 +1911,19 @@ var
   s1, s2, s3, s4, s5: string;
   dt: TDate;
   CN_Ratio: double;
+  leftover: integer;
 begin
   sample_nr := round(edtSampleNr.Value);
   //dt := edtPrepEnd.DataSource.DataSet.FieldByName('prep_end').AsDateTime;  //this was done before, don't know why
   dt := edtPrepEnd.Date;
           //ShowMessage('first' +  dt );
-  if dt > 1 then begin
+  if dt > 1 then
+  begin
     prep_end_str := #34 + FormatDateTime('YYYY-MM-DD', dt) + #34;
           //ShowMessage('true' + prep_end_str);
   end
-  else begin
+  else
+  begin
     prep_end_str := 'NULL';
           //ShowMessage('else' + prep_end_str);
   end;
@@ -1924,6 +1931,10 @@ begin
     PrepStop := '1'
   else
     PrepStop := '0';
+  if chkPrepNoLeftover.Checked then
+    leftover := 1
+  else
+    leftover := 0;
   if Length(edtSampPrep1.Text) = 0 then
     s1 := 'NULL'
   else
@@ -1951,6 +1962,7 @@ begin
     ' step4_method=' + s4 + ',' +
     ' step5_method=' + s5 + ',' +
     ' prep_end=' + prep_end_str + ',' +
+    ' p_no_leftover=' + inttostr(leftover) + ',' +
     ' stop= ' + PrepStop +
     ' WHERE sample_nr=' + IntToStr(sample_nr) +
     ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
@@ -2020,7 +2032,19 @@ begin
   s := 'UPDATE sample_t SET ' +
     'not_tobedated= ' + IntToStr(b) +
     ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
+
+  //update no leftover flag
+  if chkSampleNoLeftover.Checked then
+    b := 1
+  else
+    b := 0;
+  s := 'UPDATE sample_t SET ' +
+    's_no_leftover= ' + IntToStr(b) +
+    ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
+
+
+
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
 
@@ -2808,12 +2832,14 @@ procedure TfrmMAMS.edtSampleNrKeyUp(Sender: TObject; var Key: Word;
 begin
   if Key = VK_RETURN then DoSampleInfo;
 
-  if Key = VK_UP then Begin
+  if Key = VK_UP then
+  Begin
     edtSampleNr.Value:= round(edtSampleNr.Value)+1;
     DoSampleInfo;
   End;
 
-  if Key = VK_DOWN then begin
+  if Key = VK_DOWN then
+  begin
     edtSampleNr.Value:= round(edtSampleNr.Value)-1;
     DoSampleInfo;
   end;
@@ -4140,7 +4166,6 @@ end;
 procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
 begin
   btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
-  pnlSampleInfoPrep.Enabled := chkAllowChangesInPrep.Checked;
   gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
   WeightsChanged := false;
 end;
@@ -4522,28 +4547,33 @@ begin
   //get and display number of sample preps
   NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
   edtSamplePrepNr.MaxValue := NPreps;
-  if NPreps > 1 then begin     // display number of preps
+  if NPreps > 1 then
+  begin     // display number of preps
     lbPrepNr.Caption := '1...' + IntToStr(NPreps);
     edtSamplePrepNr.Enabled := true;
     edtSamplePrepNr.MaxValue := NPreps;
   end
-  else begin
+  else
+  begin
     lbPrepNr.Caption := '';
   end;
   // diplay number of available targets
   NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
   edtSampleTargetNr.MaxValue := NTargets;
-  if NTargets > 1 then begin     // display number of targets
+  if NTargets > 1 then
+  begin     // display number of targets
     lbTargetNr.Caption := '1...' + IntToStr(NTargets);
     edtSampleTargetNr.Enabled := true;
   end
-  else begin
+  else
+  begin
     lbTargetNr.Caption := '';
   end;
 //  pnlSetCommonPretreatment.Parent := gbxSamplePretreatSteps;
 
   // display the sample info
-  with dm.qrySampleInfo do begin
+  with dm.qrySampleInfo do
+  begin
     cmbSampleMaterial.KeyValue := 0;
     cmbSampleFraction.KeyValue := 0;
     cmbSampleType.KeyValue := 0;

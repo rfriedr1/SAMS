@@ -178,6 +178,7 @@ type
     function GetAllPlanned(ShowOnHold : boolean) : integer;
     function GetAllWaitingForGraph : integer;
     function GetArchSamplesOfMonth(Year, Month : word) : integer;
+    function GetAllSamplesOfMonth(Year, Month : word) : integer;
     procedure GetMagazineData(Magazine : string);
     function GetMaxPrepNrBySampleNr(sample_nr : integer) : integer;
     function GetMaxSampleNr : integer;
@@ -198,6 +199,7 @@ type
     procedure GetGraphWeight(SampleNr, PrepNr, TargetNr : integer);
     function QueryInvoiceUser(const LastName, Institute, Organisation : string) : integer;
     procedure QueryPrepStepsBySampleNr(sample_nr : integer);
+    procedure QueryTargetInfoBySampleNr(sample_nr: Integer);
     procedure QueryProject(const ProjectName : string);
     procedure QuerySampleBySampleNr(sample_nr : integer);
     procedure SetGraphDate;
@@ -592,6 +594,7 @@ begin
 end;
 
 function Tdm.GetArchSamplesOfMonth(Year, Month: word): integer;
+// get number of archaeologic samples per month
 var
   MoStart, MoEnd : TDateTime;
   s1, s2 : string;
@@ -605,8 +608,33 @@ begin
                 ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
                 ' WHERE sample_t.c14_age IS NOT NULL ' +
                 ' AND (target_pressed BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34  +
-                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
+                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
+                ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type="arch" ';
+    Open;
+//    ClipBoard.AsText := SQL.Text;
+    Result := RecordCount;
+  end;
+end;
+
+function Tdm.GetAllSamplesOfMonth(Year, Month: word): integer;
+// returns the number of all samples per month (not blanks or oxas)
+var
+  MoStart, MoEnd : TDateTime;
+  s1, s2 : string;
+begin
+  MoStart := EncodeDate(Year, Month,1);
+  MoEnd := EndOfAMonth(Year, Month);
+  s1 := FormatDateTime('YYYY-MM-DD', DateOf(MoStart));
+  s2 := FormatDateTime('YYYY-MM-DD', DateOf(MoEnd));
+  with qryDb do begin
+    SQL.Text := 'SELECT DISTINCT sample_t.sample_nr FROM sample_t ' +
+                ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
+                ' WHERE sample_t.c14_age IS NOT NULL ' +
+                ' AND (target_pressed BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34  +
+                ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
+                ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
+                ' AND sample_t.type NOT IN("blank","oxa1","oxa","oxa2") ';
     Open;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
@@ -850,13 +878,14 @@ var
   HasTarget : boolean;
 begin
   HasTarget := TargetRecordExistsForSample(SampleNr);
-  with qrySampleInfo do begin
+  with qrySampleInfo do
+  begin
     Close;
     s :=
-' SELECT sample_t.sample_nr, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
+' SELECT sample_t.sample_nr, sample_t.no_leftover, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
 ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
 ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
-' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch,' +
+' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, preparation_t.no_leftover,' +
 ' prep_comment, weight_start, weight_medium, weight_end,' +
 ' prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
   s := s + ', target_t.target_nr,' +
@@ -998,6 +1027,24 @@ begin
   end;
 end;
 
+procedure Tdm.QueryTargetInfoBySampleNr(sample_nr: Integer);
+var
+  s: string;
+begin
+  // query the target information
+  with dm.qryTarget do
+  begin
+    SQL.Text := 'SELECT target_nr, magazine, position, catalyst, co2_init, co2_final, ' +
+    'hydro_init, hydro_final, react_time, target_pressed, target_t.stop, round(conc_c,1) AS conc_c,' +
+    'round(conc_c/conc_n*14/12,1) as cn_ratio, round(weight_end/weight_start*100,1) AS collpc, target_comment ' +
+    'FROM target_t ' + 'INNER JOIN preparation_t ON preparation_t.sample_nr=target_t.sample_nr ' +
+    'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
+    s := SQL.Text;
+    //   ClibBoard.SetTextBuf(PChar(s));
+    Open;
+  end;
+end;
+
 
 procedure Tdm.QueryProject(const ProjectName: string);
 // returns all info about this project
@@ -1013,7 +1060,7 @@ begin
   with qrySample do begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, user_comment, ' +
       'material, weight, residue, not_tobedated, old_info,' +
-      'c14_age,c14_age_sig  ' +
+      'round(c14_age,0) AS C14_age, round(c14_age_sig,0) AS C14_age_sig  ' +
       'FROM sample_t ' +
       'WHERE sample_t.sample_nr=' + IntToStr(sample_nr) + ';';
 //    strClipBoard := SQL.Text;

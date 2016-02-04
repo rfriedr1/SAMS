@@ -665,7 +665,7 @@ type
     IdUserPassProvider1: TIdUserPassProvider;
     IdSASLLogin1: TIdSASLLogin;
     OptionsTree: TTreeView;
-    OptionsPages: TPageControl;
+    TabOptionsPages: TPageControl;
     btnSaveOptions: TButton;
     btnSampleNrUpDown: TUpDown;
     TabSheet1: TTabSheet;
@@ -926,9 +926,10 @@ type
     procedure edtReactTimeChange(Sender: TObject);
     procedure edtGraphBatchChange(Sender: TObject);
     procedure chkTargetDiscardedClick(Sender: TObject);
-    procedure DBChartClickSeries(Sender: TCustomChart; Series: TChartSeries;
-      ValueIndex: Integer; Button: TMouseButton; Shift: TShiftState; X,
-      Y: Integer);
+    procedure DBChartClickSeries(Sender: TCustomChart;
+  Series: TChartSeries; ValueIndex: Integer; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+    procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
 
   private
@@ -4743,9 +4744,15 @@ begin
   SetCurrentToAll := false;
   for i := 0 to lbxTypes.Count - 1 do
     if lbxTypes.Selected[i] then CurrentType := lbxTypes.Items[i];
-  DragSource := drgType;
+  Dragsource := drgType;
   if ssCtrl in Shift then SetCurrentToAll := true;
   lbxTypes.BeginDrag(false, 5);
+end;
+
+procedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
+//open the correct Tab in TabOptionsPages
+begin
+   //CASE (Sender AS TPageControl).
 end;
 
 procedure TfrmMAMS.ParseNewSampleFile(const FName: string);
@@ -5808,6 +5815,9 @@ procedure TfrmMAMS.DisplayProgramOptions;
 // the tree display inside of the options tab
 Var node1,node2,node3,node4: TTreeNode;
 begin
+  //a few sttings
+
+
   //load options from file
 
   //build tree with option  (so far this will be done in design mode)

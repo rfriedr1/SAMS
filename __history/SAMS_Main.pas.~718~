@@ -276,7 +276,6 @@ type
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
-    pnlSampleInfoPrep: TPanel;
     gbxPrepSteps: TGroupBox;
     lbxDefinePrepSteps: TListBox;
     edtSampleInfoInDate: TJvDBDateTimePicker;
@@ -931,7 +930,6 @@ type
   Shift: TShiftState; X, Y: Integer);
     procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
-    procedure OptionsTreeClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -4141,7 +4139,6 @@ end;
 procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
 begin
   btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
-  pnlSampleInfoPrep.Enabled := chkAllowChangesInPrep.Checked;
   gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
   WeightsChanged := false;
 end;
@@ -4745,12 +4742,7 @@ begin
   SetCurrentToAll := false;
   for i := 0 to lbxTypes.Count - 1 do
     if lbxTypes.Selected[i] then CurrentType := lbxTypes.Items[i];
-  DragSoprocedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
-begin
-
-end;
-
-urce := drgType;
+  Dragsource := drgType;
   if ssCtrl in Shift then SetCurrentToAll := true;
   lbxTypes.BeginDrag(false, 5);
 end;

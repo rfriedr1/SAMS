@@ -276,7 +276,6 @@ type
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
-    pnlSampleInfoPrep: TPanel;
     gbxPrepSteps: TGroupBox;
     lbxDefinePrepSteps: TListBox;
     edtSampleInfoInDate: TJvDBDateTimePicker;
@@ -926,9 +925,10 @@ type
     procedure edtReactTimeChange(Sender: TObject);
     procedure edtGraphBatchChange(Sender: TObject);
     procedure chkTargetDiscardedClick(Sender: TObject);
-    procedure DBChartClickSeries(Sender: TCustomChart; Series: TChartSeries;
-      ValueIndex: Integer; Button: TMouseButton; Shift: TShiftState; X,
-      Y: Integer);
+    procedure DBChartClickSeries(Sender: TCustomChart;
+  Series: TChartSeries; ValueIndex: Integer; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+    procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
 
   private
@@ -4743,9 +4743,15 @@ begin
   SetCurrentToAll := false;
   for i := 0 to lbxTypes.Count - 1 do
     if lbxTypes.Selected[i] then CurrentType := lbxTypes.Items[i];
-  DragSource := drgType;
+  Dragsource := drgType;
   if ssCtrl in Shift then SetCurrentToAll := true;
   lbxTypes.BeginDrag(false, 5);
+end;
+
+procedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
+//open the correct Tab in TabOptionsPages
+begin
+   //CASE (Sender AS TPageControl).
 end;
 
 procedure TfrmMAMS.ParseNewSampleFile(const FName: string);

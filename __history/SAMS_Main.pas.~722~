@@ -276,7 +276,6 @@ type
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
-    pnlSampleInfoPrep: TPanel;
     gbxPrepSteps: TGroupBox;
     lbxDefinePrepSteps: TListBox;
     edtSampleInfoInDate: TJvDBDateTimePicker;
@@ -665,9 +664,17 @@ type
     IdUserPassProvider1: TIdUserPassProvider;
     IdSASLLogin1: TIdSASLLogin;
     OptionsTree: TTreeView;
-    OptionsPages: TPageControl;
+    TabOptionsPages: TPageControl;
     btnSaveOptions: TButton;
     btnSampleNrUpDown: TUpDown;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
+    chkSampleNoLeftover: TDBCheckBox;
+    chkPrepNoLeftover: TDBCheckBox;
+    edtStorageLoc: TDBEdit;
+    Label104: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -922,9 +929,10 @@ type
     procedure edtReactTimeChange(Sender: TObject);
     procedure edtGraphBatchChange(Sender: TObject);
     procedure chkTargetDiscardedClick(Sender: TObject);
-    procedure DBChartClickSeries(Sender: TCustomChart; Series: TChartSeries;
-      ValueIndex: Integer; Button: TMouseButton; Shift: TShiftState; X,
-      Y: Integer);
+    procedure DBChartClickSeries(Sender: TCustomChart;
+  Series: TChartSeries; ValueIndex: Integer; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+    procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
 
   private
@@ -1805,7 +1813,8 @@ begin
     'desired_date= ' + #34 + desired_date_str + #34 + ',' +
     'in_date=' + #34 + in_date_str + #34 + ',' +
     'out_date=' + #34 + out_date_str + #34 + ',' +
-    'status=' + #34 + cmbProjectStatus.Text + #34 +
+    'status=' + #34 + cmbProjectStatus.Text + #34 + ',' +
+    'sample_storage_loc=' + #34 + edtStorageLoc.Text + #34 +
     ' WHERE project_nr=' + IntToStr(project_nr) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
@@ -2803,12 +2812,14 @@ procedure TfrmMAMS.edtSampleNrKeyUp(Sender: TObject; var Key: Word;
 begin
   if Key = VK_RETURN then DoSampleInfo;
 
-  if Key = VK_UP then Begin
+  if Key = VK_UP then
+  Begin
     edtSampleNr.Value:= round(edtSampleNr.Value)+1;
     DoSampleInfo;
   End;
 
-  if Key = VK_DOWN then begin
+  if Key = VK_DOWN then
+  begin
     edtSampleNr.Value:= round(edtSampleNr.Value)-1;
     DoSampleInfo;
   end;
@@ -4135,7 +4146,6 @@ end;
 procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
 begin
   btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
-  pnlSampleInfoPrep.Enabled := chkAllowChangesInPrep.Checked;
   gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
   WeightsChanged := false;
 end;
@@ -4517,28 +4527,33 @@ begin
   //get and display number of sample preps
   NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
   edtSamplePrepNr.MaxValue := NPreps;
-  if NPreps > 1 then begin     // display number of preps
+  if NPreps > 1 then
+  begin     // display number of preps
     lbPrepNr.Caption := '1...' + IntToStr(NPreps);
     edtSamplePrepNr.Enabled := true;
     edtSamplePrepNr.MaxValue := NPreps;
   end
-  else begin
+  else
+  begin
     lbPrepNr.Caption := '';
   end;
   // diplay number of available targets
   NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
   edtSampleTargetNr.MaxValue := NTargets;
-  if NTargets > 1 then begin     // display number of targets
+  if NTargets > 1 then
+  begin     // display number of targets
     lbTargetNr.Caption := '1...' + IntToStr(NTargets);
     edtSampleTargetNr.Enabled := true;
   end
-  else begin
+  else
+  begin
     lbTargetNr.Caption := '';
   end;
 //  pnlSetCommonPretreatment.Parent := gbxSamplePretreatSteps;
 
   // display the sample info
-  with dm.qrySampleInfo do begin
+  with dm.qrySampleInfo do
+  begin
     cmbSampleMaterial.KeyValue := 0;
     cmbSampleFraction.KeyValue := 0;
     cmbSampleType.KeyValue := 0;
@@ -4739,9 +4754,15 @@ begin
   SetCurrentToAll := false;
   for i := 0 to lbxTypes.Count - 1 do
     if lbxTypes.Selected[i] then CurrentType := lbxTypes.Items[i];
-  DragSource := drgType;
+  Dragsource := drgType;
   if ssCtrl in Shift then SetCurrentToAll := true;
   lbxTypes.BeginDrag(false, 5);
+end;
+
+procedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
+//open the correct Tab in TabOptionsPages
+begin
+   //CASE (Sender AS TPageControl).
 end;
 
 procedure TfrmMAMS.ParseNewSampleFile(const FName: string);
@@ -5804,13 +5825,16 @@ procedure TfrmMAMS.DisplayProgramOptions;
 // the tree display inside of the options tab
 Var node1,node2,node3,node4: TTreeNode;
 begin
+  //a few sttings
+
+
   //load options from file
 
-  //build tree with option
-  node1:=OptionsTree.Items.Add(Nil,'General');
-  node2:=OptionsTree.Items.Add(Nil,'Database');
-  node3:=OptionsTree.Items.Add(Nil,'Paths');
-  node4:=OptionsTree.Items.Add(Nil,'email');
+  //build tree with option  (so far this will be done in design mode)
+//  node1:=OptionsTree.Items.Add(Nil,'General');
+//  node2:=OptionsTree.Items.Add(Nil,'Database');
+//  node3:=OptionsTree.Items.Add(Nil,'Paths');
+//  node4:=OptionsTree.Items.Add(Nil,'email');
 
 end;
 

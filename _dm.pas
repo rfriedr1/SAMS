@@ -878,13 +878,14 @@ var
   HasTarget : boolean;
 begin
   HasTarget := TargetRecordExistsForSample(SampleNr);
-  with qrySampleInfo do begin
+  with qrySampleInfo do
+  begin
     Close;
     s :=
-' SELECT sample_t.sample_nr, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
+' SELECT sample_t.sample_nr, s_no_leftover, sample_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
 ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
 ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
-' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch,' +
+' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
 ' prep_comment, weight_start, weight_medium, weight_end,' +
 ' prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
   s := s + ', target_t.target_nr,' +
@@ -902,7 +903,7 @@ begin
     s := s + 'WHERE sample_t.sample_nr=' + IntToStr(SampleNr) + ' AND preparation_t.prep_nr=' + IntToStr(PrepNr) + ' ';
     if HasTarget then s := s + ' AND target_nr=' + IntToStr(TargetNr);
     s := s + ';';
-    StrToClipBoard(s,200);
+    StrToClipBoard(s,300);
     SQL.Text := s;
     Open;
   end;
