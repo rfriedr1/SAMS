@@ -230,6 +230,7 @@ object frmMAMS: TfrmMAMS
       Left = 1118
       Top = 0
       Action = actSendMail
+      ImageIndex = 38
     end
   end
   object pgtMain: TPageControl
@@ -858,11 +859,11 @@ object frmMAMS: TfrmMAMS
             Left = 17
             Top = 78
             Width = 1048
-            Height = 435
+            Height = 499
             Text = ''
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
-            Font.Height = -19
+            Font.Height = -13
             Font.Name = 'Arial'
             Font.Style = []
             Color = clCream
@@ -3057,10 +3058,13 @@ object frmMAMS: TfrmMAMS
             Top = 336
             Width = 78
             Height = 16
+            Hint = 'target discarded'
             TabStop = False
             Caption = 'Discarded'
             DataField = 'stop_1'
             DataSource = dm.dsSampleInfo
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 7
             ValueChecked = '1'
             ValueUnchecked = '0'
@@ -3135,7 +3139,7 @@ object frmMAMS: TfrmMAMS
             Top = 191
             Width = 27
             Height = 19
-            Hint = 'set fields to days date'
+            Hint = 'set all fields to todays date'
             Caption = 'T'
             ParentShowHint = False
             ShowHint = True
@@ -3363,13 +3367,6 @@ object frmMAMS: TfrmMAMS
           Width = 74
           Height = 13
           Caption = 'Project Number'
-        end
-        object Label104: TLabel
-          Left = 21
-          Top = 505
-          Width = 81
-          Height = 13
-          Caption = 'Storage Location'
         end
         object Panel17: TPanel
           Left = 2
@@ -3605,15 +3602,6 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
           Enabled = False
           TabOrder = 11
-        end
-        object edtStorageLoc: TDBEdit
-          Left = 20
-          Top = 519
-          Width = 173
-          Height = 21
-          DataField = 'sample_storage_loc'
-          DataSource = dm.dsSampleInfo
-          TabOrder = 12
         end
       end
       object gbxAnaResults: TGroupBox
@@ -3853,87 +3841,101 @@ object frmMAMS: TfrmMAMS
         TabOrder = 5
         object Label13: TLabel
           Left = 16
-          Top = 506
+          Top = 432
           Width = 37
           Height = 13
           Caption = 'Old info'
         end
         object Label30: TLabel
           Left = 16
-          Top = 102
+          Top = 88
           Width = 63
           Height = 13
           Caption = 'Sample name'
         end
         object Label33: TLabel
           Left = 16
-          Top = 141
+          Top = 127
           Width = 76
           Height = 13
           Caption = 'Sample label nr.'
         end
         object Label34: TLabel
           Left = 16
-          Top = 184
+          Top = 170
           Width = 76
           Height = 13
           Caption = 'Sample descr. 1'
         end
         object Label35: TLabel
           Left = 16
-          Top = 224
+          Top = 210
           Width = 76
           Height = 13
           Caption = 'Sample descr. 2'
         end
         object Label36: TLabel
           Left = 16
-          Top = 264
+          Top = 250
           Width = 38
           Height = 13
           Caption = 'Material'
         end
         object Label38: TLabel
           Left = 16
-          Top = 465
+          Top = 391
           Width = 89
           Height = 13
           Caption = 'User pretreatment'
         end
         object Label51: TLabel
-          Left = 16
-          Top = 304
+          Left = 119
+          Top = 250
           Width = 39
           Height = 13
           Caption = 'Fraction'
         end
         object Label52: TLabel
           Left = 16
-          Top = 540
+          Top = 474
           Width = 68
           Height = 13
           Caption = 'User comment'
         end
         object Label68: TLabel
-          Left = 16
-          Top = 424
+          Left = 119
+          Top = 293
           Width = 92
           Height = 13
           Caption = 'Weight as received'
         end
         object Label94: TLabel
           Left = 16
-          Top = 384
+          Top = 341
           Width = 67
           Height = 13
           Caption = 'Sampling date'
         end
         object Ta: TLabel
           Left = 16
-          Top = 344
+          Top = 292
           Width = 24
           Height = 13
           Caption = 'Type'
+        end
+        object Label104: TLabel
+          Left = 16
+          Top = 520
+          Width = 113
+          Height = 13
+          Caption = 'sample storage location'
+        end
+        object Label105: TLabel
+          Left = 17
+          Top = 559
+          Width = 111
+          Height = 13
+          Caption = 'prep'#39'd material location'
         end
         object Panel18: TPanel
           Left = 2
@@ -4027,7 +4029,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkNotToBeDated: TDBCheckBox
           Left = 16
-          Top = 79
+          Top = 65
           Width = 97
           Height = 17
           TabStop = False
@@ -4046,7 +4048,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkSamplingThisYear: TCheckBox
           Left = 118
-          Top = 401
+          Top = 358
           Width = 97
           Height = 17
           TabStop = False
@@ -4055,9 +4057,9 @@ object frmMAMS: TfrmMAMS
           OnClick = chkSamplingThisYearClick
         end
         object cmbSampleFraction: TDBLookupComboBox
-          Left = 16
-          Top = 317
-          Width = 199
+          Left = 119
+          Top = 263
+          Width = 97
           Height = 21
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
@@ -4074,8 +4076,8 @@ object frmMAMS: TfrmMAMS
         end
         object cmbSampleMaterial: TDBLookupComboBox
           Left = 16
-          Top = 277
-          Width = 199
+          Top = 263
+          Width = 97
           Height = 21
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
@@ -4092,8 +4094,8 @@ object frmMAMS: TfrmMAMS
         end
         object cmbSampleType: TDBLookupComboBox
           Left = 16
-          Top = 357
-          Width = 199
+          Top = 305
+          Width = 97
           Height = 21
           KeyField = 'indexnr'
           ListField = 'type'
@@ -4102,9 +4104,9 @@ object frmMAMS: TfrmMAMS
           TabStop = False
         end
         object DBEdit16: TDBEdit
-          Left = 16
-          Top = 438
-          Width = 199
+          Left = 119
+          Top = 306
+          Width = 97
           Height = 21
           TabStop = False
           DataField = 'weight'
@@ -4113,7 +4115,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtOldInfo: TDBEdit
           Left = 16
-          Top = 520
+          Top = 446
           Width = 199
           Height = 21
           TabStop = False
@@ -4123,7 +4125,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleDescr1: TDBEdit
           Left = 16
-          Top = 197
+          Top = 183
           Width = 199
           Height = 21
           TabStop = False
@@ -4133,7 +4135,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleDescr2: TDBEdit
           Left = 16
-          Top = 237
+          Top = 223
           Width = 199
           Height = 21
           TabStop = False
@@ -4143,7 +4145,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleLabelNr: TDBEdit
           Left = 16
-          Top = 157
+          Top = 143
           Width = 199
           Height = 21
           TabStop = False
@@ -4153,17 +4155,19 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleName: TDBEdit
           Left = 16
-          Top = 117
+          Top = 103
           Width = 199
           Height = 21
           TabStop = False
+          BevelInner = bvNone
+          BevelOuter = bvNone
           DataField = 'user_label'
           DataSource = dm.dsSampleInfo
           TabOrder = 11
         end
         object edtSamplePreSubTreat: TDBEdit
           Left = 16
-          Top = 480
+          Top = 406
           Width = 199
           Height = 21
           TabStop = False
@@ -4173,7 +4177,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleUserComment: TDBEdit
           Left = 16
-          Top = 554
+          Top = 488
           Width = 199
           Height = 21
           TabStop = False
@@ -4183,7 +4187,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSamplingDate: TJvDBDateTimePicker
           Left = 16
-          Top = 397
+          Top = 354
           Width = 87
           Height = 21
           Date = 40210.397922083340000000
@@ -4196,16 +4200,43 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object chkSampleNoLeftover: TDBCheckBox
-          Left = 16
-          Top = 581
+          Left = 17
+          Top = 606
           Width = 97
           Height = 17
+          Hint = 'no sample material left'
           Caption = 'no leftover'
           DataField = 's_no_leftover'
           DataSource = dm.dsSampleInfo
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 15
           ValueChecked = '1'
           ValueUnchecked = '0'
+        end
+        object edtSampleStorageLoc: TDBEdit
+          Left = 16
+          Top = 534
+          Width = 199
+          Height = 21
+          Hint = 'storage location of the unprep'#39'd sample'
+          DataField = 's_storage_loc'
+          DataSource = dm.dsSampleInfo
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 16
+        end
+        object edtPrepSampleStorageLoc: TDBEdit
+          Left = 16
+          Top = 572
+          Width = 199
+          Height = 21
+          Hint = 'stoarge location of the pre-prep'#39'd material'
+          DataField = 'prep_storage_loc'
+          DataSource = dm.dsSampleInfo
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 17
         end
       end
       object gbxSamplePretreatment: TGroupBox
@@ -4401,10 +4432,13 @@ object frmMAMS: TfrmMAMS
             Top = 345
             Width = 65
             Height = 17
+            Hint = 'preparation discarded'
             TabStop = False
             Caption = 'Discarded'
             DataField = 'stop'
             DataSource = dm.dsSampleInfo
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 5
             ValueChecked = '1'
             ValueUnchecked = '0'
@@ -4428,9 +4462,12 @@ object frmMAMS: TfrmMAMS
             Top = 368
             Width = 97
             Height = 17
+            Hint = 'no prepared material left'
             Caption = 'no leftover'
             DataField = 'p_no_leftover'
             DataSource = dm.dsSampleInfo
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 7
             ValueChecked = '1'
             ValueUnchecked = '0'
@@ -6003,13 +6040,14 @@ object frmMAMS: TfrmMAMS
           Left = 1
           Top = 1
           Width = 535
-          Height = 152
+          Height = 192
           Align = alTop
-          Caption = 'Panel30'
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
           object btnSendMail: TButton
-            Left = 431
-            Top = 48
+            Left = 420
+            Top = 113
             Width = 75
             Height = 49
             Caption = 'Send'
@@ -6021,60 +6059,83 @@ object frmMAMS: TfrmMAMS
             Top = 16
             Width = 328
             Height = 21
-            EditLabel.Width = 43
+            EditLabel.Width = 28
             EditLabel.Height = 13
-            EditLabel.Caption = 'From:     '
+            EditLabel.Caption = 'From:'
             LabelPosition = lpLeft
             TabOrder = 1
+            Text = 'do-not-reply@cez-archaeometrie.de'
           end
           object edtMailTo: TLabeledEdit
             Left = 64
             Top = 42
             Width = 328
             Height = 21
-            EditLabel.Width = 46
+            EditLabel.Width = 16
             EditLabel.Height = 13
-            EditLabel.Caption = 'To:          '
+            EditLabel.Caption = 'To:'
             LabelPosition = lpLeft
             TabOrder = 2
           end
           object edtMailSubject: TLabeledEdit
             Left = 64
-            Top = 69
+            Top = 96
             Width = 328
             Height = 21
-            EditLabel.Width = 46
+            EditLabel.Width = 40
             EditLabel.Height = 13
-            EditLabel.Caption = 'Subject:  '
+            EditLabel.Caption = 'Subject:'
             LabelPosition = lpLeft
             TabOrder = 3
           end
           object edtSMTPServer: TLabeledEdit
             Left = 64
-            Top = 96
+            Top = 141
             Width = 328
             Height = 21
-            EditLabel.Width = 48
+            EditLabel.Width = 30
             EditLabel.Height = 13
-            EditLabel.Caption = 'SMTP:      '
+            EditLabel.Caption = 'SMTP:'
             LabelPosition = lpLeft
             TabOrder = 4
             Text = 'mbox1.belwue.de'
           end
+          object chkSendCopyToSender: TCheckBox
+            Left = 398
+            Top = 20
+            Width = 97
+            Height = 17
+            Hint = 'sends a copy of the email to the sender'
+            Caption = 'copy to sender'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 5
+          end
+          object edtMailCC: TLabeledEdit
+            Left = 64
+            Top = 69
+            Width = 328
+            Height = 21
+            EditLabel.Width = 18
+            EditLabel.Height = 13
+            EditLabel.Caption = 'CC:'
+            LabelPosition = lpLeft
+            TabOrder = 6
+          end
         end
         object MailMemo: TMemo
           Left = 1
-          Top = 153
+          Top = 193
           Width = 535
-          Height = 320
+          Height = 289
           Align = alTop
           TabOrder = 1
         end
         object lboxStatus: TListBox
           Left = 1
-          Top = 473
+          Top = 482
           Width = 535
-          Height = 225
+          Height = 216
           Align = alClient
           ItemHeight = 13
           TabOrder = 2
@@ -6293,6 +6354,14 @@ object frmMAMS: TfrmMAMS
         Action = EditPaste1
       end
     end
+    object ools1: TMenuItem
+      Caption = '&Tools'
+      Hint = 'useful tools'
+      object AssignStorageLocations1: TMenuItem
+        Action = actStorageLocation
+        Caption = 'Assign Storage Locations'
+      end
+    end
     object Help1: TMenuItem
       Caption = '&Help'
       Hint = 'Help topics'
@@ -6303,7 +6372,7 @@ object frmMAMS: TfrmMAMS
   end
   object ActionList1: TActionList
     Images = ImageList2
-    Left = 1144
+    Left = 1168
     Top = 88
     object actInsertSamples: TAction
       Caption = 'Insert samples'
@@ -6430,13 +6499,17 @@ object frmMAMS: TfrmMAMS
       Caption = 'Send Mail'
       OnExecute = actSendMailExecute
     end
+    object actStorageLocation: TAction
+      Caption = 'ToolsStorageLocation'
+      OnExecute = actStorageLocationExecute
+    end
   end
   object ImageList1: TImageList
     AllocBy = 10
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300040310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300240310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7119,8 +7192,8 @@ object frmMAMS: TfrmMAMS
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
-    Left = 1064
-    Top = 112
+    Left = 1048
+    Top = 96
     object Cut1: TMenuItem
       Action = EditCut1
     end
@@ -7146,9 +7219,9 @@ object frmMAMS: TfrmMAMS
       'edtSaveReportAs.HistoryList'
       'edtProjectsSinceYear.Value'
       'gbxInPrep.Width'
-      'edtMailFrom.Text'
       'edtSMTPServer.Text'
-      'MemoDBPlotQuery.Lines')
+      'MemoDBPlotQuery.Lines'
+      'chkSendCopyToSender.Checked')
     StoredValues = <>
     Left = 288
     Top = 72
@@ -7206,10 +7279,10 @@ object frmMAMS: TfrmMAMS
   object ImageList2: TImageList
     Height = 24
     Width = 24
-    Left = 1104
+    Left = 1120
     Top = 160
     Bitmap = {
-      494C01013D004000040318001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000240318001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11971,10 +12044,10 @@ object frmMAMS: TfrmMAMS
   object ImageList3: TImageList
     Height = 32
     Width = 32
-    Left = 1144
+    Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00040320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00240320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -22028,11 +22101,13 @@ object frmMAMS: TfrmMAMS
     OnStatus = smtpSendMailStatus
     IOHandler = SSLHandler
     Host = 'mbox1.belwue.de'
+    Password = 'Mk4d12rB'
     Port = 587
     SASLMechanisms = <
       item
         SASL = IdSASLLogin1
       end>
+    Username = 'do-not-reply@cez-archaeometrie.de'
     Left = 992
     Top = 216
   end

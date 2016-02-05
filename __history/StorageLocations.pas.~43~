@@ -1,0 +1,142 @@
+unit StorageLocations;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  Vcl.Grids, Vcl.DBGrids,_dm,ADODB;
+
+type
+  TFormStorageLocations = class(TForm)
+    edtStartSampleID: TLabeledEdit;
+    edtEndSampleID: TLabeledEdit;
+    edtSampleStorageLoc: TLabeledEdit;
+    edtPrepStorageLoc: TLabeledEdit;
+    btnClose: TButton;
+    btnSet: TButton;
+    btnSearch: TButton;
+    DBGrid1: TDBGrid;
+    procedure btnSetClick(Sender: TObject);
+    procedure edtStartSampleIDChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnSearchClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormStorageLocations: TFormStorageLocations;
+  ADOQueryIDs : TADOQuery;
+  DataSrc  : TDataSource;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormStorageLocations.btnSearchClick(Sender: TObject);
+Var
+  s: string;
+
+begin
+//create datasource and query, ADOConnection has been checked at FormShow, uses the ADOConnection from _dm
+
+// Create the query
+  ADOQueryIDs := TADOQuery.Create(Self);
+  ADOQueryIDs.Connection := dm.ADOConnKTL;
+  s := 'SELECT sample_nr, user_label, s_storage_loc AS Sample_Loc, prep_storage_loc AS Prep_Loc FROM sample_t WHERE sample_nr BETWEEN ' + edtStartSampleID.Text + ' AND ' + edtEndSampleID.Text + ';';
+  ADOQueryIDs.SQL.Add(s);
+  ADOQueryIDs.Open;
+  //ShowMessage(s);
+
+// Create the data source.
+  DataSrc := TDataSource.Create(Self);
+  DataSrc.DataSet := ADOQueryIDs;
+  DataSrc.Enabled := true;
+
+//Finally, initialize the grid.
+  DBGrid1.DataSource := DataSrc;
+
+  with DBGrid1 do
+  begin
+    DBGrid1.Columns.Items[0].Width := 60;
+    DBGrid1.Columns.Items[1].Width := 120;
+    DBGrid1.Columns.Items[2].Width := 60;
+    DBGrid1.Columns.Items[3].Width := 60;
+  end;
+
+  btnSet.Enabled:=true;
+
+  //ADOQuery.Close;
+end;
+
+procedure TFormStorageLocations.btnSetClick(Sender: TObject);
+// performs a database query in order to set the storage locations
+// of teh selected samples
+Var
+  ADOCmdUpdate : TADOCommand;
+  s: string;
+  i: integer;
+
+begin
+//check if the storage location fields contain anything
+if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> '') then
+  begin
+    // Create the query
+  ADOCmdUpdate := TADOCommand.Create(Self);
+  ADOCmdUpdate.Connection := dm.ADOConnKTL;
+
+  // set query with sampleID#s to first record
+  ADOQueryIDs.First;
+
+  //go trhough data that are displayed in DBGrid using the query and update fields
+  while NOT ADOQueryIDs.Eof do
+    begin
+    s := 'UPDATE sample_t SET ';
+    if (trim(edtSampleStorageLoc.Text) <> '') then
+      s := s + 's_storage_loc = ' + edtSampleStorageLoc.Text;
+    if (trim(edtPrepStorageLoc.Text) <> '') then
+      s := s + ', prep_storage_loc = ' + edtPrepStorageLoc.Text;
+    s := s+ ' WHERE sample_nr = ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ';';
+    ShowMessage(s);
+    ADOCmdUpdate.CommandText := s;
+    //ADOCmdUpdate.Execute;
+    ADOQueryIDs.Next;
+    end;
+
+    //show an updated DBGrid by executing the SearchClick
+    btnSearchClick(self);
+  end;
+
+end;
+
+procedure TFormStorageLocations.edtStartSampleIDChange(Sender: TObject);
+//display the same string in the EndSampleID edit field
+begin
+ edtEndSampleID.Text := (Sender AS TLabeledEdit).Text;
+end;
+
+procedure TFormStorageLocations.FormShow(Sender: TObject);
+begin
+
+// check whether DB connection is active or not
+  try
+    dm.ADOConnKTL.Connected := True;
+  except
+    on e: EADOError do
+    begin
+      MessageDlg('Error while connecting to DB', mtError,
+                  [mbOK], 0);
+
+      Exit;
+    end;
+  end;
+
+end;
+
+
+
+
+end.

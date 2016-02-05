@@ -882,7 +882,7 @@ begin
   begin
     Close;
     s :=
-' SELECT sample_t.sample_nr, s_no_leftover, sample_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
+' SELECT sample_t.sample_nr, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
 ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
 ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
 ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +

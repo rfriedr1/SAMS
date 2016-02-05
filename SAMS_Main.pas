@@ -673,8 +673,15 @@ type
     TabSheet4: TTabSheet;
     chkSampleNoLeftover: TDBCheckBox;
     chkPrepNoLeftover: TDBCheckBox;
-    edtStorageLoc: TDBEdit;
+    chkSendCopyToSender: TCheckBox;
+    edtMailCC: TLabeledEdit;
+    edtSampleStorageLoc: TDBEdit;
+    edtPrepSampleStorageLoc: TDBEdit;
     Label104: TLabel;
+    Label105: TLabel;
+    ools1: TMenuItem;
+    AssignStorageLocations1: TMenuItem;
+    actStorageLocation: TAction;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -934,6 +941,7 @@ type
   Shift: TShiftState; X, Y: Integer);
     procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
+    procedure actStorageLocationExecute(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1023,7 +1031,8 @@ implementation
 
 uses
   SysUtils, about, SHFolder, Clipbrd, CommCtrl, DateUtils, JvJCLUtils,
-  IniFiles, _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants;
+  IniFiles, _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
+  StorageLocations;
 
 {$R *.dfm}
 
@@ -1288,7 +1297,8 @@ end;
 
 procedure TfrmMAMS.btnSendInPrepToExcelClick(Sender: TObject);
 begin
-  with ExcelExport do begin
+  with ExcelExport do
+  begin
     Grid := grdInPrep;
     ExportGrid;
   end;
@@ -1300,14 +1310,24 @@ procedure TfrmMAMS.btnSendMailClick(Sender: TObject);
 var
   MailItem: OLEVariant;
 begin
-  with mesgMessage do begin
+  with mesgMessage do
+  begin
     Clear;
     From.Text := trim(edtMailFrom.Text);
+    if chkSendCopyToSender.Checked then
+    begin
+      CCList.EMailAddresses := trim(edtMailFrom.Text) + trim(edtMailCC.Text);
+    end
+    else
+    begin
+      CCList.EMailAddresses := trim(edtMailCC.Text);
+    end;
     Recipients.Add.Text := trim(edtMailTo.Text);
     Subject := trim(edtMailSubject.Text);
     Body.Assign(MailMemo.Lines);
   end;
-  with smtpSendMail do begin
+  with smtpSendMail do
+  begin
     Host := trim(edtSMTPServer.Text);
     Username :=trim(edtMailFrom.Text);
     Connect;
@@ -1814,7 +1834,6 @@ begin
     'in_date=' + #34 + in_date_str + #34 + ',' +
     'out_date=' + #34 + out_date_str + #34 + ',' +
     'status=' + #34 + cmbProjectStatus.Text + #34 + ',' +
-    'sample_storage_loc=' + #34 + edtStorageLoc.Text + #34 +
     ' WHERE project_nr=' + IntToStr(project_nr) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
@@ -2018,6 +2037,8 @@ begin
     'user_comment=' + #34 + edtSampleUserComment.Text + #34 + ',' +
     'old_info=' + #34 + edtOldInfo.Text + #34 + ',' +
     'preparation=' + #34 + edtSamplePreSubTreat.Text + #34 + ',' +
+    's_storage_loc=' + #34 + edtSampleStorageLoc.Text + #34 + ',' +
+    'prep_storage_loc=' + #34 + edtPrepSampleStorageLoc.Text + #34 + ',' +
     'sampling_date=' + #34 + FormatDateTime('YYYY-MM-DD', edtSamplingDate.Date) + #34 +
     '  WHERE sample_nr=' + IntTostr(sample_nr) + ';';
   //   ClibBoard.SetTextBuf(PChar(s));
@@ -2129,6 +2150,13 @@ end;
 procedure TfrmMAMS.actSendMailExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsSendMail;
+end;
+
+procedure TfrmMAMS.actStorageLocationExecute(Sender: TObject);
+// shows a window (FormStorageLocations in StorageLocations.pas
+// that allows to set the storage locations of multiple sampleID's
+begin
+  FormStorageLocations.ShowModal;
 end;
 
 procedure TfrmMAMS.actLabStatsExecute(Sender: TObject);
@@ -2335,16 +2363,21 @@ begin
   SetLength(temp, 0);
   sum := 0;
   j := 0;
-  with StrGrdTargetData do begin
-    for i := 1 to RowCount - 1 do begin
-      if (Assigned(Objects[7, i])) then begin
+  with StrGrdTargetData do
+  begin
+    for i := 1 to RowCount - 1 do
+    begin
+      if (Assigned(Objects[7, i])) then
+      begin
         SetLength(temp, Length(temp) + 1);
         temp[j] := StrToFloat(Cells[5, i]); //column ändern
         j := j + 1;
       end;
     end;
-    if Length(temp) > 0 then begin
-      for i := 0 to length(temp) - 1 do begin
+    if Length(temp) > 0 then
+    begin
+      for i := 0 to length(temp) - 1 do
+      begin
         sum := sum + temp[i];
       end;
       dm_c14_age := (sum / length(temp));
@@ -3246,7 +3279,6 @@ begin
   wizFinalPage.EnableButton(bkFinish, false);
   end;
 
-
   with dm.qryDB do
   begin
     SQL.Text := 'SELECT last_name, first_name FROM user_t where user_nr=' + IntTostr(user_nr);
@@ -3256,7 +3288,6 @@ begin
   lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' + IntToStr(grdPreviewSamples.RowCount - 1) +
     ' new samples added to database' + '</b><br><br>';
   wizFinalPage.EnableButton(bkFinish, false);
-
 
 //ask whether to send a confirmation email
 //if so the email page will be opened
@@ -3292,7 +3323,8 @@ begin
       end;
     end;
   end;
-  pgtMain.ActivePage:=tbsSendMail;
+  //open tabsheet SendMail
+  pgtMain.ActivePage := tbsSendMail;
   end;
   //  actSendMailExecute(self);
 
@@ -6086,18 +6118,24 @@ begin
   s := 'Provider=MSDASQL.1';
   // params are : Data Source=...(ODBC in control panel); User ID = ...; Password=....
   dm.adoConnKTL.LoginPrompt := true;
-  with dm.adoConnKTL do begin
-    if not Connected then begin
-      if ParamCount > 0 then begin
+  with dm.adoConnKTL do
+  begin
+    if not Connected then
+    begin
+      if ParamCount > 0 then
+      begin
      //Provider=MSDASQL.1;Password=Micadas;Persist Security Info=True;User ID=root;Data Source=DMYSQL_KTL
         s := s + ';Data Source =' + ParamStr(1);
         if ParamCount > 1 then s := s + ';User ID=' + ParamStr(2);
-        if ParamCount > 2 then begin
+        if ParamCount > 2 then
+        begin
           s := s + '; Password :=' + ParamStr(3);
           dm.adoConnKTL.LoginPrompt := false;
         end;
-        if ParamCount > 3 then begin
-          if ParamStr(4) = 'KTLsupervisor' then begin
+        if ParamCount > 3 then
+        begin
+          if ParamStr(4) = 'KTLsupervisor' then
+          begin
             btnTransfer.Visible := true;
             KTLsupervisor := true;
           end;
@@ -6105,7 +6143,8 @@ begin
         dm.adoConnKTL.ConnectionString := s;
         frmMAMS.Caption := ' SAMS v.' + myVersion + ' -- ODBC: ' + ParamStr(1) + ' -- User: ' + ParamStr(2);
       end
-      else begin
+      else
+      begin
 //    adoConnKTL.
       end;
     end;
@@ -6116,7 +6155,8 @@ begin
   //   ClibBoard.SetTextBuf(PChar(s));
 
   // load some of the tables from the Database
-  with dm do begin
+  with dm do
+  begin
     tblUser.Open;
       StatusBar.Panels[2].Text:='user data loaded';
     tblInvoice.Open;

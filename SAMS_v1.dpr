@@ -9,7 +9,8 @@ uses
   _LogSQL in '_LogSQL.pas' {frmLogSql},
   WordDriver in 'Worddriver\WordDriver.pas',
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  StorageLocations in 'StorageLocations.pas' {FormStorageLocations};
 
 {$R *.RES}
 
@@ -21,6 +22,7 @@ begin
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogSql, frmLogSql);
+  Application.CreateForm(TFormStorageLocations, FormStorageLocations);
   //  Application.CreateForm(TfrmInputNewSamples, frmInputNewSamples);
   Application.Run;
 end.

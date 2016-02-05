@@ -1,0 +1,108 @@
+object FormStorageLocations: TFormStorageLocations
+  Left = 0
+  Top = 0
+  ActiveControl = btnClose
+  Caption = 'FormStorageLocations'
+  ClientHeight = 553
+  ClientWidth = 354
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  DesignSize = (
+    354
+    553)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object edtStartSampleID: TLabeledEdit
+    Left = 32
+    Top = 32
+    Width = 121
+    Height = 21
+    EditLabel.Width = 24
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Start'
+    NumbersOnly = True
+    TabOrder = 0
+    OnChange = edtStartSampleIDChange
+  end
+  object edtEndSampleID: TLabeledEdit
+    Left = 192
+    Top = 32
+    Width = 121
+    Height = 21
+    EditLabel.Width = 18
+    EditLabel.Height = 13
+    EditLabel.Caption = 'End'
+    NumbersOnly = True
+    TabOrder = 1
+  end
+  object LabeledEdit1: TLabeledEdit
+    Left = 32
+    Top = 400
+    Width = 281
+    Height = 21
+    Anchors = [akLeft, akBottom]
+    EditLabel.Width = 118
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Sample Storage Location'
+    TabOrder = 2
+  end
+  object LabeledEdit2: TLabeledEdit
+    Left = 32
+    Top = 448
+    Width = 281
+    Height = 21
+    Anchors = [akLeft, akBottom]
+    EditLabel.Width = 111
+    EditLabel.Height = 13
+    EditLabel.Caption = 'prep'#39'd material loaction'
+    TabOrder = 3
+  end
+  object btnClose: TButton
+    Left = 48
+    Top = 496
+    Width = 75
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = 'Close'
+    ModalResult = 8
+    TabOrder = 4
+  end
+  object btnSet: TButton
+    Left = 208
+    Top = 496
+    Width = 75
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = 'Set'
+    TabOrder = 5
+    OnClick = btnSetClick
+  end
+  object btnSearch: TButton
+    Left = 136
+    Top = 72
+    Width = 75
+    Height = 25
+    Caption = 'Search'
+    TabOrder = 6
+    OnClick = btnSearchClick
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 103
+    Width = 353
+    Height = 258
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    TabOrder = 7
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+end
