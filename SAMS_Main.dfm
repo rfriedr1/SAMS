@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = edtSampleNr
+  ActiveControl = grdSamplesOfProject
   Caption = 'SAMS '
   ClientHeight = 801
   ClientWidth = 1227
@@ -238,7 +238,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1227
     Height = 727
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1089,7 +1089,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 621
           Height = 697
-          ActivePage = tbsSampleOfProject
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -4843,7 +4843,7 @@ object frmMAMS: TfrmMAMS
         end
         object CheckBox1: TCheckBox
           Left = 336
-          Top = 556
+          Top = 560
           Width = 66
           Height = 40
           Alignment = taLeftJustify
@@ -4854,7 +4854,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveUserProfile: TBitBtn
           Left = 421
-          Top = 556
+          Top = 560
           Width = 92
           Height = 40
           Caption = 'Save'#10'changes'
@@ -4943,6 +4943,18 @@ object frmMAMS: TfrmMAMS
           ShowHint = True
           TabOrder = 19
           OnClick = btnAddNewUserClick
+        end
+        object btnUserExportClipboard: TButton
+          Left = 132
+          Top = 560
+          Width = 92
+          Height = 25
+          Hint = 'save user data in clipboard'
+          Caption = 'Clipboard'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 20
+          OnClick = btnUserExportClipboardClick
         end
       end
     end
@@ -6509,7 +6521,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300240310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300280310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7282,7 +7294,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01013D004000240318001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000280318001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -12047,7 +12059,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00240320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00280320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

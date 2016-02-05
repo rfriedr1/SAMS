@@ -682,6 +682,7 @@ type
     ools1: TMenuItem;
     AssignStorageLocations1: TMenuItem;
     actStorageLocation: TAction;
+    btnUserExportClipboard: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -942,6 +943,7 @@ type
     procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
     procedure actStorageLocationExecute(Sender: TObject);
+    procedure btnUserExportClipboardClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1751,6 +1753,20 @@ begin
     end;
   end;
   btnTransferTargetData.enabled := false;
+end;
+
+procedure TfrmMAMS.btnUserExportClipboardClick(Sender: TObject);
+//export user data to clipboard
+Var
+  s: string;
+begin
+  s :=  DBEdit12.Text + ' ' + cmbUsernameUserInfo.Text + #13+#10 +
+        DBEdit17.Text + #13+#10 +
+        DBEdit18.Text + #13+#10 +
+        DBEdit19.Text + #13+#10 +
+        DBEdit20.Text + #13+#10 +
+        DBEdit21.Text + ' ' + DBEdit22.Text + #13+#10;
+  Clipboard.AsText := s;
 end;
 
 procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
@@ -5108,17 +5124,23 @@ var
 
 begin
   if pgtSample.ActivePage <> tbsProject then begin
-    if DirectoryExists('\\Riesling\mams') then begin
+    //display the sample foto
+    if DirectoryExists('\\Riesling\mams') then
+    begin
       root := '\\Riesling\mams\';
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
     end
-    else begin
+    else
+    begin
       root := IncludeTrailingBackslash(GetSpecialFolderLocation(Handle, CSIDL_PROFILE));
       gbxProjectsOfUser.Caption := ' Projects of user (local)';
     end;
   end;
+
   Statusbar.Panels[2].Text := fname;
-  if pgtSample.ActivePage = tbsProjectDocs then begin
+
+  if pgtSample.ActivePage = tbsProjectDocs then
+  begin
     s := IntToStr(dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsInteger) + '?.pdf';
     fname := root + 'SAMS Documents\';
     if FindFirst(fname + s, faAnyFile - faDirectory, Rec) = 0 then
@@ -5131,7 +5153,8 @@ begin
 //     if FileExists(s) then ShellExecute(Handle, 'open',PChar(s),nil,nil, sw_show)
     end;
   end;
-  if pgtSample.ActivePage = tbsFoto then begin
+  if pgtSample.ActivePage = tbsFoto then
+  begin
     fname := root + 'SAMS Images\' + edtSampleNr.Text + '.jpg';
     Statusbar.Panels[2].Text := fname;
     if FileExists(fname) then SampleFoto.Picture.LoadFromFile(fname);
