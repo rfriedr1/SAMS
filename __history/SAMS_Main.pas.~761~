@@ -272,7 +272,6 @@ type
     Label37: TLabel;
     Label39: TLabel;
     gbxSamplePretreatment: TGroupBox;
-    gbxSamplePretreatSteps: TGroupBox;
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
@@ -300,17 +299,9 @@ type
     memPrepComments: TDBMemo;
     JvImage1: TJvImage;
     gbxLabStatPlanned: TGroupBox;
-    Panel17: TPanel;
-    chkAllowChangesInAdmin: TCheckBox;
     btnSaveChangesAdmin: TBitBtn;
-    Panel18: TPanel;
-    chkAllowChangesInUserSuppliedInfos: TCheckBox;
     btnSaveChangesUserSuppliedInfo: TBitBtn;
-    Panel19: TPanel;
-    chkAllowChangesInPrep: TCheckBox;
     btnSaveChangesPrep: TBitBtn;
-    Panel20: TPanel;
-    chkAllowChangesGraph: TCheckBox;
     btnSaveChangesGraph: TBitBtn;
     GroupBox8: TGroupBox;
     Label30: TLabel;
@@ -333,7 +324,6 @@ type
     cmbSampleFraction: TDBLookupComboBox;
     edtSampleUserComment: TDBEdit;
     edtOldInfo: TDBEdit;
-    pnlGraph: TPanel;
     Label59: TLabel;
     Label60: TLabel;
     Label61: TLabel;
@@ -481,7 +471,6 @@ type
     DBEdit11: TDBEdit;
     memTargetComments: TDBMemo;
     DBMemo2: TDBMemo;
-    CheckBox1: TCheckBox;
     btnSaveUserProfile: TBitBtn;
     JvDBStatusLabel5: TJvDBStatusLabel;
     GroupBox21: TGroupBox;
@@ -805,14 +794,10 @@ type
     procedure DBLookupComboBox2Exit(Sender: TObject);
     procedure DBLookupComboBox2Enter(Sender: TObject);
     procedure HelpAbout1Execute(Sender: TObject);
-    procedure chkAllowChangesInUserSuppliedInfosClick(Sender: TObject);
-    procedure chkAllowChangesInAdminClick(Sender: TObject);
     procedure btnSaveChangesUserSuppliedInfoClick(Sender: TObject);
     procedure btnSaveChangesAdminClick(Sender: TObject);
     procedure btnSaveChangesPrepClick(Sender: TObject);
     procedure btnSaveChangesGraphClick(Sender: TObject);
-    procedure chkAllowChangesInPrepClick(Sender: TObject);
-    procedure chkAllowChangesGraphClick(Sender: TObject);
     procedure grdPlannedTitleClick(Column: TColumn);
     procedure grdPlannedCellClick(Column: TColumn);
     procedure chkShowOnHoldClick(Sender: TObject);
@@ -1760,12 +1745,12 @@ procedure TfrmMAMS.btnUserExportClipboardClick(Sender: TObject);
 Var
   s: string;
 begin
-  s :=  DBEdit12.Text + ' ' + cmbUsernameUserInfo.Text + '#13+#10' +
-        DBEdit17.Text + '#13+#10' +
-        DBEdit18.Text + '#13+#10' +
-        DBEdit19.Text + '#13+#10' +
-        DBEdit20.Text + '#13+#10' +
-        DBEdit21.Text + ' ' + DBEdit22.Text + '#13+#10';
+  s :=  DBEdit12.Text + ' ' + cmbUsernameUserInfo.Text + #13+#10 +
+        DBEdit17.Text + #13+#10 +
+        DBEdit18.Text + #13+#10 +
+        DBEdit19.Text + #13+#10 +
+        DBEdit20.Text + #13+#10 +
+        DBEdit21.Text + ' ' + DBEdit22.Text + #13+#10;
   Clipboard.AsText := s;
 end;
 
@@ -2151,11 +2136,6 @@ end;
 
 procedure TfrmMAMS.actSampleInfoExecute(Sender: TObject);
 begin
-  pnlGraph.Enabled := false;
-  chkAllowChangesInAdmin.Checked := false;
-  chkAllowChangesInUserSuppliedInfos.Checked := false;
-  chkAllowChangesInPrep.Checked := false;
-  chkAllowChangesGraph.Checked := false;
   FillPrepList;
   pgtMain.ActivePage := tbsSampleInfo;
   DoSampleInfo;
@@ -4189,41 +4169,7 @@ begin
   grdReportHeadings.SaveToFile(ExtractFilePath(Application.ExeName) + '\ReportHeadings.txt');
 end;
 
-procedure TfrmMAMS.chkAllowChangesGraphClick(Sender: TObject);
-begin
-  btnSaveChangesGraph.Enabled := chkAllowChangesGraph.Checked;
-  gbxEAData.Enabled := chkAllowChangesGraph.Checked;
-  pnlGraph.Enabled := chkAllowChangesGraph.Checked;
-  WeightsChanged := false;
-end;
 
-procedure TfrmMAMS.chkAllowChangesInAdminClick(Sender: TObject);
-begin
-  btnSaveChangesAdmin.Enabled := chkAllowChangesInAdmin.Checked;
-  if chkAllowChangesInAdmin.Checked then begin
-    cmbProjectStatus.Enabled := true;
-    btnChangeProject.Enabled:=true;
-  end
-  else begin
-    cmbProjectStatus.Enabled := false;
-    btnChangeProject.Enabled:=false;
-  end;
-  WeightsChanged := false;
-end;
-
-procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
-begin
-  btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
-  gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
-  WeightsChanged := false;
-end;
-
-procedure TfrmMAMS.chkAllowChangesInUserSuppliedInfosClick(Sender: TObject);
-begin
-  btnSaveChangesUserSuppliedInfo.Enabled := chkAllowChangesInUserSuppliedInfos.Checked;
-  if chkAllowChangesInUserSuppliedInfos.Checked then begin
-  end;
-end;
 
 procedure TfrmMAMS.chkAllowChangesProjectClick(Sender: TObject);
 //changes the state of the EditBoxes that are associated with it
@@ -5124,17 +5070,23 @@ var
 
 begin
   if pgtSample.ActivePage <> tbsProject then begin
-    if DirectoryExists('\\Riesling\mams') then begin
+    //display the sample foto
+    if DirectoryExists('\\Riesling\mams') then
+    begin
       root := '\\Riesling\mams\';
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
     end
-    else begin
+    else
+    begin
       root := IncludeTrailingBackslash(GetSpecialFolderLocation(Handle, CSIDL_PROFILE));
       gbxProjectsOfUser.Caption := ' Projects of user (local)';
     end;
   end;
+
   Statusbar.Panels[2].Text := fname;
-  if pgtSample.ActivePage = tbsProjectDocs then begin
+
+  if pgtSample.ActivePage = tbsProjectDocs then
+  begin
     s := IntToStr(dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsInteger) + '?.pdf';
     fname := root + 'SAMS Documents\';
     if FindFirst(fname + s, faAnyFile - faDirectory, Rec) = 0 then
@@ -5147,7 +5099,8 @@ begin
 //     if FileExists(s) then ShellExecute(Handle, 'open',PChar(s),nil,nil, sw_show)
     end;
   end;
-  if pgtSample.ActivePage = tbsFoto then begin
+  if pgtSample.ActivePage = tbsFoto then
+  begin
     fname := root + 'SAMS Images\' + edtSampleNr.Text + '.jpg';
     Statusbar.Panels[2].Text := fname;
     if FileExists(fname) then SampleFoto.Picture.LoadFromFile(fname);

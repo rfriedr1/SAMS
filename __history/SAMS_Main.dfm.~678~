@@ -1089,7 +1089,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 621
           Height = 697
-          ActivePage = tbsSampleOfProject
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2795,368 +2795,89 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Graphitization and target'
         TabOrder = 2
-        object Panel20: TPanel
-          Left = 2
-          Top = 15
-          Width = 216
-          Height = 49
-          Align = alTop
-          BevelEdges = []
-          BevelOuter = bvNone
-          TabOrder = 1
-          object chkAllowChangesGraph: TCheckBox
-            Left = 26
-            Top = 3
-            Width = 76
-            Height = 40
-            TabStop = False
-            Alignment = taLeftJustify
-            Caption = 'Allow Changes'
-            TabOrder = 1
-            WordWrap = True
-            OnClick = chkAllowChangesGraphClick
-          end
-          object btnSaveChangesGraph: TBitBtn
-            Left = 108
-            Top = 3
-            Width = 92
-            Height = 40
-            Caption = 'Save'#10'changes'
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
-              A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
-              6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
-              00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
-              5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
-              FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
-              FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
-              FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
-              FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
-              A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
-              00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
-              00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
-              FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
-              62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
-              FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
-              FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
-              EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
-              FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
-              AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
-              FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
-              00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
-              9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
-              67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
-              9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
-              FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
-              E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
-              1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
-              B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
-              00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
-              6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
-              1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
-              0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
-              D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
-              E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
-              B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
-              D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
-              00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
-              FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
-              C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
-              E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
-              EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
-              C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
-              FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
-              A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
-              00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
-              EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
-              DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
-              92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-            TabOrder = 0
-            TabStop = False
-            WordWrap = True
-            OnClick = btnSaveChangesGraphClick
-          end
+        object Label103: TLabel
+          Left = 6
+          Top = 412
+          Width = 45
+          Height = 13
+          Caption = 'Comment'
         end
-        object pnlGraph: TPanel
-          Left = 2
-          Top = 64
-          Width = 216
-          Height = 464
-          Align = alTop
-          BevelKind = bkSoft
-          BevelOuter = bvNone
-          TabOrder = 2
-          object Label59: TLabel
-            Left = 36
-            Top = 59
-            Width = 38
-            Height = 13
-            Caption = 'CO2 init'
-          end
-          object Label60: TLabel
-            Left = 30
-            Top = 79
-            Width = 44
-            Height = 13
-            Caption = 'CO2 final'
-          end
-          object Label61: TLabel
-            Left = 44
-            Top = 100
-            Width = 30
-            Height = 13
-            Caption = 'H2 init'
-          end
-          object Label62: TLabel
-            Left = 38
-            Top = 119
-            Width = 36
-            Height = 13
-            Caption = 'H2 final'
-          end
-          object Label63: TLabel
-            Left = 19
-            Top = 146
-            Width = 55
-            Height = 13
-            Caption = 'React. time'
-          end
-          object Label64: TLabel
-            Left = 33
-            Top = 194
-            Width = 41
-            Height = 13
-            Caption = 'Pressed '
-          end
-          object Label12: TLabel
-            Left = 34
-            Top = 39
-            Width = 40
-            Height = 13
-            Caption = 'Catalyst'
-          end
-          object Label71: TLabel
-            Left = 14
-            Top = 13
-            Width = 60
-            Height = 13
-            Caption = 'Weight used'
-          end
-          object Label90: TLabel
-            Left = 20
-            Top = 175
-            Width = 54
-            Height = 13
-            Caption = 'Graphitized'
-          end
-          object Label92: TLabel
-            Left = 32
-            Top = 247
-            Width = 59
-            Height = 13
-            Caption = 'Graph batch'
-          end
-          object Label95: TLabel
-            Left = 18
-            Top = 213
-            Width = 56
-            Height = 13
-            Caption = 'graph_date'
-          end
-          object Label103: TLabel
-            Left = 0
-            Top = 386
-            Width = 45
-            Height = 13
-            Caption = 'Comment'
-          end
-          object edtCO2init: TDBEdit
-            Left = 80
-            Top = 57
-            Width = 83
-            Height = 21
-            TabStop = False
-            DataField = 'co2_init'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 0
-            OnChange = edtCO2initChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtCO2final: TDBEdit
-            Left = 80
-            Top = 77
-            Width = 83
-            Height = 21
-            TabStop = False
-            DataField = 'co2_final'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 1
-            OnChange = edtCO2finalChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtH2init: TDBEdit
-            Left = 80
-            Top = 97
-            Width = 83
-            Height = 21
-            TabStop = False
-            DataField = 'hydro_init'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 2
-            OnChange = edtH2initChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtH2final: TDBEdit
-            Left = 80
-            Top = 117
-            Width = 83
-            Height = 21
-            TabStop = False
-            DataField = 'hydro_final'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 3
-            OnChange = edtH2finalChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtReactTime: TDBEdit
-            Left = 80
-            Top = 144
-            Width = 83
-            Height = 21
-            TabStop = False
-            DataField = 'react_time'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 5
-            OnChange = edtReactTimeChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtTargetPressed: TJvDBDateTimePicker
-            Left = 80
-            Top = 190
-            Width = 97
-            Height = 21
-            Date = 40210.397922083340000000
-            Time = 40210.397922083340000000
-            TabOrder = 6
-            TabStop = False
-            OnChange = edtTargetPressedChange
-            DropDownDate = 40209.000000000000000000
-            NullText = 'not set'
-            DataField = 'target_pressed'
-            DataSource = dm.dsSampleInfo
-          end
-          object chkTargetDiscarded: TDBCheckBox
-            Left = 73
-            Top = 336
-            Width = 78
-            Height = 16
-            Hint = 'target discarded'
-            TabStop = False
-            Caption = 'Discarded'
-            DataField = 'stop_1'
-            DataSource = dm.dsSampleInfo
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 7
-            ValueChecked = '1'
-            ValueUnchecked = '0'
-            OnClick = chkTargetDiscardedClick
-          end
-          object edtCatalyst: TDBEdit
-            Left = 80
-            Top = 37
-            Width = 83
-            Height = 21
-            TabStop = False
-            DataField = 'catalyst'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 8
-            OnChange = edtCatalystChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtWeightCombustion: TDBEdit
-            Left = 80
-            Top = 10
-            Width = 83
-            Height = 21
-            DataField = 'weight_combustion'
-            DataSource = dm.dsGraphWeight
-            TabOrder = 4
-            OnChange = edtWeightCombustionChange
-            OnClick = edtWeightCombustionClick
-          end
-          object edtGraphDate: TJvDBDateTimePicker
-            Left = 80
-            Top = 171
-            Width = 97
-            Height = 21
-            Date = 40210.397922083340000000
-            Time = 40210.397922083340000000
-            TabOrder = 9
-            TabStop = False
-            OnChange = edtGraphDateChange
-            DropDownDate = 40209.000000000000000000
-            NullText = 'not set'
-            DataField = 'graphitized'
-            DataSource = dm.dsSampleInfo
-          end
-          object edtGraphBatch: TDBEdit
-            Left = 30
-            Top = 266
-            Width = 147
-            Height = 21
-            TabStop = False
-            DataField = 'graph_batch'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 10
-            OnChange = edtGraphBatchChange
-          end
-          object edtGraphitized: TJvDBDateTimePicker
-            Left = 80
-            Top = 209
-            Width = 97
-            Height = 21
-            Date = 40210.397922083340000000
-            Time = 40210.397922083340000000
-            TabOrder = 11
-            TabStop = False
-            OnChange = edtGraphitizedChange
-            DropDownDate = 40209.000000000000000000
-            NullText = 'not set'
-            DataField = 'graph_date'
-            DataSource = dm.dsSampleInfo
-          end
-          object btnFillDateToday: TButton
-            Left = 179
-            Top = 191
-            Width = 27
-            Height = 19
-            Hint = 'set all fields to todays date'
-            Caption = 'T'
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 12
-            OnClick = btnFillDateTodayClick
-          end
-          object memTargetComments: TDBMemo
-            Left = 0
-            Top = 405
-            Width = 216
-            Height = 51
-            TabStop = False
-            DataField = 'target_comment'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 13
-            OnClick = edtWeightCombustionClick
-          end
+        object Label12: TLabel
+          Left = 34
+          Top = 61
+          Width = 40
+          Height = 13
+          Caption = 'Catalyst'
+        end
+        object Label59: TLabel
+          Left = 36
+          Top = 81
+          Width = 38
+          Height = 13
+          Caption = 'CO2 init'
+        end
+        object Label60: TLabel
+          Left = 30
+          Top = 101
+          Width = 44
+          Height = 13
+          Caption = 'CO2 final'
+        end
+        object Label61: TLabel
+          Left = 44
+          Top = 122
+          Width = 30
+          Height = 13
+          Caption = 'H2 init'
+        end
+        object Label62: TLabel
+          Left = 38
+          Top = 141
+          Width = 36
+          Height = 13
+          Caption = 'H2 final'
+        end
+        object Label63: TLabel
+          Left = 19
+          Top = 168
+          Width = 55
+          Height = 13
+          Caption = 'React. time'
+        end
+        object Label64: TLabel
+          Left = 33
+          Top = 216
+          Width = 41
+          Height = 13
+          Caption = 'Pressed '
+        end
+        object Label71: TLabel
+          Left = 14
+          Top = 35
+          Width = 60
+          Height = 13
+          Caption = 'Weight used'
+        end
+        object Label90: TLabel
+          Left = 20
+          Top = 197
+          Width = 54
+          Height = 13
+          Caption = 'Graphitized'
+        end
+        object Label92: TLabel
+          Left = 32
+          Top = 269
+          Width = 59
+          Height = 13
+          Caption = 'Graph batch'
+        end
+        object Label95: TLabel
+          Left = 18
+          Top = 235
+          Width = 56
+          Height = 13
+          Caption = 'graph_date'
         end
         object gbxEAData: TGroupBox
           Left = 2
@@ -3222,9 +2943,9 @@ object frmMAMS: TfrmMAMS
           end
           object btnSaveCN: TBitBtn
             Left = 103
-            Top = 49
+            Top = 32
             Width = 92
-            Height = 32
+            Height = 41
             Caption = 'Save'#10'changes'
             Glyph.Data = {
               F6060000424DF606000000000000360000002800000018000000180000000100
@@ -3289,6 +3010,253 @@ object frmMAMS: TfrmMAMS
             OnClick = btnSaveCNClick
           end
         end
+        object btnSaveChangesGraph: TBitBtn
+          Left = 18
+          Top = 488
+          Width = 183
+          Height = 40
+          Caption = 'Save'#10'changes'
+          Glyph.Data = {
+            F6060000424DF606000000000000360000002800000018000000180000000100
+            180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
+            A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
+            6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
+            00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
+            5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
+            FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
+            FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
+            FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
+            FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
+            A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
+            00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
+            00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
+            FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
+            62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
+            FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
+            FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
+            EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
+            FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
+            AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
+            FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
+            00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
+            9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
+            67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
+            9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
+            FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
+            E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
+            1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
+            B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
+            00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
+            6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
+            1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
+            0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
+            D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
+            E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
+            B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
+            D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
+            00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
+            FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
+            C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
+            E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
+            EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
+            C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
+            FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+            B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
+            A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
+            00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
+            EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
+            FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
+            DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
+            FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
+            92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
+            00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+          TabOrder = 1
+          TabStop = False
+          WordWrap = True
+          OnClick = btnSaveChangesGraphClick
+        end
+        object btnFillDateToday: TButton
+          Left = 179
+          Top = 213
+          Width = 27
+          Height = 19
+          Hint = 'set all fields to todays date'
+          Caption = 'T'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          OnClick = btnFillDateTodayClick
+        end
+        object chkTargetDiscarded: TDBCheckBox
+          Left = 73
+          Top = 358
+          Width = 78
+          Height = 16
+          Hint = 'target discarded'
+          TabStop = False
+          Caption = 'Discarded'
+          DataField = 'stop_1'
+          DataSource = dm.dsSampleInfo
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+          OnClick = chkTargetDiscardedClick
+        end
+        object edtCatalyst: TDBEdit
+          Left = 80
+          Top = 59
+          Width = 83
+          Height = 21
+          TabStop = False
+          DataField = 'catalyst'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 4
+          OnChange = edtCatalystChange
+          OnClick = edtWeightCombustionClick
+        end
+        object edtCO2final: TDBEdit
+          Left = 80
+          Top = 99
+          Width = 83
+          Height = 21
+          TabStop = False
+          DataField = 'co2_final'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 5
+          OnChange = edtCO2finalChange
+          OnClick = edtWeightCombustionClick
+        end
+        object edtCO2init: TDBEdit
+          Left = 80
+          Top = 79
+          Width = 83
+          Height = 21
+          TabStop = False
+          DataField = 'co2_init'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 6
+          OnChange = edtCO2initChange
+          OnClick = edtWeightCombustionClick
+        end
+        object edtGraphBatch: TDBEdit
+          Left = 30
+          Top = 288
+          Width = 147
+          Height = 21
+          TabStop = False
+          DataField = 'graph_batch'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 7
+          OnChange = edtGraphBatchChange
+        end
+        object edtGraphDate: TJvDBDateTimePicker
+          Left = 80
+          Top = 193
+          Width = 97
+          Height = 21
+          Date = 40210.397922083340000000
+          Time = 40210.397922083340000000
+          TabOrder = 8
+          TabStop = False
+          OnChange = edtGraphDateChange
+          DropDownDate = 40209.000000000000000000
+          NullText = 'not set'
+          DataField = 'graphitized'
+          DataSource = dm.dsSampleInfo
+        end
+        object edtGraphitized: TJvDBDateTimePicker
+          Left = 80
+          Top = 231
+          Width = 97
+          Height = 21
+          Date = 40210.397922083340000000
+          Time = 40210.397922083340000000
+          TabOrder = 9
+          TabStop = False
+          OnChange = edtGraphitizedChange
+          DropDownDate = 40209.000000000000000000
+          NullText = 'not set'
+          DataField = 'graph_date'
+          DataSource = dm.dsSampleInfo
+        end
+        object edtH2final: TDBEdit
+          Left = 80
+          Top = 139
+          Width = 83
+          Height = 21
+          TabStop = False
+          DataField = 'hydro_final'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 10
+          OnChange = edtH2finalChange
+          OnClick = edtWeightCombustionClick
+        end
+        object edtH2init: TDBEdit
+          Left = 80
+          Top = 119
+          Width = 83
+          Height = 21
+          TabStop = False
+          DataField = 'hydro_init'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 11
+          OnChange = edtH2initChange
+          OnClick = edtWeightCombustionClick
+        end
+        object edtReactTime: TDBEdit
+          Left = 80
+          Top = 166
+          Width = 83
+          Height = 21
+          TabStop = False
+          DataField = 'react_time'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 12
+          OnChange = edtReactTimeChange
+          OnClick = edtWeightCombustionClick
+        end
+        object edtTargetPressed: TJvDBDateTimePicker
+          Left = 80
+          Top = 212
+          Width = 97
+          Height = 21
+          Date = 40210.397922083340000000
+          Time = 40210.397922083340000000
+          TabOrder = 13
+          TabStop = False
+          OnChange = edtTargetPressedChange
+          DropDownDate = 40209.000000000000000000
+          NullText = 'not set'
+          DataField = 'target_pressed'
+          DataSource = dm.dsSampleInfo
+        end
+        object edtWeightCombustion: TDBEdit
+          Left = 80
+          Top = 32
+          Width = 83
+          Height = 21
+          DataField = 'weight_combustion'
+          DataSource = dm.dsGraphWeight
+          TabOrder = 14
+          OnChange = edtWeightCombustionChange
+          OnClick = edtWeightCombustionClick
+        end
+        object memTargetComments: TDBMemo
+          Left = 1
+          Top = 431
+          Width = 216
+          Height = 51
+          TabStop = False
+          DataField = 'target_comment'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 15
+          OnClick = edtWeightCombustionClick
+        end
       end
       object gbxAdministration: TGroupBox
         Left = 239
@@ -3300,172 +3268,77 @@ object frmMAMS: TfrmMAMS
         TabOrder = 3
         object Label28: TLabel
           Left = 36
-          Top = 281
+          Top = 228
           Width = 56
           Height = 13
           Caption = 'ReportDate'
         end
         object Label37: TLabel
           Left = 48
-          Top = 242
+          Top = 189
           Width = 44
           Height = 13
           Caption = 'Received'
         end
         object Label39: TLabel
           Left = 55
-          Top = 262
+          Top = 209
           Width = 36
           Height = 13
           Caption = 'Desired'
         end
         object Label53: TLabel
           Left = 59
-          Top = 324
+          Top = 271
           Width = 31
           Height = 13
           Caption = 'Status'
         end
         object Label24: TLabel
           Left = 20
-          Top = 182
+          Top = 129
           Width = 54
           Height = 13
           Caption = 'MA number'
         end
         object Label3: TLabel
           Left = 20
-          Top = 423
+          Top = 370
           Width = 36
           Height = 13
           Caption = 'User Nr'
         end
         object Label31: TLabel
           Left = 22
-          Top = 102
+          Top = 49
           Width = 63
           Height = 13
           Caption = 'Project name'
         end
         object Label32: TLabel
           Left = 20
-          Top = 382
+          Top = 329
           Width = 51
           Height = 13
           Caption = 'User name'
         end
         object Label93: TLabel
           Left = 20
-          Top = 463
+          Top = 410
           Width = 36
           Height = 13
           Caption = 'Report '
         end
         object Label97: TLabel
           Left = 20
-          Top = 143
+          Top = 90
           Width = 74
           Height = 13
           Caption = 'Project Number'
         end
-        object Panel17: TPanel
-          Left = 2
-          Top = 15
-          Width = 210
-          Height = 44
-          Align = alTop
-          BevelEdges = []
-          BevelOuter = bvNone
-          TabOrder = 0
-          object chkAllowChangesInAdmin: TCheckBox
-            Left = 34
-            Top = 4
-            Width = 68
-            Height = 40
-            TabStop = False
-            Alignment = taLeftJustify
-            Caption = 'Allow Changes'
-            TabOrder = 0
-            WordWrap = True
-            OnClick = chkAllowChangesInAdminClick
-          end
-          object btnSaveChangesAdmin: TBitBtn
-            Left = 108
-            Top = 1
-            Width = 89
-            Height = 40
-            Hint = 
-              'Saving changes to the project data will update all samples that ' +
-              'belong to this project.'
-            Caption = 'Save'#10'changes'
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
-              A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
-              6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
-              00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
-              5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
-              FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
-              FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
-              FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
-              FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
-              A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
-              00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
-              00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
-              FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
-              62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
-              FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
-              FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
-              EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
-              FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
-              AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
-              FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
-              00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
-              9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
-              67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
-              9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
-              FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
-              E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
-              1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
-              B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
-              00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
-              6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
-              1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
-              0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
-              D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
-              E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
-              B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
-              D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
-              00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
-              FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
-              C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
-              E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
-              EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
-              C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
-              FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
-              A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
-              00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
-              EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
-              DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
-              92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 1
-            TabStop = False
-            WordWrap = True
-            OnClick = btnSaveChangesAdminClick
-          end
-        end
         object cmbProjectStatus: TDBLookupComboBox
           Left = 96
-          Top = 319
+          Top = 266
           Width = 97
           Height = 21
           DropDownRows = 20
@@ -3479,17 +3352,17 @@ object frmMAMS: TfrmMAMS
           ListField = 'status'
           ListSource = dm.dsProjectStatus
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 0
           TabStop = False
         end
         object edtSampleInfoDesiredDate: TJvDBDateTimePicker
           Left = 98
-          Top = 258
+          Top = 205
           Width = 95
           Height = 21
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
-          TabOrder = 2
+          TabOrder = 1
           TabStop = False
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -3498,12 +3371,12 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoInDate: TJvDBDateTimePicker
           Left = 98
-          Top = 239
+          Top = 186
           Width = 95
           Height = 21
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
-          TabOrder = 3
+          TabOrder = 2
           TabStop = False
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -3512,12 +3385,12 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoOutDate: TJvDBDateTimePicker
           Left = 98
-          Top = 277
+          Top = 224
           Width = 95
           Height = 21
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
-          TabOrder = 4
+          TabOrder = 3
           TabStop = False
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -3526,82 +3399,154 @@ object frmMAMS: TfrmMAMS
         end
         object btnChangeProject: TButton
           Left = 110
-          Top = 156
+          Top = 103
           Width = 43
           Height = 23
           Hint = 'Changes the associated project of that sample.'
           Caption = 'change'
-          Enabled = False
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 5
+          TabOrder = 4
           OnClick = btnChangeProjectClick
         end
         object edtInvoiceNr: TDBEdit
           Left = 20
-          Top = 197
+          Top = 144
           Width = 173
           Height = 21
           TabStop = False
           DataField = 'invoice_nr'
           DataSource = dm.dsSampleInfo
           Enabled = False
-          TabOrder = 6
+          TabOrder = 5
         end
         object edtProjectNr: TDBEdit
           Left = 20
-          Top = 157
+          Top = 104
           Width = 84
           Height = 21
           TabStop = False
           DataField = 'project_nr'
           DataSource = dm.dsSampleInfo
           Enabled = False
-          TabOrder = 7
+          TabOrder = 6
         end
         object edtReport: TDBEdit
           Left = 20
-          Top = 478
+          Top = 425
           Width = 173
           Height = 21
           TabStop = False
           DataField = 'report'
           DataSource = dm.dsSampleInfo
           Enabled = False
-          TabOrder = 8
+          TabOrder = 7
         end
         object edtSampleProjectName: TDBEdit
           Left = 20
-          Top = 117
+          Top = 64
           Width = 173
           Height = 21
           TabStop = False
           DataField = 'project'
           DataSource = dm.dsSampleInfo
           Enabled = False
-          TabOrder = 9
+          TabOrder = 8
         end
         object edtSampleUser: TDBEdit
           Left = 20
-          Top = 397
+          Top = 344
           Width = 173
           Height = 21
           TabStop = False
           DataField = 'last_name'
           DataSource = dm.dsSampleInfo
           Enabled = False
-          TabOrder = 10
+          TabOrder = 9
         end
         object edtUserNr: TDBEdit
           Left = 20
-          Top = 438
+          Top = 385
           Width = 85
           Height = 21
           TabStop = False
           DataField = 'user_nr'
           DataSource = dm.dsSampleInfo
           Enabled = False
+          TabOrder = 10
+        end
+        object btnSaveChangesAdmin: TBitBtn
+          Left = 21
+          Top = 584
+          Width = 172
+          Height = 40
+          Hint = 
+            'Saving changes to the project data will update all samples that ' +
+            'belong to this project.'
+          Caption = 'Save'#10'changes'
+          Glyph.Data = {
+            F6060000424DF606000000000000360000002800000018000000180000000100
+            180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
+            A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
+            6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
+            00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
+            5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
+            FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
+            FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
+            FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
+            FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
+            A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
+            00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
+            00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
+            FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
+            62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
+            FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
+            FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
+            EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
+            FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
+            AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
+            FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
+            00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
+            9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
+            67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
+            9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
+            FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
+            E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
+            1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
+            B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
+            00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
+            6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
+            1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
+            0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
+            D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
+            E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
+            B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
+            D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
+            00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
+            FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
+            C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
+            E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
+            EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
+            C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
+            FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+            B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
+            A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
+            00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
+            EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
+            FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
+            DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
+            FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
+            92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
+            00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 11
+          TabStop = False
+          WordWrap = True
+          OnClick = btnSaveChangesAdminClick
         end
       end
       object gbxAnaResults: TGroupBox
@@ -3684,13 +3629,12 @@ object frmMAMS: TfrmMAMS
           Caption = 'cal 2s'
         end
         object Label10: TLabel
-          Left = 23
-          Top = 561
+          Left = 31
+          Top = 253
           Width = 35
           Height = 13
           Anchors = [akLeft, akBottom]
           Caption = 'Calcset'
-          ExplicitTop = 382
         end
         object DBEdit1: TDBEdit
           Left = 68
@@ -3805,9 +3749,9 @@ object frmMAMS: TfrmMAMS
           TabOrder = 9
         end
         object DBEdit11: TDBEdit
-          Left = 64
-          Top = 558
-          Width = 129
+          Left = 72
+          Top = 250
+          Width = 121
           Height = 21
           TabStop = False
           Anchors = [akLeft, akBottom]
@@ -3816,8 +3760,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 10
         end
         object btnTransferAgeToSample: TButton
-          Left = 67
-          Top = 244
+          Left = 51
+          Top = 292
           Width = 121
           Height = 26
           Hint = 'transfers age from target table to sample table'
@@ -3839,197 +3783,108 @@ object frmMAMS: TfrmMAMS
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 5
+        ExplicitLeft = -4
         object Label13: TLabel
           Left = 16
-          Top = 432
+          Top = 393
           Width = 37
           Height = 13
           Caption = 'Old info'
         end
         object Label30: TLabel
           Left = 16
-          Top = 88
+          Top = 49
           Width = 63
           Height = 13
           Caption = 'Sample name'
         end
         object Label33: TLabel
           Left = 16
-          Top = 127
+          Top = 88
           Width = 76
           Height = 13
           Caption = 'Sample label nr.'
         end
         object Label34: TLabel
           Left = 16
-          Top = 170
+          Top = 131
           Width = 76
           Height = 13
           Caption = 'Sample descr. 1'
         end
         object Label35: TLabel
           Left = 16
-          Top = 210
+          Top = 171
           Width = 76
           Height = 13
           Caption = 'Sample descr. 2'
         end
         object Label36: TLabel
           Left = 16
-          Top = 250
+          Top = 211
           Width = 38
           Height = 13
           Caption = 'Material'
         end
         object Label38: TLabel
           Left = 16
-          Top = 391
+          Top = 352
           Width = 89
           Height = 13
           Caption = 'User pretreatment'
         end
         object Label51: TLabel
           Left = 119
-          Top = 250
+          Top = 211
           Width = 39
           Height = 13
           Caption = 'Fraction'
         end
         object Label52: TLabel
           Left = 16
-          Top = 474
+          Top = 435
           Width = 68
           Height = 13
           Caption = 'User comment'
         end
         object Label68: TLabel
           Left = 119
-          Top = 293
+          Top = 254
           Width = 92
           Height = 13
           Caption = 'Weight as received'
         end
         object Label94: TLabel
           Left = 16
-          Top = 341
+          Top = 302
           Width = 67
           Height = 13
           Caption = 'Sampling date'
         end
         object Ta: TLabel
           Left = 16
-          Top = 292
+          Top = 253
           Width = 24
           Height = 13
           Caption = 'Type'
         end
         object Label104: TLabel
           Left = 16
-          Top = 520
+          Top = 481
           Width = 113
           Height = 13
           Caption = 'sample storage location'
         end
         object Label105: TLabel
           Left = 17
-          Top = 559
+          Top = 520
           Width = 111
           Height = 13
           Caption = 'prep'#39'd material location'
         end
-        object Panel18: TPanel
-          Left = 2
-          Top = 15
-          Width = 235
-          Height = 44
-          Align = alTop
-          BevelEdges = []
-          BevelOuter = bvNone
-          TabOrder = 0
-          object chkAllowChangesInUserSuppliedInfos: TCheckBox
-            Left = 51
-            Top = 4
-            Width = 66
-            Height = 40
-            TabStop = False
-            Alignment = taLeftJustify
-            Caption = 'Allow Changes'
-            TabOrder = 0
-            WordWrap = True
-            OnClick = chkAllowChangesInUserSuppliedInfosClick
-          end
-          object btnSaveChangesUserSuppliedInfo: TBitBtn
-            Left = 123
-            Top = 1
-            Width = 92
-            Height = 40
-            Caption = 'Save'#10'changes'
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
-              A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
-              6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
-              00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
-              5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
-              FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
-              FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
-              FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
-              FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
-              A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
-              00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
-              00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
-              FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
-              62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
-              FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
-              FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
-              EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
-              FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
-              AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
-              FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
-              00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
-              9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
-              67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
-              9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
-              FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
-              E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
-              1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
-              B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
-              00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
-              6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
-              1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
-              0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
-              D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
-              E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
-              B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
-              D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
-              00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
-              FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
-              C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
-              E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
-              EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
-              C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
-              FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
-              A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
-              00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
-              EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
-              DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
-              92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-            TabOrder = 1
-            TabStop = False
-            WordWrap = True
-            OnClick = btnSaveChangesUserSuppliedInfoClick
-          end
-        end
         object chkNotToBeDated: TDBCheckBox
           Left = 16
-          Top = 65
+          Top = 26
           Width = 97
           Height = 17
           TabStop = False
@@ -4042,23 +3897,23 @@ object frmMAMS: TfrmMAMS
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 0
           ValueChecked = '1'
           ValueUnchecked = '0'
         end
         object chkSamplingThisYear: TCheckBox
           Left = 118
-          Top = 358
+          Top = 319
           Width = 97
           Height = 17
           TabStop = False
           Caption = 'this year'
-          TabOrder = 2
+          TabOrder = 1
           OnClick = chkSamplingThisYearClick
         end
         object cmbSampleFraction: TDBLookupComboBox
           Left = 119
-          Top = 263
+          Top = 224
           Width = 97
           Height = 21
           DropDownRows = 20
@@ -4071,12 +3926,12 @@ object frmMAMS: TfrmMAMS
           ListField = 'fraction'
           ListSource = dm.dsFraction
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 2
           TabStop = False
         end
         object cmbSampleMaterial: TDBLookupComboBox
           Left = 16
-          Top = 263
+          Top = 224
           Width = 97
           Height = 21
           DropDownRows = 20
@@ -4089,109 +3944,110 @@ object frmMAMS: TfrmMAMS
           ListField = 'material'
           ListSource = dm.dsMaterial
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 3
           TabStop = False
         end
         object cmbSampleType: TDBLookupComboBox
           Left = 16
-          Top = 305
+          Top = 266
           Width = 97
           Height = 21
           KeyField = 'indexnr'
           ListField = 'type'
           ListSource = dm.dsTypes
-          TabOrder = 5
+          TabOrder = 4
           TabStop = False
         end
         object DBEdit16: TDBEdit
           Left = 119
-          Top = 306
+          Top = 267
           Width = 97
           Height = 21
           TabStop = False
           DataField = 'weight'
           DataSource = dm.dsSampleInfo
-          TabOrder = 6
+          TabOrder = 5
         end
         object edtOldInfo: TDBEdit
           Left = 16
-          Top = 446
+          Top = 407
           Width = 199
           Height = 21
           TabStop = False
           DataField = 'old_info'
           DataSource = dm.dsSampleInfo
-          TabOrder = 7
+          TabOrder = 6
         end
         object edtSampleDescr1: TDBEdit
           Left = 16
-          Top = 183
+          Top = 144
           Width = 199
           Height = 21
           TabStop = False
           DataField = 'user_desc1'
           DataSource = dm.dsSampleInfo
-          TabOrder = 8
+          TabOrder = 7
         end
         object edtSampleDescr2: TDBEdit
           Left = 16
-          Top = 223
+          Top = 184
           Width = 199
           Height = 21
           TabStop = False
           DataField = 'user_desc2'
           DataSource = dm.dsSampleInfo
-          TabOrder = 9
+          TabOrder = 8
         end
         object edtSampleLabelNr: TDBEdit
           Left = 16
-          Top = 143
+          Top = 104
           Width = 199
           Height = 21
           TabStop = False
           DataField = 'user_label_nr'
           DataSource = dm.dsSampleInfo
-          TabOrder = 10
+          TabOrder = 9
         end
         object edtSampleName: TDBEdit
           Left = 16
-          Top = 103
+          Top = 64
           Width = 199
           Height = 21
           TabStop = False
-          BorderStyle = bsNone
+          BevelInner = bvNone
+          BevelOuter = bvNone
           DataField = 'user_label'
           DataSource = dm.dsSampleInfo
-          TabOrder = 11
+          TabOrder = 10
         end
         object edtSamplePreSubTreat: TDBEdit
           Left = 16
-          Top = 406
+          Top = 367
           Width = 199
           Height = 21
           TabStop = False
           DataField = 'pre_sub_treat'
           DataSource = dm.dsSampleInfo
-          TabOrder = 12
+          TabOrder = 11
         end
         object edtSampleUserComment: TDBEdit
           Left = 16
-          Top = 488
+          Top = 449
           Width = 199
           Height = 21
           TabStop = False
           DataField = 'user_comment'
           DataSource = dm.dsSampleInfo
-          TabOrder = 13
+          TabOrder = 12
         end
         object edtSamplingDate: TJvDBDateTimePicker
           Left = 16
-          Top = 354
+          Top = 315
           Width = 87
           Height = 21
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
-          TabOrder = 14
+          TabOrder = 13
           TabStop = False
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -4199,8 +4055,8 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object chkSampleNoLeftover: TDBCheckBox
-          Left = 17
-          Top = 606
+          Left = 16
+          Top = 560
           Width = 97
           Height = 17
           Hint = 'no sample material left'
@@ -4209,13 +4065,13 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 15
+          TabOrder = 14
           ValueChecked = '1'
           ValueUnchecked = '0'
         end
         object edtSampleStorageLoc: TDBEdit
           Left = 16
-          Top = 534
+          Top = 495
           Width = 199
           Height = 21
           Hint = 'storage location of the unprep'#39'd sample'
@@ -4223,11 +4079,11 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 16
+          TabOrder = 15
         end
         object edtPrepSampleStorageLoc: TDBEdit
           Left = 16
-          Top = 572
+          Top = 533
           Width = 199
           Height = 21
           Hint = 'stoarge location of the pre-prep'#39'd material'
@@ -4235,7 +4091,75 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
           ParentShowHint = False
           ShowHint = True
+          TabOrder = 16
+        end
+        object btnSaveChangesUserSuppliedInfo: TBitBtn
+          Left = 15
+          Top = 583
+          Width = 200
+          Height = 40
+          Caption = 'Save'#10'changes'
+          Glyph.Data = {
+            F6060000424DF606000000000000360000002800000018000000180000000100
+            180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
+            A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
+            6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
+            00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
+            5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
+            FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
+            FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
+            FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
+            FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
+            A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
+            00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
+            00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
+            FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
+            62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
+            FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
+            FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
+            EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
+            FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
+            AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
+            FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
+            00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
+            9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
+            67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
+            9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
+            FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
+            E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
+            1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
+            B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
+            00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
+            6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
+            1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
+            0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
+            D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
+            E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
+            B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
+            D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
+            00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
+            FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
+            C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
+            E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
+            EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
+            C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
+            FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+            B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
+            A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
+            00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
+            EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
+            FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
+            DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
+            FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
+            92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
+            00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
           TabOrder = 17
+          TabStop = False
+          WordWrap = True
+          OnClick = btnSaveChangesUserSuppliedInfoClick
         end
       end
       object gbxSamplePretreatment: TGroupBox
@@ -4246,321 +4170,284 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Pretreatment'
         TabOrder = 1
-        object gbxSamplePretreatSteps: TGroupBox
-          Left = 2
-          Top = 59
-          Width = 308
-          Height = 467
-          Margins.Left = 0
-          Margins.Top = 0
-          Margins.Right = 0
-          Margins.Bottom = 0
-          Align = alTop
-          Caption = ' '
-          Ctl3D = True
-          ParentCtl3D = False
+        object Label102: TLabel
+          Left = 17
+          Top = 411
+          Width = 45
+          Height = 13
+          Caption = 'Comment'
+        end
+        object Label50: TLabel
+          Left = 65
+          Top = 335
+          Width = 47
+          Height = 13
+          Caption = 'Prep. end'
+        end
+        object Label69: TLabel
+          Left = 25
+          Top = 298
+          Width = 90
+          Height = 13
+          Caption = 'Weight after prep.'
+        end
+        object Label70: TLabel
+          Left = 18
+          Top = 38
+          Width = 98
+          Height = 13
+          Caption = 'Weight before prep.'
+        end
+        object btnSaveChangesPrep: TBitBtn
+          Left = 18
+          Top = 583
+          Width = 271
+          Height = 40
+          Caption = 'Save'#10'changes'
+          Glyph.Data = {
+            F6060000424DF606000000000000360000002800000018000000180000000100
+            180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
+            A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
+            6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
+            00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
+            5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
+            FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
+            FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
+            FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
+            FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
+            A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
+            00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
+            00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
+            FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
+            62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
+            FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
+            FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
+            EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
+            FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
+            AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
+            FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
+            00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
+            9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
+            67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
+            9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
+            FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
+            E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
+            1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
+            B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
+            FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
+            00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
+            FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
+            6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
+            1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
+            0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
+            D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
+            E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
+            B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
+            D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
+            00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
+            FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
+            C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
+            E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
+            EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
+            C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
+            FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+            B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
+            A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
+            00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
+            EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
+            FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
+            DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
+            FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
+            92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
+            00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+          TabOrder = 0
+          TabStop = False
+          WordWrap = True
+          OnClick = btnSaveChangesPrepClick
+        end
+        object chkPrepDiscarded: TDBCheckBox
+          Left = 123
+          Top = 363
+          Width = 65
+          Height = 17
+          Hint = 'preparation discarded'
+          TabStop = False
+          Caption = 'Discarded'
+          DataField = 'stop'
+          DataSource = dm.dsSampleInfo
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 1
-          object Label102: TLabel
-            Left = 12
-            Top = 392
-            Width = 45
-            Height = 13
-            Caption = 'Comment'
-          end
-          object Label69: TLabel
-            Left = 22
-            Top = 280
-            Width = 90
-            Height = 13
-            Caption = 'Weight after prep.'
-          end
-          object Label70: TLabel
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object chkPrepNoLeftover: TDBCheckBox
+          Left = 123
+          Top = 386
+          Width = 97
+          Height = 17
+          Hint = 'no prepared material left'
+          Caption = 'no leftover'
+          DataField = 'p_no_leftover'
+          DataSource = dm.dsSampleInfo
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
+        object edtPrepEnd: TJvDBDateTimePicker
+          Left = 122
+          Top = 331
+          Width = 87
+          Height = 21
+          Date = 40210.397922083340000000
+          Time = 40210.397922083340000000
+          TabOrder = 3
+          TabStop = False
+          DropDownDate = 40209.000000000000000000
+          NullText = 'not set'
+          DataField = 'prep_end'
+          DataSource = dm.dsSampleInfo
+        end
+        object edtWeightEnd: TDBEdit
+          Left = 122
+          Top = 294
+          Width = 60
+          Height = 21
+          DataField = 'weight_end'
+          DataSource = dm.dsWeights
+          TabOrder = 4
+          OnChange = edtWeightEndChange
+          OnExit = edtWeightEndExit
+        end
+        object edtWeightStart: TDBEdit
+          Left = 122
+          Top = 35
+          Width = 60
+          Height = 21
+          DataField = 'weight_start'
+          DataSource = dm.dsWeights
+          TabOrder = 5
+        end
+        object gbxPrepSteps: TGroupBox
+          Left = 7
+          Top = 70
+          Width = 184
+          Height = 197
+          Caption = 'Prep Steps'
+          TabOrder = 6
+          object Label54: TLabel
             Left = 15
-            Top = 20
-            Width = 98
+            Top = 47
+            Width = 13
             Height = 13
-            Caption = 'Weight before prep.'
+            Caption = '1 :'
           end
-          object Label50: TLabel
-            Left = 62
-            Top = 317
-            Width = 47
+          object Label55: TLabel
+            Left = 15
+            Top = 66
+            Width = 13
             Height = 13
-            Caption = 'Prep. end'
+            Caption = '2 :'
           end
-          object edtWeightEnd: TDBEdit
-            Left = 119
-            Top = 276
-            Width = 60
+          object Label56: TLabel
+            Left = 15
+            Top = 86
+            Width = 13
+            Height = 13
+            Caption = '3 :'
+          end
+          object Label57: TLabel
+            Left = 15
+            Top = 106
+            Width = 13
+            Height = 13
+            Caption = '4 :'
+          end
+          object Label58: TLabel
+            Left = 15
+            Top = 126
+            Width = 13
+            Height = 13
+            Caption = '5 :'
+          end
+          object edtSampPrep1: TEdit
+            Left = 34
+            Top = 43
+            Width = 144
             Height = 21
-            DataField = 'weight_end'
-            DataSource = dm.dsWeights
+            TabStop = False
             TabOrder = 0
-            OnChange = edtWeightEndChange
-            OnExit = edtWeightEndExit
+            Text = 'edtSampPrep1'
+            OnDragDrop = edtSampPrep1DragDrop
+            OnDragOver = edtSampPrep1DragOver
           end
-          object edtWeightStart: TDBEdit
-            Left = 119
-            Top = 17
-            Width = 60
+          object edtSampPrep2: TEdit
+            Left = 34
+            Top = 63
+            Width = 144
             Height = 21
-            DataField = 'weight_start'
-            DataSource = dm.dsWeights
+            TabStop = False
             TabOrder = 1
+            Text = 'edtSampPrep2'
+            OnDragDrop = edtSampPrep2DragDrop
+            OnDragOver = edtSampPrep1DragOver
           end
-          object gbxPrepSteps: TGroupBox
-            Left = 4
-            Top = 52
-            Width = 184
-            Height = 197
-            Caption = 'Prep Steps'
-            TabOrder = 2
-            object Label54: TLabel
-              Left = 15
-              Top = 47
-              Width = 13
-              Height = 13
-              Caption = '1 :'
-            end
-            object Label55: TLabel
-              Left = 15
-              Top = 66
-              Width = 13
-              Height = 13
-              Caption = '2 :'
-            end
-            object Label56: TLabel
-              Left = 15
-              Top = 86
-              Width = 13
-              Height = 13
-              Caption = '3 :'
-            end
-            object Label57: TLabel
-              Left = 15
-              Top = 106
-              Width = 13
-              Height = 13
-              Caption = '4 :'
-            end
-            object Label58: TLabel
-              Left = 15
-              Top = 126
-              Width = 13
-              Height = 13
-              Caption = '5 :'
-            end
-            object edtSampPrep1: TEdit
-              Left = 34
-              Top = 43
-              Width = 144
-              Height = 21
-              TabStop = False
-              TabOrder = 0
-              Text = 'edtSampPrep1'
-              OnDragDrop = edtSampPrep1DragDrop
-              OnDragOver = edtSampPrep1DragOver
-            end
-            object edtSampPrep2: TEdit
-              Left = 34
-              Top = 63
-              Width = 144
-              Height = 21
-              TabStop = False
-              TabOrder = 1
-              Text = 'edtSampPrep2'
-              OnDragDrop = edtSampPrep2DragDrop
-              OnDragOver = edtSampPrep1DragOver
-            end
-            object edtSampPrep3: TEdit
-              Left = 34
-              Top = 83
-              Width = 144
-              Height = 21
-              TabStop = False
-              TabOrder = 2
-              Text = 'edtSampPrep3'
-              OnDragDrop = edtSampPrep3DragDrop
-              OnDragOver = edtSampPrep1DragOver
-            end
-            object edtSampPrep4: TEdit
-              Left = 34
-              Top = 103
-              Width = 144
-              Height = 21
-              TabStop = False
-              TabOrder = 3
-              Text = 'edtSampPrep4'
-              OnDragDrop = edtSampPrep4DragDrop
-              OnDragOver = edtSampPrep1DragOver
-            end
-            object edtSampPrep5: TEdit
-              Left = 34
-              Top = 123
-              Width = 144
-              Height = 21
-              TabStop = False
-              TabOrder = 4
-              Text = 'edtSampPrep5'
-              OnDragDrop = edtSampPrep5DragDrop
-              OnDragOver = edtSampPrep1DragOver
-            end
-          end
-          object lbxSteps: TListBox
-            Left = 185
-            Top = 8
-            Width = 118
-            Height = 289
-            TabStop = False
-            ItemHeight = 13
-            TabOrder = 3
-            OnMouseDown = lbxStepsMouseDown
-          end
-          object memPrepComments: TDBMemo
-            Left = 4
-            Top = 411
-            Width = 300
-            Height = 53
-            TabStop = False
-            DataField = 'prep_comment'
-            DataSource = dm.dsSampleInfo
-            TabOrder = 4
-          end
-          object chkPrepDiscarded: TDBCheckBox
-            Left = 120
-            Top = 345
-            Width = 65
-            Height = 17
-            Hint = 'preparation discarded'
-            TabStop = False
-            Caption = 'Discarded'
-            DataField = 'stop'
-            DataSource = dm.dsSampleInfo
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 5
-            ValueChecked = '1'
-            ValueUnchecked = '0'
-          end
-          object edtPrepEnd: TJvDBDateTimePicker
-            Left = 119
-            Top = 313
-            Width = 87
+          object edtSampPrep3: TEdit
+            Left = 34
+            Top = 83
+            Width = 144
             Height = 21
-            Date = 40210.397922083340000000
-            Time = 40210.397922083340000000
-            TabOrder = 6
             TabStop = False
-            DropDownDate = 40209.000000000000000000
-            NullText = 'not set'
-            DataField = 'prep_end'
-            DataSource = dm.dsSampleInfo
+            TabOrder = 2
+            Text = 'edtSampPrep3'
+            OnDragDrop = edtSampPrep3DragDrop
+            OnDragOver = edtSampPrep1DragOver
           end
-          object chkPrepNoLeftover: TDBCheckBox
-            Left = 120
-            Top = 368
-            Width = 97
-            Height = 17
-            Hint = 'no prepared material left'
-            Caption = 'no leftover'
-            DataField = 'p_no_leftover'
-            DataSource = dm.dsSampleInfo
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 7
-            ValueChecked = '1'
-            ValueUnchecked = '0'
+          object edtSampPrep4: TEdit
+            Left = 34
+            Top = 103
+            Width = 144
+            Height = 21
+            TabStop = False
+            TabOrder = 3
+            Text = 'edtSampPrep4'
+            OnDragDrop = edtSampPrep4DragDrop
+            OnDragOver = edtSampPrep1DragOver
+          end
+          object edtSampPrep5: TEdit
+            Left = 34
+            Top = 123
+            Width = 144
+            Height = 21
+            TabStop = False
+            TabOrder = 4
+            Text = 'edtSampPrep5'
+            OnDragDrop = edtSampPrep5DragDrop
+            OnDragOver = edtSampPrep1DragOver
           end
         end
-        object Panel19: TPanel
-          Left = 2
-          Top = 15
-          Width = 308
-          Height = 44
-          Align = alTop
-          BevelEdges = []
-          BevelOuter = bvNone
-          TabOrder = 0
-          object chkAllowChangesInPrep: TCheckBox
-            Left = 132
-            Top = 8
-            Width = 66
-            Height = 25
-            TabStop = False
-            Alignment = taLeftJustify
-            Caption = 'Allow Changes'
-            TabOrder = 1
-            WordWrap = True
-            OnClick = chkAllowChangesInPrepClick
-          end
-          object btnSaveChangesPrep: TBitBtn
-            Left = 204
-            Top = 1
-            Width = 92
-            Height = 40
-            Caption = 'Save'#10'changes'
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
-              A074709E706E9D706D9D6E6B9C6D6A9A6C69996B68996A679869669667659566
-              6395666293656093635F92625E91605D91605D915F5C905E5BFF00FFFF00FFFF
-              00FFFF00FFFF00FFA17572FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE915F
-              5CFF00FFFF00FFFF00FFFF00FFFF00FFA17673FEFEFCFEFEFCFEFEFCFEFEFCFE
-              FEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC
-              FEFEFCFEFEFC91605DFF00FFFF00FFFF00FFFF00FFFF00FFA47975FEFBFAFEFB
-              FAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFEFBFAFE
-              FBFAFEFBFAFEFBFAFEFBFAFEFBFA93635EFF00FFFF00FFFF00FFFF00FFFF00FF
-              A57A77FEFAF6FEFAF6FEFAF6811E00811E00811E00811E00811E00811E00811E
-              00811E00811E00811E00811E00FEFAF6FEFAF6FEFAF693645FFF00FFFF00FFFF
-              00FFFF00FFFF00FFA67B79FEF8F3FEF8F3FEF8F3811E00FEFEFEFEFEFEFEFEFE
-              FEFEFED5DDFE1D41FBE9EDFEFEFEFEFEFEFE811E00FEF8F3FEF8F3FEF8F39565
-              62FF00FFFF00FFFF00FFFF00FFFF00FFA97F7AFEF7F0FEF7F0FEF7F0811E00FE
-              FEFEFEFEFEFEFEFE9AADFC082AFA011FFA899EFCFEFEFEFEFEFE811E00FEF7F0
-              FEF7F0FEF7F0956663FF00FFFF00FFFF00FFFF00FFFF00FFA9807DFEF6EDFEF6
-              EDFEF6ED811E00FEFEFEFEFEFE5674FB011FFA011FFA011FFA1135FAFEFEFEFE
-              FEFE811E00FEF6EDFEF6EDFEF6ED966865FF00FFFF00FFFF00FFFF00FFFF00FF
-              AB817EFEF3EAFEF3EAFEF3EA811E00E9EDFE1D41FB011FFA011FFA5674FB082A
-              FA011FFA9AADFCFEFEFE811E00FEF3EAFEF3EAFEF3EA986966FF00FFFF00FFFF
-              00FFFF00FFFF00FFAB8380FEF2E7FEF2E7FEF2E7811E001135FA011FFA082AFA
-              9AADFCFEFEFE6681FB011FFA1135FAFEFEFE811E00FEF2E7FEF2E6FCF0E6986A
-              67FF00FFFF00FFFF00FFFF00FFFF00FFAD8682FEF0E3FEF0E3FEF0E3811E0089
-              9EFC1D41FBC1CCFCFEFEFEFEFEFEE9EDFE082AFA011FFA6681FB811E00FEF0E3
-              FCEFE2FCEFE29A6B68FF00FFFF00FFFF00FFFF00FFFF00FFAF8783FEEFE1FEEF
-              E1FEEFE1811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE899EFC011FFA01
-              1FFA631E1BFCEEE0FCEEE0FCEDDE9A6D6AFF00FFFF00FFFF00FFFF00FFFF00FF
-              B08984FFEEDEFFEEDEFFEEDE811E00FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
-              FEFEFEFE3859FB011FFA041FE5E9DDDEFEEBDCF7E6D49D6E6CFF00FFFF00FFFF
-              00FFFF00FFFF00FFB18A87FFEBDAFFEBDAFFEBDA811E00FEFEFEFEFEFEFEFEFE
-              FEFEFEFEFEFEFEFEFEFEFEFEE9EDFE1D41FB011FFA1D3EF3818EE0EBD9C49E70
-              6DFF00FFFF00FFFF00FFFF00FFFF00FFB48C88FFEAD8FFEAD8FFEAD8811E0081
-              1E00811E00811E00811E00811E00811E00811E00811E00631E1B041FE5011FFA
-              0525F75E6FD39C7272FF00FFFF00FFFF00FFFF00FFFF00FFB48E8AFFE9D5FFE9
-              D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D5FFE9D4FEE7D4FEE7D4FC
-              E6D1F4DEC9E9D4BC0120FA0424F61C33D4FF00FFFF00FFFF00FFFF00FFFF00FF
-              B58F8BFFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FFE7D1FEE6
-              D0FEE6D0FCE3CEF3DDC5E7D1B7DAC5A95264C90627F20120F8011FFA011FFAFF
-              00FFFF00FFFF00FFB6918CFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CFFFE6CF
-              FFE5CFFEE5CEFEE5CEFBE2CBF3DAC1E7CFB4D9C2A5CBB696CEBCA0BAAFB83A45
-              C0011FFA011FFAFF00FFFF00FFFF00FFB7928EFFE3CCFFE3CCFFE3CCFFE3CCFF
-              E3CCFFE3CCFFE3CBFEE2CBFEE2CBFBE0C7F2D8BDF4E9DCFEFEFEFEFEFCFEF6EE
-              EED7CA9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB7928FFFE2C9FFE2
-              C9FFE2C9FFE2C9FFE2C9FFE2C9FEE1C7FEE1C7FADEC4F0D5BAE5CBACF0E7DAFE
-              FCFBFEF4EBE3C9BD9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              B89591FFE1C6FFE1C6FFE1C6FFE1C6FFE0C5FEE0C5FEE0C5FADCC0EFD3B6E3C9
-              A9D5BB9AF8F3EDFEF3E9D5B6AC9E706DFF00FFFF00FFFF00FFFF00FFFF00FFFF
-              00FFFF00FFFF00FFBA9692FFE0C4FFE0C4FFE0C4FFDEC2FEDEC2FEDEC1F8D9BC
-              EFD0B2E2C6A5D4BA97DDCAB1F8EBE0C7A59D9E706DFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9692FFDEC1FFDEC1FFDEC1FEDDC0FE
-              DDC0F8D8BAEDCFAFE1C4A3D3B795C9B08CEBD8CBBF9A969E706DFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
-              92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-            TabOrder = 0
-            TabStop = False
-            WordWrap = True
-            OnClick = btnSaveChangesPrepClick
-          end
+        object lbxSteps: TListBox
+          Left = 188
+          Top = 26
+          Width = 118
+          Height = 289
+          TabStop = False
+          ItemHeight = 13
+          TabOrder = 7
+          OnMouseDown = lbxStepsMouseDown
+        end
+        object memPrepComments: TDBMemo
+          Left = 8
+          Top = 430
+          Width = 300
+          Height = 53
+          TabStop = False
+          DataField = 'prep_comment'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 8
         end
       end
     end
@@ -4840,20 +4727,9 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsUserInfo
           TabOrder = 15
         end
-        object CheckBox1: TCheckBox
-          Left = 336
-          Top = 556
-          Width = 66
-          Height = 40
-          Alignment = taLeftJustify
-          Caption = 'Allow Changes'
-          TabOrder = 16
-          WordWrap = True
-          OnClick = CheckBox1Click
-        end
         object btnSaveUserProfile: TBitBtn
           Left = 421
-          Top = 556
+          Top = 560
           Width = 92
           Height = 40
           Caption = 'Save'#10'changes'
@@ -4914,7 +4790,7 @@ object frmMAMS: TfrmMAMS
             FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBB9793BA9692BA96
             92BA9591BA9390B8928FB7928FB6918EB5908CB58F8BB5908CB5908CB5908CFF
             00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-          TabOrder = 17
+          TabOrder = 16
           WordWrap = True
           OnClick = btnSaveUserProfileClick
         end
@@ -4929,7 +4805,7 @@ object frmMAMS: TfrmMAMS
           Enabled = False
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 18
+          TabOrder = 17
         end
         object btnAddNewUser: TButton
           Left = 519
@@ -4940,8 +4816,20 @@ object frmMAMS: TfrmMAMS
           Caption = '+'
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 19
+          TabOrder = 18
           OnClick = btnAddNewUserClick
+        end
+        object btnUserExportClipboard: TButton
+          Left = 132
+          Top = 560
+          Width = 92
+          Height = 25
+          Hint = 'save user data in clipboard'
+          Caption = 'Clipboard'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 19
+          OnClick = btnUserExportClipboardClick
         end
       end
     end
@@ -6508,7 +6396,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300240310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300300310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7281,7 +7169,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01013D004000240318001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013D004000300318001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000008001000001002000000000000040
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -12046,7 +11934,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00240320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00300320002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -272,7 +272,6 @@ type
     Label37: TLabel;
     Label39: TLabel;
     gbxSamplePretreatment: TGroupBox;
-    gbxSamplePretreatSteps: TGroupBox;
     Label50: TLabel;
     lbxFraction: TListBox;
     btnIncSampleNr: TSpinButton;
@@ -300,17 +299,9 @@ type
     memPrepComments: TDBMemo;
     JvImage1: TJvImage;
     gbxLabStatPlanned: TGroupBox;
-    Panel17: TPanel;
-    chkAllowChangesInAdmin: TCheckBox;
     btnSaveChangesAdmin: TBitBtn;
-    Panel18: TPanel;
-    chkAllowChangesInUserSuppliedInfos: TCheckBox;
     btnSaveChangesUserSuppliedInfo: TBitBtn;
-    Panel19: TPanel;
-    chkAllowChangesInPrep: TCheckBox;
     btnSaveChangesPrep: TBitBtn;
-    Panel20: TPanel;
-    chkAllowChangesGraph: TCheckBox;
     btnSaveChangesGraph: TBitBtn;
     GroupBox8: TGroupBox;
     Label30: TLabel;
@@ -333,7 +324,6 @@ type
     cmbSampleFraction: TDBLookupComboBox;
     edtSampleUserComment: TDBEdit;
     edtOldInfo: TDBEdit;
-    pnlGraph: TPanel;
     Label59: TLabel;
     Label60: TLabel;
     Label61: TLabel;
@@ -481,7 +471,6 @@ type
     DBEdit11: TDBEdit;
     memTargetComments: TDBMemo;
     DBMemo2: TDBMemo;
-    CheckBox1: TCheckBox;
     btnSaveUserProfile: TBitBtn;
     JvDBStatusLabel5: TJvDBStatusLabel;
     GroupBox21: TGroupBox;
@@ -682,6 +671,7 @@ type
     ools1: TMenuItem;
     AssignStorageLocations1: TMenuItem;
     actStorageLocation: TAction;
+    btnUserExportClipboard: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -804,14 +794,10 @@ type
     procedure DBLookupComboBox2Exit(Sender: TObject);
     procedure DBLookupComboBox2Enter(Sender: TObject);
     procedure HelpAbout1Execute(Sender: TObject);
-    procedure chkAllowChangesInUserSuppliedInfosClick(Sender: TObject);
-    procedure chkAllowChangesInAdminClick(Sender: TObject);
     procedure btnSaveChangesUserSuppliedInfoClick(Sender: TObject);
     procedure btnSaveChangesAdminClick(Sender: TObject);
     procedure btnSaveChangesPrepClick(Sender: TObject);
     procedure btnSaveChangesGraphClick(Sender: TObject);
-    procedure chkAllowChangesInPrepClick(Sender: TObject);
-    procedure chkAllowChangesGraphClick(Sender: TObject);
     procedure grdPlannedTitleClick(Column: TColumn);
     procedure grdPlannedCellClick(Column: TColumn);
     procedure chkShowOnHoldClick(Sender: TObject);
@@ -942,6 +928,7 @@ type
     procedure OptionsTreeClick(Sender: TObject);
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
     procedure actStorageLocationExecute(Sender: TObject);
+    procedure btnUserExportClipboardClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1753,6 +1740,20 @@ begin
   btnTransferTargetData.enabled := false;
 end;
 
+procedure TfrmMAMS.btnUserExportClipboardClick(Sender: TObject);
+//export user data to clipboard
+Var
+  s: string;
+begin
+  s :=  DBEdit12.Text + ' ' + cmbUsernameUserInfo.Text + #13+#10 +
+        DBEdit17.Text + #13+#10 +
+        DBEdit18.Text + #13+#10 +
+        DBEdit19.Text + #13+#10 +
+        DBEdit20.Text + #13+#10 +
+        DBEdit21.Text + ' ' + DBEdit22.Text + #13+#10;
+  Clipboard.AsText := s;
+end;
+
 procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
 begin
   case Button of
@@ -2135,11 +2136,6 @@ end;
 
 procedure TfrmMAMS.actSampleInfoExecute(Sender: TObject);
 begin
-  pnlGraph.Enabled := false;
-  chkAllowChangesInAdmin.Checked := false;
-  chkAllowChangesInUserSuppliedInfos.Checked := false;
-  chkAllowChangesInPrep.Checked := false;
-  chkAllowChangesGraph.Checked := false;
   FillPrepList;
   pgtMain.ActivePage := tbsSampleInfo;
   DoSampleInfo;
@@ -3279,11 +3275,13 @@ begin
   wizFinalPage.EnableButton(bkFinish, false);
   end;
 
-  with dm.qryDB do
-  begin
-    SQL.Text := 'SELECT last_name, first_name FROM user_t where user_nr=' + IntTostr(user_nr);
-    Open;
-  end;
+  // query database again for user information
+  // this is necessay in case a user is already known
+    with dm.qryDB do
+      begin
+      SQL.Text := 'SELECT last_name, first_name, email FROM user_t where user_nr=' + IntTostr(user_nr);
+      Open;
+      end;
 
   lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' + IntToStr(grdPreviewSamples.RowCount - 1) +
     ' new samples added to database' + '</b><br><br>';
@@ -3291,13 +3289,17 @@ begin
 
 //ask whether to send a confirmation email
 //if so the email page will be opened
+  edtMailSubject.Clear;
+  MailMemo.Lines.Clear;
+  edtMailTo.Clear;
+
   buttonDlg := messagedlg('Send confirmation email?',mtError, mbOKCancel, 0);
   if buttonDlg = mrOK then
   begin
     edtMailSubject.Text := '´C14 sample receipt';
-    edtMailTo.Text := grdPreviewUser.Cells[1, 13];
+    edtMailTo.Text := dm.qrydb.FieldByName('email').AsString;  // used to be grdPreviewUser.Cells[1, 13];  only works for a new user
   with MailMemo.Lines do
-  begin
+    begin
       Add('C14 Sample receipt:');
       Add(' ');
       Add('We confirm to have received the samples listed below.');
@@ -3305,24 +3307,24 @@ begin
       Add(' ');
       Add('Best regards');
       Add('The Team of the Klaus-Tschira C14-Lab');
-  end;
+    end;
   with dm.qryDB do
-  begin
+    begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2 from sample_t ' +
       ' WHERE project_nr=' + IntToStr(project_nr);
     Open;
     if RecordCount > 0 then
-    begin
+      begin
       First;
       while not EOF do
-      begin
+        begin
         s := 'MAMS ' + Fields.Fields[0].AsString; // sample_nr
         for i := 1 to 4 do s := s + '  ' + Fields.Fields[i].AsString;
         MailMemo.Lines.Add(s);
         Next;
+        end;
       end;
     end;
-  end;
   //open tabsheet SendMail
   pgtMain.ActivePage := tbsSendMail;
   end;
@@ -4173,41 +4175,7 @@ begin
   grdReportHeadings.SaveToFile(ExtractFilePath(Application.ExeName) + '\ReportHeadings.txt');
 end;
 
-procedure TfrmMAMS.chkAllowChangesGraphClick(Sender: TObject);
-begin
-  btnSaveChangesGraph.Enabled := chkAllowChangesGraph.Checked;
-  gbxEAData.Enabled := chkAllowChangesGraph.Checked;
-  pnlGraph.Enabled := chkAllowChangesGraph.Checked;
-  WeightsChanged := false;
-end;
 
-procedure TfrmMAMS.chkAllowChangesInAdminClick(Sender: TObject);
-begin
-  btnSaveChangesAdmin.Enabled := chkAllowChangesInAdmin.Checked;
-  if chkAllowChangesInAdmin.Checked then begin
-    cmbProjectStatus.Enabled := true;
-    btnChangeProject.Enabled:=true;
-  end
-  else begin
-    cmbProjectStatus.Enabled := false;
-    btnChangeProject.Enabled:=false;
-  end;
-  WeightsChanged := false;
-end;
-
-procedure TfrmMAMS.chkAllowChangesInPrepClick(Sender: TObject);
-begin
-  btnSaveChangesPrep.Enabled := chkAllowChangesInPrep.Checked;
-  gbxEAData.Enabled := chkAllowChangesInPrep.Checked;
-  WeightsChanged := false;
-end;
-
-procedure TfrmMAMS.chkAllowChangesInUserSuppliedInfosClick(Sender: TObject);
-begin
-  btnSaveChangesUserSuppliedInfo.Enabled := chkAllowChangesInUserSuppliedInfos.Checked;
-  if chkAllowChangesInUserSuppliedInfos.Checked then begin
-  end;
-end;
 
 procedure TfrmMAMS.chkAllowChangesProjectClick(Sender: TObject);
 //changes the state of the EditBoxes that are associated with it
@@ -5108,17 +5076,23 @@ var
 
 begin
   if pgtSample.ActivePage <> tbsProject then begin
-    if DirectoryExists('\\Riesling\mams') then begin
+    //display the sample foto
+    if DirectoryExists('\\Riesling\mams') then
+    begin
       root := '\\Riesling\mams\';
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
     end
-    else begin
+    else
+    begin
       root := IncludeTrailingBackslash(GetSpecialFolderLocation(Handle, CSIDL_PROFILE));
       gbxProjectsOfUser.Caption := ' Projects of user (local)';
     end;
   end;
+
   Statusbar.Panels[2].Text := fname;
-  if pgtSample.ActivePage = tbsProjectDocs then begin
+
+  if pgtSample.ActivePage = tbsProjectDocs then
+  begin
     s := IntToStr(dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsInteger) + '?.pdf';
     fname := root + 'SAMS Documents\';
     if FindFirst(fname + s, faAnyFile - faDirectory, Rec) = 0 then
@@ -5131,7 +5105,8 @@ begin
 //     if FileExists(s) then ShellExecute(Handle, 'open',PChar(s),nil,nil, sw_show)
     end;
   end;
-  if pgtSample.ActivePage = tbsFoto then begin
+  if pgtSample.ActivePage = tbsFoto then
+  begin
     fname := root + 'SAMS Images\' + edtSampleNr.Text + '.jpg';
     Statusbar.Panels[2].Text := fname;
     if FileExists(fname) then SampleFoto.Picture.LoadFromFile(fname);
@@ -5944,7 +5919,7 @@ begin
   InsertNewSamplesInDb;
   //clear the list of samples
   ClearInsertSampleGrids;
-  pgtMain.ActivePage := tbsInsertSamples;
+  //pgtMain.ActivePage := tbsInsertSamples;
 end;
 
 procedure TfrmMAMS.wizInputProjectEnterPage(Sender: TObject;
@@ -5986,14 +5961,16 @@ var
 
   procedure PrepareUserGrid;
   begin
-    with dm.qryDB do begin
+    with dm.qryDB do
+    begin
       SQL.Text := 'Select first_name, last_name, organisation, institute, address_1, user_nr FROM user_t WHERE ' +
         ' last_name=' + #34 + grdPreviewUser.Cells[1, 2] + #34;
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
       Open;
     end;
-    with grdShowUsers do begin
+    with grdShowUsers do
+    begin
       Columns[0].Width := 100; // name
       Columns[1].Width := 150; // surname
       Columns[2].Width := 200; // org
@@ -6005,11 +5982,13 @@ var
   end;
 
 begin
-  with wizInputInvoiceAddress do begin
+  with wizInputInvoiceAddress do
+  begin
     Title.Text := '';
     EnableButton(bkNext, false);
   end;
-  with wizInputInvoiceAddress do begin
+  with wizInputInvoiceAddress do
+  begin
     EnableButton(bkNext, false);
     Title.Text := 'Select invoice address';
   end;
@@ -6022,13 +6001,15 @@ var
   MaterialFillDone: boolean;
 begin
   grdPreviewSamples.Parent := wizSelectMaterial;
-  with wizSelectMaterial do begin
+  with wizSelectMaterial do
+  begin
     SubTitle.Text := 'Select material from the list on the right and drag to the "our material" column ' + #13 +
       'press Ctrl during drag or double-click to assign to all samples; ' +
       'repeat for fraction';
     EnableButton(bkNext, false);
   end;
-  with grdPreviewSamples do begin
+  with grdPreviewSamples do
+  begin
     MaterialFillDone := true;
     for i := 0 to RowCount - 1 do
       if length(cells[MaterialCol, i]) = 0 then MaterialFillDone := false;
@@ -6038,7 +6019,8 @@ begin
   FillFractionBox;
   SetSampleGridForMaterial;
   w := 0;
-  with grdPreviewSamples do begin
+  with grdPreviewSamples do
+  begin
     for I := 0 to ColCount - 1 do w := w + ColWidths[i] + 1; // 1 = gridline
     Width := w + 6;
   end;
