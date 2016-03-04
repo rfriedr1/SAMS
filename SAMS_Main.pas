@@ -36,10 +36,10 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   JvInspector, frxDesgn, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
-  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin;
+  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils;
 
 const
-  myVersion = '1.5.7 Jan-21-2016';
+  myVersion = '1.6.1 March-4-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -246,7 +246,6 @@ type
     lbxMaterial: TListBox;
     wizSelectPretreatment: TJvWizardInteriorPage;
     wizFinalPage: TJvWizardInteriorPage;
-    lbWizFinalPage: TJvMarkupLabel;
     wizSelectType: TJvWizardInteriorPage;
     pnlSetType: TPanel;
     lbxTypes: TListBox;
@@ -473,15 +472,15 @@ type
     DBMemo2: TDBMemo;
     btnSaveUserProfile: TBitBtn;
     JvDBStatusLabel5: TJvDBStatusLabel;
-    GroupBox21: TGroupBox;
+    GroupBoxCreateTargets: TGroupBox;
     btnCreateSamples: TButton;
     rgpSampleType: TRadioGroup;
     edtNumberOfTargets: TJvSpinEdit;
     Label91: TLabel;
     btnSendPlannedToExcel: TButton;
-    GroupBox10: TGroupBox;
+    GroupBoxModifyDB: TGroupBox;
     btnDeleteUser: TButton;
-    GroupBox22: TGroupBox;
+    GroupBoxMeasuredSamples: TGroupBox;
     Panel28: TPanel;
     stgMonthStat: TStringGrid;
     edtMonthStat: TJvSpinEdit;
@@ -504,7 +503,7 @@ type
     JvDBStatusLabel7: TJvDBStatusLabel;
     btnCheckProjectStatus: TButton;
     lblProject: TLabel;
-    GroupBox1: TGroupBox;
+    GroupBoxMADBTasks: TGroupBox;
     lblOxa: TLabel;
     lblBlank: TLabel;
     lblTotal: TLabel;
@@ -576,7 +575,7 @@ type
     edtSampleCNRatio: TDBEdit;
     btnSaveCN: TBitBtn;
     Panel32: TPanel;
-    GroupBox27: TGroupBox;
+    GroupBoxPendingReports: TGroupBox;
     JvDBStatusLabel8: TJvDBStatusLabel;
     JvDBStatusLabel9: TJvDBStatusLabel;
     JvDBStatusLabel10: TJvDBStatusLabel;
@@ -656,10 +655,10 @@ type
     TabOptionsPages: TPageControl;
     btnSaveOptions: TButton;
     btnSampleNrUpDown: TUpDown;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
+    TabGeneral: TTabSheet;
+    TabDatabase: TTabSheet;
+    TabPaths: TTabSheet;
+    TabEmail: TTabSheet;
     chkSampleNoLeftover: TDBCheckBox;
     chkPrepNoLeftover: TDBCheckBox;
     chkSendCopyToSender: TCheckBox;
@@ -672,6 +671,11 @@ type
     AssignStorageLocations1: TMenuItem;
     actStorageLocation: TAction;
     btnUserExportClipboard: TButton;
+    YieldLabel: TLabel;
+    Label107: TLabel;
+    ToolButton10: TToolButton;
+    lbWizFinalPage: TMemo;
+    tbsDBInfo: TTabSheet;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -929,6 +933,7 @@ type
     procedure btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
     procedure actStorageLocationExecute(Sender: TObject);
     procedure btnUserExportClipboardClick(Sender: TObject);
+    procedure ToolButton10Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -3011,7 +3016,7 @@ begin
 //  insert Sample
 //  insert new samples
 
-  lbWizFinalPage.Text := '';
+  lbWizFinalPage.Clear;
 // insert User into DB if user is new
   if not UserExists then
   begin
@@ -3046,7 +3051,7 @@ begin
     dm.adoCmd.CommandText := s;
     //ClipBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
-    lbWizFinalPage.Text := '<b> New user created </b><br><br>';
+    lbWizFinalPage.lines.add('New user created');
     //reload user table in order to update new user
     dm.tblUser.Close;
     dm.tblUser.Open;
@@ -3065,10 +3070,10 @@ begin
   else
   // user already exists
   begin
-    lbWizFinalPage.Text := '<b> User already known </b><br>';
+    lbWizFinalPage.Lines.Add('User already known');
     user_nr := glbUserNr;
   end;
-  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> User Nr: ' + inttostr(user_nr) + '</b><br><br><br>';
+  lbWizFinalPage.Lines.Add('User Nr: ' + inttostr(user_nr));
 
   //insert Invoice Information
   if not SameAddressForInvoice then
@@ -3103,7 +3108,7 @@ begin
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
       dm.adoCmd.Execute;
-      lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> New invoice user created </b><br><br>';
+      lbWizFinalPage.lines.add('New invoice user created');
       with dm.qryDb do
       begin // get user_nr from user_t
         Close;
@@ -3116,7 +3121,7 @@ begin
     end
     else
     begin
-      lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Invoice user already known </b><br><br>';
+      lbWizFinalPage.lines.add('<b> Invoice user already known');
     end;
   end;
 
@@ -3151,7 +3156,7 @@ begin
     s := dm.adoCmd.CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
-    lbWizFinalPage.Text := lbWizFinalPage.Text + '<br><b> New project created </b><br>';
+    lbWizFinalPage.lines.add('New project created </b><br>');
     //update list of projects
     dm.tblProjects.Close;
     dm.tblProjects.Open;
@@ -3159,7 +3164,7 @@ begin
   //project exists already
   else
   begin
-    lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Project already known </b><br><br><br>';
+    lbWizFinalPage.lines.add('Project already known');
   end;
 
   // get project number in order to insert the samples
@@ -3172,7 +3177,7 @@ begin
   if dm.qryDB.RecordCount > 0 then
   begin
   project_nr := dm.qryDb.Fields[0].AsInteger;
-  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b> Project Nr: ' + inttostr(project_nr) + '</b><br><br><br>';
+  lbWizFinalPage.lines.add('Project Nr: ' + inttostr(project_nr));
   end;
 
 // insert samples into database
@@ -3269,8 +3274,7 @@ begin
         dm.adoCmd.Execute;
       end;
       // display sample number in dialog for this sample
-      lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' +
-      ' new sample added to database - MAMS: ' + inttostr(sample_nr) + '</b><br><br>';
+      lbWizFinalPage.lines.Add('new sample added to database - MAMS: ' + inttostr(sample_nr));
     end;
   wizFinalPage.EnableButton(bkFinish, false);
   end;
@@ -3283,8 +3287,7 @@ begin
       Open;
       end;
 
-  lbWizFinalPage.Text := lbWizFinalPage.Text + '<b>' + IntToStr(grdPreviewSamples.RowCount - 1) +
-    ' new samples added to database' + '</b><br><br>';
+  lbWizFinalPage.lines.add(IntToStr(grdPreviewSamples.RowCount - 1) + ' new samples added to database');
   wizFinalPage.EnableButton(bkFinish, false);
 
 //ask whether to send a confirmation email
@@ -3300,6 +3303,10 @@ begin
     edtMailTo.Text := dm.qrydb.FieldByName('email').AsString;  // used to be grdPreviewUser.Cells[1, 13];  only works for a new user
   with MailMemo.Lines do
     begin
+      Add('Sehr geehrter Herr ');
+      Add('Hiermit bestätigen wir den Erhalt ihrer C14 Proben.');
+      Add(' ');
+      Add(' ');
       Add('C14 Sample receipt:');
       Add(' ');
       Add('We confirm to have received the samples listed below.');
@@ -3928,6 +3935,8 @@ end;
 
 procedure TfrmMAMS.grdPendingReportsDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+// when tables is drawn, change the color of the cells depending on the cell content
+// fill cell 'sample count' red, when value >0
 begin
   if dm.qryPendingReports.FieldByName('samplecount').AsInteger>0      //if samplecount is bigger than 0 change the color of the row
     then TDBGrid(Sender).Canvas.Brush.Color:=clSkyBlue;
@@ -4572,7 +4581,6 @@ begin
   begin
     lbTargetNr.Caption := '';
   end;
-//  pnlSetCommonPretreatment.Parent := gbxSamplePretreatSteps;
 
   // display the sample info
   with dm.qrySampleInfo do
@@ -4610,6 +4618,13 @@ begin
   end;
   dm.GetGraphWeight(SampleNr, round(edtSamplePrepNr.Value), round(edtSampleTargetNr.Value));
   dm.GetWeights(SampleNr, round(edtSamplePrepNr.Value));
+  if NOT (edtWeightEnd.Text='') OR NOT (edtweightstart.Text='') then
+    begin
+      YieldLabel.Caption := floattostr(round(100*(strtofloat(edtWeightEnd.Text)/strtofloat(edtWeightStart.text)))) + ' %';    //display yield in percent from weights and round
+    end
+    else begin
+      YieldLabel.Caption:='';
+    end;
   TargetDataChanged := false;
 end;
 
@@ -4784,8 +4799,17 @@ end;
 
 procedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
 //open the correct Tab in TabOptionsPages
+
 begin
-   //CASE (Sender AS TPageControl).
+  //showmessage((Sender AS TTreeView).Selected.Text)
+
+   // case structure does not allow strings, enter the strings into the IndexText function in order to get an integer value for CASE
+   CASE IndexText( (Sender AS TTreeView).Selected.Text, ['General','Database','Paths','Email']) of
+   0: TabOptionsPages.ActivePage := TabGeneral;  //General node selected
+   1: TabOptionsPages.ActivePage := TabDatabase; //Database node selected
+   2: TabOptionsPages.ActivePage := TabPaths;    //Paths node selected
+   3: TabOptionsPages.ActivePage := TabEmail;    //Email node selected
+   end;
 end;
 
 procedure TfrmMAMS.ParseNewSampleFile(const FName: string);
@@ -5077,7 +5101,8 @@ var
     Path: array[0..MAX_PATH] of Char;
   begin
     Result := '';
-    if Succeeded(ShGetSpecialFolderLocation(HWND, nFolder, pidl)) then begin
+    if Succeeded(ShGetSpecialFolderLocation(HWND, nFolder, pidl)) then
+    begin
       if ShGetPathfromIDList(pidl, Path) then Result := StrPas(Path);
       CoTaskMemFree(pidl);
     end;
@@ -5462,6 +5487,12 @@ begin
       MemoDBPlotQuery.Lines.SaveToFile(SaveDialog.FileName);
   end;
   saveDialog.Free;
+end;
+
+procedure TfrmMAMS.ToolButton10Click(Sender: TObject);
+// switch to the DBInfo tab of the main tab
+begin
+  pgtMain.ActivePage := tbsDBInfo;
 end;
 
 procedure TfrmMAMS.ToolButton6Click(Sender: TObject);
@@ -6089,13 +6120,15 @@ begin
 end;
 
 procedure TfrmMAMS.FormShow(Sender: TObject);
+//initial setup when form of main program shows
 var
   Year, Month, Day: word;
   i, j: integer;
   s: string;
   Schema, username, password: string;
 begin
-//  frmLogSql.Show;
+// some initial setup
+  //  frmLogSql.Show;
   SetFormat;
   KTLsupervisor := false;
   DecodeDate(Date, Year, Month, Day);
@@ -6104,42 +6137,50 @@ begin
   edtStartAna.Value := 1;
   edtEndAna.Value := 1000000;
 
-  StatusBar.Panels[2].Text:='creating Database objects...';
-  // define MySQL connection to main database
-  s := 'Provider=MSDASQL.1';
-  // params are : Data Source=...(ODBC in control panel); User ID = ...; Password=....
+  StatusBar.Panels[2].Text:='creating Database objects...';      //display a status in the status bar
+
+// define MySQL connection to main database from the parameters
+// that need to be given when starting SAMS
+// at this time those are parameters to the ODBC connection as set up in windows
+// params are : Data Source=...(ODBC in control panel) User ID = ... Password=....
+// e.g. SAMS_v1.exe db_dmams_KTL rfriedrich pswd
+  s := 'Provider=MSDASQL.1';  // beginning of the connection string
   dm.adoConnKTL.LoginPrompt := true;
-  with dm.adoConnKTL do
+  // try building the connection string from the paramters give during startup
+  with dm.adoConnKTL do    //this specifies the ADOConnection to the database
   begin
     if not Connected then
     begin
-      if ParamCount > 0 then
+      if ParamCount > 0 then   //some parameters are given
       begin
      //Provider=MSDASQL.1;Password=Micadas;Persist Security Info=True;User ID=root;Data Source=DMYSQL_KTL
-        s := s + ';Data Source =' + ParamStr(1);
-        if ParamCount > 1 then s := s + ';User ID=' + ParamStr(2);
-        if ParamCount > 2 then
+        s := s + ';Data Source =' + ParamStr(1);     // one parameter given, this must be the name of the ODBC connection
+        if ParamCount > 1 then s := s + ';User ID=' + ParamStr(2);    // two parameters given, must be the ODBC connection and user name
+        if ParamCount > 2 then                       // three parameters give, must be ODBC connection, user name and password
         begin
           s := s + '; Password :=' + ParamStr(3);
-          dm.adoConnKTL.LoginPrompt := false;
+          dm.adoConnKTL.LoginPrompt := false;    //no logon prompt is needed since password and user name is supplied
         end;
-        if ParamCount > 3 then
+        if ParamCount > 3 then      // if four parameters are give and the last one is "KTLsupervisor" some special settings are applied
         begin
+          // special setting for super users
           if ParamStr(4) = 'KTLsupervisor' then
           begin
             btnTransfer.Visible := true;
             KTLsupervisor := true;
           end;
         end;
-        dm.adoConnKTL.ConnectionString := s;
-        frmMAMS.Caption := ' SAMS v.' + myVersion + ' -- ODBC: ' + ParamStr(1) + ' -- User: ' + ParamStr(2);
+        dm.adoConnKTL.ConnectionString := s; // send the connection string to the ADO connection
+        frmMAMS.Caption := ' SAMS v.' + myVersion + ' -- ODBC: ' + ParamStr(1) + ' -- User: ' + ParamStr(2); //display the connection info in the header of the form
       end
       else
       begin
-//    adoConnKTL.
+      // no ODBC parameters are give in order to connect to the database
+      StatusBar.Panels[2].Text:='not enough parameters to connect to DB using ODBC';
+      //    adoConnKTL.
       end;
     end;
-    Open;
+    Open;   // open ADOConnection
     StatusBar.Panels[2].Text:='Open Database connection...';
   end;
   s := dm.adoConnKTL.ConnectionString;

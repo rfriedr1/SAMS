@@ -1278,21 +1278,25 @@ begin
 end;
 
 procedure Tdm.TransferMA_Nr_To_MAMS;
-// transfer MA numbers to MAMS databse
+// transfer MA Invoice numbers from CEZA Database to MAMS database
 var
   MAMSProjectNr, MA_Nr : integer;
 begin
-  with qryCEZA do begin
+  with qryCEZA do
+  begin
     SQL.Text := 'SELECT Auftrags_Nr_,mams_project_nr FROM tab_auftraege t where Auftrags_Nr_ IS NOT NULL and mams_project_nr IS NOT NULL order by mams_project_nr desc;';
     Open;
     First;
-    while not EOF do begin
-       with qryDb do begin
+    while not EOF do
+    begin
+       with qryDb do
+       begin
          MAMSProjectNr := qryCEZA.Fields.Fields[1].AsInteger;
          SQL.Text := 'SELECT AuftragsNr FROM project_t WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
          Open;
          if  Fields.Fields[0].IsNull then
-           with adoCmd do begin
+           with adoCmd do
+           begin
              CommandText := 'UPDATE project_t SET AuftragsNr=' + IntToStr(qryCEZA.Fields.Fields[0].AsInteger) +
                             ' WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
              Execute;               
