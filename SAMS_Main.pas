@@ -36,10 +36,10 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   JvInspector, frxDesgn, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
-  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils;
+  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen;
 
 const
-  myVersion = '1.6.1 March-4-2016';
+  myVersion = '1.6.2 March-5-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -1481,20 +1481,22 @@ procedure TfrmMAMS.btnPendingReportsClick(Sender: TObject);
 var
   proj_number: string; // variable that stores the project number for further queries
 begin
-  with dm.qryPendingReports do begin
+  with dm.qryPendingReports do
+  begin
     (*SQL.Text := 'SELECT project, last_name, first_name, in_date, project_nr FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, project_t.project_nr, user_t.user_nr, help_t.samplecount FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help_t.samplecount FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       'LEFT JOIN (select project_nr, count(sample_nr) AS samplecount FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
-      'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
+      'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';
 
     Open;
-    with grdPendingReports do begin
+    with grdPendingReports do
+    begin
       Columns[0].Width := 160;
       Columns[1].Width := 120;
       Columns[2].Width := 100;
@@ -3556,6 +3558,7 @@ begin
   finally
     bmp.free
   end;
+
 end;
 
 procedure TfrmMAMS.FormDestroy(Sender: TObject);
@@ -6127,6 +6130,7 @@ var
   s: string;
   Schema, username, password: string;
 begin
+
 // some initial setup
   //  frmLogSql.Show;
   SetFormat;
@@ -6137,8 +6141,9 @@ begin
   edtStartAna.Value := 1;
   edtEndAna.Value := 1000000;
 
+  //frmStart.MemoStartScreenMessages.Lines.Clear;
   StatusBar.Panels[2].Text:='creating Database objects...';      //display a status in the status bar
-
+  frmStart.MemoStartScreenMessages.Lines.Add('start connecting to database');
 // define MySQL connection to main database from the parameters
 // that need to be given when starting SAMS
 // at this time those are parameters to the ODBC connection as set up in windows
@@ -6153,12 +6158,19 @@ begin
     begin
       if ParamCount > 0 then   //some parameters are given
       begin
+        frmStart.MemoStartScreenMessages.Lines.Add('found connection parameters');
      //Provider=MSDASQL.1;Password=Micadas;Persist Security Info=True;User ID=root;Data Source=DMYSQL_KTL
         s := s + ';Data Source =' + ParamStr(1);     // one parameter given, this must be the name of the ODBC connection
-        if ParamCount > 1 then s := s + ';User ID=' + ParamStr(2);    // two parameters given, must be the ODBC connection and user name
+        frmStart.MemoStartScreenMessages.Lines.Add('Data Source= ' + ParamStr(1));
+        if ParamCount > 1 then
+          begin
+            s := s + ';User ID=' + ParamStr(2);    // two parameters given, must be the ODBC connection and user name
+            frmStart.MemoStartScreenMessages.Lines.Add('User ID= ' + ParamStr(2));
+          end;
         if ParamCount > 2 then                       // three parameters give, must be ODBC connection, user name and password
         begin
           s := s + '; Password :=' + ParamStr(3);
+          frmStart.MemoStartScreenMessages.Lines.Add('found connection password');
           dm.adoConnKTL.LoginPrompt := false;    //no logon prompt is needed since password and user name is supplied
         end;
         if ParamCount > 3 then      // if four parameters are give and the last one is "KTLsupervisor" some special settings are applied
@@ -6182,6 +6194,7 @@ begin
     end;
     Open;   // open ADOConnection
     StatusBar.Panels[2].Text:='Open Database connection...';
+    frmStart.MemoStartScreenMessages.Lines.Add('open database connection');
   end;
   s := dm.adoConnKTL.ConnectionString;
   //   ClibBoard.SetTextBuf(PChar(s));
@@ -6191,25 +6204,35 @@ begin
   begin
     tblUser.Open;
       StatusBar.Panels[2].Text:='user data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('user data loaded');
     tblInvoice.Open;
       StatusBar.Panels[2].Text:='invoice data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('invoice data loaded');
 //    qryAllUser.Open;
     tblProjectTypes.Open;
       StatusBar.Panels[2].Text:='project data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('project data loaded');
     tblProjectStatus.Open;
       StatusBar.Panels[2].Text:='project status data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('project status data loaded');
     tblMethod.Open;
       StatusBar.Panels[2].Text:='method data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('method data loaded');
     tblResearchType.Open;
       StatusBar.Panels[2].Text:='research type data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('research type data loaded');
     tblReportType.Open;
       StatusBar.Panels[2].Text:='report data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('report data loaded');
     tblMaterial.Open;
       StatusBar.Panels[2].Text:='material data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('material data loaded');
     tblTypes.Open;
       StatusBar.Panels[2].Text:='type data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('type data loaded');
     tblFraction.Open;
       StatusBar.Panels[2].Text:='fraction data loaded';
+      frmStart.MemoStartScreenMessages.Lines.Add('fraction data loaded');
   end;
 
   cmbReportType.KeyValue := 0;
@@ -6222,10 +6245,15 @@ begin
 
   SetupInsertSamplesWizard;
 
+  frmStart.MemoStartScreenMessages.Lines.Add('checking report headings');
   if FileExists(ExtractFilePath(Application.ExeName) + '\ReportHeadings.txt') then begin
     grdReportHeadings.LoadFromFile(ExtractFilePath(Application.ExeName) + '\ReportHeadings.txt');
   end;
+  frmStart.MemoStartScreenMessages.Lines.Add('Ready');
   StatusBar.Panels[2].Text:='Ready';
+
+  //close the StartScreen window Unit: frmStartScreen.pas
+  frmStart.Hide; frmStart.Free;
 end;
 
 function TfrmMAMS.GetFileName: string;

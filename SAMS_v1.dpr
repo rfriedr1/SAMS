@@ -10,20 +10,25 @@ uses
   WordDriver in 'Worddriver\WordDriver.pas',
   Vcl.Themes,
   Vcl.Styles,
-  StorageLocations in 'StorageLocations.pas' {FormStorageLocations};
+  StorageLocations in 'StorageLocations.pas' {FormStorageLocations},
+  frmStartScreen in 'frmStartScreen.pas' {frmStart};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.Title := 'SAMS';
+  //create and display StartScreen
+  frmStart := TfrmStart.Create(nil); frmStart.Show; frmStart.Update;
   TStyleManager.TrySetStyle('Turquoise Gray');
+  Application.Title := 'SAMS';
   Application.CreateForm(TfrmMAMS, frmMAMS);
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogSql, frmLogSql);
   Application.CreateForm(TFormStorageLocations, FormStorageLocations);
   //  Application.CreateForm(TfrmInputNewSamples, frmInputNewSamples);
+  // closing the StartScreen happens in OnShow of the frmMAMS as soon as everything has been loaded
+   // frmStart.Hide; frmStart.Free;
   Application.Run;
 end.
 
