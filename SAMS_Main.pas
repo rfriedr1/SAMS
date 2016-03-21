@@ -33,13 +33,13 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DBClient, System.Actions, Vcl.Samples.Spin, JvExDBGrids, JvDBGrid,
   JvImage, JvWizardRouteMapList, JvWizard, JvExGrids, JvStringGrid, JvMarkupLabel,
   WordDriver, (*DBClient, *) Provider, MidasLib, (*Spin,*)
-  JvInspector, frxDesgn, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
+  JvInspector, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
-  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen;
+  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen(*, frxDesgn*);
 
 const
-  myVersion = '1.6.2 March-5-2016';
+  myVersion = '1.6.4 March-15-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -588,7 +588,6 @@ type
     DBEdit_UserNr: TDBEdit;
     DBEdit_AssocUserNr: TDBEdit;
     Label16: TLabel;
-    chkAllowChangesProject: TCheckBox;
     JvDirEdt_Server_Image_Path: TJvDirectoryEdit;
     Label79: TLabel;
     JvDirEdt_Server_Report_Path: TJvDirectoryEdit;
@@ -676,6 +675,13 @@ type
     ToolButton10: TToolButton;
     lbWizFinalPage: TMemo;
     tbsDBInfo: TTabSheet;
+    SearchDatabase1: TMenuItem;
+    actSearchDatabase: TAction;
+    dbchkFreeOfCharge1: TDBCheckBox;
+    dbchkFreeOfCharge2: TDBCheckBox;
+    chkFreeOfCharge: TCheckBox;
+    Panel5: TPanel;
+    Label106: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -901,7 +907,6 @@ type
     procedure grdInPrepDblClick(Sender: TObject);
     procedure grdWaitingForGraphDblClick(Sender: TObject);
     procedure grdSamplesAvailableCellClick(Column: TColumn);
-    procedure chkAllowChangesProjectClick(Sender: TObject);
     procedure btnDBPlotClick(Sender: TObject);
     procedure btnPlotQueryClick(Sender: TObject);
     procedure DBChartSeriesGetMarkText(Sender:TChartSeries; ValueIndex:Integer; var MarkText:String);
@@ -934,6 +939,14 @@ type
     procedure actStorageLocationExecute(Sender: TObject);
     procedure btnUserExportClipboardClick(Sender: TObject);
     procedure ToolButton10Click(Sender: TObject);
+    procedure actSearchDatabaseExecute(Sender: TObject);
+    procedure dbchkFreeOfCharge1Click(Sender: TObject);
+    procedure dbchkFreeOfCharge2Click(Sender: TObject);
+    procedure grdProjectsDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure grdSamplesOfSubmitterDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1009,6 +1022,7 @@ type
     procedure GetPlanned;
     procedure CheckProjectExists;
     procedure GetSamplesForReport(DoExportHalle: boolean);
+    procedure AlternateRowColors(Sender: TObject; State: TGridDrawState);
   public
     SampleModified: boolean;
     property FileName: string read GetFileName write SetFileName;
@@ -1024,7 +1038,7 @@ implementation
 uses
   SysUtils, about, SHFolder, Clipbrd, CommCtrl, DateUtils, JvJCLUtils,
   IniFiles, _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
-  StorageLocations;
+  StorageLocations, FormDBSearch;
 
 {$R *.dfm}
 
@@ -1605,6 +1619,36 @@ begin
 end;
 
 
+procedure TfrmMAMS.dbchkFreeOfCharge1Click(Sender: TObject);
+begin
+ With (Sender As TDBCheckBox) Do
+ Begin
+    if checked then
+    Begin
+      Font.Style:=[fsBold];
+    End
+    else
+    begin
+     Font.Style:=[];
+    end;
+ End;
+end;
+
+procedure TfrmMAMS.dbchkFreeOfCharge2Click(Sender: TObject);
+begin
+ With (Sender As TDBCheckBox) Do
+ Begin
+    if checked then
+    Begin
+      Font.Style:=[fsBold];
+    End
+    else
+    begin
+     Font.Style:=[];
+    end;
+ End;
+end;
+
 procedure TfrmMAMS.btnNowEndClick(Sender: TObject);
 begin
   dtEndTaskDate.Date := Date;
@@ -1829,20 +1873,25 @@ procedure TfrmMAMS.btnSaveChangesAdminClick(Sender: TObject);
 //saves all data in the ProjectInfo pane
 var
   sample_nr, project_nr: integer;
-  s, in_date_str, desired_date_str, Out_Date_str: string;
+  s, in_date_str, desired_date_str, Out_Date_str, freeofcharge: string;
 begin
   sample_nr := round(edtSampleNr.Value);
   project_nr := dm.GetProjectNrBySampleNr(sample_nr);
   desired_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoDesiredDate.Date);
   in_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoInDate.Date);
   Out_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date);
-// update the project dates and status
+  if dbchkFreeOfCharge2.Checked then freeofcharge:='1'
+  else freeofcharge:='0';
+
+  // update the project dates and status
   s := 'UPDATE project_t SET ' +
     'desired_date= ' + #34 + desired_date_str + #34 + ',' +
     'in_date=' + #34 + in_date_str + #34 + ',' +
     'out_date=' + #34 + out_date_str + #34 + ',' +
-    'status=' + #34 + cmbProjectStatus.Text + #34 + ',' +
+    'FreeOfCharge=' + #34 +freeofcharge + #34 + ',' +
+    'status=' + #34 + cmbProjectStatus.Text + #34 +
     ' WHERE project_nr=' + IntToStr(project_nr) + ';';
+  //ShowMessage(s);
   //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
@@ -2104,10 +2153,7 @@ end;
 procedure TfrmMAMS.btnSaveInvoiceNrClick(Sender: TObject);
 // if allow changes is sellected the database is updated with the current values of the data fields
 begin
- if chkAllowChangesProject.Checked then
     dm.qryProject.Post; //Post has the same result as the SQL command update
-//  dm.adoCmd.CommandText := 'UPDATE project_t SET invoice_nr=' +
-//                           IntToStr(edtInvoiceNr.Te
 end;
 
 procedure TfrmMAMS.actTablesExecute(Sender: TObject);
@@ -2148,6 +2194,11 @@ begin
   DoSampleInfo;
 //  btnDoSampleQuery.SetFocus;
   edtSampleNr.SetFocus;
+end;
+
+procedure TfrmMAMS.actSearchDatabaseExecute(Sender: TObject);
+begin
+  frmDBSearch.ShowModal;
 end;
 
 procedure TfrmMAMS.actSendMailExecute(Sender: TObject);
@@ -3006,7 +3057,7 @@ procedure TfrmMAMS.InsertNewSamplesInDb;
 // used for sample import using a wizzard
 // Insert SAmples into Database
 var
-  Sample_nr, user_nr, Acol, Arow, PrepCol, i: integer;
+  Sample_nr, user_nr, Acol, Arow, PrepCol, FreeOfCharge, i: integer;
   project_nr: integer;
   s, desired_date_str, in_date_str, strWeight: string;
   w: double;
@@ -3132,15 +3183,19 @@ begin
   CheckProjectExists;
   // project doesn't exists yet
   if not ProjectExists then
-  begin // insert project
+  begin
+    // prepare a few data types
     desired_date_str := FormatDateTime('YYYY-MM-DD', edtDesiredDate.Date);
     in_date_str := FormatDateTime('YYYY-MM-DD', edtInDate.Date);
+    if chkFreeOfCharge.Checked = true then FreeOfCharge:=1
+    else FreeOfCharge:=0;
+
     if glbInvoiceNr > 0 then
       s := IntTostr(glbInvoiceNr)
     else
       s := 'NULL';
     dm.adoCmd.CommandText := 'INSERT INTO project_t (user_nr,invoice_nr,project,desired_date,'
-      + 'in_date,priority,report_type,letter,status,price,project_type,research, project_comment, invoice)'
+      + 'in_date,priority,report_type,letter,status,price,project_type,research, project_comment, invoice, FreeOfCharge)'
       + ' VALUES(' + IntToStr(user_nr) + ',' + s + ','
       + #34 + ProjectName + #34 + ','
       + #34 + desired_date_str + #34 + ','
@@ -3153,12 +3208,13 @@ begin
       + #34 + cmbProjectType.Text + #34 + ','
       + #34 + cmbResearchType.Text + #34 + ','
       + #34 + edtProjectComment.Text + #34 + ','
-      + IntToStr(MANummer) + ')'
+      + IntToStr(MANummer) + ','
+      + IntToStr(FreeOfCharge) +  ')'
       + ';';
     s := dm.adoCmd.CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
-    lbWizFinalPage.lines.add('New project created </b><br>');
+    lbWizFinalPage.lines.add('New project created');
     //update list of projects
     dm.tblProjects.Close;
     dm.tblProjects.Open;
@@ -3305,20 +3361,18 @@ begin
     edtMailTo.Text := dm.qrydb.FieldByName('email').AsString;  // used to be grdPreviewUser.Cells[1, 13];  only works for a new user
   with MailMemo.Lines do
     begin
-      Add('Sehr geehrter Herr ');
-      Add('Hiermit bestätigen wir den Erhalt ihrer C14 Proben.');
-      Add(' ');
+      Add('Sehr geehrter Herr XXX');
+      Add('hiermit bestätigen wir den Erhalt ihrer C14 Proben.');
       Add(' ');
       Add('C14 Sample receipt:');
-      Add(' ');
       Add('We confirm to have received the samples listed below.');
-      Add('This is an auto-generated email.');
       Add(' ');
       Add('Best regards');
       Add('The Team of the Klaus-Tschira C14-Lab');
+      Add('This is an auto-generated email.');
+      Add(' ');
       Add(' ');
       Add('Received Samples:');
-      Add(' ');
     end;
   with dm.qryDB do
     begin
@@ -3941,9 +3995,12 @@ procedure TfrmMAMS.grdPendingReportsDrawColumnCell(Sender: TObject;
 // when tables is drawn, change the color of the cells depending on the cell content
 // fill cell 'sample count' red, when value >0
 begin
-  if dm.qryPendingReports.FieldByName('samplecount').AsInteger>0      //if samplecount is bigger than 0 change the color of the row
-    then TDBGrid(Sender).Canvas.Brush.Color:=clSkyBlue;
-      TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  AlternateRowColors(Sender, State);
+  if dm.qryPendingReports.FieldByName('samplecount').AsInteger>0 Then     //if samplecount is bigger than 0 change the color of the row
+     Begin
+     TDBGrid(Sender).Canvas.Brush.Color:=clSkyBlue;
+     End;
+  TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmMAMS.grdPlannedCellClick(Column: TColumn);
@@ -4185,37 +4242,19 @@ begin
 //  spltSampleSamples.Visible := true;
 end;
 
+procedure TfrmMAMS.grdProjectsDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var grid: TDBGrid;
+begin
+  AlternateRowColors(Sender, State);
+  (Sender as TDBGrid).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
 procedure TfrmMAMS.grdReportHeadingsExit(Sender: TObject);
 begin
   grdReportHeadings.SaveToFile(ExtractFilePath(Application.ExeName) + '\ReportHeadings.txt');
 end;
 
-
-
-procedure TfrmMAMS.chkAllowChangesProjectClick(Sender: TObject);
-//changes the state of the EditBoxes that are associated with it
-begin
-  if chkAllowChangesProject.Checked then begin
-    DBEdit_ProjectName.Enabled:=true;
-    DBEdit_AssocUserNr.Enabled:=true;
-    DBLookupComboBox1.Enabled:=true;
-    JvDBDateTimePicker1.Enabled:=true;
-    JvDBDateTimePicker2.Enabled:=true;
-    JvDBDateTimePicker3.Enabled:=true;
-    DBEdit_Letter.Enabled:=true;
-    DBEdit_InvoiceNumber.Enabled:=true;
-  end
-  else if chkAllowChangesProject.State=cbUnchecked then begin
-    DBEdit_ProjectName.Enabled:=false;
-    DBEdit_AssocUserNr.Enabled:=false;
-    DBLookupComboBox1.Enabled:=false;
-    JvDBDateTimePicker1.Enabled:=false;
-    JvDBDateTimePicker2.Enabled:=false;
-    JvDBDateTimePicker3.Enabled:=false;
-    DBEdit_Letter.Enabled:=false;
-    DBEdit_InvoiceNumber.Enabled:=false
-  end;
-end;
 
 procedure TfrmMAMS.chkAllProjectsClick(Sender: TObject);
 begin
@@ -4952,7 +4991,8 @@ begin
     // and try to find that user in the database
     surname := grdPreviewUser.Cells[1, 2];
     first_name := grdPreviewUser.Cells[1, 1];
-    UserExists := dm.tblUser.Locate('last_name; first_name', VarArrayOf([surname, first_name]), [loPartialKey]); //locate user in database
+    //UserExists := dm.tblUser.Locate('last_name; first_name', VarArrayOf([surname, first_name]), [loPartialKey]); //locate user in database
+    UserExists := dm.tblUser.Locate('last_name',surname, [loPartialKey]); //locate user in database
     if UserExists then
     begin
       btnInsertExistingUser.Enabled := true;
@@ -5059,34 +5099,43 @@ var
   Year, Month, Day: word;
 begin
   SetFormat;
-  if pgtMain.ActivePage = tbsUserReport then begin
-    DecodeDate(Date, Year, Month, Day);
-    edtStartYear.Value := Year - 2;
-    edtEndYear.Value := Year;
-    edtStartAna.Value := 1;
-    edtEndAna.Value := 1000000;
-  end;
-  if pgtMain.ActivePage = tbsLabTasks then begin
-    btnQueryToPretreatClick(Sender);
-  end;
-  if pgtMain.ActivePage = tbsProjectsOfUser then SetupProjectPage;
-  if pgtMain.ActivePage = tbsSampleInfo then begin
-    btnDoSampleQuery.SetFocus;
-  end;
-  if pgtMain.ActivePage = tbsUserInfo then begin
-    cmbUsernameUserInfo.SetFocus;
-  end;
-  if pgtMain.ActivePage = tbsAdmin then begin
-    dm.GetNOxaBlank(true);
-    lblOxa.Caption := ' Oxa = ' + IntToStr(dm.qryDB.RecordCount);
-    with dm.qryDB do begin
-      First;
-      while not EOF do memoOxaBlank.Lines.Add(Fields.FieldByName('sample_nr').AsString);
-      Next;
+  if pgtMain.ActivePage = tbsUserReport then        // User Report
+    begin
+      DecodeDate(Date, Year, Month, Day);
+      edtStartYear.Value := Year - 2;
+      edtEndYear.Value := Year;
+      edtStartAna.Value := 1;
+      edtEndAna.Value := 1000000;
     end;
-    dm.GetNOxaBlank(false);
-    lblBlank.Caption := ' Oxa = ' + IntToStr(dm.qryDB.RecordCount);
-  end;
+  if pgtMain.ActivePage = tbsLabTasks then         // Lab Tasks
+    begin
+      btnQueryToPretreatClick(Sender);
+    end;
+  if pgtMain.ActivePage = tbsProjectsOfUser then   // Projects of User
+    Begin
+    SetupProjectPage;
+    End;
+  if pgtMain.ActivePage = tbsSampleInfo then       // Sample Info
+    begin
+      btnDoSampleQuery.SetFocus;
+    end;
+  if pgtMain.ActivePage = tbsUserInfo then         // User Info
+    begin
+      cmbUsernameUserInfo.SetFocus;
+    end;
+  if pgtMain.ActivePage = tbsAdmin then            // Admin
+    begin
+      dm.GetNOxaBlank(true);
+      lblOxa.Caption := ' Oxa = ' + IntToStr(dm.qryDB.RecordCount);
+      with dm.qryDB do
+        begin
+          First;
+          while not EOF do memoOxaBlank.Lines.Add(Fields.FieldByName('sample_nr').AsString);
+          Next;
+        end;
+      dm.GetNOxaBlank(false);
+      lblBlank.Caption := ' Oxa = ' + IntToStr(dm.qryDB.RecordCount);
+    end;
 end;
 
 const
@@ -5533,37 +5582,41 @@ begin
 end;
 
 procedure TfrmMAMS.GetPlanned;
-//display alle the planned samples (before prep and before graphitisation)
+//display alle the planned samples:
+// samples before prep and before graphitisation
 var
   n: integer;
 begin
-  {
-The width of the grid less the space ocupied by the scrollbar is
-DBGrid.ClientWidth.
-The width of each column is DBGrid.Columns[n].Width.
-}
-  n := dm.GetAllPlanned(chkShowOnHold.Checked);
-  with grdPlanned do begin
-    Columns[0].Width := 40; //smaple_nr
-    Columns[1].Width := 90; // project
-    Columns[2].Width := 90; // user_label
-    Columns[3].Width := 90; // last_name
-    Columns[4].Width := 60; // desired_date
-  end;
-  n := n + dm.GetAllInPrep;
-  with grdInPrep do begin
-    Columns[0].Width := 40; //smaple_nr
-    Columns[1].Width := 90; // project
-    Columns[2].Width := 90; // user_label
-    Columns[3].Width := 90;
-  end;
-  n := n + dm.GetAllWaitingForGraph;
-  with grdWaitingForGraph do begin
-    Columns[0].Width := 40; //smaple_nr
-    Columns[1].Width := 90; // project
-    Columns[2].Width := 90; // user_label
-    Columns[3].Width := 90;
-  end;
+
+  //The width of the grid less the space ocupied by the scrollbar is
+  //DBGrid.ClientWidth.
+  //The width of each column is DBGrid.Columns[n].Width.
+
+  n := dm.GetAllPlanned(chkShowOnHold.Checked); // get all samples that are not prep'd yet
+  with grdPlanned do
+    begin
+      Columns[0].Width := 40; // sample_nr
+      Columns[1].Width := 90; // project
+      Columns[2].Width := 90; // user_label
+      Columns[3].Width := 90; // last_name
+      Columns[4].Width := 60; // desired_date
+    end;
+  n := n + dm.GetAllInPrep;                      // get all samples that are in prep
+  with grdInPrep do
+    begin
+      Columns[0].Width := 40; // sample_nr
+      Columns[1].Width := 90; // project
+      Columns[2].Width := 90; // user_label
+      Columns[3].Width := 90;
+    end;
+  n := n + dm.GetAllWaitingForGraph;            // get all samples that are prep'd but not graphitized
+  with grdWaitingForGraph do
+    begin
+      Columns[0].Width := 40; // sample_nr
+      Columns[1].Width := 90; // project
+      Columns[2].Width := 90; // user_label
+      Columns[3].Width := 90;
+    end;
   lblTotal.Caption := 'Total = ' + IntToStr(n) + ' samples (' + IntToStr((n div 50) + 1) + ' weeks)'; //calculate total time in weeks till all is finished, 50 samples per week?
 end;
 
@@ -5774,6 +5827,37 @@ begin
       if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then Columns[19].Width := 40;
     end;
   end;
+end;
+
+procedure TfrmMAMS.AlternateRowColors(Sender: TObject; State: TGridDrawState);
+var
+  row: Integer;
+begin
+  // alternate row colors
+  if Sender is TDBGrid then
+  Begin
+    row := (Sender as TDBGrid).DataSource.DataSet.RecNo;
+    if Odd(row) then
+    begin
+      (Sender as TDBGrid).canvas.Brush.Color := (Sender as TDBGrid).GradientStartColor;
+    end
+    else
+    begin
+      (Sender as TDBGrid).Canvas.Brush.Color := (Sender as TDBGrid).FixedColor;
+    end;
+    // now that we have changed the colors of the rows
+    //we need to deal with the appearance of selected rows
+    if (gdSelected in State) then
+       begin
+          with (Sender as TDBGrid).Canvas do
+          begin
+            Brush.Color := clHighlight;
+            Font.Style := Font.Style + [fsBold];
+            Font.Color := clHighlightText;
+          end;
+       end;
+  End;
+
 end;
 
 
@@ -6141,9 +6225,8 @@ begin
   edtStartAna.Value := 1;
   edtEndAna.Value := 1000000;
 
-  //frmStart.MemoStartScreenMessages.Lines.Clear;
+  frmStart.MemoStartScreenMessages.Lines.Clear;
   StatusBar.Panels[2].Text:='creating Database objects...';      //display a status in the status bar
-  frmStart.MemoStartScreenMessages.Lines.Add('start connecting to database');
 // define MySQL connection to main database from the parameters
 // that need to be given when starting SAMS
 // at this time those are parameters to the ODBC connection as set up in windows
@@ -6158,19 +6241,19 @@ begin
     begin
       if ParamCount > 0 then   //some parameters are given
       begin
-        frmStart.MemoStartScreenMessages.Lines.Add('found connection parameters');
+        frmStart.MemoStartScreenMessages.Lines.Add('DB - found connection parameters');
      //Provider=MSDASQL.1;Password=Micadas;Persist Security Info=True;User ID=root;Data Source=DMYSQL_KTL
         s := s + ';Data Source =' + ParamStr(1);     // one parameter given, this must be the name of the ODBC connection
-        frmStart.MemoStartScreenMessages.Lines.Add('Data Source= ' + ParamStr(1));
+        frmStart.MemoStartScreenMessages.Lines.Add('DB - Data Source= ' + ParamStr(1));
         if ParamCount > 1 then
           begin
             s := s + ';User ID=' + ParamStr(2);    // two parameters given, must be the ODBC connection and user name
-            frmStart.MemoStartScreenMessages.Lines.Add('User ID= ' + ParamStr(2));
+            frmStart.MemoStartScreenMessages.Lines.Add('DB - User ID= ' + ParamStr(2));
           end;
         if ParamCount > 2 then                       // three parameters give, must be ODBC connection, user name and password
         begin
           s := s + '; Password :=' + ParamStr(3);
-          frmStart.MemoStartScreenMessages.Lines.Add('found connection password');
+          frmStart.MemoStartScreenMessages.Lines.Add('DB - found connection password');
           dm.adoConnKTL.LoginPrompt := false;    //no logon prompt is needed since password and user name is supplied
         end;
         if ParamCount > 3 then      // if four parameters are give and the last one is "KTLsupervisor" some special settings are applied
@@ -6188,52 +6271,63 @@ begin
       else
       begin
       // no ODBC parameters are give in order to connect to the database
-      StatusBar.Panels[2].Text:='not enough parameters to connect to DB using ODBC';
+      StatusBar.Panels[2].Text:='DB - not enough parameters to connect to DB using ODBC';
       //    adoConnKTL.
       end;
     end;
-    Open;   // open ADOConnection
-    StatusBar.Panels[2].Text:='Open Database connection...';
-    frmStart.MemoStartScreenMessages.Lines.Add('open database connection');
-  end;
+
+    // try to connect to the database
+    Try
+      frmStart.MemoStartScreenMessages.Lines.Add('DB - try connecting to database');
+      Open;   // open ADOConnection
+      StatusBar.Panels[2].Text:='Open Database connection...';
+      frmStart.MemoStartScreenMessages.Lines.Add('DB - connected');
+    Except
+        frmStart.MemoStartScreenMessages.Lines.Add('DB - not able to connect');
+        showmessage('unable to connect to the database. Make sure an ODBC driver is selected and you are connected to the network.');
+    End;
+      end;
   s := dm.adoConnKTL.ConnectionString;
   //   ClibBoard.SetTextBuf(PChar(s));
 
-  // load some of the tables from the Database
-  with dm do
-  begin
-    tblUser.Open;
-      StatusBar.Panels[2].Text:='user data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('user data loaded');
-    tblInvoice.Open;
-      StatusBar.Panels[2].Text:='invoice data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('invoice data loaded');
-//    qryAllUser.Open;
-    tblProjectTypes.Open;
-      StatusBar.Panels[2].Text:='project data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('project data loaded');
-    tblProjectStatus.Open;
-      StatusBar.Panels[2].Text:='project status data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('project status data loaded');
-    tblMethod.Open;
-      StatusBar.Panels[2].Text:='method data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('method data loaded');
-    tblResearchType.Open;
-      StatusBar.Panels[2].Text:='research type data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('research type data loaded');
-    tblReportType.Open;
-      StatusBar.Panels[2].Text:='report data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('report data loaded');
-    tblMaterial.Open;
-      StatusBar.Panels[2].Text:='material data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('material data loaded');
-    tblTypes.Open;
-      StatusBar.Panels[2].Text:='type data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('type data loaded');
-    tblFraction.Open;
-      StatusBar.Panels[2].Text:='fraction data loaded';
-      frmStart.MemoStartScreenMessages.Lines.Add('fraction data loaded');
-  end;
+  // load some of the tables from the Database if the ADO connection worked
+  if dm.adoConnKTL.Connected then
+  Begin
+    with dm do
+    begin
+      tblUser.Open;
+        StatusBar.Panels[2].Text:='user data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('user data loaded');
+      tblInvoice.Open;
+        StatusBar.Panels[2].Text:='invoice data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('invoice data loaded');
+  //    qryAllUser.Open;
+      tblProjectTypes.Open;
+        StatusBar.Panels[2].Text:='project data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('project data loaded');
+      tblProjectStatus.Open;
+        StatusBar.Panels[2].Text:='project status data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('project status data loaded');
+      tblMethod.Open;
+        StatusBar.Panels[2].Text:='method data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('method data loaded');
+      tblResearchType.Open;
+        StatusBar.Panels[2].Text:='research type data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('research type data loaded');
+      tblReportType.Open;
+        StatusBar.Panels[2].Text:='report data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('report data loaded');
+      tblMaterial.Open;
+        StatusBar.Panels[2].Text:='material data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('material data loaded');
+      tblTypes.Open;
+        StatusBar.Panels[2].Text:='type data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('type data loaded');
+      tblFraction.Open;
+        StatusBar.Panels[2].Text:='fraction data loaded';
+        frmStart.MemoStartScreenMessages.Lines.Add('fraction data loaded');
+    end;
+  End;
 
   cmbReportType.KeyValue := 0;
   cmbProjectType.KeyValue := 0;
@@ -6254,6 +6348,9 @@ begin
 
   //close the StartScreen window Unit: frmStartScreen.pas
   frmStart.Hide; frmStart.Free;
+
+  // switch pgtMain to SampleInfo and show sample info of the currently selected Sample_nr
+  actSampleInfoExecute(self);
 end;
 
 function TfrmMAMS.GetFileName: string;
@@ -6365,10 +6462,8 @@ end;
 procedure TfrmMAMS.grdSamplesOfProjectDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  with Sender as TDBGrid do begin
-//    Canvas.Brush.Color := clyellow;
-    DefaultDrawColumnCell(Rect, DataCol, Column, State);
-  end;
+  AlternateRowColors(Sender, State);
+  (Sender as TDBGrid).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmMAMS.grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -6388,6 +6483,13 @@ procedure TfrmMAMS.grdSamplesOfSubmitterDblClick(Sender: TObject);
 // Display SampleInfo and switch to SampleInfo View
 begin
   ShowSampleInfoPage(Sender);
+end;
+
+procedure TfrmMAMS.grdSamplesOfSubmitterDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  AlternateRowColors(Sender, State);
+  (Sender as TDBGrid).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmMAMS.ShowSampleInfoPage(Grid: TObject);

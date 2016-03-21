@@ -93,17 +93,24 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
   // set query with sampleID#s to first record
   ADOQueryIDs.First;
 
-  //go trhough data that are displayed in DBGrid using the query and update fields
+  //go through data that are displayed in DBGrid
+  // create the UPDATE query depending on what data are given
+  // then update records in DB
   while NOT ADOQueryIDs.Eof do
     begin
     s := 'UPDATE sample_t SET ';
-    if (trim(edtSampleStorageLoc.Text) <> '') then
-      s := s + 's_storage_loc = ' + edtSampleStorageLoc.Text;
-    if (trim(edtPrepStorageLoc.Text) <> '') then
-      s := s + ', prep_storage_loc = ' + edtPrepStorageLoc.Text;
+    if (trim(edtSampleStorageLoc.Text) <> '') then                   //SampleStorageLocation is given
+      begin
+      s := s + 's_storage_loc = ' + trim(edtSampleStorageLoc.Text);
+      end;
+    if (trim(edtPrepStorageLoc.Text) <> '') then                     //PrepStorageLocation is given
+      begin
+      if (trim(edtSampleStorageLoc.Text) <> '') then s := s + ', ';  // add "," if both values are given
+      s := s + 'prep_storage_loc = ' + trim(edtPrepStorageLoc.Text);
+      end;
     s := s+ ' WHERE sample_nr = ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ';';
     edtStatus.Text := 'updating Sample_nr = ' +  ADOQueryIDs.FieldByName('sample_nr').AsString;
-    //ShowMessage(s);
+    ShowMessage(s);
     ADOCmdUpdate.CommandText := s;
     ADOCmdUpdate.Execute;
     ADOQueryIDs.Next;

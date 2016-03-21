@@ -3,7 +3,7 @@ unit _dm;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB, TypInfo, frxClass, frxDBSet, Dialogs;
+  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs;
 
 {
 Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Data Source=DMYSQL_KTL;Extended Properties="DSN=DMYSQL_KTL;UID=root;"
@@ -524,43 +524,47 @@ begin
 end;
 
 function Tdm.GetAllInPrep : integer;
+//get all samples that are in prep
 var
   s : string;
 begin
-  with qryInPrep do begin
-     Close;
-     SQL.Text := 'SELECT sample_t.sample_nr, user_label, project_t.project, user_t.last_name ' +
-         ' FROM sample_t ' +
-         'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
-         'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
-         'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-         ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
-     s := SQL.Text;
-//     ClipBoard.SetTextBuf(PChar(s));
-     Open;
-  end;
+  with qryInPrep do
+    begin
+       Close;
+       SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, user_t.last_name ' +
+                    ' FROM sample_t ' +
+                    'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
+       s := SQL.Text;
+  //     ClipBoard.SetTextBuf(PChar(s));
+       Open;
+    end;
   Result := qryInPrep.RecordCount;
 end;
 
 function Tdm.GetAllPlanned(ShowOnHold : boolean) : integer;
+// get all samples that are not prep'd yet
 var
   s : string;
 begin
-  with qryPlanned do begin
+  with qryPlanned do
+  begin
      Close;
-     SQL.Text := 'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name,' +
-                 ' project_t.desired_date ' +
-         ' FROM sample_t ' +
-         'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
-         'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
-         'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-         ' WHERE sample_t.sample_nr>9999 AND preparation_t.step1_start IS NULL AND preparation_t.prep_end IS NULL ' +
-         ' AND c14_age IS NULL AND material <> "graphite" AND  preparation_t.stop=0';
+     SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name,' +
+                  ' project_t.desired_date ' +
+                  ' FROM sample_t ' +
+                  'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+                  'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+                  'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+                  ' WHERE sample_t.sample_nr>9999 AND preparation_t.step1_start IS NULL AND preparation_t.prep_end IS NULL ' +
+                  ' AND c14_age IS NULL AND material <> "graphite" AND  preparation_t.stop=0';
       if ShowOnHold then
         SQL.Text := SQL.Text +  ' AND sample_t.not_tobedated=1;'
       else
         SQL.Text := SQL.Text + ' AND sample_t.not_tobedated=0;';
-     s := SQL.Text;
+      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      Open;
   end;
@@ -568,24 +572,26 @@ begin
 end;
 
 function Tdm.GetAllWaitingForGraph : integer;
+// get all samples that are not graphitized yet but prep'd
 var
   s : string;
 begin
-  with qryWaitingForGraph do begin
+  with qryWaitingForGraph do
+  begin
      Close;
-     SQL.Text := 'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.in_date ' +
-         ' FROM sample_t ' +
-         'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
-         'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
-         'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-         'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
-         ' WHERE preparation_t.prep_end IS NOT NULL and target_t.graphitized IS NULL ' +
-         ' and target_t.target_pressed IS NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
-         ' and preparation_t.stop=0 and  target_t.stop=0 ' +
-         ' and project_t.out_date IS NULL ' +
-         ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
-         ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
-         ' ORDER BY project_t.in_date;' ;
+     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.in_date ' +
+                   ' FROM sample_t ' +
+                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+                   'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
+                   ' WHERE preparation_t.prep_end IS NOT NULL and target_t.graphitized IS NULL ' +
+                   ' and target_t.target_pressed IS NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
+                   ' and preparation_t.stop=0 and  target_t.stop=0 ' +
+                   ' and project_t.out_date IS NULL ' +
+                   ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
+                   ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
+                   ' ORDER BY project_t.in_date;' ;
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      Open;
@@ -882,7 +888,7 @@ begin
   begin
     Close;
     s :=
-' SELECT sample_t.sample_nr, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
+' SELECT sample_t.sample_nr, freeofcharge, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
 ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
 ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
 ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +

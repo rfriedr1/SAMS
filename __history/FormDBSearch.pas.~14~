@@ -1,0 +1,86 @@
+unit FormDBSearch;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, _dm, ADODB;
+
+type
+  TfrmDBSearch = class(TForm)
+    StaticText1: TStaticText;
+    btnClose: TButton;
+    btnSearch: TButton;
+    DBGridSearchResults: TDBGrid;
+    StaticText2: TStaticText;
+    lblSearchResults: TLabel;
+    RadioGroup1: TRadioGroup;
+    edtSearchPhrase: TLabeledEdit;
+    procedure FormShow(Sender: TObject);
+    procedure btnSearchClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmDBSearch: TfrmDBSearch;
+  ADOQuerySearch : TADOQuery;
+  DataSrcSearch  : TDataSource;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmDBSearch.btnSearchClick(Sender: TObject);
+// perfomr the database search
+var s: string;
+begin
+  // use the same database connection as the main Program
+
+  // Create the query during runtime
+  ADOQuerySearch := TADOQuery.Create(Self);
+  ADOQuerySearch.Connection := dm.ADOConnKTL;
+  s := 'SELECT sample_nr, user_label from sample_t WHERE user_label LIKE' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
+  ADOQuerySearch.SQL.Add(s);
+  ADOQuerySearch.Open;
+  //ShowMessage(s);
+
+// Create the data source.
+  DataSrcSearch := TDataSource.Create(Self);
+  DataSrcSearch.DataSet := ADOQuerySearch;
+  DataSrcSearch.Enabled := true;
+
+//Finally, initialize the grid.
+  DBGridSearchResults.DataSource := DataSrcSearch;
+
+//  with DBGridSearchResults do
+//  begin
+//    DBGrid1.Columns.Items[0].Width := 60;
+//    DBGrid1.Columns.Items[1].Width := 120;
+//    DBGrid1.Columns.Items[2].Width := 60;
+//    DBGrid1.Columns.Items[3].Width := 60;
+//  end;
+
+
+end;
+
+procedure TfrmDBSearch.FormShow(Sender: TObject);
+begin
+// check whether DB connection is active or not
+  try
+    dm.ADOConnKTL.Connected := True;
+  except
+    on e: EADOError do
+    begin
+      MessageDlg('Error while connecting to DB', mtError,
+                  [mbOK], 0);
+
+      Exit;
+    end;
+  end;
+end;
+
+end.

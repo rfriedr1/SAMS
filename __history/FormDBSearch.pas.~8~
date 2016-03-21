@@ -1,0 +1,34 @@
+unit FormDBSearch;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls;
+
+type
+  TfrmDBSearch = class(TForm)
+    StaticText1: TStaticText;
+    btnClose: TButton;
+    btnSearch: TButton;
+    DBGrid1: TDBGrid;
+    StaticText2: TStaticText;
+    lblSearchResults: TLabel;
+    RadioGroup1: TRadioGroup;
+    LabeledEdit1: TLabeledEdit;
+    ButtonedEdit1: TButtonedEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmDBSearch: TfrmDBSearch;
+
+implementation
+
+{$R *.dfm}
+
+end.
