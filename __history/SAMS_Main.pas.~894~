@@ -680,6 +680,8 @@ type
     dbchkFreeOfCharge1: TDBCheckBox;
     dbchkFreeOfCharge2: TDBCheckBox;
     chkFreeOfCharge: TCheckBox;
+    Panel5: TPanel;
+    Label106: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -3055,7 +3057,7 @@ procedure TfrmMAMS.InsertNewSamplesInDb;
 // used for sample import using a wizzard
 // Insert SAmples into Database
 var
-  Sample_nr, user_nr, Acol, Arow, PrepCol, i: integer;
+  Sample_nr, user_nr, Acol, Arow, PrepCol, FreeOfCharge, i: integer;
   project_nr: integer;
   s, desired_date_str, in_date_str, strWeight: string;
   w: double;
@@ -3181,15 +3183,19 @@ begin
   CheckProjectExists;
   // project doesn't exists yet
   if not ProjectExists then
-  begin // insert project
+  begin
+    // prepare a few data types
     desired_date_str := FormatDateTime('YYYY-MM-DD', edtDesiredDate.Date);
     in_date_str := FormatDateTime('YYYY-MM-DD', edtInDate.Date);
+    if chkFreeOfCharge.Checked = true then FreeOfCharge:=1
+    else FreeOfCharge:=0;
+
     if glbInvoiceNr > 0 then
       s := IntTostr(glbInvoiceNr)
     else
       s := 'NULL';
     dm.adoCmd.CommandText := 'INSERT INTO project_t (user_nr,invoice_nr,project,desired_date,'
-      + 'in_date,priority,report_type,letter,status,price,project_type,research, project_comment, invoice)'
+      + 'in_date,priority,report_type,letter,status,price,project_type,research, project_comment, invoice, FreeOfCharge)'
       + ' VALUES(' + IntToStr(user_nr) + ',' + s + ','
       + #34 + ProjectName + #34 + ','
       + #34 + desired_date_str + #34 + ','
@@ -3202,12 +3208,13 @@ begin
       + #34 + cmbProjectType.Text + #34 + ','
       + #34 + cmbResearchType.Text + #34 + ','
       + #34 + edtProjectComment.Text + #34 + ','
-      + IntToStr(MANummer) + ')'
+      + IntToStr(MANummer) + ','
+      + IntToStr(FreeOfCharge) +  ')'
       + ';';
     s := dm.adoCmd.CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
-    lbWizFinalPage.lines.add('New project created </b><br>');
+    lbWizFinalPage.lines.add('New project created');
     //update list of projects
     dm.tblProjects.Close;
     dm.tblProjects.Open;
@@ -3354,20 +3361,18 @@ begin
     edtMailTo.Text := dm.qrydb.FieldByName('email').AsString;  // used to be grdPreviewUser.Cells[1, 13];  only works for a new user
   with MailMemo.Lines do
     begin
-      Add('Sehr geehrter Herr ');
-      Add('Hiermit bestätigen wir den Erhalt ihrer C14 Proben.');
-      Add(' ');
+      Add('Sehr geehrter Herr XXX');
+      Add('hiermit bestätigen wir den Erhalt ihrer C14 Proben.');
       Add(' ');
       Add('C14 Sample receipt:');
-      Add(' ');
       Add('We confirm to have received the samples listed below.');
-      Add('This is an auto-generated email.');
       Add(' ');
       Add('Best regards');
       Add('The Team of the Klaus-Tschira C14-Lab');
+      Add('This is an auto-generated email.');
+      Add(' ');
       Add(' ');
       Add('Received Samples:');
-      Add(' ');
     end;
   with dm.qryDB do
     begin

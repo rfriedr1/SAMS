@@ -679,7 +679,8 @@ function Tdm.GetMaxPrepNrBySampleNr(sample_nr: integer): integer;
 var
   s : string;
 begin
-   with qryDb do begin
+   with qryDb do
+   begin
      Close;
      SQL.Text := 'SELECT Max(prep_nr) FROM preparation_t WHERE sample_nr='+IntToStr(sample_nr) + ';';
      s := SQL.Text;
@@ -707,7 +708,8 @@ function Tdm.GetMaxTargetNrBySampleNr(sample_nr, prep_nr: integer): integer;
 var
   s : string;
 begin
-   with qryDb do begin
+   with qryDb do
+   begin
      Close;
      SQL.Text := 'SELECT Max(target_nr) FROM target_t WHERE sample_nr='+IntToStr(sample_nr) +
                  ' AND prep_nr=' + IntToStr(prep_nr)+ ';';

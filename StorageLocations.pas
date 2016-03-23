@@ -110,7 +110,7 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
       end;
     s := s+ ' WHERE sample_nr = ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ';';
     edtStatus.Text := 'updating Sample_nr = ' +  ADOQueryIDs.FieldByName('sample_nr').AsString;
-    ShowMessage(s);
+    //ShowMessage(s);
     ADOCmdUpdate.CommandText := s;
     ADOCmdUpdate.Execute;
     ADOQueryIDs.Next;

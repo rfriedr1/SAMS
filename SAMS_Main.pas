@@ -39,7 +39,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen(*, frxDesgn*);
 
 const
-  myVersion = '1.6.4 March-15-2016';
+  myVersion = '1.6.5 March-22-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -4611,8 +4611,8 @@ begin
   begin
     lbPrepNr.Caption := '';
   end;
-  // diplay number of available targets
-  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  // diplay number of available targets for the selected sampleNr and PrepNr.
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, round(edtSamplePrepNr.Value));
   edtSampleTargetNr.MaxValue := NTargets;
   if NTargets > 1 then
   begin     // display number of targets
