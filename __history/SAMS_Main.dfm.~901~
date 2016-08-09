@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = DBMemo_LabComment
+  ActiveControl = grdSamplesOfProject
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,7 +265,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1133,7 +1133,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 668
           Height = 720
-          ActivePage = tbsSampleOfProject
+          ActivePage = tbsProjectDocs
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1608,6 +1608,16 @@ object frmMAMS: TfrmMAMS
               Height = 41
               Align = alTop
               TabOrder = 0
+              object StaticText4: TStaticText
+                Left = 16
+                Top = 12
+                Width = 564
+                Height = 23
+                Caption = 
+                  'connect to the network drive (\\Riesling\KTA) if the foto is not' +
+                  ' being displayed '
+                TabOrder = 0
+              end
             end
           end
           object TabSheet5: TTabSheet
@@ -1695,6 +1705,18 @@ object frmMAMS: TfrmMAMS
             TabOrder = 0
             OnClick = btnSaveBatchClick
           end
+          object btnPrintBatch: TButton
+            Left = 207
+            Top = 14
+            Width = 75
+            Height = 45
+            Hint = 'print pre-treatment protocols'
+            Caption = 'print'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            Visible = False
+          end
         end
       end
       object GroupBoxCreateTargets: TGroupBox
@@ -1716,10 +1738,11 @@ object frmMAMS: TfrmMAMS
           Caption = 'Number of targets'
         end
         object lblOxa: TLabel
-          Left = 21
+          Left = 14
           Top = 327
           Width = 35
           Height = 16
+          Hint = 'number of Oxa2'
           Caption = 'lblOxa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1727,12 +1750,15 @@ object frmMAMS: TfrmMAMS
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
         end
         object lblBlank: TLabel
-          Left = 21
+          Left = 14
           Top = 348
           Width = 43
           Height = 16
+          Hint = 'number of Pthalic acids'
           Caption = 'lblBlank'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1740,6 +1766,8 @@ object frmMAMS: TfrmMAMS
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
         end
         object Label100: TLabel
           Left = 14
@@ -1882,6 +1910,7 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
             WordWrap = True
             OnClick = btnRefreshSamplesAvailableClick
+            ExplicitHeight = 66
           end
           object pnlPrepChoice: TPanel
             Left = 306
@@ -3790,11 +3819,11 @@ object frmMAMS: TfrmMAMS
           Caption = 'Calcset'
         end
         object Label38: TLabel
-          Left = 24
+          Left = 17
           Top = 35
-          Width = 39
+          Width = 45
           Height = 13
-          Caption = 'Magazin'
+          Caption = 'Magazine'
         end
         object DBEdit1: TDBEdit
           Left = 68
@@ -3919,8 +3948,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 10
         end
         object btnTransferAgeToSample: TButton
-          Left = 51
-          Top = 320
+          Left = 67
+          Top = 297
           Width = 121
           Height = 26
           Hint = 'transfers age from target table to sample table'
@@ -3931,14 +3960,13 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           OnClick = btnTransferAgeToSampleClick
         end
-        object DBEdit3: TDBEdit
+        object DBedtMagazine: TDBEdit
           Left = 69
           Top = 32
           Width = 121
-          Height = 16
-          DataField = 'magazin'
+          Height = 21
+          DataField = 'magazine'
           DataSource = dm.dsSampleInfo
-          Enabled = False
           TabOrder = 12
         end
       end
@@ -6583,7 +6611,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C0101100013004C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013005C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7261,7 +7289,7 @@ object frmMAMS: TfrmMAMS
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 768
+    Left = 744
     Top = 136
   end
   object PopupMenu1: TPopupMenu
@@ -7347,7 +7375,7 @@ object frmMAMS: TfrmMAMS
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 712
+    Left = 664
     Top = 136
   end
   object ImageList2: TImageList
@@ -7356,7 +7384,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F806780518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806880518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13606,7 +13634,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F004C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F005C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

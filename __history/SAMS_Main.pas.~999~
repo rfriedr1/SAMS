@@ -2019,13 +2019,21 @@ begin
         ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
       CommandText := cmd;
       Execute;
+
       with dm.qryTest do
       begin
         SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo ' +
           ' WHERE sample_nr=' + IntToStr(round(edtSampleNr.Value)) +
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
-        Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
+        if Trim(memTargetComments.Lines.Text) = '' then
+        begin
+          Parameters.ParamByName('TargetMemo').Value := NULL;
+        end
+        else
+        begin
+          Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
+        end;
           //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
@@ -2138,7 +2146,7 @@ begin
       SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
         ' WHERE sample_nr=' + IntToStr(sample_nr) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
-      Parameters.ParamByName('PrepMemo').Value := 'NULL';
+      Parameters.ParamByName('PrepMemo').Value := NULL;
       ExecSQL;
     End;
   end;
@@ -2452,7 +2460,7 @@ begin
   memoOxaBlank.Lines.Clear;
   // get number of available oxas
   dm.GetNOxaBlank(true);
-  lblOxa.Caption := ' Oxas = ' + IntToStr(dm.qryDB.RecordCount);
+  lblOxa.Caption := 'Oxas = ' + IntToStr(dm.qryDB.RecordCount);
 
     with dm.qryDB do begin
       memoOxaBlank.Lines.Add('Oxas');
@@ -2464,12 +2472,14 @@ begin
     end;
   // get number of available Pthalic Acids (blanks)
   dm.GetNOxaBlank(false);
-  lblBlank.Caption := ' Blanks (Pthalic) = ' + IntToStr(dm.qryDB.RecordCount);
-    with dm.qryDB do begin
+  lblBlank.Caption := 'Blanks = ' + IntToStr(dm.qryDB.RecordCount);
+    with dm.qryDB do
+    begin
       memoOxaBlank.Lines.Add(' ');
       memoOxaBlank.Lines.Add('Blanks');
       First;
-      while not EOF do begin
+      while not EOF do
+      begin
         memoOxaBlank.Lines.Add(Fields.FieldByName('sample_nr').AsString);
         Next;
       end;

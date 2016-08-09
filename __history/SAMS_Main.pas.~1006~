@@ -696,6 +696,10 @@ type
     DBedtMagazine: TDBEdit;
     Label38: TLabel;
     btnPrintBatch: TButton;
+    StaticText4: TStaticText;
+    btnProjectLetters: TButton;
+    btnSampleSpreadsheet: TButton;
+    Button1: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -997,6 +1001,7 @@ type
     User: TUser;
     KTLsupervisor: boolean;
     WeightsChanged, TargetDataChanged: boolean;
+    ServerRoot: string;
     procedure ToggleCheckbox(acol, arow: integer);
     procedure ClearInsertSampleGrids;
     procedure CreateCds(German: boolean);
@@ -2019,13 +2024,21 @@ begin
         ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
       CommandText := cmd;
       Execute;
+
       with dm.qryTest do
       begin
         SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo ' +
           ' WHERE sample_nr=' + IntToStr(round(edtSampleNr.Value)) +
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
-        Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
+        if Trim(memTargetComments.Lines.Text) = '' then
+        begin
+          Parameters.ParamByName('TargetMemo').Value := NULL;
+        end
+        else
+        begin
+          Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
+        end;
           //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
@@ -2123,14 +2136,24 @@ begin
     end;
 
    // save prep comment field
-  with dm.qryTest do begin
-    if memPrepComments.Lines.Count > 0 then begin
+  with dm.qryTest do
+  begin
+    if memPrepComments.Lines.Count > 0 then
+    begin
       SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
         ' WHERE sample_nr=' + IntToStr(sample_nr) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
       Parameters.ParamByName('PrepMemo').Value := memPrepComments.Lines.Text;
       ExecSQL;
-    end;
+    end
+    else
+    Begin
+      SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
+        ' WHERE sample_nr=' + IntToStr(sample_nr) +
+        ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
+      Parameters.ParamByName('PrepMemo').Value := NULL;
+      ExecSQL;
+    End;
   end;
 end;
 
@@ -2442,7 +2465,7 @@ begin
   memoOxaBlank.Lines.Clear;
   // get number of available oxas
   dm.GetNOxaBlank(true);
-  lblOxa.Caption := ' Oxas = ' + IntToStr(dm.qryDB.RecordCount);
+  lblOxa.Caption := 'Oxas = ' + IntToStr(dm.qryDB.RecordCount);
 
     with dm.qryDB do begin
       memoOxaBlank.Lines.Add('Oxas');
@@ -2454,12 +2477,14 @@ begin
     end;
   // get number of available Pthalic Acids (blanks)
   dm.GetNOxaBlank(false);
-  lblBlank.Caption := ' Blanks (Pthalic) = ' + IntToStr(dm.qryDB.RecordCount);
-    with dm.qryDB do begin
+  lblBlank.Caption := 'Blanks = ' + IntToStr(dm.qryDB.RecordCount);
+    with dm.qryDB do
+    begin
       memoOxaBlank.Lines.Add(' ');
       memoOxaBlank.Lines.Add('Blanks');
       First;
-      while not EOF do begin
+      while not EOF do
+      begin
         memoOxaBlank.Lines.Add(Fields.FieldByName('sample_nr').AsString);
         Next;
       end;
@@ -5338,44 +5363,46 @@ const
 
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
-  fname, root, s: string;
+  fname, s: string;
   Rec: TSearchRec;
   LocalDirs: boolean;
 
-  function GetSpecialFolderLocation(HWND: THandle; nFolder: integer): string;
-  var
-    pidl: PItemIDList;
-    Path: array[0..MAX_PATH] of Char;
-  begin
-    Result := '';
-    if Succeeded(ShGetSpecialFolderLocation(HWND, nFolder, pidl)) then
-    begin
-      if ShGetPathfromIDList(pidl, Path) then Result := StrPas(Path);
-      CoTaskMemFree(pidl);
-    end;
-  end;
+          function GetSpecialFolderLocation(HWND: THandle; nFolder: integer): string;
+          var
+            pidl: PItemIDList;
+            Path: array[0..MAX_PATH] of Char;
+          begin
+            Result := '';
+            if Succeeded(ShGetSpecialFolderLocation(HWND, nFolder, pidl)) then
+            begin
+              if ShGetPathfromIDList(pidl, Path) then Result := StrPas(Path);
+              CoTaskMemFree(pidl);
+            end;
+          end;
 
 begin
-  if pgtSample.ActivePage <> tbsProject then begin
-    //display the sample foto
-    if DirectoryExists('\\Riesling\mams') then
+  if pgtSample.ActivePage <> tbsProject then
+  begin
+    //Prepare folder for images, documents etc etc
+    if DirectoryExists('\\Riesling\KTA') then
     begin
-      root := '\\Riesling\mams\';
+      ServerRoot := '\\Riesling\KTA\';
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
     end
     else
     begin
-      root := IncludeTrailingBackslash(GetSpecialFolderLocation(Handle, CSIDL_PROFILE));
+      ServerRoot := IncludeTrailingBackslash(GetSpecialFolderLocation(Handle, CSIDL_PROFILE));
       gbxProjectsOfUser.Caption := ' Projects of user (local)';
     end;
   end;
 
   Statusbar.Panels[2].Text := fname;
 
+  // display project documents
   if pgtSample.ActivePage = tbsProjectDocs then
   begin
     s := IntToStr(dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsInteger) + '?.pdf';
-    fname := root + 'SAMS Documents\';
+    fname := ServerRoot + 'SAMS Documents\';
     if FindFirst(fname + s, faAnyFile - faDirectory, Rec) = 0 then
     try
       repeat
@@ -5386,9 +5413,11 @@ begin
 //     if FileExists(s) then ShellExecute(Handle, 'open',PChar(s),nil,nil, sw_show)
     end;
   end;
+
+  // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
   begin
-    fname := root + 'SAMS Images\' + edtSampleNr.Text + '.jpg';
+    fname := ServerRoot + 'SAMS Images\' + edtSampleNr.Text + '.jpg';
     Statusbar.Panels[2].Text := fname;
     if FileExists(fname) then SampleFoto.Picture.LoadFromFile(fname);
   end;
@@ -5422,8 +5451,10 @@ begin
   edtMailTo.Text := dm.dsQryDb.DataSet.FieldByName('email').AsString;
   edtMailSubject.Text := cmbProjectOfReport.Text;
   pgtMain.ActivePage := tbsSendMail;
-  with MailMemo.Lines do begin
-    if German then begin
+  with MailMemo.Lines do
+  begin
+    if German then
+    begin
       Add('Sehr geehrter Herr/Frau ' + dm.dsQryDb.DataSet.FieldByName('last_name').AsString);
       Add(' ');
       Add('Wir bestätigen den Eingang der nachfolgend aufgeführten Proben.');
@@ -5444,9 +5475,11 @@ begin
       Add(' The Team of the Klaus-Tschira-Laboratory');
       Add(' ');
     end;
-    with dm.qrySampleOfSubmitter do begin
+    with dm.qrySampleOfSubmitter do
+    begin
       First;
-      while not EOF do begin
+      while not EOF do
+      begin
         s := 'MAMS ' + Fields.Fields[0].AsString; // sample_nr
         for i := 1 to 4 do s := s + '  ' + Fields.Fields[i].AsString;
         Add(s);

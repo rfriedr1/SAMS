@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = DBMemo_LabComment
+  ActiveControl = grdSamplesOfProject
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,7 +265,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1133,7 +1133,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 668
           Height = 720
-          ActivePage = tbsSampleOfProject
+          ActivePage = tbsProjectDocs
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1608,6 +1608,16 @@ object frmMAMS: TfrmMAMS
               Height = 41
               Align = alTop
               TabOrder = 0
+              object StaticText4: TStaticText
+                Left = 16
+                Top = 12
+                Width = 564
+                Height = 23
+                Caption = 
+                  'connect to the network drive (\\Riesling\KTA) if the foto is not' +
+                  ' being displayed '
+                TabOrder = 0
+              end
             end
           end
           object TabSheet5: TTabSheet
@@ -1623,6 +1633,33 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
+            ExplicitLeft = 5
+            ExplicitTop = 33
+            object btnProjectLetters: TButton
+              Left = 31
+              Top = 96
+              Width = 217
+              Height = 33
+              Caption = 'Project Letters'
+              TabOrder = 0
+              OnClick = btnProjectLettersClick
+            end
+            object btnSampleSpreadsheet: TButton
+              Left = 31
+              Top = 135
+              Width = 217
+              Height = 33
+              Caption = 'Sample Spreadsheet'
+              TabOrder = 1
+            end
+            object Button1: TButton
+              Left = 31
+              Top = 174
+              Width = 217
+              Height = 33
+              Caption = 'Report'
+              TabOrder = 2
+            end
           end
         end
       end
@@ -1728,10 +1765,11 @@ object frmMAMS: TfrmMAMS
           Caption = 'Number of targets'
         end
         object lblOxa: TLabel
-          Left = 21
+          Left = 14
           Top = 327
           Width = 35
           Height = 16
+          Hint = 'number of Oxa2'
           Caption = 'lblOxa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1739,12 +1777,15 @@ object frmMAMS: TfrmMAMS
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
         end
         object lblBlank: TLabel
-          Left = 21
+          Left = 14
           Top = 348
           Width = 43
           Height = 16
+          Hint = 'number of Pthalic acids'
           Caption = 'lblBlank'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1752,6 +1793,8 @@ object frmMAMS: TfrmMAMS
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
         end
         object Label100: TLabel
           Left = 14
@@ -1894,6 +1937,7 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
             WordWrap = True
             OnClick = btnRefreshSamplesAvailableClick
+            ExplicitHeight = 66
           end
           object pnlPrepChoice: TPanel
             Left = 306
@@ -6594,7 +6638,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300580410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013005C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7272,7 +7316,7 @@ object frmMAMS: TfrmMAMS
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 768
+    Left = 744
     Top = 136
   end
   object PopupMenu1: TPopupMenu
@@ -7358,7 +7402,7 @@ object frmMAMS: TfrmMAMS
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 712
+    Left = 664
     Top = 136
   end
   object ImageList2: TImageList
@@ -7367,7 +7411,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F806840518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806880518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13617,7 +13661,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00580420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F005C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
