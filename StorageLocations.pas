@@ -101,12 +101,12 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
     s := 'UPDATE sample_t SET ';
     if (trim(edtSampleStorageLoc.Text) <> '') then                   //SampleStorageLocation is given
       begin
-      s := s + 's_storage_loc = ' + trim(edtSampleStorageLoc.Text);
+      s := s + 's_storage_loc = ' + #34 + trim(edtSampleStorageLoc.Text) + #34;
       end;
     if (trim(edtPrepStorageLoc.Text) <> '') then                     //PrepStorageLocation is given
       begin
       if (trim(edtSampleStorageLoc.Text) <> '') then s := s + ', ';  // add "," if both values are given
-      s := s + 'prep_storage_loc = ' + trim(edtPrepStorageLoc.Text);
+      s := s + 'prep_storage_loc = ' + #34 + trim(edtPrepStorageLoc.Text) + #34;
       end;
     s := s+ ' WHERE sample_nr = ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ';';
     edtStatus.Text := 'updating Sample_nr = ' +  ADOQueryIDs.FieldByName('sample_nr').AsString;

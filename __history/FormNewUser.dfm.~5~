@@ -1,0 +1,152 @@
+object frmNewUser: TfrmNewUser
+  Left = 0
+  Top = 0
+  Caption = 'Add New User'
+  ClientHeight = 651
+  ClientWidth = 517
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object EdtLastName: TLabeledEdit
+    Left = 32
+    Top = 40
+    Width = 465
+    Height = 21
+    EditLabel.Width = 50
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Last Name'
+    TabOrder = 0
+  end
+  object EdtFirstName: TLabeledEdit
+    Left = 32
+    Top = 88
+    Width = 465
+    Height = 21
+    EditLabel.Width = 51
+    EditLabel.Height = 13
+    EditLabel.Caption = 'First Name'
+    TabOrder = 1
+  end
+  object btnOK: TButton
+    Left = 256
+    Top = 584
+    Width = 105
+    Height = 33
+    Caption = 'OK'
+    TabOrder = 2
+  end
+  object btnCancel: TButton
+    Left = 120
+    Top = 584
+    Width = 105
+    Height = 33
+    Caption = 'Cancel'
+    TabOrder = 3
+  end
+  object EdtInstitution: TLabeledEdit
+    Left = 32
+    Top = 200
+    Width = 465
+    Height = 21
+    EditLabel.Width = 49
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Institution'
+    TabOrder = 4
+  end
+  object edtAddress1: TLabeledEdit
+    Left = 32
+    Top = 248
+    Width = 465
+    Height = 21
+    EditLabel.Width = 48
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Address 1'
+    TabOrder = 5
+  end
+  object edtAddress2: TLabeledEdit
+    Left = 32
+    Top = 296
+    Width = 465
+    Height = 21
+    EditLabel.Width = 48
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Address 2'
+    TabOrder = 6
+  end
+  object edtZip: TLabeledEdit
+    Left = 32
+    Top = 344
+    Width = 121
+    Height = 21
+    EditLabel.Width = 16
+    EditLabel.Height = 13
+    EditLabel.Caption = 'ZIP'
+    TabOrder = 7
+  end
+  object edtCity: TLabeledEdit
+    Left = 168
+    Top = 344
+    Width = 329
+    Height = 21
+    EditLabel.Width = 19
+    EditLabel.Height = 13
+    EditLabel.Caption = 'City'
+    TabOrder = 8
+  end
+  object Z: TLabeledEdit
+    Left = 32
+    Top = 152
+    Width = 465
+    Height = 21
+    EditLabel.Width = 61
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Organisation'
+    TabOrder = 9
+  end
+  object edtCountry: TLabeledEdit
+    Left = 168
+    Top = 392
+    Width = 329
+    Height = 21
+    EditLabel.Width = 39
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Country'
+    TabOrder = 10
+  end
+  object edtPhone1: TLabeledEdit
+    Left = 32
+    Top = 480
+    Width = 217
+    Height = 21
+    EditLabel.Width = 39
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Phone 1'
+    TabOrder = 11
+  end
+  object edtPhone2: TLabeledEdit
+    Left = 280
+    Top = 480
+    Width = 217
+    Height = 21
+    EditLabel.Width = 39
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Phone 2'
+    TabOrder = 12
+  end
+  object edtEMail: TLabeledEdit
+    Left = 32
+    Top = 536
+    Width = 465
+    Height = 21
+    EditLabel.Width = 24
+    EditLabel.Height = 13
+    EditLabel.Caption = 'eMail'
+    TabOrder = 13
+  end
+end

@@ -1,0 +1,31 @@
+unit LogWindow;
+// simple window that shows a ListBox field
+// the ListBox can be accessed through methods
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TfrmLogWindow = class(TForm)
+    ListBox: TListBox;
+  private
+    { Private declarations }
+    LogList: TStringList;
+
+    procedure addLine(const Value : string);
+  public
+    { Public declarations }
+    property  LastLine: string read LogList write addLine;
+  end;
+
+var
+  frmLogWindow: TfrmLogWindow;
+
+implementation
+
+{$R *.dfm}
+
+end.

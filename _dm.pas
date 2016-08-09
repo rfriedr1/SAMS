@@ -193,6 +193,7 @@ type
     function GetUserByProjectNr(project_nr: integer): string;
     function GetUserNrByLastName(last_name: string): String;
     procedure GetSamplesAvailableForPrep(const method : string);
+    procedure GetSamplesAvailableForPrepByMaterial(const material : string);
     procedure GetSampleInfo(SampleNr, PrepNr, TargetNr : integer);
     procedure GetTargetsAvailable;
     procedure GetWeights(SampleNr, PrepNr : integer);
@@ -248,13 +249,14 @@ Var
   ADOCmd: TADOCommand;
 begin
  // insert project into project_t
- if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+ if adoConnKTL.Connected then
+ begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       try
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
         ADOCmd.Parameters.Clear;              // clear all Parameters
         ADOCmd.CommandType:=cmdtext;          // set command type to text
-        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ');';    // set query text
+        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 +');';    // set query text
         //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
         ADOCmd.Execute; // issue command (no result set must be returned)
@@ -265,7 +267,8 @@ begin
       ADOCmd.Free;                            // cleanup command object
       result:= GetProjectNrByProjectAndUserNr(project_name, user_nr);
     end
-  else begin
+  else
+  begin
         ShowMessage('Database not connected.');   //Database is not connected
         result:= 'none';
       end;
@@ -319,18 +322,21 @@ Var
 begin
  last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
   // check if a valid string was given
- IF last_name <> '' THEN BEGIN
+ IF last_name <> '' THEN
+ BEGIN
     //check if the name already exists
     IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN BEGIN
       ShowMessage('Last Name already exists! Use a new last name. '); // last_name already exists
     END
-    ELSE BEGIN
+    ELSE
+    BEGIN
       IF InsertIntoDB('user_t', 'last_name', last_name) THEN BEGIN
         // some error orrured while inserting new data
         ShowMessage('Error inserting new user.'); // last_name does not exist -> insert new user into db
         Result:='none'
       END
-      ELSE begin
+      ELSE
+      begin
         // data inserted without any error
         ShowMessage('New user created.');  // show message
         Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
@@ -531,11 +537,18 @@ begin
   with qryInPrep do
     begin
        Close;
-       SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, user_t.last_name ' +
-                    ' FROM sample_t ' +
-                    'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
-                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
-                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+//       SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, user_t.last_name ' +
+//                    ' FROM sample_t ' +
+//                    'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+//                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+//                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+//                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
+     SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name,' +
+                  ' project_t.desired_date ' +
+                  ' FROM sample_t ' +
+                  'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+                  'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+                  'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
                     ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
        s := SQL.Text;
   //     ClipBoard.SetTextBuf(PChar(s));
@@ -579,7 +592,7 @@ begin
   with qryWaitingForGraph do
   begin
      Close;
-     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.in_date ' +
+     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.desired_date ' +
                    ' FROM sample_t ' +
                    'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
@@ -890,7 +903,7 @@ begin
   begin
     Close;
     s :=
-' SELECT sample_t.sample_nr, freeofcharge, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
+' SELECT sample_t.sample_nr, project_t.project_comment, sample_t.lab_comment, freeofcharge, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
 ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
 ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
 ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
@@ -922,7 +935,8 @@ procedure Tdm.GetSamplesAvailableForPrep(const method: string);
 var
   s, SampleNrList: string;
 begin
-      with qryDB do begin
+      with qryDB do
+      begin
         Close;
         s := 'SELECT sample_nr FROM preparation_t WHERE ' +
           ' (step1_method=' + #34 + method + #34 + ' AND step1_start IS NULL) OR  ' +
@@ -935,20 +949,75 @@ begin
         SQL.Text := s;
         Open;
       end;
-    if qryDb.RecordCount > 0 then begin
-      with qryDb do begin
+    if qryDb.RecordCount > 0 then
+    begin
+      with qryDb do
+      begin
         SampleNrList := '(';
         First;
-        while not EOF do begin
+        while not EOF do
+        begin
           SampleNrList := SampleNrList + qryDb.Fields.Fields[0].AsString + ',';
           Next;
         end;
         SampleNrList := copy(SampleNrList, 1, length(SampleNrList) - 1); // trim final comma
         SampleNrList := SampleNrList + ')';
       end;
-      with qrySamplesAvailable do begin
+      with qrySamplesAvailable do
+      begin
         s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
              ' preparation_t.prep_nr, user_t.last_name ' +
+          'FROM sample_t ' +
+          'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+          'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
+          'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+          'WHERE sample_t.sample_nr IN ' + SampleNrList +
+          ' AND preparation_t.batch IS NULL AND sample_t.not_tobedated=0 ' +
+          ';';
+//        ClipBoard.SetTextBuf(PChar(s));
+        SQL.Text := s;
+        Open;
+      end;
+    end;
+end;
+
+procedure Tdm.GetSamplesAvailableForPrepByMaterial(const material: string);
+// get all samples that are not prep'd yet
+var
+  s, SampleNrList: string;
+begin
+      // get all sample_nr that have the correct sample_type
+      with qryDB do
+      begin
+        Close;
+        s := 'SELECT sample_t.sample_nr FROM sample_t ' +
+          ' INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+          ' WHERE material =' + #34 + material + #34 + ' AND' +
+          ' batch IS NULL AND prep_end IS NULL;';
+//        ClipBoard.SetTextBuf(PChar(s));
+        SQL.Text := s;
+        Open;
+      end;
+
+    if qryDb.RecordCount > 0 then
+    begin
+      with qryDb do // using the query above create a list with sample numbers
+      begin
+        SampleNrList := '(';
+        First;
+        while not EOF do
+        begin
+          SampleNrList := SampleNrList + qryDb.Fields.Fields[0].AsString + ',';
+          Next;
+        end;
+        SampleNrList := copy(SampleNrList, 1, length(SampleNrList) - 1); // trim final comma
+        SampleNrList := SampleNrList + ')';
+      end;
+      // get all sample information from all the samples in the list
+      with qrySamplesAvailable do
+      begin
+        s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
+             ' preparation_t.prep_nr, user_t.last_name, sample_t.material ' +
           'FROM sample_t ' +
           'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
           'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
@@ -969,7 +1038,8 @@ procedure Tdm.GetTargetsAvailable;
 var
   s : string;
 begin
-      with qrySamplesAvailable do begin
+      with qrySamplesAvailable do
+      begin
         Close;
         s := 'SELECT DISTINCT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
              ' target_t.prep_nr, target_t.target_nr ' +
@@ -1067,7 +1137,7 @@ procedure Tdm.QuerySampleBySampleNr(sample_nr: integer);
 begin
   with qrySample do begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, user_comment, ' +
-      'material, weight, residue, not_tobedated, old_info,' +
+      'material, weight, residue, not_tobedated, lab_comment, ' +
       'round(c14_age,0) AS C14_age, round(c14_age_sig,0) AS C14_age_sig  ' +
       'FROM sample_t ' +
       'WHERE sample_t.sample_nr=' + IntToStr(sample_nr) + ';';

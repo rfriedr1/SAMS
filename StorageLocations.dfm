@@ -4,7 +4,7 @@ object FormStorageLocations: TFormStorageLocations
   ActiveControl = btnClose
   Caption = 'FormStorageLocations'
   ClientHeight = 574
-  ClientWidth = 352
+  ClientWidth = 348
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,7 +14,7 @@ object FormStorageLocations: TFormStorageLocations
   OldCreateOrder = False
   OnShow = FormShow
   DesignSize = (
-    352
+    348
     574)
   PixelsPerInch = 96
   TextHeight = 13
@@ -43,20 +43,21 @@ object FormStorageLocations: TFormStorageLocations
   object btnClose: TButton
     Left = 208
     Top = 501
-    Width = 75
+    Width = 105
     Height = 25
     Hint = 'close window without saving changes'
     Anchors = [akLeft, akBottom]
-    Caption = 'Close'
+    Cancel = True
+    Caption = 'Close (ESC)'
     ModalResult = 8
     ParentShowHint = False
     ShowHint = True
     TabOrder = 2
   end
   object btnSave: TButton
-    Left = 48
+    Left = 32
     Top = 501
-    Width = 75
+    Width = 113
     Height = 25
     Hint = 'save storage locations'
     Anchors = [akLeft, akBottom]
@@ -68,12 +69,13 @@ object FormStorageLocations: TFormStorageLocations
     OnClick = btnSaveClick
   end
   object btnSearch: TButton
-    Left = 136
-    Top = 96
-    Width = 75
+    Left = 64
+    Top = 97
+    Width = 209
     Height = 25
     Hint = 'search and display samples according to given IDs'
-    Caption = 'Search'
+    Caption = 'Search (Return)'
+    Default = True
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
@@ -82,7 +84,7 @@ object FormStorageLocations: TFormStorageLocations
   object DBGrid1: TDBGrid
     Left = 0
     Top = 136
-    Width = 351
+    Width = 347
     Height = 225
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 5
@@ -95,11 +97,12 @@ object FormStorageLocations: TFormStorageLocations
   object edtStatus: TEdit
     Left = 0
     Top = 553
-    Width = 352
+    Width = 348
     Height = 21
     Align = alBottom
     BorderStyle = bsNone
     TabOrder = 6
+    ExplicitWidth = 352
   end
   object GroupBox1: TGroupBox
     Left = 8

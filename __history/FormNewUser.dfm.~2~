@@ -1,0 +1,52 @@
+object frmNewUser: TfrmNewUser
+  Left = 0
+  Top = 0
+  Caption = 'Add New User'
+  ClientHeight = 289
+  ClientWidth = 517
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object EdtLastName: TLabeledEdit
+    Left = 32
+    Top = 40
+    Width = 465
+    Height = 21
+    EditLabel.Width = 50
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Last Name'
+    TabOrder = 0
+  end
+  object EdtFirstName: TLabeledEdit
+    Left = 32
+    Top = 88
+    Width = 465
+    Height = 21
+    EditLabel.Width = 51
+    EditLabel.Height = 13
+    EditLabel.Caption = 'First Name'
+    TabOrder = 1
+  end
+  object btnOK: TButton
+    Left = 336
+    Top = 232
+    Width = 105
+    Height = 33
+    Caption = 'OK'
+    TabOrder = 2
+  end
+  object btnCancel: TButton
+    Left = 136
+    Top = 232
+    Width = 105
+    Height = 33
+    Caption = 'Cancel'
+    TabOrder = 3
+  end
+end

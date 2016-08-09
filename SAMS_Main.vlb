@@ -495,9 +495,6 @@ Coordinates=817,1304,95,36
 [Label51]
 Coordinates=849,756,60,58
 
-[edtOldInfo]
-Coordinates=733,1304,74,36
-
 [btnAddNewUser]
 Coordinates=10,144,108,58
 
@@ -638,9 +635,6 @@ Coordinates=2278,552,60,58
 
 [edtUserNr]
 Coordinates=1629,1258,73,36
-
-[Label13]
-Coordinates=1457,756,60,58
 
 [lbExportHeader]
 Coordinates=1515,1258,104,36
@@ -815,9 +809,6 @@ Coordinates=454,756,94,58
 
 [CopyItem]
 Coordinates=1435,1666,69,36
-
-[Label38]
-Coordinates=150,824,60,58
 
 [FileExitItem]
 Coordinates=1346,1637,82,36
@@ -1815,9 +1806,6 @@ Coordinates=1455,416,68,58
 [Panel2]
 Coordinates=1018,688,55,58
 
-[edtSamplePreSubTreat]
-Coordinates=1158,960,149,36
-
 [FileExit1]
 Coordinates=3372,1888,64,36
 
@@ -1861,5 +1849,5 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=3056,1888,91,36
+Coordinates=150,824,60,58
 

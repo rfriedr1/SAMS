@@ -12,7 +12,9 @@ uses
   Vcl.Styles,
   StorageLocations in 'StorageLocations.pas' {FormStorageLocations},
   frmStartScreen in 'frmStartScreen.pas' {frmStart},
-  FormDBSearch in 'FormDBSearch.pas' {frmDBSearch};
+  FormDBSearch in 'FormDBSearch.pas' {frmDBSearch},
+  LogWindow in 'LogWindow.pas' {frmLogWindow},
+  FormNewUser in 'FormNewUser.pas' {frmNewUser};
 
 {$R *.RES}
 
@@ -28,6 +30,8 @@ begin
   Application.CreateForm(TfrmLogSql, frmLogSql);
   Application.CreateForm(TFormStorageLocations, FormStorageLocations);
   Application.CreateForm(TfrmDBSearch, frmDBSearch);
+  Application.CreateForm(TfrmLogWindow, frmLogWindow);
+  Application.CreateForm(TfrmNewUser, frmNewUser);
   //  Application.CreateForm(TfrmInputNewSamples, frmInputNewSamples);
   // closing the StartScreen happens in OnShow of the frmMAMS as soon as everything has been loaded
    // frmStart.Hide; frmStart.Free;

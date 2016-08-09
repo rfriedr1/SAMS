@@ -36,10 +36,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   JvInspector, Vcl.OleServer, Word2000, VclTee.TeeGDIPlus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
-  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen(*, frxDesgn*);
+  IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
+  LogWindow, FormNewUser(*, frxDesgn*);
 
 const
-  myVersion = '1.6.5 March-22-2016';
+  myVersion = '1.6.7 May-8-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -309,20 +310,16 @@ type
     Label35: TLabel;
     Label36: TLabel;
     Ta: TLabel;
-    Label38: TLabel;
     Label51: TLabel;
     Label52: TLabel;
-    Label13: TLabel;
     edtSampleName: TDBEdit;
     edtSampleLabelNr: TDBEdit;
     edtSampleDescr1: TDBEdit;
     edtSampleDescr2: TDBEdit;
-    edtSamplePreSubTreat: TDBEdit;
     cmbSampleMaterial: TDBLookupComboBox;
     cmbSampleType: TDBLookupComboBox;
     cmbSampleFraction: TDBLookupComboBox;
     edtSampleUserComment: TDBEdit;
-    edtOldInfo: TDBEdit;
     Label59: TLabel;
     Label60: TLabel;
     Label61: TLabel;
@@ -682,6 +679,23 @@ type
     chkFreeOfCharge: TCheckBox;
     Panel5: TPanel;
     Label106: TLabel;
+    actLogWindow: TAction;
+    OpenLogWindow1: TMenuItem;
+    DBMemo_LabComment: TDBMemo;
+    Label13: TLabel;
+    DBMemo_ProjComment: TDBMemo;
+    Comment: TLabel;
+    GroupBox1: TGroupBox;
+    GroupBox9: TGroupBox;
+    DBMemo3: TDBMemo;
+    StaticText2: TStaticText;
+    StaticText3: TStaticText;
+    btnUpdateNoOxBlanks: TButton;
+    cmbFilterSampleMaterial: TDBLookupComboBox;
+    lblFilterSampleType: TLabel;
+    DBedtMagazine: TDBEdit;
+    Label38: TLabel;
+    btnPrintBatch: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -947,6 +961,12 @@ type
     procedure grdSamplesOfSubmitterDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
+    procedure actLogWindowExecute(Sender: TObject);
+    procedure edtWeightStartChange(Sender: TObject);
+    procedure grdInPrepDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnUpdateNoOxBlanksClick(Sender: TObject);
+    procedure cmbFilterSampleMaterialClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1023,6 +1043,7 @@ type
     procedure CheckProjectExists;
     procedure GetSamplesForReport(DoExportHalle: boolean);
     procedure AlternateRowColors(Sender: TObject; State: TGridDrawState);
+    procedure CalculateYield;
   public
     SampleModified: boolean;
     property FileName: string read GetFileName write SetFileName;
@@ -1169,21 +1190,42 @@ begin
 end;
 
 procedure TfrmMAMS.btnRefreshSamplesAvailableClick(Sender: TObject);
+//refresh table with uptodate sample information
 var
-  method: string;
+  method,material: string;
 begin
-  if rgpTask.ItemIndex = 0 then begin
-    method := cmbPretreatMethod.ListSource.DataSet.FieldByName('method').AsString;
-    if length(method) > 0 then begin
-      dm.GetSamplesAvailableForPrep(method);
+// This was used when filtered by Method
+//  if rgpTask.ItemIndex = 0 then
+//  begin
+//    method := cmbPretreatMethod.ListSource.DataSet.FieldByName('method').AsString;
+//    if length(method) > 0 then
+//    begin
+//      dm.GetSamplesAvailableForPrep(method);
+//      SetupLabPlanPage; // colwidth
+//    end;
+//  end
+//  else
+//  begin // get all samples which are pretreated, but with graph date is NULL
+//    dm.GetTargetsAvailable;
+//    SetupLabPlanPage; // colwidth
+////      JvDBStatusLabel3.DataSource := dm.dsTargetsAvailable;
+//  end;
+
+  if rgpTask.ItemIndex = 0 then
+  begin
+    material := cmbFilterSampleMaterial.ListSource.DataSet.FieldByName('material').AsString;
+    if length(material) > 0 then
+    begin
+      dm.GetSamplesAvailableForPrepByMaterial(material);
       SetupLabPlanPage; // colwidth
     end;
   end
-  else begin // get all samples which are pretreated, but with graph date is NULL
+  else
+  begin // get all samples which are pretreated, but with graph date is NULL
     dm.GetTargetsAvailable;
     SetupLabPlanPage; // colwidth
-//      JvDBStatusLabel3.DataSource := dm.dsTargetsAvailable;
   end;
+
 end;
 
 procedure TfrmMAMS.btnReportClick(Sender: TObject);
@@ -1213,7 +1255,7 @@ var
 begin
 
 // old way of doing it using worddriver
-  CreateCds(rgpReportLanguage.Itemindex = 0); //create in memory DB
+  CreateCds(rgpReportLanguage.Itemindex = 0); //create in memory DB with the information that should be transfered to the report table
   FillCds;
 
 // ###### part 1 get get and fill in info about user
@@ -1502,9 +1544,9 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help_t.samplecount FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help_t.measurecount FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
-      'LEFT JOIN (select project_nr, count(sample_nr) AS samplecount FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS measurecount FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';
 
@@ -1791,6 +1833,11 @@ begin
   btnTransferTargetData.enabled := false;
 end;
 
+procedure TfrmMAMS.btnUpdateNoOxBlanksClick(Sender: TObject);
+begin
+  GetAvailableOxasBlanks;
+end;
+
 procedure TfrmMAMS.btnUserExportClipboardClick(Sender: TObject);
 //export user data to clipboard
 Var
@@ -1838,8 +1885,10 @@ begin
     ShowMessage(SaveDialog.FileName + ' gespeichert');
   end;
 }
-  if rgpTask.ItemIndex = 0 then begin
-    for i := 0 to lbxBatch.Count - 1 do begin
+  if rgpTask.ItemIndex = 0 then   // for prep batches
+  begin
+    for i := 0 to lbxBatch.Count - 1 do
+    begin
       SampNr := ExtractWord(1, lbxBatch.Items[i], ['|']);
       PrepNr := ExtractWord(4, lbxBatch.Items[i], ['|']);
       s := 'UPDATE preparation_t SET batch=' + #34 + edtBatchName.Text + #34 +
@@ -1851,8 +1900,10 @@ begin
       dm.adoCmd.Execute;
     end;
   end
-  else begin
-    for i := 0 to lbxBatch.Count - 1 do begin
+  else     // for graph batches
+  begin
+    for i := 0 to lbxBatch.Count - 1 do
+    begin
       SampNr := ExtractWord(1, lbxBatch.Items[i], ['|']);
       PrepNr := ExtractWord(4, lbxBatch.Items[i], ['|']);
       TargetNr := ExtractWord(5, lbxBatch.Items[i], ['|']);
@@ -1889,6 +1940,7 @@ begin
     'in_date=' + #34 + in_date_str + #34 + ',' +
     'out_date=' + #34 + out_date_str + #34 + ',' +
     'FreeOfCharge=' + #34 +freeofcharge + #34 + ',' +
+    'project_comment=' + #34 +DBMemo_ProjComment.Text + #34 + ',' +
     'status=' + #34 + cmbProjectStatus.Text + #34 +
     ' WHERE project_nr=' + IntToStr(project_nr) + ';';
   //ShowMessage(s);
@@ -1967,13 +2019,21 @@ begin
         ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
       CommandText := cmd;
       Execute;
+
       with dm.qryTest do
       begin
         SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo ' +
           ' WHERE sample_nr=' + IntToStr(round(edtSampleNr.Value)) +
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
-        Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
+        if Trim(memTargetComments.Lines.Text) = '' then
+        begin
+          Parameters.ParamByName('TargetMemo').Value := NULL;
+        end
+        else
+        begin
+          Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
+        end;
           //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
@@ -2046,33 +2106,49 @@ begin
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
 
+  // save weights if they have changed
   if WeightsChanged then
-    with dm.adoCmd do begin
+    with dm.adoCmd do
+    begin
       swstart := edtWeightStart.Text;
       swstart := ReplaceStr(swstart, ',', '.');
       swend := edtWeightEnd.Text;
-      if Length(swend) = 0 then begin
-        CommandText := 'UPDATE preparation_t SET weight_start=' + swstart +
-          ' WHERE sample_nr=' + IntToStr(Sample_Nr) + ' AND prep_nr=' +
-          IntToStr(round(edtSamplePrepNr.Value)) + ';';
-      end
-      else begin
-        swend := ReplaceStr(swend, ',', '.');
-        CommandText := 'UPDATE preparation_t SET weight_start=' + swstart + ', ' +
-          ' weight_end=' + swend +
-          ' WHERE sample_nr=' + IntToStr(Sample_Nr) + ' AND prep_nr=' +
-          IntToStr(round(edtSamplePrepNr.Value)) + ';';
-      end;
+      swend := ReplaceStr(swend, ',', '.');
+      if Length(swstart) = 0 then
+        begin
+        swstart := 'NULL';
+        end;
+      if Length(swend) = 0 then
+        begin
+        swend := 'NULL';
+        end;
+
+      CommandText :=  'UPDATE preparation_t SET weight_start=' + swstart + ', ' +
+                      ' weight_end=' + swend +
+                      ' WHERE sample_nr=' + IntToStr(Sample_Nr) + ' AND prep_nr=' +
+                      IntToStr(round(edtSamplePrepNr.Value)) + ';';
       Execute;
     end;
-  with dm.qryTest do begin
-    if memPrepComments.Lines.Count > 0 then begin
+
+   // save prep comment field
+  with dm.qryTest do
+  begin
+    if memPrepComments.Lines.Count > 0 then
+    begin
       SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
         ' WHERE sample_nr=' + IntToStr(sample_nr) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
       Parameters.ParamByName('PrepMemo').Value := memPrepComments.Lines.Text;
       ExecSQL;
-    end;
+    end
+    else
+    Begin
+      SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
+        ' WHERE sample_nr=' + IntToStr(sample_nr) +
+        ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
+      Parameters.ParamByName('PrepMemo').Value := NULL;
+      ExecSQL;
+    End;
   end;
 end;
 
@@ -2092,8 +2168,7 @@ begin
     'fraction=' + #34 + cmbSampleFraction.Text + #34 + ',' +
     'type=' + #34 + cmbSampleType.Text + #34 + ',' +
     'user_comment=' + #34 + edtSampleUserComment.Text + #34 + ',' +
-    'old_info=' + #34 + edtOldInfo.Text + #34 + ',' +
-    'preparation=' + #34 + edtSamplePreSubTreat.Text + #34 + ',' +
+    'lab_comment=' + #34 + DBMemo_LabComment.Text + #34 + ',' +
     's_storage_loc=' + #34 + edtSampleStorageLoc.Text + #34 + ',' +
     'prep_storage_loc=' + #34 + edtPrepSampleStorageLoc.Text + #34 + ',' +
     'sampling_date=' + #34 + FormatDateTime('YYYY-MM-DD', edtSamplingDate.Date) + #34 +
@@ -2111,6 +2186,9 @@ begin
     'not_tobedated= ' + IntToStr(b) +
     ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
 
+  dm.adoCmd.CommandText := s;
+  dm.adoCmd.Execute;
+
   //update no leftover flag
   if chkSampleNoLeftover.Checked then
     b := 1
@@ -2120,8 +2198,6 @@ begin
     's_no_leftover= ' + IntToStr(b) +
     ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
-
-
 
   dm.adoCmd.CommandText := s;
   dm.adoCmd.Execute;
@@ -2173,6 +2249,11 @@ procedure TfrmMAMS.actLabTasksExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsLabTasks;
   SetupLabTaskPage;
+end;
+
+procedure TfrmMAMS.actLogWindowExecute(Sender: TObject);
+begin
+  frmLogWindow.ShowModal;
 end;
 
 procedure TfrmMAMS.actMagListExecute(Sender: TObject);
@@ -2272,16 +2353,20 @@ begin
   user_nr:= cmbSubmitterNameProject.KeyValue;   // read the user_nr of the currently selected user
   project_name := InputBox('Add New Project', 'Project Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
 
-  if project_name<>'' then begin //check if a project_name was actually given
+  if project_name<>'' then
+  begin //check if a project_name was actually given
       //check if project for this user already exists
       Proj_exists:= dm.CheckProjectOfUser_nr(project_name, user_nr.ToInteger());
-      if Proj_exists then begin
+      if Proj_exists then
+      begin
         ShowMessage('Projekt exists already!');
       end
-      else begin
+      else
+      begin
         // add new project
         buttonSelected:=MessageDlg('Projekt does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
-        if buttonSelected=mrOK then begin
+        if buttonSelected=mrOK then
+        begin
               project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);  //add new project and return project number
               GetProjects; // reload projects list
         end;
@@ -2325,7 +2410,19 @@ procedure TfrmMAMS.btnAddNewUser2Click(Sender: TObject);
 // only adds a new last name and user_nr
 VAR
   s: String;
+  form: TfrmNewUser;
 begin
+   //open multi input dialog
+   //form:=frmNewUser.Create(nil);
+//   try
+//    if frmNewUser.ShowModal = mrOK then        //Add Info into database
+//    begin
+//    end;
+//  finally
+//    frmNewUser.Free;
+//  end;
+
+   s:='none';
    s:=dm.AddNewUser;
    //ShowMessage('test');                         // add new user; returns user_nr of the newly created user
    if s<>'none' then begin
@@ -2342,6 +2439,7 @@ procedure TfrmMAMS.btnAddNewUserClick(Sender: TObject);
 VAR
   s:string;
 begin
+  s:='none';
   s:= dm.AddNewUser;    //insert new user into DB
   if s<>'none' then begin
       StatusBar.Panels[2].Text:='reloading user data...';
@@ -2584,13 +2682,17 @@ begin
   dm.adoCmd.CommandText := s;
   //   ClibBoard.SetTextBuf(PChar(s));
   dm.adoCmd.Execute;
-  for i := 1 to trunc(edtNumberOfTargets.Value) do begin
+  for i := 1 to trunc(edtNumberOfTargets.Value) do
+  begin
     dm.adoCmd.CommandText := 'INSERT INTO target_t  (target_nr, prep_nr, sample_nr)'
       + ' VALUES (' + IntToStr(i) + ',1,' + IntTostr(sample_nr) + ');';
     s := dm.adoCmd.CommandText;
      //   ClibBoard.SetTextBuf(PChar(s));
     dm.adoCmd.Execute;
   end;
+
+  // refresh table
+  btnRefreshSamplesAvailableClick(self);
 end;
 
 procedure TfrmMAMS.btnDeleteUserClick(Sender: TObject);
@@ -2835,7 +2937,10 @@ end;
 
 procedure TfrmMAMS.edtBatchNameChange(Sender: TObject);
 begin
+  //enable save button
   btnSaveBatch.Enabled := (Length(edtBatchName.Text) > 0) and (lbxBatch.Items.Count > 0);
+  //show print button only if prep batch is selected
+  btnPrintBatch.Visible := (Length(edtBatchName.Text) > 0) and (lbxBatch.Items.Count > 0) and (rgpTask.ItemIndex = 0);
 end;
 
 procedure TfrmMAMS.edtCatalystChange(Sender: TObject);
@@ -3007,6 +3112,7 @@ end;
 procedure TfrmMAMS.edtWeightEndChange(Sender: TObject);
 begin
   WeightsChanged := true;
+  CalculateYield; // calculate the yield from the weights
 end;
 
 procedure TfrmMAMS.edtWeightEndExit(Sender: TObject);
@@ -3019,6 +3125,12 @@ begin
     //edtPrepEnd.Refresh;
       end;
   end;
+end;
+
+procedure TfrmMAMS.edtWeightStartChange(Sender: TObject);
+begin
+  WeightsChanged := true;
+  CalculateYield; // calculate the yield from the weights
 end;
 
 procedure TfrmMAMS.ExportReport(Ext: string);
@@ -3407,10 +3519,13 @@ var
   Rounding: boolean;
 begin
   cdsExport.Open;
-  with dm.qrySampleOfSubmitter do begin
+  with dm.qrySampleOfSubmitter do
+  begin
     First;
-    while not EOF do begin
-      with cdsExport do begin
+    while not EOF do
+    begin
+      with cdsExport do
+      begin
         DisableControls;
         cdsExport.Edit;
         cdsExport.Append;
@@ -3429,22 +3544,30 @@ begin
           Rounding := true
         else
           Rounding := false;
-        if Rounding then begin
+        if Rounding then
+        begin
           cdsExport.Fields.Fields[5].Value := (a div 10) * 10;     //was 5
           cdsExport.Fields.Fields[6].Value := ((b div 10) + 1) * 10;   //was 6
         end
-        else begin
+        else
+        begin
           cdsExport.Fields.Fields[5].Value := a;    //was 5
           cdsExport.Fields.Fields[6].Value := b;    //was 6
         end;
-        for i := 10 to 12 do begin       //was 10 to 12
+        for i := 10 to 12 do
+        begin       //was 10 to 12
           s := Format('%4.1f', [dm.qrySampleOfSubmitter.Fields.Fields[i + 5].AsFloat]);
           cdsExport.Fields.Fields[i].Value := s;
         end;
-        for i := 13 to 14 do begin       //for av_fm and av_fm_sig
+        for i := 13 to 14 do
+        begin       //for av_fm and av_fm_sig
           s := Format('%5.3f', [dm.qrySampleOfSubmitter.Fields.Fields[i].AsFloat]);
           cdsExport.Fields.Fields[i].Value := s;
         end;
+        //this is for material
+        s := dm.qrySampleOfSubmitter.Fields.Fields[19].AsString; //column 19 in this table
+        cdsExport.Fields.Fields[15].Value := s;                  //column 15 in the in-memory-table
+
 //        clData.Fields.Fields[0] as TDateTimeField).DisplayFormat := 'tt';
 //        f := dm.qrySampleOfSubmitter.Fields.Fields[7].AsFloat * 1000;
         f := dm.qrySampleOfSubmitter.Fields.Fields[7].AsFloat;
@@ -3455,18 +3578,21 @@ begin
         s := '';
         a := dm.qrySampleOfSubmitter.Fields.Fields[8].AsInteger;   //was 8
         b := dm.qrySampleOfSubmitter.Fields.Fields[9].AsInteger;   //was 9
-        if Rounding then begin
+        if Rounding then
+        begin
           a := (a div 10) * 10; // rounding
           b := ((b div 10) + 1) * 10;
         end;
-        if chkCalBP.Checked then begin
+        if chkCalBP.Checked then
+        begin
           s := 'cal BP ' + IntToStr(a + 1950);
           s := s + '-' + IntToStr(b + 1950);
           cdsExport.Fields.Fields[8].Value := s;
           s := '';
           a := dm.qrySampleOfSubmitter.Fields.Fields[10].AsInteger;   //was 10
           b := dm.qrySampleOfSubmitter.Fields.Fields[11].AsInteger;   //was 11
-          if Rounding then begin
+          if Rounding then
+          begin
             a := (a div 10) * 10; // rounding
             b := ((b div 10) + 1) * 10;
           end;
@@ -3474,7 +3600,8 @@ begin
           s := s + '-' + IntToStr(b + 1950);
           cdsExport.Fields.Fields[9].Value := s;
         end
-        else begin
+        else
+        begin
           if a < 0 then
             s := 'cal AD ' + IntToStr(-a)
           else
@@ -3761,6 +3888,23 @@ begin
  ShowSampleInfoPage(Sender);
 end;
 
+procedure TfrmMAMS.grdInPrepDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  AlternateRowColors(Sender, State);
+
+  if dm.qryInPrep.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approcahes 2 weeks
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clOlive;
+     End;
+  if dm.qryInPrep.FieldByName('desired_date').AsDateTime<=Date() Then     //if desired_date has run out color text red
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clRed;
+     End;
+
+  TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
 procedure TfrmMAMS.grdInPrepTitleClick(Column: TColumn);
 {$J+}
 const PreviousColumnIndex: integer = -1;
@@ -3996,10 +4140,20 @@ procedure TfrmMAMS.grdPendingReportsDrawColumnCell(Sender: TObject;
 // fill cell 'sample count' red, when value >0
 begin
   AlternateRowColors(Sender, State);
-  if dm.qryPendingReports.FieldByName('samplecount').AsInteger>0 Then     //if samplecount is bigger than 0 change the color of the row
+  if dm.qryPendingReports.FieldByName('measurecount').AsInteger>0 Then     //if samplecount is bigger than 0 change the color of the row
      Begin
      TDBGrid(Sender).Canvas.Brush.Color:=clSkyBlue;
      End;
+  if dm.qryPendingReports.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approcahes 2 weeks
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clOlive;
+     End;
+  if dm.qryPendingReports.FieldByName('desired_date').AsDateTime<=Date() Then     //if desired_date has run out color text red
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clRed;
+     End;
+
+
   TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
@@ -4019,8 +4173,24 @@ end;
 procedure TfrmMAMS.grdPlannedDrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  if (POS('Eil',dm.qryPlanned.FieldByName('user_label').AsString)>0) OR (POS('EIL',dm.qryPlanned.FieldByName('user_label').AsString)>0) OR (POS('Blitz',dm.qryPlanned.FieldByName('user_label').AsString)>0)      //if a certain substring is in user_label then change row color
-    then TDBGrid(Sender).Canvas.Brush.Color:=clRed;
+
+  AlternateRowColors(Sender, State);
+  if (POS('Eil',dm.qryPlanned.FieldByName('user_label').AsString)>0)
+      OR (POS('EIL',dm.qryPlanned.FieldByName('user_label').AsString)>0)
+      OR (POS('Blitz',dm.qryPlanned.FieldByName('user_label').AsString)>0) Then
+      Begin
+      TDBGrid(Sender).Canvas.Brush.Color:=clRed;
+      End;      //if a certain substring is in user_label then change row color
+
+  if dm.qryPlanned.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approcahes 2 weeks
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clOlive;
+     End;
+  if dm.qryPlanned.FieldByName('desired_date').AsDateTime<=Date() Then     //if desired_date has run out color text red
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clRed;
+     End;
+
       TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
@@ -4290,7 +4460,7 @@ end;
 
 procedure TfrmMAMS.ClearInsertSampleGrids;
 var
-  aCol, aRow: integer;
+  aCol, aRow, i: integer;
 begin
   with grdPreviewUser do
   begin
@@ -4304,6 +4474,17 @@ begin
       for aCol := 0 to Colcount - 1 do cells[aCol, aRow] := '';
   end;
   ProjectName := '';
+  //clear invoice table
+  for i := 0 to grdInvoiceAddress.RowCount - 1 do
+  Begin
+    grdInvoiceAddress.Rows[i].Clear();
+  End;
+end;
+
+procedure TfrmMAMS.cmbFilterSampleMaterialClick(Sender: TObject);
+begin
+  btnRefreshSamplesAvailable.Enabled := (cmbFilterSampleMaterial.KeyValue > 0);
+  gbxBatch.Enabled := (cmbFilterSampleMaterial.KeyValue > 0);
 end;
 
 procedure TfrmMAMS.cmbPretreatMethodClick(Sender: TObject);
@@ -4408,18 +4589,22 @@ begin
 end;
 
 procedure TfrmMAMS.CreateCds(German: boolean);
+//creates an in memory database with the colums that need to be transfered to the report table
 begin
   cdsExport.Close;
-  with cdsExport.FieldDefs do begin
+  with cdsExport.FieldDefs do    // go through the list of ReportHeadings and create FieldDefinitions
+  begin
     Clear;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 1]
       else
         Name := grdReportHeadings.cells[2, 1];
       DataType := ftInteger;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 2]
       else
@@ -4427,7 +4612,8 @@ begin
       DataType := ftString;
       Size := 40;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 3]
       else
@@ -4435,7 +4621,8 @@ begin
       DataType := ftString;
       Size := 40;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 4]
       else
@@ -4443,7 +4630,8 @@ begin
       DataType := ftString;
       Size := 40;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 5]
       else
@@ -4451,68 +4639,86 @@ begin
       DataType := ftString;
       Size := 40;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 6]
       else
         Name := grdReportHeadings.cells[2, 6];
       DataType := ftInteger;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 7]
       else
         Name := grdReportHeadings.cells[2, 7];
       DataType := ftInteger;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 8]
       else
         Name := grdReportHeadings.cells[2, 8];
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       Name := 'Cal 1 sigma';
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       Name := 'Cal 2 sigma';
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 9]
       else
         Name := grdReportHeadings.cells[2, 9];
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 10]
       else
         Name := grdReportHeadings.cells[2, 10];
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 11] //%collagen
       else
         Name := grdReportHeadings.cells[2, 11];
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 12] //%av_fm
       else
         Name := grdReportHeadings.cells[2, 12];
       DataType := ftString;
     end;
-    with AddFieldDef do begin
+    with AddFieldDef do
+    begin
       if German then
         Name := grdReportHeadings.cells[3, 13] //%av_fm_sig
       else
         Name := grdReportHeadings.cells[2, 13];
+      DataType := ftString;
+    end;
+    with AddFieldDef do
+    begin
+      if German then
+        Name := grdReportHeadings.cells[3, 14] //%material
+      else
+        Name := grdReportHeadings.cells[2, 14];
       DataType := ftString;
     end;
   end;
@@ -4631,7 +4837,7 @@ begin
     cmbSampleFraction.KeyValue := 0;
     cmbSampleType.KeyValue := 0;
 
-    // query the database and get all sample info
+    // query the database and get all sample info ########################
     dm.GetSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
     TFloatField(FieldByName('c14_age')).DisplayFormat := '0';
@@ -4660,13 +4866,9 @@ begin
   end;
   dm.GetGraphWeight(SampleNr, round(edtSamplePrepNr.Value), round(edtSampleTargetNr.Value));
   dm.GetWeights(SampleNr, round(edtSamplePrepNr.Value));
-  if NOT (edtWeightEnd.Text='') OR NOT (edtweightstart.Text='') then
-    begin
-      YieldLabel.Caption := floattostr(round(100*(strtofloat(edtWeightEnd.Text)/strtofloat(edtWeightStart.text)))) + ' %';    //display yield in percent from weights and round
-    end
-    else begin
-      YieldLabel.Caption:='';
-    end;
+
+  //CalculateYield; // calculate the yield from the weights
+
   TargetDataChanged := false;
 end;
 
@@ -4920,6 +5122,7 @@ begin
     SetupNewSamplesGrid;
     btnInsertNewUser.Visible := true;
     btnInsertExistingUser.Visible := true;
+
     // read data from import file
     repeat // skip header
       Readln(InF, s);
@@ -4948,17 +5151,21 @@ begin
           end_found := true;
           s2 := trim(ExtractWord(2, s, [';'])); // get user data
           s2 := UpperCase(s2);
-          if (Pos('JA', s2) > 0) or (Pos('YES', s2) > 0) then
+          if (Pos('JA', s2) > 0) or (Pos('YES', s2) > 0) then  //check whether user address is also invoice adress
           begin
             SameAddressForInvoice := true;
-          end;
+          end
+          else
+          Begin
+            SameAddressForInvoice := false;
+          End;
         end;
         grdPreviewUser.ColWidths[0] := 80;
         dm.tblUser.IndexFieldNames := 'last_name';
         s2 := trim(ExtractWord(2, s, [';'])); // get user data
         s2 := copy(s2, 1, 40);
         if Length(s2) > 0 then
-        begin
+        begin  //write info into cells
           if Pos('first name', s1) > 0 then grdPreviewUser.Cells[1, 1] := s2;
           if Pos('last name', s1) > 0 then grdPreviewUser.Cells[1, 2] := s2;
           if Pos('organisation', s1) > 0 then grdPreviewUser.Cells[1, 3] := s2;
@@ -5000,22 +5207,24 @@ begin
     end;
     if not SameAddressForInvoice then
     begin
-      repeat // now parse user, skip header
+      // now parse invoice data
+      repeat //skip header
         Readln(InF, s);
         s1 := ExtractWord(1, s, [';']);
       until Pos('institution', s1) > 0;
       end_found := false;
+      // read all invoice data from file
       while not EOF(InF) and not end_found do
       begin
         end_found := false;
         repeat // read user data
           while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
           s1 := ExtractWord(1, s, [';']); // read 1st col
-          if pos('www', s1) > 0 then
+          if pos('www', s1) > 0 then  //www is the last line of the invoice data
           begin
             end_found := true;
           end;
-          s2 := trim(ExtractWord(2, s, [';'])); // get user data
+          s2 := trim(ExtractWord(2, s, [';'])); // get invoice data
           if Length(s2) > 0 then
           begin
             if Pos('first name', s1) > 0 then grdInvoiceAddress.Cells[1, 1] := s2;
@@ -5037,6 +5246,10 @@ begin
           Readln(InF, s);
         until end_found;
       end;
+    end
+    else // clear all invoice fields when SameAddressForInvoice, to avoid carrying over old data
+    begin
+         for i := 0 to grdInvoiceAddress.RowCount - 1 do grdInvoiceAddress.Rows[i].Clear();
     end;
     surname := grdPreviewUser.Cells[1, 3];
     if dm.tblInvoice.Locate('organisation', surname, [loPartialKey]) then
@@ -5206,10 +5419,12 @@ end;
 
 procedure TfrmMAMS.rgpTaskClick(Sender: TObject);
 begin
-  if rgpTask.ItemIndex = 0 then begin
+  if rgpTask.ItemIndex = 0 then
+  begin
     pnlPrepChoice.Visible := true;
   end
-  else begin
+  else
+  begin
     pnlPrepChoice.Visible := false;
     edtBatchName.Text := '';
     btnRefreshSamplesAvailable.Enabled := true;
@@ -5545,6 +5760,7 @@ procedure TfrmMAMS.ToolButton10Click(Sender: TObject);
 // switch to the DBInfo tab of the main tab
 begin
   pgtMain.ActivePage := tbsDBInfo;
+//  btnPendingReports.Click; // perform click event
 end;
 
 procedure TfrmMAMS.ToolButton6Click(Sender: TObject);
@@ -5860,6 +6076,19 @@ begin
 
 end;
 
+procedure TfrmMAMS.CalculateYield;
+begin
+  if not (edtWeightEnd.Text = '') AND not (edtweightstart.Text = '') then
+  begin
+    YieldLabel.Caption := floattostr(round(100 * (strtofloat(edtWeightEnd.Text) / strtofloat(edtWeightStart.text)))) + ' %';
+  end
+  else
+  //display yield in percent from weights and round
+  begin
+    YieldLabel.Caption := '';
+  end;
+end;
+
 
 procedure TfrmMAMS.SetupCommonPretreatment;
 begin
@@ -6009,17 +6238,19 @@ begin
     cells[2, 0] := 'Column English';
     cells[3, 0] := 'Column German';
   end;
-  with dm.qryDB, grdReportHeadings do begin
+  with dm.qryDB, grdReportHeadings do
+  begin
     SQL.Text := 'SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
-      'user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig ' +
+      'user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material ' +
       'FROM sample_t ' +
       'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'WHERE sample_t.sample_nr=1' + ';';
     Open;
-    for i := 1 to RowCount - 1 do begin
-      cells[1, i] := Fields.Fields[i - 1].FieldName;
-    end;
+    for i := 1 to RowCount - 1 do // label row number
+//    begin
+//      cells[1, i] := Fields.Fields[i - 1].FieldName;
+//    end;
   end;
   lbExportHeader.Text := '<b>How to create table headings for reports using MS Word, coresponding to field names in database :</b>' +
     '<br> <br>' +
@@ -6055,7 +6286,7 @@ begin
   wizInputProject.EnableButton(bkNext, false);
   edtProjectName.Text := ProjectName;
   edtInDate.Date := Date;
-  edtDesiredDate.Date := Date + 120;
+  edtDesiredDate.Date := Date + 90;
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
   if ProjectExists then ShowMessage('Project already exists! Samples will be added to this project! ');
@@ -6578,9 +6809,25 @@ end;
 procedure TfrmMAMS.grdWaitingForGraphDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  if (POS('Eil',dm.qryWaitingForGraph.FieldByName('user_label').AsString)>0) OR (POS('EIL',dm.qryWaitingForGraph.FieldByName('user_label').AsString)>0) OR (POS('Blitz',dm.qryWaitingForGraph.FieldByName('user_label').AsString)>0)      //if a certain substring is in user_label then change row color
-    then TDBGrid(Sender).Canvas.Brush.Color:=clRed;
-      TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+  AlternateRowColors(Sender, State);
+  if (POS('Eil',dm.qryWaitingForGraph.FieldByName('user_label').AsString)>0)            //if a certain substring is in user_label then change row color
+    OR (POS('EIL',dm.qryWaitingForGraph.FieldByName('user_label').AsString)>0)
+    OR (POS('Blitz',dm.qryWaitingForGraph.FieldByName('user_label').AsString)>0) then
+    begin
+      TDBGrid(Sender).Canvas.Brush.Color:=clRed;
+    End;
+
+  if dm.qryWaitingForGraph.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approcahes 2 weeks
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clOlive;
+     End;
+  if dm.qryWaitingForGraph.FieldByName('desired_date').AsDateTime<=Date() Then     //if desired_date has run out color text red
+     Begin
+     TDBGrid(Sender).Canvas.Font.Color := clRed;
+     End;
+
+  TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmMAMS.grdWaitingForGraphTitleClick(Column: TColumn);
