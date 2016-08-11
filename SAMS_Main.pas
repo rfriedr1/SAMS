@@ -37,7 +37,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  LogWindow, FormNewUser(*, frxDesgn*);
+  LogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
   myVersion = '1.6.7 May-8-2016';
@@ -178,7 +178,6 @@ type
     tbsUserReport: TTabSheet;
     Panel13: TPanel;
     Label41: TLabel;
-    JvDBStatusLabel2: TJvDBStatusLabel;
     Label46: TLabel;
     Jahr: TLabel;
     Label47: TLabel;
@@ -258,7 +257,6 @@ type
     edtWordTemplate: TJvFilenameEdit;
     cdsExport: TClientDataSet;
     dsExport: TDataSource;
-    rgpReportLanguage: TRadioGroup;
     ToolButton4: TToolButton;
     actTables: TAction;
     gbxSampleIdetification: TGroupBox;
@@ -363,7 +361,6 @@ type
     grdActiveBatches: TJvDBGrid;
     grdSamplesOfLabTask: TJvDBGrid;
     btnTransferC14Age: TButton;
-    edtSaveReportAs: TJvFilenameEdit;
     Label18: TLabel;
     Label19: TLabel;
     grdReportHeadings: TJvStringGrid;
@@ -700,6 +697,12 @@ type
     btnProjectLetters: TButton;
     btnSampleSpreadsheet: TButton;
     Button1: TButton;
+    Label108: TLabel;
+    edtReportFileName: TEdit;
+    Label109: TLabel;
+    edtSaveReportToFolder: TJvDirectoryEdit;
+    btnGuessReportName: TButton;
+    StaticText5: TStaticText;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -839,7 +842,6 @@ type
     procedure grdActiveBatchesCellClick(Column: TColumn);
     procedure grdSamplesOfLabTaskCellClick(Column: TColumn);
     procedure btnTransferC14AgeClick(Sender: TObject);
-    procedure edtSaveReportAsChange(Sender: TObject);
     procedure grdReportHeadingsExit(Sender: TObject);
     procedure pgtSampleChange(Sender: TObject);
     procedure Button5Click(Sender: TObject);
@@ -972,6 +974,8 @@ type
     procedure btnUpdateNoOxBlanksClick(Sender: TObject);
     procedure cmbFilterSampleMaterialClick(Sender: TObject);
     procedure btnProjectLettersClick(Sender: TObject);
+    procedure edtReportFileNameChange(Sender: TObject);
+    procedure btnGuessReportNameClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1249,8 +1253,10 @@ var
   // this is the old way of doing it using worddriver
     if not chkPreliminaryReport.Checked and not chkAllProjects.Checked then begin // insert repaort name in project_t
       with dm.adoCmd do begin
-        f := ExtractFileName(edtSaveReportAs.Text);
-        f := ReplaceString(f, #34, '');
+        //f := ExtractFileName(edtSaveReportAs.Text);
+        //f := ReplaceString(f, #34, '');
+        f:=edtReportFileName.Text;
+        dm.sendtolog('Report Filename saved in DB... '+ f);
         CommandText := 'UPDATE project_t SET report=' + #34 + f + #34 + ', out_date=' +
           #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 +
           ' WHERE project_nr=' + IntToStr(cmbProjectOfReport.KeyValue) + ';';
@@ -1265,7 +1271,7 @@ var
 begin
 
 // old way of doing it using worddriver
-  CreateCds(rgpReportLanguage.Itemindex = 0); //create in memory DB with the information that should be transfered to the report table
+  CreateCds(true); //create in memory DB with the information that should be transfered to the report table
   FillCds;
 
 // ###### part 1 get get and fill in info about user
@@ -1286,12 +1292,15 @@ begin
 
   // fill in the information such as last name etc into the word file
   with FWord do begin
-    SaveFileName := edtSaveReportAs.FileName;
+    //SaveFileName := edtSaveReportAs.FileName;
+    SaveFileName := TPath.Combine(edtSaveReporttoFolder.Text,edtReportFileName.Text);
+    dm.SendToLog('File name for Report = ' + SaveFileName);
 //    FileName := 'C:\Temp\SAMS\C14AgeTableTemplate.doc';
     FileName := edtWordTemplate.Filename;    //used to be edtWordTemplate.Text
     Save := true;
     KeepWordOpen := true;
-    OutPutDir := edtSaveReportAs.InitialDir;
+    OutPutDir := edtSaveReporttoFolder.Text;
+    dm.SendToLog('output folder for report = ' + OutPutDir);
     DataSource := dsExport;
 //    DataSource := dm.dsSampleOfSubmitter;
     WordVersion := wvDetect;
@@ -1317,13 +1326,8 @@ begin
     FValues.Add('City=' + dm.dsQryDb.DataSet.FieldByName('town').AsString);
     FValues.Add('ProjectName=' + ProjectNameReport);    // values come from another subroutine that pulls put the samples for each project
     FValues.Add('ProjectInDate=' + ProjectInDate);
-    if rgpReportLanguage.Itemindex = 1 then begin
-      FValues.Add('Country=' + dm.dsQryDb.DataSet.FieldByName('country').AsString);
-      FValues.Add('OrderNr=' + 'Order ' + IntToStr(OrderNr));
-    end
-    else begin
-      FValues.Add('OrderNr=' + 'Auftrag ' + IntToStr(OrderNr));
-    end;
+    FValues.Add('OrderNr=' + IntToStr(OrderNr));
+    FValues.Add('Country=' + dm.dsQryDb.DataSet.FieldByName('country').AsString);
     Values := FValues;
 //    Values.SaveToFile('c:\temp\list.txt');
 //    i := Values.Count;
@@ -2807,7 +2811,8 @@ begin
     0: ExportReport('oxcal');
     1,2: with ExcelExport do begin
         Grid := grdSamplesOfSubmitter; //Grid where the data come from
-        FileName:= edtSaveReportAs.FileName; //save in the same directory as the report
+        FileName:= TPath.Combine(edtSaveReporttoFolder.Text, edtReportFileName.Text); //save in the same directory as the report
+        dm.SendToLog('Filename for export = ' + Filename);
         ExportGrid;
       end;
     3: with HTMLExport do begin
@@ -2832,6 +2837,12 @@ begin
   //set flag to true
   TargetDataChanged := true;
 
+end;
+
+procedure TfrmMAMS.btnGuessReportNameClick(Sender: TObject);
+//try to guess the report name using the user name and report number
+begin
+  edtReportFilename.Text := cmbSubmNameReport.Text + '_' + lblReport.Caption;
 end;
 
 procedure TfrmMAMS.tnstorClick(Sender: TObject);
@@ -3091,6 +3102,11 @@ begin
   TargetDataChanged := true;
 end;
 
+procedure TfrmMAMS.edtReportFileNameChange(Sender: TObject);
+begin
+btnReport.Enabled:=true;
+end;
+
 procedure TfrmMAMS.edtSampleNrKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -3160,10 +3176,6 @@ begin
   edtSampPrep5.ReadOnly := true;
 end;
 
-procedure TfrmMAMS.edtSaveReportAsChange(Sender: TObject);
-begin
-  btnReport.Enabled := (Length(edtSaveReportAs.FileName) > 0);
-end;
 
 procedure TfrmMAMS.edtSubmNameEnter(Sender: TObject);
 begin
@@ -4688,70 +4700,46 @@ begin
     Clear;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 1]
-      else
-        Name := grdReportHeadings.cells[2, 1];
+      Name := grdReportHeadings.cells[2, 1];
       DataType := ftInteger;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 2]
-      else
-        Name := grdReportHeadings.cells[2, 2];
+      Name := grdReportHeadings.cells[2, 2];
       DataType := ftString;
       Size := 40;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 3]
-      else
-        Name := grdReportHeadings.cells[2, 3];
+      Name := grdReportHeadings.cells[2, 3];
       DataType := ftString;
       Size := 40;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 4]
-      else
-        Name := grdReportHeadings.cells[2, 4];
+      Name := grdReportHeadings.cells[2, 4];
       DataType := ftString;
       Size := 40;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 5]
-      else
-        Name := grdReportHeadings.cells[2, 5];
+      Name := grdReportHeadings.cells[2, 5];
       DataType := ftString;
       Size := 40;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 6]
-      else
-        Name := grdReportHeadings.cells[2, 6];
+      Name := grdReportHeadings.cells[2, 6];
       DataType := ftInteger;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 7]
-      else
-        Name := grdReportHeadings.cells[2, 7];
+      Name := grdReportHeadings.cells[2, 7];
       DataType := ftInteger;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 8]
-      else
-        Name := grdReportHeadings.cells[2, 8];
+      Name := grdReportHeadings.cells[2, 8];
       DataType := ftString;
     end;
     with AddFieldDef do
@@ -4766,50 +4754,32 @@ begin
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 9]
-      else
-        Name := grdReportHeadings.cells[2, 9];
+      Name := grdReportHeadings.cells[2, 9];
       DataType := ftString;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 10]
-      else
-        Name := grdReportHeadings.cells[2, 10];
+      Name := grdReportHeadings.cells[2, 10];
       DataType := ftString;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 11] //%collagen
-      else
-        Name := grdReportHeadings.cells[2, 11];
+      Name := grdReportHeadings.cells[2, 11];
       DataType := ftString;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 12] //%av_fm
-      else
-        Name := grdReportHeadings.cells[2, 12];
+      Name := grdReportHeadings.cells[2, 12];
       DataType := ftString;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 13] //%av_fm_sig
-      else
-        Name := grdReportHeadings.cells[2, 13];
+      Name := grdReportHeadings.cells[2, 13];
       DataType := ftString;
     end;
     with AddFieldDef do
     begin
-      if German then
-        Name := grdReportHeadings.cells[3, 14] //%material
-      else
-        Name := grdReportHeadings.cells[2, 14];
+      Name := grdReportHeadings.cells[2, 14];
       DataType := ftString;
     end;
   end;
@@ -6008,7 +5978,7 @@ begin
       if Length(cmbProjectOfReport.Text) > 0 then
       begin
         ProjectNrList := '(' + IntToStr(cmbProjectOfReport.KeyValue) + ')';
-        lblReport.Caption := 'Project: ' + IntToStr(cmbProjectOfReport.KeyValue);
+        lblReport.Caption := IntToStr(cmbProjectOfReport.KeyValue);
         dm.qryProjectsOfUser.SQL.Text := 'SELECT AuftragsNr, project_nr, project, in_date, desired_date FROM project_t ' +
           'WHERE project_nr=' + IntToStr(cmbProjectOfReport.KeyValue) + ';';
         s := SQL.Text;

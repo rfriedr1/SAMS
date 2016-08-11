@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = grdSamplesOfProject
+  ActiveControl = edtWordTemplate
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,7 +265,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsUserReport
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1133,7 +1133,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 668
           Height = 720
-          ActivePage = tbsProjectDocs
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1633,14 +1633,13 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
-            ExplicitLeft = 5
-            ExplicitTop = 33
             object btnProjectLetters: TButton
               Left = 31
               Top = 96
               Width = 217
               Height = 33
               Caption = 'Project Letters'
+              Enabled = False
               TabOrder = 0
               OnClick = btnProjectLettersClick
             end
@@ -1650,6 +1649,7 @@ object frmMAMS: TfrmMAMS
               Width = 217
               Height = 33
               Caption = 'Sample Spreadsheet'
+              Enabled = False
               TabOrder = 1
             end
             object Button1: TButton
@@ -1658,6 +1658,7 @@ object frmMAMS: TfrmMAMS
               Width = 217
               Height = 33
               Caption = 'Report'
+              Enabled = False
               TabOrder = 2
             end
           end
@@ -1937,7 +1938,6 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
             WordWrap = True
             OnClick = btnRefreshSamplesAvailableClick
-            ExplicitHeight = 66
           end
           object pnlPrepChoice: TPanel
             Left = 306
@@ -2362,30 +2362,44 @@ object frmMAMS: TfrmMAMS
         Align = alTop
         TabOrder = 0
         object GroupBox15: TGroupBox
-          Left = 559
-          Top = 1
+          Left = 632
+          Top = 0
           Width = 440
           Height = 215
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
-            Left = 14
-            Top = 64
+            Left = 20
+            Top = 46
             Width = 44
             Height = 13
             Caption = 'Template'
           end
           object Label19: TLabel
-            Left = 11
-            Top = 111
+            Left = 18
+            Top = 92
             Width = 90
             Height = 13
             Caption = 'Save report as ....'
           end
+          object Label108: TLabel
+            Left = 19
+            Top = 111
+            Width = 32
+            Height = 13
+            Caption = 'folder:'
+          end
+          object Label109: TLabel
+            Left = 16
+            Top = 153
+            Width = 47
+            Height = 13
+            Caption = 'file name:'
+          end
           object btnReport: TButton
-            Left = 11
-            Top = 157
-            Width = 91
+            Left = 320
+            Top = 154
+            Width = 112
             Height = 36
             Caption = 'Create report'
             Enabled = False
@@ -2394,56 +2408,68 @@ object frmMAMS: TfrmMAMS
             OnClick = btnReportClick
           end
           object edtWordTemplate: TJvFilenameEdit
-            Left = 11
-            Top = 80
+            Left = 17
+            Top = 62
             Width = 414
             Height = 21
             TabOrder = 1
             Text = 'edtWordTemplate'
           end
-          object rgpReportLanguage: TRadioGroup
-            Left = 11
-            Top = 18
-            Width = 81
-            Height = 37
-            Caption = 'Language'
-            Columns = 2
-            ItemIndex = 0
-            Items.Strings = (
-              'DE'
-              'EN')
-            TabOrder = 2
-          end
           object edtSaveReportAs: TJvFilenameEdit
-            Left = 11
-            Top = 130
+            Left = 18
+            Top = 126
             Width = 414
             Height = 21
-            TabOrder = 3
+            DialogTitle = 'Select Folder'
+            TabOrder = 2
             Text = ''
             OnChange = edtSaveReportAsChange
           end
           object chkCalBP: TCheckBox
-            Left = 98
-            Top = 36
+            Left = 18
+            Top = 22
             Width = 143
             Height = 11
             Caption = 'cal BP (instead of AD/BC)'
-            TabOrder = 4
+            TabOrder = 3
           end
           object chkPreliminaryReport: TCheckBox
-            Left = 144
-            Top = 110
+            Left = 165
+            Top = 89
             Width = 97
             Height = 17
             Caption = 'preliminary'
+            TabOrder = 4
+          end
+          object edtReportFileName: TEdit
+            Left = 19
+            Top = 169
+            Width = 238
+            Height = 21
             TabOrder = 5
+          end
+          object JvDirectoryEdit1: TJvDirectoryEdit
+            Left = 184
+            Top = 153
+            Width = 121
+            Height = 21
+            DialogKind = dkWin32
+            TabOrder = 6
+            Text = 'JvDirectoryEdit1'
+          end
+          object FileListBox1: TFileListBox
+            Left = 232
+            Top = 89
+            Width = 145
+            Height = 97
+            ItemHeight = 13
+            TabOrder = 7
           end
         end
         object GroupBox26: TGroupBox
           Left = 1
           Top = 1
-          Width = 552
+          Width = 625
           Height = 207
           Align = alLeft
           Caption = 'Data Selection'
@@ -2456,8 +2482,8 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object JvDBStatusLabel2: TJvDBStatusLabel
-            Left = 281
-            Top = 177
+            Left = 532
+            Top = 55
             Width = 111
             Height = 16
             Style = lsRecordNo
@@ -2521,11 +2547,11 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object lblReport: TLabel
-            Left = 234
-            Top = 177
-            Width = 49
+            Left = 475
+            Top = 55
+            Width = 54
             Height = 16
-            Caption = 'Project: '
+            Caption = 'Project#:'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2574,9 +2600,9 @@ object frmMAMS: TfrmMAMS
           end
           object btnQuerySubmitter: TBitBtn
             Left = 475
-            Top = 19
-            Width = 62
-            Height = 152
+            Top = 85
+            Width = 134
+            Height = 108
             Hint = 'reload samples'
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
@@ -2721,7 +2747,7 @@ object frmMAMS: TfrmMAMS
           end
         end
         object btnSendMailEnglish: TButton
-          Left = 1005
+          Left = 1085
           Top = 92
           Width = 75
           Height = 48
@@ -2731,7 +2757,7 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSendMailEnglishClick
         end
         object btnSendMailGerman: TButton
-          Left = 1005
+          Left = 1085
           Top = 146
           Width = 75
           Height = 46
@@ -6638,7 +6664,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C0101100013005C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300700410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7316,8 +7342,8 @@ object frmMAMS: TfrmMAMS
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 744
-    Top = 136
+    Left = 848
+    Top = 96
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -7340,7 +7366,6 @@ object frmMAMS: TfrmMAMS
       'grdPreviewSamples.Width'
       'edtNewSamplesFilename.InitialDir'
       'edtWordTemplate.Text'
-      'rgpReportLanguage.ItemIndex'
       'gbxLabStatPlanned.Width'
       'edtUserDocuments.Text'
       'edtSampleNr.Value'
@@ -7402,8 +7427,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 664
-    Top = 136
+    Left = 800
+    Top = 96
   end
   object ImageList2: TImageList
     Height = 24
@@ -7411,7 +7436,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F806880518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F8069C0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13661,7 +13686,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F005C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00700420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

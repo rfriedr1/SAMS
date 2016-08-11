@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = grdSamplesOfProject
+  ActiveControl = edtWordTemplate
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,7 +265,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsUserReport
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1146,10 +1146,6 @@ object frmMAMS: TfrmMAMS
           object tbsProject: TTabSheet
             Caption = 'Project data'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
@@ -1363,10 +1359,6 @@ object frmMAMS: TfrmMAMS
           end
           object tbsSampleOfProject: TTabSheet
             Caption = 'Sample data'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object gbxSampleRight: TGroupBox
               Left = 353
               Top = 0
@@ -1631,10 +1623,6 @@ object frmMAMS: TfrmMAMS
           object TabSheet5: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object JvImage1: TJvImage
               Left = 116
               Top = 29
@@ -2374,88 +2362,111 @@ object frmMAMS: TfrmMAMS
         Align = alTop
         TabOrder = 0
         object GroupBox15: TGroupBox
-          Left = 559
-          Top = 1
+          Left = 632
+          Top = 0
           Width = 440
           Height = 215
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
-            Left = 14
-            Top = 64
+            Left = 20
+            Top = 46
             Width = 44
             Height = 13
             Caption = 'Template'
           end
           object Label19: TLabel
-            Left = 11
-            Top = 111
+            Left = 18
+            Top = 92
             Width = 90
             Height = 13
             Caption = 'Save report as ....'
           end
+          object Label108: TLabel
+            Left = 19
+            Top = 111
+            Width = 32
+            Height = 13
+            Caption = 'folder:'
+          end
+          object Label109: TLabel
+            Left = 20
+            Top = 153
+            Width = 120
+            Height = 13
+            Caption = 'file name (no extension):'
+          end
           object btnReport: TButton
-            Left = 11
-            Top = 157
-            Width = 91
+            Left = 280
+            Top = 156
+            Width = 146
             Height = 36
             Caption = 'Create report'
-            Enabled = False
             TabOrder = 0
             WordWrap = True
             OnClick = btnReportClick
           end
           object edtWordTemplate: TJvFilenameEdit
-            Left = 11
-            Top = 80
+            Left = 17
+            Top = 62
             Width = 414
             Height = 21
             TabOrder = 1
             Text = 'edtWordTemplate'
           end
-          object rgpReportLanguage: TRadioGroup
-            Left = 11
-            Top = 18
-            Width = 81
-            Height = 37
-            Caption = 'Language'
-            Columns = 2
-            ItemIndex = 0
-            Items.Strings = (
-              'DE'
-              'EN')
-            TabOrder = 2
-          end
-          object edtSaveReportAs: TJvFilenameEdit
-            Left = 11
-            Top = 130
-            Width = 414
-            Height = 21
-            TabOrder = 3
-            Text = ''
-            OnChange = edtSaveReportAsChange
-          end
           object chkCalBP: TCheckBox
-            Left = 98
-            Top = 36
+            Left = 18
+            Top = 22
             Width = 143
             Height = 11
             Caption = 'cal BP (instead of AD/BC)'
-            TabOrder = 4
+            TabOrder = 2
           end
           object chkPreliminaryReport: TCheckBox
-            Left = 144
-            Top = 110
+            Left = 165
+            Top = 89
             Width = 97
             Height = 17
             Caption = 'preliminary'
+            TabOrder = 3
+          end
+          object edtReportFileName: TEdit
+            Left = 19
+            Top = 169
+            Width = 222
+            Height = 21
+            TabOrder = 4
+            OnChange = edtReportFileNameChange
+          end
+          object edtSaveReportToFolder: TJvDirectoryEdit
+            Left = 18
+            Top = 126
+            Width = 413
+            Height = 21
+            AcceptFiles = False
+            DialogKind = dkWin32
+            DialogText = 'select folder'
+            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
             TabOrder = 5
+            Text = ''
+          end
+          object btnGuessReportName: TButton
+            Left = 245
+            Top = 169
+            Width = 25
+            Height = 22
+            Hint = 'Guess the report name from the user name and report number'
+            Caption = '<'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 6
+            OnClick = btnGuessReportNameClick
           end
         end
         object GroupBox26: TGroupBox
           Left = 1
           Top = 1
-          Width = 552
+          Width = 625
           Height = 207
           Align = alLeft
           Caption = 'Data Selection'
@@ -2466,20 +2477,6 @@ object frmMAMS: TfrmMAMS
             Width = 12
             Height = 13
             Caption = 'To'
-          end
-          object JvDBStatusLabel2: TJvDBStatusLabel
-            Left = 281
-            Top = 177
-            Width = 111
-            Height = 16
-            Style = lsRecordNo
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Transparent = True
           end
           object JvDBStatusLabel5: TJvDBStatusLabel
             Left = 3
@@ -2533,11 +2530,11 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object lblReport: TLabel
-            Left = 234
-            Top = 177
-            Width = 49
+            Left = 475
+            Top = 55
+            Width = 54
             Height = 16
-            Caption = 'Project: '
+            Caption = 'Project#:'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2586,9 +2583,9 @@ object frmMAMS: TfrmMAMS
           end
           object btnQuerySubmitter: TBitBtn
             Left = 475
-            Top = 19
-            Width = 62
-            Height = 152
+            Top = 85
+            Width = 134
+            Height = 108
             Hint = 'reload samples'
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
@@ -2733,7 +2730,7 @@ object frmMAMS: TfrmMAMS
           end
         end
         object btnSendMailEnglish: TButton
-          Left = 1005
+          Left = 1085
           Top = 92
           Width = 75
           Height = 48
@@ -2743,7 +2740,7 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSendMailEnglishClick
         end
         object btnSendMailGerman: TButton
-          Left = 1005
+          Left = 1085
           Top = 146
           Width = 75
           Height = 46
@@ -6650,7 +6647,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300600410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300700410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7328,8 +7325,8 @@ object frmMAMS: TfrmMAMS
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 744
-    Top = 136
+    Left = 848
+    Top = 96
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -7352,17 +7349,15 @@ object frmMAMS: TfrmMAMS
       'grdPreviewSamples.Width'
       'edtNewSamplesFilename.InitialDir'
       'edtWordTemplate.Text'
-      'rgpReportLanguage.ItemIndex'
       'gbxLabStatPlanned.Width'
       'edtUserDocuments.Text'
       'edtSampleNr.Value'
-      'edtSaveReportAs.InitialDir'
-      'edtSaveReportAs.HistoryList'
       'edtProjectsSinceYear.Value'
       'gbxInPrep.Width'
       'edtSMTPServer.Text'
       'MemoDBPlotQuery.Lines'
-      'chkSendCopyToSender.Checked')
+      'chkSendCopyToSender.Checked'
+      'edtSaveReportToFolder.Text')
     StoredValues = <>
     Left = 312
     Top = 72
@@ -7373,7 +7368,7 @@ object frmMAMS: TfrmMAMS
     FileName = 'Persistent.ini'
     DefaultSection = 'NewSamplesInput'
     SubStorages = <>
-    Left = 200
+    Left = 232
     Top = 72
   end
   object WordExport: TJvDBGridWordExport
@@ -7414,8 +7409,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 664
-    Top = 136
+    Left = 800
+    Top = 96
   end
   object ImageList2: TImageList
     Height = 24
@@ -7423,7 +7418,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F8068C0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F8069C0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13673,7 +13668,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00600420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00700420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

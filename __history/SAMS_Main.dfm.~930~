@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = grdSamplesOfProject
+  ActiveControl = edtWordTemplate
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,17 +265,13 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsUserReport
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
     object tbsInsertSamples: TTabSheet
       Caption = 'Insert samples'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object wizInputSamples: TJvWizard
         Left = 0
         Top = 0
@@ -334,9 +330,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select user'
           OnEnterPage = wizStartPageEnterPage
           OnBackButtonClick = wizStartPageBackButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel4: TPanel
             Left = 0
             Top = 70
@@ -447,9 +440,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Invoice address'
           OnEnterPage = wizInputInvoiceAddressEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel29: TPanel
             Left = 0
             Top = 70
@@ -539,9 +529,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Project Info'
           OnEnterPage = wizInputProjectEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox4: TGroupBox
             Left = 0
             Top = 70
@@ -739,9 +726,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select material'
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 601
             Top = 70
@@ -833,9 +817,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object pnlSetType: TPanel
             Left = 992
             Top = 70
@@ -878,9 +859,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select pretreatment'
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object lbxDefinePrepSteps: TListBox
             Left = 928
             Top = 70
@@ -916,9 +894,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Insert all data'
           OnEnterPage = wizFinalPageEnterPage
           OnFinishButtonClick = wizFinalPageFinishButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
@@ -966,10 +941,6 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 9
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gbxProjectsOfUser: TGroupBox
         Left = 0
         Top = 0
@@ -1175,10 +1146,6 @@ object frmMAMS: TfrmMAMS
           object tbsProject: TTabSheet
             Caption = 'Project data'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
@@ -1392,10 +1359,6 @@ object frmMAMS: TfrmMAMS
           end
           object tbsSampleOfProject: TTabSheet
             Caption = 'Sample data'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object gbxSampleRight: TGroupBox
               Left = 353
               Top = 0
@@ -1626,10 +1589,6 @@ object frmMAMS: TfrmMAMS
           object tbsFoto: TTabSheet
             Caption = 'Sample foto'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object SampleFoto: TImage
               Left = 0
               Top = 41
@@ -1664,10 +1623,6 @@ object frmMAMS: TfrmMAMS
           object TabSheet5: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object JvImage1: TJvImage
               Left = 116
               Top = 29
@@ -1678,10 +1633,6 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object btnProjectLetters: TButton
               Left = 31
               Top = 96
@@ -1717,10 +1668,6 @@ object frmMAMS: TfrmMAMS
     object tbsLabPlan: TTabSheet
       Caption = 'Lab plan'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gbxBatch: TGroupBox
         Left = 965
         Top = 0
@@ -2108,7 +2055,7 @@ object frmMAMS: TfrmMAMS
           object StaticText1: TStaticText
             Left = 2
             Top = 15
-            Width = 220
+            Width = 788
             Height = 17
             Align = alTop
             Caption = 'Double Click on a sample to add it to a batch.'
@@ -2126,10 +2073,6 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 7
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox13: TGroupBox
         Left = 0
         Top = 0
@@ -2227,10 +2170,6 @@ object frmMAMS: TfrmMAMS
         TabOrder = 1
         object tbsPrepTask: TTabSheet
           Caption = 'tbsPrepTask'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox14: TGroupBox
             Left = 0
             Top = 0
@@ -2409,20 +2348,12 @@ object frmMAMS: TfrmMAMS
         object tbsGraphTask: TTabSheet
           Caption = 'tbsGraphTask'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
       end
     end
     object tbsUserReport: TTabSheet
       Caption = 'User report'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -2431,88 +2362,108 @@ object frmMAMS: TfrmMAMS
         Align = alTop
         TabOrder = 0
         object GroupBox15: TGroupBox
-          Left = 559
-          Top = 1
+          Left = 632
+          Top = 0
           Width = 440
           Height = 215
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
-            Left = 14
-            Top = 64
+            Left = 20
+            Top = 46
             Width = 44
             Height = 13
             Caption = 'Template'
           end
           object Label19: TLabel
-            Left = 11
-            Top = 111
+            Left = 18
+            Top = 92
             Width = 90
             Height = 13
             Caption = 'Save report as ....'
           end
+          object Label108: TLabel
+            Left = 19
+            Top = 111
+            Width = 32
+            Height = 13
+            Caption = 'folder:'
+          end
+          object Label109: TLabel
+            Left = 16
+            Top = 153
+            Width = 47
+            Height = 13
+            Caption = 'file name:'
+          end
           object btnReport: TButton
-            Left = 11
-            Top = 157
-            Width = 91
+            Left = 320
+            Top = 154
+            Width = 112
             Height = 36
             Caption = 'Create report'
-            Enabled = False
             TabOrder = 0
             WordWrap = True
             OnClick = btnReportClick
           end
           object edtWordTemplate: TJvFilenameEdit
-            Left = 11
-            Top = 80
+            Left = 17
+            Top = 62
             Width = 414
             Height = 21
             TabOrder = 1
             Text = 'edtWordTemplate'
           end
-          object rgpReportLanguage: TRadioGroup
-            Left = 11
-            Top = 18
-            Width = 81
-            Height = 37
-            Caption = 'Language'
-            Columns = 2
-            ItemIndex = 0
-            Items.Strings = (
-              'DE'
-              'EN')
-            TabOrder = 2
-          end
           object edtSaveReportAs: TJvFilenameEdit
-            Left = 11
-            Top = 130
-            Width = 414
+            Left = 290
+            Top = 126
+            Width = 119
             Height = 21
-            TabOrder = 3
+            DialogTitle = 'Select Folder'
+            TabOrder = 2
             Text = ''
             OnChange = edtSaveReportAsChange
           end
           object chkCalBP: TCheckBox
-            Left = 98
-            Top = 36
+            Left = 18
+            Top = 22
             Width = 143
             Height = 11
             Caption = 'cal BP (instead of AD/BC)'
-            TabOrder = 4
+            TabOrder = 3
           end
           object chkPreliminaryReport: TCheckBox
-            Left = 144
-            Top = 110
+            Left = 165
+            Top = 89
             Width = 97
             Height = 17
             Caption = 'preliminary'
+            TabOrder = 4
+          end
+          object edtReportFileName: TEdit
+            Left = 19
+            Top = 169
+            Width = 238
+            Height = 21
             TabOrder = 5
+          end
+          object edtSaveReportToFolder: TJvDirectoryEdit
+            Left = 18
+            Top = 126
+            Width = 266
+            Height = 21
+            AcceptFiles = False
+            DialogKind = dkWin32
+            DialogText = 'select folder'
+            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+            TabOrder = 6
+            Text = ''
           end
         end
         object GroupBox26: TGroupBox
           Left = 1
           Top = 1
-          Width = 552
+          Width = 625
           Height = 207
           Align = alLeft
           Caption = 'Data Selection'
@@ -2525,8 +2476,8 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object JvDBStatusLabel2: TJvDBStatusLabel
-            Left = 281
-            Top = 177
+            Left = 532
+            Top = 55
             Width = 111
             Height = 16
             Style = lsRecordNo
@@ -2590,11 +2541,11 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object lblReport: TLabel
-            Left = 234
-            Top = 177
-            Width = 49
+            Left = 475
+            Top = 55
+            Width = 54
             Height = 16
-            Caption = 'Project: '
+            Caption = 'Project#:'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2643,9 +2594,9 @@ object frmMAMS: TfrmMAMS
           end
           object btnQuerySubmitter: TBitBtn
             Left = 475
-            Top = 19
-            Width = 62
-            Height = 152
+            Top = 85
+            Width = 134
+            Height = 108
             Hint = 'reload samples'
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
@@ -2790,7 +2741,7 @@ object frmMAMS: TfrmMAMS
           end
         end
         object btnSendMailEnglish: TButton
-          Left = 1005
+          Left = 1085
           Top = 92
           Width = 75
           Height = 48
@@ -2800,7 +2751,7 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSendMailEnglishClick
         end
         object btnSendMailGerman: TButton
-          Left = 1005
+          Left = 1085
           Top = 146
           Width = 75
           Height = 46
@@ -2833,10 +2784,6 @@ object frmMAMS: TfrmMAMS
     object tbsSampleInfo: TTabSheet
       Caption = 'Sample info'
       ImageIndex = 9
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gbxSampleIdetification: TGroupBox
         Left = 0
         Top = 0
@@ -4736,10 +4683,6 @@ object frmMAMS: TfrmMAMS
     object tbsUserInfo: TTabSheet
       Caption = 'User info'
       ImageIndex = 11
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox24: TGroupBox
         Left = 0
         Top = 0
@@ -5107,10 +5050,6 @@ object frmMAMS: TfrmMAMS
     object tbsOptions: TTabSheet
       Caption = 'Options'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox28: TGroupBox
         Left = 1007
         Top = 0
@@ -5247,26 +5186,14 @@ object frmMAMS: TfrmMAMS
         TabOrder = 3
         object TabGeneral: TTabSheet
           Caption = 'TabGeneral'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabDatabase: TTabSheet
           Caption = 'TabDatabase'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabPaths: TTabSheet
           Caption = 'TabPaths'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label98: TLabel
             Left = 20
             Top = 105
@@ -5307,10 +5234,6 @@ object frmMAMS: TfrmMAMS
         object TabEmail: TTabSheet
           Caption = 'TabEmail'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
       end
       object btnSaveOptions: TButton
@@ -5326,10 +5249,6 @@ object frmMAMS: TfrmMAMS
       Caption = 'Types, materials, pretr. steps'
       ImageIndex = 2
       OnExit = tbsTypesMatExit
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox7: TGroupBox
         Left = 700
         Top = 0
@@ -5474,10 +5393,6 @@ object frmMAMS: TfrmMAMS
     object tbsLabStats: TTabSheet
       Caption = 'Lab stats'
       ImageIndex = 9
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object JvNetscapeSplitter1: TJvNetscapeSplitter
         Left = 723
         Top = 0
@@ -5724,10 +5639,6 @@ object frmMAMS: TfrmMAMS
     object tbsAccounting: TTabSheet
       Caption = 'Accounting'
       ImageIndex = 10
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
@@ -5940,10 +5851,6 @@ object frmMAMS: TfrmMAMS
     object tbsTransferAge: TTabSheet
       Caption = 'Transfer Age'
       ImageIndex = 12
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox25: TGroupBox
         Left = 790
         Top = 0
@@ -6132,10 +6039,6 @@ object frmMAMS: TfrmMAMS
     object tbsSendMail: TTabSheet
       Caption = 'SendMail'
       ImageIndex = 13
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel31: TPanel
         Left = 0
         Top = 0
@@ -6257,10 +6160,6 @@ object frmMAMS: TfrmMAMS
       Hint = 'Full SQL-Query to get data from the database'
       Caption = 'tbsDBPlot'
       ImageIndex = 14
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object SplitterDBPlot: TSplitter
         Left = 233
         Top = 113
@@ -6427,10 +6326,6 @@ object frmMAMS: TfrmMAMS
     object tbsDBInfo: TTabSheet
       Caption = 'tbsDBInfo'
       ImageIndex = 15
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBoxMeasuredSamples: TGroupBox
         Left = 0
         Top = 0
@@ -6763,7 +6658,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300640410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300700410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7441,8 +7336,8 @@ object frmMAMS: TfrmMAMS
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 744
-    Top = 136
+    Left = 848
+    Top = 96
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -7465,7 +7360,6 @@ object frmMAMS: TfrmMAMS
       'grdPreviewSamples.Width'
       'edtNewSamplesFilename.InitialDir'
       'edtWordTemplate.Text'
-      'rgpReportLanguage.ItemIndex'
       'gbxLabStatPlanned.Width'
       'edtUserDocuments.Text'
       'edtSampleNr.Value'
@@ -7475,7 +7369,8 @@ object frmMAMS: TfrmMAMS
       'gbxInPrep.Width'
       'edtSMTPServer.Text'
       'MemoDBPlotQuery.Lines'
-      'chkSendCopyToSender.Checked')
+      'chkSendCopyToSender.Checked'
+      'edtSaveReportToFolder.Text')
     StoredValues = <>
     Left = 312
     Top = 72
@@ -7486,7 +7381,7 @@ object frmMAMS: TfrmMAMS
     FileName = 'Persistent.ini'
     DefaultSection = 'NewSamplesInput'
     SubStorages = <>
-    Left = 200
+    Left = 232
     Top = 72
   end
   object WordExport: TJvDBGridWordExport
@@ -7527,8 +7422,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 664
-    Top = 136
+    Left = 800
+    Top = 96
   end
   object ImageList2: TImageList
     Height = 24
@@ -7536,7 +7431,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F806900518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F8069C0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13786,7 +13681,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00640420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00700420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
