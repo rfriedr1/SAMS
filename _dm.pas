@@ -211,6 +211,7 @@ type
     function TargetRecordExistsForSample(SampleNr : integer) : boolean;
     procedure TransferAgeFromTarget(SampleNr, PrepNr, TargetNr : integer);
     procedure TransferMA_Nr_To_MAMS;
+    procedure SendToLog(s:string);
   end;
 
 var
@@ -223,7 +224,16 @@ implementation
 { Tdm }
 
 uses
-  Clipbrd, DateUtils, SAMS_Main, _LogSQL;
+  Clipbrd, DateUtils, SAMS_Main, _LogSQL, LogWindow;
+
+procedure Tdm.SendToLog(s:string);
+//sends the string to the log window if the window is open
+begin
+  if frmLogWindow.Showing then
+  begin
+    frmLogWindow.ListBox.Items.Add(s);
+  end;
+end;
 
 procedure Tdm.adoConnKTLExecuteComplete(Connection: TADOConnection;
   RecordsAffected: Integer; const Error: Error; var EventStatus: TEventStatus;
@@ -259,6 +269,7 @@ begin
         ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 +');';    // set query text
         //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
+        SendToLog(ADOCmd.CommandText);
         ADOCmd.Execute; // issue command (no result set must be returned)
       except
         ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
@@ -392,6 +403,7 @@ begin
      s := SQL.Text;
      //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(s);
      Open;
      if Fields.Fields[0].AsString=project_name then begin
         Result:=true;
@@ -414,6 +426,7 @@ begin
      s := SQL.Text;
      //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(s);
      Open;
      if Fields.Fields[0].AsString=sample_name then begin
         Result:=true;
@@ -464,6 +477,7 @@ var
 begin
   with qryDb do begin
     SQL.Text := 'SELECT project_nr, project, status FROM project_t WHERE status<>"closed";';
+    SendToLog(SQL.Text);
     Open;
     First;
     while not EOF do begin
@@ -477,11 +491,13 @@ begin
             'WHERE project_nr=' + IntToStr(project_nr) +
             ' AND preparation_t.stop=0 AND target_t.stop=0 AND sample_t.c14_age IS NULL ' +
             ';';
+          SendToLog(SQL.Text);
           Open;
           if qryDb1.RecordCount=0 then begin   // alles datiert oder nottobedated
              with adoCmd do begin
                CommandText := 'UPDATE project_t SET status="closed" WHERE project_nr=' +
                             IntToStr(project_nr) + ';';
+               SendToLog(CommandText);
                Execute;
              end;
           end;
@@ -552,6 +568,7 @@ begin
                     ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
        s := SQL.Text;
   //     ClipBoard.SetTextBuf(PChar(s));
+       SendToLog(s);
        Open;
     end;
   Result := qryInPrep.RecordCount;
@@ -579,6 +596,7 @@ begin
         SQL.Text := SQL.Text + ' AND sample_t.not_tobedated=0;';
       s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(s);
      Open;
   end;
   Result := qryPlanned.RecordCount;
@@ -630,6 +648,7 @@ begin
                 ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
                 ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type="arch" ';
+    SendToLog(SQL.Text);
     Open;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
@@ -654,6 +673,7 @@ begin
                 ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
                 ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type NOT IN("blank","oxa1","oxa","oxa2") ';
+    SendToLog(SQL.Text);
     Open;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
@@ -666,6 +686,7 @@ begin
      SQL.Text :=  'SELECT weight_combustion FROM target_t WHERE sample_nr=' +
                   IntToStr(SampleNr) + ' AND prep_nr=' + IntToStr(PrepNr) +
                   ' AND target_nr=' + IntToStr(TargetNr)+';';
+     SendToLog(SQL.Text);
      Open;
    end;
 end;
@@ -684,6 +705,7 @@ begin
                 ' WHERE magazine='+ #34 + Magazine + #34 + ' AND target_t.fm IS NOT NULL;';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+   SendToLog(SQL.Text);
    Open;
  end;
 end;
@@ -698,6 +720,7 @@ begin
      SQL.Text := 'SELECT Max(prep_nr) FROM preparation_t WHERE sample_nr='+IntToStr(sample_nr) + ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsInteger;
    end;
@@ -712,6 +735,7 @@ begin
      SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsInteger;
    end;
@@ -728,6 +752,7 @@ begin
                  ' AND prep_nr=' + IntToStr(prep_nr)+ ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsInteger;
    end;
@@ -753,6 +778,7 @@ begin
                 ' INNER JOIN sample_t ON sample_t.sample_nr=target_t.sample_nr ' +
                 ' WHERE magazine IS NULL AND graphitized IS NOT NULL and stop=0 ' +
                 ' and sample_t.type like ' + s +'and sample_t.user_label like' + s2 + ';';
+    SendToLog(SQL.Text);
     Open;
   end;
 
@@ -772,6 +798,7 @@ begin
                  ' AND prep_nr=' + IntTostr(prep_nr) + ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      First;
      StepNr := 0;
@@ -795,6 +822,7 @@ begin
      SQL.Text := 'SELECT project_nr FROM sample_t WHERE sample_nr='+IntToStr(sample_nr) + ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsInteger;
    end;
@@ -809,6 +837,7 @@ begin
      SQL.Text := 'SELECT project FROM project_t WHERE project_nr='+IntToStr(project_nr) + ';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsString;
    end;
@@ -825,6 +854,7 @@ begin
      SQL.Text := 'SELECT project_nr FROM project_t WHERE project='+ #34 + project_name + #34 + ' AND user_nr=' + #34 + user_nr + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsString;
    end;
@@ -841,6 +871,7 @@ begin
      SQL.Text := 'SELECT sample_nr FROM sample_t WHERE user_label='+ #34 + sample_name + #34 + ' AND project_nr=' + #34 + project_nr + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsString;
    end;
@@ -855,6 +886,7 @@ begin
      SQL.Text := 'SELECT user_t.last_name FROM project_t INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_nr='+IntToStr(project_nr) + ';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsString;
    end;
@@ -869,6 +901,7 @@ begin
      SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + last_name + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
      Result := Fields.Fields[0].AsString;
    end;
@@ -888,6 +921,7 @@ begin
                  ' AND user_t.last_name<>"intern" ' +  //user intern
                  ';';
      s := SQL.Text;
+     SendToLog(SQL.Text);
      Open;
    end;
 end;
@@ -924,8 +958,9 @@ begin
     s := s + 'WHERE sample_t.sample_nr=' + IntToStr(SampleNr) + ' AND preparation_t.prep_nr=' + IntToStr(PrepNr) + ' ';
     if HasTarget then s := s + ' AND target_nr=' + IntToStr(TargetNr);
     s := s + ';';
-    StrToClipBoard(s,300);
+    //StrToClipBoard(s,300);
     SQL.Text := s;
+    SendToLog(s);
     Open;
   end;
 end;
@@ -947,6 +982,7 @@ begin
           ' batch IS NULL;';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
+        SendToLog(SQL.Text);
         Open;
       end;
     if qryDb.RecordCount > 0 then
@@ -976,6 +1012,7 @@ begin
           ';';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
+        SendToLog(SQL.Text);
         Open;
       end;
     end;
@@ -996,6 +1033,7 @@ begin
           ' batch IS NULL AND prep_end IS NULL;';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
+        SendToLog(SQL.Text);
         Open;
       end;
 
@@ -1027,6 +1065,7 @@ begin
           ';';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
+        SendToLog(SQL.Text);
         Open;
       end;
     end;
@@ -1055,6 +1094,7 @@ begin
           ' AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
         //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
+        SendToLog(SQL.Text);
         Open;
       end;
 end;
@@ -1068,6 +1108,7 @@ begin
                   IntToStr(SampleNr) + ' AND prep_nr=' + IntToStr(PrepNr) +';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
+    SendToLog(SQL.Text);
     Open;
    end;
 end;
@@ -1090,6 +1131,7 @@ begin
         ' AND last_name=' + #34 + LastName + #34;
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
+    SendToLog(SQL.Text);
     Open;
     Result := RecordCount;
   end;
@@ -1101,6 +1143,7 @@ begin
     Close;
     SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method, ' +
       'step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) + ';';
+    SendToLog(SQL.Text);
     Open;
   end;
 end;
@@ -1119,6 +1162,7 @@ begin
     'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
+    SendToLog(SQL.Text);
     Open;
   end;
 end;
@@ -1129,6 +1173,7 @@ procedure Tdm.QueryProject(const ProjectName: string);
 begin
   with qryProject do begin
     SQL.Text := 'SELECT * FROM project_t WHERE project='+#34+ProjectName+#34+';';
+    SendToLog(SQL.Text);
     Open;
   end;
 end;
@@ -1143,6 +1188,7 @@ begin
       'WHERE sample_t.sample_nr=' + IntToStr(sample_nr) + ';';
 //    strClipBoard := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(strClipboard));
+    SendToLog(SQL.Text);
     Open;
   end;
 end;
@@ -1156,6 +1202,7 @@ var
 begin
   with qryDb do begin
     SQL.Text := 'SELECT magazine, sample_nr FROM target_t WHERE graph_date IS NULL AND c14_age IS NOT NULL';
+    SendToLog(SQL.Text);
     Open;
     if RecordCount>0 then begin
       First;
@@ -1196,6 +1243,7 @@ procedure Tdm.SetProjectStatusRunning(sample_nr: integer);
 begin
   with qryDB do begin
     SQL.Text := 'SELECT project_nr FROM sample_t WHERE sample_nr=' + IntToStr(sample_nr);
+    SendToLog(SQL.Text);
     Open;
     if RecordCount=1 then begin
        adoCmd.CommandText := 'UPDATE project_t SET status="running" WHERE project_nr=' +
@@ -1235,12 +1283,14 @@ begin
         ' WHERE sample_nr=' + IntToStr(Nr1) + ';';
     s := SQL.Text;
 //  ClipBoard.SetTextBuf(PChar(s));
+     SendToLog(SQL.Text);
      Open;
   end;
   with qrySample2 do begin
     SQL.Text := 'SELECT magazine,position,fm,fm_sig,dc13,calcset,c14_age,' +
         'c14_age_sig,cal1sMin,cal1sMax,cal2sMin,cal2sMax FROM target_t' +
         ' WHERE sample_nr=' + IntToStr(Nr2) + ';';
+      SendToLog(SQL.Text);
       Open;
   end;
     c := FormatSettings.DecimalSeparator;
@@ -1293,6 +1343,7 @@ begin
     SQL.Text := 'Select * FROM target_t WHERE sample_nr=' + IntToStr(SampleNr) + ';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
+    SendToLog(SQL.Text);
     Open;
     Result := (RecordCount>0);
   end;
@@ -1311,6 +1362,7 @@ begin
                 ' FROM target_t WHERE sample_nr='+IntToStr(SampleNr) +
                 ' AND prep_nr=' + IntToStr(PrepNr) +
                 ' AND target_nr=' + IntToStr(TargetNr) +';';
+    SendToLog(SQL.Text);
     Open;
   end;
   with adoCmd do begin
@@ -1363,6 +1415,7 @@ begin
   with qryCEZA do
   begin
     SQL.Text := 'SELECT Auftrags_Nr_,mams_project_nr FROM tab_auftraege t where Auftrags_Nr_ IS NOT NULL and mams_project_nr IS NOT NULL order by mams_project_nr desc;';
+    SendToLog(SQL.Text);
     Open;
     First;
     while not EOF do
@@ -1371,6 +1424,7 @@ begin
        begin
          MAMSProjectNr := qryCEZA.Fields.Fields[1].AsInteger;
          SQL.Text := 'SELECT AuftragsNr FROM project_t WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
+         SendToLog(SQL.Text);
          Open;
          if  Fields.Fields[0].IsNull then
            with adoCmd do

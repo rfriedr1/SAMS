@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = grdSamplesOfProject
+  ActiveControl = edtMonthStat
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,7 +265,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsDBInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1133,7 +1133,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 668
           Height = 720
-          ActivePage = tbsProjectDocs
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1633,14 +1633,13 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
-            ExplicitLeft = 5
-            ExplicitTop = 33
             object btnProjectLetters: TButton
               Left = 31
               Top = 96
               Width = 217
               Height = 33
               Caption = 'Project Letters'
+              Enabled = False
               TabOrder = 0
               OnClick = btnProjectLettersClick
             end
@@ -1650,6 +1649,7 @@ object frmMAMS: TfrmMAMS
               Width = 217
               Height = 33
               Caption = 'Sample Spreadsheet'
+              Enabled = False
               TabOrder = 1
             end
             object Button1: TButton
@@ -1658,6 +1658,7 @@ object frmMAMS: TfrmMAMS
               Width = 217
               Height = 33
               Caption = 'Report'
+              Enabled = False
               TabOrder = 2
             end
           end
@@ -1937,7 +1938,6 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
             WordWrap = True
             OnClick = btnRefreshSamplesAvailableClick
-            ExplicitHeight = 66
           end
           object pnlPrepChoice: TPanel
             Left = 306
@@ -6638,7 +6638,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C0101100013005C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013006C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7411,7 +7411,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F806880518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806980518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13661,7 +13661,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F005C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F006C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

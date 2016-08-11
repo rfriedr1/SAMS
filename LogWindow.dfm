@@ -1,9 +1,10 @@
 object frmLogWindow: TfrmLogWindow
   Left = 0
   Top = 0
-  Caption = 'frmLogWindow'
-  ClientHeight = 289
-  ClientWidth = 672
+  Width = 688
+  Height = 328
+  AutoScroll = True
+  Caption = 'Log Window'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,8 +21,15 @@ object frmLogWindow: TfrmLogWindow
     Height = 289
     Align = alClient
     ItemHeight = 13
+    PopupMenu = PopupMenu1
     TabOrder = 0
-    ExplicitLeft = 384
-    ExplicitWidth = 288
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 584
+    Top = 16
+    object Clear1: TMenuItem
+      Caption = 'Clear'
+      OnClick = Clear1Click
+    end
   end
 end
