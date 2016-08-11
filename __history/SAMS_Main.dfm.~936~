@@ -2390,19 +2390,18 @@ object frmMAMS: TfrmMAMS
             Caption = 'folder:'
           end
           object Label109: TLabel
-            Left = 16
+            Left = 20
             Top = 153
-            Width = 47
+            Width = 120
             Height = 13
-            Caption = 'file name:'
+            Caption = 'file name (no extension):'
           end
           object btnReport: TButton
-            Left = 320
-            Top = 154
-            Width = 112
+            Left = 280
+            Top = 156
+            Width = 146
             Height = 36
             Caption = 'Create report'
-            Enabled = False
             TabOrder = 0
             WordWrap = True
             OnClick = btnReportClick
@@ -2415,23 +2414,13 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
             Text = 'edtWordTemplate'
           end
-          object edtSaveReportAs: TJvFilenameEdit
-            Left = 290
-            Top = 126
-            Width = 119
-            Height = 21
-            DialogTitle = 'Select Folder'
-            TabOrder = 2
-            Text = ''
-            OnChange = edtSaveReportAsChange
-          end
           object chkCalBP: TCheckBox
             Left = 18
             Top = 22
             Width = 143
             Height = 11
             Caption = 'cal BP (instead of AD/BC)'
-            TabOrder = 3
+            TabOrder = 2
           end
           object chkPreliminaryReport: TCheckBox
             Left = 165
@@ -2439,23 +2428,39 @@ object frmMAMS: TfrmMAMS
             Width = 97
             Height = 17
             Caption = 'preliminary'
-            TabOrder = 4
+            TabOrder = 3
           end
           object edtReportFileName: TEdit
             Left = 19
             Top = 169
-            Width = 238
+            Width = 222
             Height = 21
-            TabOrder = 5
+            TabOrder = 4
+            OnChange = edtReportFileNameChange
           end
           object edtSaveReportToFolder: TJvDirectoryEdit
             Left = 18
-            Top = 129
-            Width = 266
+            Top = 126
+            Width = 413
             Height = 21
+            AcceptFiles = False
             DialogKind = dkWin32
+            DialogText = 'select folder'
+            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+            TabOrder = 5
+            Text = ''
+          end
+          object btnGuessReportName: TButton
+            Left = 245
+            Top = 169
+            Width = 25
+            Height = 22
+            Hint = 'Guess the report name from the user name and report number'
+            Caption = '<'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 6
-            Text = 'edtSaveReportToFolder'
+            OnClick = btnGuessReportNameClick
           end
         end
         object GroupBox26: TGroupBox
@@ -2472,20 +2477,6 @@ object frmMAMS: TfrmMAMS
             Width = 12
             Height = 13
             Caption = 'To'
-          end
-          object JvDBStatusLabel2: TJvDBStatusLabel
-            Left = 532
-            Top = 55
-            Width = 111
-            Height = 16
-            Style = lsRecordNo
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Transparent = True
           end
           object JvDBStatusLabel5: TJvDBStatusLabel
             Left = 3
@@ -2539,11 +2530,11 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object lblReport: TLabel
-            Left = 475
-            Top = 55
-            Width = 54
+            Left = 531
+            Top = 56
+            Width = 53
             Height = 16
-            Caption = 'Project#:'
+            Caption = 'lblProject'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2736,6 +2727,14 @@ object frmMAMS: TfrmMAMS
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
             TabOrder = 11
+          end
+          object StaticText5: TStaticText
+            Left = 475
+            Top = 58
+            Width = 50
+            Height = 17
+            Caption = 'Project#:'
+            TabOrder = 12
           end
         end
         object btnSendMailEnglish: TButton
@@ -6656,7 +6655,7 @@ object frmMAMS: TfrmMAMS
     Left = 1064
     Top = 160
     Bitmap = {
-      494C010110001300700410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300740410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7361,13 +7360,12 @@ object frmMAMS: TfrmMAMS
       'gbxLabStatPlanned.Width'
       'edtUserDocuments.Text'
       'edtSampleNr.Value'
-      'edtSaveReportAs.InitialDir'
-      'edtSaveReportAs.HistoryList'
       'edtProjectsSinceYear.Value'
       'gbxInPrep.Width'
       'edtSMTPServer.Text'
       'MemoDBPlotQuery.Lines'
-      'chkSendCopyToSender.Checked')
+      'chkSendCopyToSender.Checked'
+      'edtSaveReportToFolder.Text')
     StoredValues = <>
     Left = 312
     Top = 72
@@ -7378,7 +7376,7 @@ object frmMAMS: TfrmMAMS
     FileName = 'Persistent.ini'
     DefaultSection = 'NewSamplesInput'
     SubStorages = <>
-    Left = 200
+    Left = 232
     Top = 72
   end
   object WordExport: TJvDBGridWordExport
@@ -7428,7 +7426,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F8069C0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806A00518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13678,7 +13676,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00700420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00740420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

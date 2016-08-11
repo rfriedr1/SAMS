@@ -40,7 +40,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   LogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
-  myVersion = '1.6.7 May-8-2016';
+  myVersion = '1.6.9 Aug-11-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -178,7 +178,6 @@ type
     tbsUserReport: TTabSheet;
     Panel13: TPanel;
     Label41: TLabel;
-    lblProjectNumber: TJvDBStatusLabel;
     Label46: TLabel;
     Jahr: TLabel;
     Label47: TLabel;
@@ -703,6 +702,7 @@ type
     Label109: TLabel;
     edtSaveReportToFolder: TJvDirectoryEdit;
     btnGuessReportName: TButton;
+    StaticText5: TStaticText;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -2842,7 +2842,7 @@ end;
 procedure TfrmMAMS.btnGuessReportNameClick(Sender: TObject);
 //try to guess the report name using the user name and report number
 begin
-  edtReportFilename.Text := cmbSubmNameReport.Text + '_' + lblProjectNumber.Captions.GetText;
+  edtReportFilename.Text := cmbSubmNameReport.Text + '_' + lblReport.Caption;
 end;
 
 procedure TfrmMAMS.tnstorClick(Sender: TObject);
@@ -4599,6 +4599,7 @@ procedure TfrmMAMS.cmbProjectOfReportCloseUp(Sender: TObject);
 begin
   btnQuerySubmitter.Enabled := true;
   GetSamplesForReport(rgpExport.ItemIndex = 2);
+  btnGuessReportNameClick(self);
 end;
 
 procedure TfrmMAMS.cmbStep1CloseUp(Sender: TObject);
@@ -5978,7 +5979,7 @@ begin
       if Length(cmbProjectOfReport.Text) > 0 then
       begin
         ProjectNrList := '(' + IntToStr(cmbProjectOfReport.KeyValue) + ')';
-        lblReport.Caption := 'Project: ' + IntToStr(cmbProjectOfReport.KeyValue);
+        lblReport.Caption := IntToStr(cmbProjectOfReport.KeyValue);
         dm.qryProjectsOfUser.SQL.Text := 'SELECT AuftragsNr, project_nr, project, in_date, desired_date FROM project_t ' +
           'WHERE project_nr=' + IntToStr(cmbProjectOfReport.KeyValue) + ';';
         s := SQL.Text;

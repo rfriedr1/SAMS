@@ -212,6 +212,7 @@ type
     procedure TransferAgeFromTarget(SampleNr, PrepNr, TargetNr : integer);
     procedure TransferMA_Nr_To_MAMS;
     procedure SendToLog(s:string);
+    function ReplaceUmlaute(s: string): string;
   end;
 
 var
@@ -1435,6 +1436,22 @@ begin
            end;
        end;
        Next;
+    end;
+  end;
+end;
+
+
+function Tdm.ReplaceUmlaute(s: string): string;
+var i: integer;
+begin
+  for i := 1 to length(s) do
+  begin
+    Case s[i] of
+    'ä': result := result+'ae';
+    'ü': result := result+'ue';
+    'ö': result := result+'oe';
+    'ß': result := result+'ss';
+    else result := result+s[i];
     end;
   end;
 end;

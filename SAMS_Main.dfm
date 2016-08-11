@@ -2362,25 +2362,31 @@ object frmMAMS: TfrmMAMS
         Align = alTop
         TabOrder = 0
         object GroupBox15: TGroupBox
-          Left = 632
+          Left = 615
           Top = 0
-          Width = 440
+          Width = 538
           Height = 215
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
             Left = 20
-            Top = 46
+            Top = 41
             Width = 44
             Height = 13
             Caption = 'Template'
           end
           object Label19: TLabel
             Left = 18
-            Top = 92
-            Width = 90
-            Height = 13
+            Top = 89
+            Width = 104
+            Height = 16
             Caption = 'Save report as ....'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
           end
           object Label108: TLabel
             Left = 19
@@ -2397,10 +2403,10 @@ object frmMAMS: TfrmMAMS
             Caption = 'file name (no extension):'
           end
           object btnReport: TButton
-            Left = 280
-            Top = 156
-            Width = 146
-            Height = 36
+            Left = 390
+            Top = 153
+            Width = 116
+            Height = 40
             Caption = 'Create report'
             TabOrder = 0
             WordWrap = True
@@ -2408,8 +2414,8 @@ object frmMAMS: TfrmMAMS
           end
           object edtWordTemplate: TJvFilenameEdit
             Left = 17
-            Top = 62
-            Width = 414
+            Top = 57
+            Width = 488
             Height = 21
             TabOrder = 1
             Text = 'edtWordTemplate'
@@ -2423,8 +2429,8 @@ object frmMAMS: TfrmMAMS
             TabOrder = 2
           end
           object chkPreliminaryReport: TCheckBox
-            Left = 165
-            Top = 89
+            Left = 287
+            Top = 171
             Width = 97
             Height = 17
             Caption = 'preliminary'
@@ -2441,7 +2447,7 @@ object frmMAMS: TfrmMAMS
           object edtSaveReportToFolder: TJvDirectoryEdit
             Left = 18
             Top = 126
-            Width = 413
+            Width = 487
             Height = 21
             AcceptFiles = False
             DialogKind = dkWin32
@@ -2466,7 +2472,7 @@ object frmMAMS: TfrmMAMS
         object GroupBox26: TGroupBox
           Left = 1
           Top = 1
-          Width = 625
+          Width = 608
           Height = 207
           Align = alLeft
           Caption = 'Data Selection'
@@ -2530,7 +2536,7 @@ object frmMAMS: TfrmMAMS
             Caption = 'To'
           end
           object lblReport: TLabel
-            Left = 531
+            Left = 525
             Top = 56
             Width = 53
             Height = 16
@@ -2584,7 +2590,7 @@ object frmMAMS: TfrmMAMS
           object btnQuerySubmitter: TBitBtn
             Left = 475
             Top = 85
-            Width = 134
+            Width = 120
             Height = 108
             Hint = 'reload samples'
             Glyph.Data = {
@@ -2738,7 +2744,7 @@ object frmMAMS: TfrmMAMS
           end
         end
         object btnSendMailEnglish: TButton
-          Left = 1085
+          Left = 1173
           Top = 92
           Width = 75
           Height = 48
@@ -2748,7 +2754,7 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSendMailEnglishClick
         end
         object btnSendMailGerman: TButton
-          Left = 1085
+          Left = 1173
           Top = 146
           Width = 75
           Height = 46
@@ -6652,10 +6658,10 @@ object frmMAMS: TfrmMAMS
   end
   object ImageList1: TImageList
     AllocBy = 10
-    Left = 1064
-    Top = 160
+    Left = 1208
+    Top = 136
     Bitmap = {
-      494C010110001300700410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300740410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7426,7 +7432,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F8069C0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806A00518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13676,7 +13682,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00700420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00740420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

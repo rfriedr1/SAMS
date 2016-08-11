@@ -40,7 +40,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   LogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
-  myVersion = '1.6.7 May-8-2016';
+  myVersion = '1.6.9 Aug-11-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -2842,7 +2842,7 @@ end;
 procedure TfrmMAMS.btnGuessReportNameClick(Sender: TObject);
 //try to guess the report name using the user name and report number
 begin
-  edtReportFilename.Text := cmbSubmNameReport.Text + '_' + lblReport.Caption;
+  edtReportFilename.Text := dm.ReplaceUmlaute(cmbSubmNameReport.Text) + '_' + lblReport.Caption; //replace Umlaute
 end;
 
 procedure TfrmMAMS.tnstorClick(Sender: TObject);
@@ -4599,6 +4599,7 @@ procedure TfrmMAMS.cmbProjectOfReportCloseUp(Sender: TObject);
 begin
   btnQuerySubmitter.Enabled := true;
   GetSamplesForReport(rgpExport.ItemIndex = 2);
+  btnGuessReportNameClick(self);
 end;
 
 procedure TfrmMAMS.cmbStep1CloseUp(Sender: TObject);
