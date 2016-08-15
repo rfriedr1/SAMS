@@ -13,7 +13,7 @@ uses
   StorageLocations in 'StorageLocations.pas' {FormStorageLocations},
   frmStartScreen in 'frmStartScreen.pas' {frmStart},
   FormDBSearch in 'FormDBSearch.pas' {frmDBSearch},
-  LogWindow in 'LogWindow.pas' {frmLogWindow},
+  frmLogWindow in 'frmLogWindow.pas' {LogWindow},
   FormNewUser in 'FormNewUser.pas' {frmNewUser};
 
 {$R *.RES}
@@ -30,7 +30,7 @@ begin
   Application.CreateForm(TfrmLogSql, frmLogSql);
   Application.CreateForm(TFormStorageLocations, FormStorageLocations);
   Application.CreateForm(TfrmDBSearch, frmDBSearch);
-  Application.CreateForm(TfrmLogWindow, frmLogWindow);
+  Application.CreateForm(TLogWindow, LogWindow);
   Application.CreateForm(TfrmNewUser, frmNewUser);
   //  Application.CreateForm(TfrmInputNewSamples, frmInputNewSamples);
   // closing the StartScreen happens in OnShow of the frmMAMS as soon as everything has been loaded

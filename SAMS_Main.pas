@@ -37,7 +37,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  LogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
+  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
   myVersion = '1.6.9 Aug-11-2016';
@@ -1134,7 +1134,7 @@ begin
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
     try
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
     finally
       EnableControls;
@@ -1256,12 +1256,12 @@ var
         //f := ExtractFileName(edtSaveReportAs.Text);
         //f := ReplaceString(f, #34, '');
         f:=edtReportFileName.Text;
-        dm.sendtolog('Report Filename saved in DB... '+ f);
+        LogWindow.addLogEntry('Report Filename saved in DB... '+ f);
         CommandText := 'UPDATE project_t SET report=' + #34 + f + #34 + ', out_date=' +
           #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 +
           ' WHERE project_nr=' + IntToStr(cmbProjectOfReport.KeyValue) + ';';
         s := CommandText;
-        dm.SendToLog(s);
+        LogWindow.addLogEntry(s);
         Execute;
       end;
     end;
@@ -1283,7 +1283,7 @@ begin
       'WHERE user_nr=' + IntToStr(cmbSubmNameReport.KeyValue) + ';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
   end;
 
@@ -1294,13 +1294,13 @@ begin
   with FWord do begin
     //SaveFileName := edtSaveReportAs.FileName;
     SaveFileName := TPath.Combine(edtSaveReporttoFolder.Text,edtReportFileName.Text);
-    dm.SendToLog('File name for Report = ' + SaveFileName);
+    LogWindow.addLogEntry('File name for Report = ' + SaveFileName);
 //    FileName := 'C:\Temp\SAMS\C14AgeTableTemplate.doc';
     FileName := edtWordTemplate.Filename;    //used to be edtWordTemplate.Text
     Save := true;
     KeepWordOpen := true;
     OutPutDir := edtSaveReporttoFolder.Text;
-    dm.SendToLog('output folder for report = ' + OutPutDir);
+    LogWindow.addLogEntry('output folder for report = ' + OutPutDir);
     DataSource := dsExport;
 //    DataSource := dm.dsSampleOfSubmitter;
     WordVersion := wvDetect;
@@ -1345,7 +1345,7 @@ begin
       'WHERE user_nr=' + IntToStr(cmbSubmNameReport.KeyValue) + ';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
   end;    *)
 
@@ -1462,7 +1462,7 @@ begin
         '  WHERE sample_nr=' + IntTostr(sample_nr) + ' AND prep_nr=' + IntTostr(prep_nr) + ';';
 //      ClipBoard.SetTextBuf(PChar(s));
       dm.adoCmd.CommandText := s;
-      dm.SendToLog(s);
+      LogWindow.addLogEntry(s);
       dm.adoCmd.Execute;
       Next;
     end;
@@ -1486,7 +1486,7 @@ begin
     SQL.Text := 'SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t ' +
       ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
       ' WHERE sample_t.c14_age IS NULL AND target_t.c14_age IS NOT NULL;';
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     if RecordCount > 0 then begin
       First;
@@ -1516,7 +1516,7 @@ var
 begin
   with dm.qryDB do begin
     SQL.Text := 'SELECT user_label_nr, sample_nr FROM sample_t WHERE user_label_nr LIKE ' + #34 + 'MA-%' + #34 + ';';
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     First;
     while not EOF do begin
@@ -1529,7 +1529,7 @@ begin
           IntToStr(Fields.Fields[1].AsInteger) + ';';
         s := CommandText;
 //        ClipBoard.SetTextBuf(PChar(s));
-        dm.SendToLog(s);
+        LogWindow.addLogEntry(s);
         Execute;
       end;
       Next;
@@ -1572,7 +1572,8 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';
 
-    dm.Sendtolog(SQL.Text);
+    //LogWindow.addLogEntry(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     with grdPendingReports do
     begin
@@ -1596,7 +1597,7 @@ begin
   begin
   //'SELECT magazine, fm from target_t WHERE magazine like "%HD%" order by magazine';
     SQL.Text := MemoDBPlotQuery.Lines.Text;
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
 (*
       with DBgrdDBPlot do begin
@@ -1749,7 +1750,7 @@ begin
   if (MessageDlg('all project numbers will be changed ! Are you sure ? (Delete foreign key in sample_t)', mtWarning, [mbYes, mbNo], 0) = mrYes) then begin
     with dm.qryDB do begin
       SQL.Text := ' SELECT * FROM sample_t';
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       First;
       while not EOF do begin
@@ -1765,7 +1766,7 @@ begin
     end;
     with dm.qryDB do begin
       SQL.Text := ' SELECT * FROM project_t';
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       Last;
       while not BOF do begin
@@ -1773,7 +1774,7 @@ begin
         ProjectNr100 := ProjectNr + 100;
         dm.adoCmd.CommandText := 'UPDATE project_t  SET project_nr=' + IntToStr(ProjectNr100) +
           ' WHERE project_nr=' + IntToStr(projectnr) + ';';
-        dm.SendToLog(dm.adoCmd.CommandText);
+        LogWindow.addLogEntry(dm.adoCmd.CommandText);
         dm.adoCmd.Execute;
         Prior;
       end;
@@ -1790,7 +1791,7 @@ var
 begin
   with dm.adoCmd do begin
     dm.qryDb.SQL.Text := 'Select * FROM sample_t WHERE sample_nr=' + IntToStr(YearOf(Date) - 2000) + ';';
-    dm.Sendtolog(dm.qryDb.SQL.Text);
+    LogWindow.addLogEntry(dm.qryDb.SQL.Text);
     dm.qryDb.Open;
     if dm.qryDb.RecordCount = 0 then begin
       CommandText := ' INSERT INTO sample_t (sample_nr, project_nr) VALUES(' +
@@ -1804,7 +1805,7 @@ begin
       dm.qryDb.SQL.Text := 'Select * FROM preparation_t WHERE sample_nr='
         + IntToStr(YearOf(Date) - 2000) + ' AND prep_nr='
         + IntToStr(Month) + ';';
-      dm.Sendtolog(dm.qryDb.SQL.Text);
+      LogWindow.addLogEntry(dm.qryDb.SQL.Text);
       dm.qryDb.Open;
       if dm.qryDb.RecordCount = 0 then begin
         CommandText := 'INSERT INTO preparation_t (sample_nr, prep_nr) VALUES(' +
@@ -1814,7 +1815,7 @@ begin
       dm.qryDb.SQL.Text := 'Select * FROM target_t WHERE sample_nr='
         + IntToStr(YearOf(Date) - 2000) + ' AND prep_nr='
         + IntToStr(Month) + ';';
-      dm.Sendtolog(dm.qryDb.SQL.Text);
+      LogWindow.addLogEntry(dm.qryDb.SQL.Text);
       dm.qryDb.Open;
       if dm.qryDb.RecordCount = 0 then begin
         CommandText := 'INSERT INTO target_t (sample_nr, prep_nr, target_nr) VALUES(' +
@@ -1874,7 +1875,7 @@ begin
         ';';
       s := CommandText;
 //    ClipBoard.SetTextBuf(PChar(s));
-      dm.SendToLog(s);
+      LogWindow.addLogEntry(s);
       Execute;
       if OneDateInMean then
           dm.TransferAgeFromTarget(StrToInt(StrGrdTargetData.Cells[0, 1]),
@@ -1948,7 +1949,7 @@ begin
         ';';
 //      ClipBoard.SetTextBuf(PChar(s));
       dm.adoCmd.CommandText := s;
-      dm.SendToLog(s);
+      LogWindow.addLogEntry(s);
       dm.adoCmd.Execute;
     end;
   end
@@ -1966,7 +1967,7 @@ begin
         ';';
 //      ClipBoard.SetTextBuf(PChar(s));
       dm.adoCmd.CommandText := s;
-      dm.SendToLog(s);
+      LogWindow.addLogEntry(s);
       dm.adoCmd.Execute;
     end;
   end;
@@ -1999,7 +2000,7 @@ begin
   //ShowMessage(s);
   //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
 
 // update project_nr that is associated with this sample, project_t
@@ -2072,7 +2073,7 @@ begin
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
         ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
       CommandText := cmd;
-      dm.SendToLog(cmd);
+      LogWindow.addLogEntry(cmd);
       Execute;
 
       with dm.qryTest do
@@ -2159,7 +2160,7 @@ begin
     ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
 
   // save weights if they have changed
@@ -2183,7 +2184,7 @@ begin
                       ' weight_end=' + swend +
                       ' WHERE sample_nr=' + IntToStr(Sample_Nr) + ' AND prep_nr=' +
                       IntToStr(round(edtSamplePrepNr.Value)) + ';';
-      dm.SendToLog(CommandText);
+      LogWindow.addLogEntry(CommandText);
       Execute;
     end;
 
@@ -2232,7 +2233,7 @@ begin
     '  WHERE sample_nr=' + IntTostr(sample_nr) + ';';
   //   ClibBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
 
   //update not to be dated flag
@@ -2245,7 +2246,7 @@ begin
     ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
 
   dm.adoCmd.CommandText := s;
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
 
   //update no leftover flag
@@ -2259,7 +2260,7 @@ begin
   //ClipBoard.SetTextBuf(PChar(s));
 
   dm.adoCmd.CommandText := s;
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
 
   end;
@@ -2282,7 +2283,7 @@ begin
       ' WHERE sample_nr=' + IntToStr(Sample_Nr) +
       ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
       ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
-    dm.SendToLog(CommandText);
+    LogWindow.addLogEntry(CommandText);
     Execute;
   end;
 end;
@@ -2314,7 +2315,7 @@ end;
 
 procedure TfrmMAMS.actLogWindowExecute(Sender: TObject);
 begin
-  frmLogWindow.Show;
+  LogWindow.Show;
 end;
 
 procedure TfrmMAMS.actMagListExecute(Sender: TObject);
@@ -2647,7 +2648,7 @@ begin
             s:='UPDATE sample_t SET project_nr=' + #34 + new_project_nr + #34 + ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
             //ShowMessage(s);
             dm.adoCmd.CommandText := s;
-            dm.SendToLog(s);
+            LogWindow.addLogEntry(s);
             dm.adoCmd.Execute;
             DoSampleInfo; // read sample data again
           end;
@@ -2682,7 +2683,7 @@ begin
 }
   with dm.qryDB do begin
     SQL.Text := 'SELECT user_nr from user_t WHERE last_name=' + #34 + 'intern' + #34;
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     InternNr := Fields.Fields[0].AsInteger;
   end;
@@ -2718,13 +2719,13 @@ begin
     + ');';
   s := dm.adoCmd.CommandText;
   //   ClibBoard.SetTextBuf(PChar(s));
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
   dm.tblProjects.Close;
   dm.tblProjects.Open;
   dm.qryDB.Close; // get project_nr des gerade eingefügten Samples
   dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';
-  dm.Sendtolog(dm.qryDb.SQL.Text);
+  LogWindow.addLogEntry(dm.qryDb.SQL.Text);
   dm.qryDB.Open;
   if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
   // insert sample
@@ -2736,11 +2737,11 @@ begin
   s := s + ');';
   dm.adoCmd.CommandText := s;
   //   ClibBoard.SetTextBuf(PChar(s));
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
   dm.qryDB.Close;
   dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
-  dm.Sendtolog(dm.qryDB.SQL.Text);
+  LogWindow.addLogEntry(dm.qryDB.SQL.Text);
   dm.qryDB.Open;
   sample_nr := 0;
   if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
@@ -2750,7 +2751,7 @@ begin
     ');';
   dm.adoCmd.CommandText := s;
   //   ClibBoard.SetTextBuf(PChar(s));
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
   for i := 1 to trunc(edtNumberOfTargets.Value) do
   begin
@@ -2758,7 +2759,7 @@ begin
       + ' VALUES (' + IntToStr(i) + ',1,' + IntTostr(sample_nr) + ');';
     s := dm.adoCmd.CommandText;
      //   ClibBoard.SetTextBuf(PChar(s));
-    dm.SendToLog(s);
+    LogWindow.addLogEntry(s);
     dm.adoCmd.Execute;
   end;
 
@@ -2779,12 +2780,12 @@ begin
         SQL.Text := 'SELECT user_nr FROM project_t WHERE user_nr=' +
           dm.tblUser.FieldbyName('user_nr').AsString + ' OR invoice_nr=' +
           dm.tblUser.FieldbyName('user_nr').AsString;
-        dm.Sendtolog(SQL.Text);
+        LogWindow.addLogEntry(SQL.Text);
         Open;
         if RecordCount = 0 then begin
 //      i := dm.tblUser.FieldbyName('user_nr').AsInteger;
           dm.adoCmd.CommandText := 'DELETE FROM user_t WHERE user_nr=' + dm.tblUser.FieldbyName('user_nr').AsString;
-          dm.SendToLog(dm.adoCmd.CommandText);
+          LogWindow.addLogEntry(dm.adoCmd.CommandText);
           dm.adoCmd.Execute;
           inc(i);
         end;
@@ -2812,7 +2813,7 @@ begin
     1,2: with ExcelExport do begin
         Grid := grdSamplesOfSubmitter; //Grid where the data come from
         FileName:= TPath.Combine(edtSaveReporttoFolder.Text, edtReportFileName.Text); //save in the same directory as the report
-        dm.SendToLog('Filename for export = ' + Filename);
+        LogWindow.addLogEntry('Filename for export = ' + Filename);
         ExportGrid;
       end;
     3: with HTMLExport do begin
@@ -2939,7 +2940,7 @@ begin
       + #34 + ')';
     s := CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
-    dm.SendToLog(s);
+    LogWindow.addLogEntry(s);
     Execute;
   end;
 end;
@@ -2951,7 +2952,7 @@ begin
       Close;
       SQL.Text := 'SELECT DISTINCT batch FROM preparation_t WHERE batch IS NOT NULL AND ' +
         'prep_end IS NULL ORDER BY batch;';
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
     end;
     grdActiveBatches.Visible := true;
@@ -2963,7 +2964,7 @@ begin
       //  'graph_date IS NULL AND graphitized IS NULL ORDER BY graph_batch asc;';
       SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL ' +
         'ORDER BY graph_date desc;';
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       grdActiveBatches.Visible := true;
     end;
@@ -3299,7 +3300,7 @@ begin
       s := s + '0,1);'; //query ends here
     dm.adoCmd.CommandText := s;
     //ClipBoard.SetTextBuf(PChar(s));
-    dm.SendToLog(s);
+    LogWindow.addLogEntry(s);
     dm.adoCmd.Execute;
     lbWizFinalPage.lines.add('New user created');
     //reload user table in order to update new user
@@ -3312,7 +3313,7 @@ begin
       Close;
       SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
         ' AND first_name=' + #34 + User.FirstName + #34;
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       user_nr := 1;
       if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
@@ -3358,7 +3359,7 @@ begin
       s := s + '1,0);';
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
-      dm.SendToLog(s);
+      LogWindow.addLogEntry(s);
       dm.adoCmd.Execute;
       lbWizFinalPage.lines.add('New invoice user created');
       with dm.qryDb do
@@ -3366,7 +3367,7 @@ begin
         Close;
         SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + Invoice.LastName + #34 +
           ' AND organisation=' + #34 + Invoice.Organisation + #34;
-        dm.Sendtolog(SQL.Text);
+        LogWindow.addLogEntry(SQL.Text);
         Open;
         glbInvoiceNr := 1;
         if RecordCount > 0 then glbInvoiceNr := FieldByName('user_nr').AsInteger;
@@ -3413,7 +3414,7 @@ begin
       + ';';
     s := dm.adoCmd.CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
-    dm.SendToLog(s);
+    LogWindow.addLogEntry(s);
     dm.adoCmd.Execute;
     lbWizFinalPage.lines.add('New project created');
     //update list of projects
@@ -3432,7 +3433,7 @@ begin
   //dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';// add WHERE project = ' + #34 + ProjectName + #34 + "AND user_nr= '+ #34 + user_nr + #34
   // new query hopefully solves the problem with non-unique projet names
   dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + 'AND user_nr= '+ #34 + inttostr(user_nr) + #34 + ';';
-  dm.Sendtolog(dm.qryDB.SQL.Text);
+  LogWindow.addLogEntry(dm.qryDB.SQL.Text);
   dm.qryDB.Open;
   if dm.qryDB.RecordCount > 0 then
   begin
@@ -3484,13 +3485,13 @@ begin
       s := s + ');'; //query ends here
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
-      dm.SendToLog(s);
+      LogWindow.addLogEntry(s);
       dm.adoCmd.Execute;
       dm.qryDB.Close;
 
       //get the sample_nr of the just inserted sample = is max(sample_nr)
       dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
-      dm.Sendtolog(dm.qryDB.SQL.Text);
+      LogWindow.addLogEntry(dm.qryDB.SQL.Text);
       dm.qryDB.Open;
       sample_nr := 0;
       // insert new prep for this samples (qryDB stores the max(sample_nr)
@@ -3520,7 +3521,7 @@ begin
         end;
         dm.adoCmd.CommandText := s + ');';
 //        ClipBoard.SetTextBuf(PChar(s));
-        dm.SendToLog(dm.adoCmd.CommandText);
+        LogWindow.addLogEntry(dm.adoCmd.CommandText);
         dm.adoCmd.Execute;
         s := 'INSERT INTO target_t  (target_nr, prep_nr, sample_nr, graphitized)'
           + ' VALUES (1,1,' + IntTostr(sample_nr);
@@ -3534,7 +3535,7 @@ begin
         dm.adoCmd.CommandText := s + ');';
         s := dm.adoCmd.CommandText;
         //   ClibBoard.SetTextBuf(PChar(s));
-        dm.SendToLog(dm.adoCmd.CommandText);
+        LogWindow.addLogEntry(dm.adoCmd.CommandText);
         dm.adoCmd.Execute;
       end;
       // display sample number in dialog for this sample
@@ -3548,7 +3549,7 @@ begin
     with dm.qryDB do
       begin
       SQL.Text := 'SELECT last_name, first_name, email FROM user_t where user_nr=' + IntTostr(user_nr);
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       end;
 
@@ -3585,7 +3586,7 @@ begin
     begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2 from sample_t ' +
       ' WHERE project_nr=' + IntToStr(project_nr);
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     if RecordCount > 0 then
       begin
@@ -3900,7 +3901,7 @@ begin
         + 'WHERE batch=' + #34 + dm.qryActiveBatches.FieldByName('batch').AsString + #34 + ';'; ;
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
     end;
     grdSamplesOfLabTask.Visible := true;
@@ -3910,7 +3911,7 @@ begin
       sample_nr := dm.qrySamplesOfLabTask.FieldByName('sample_nr').AsInteger;
       SQL.Text := 'SELECT step1_method, step2_method, step3_method,step4_method,' +
         'step5_method FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr);
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open; // muss noch um mehrere preps erweitert werden
       for steps := 0 to 4 do
       begin
@@ -3939,7 +3940,7 @@ begin
         + 'WHERE graph_batch=' + #34 + dm.qryActiveBatches.FieldByName('graph_batch').AsString + #34 + ';'; ;
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
     end;
     grdSamplesOfLabTask.Visible := true;
@@ -4051,7 +4052,7 @@ begin
         ' WHERE sample_nr=' + snr + ';';
       s := SQL.Text;
 //      ClipBoard.SetTextBuf(PChar(s));
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       if RecordCount > 0 then
       begin
@@ -4178,7 +4179,7 @@ begin
     SQL.Text := 'SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t ' +
       ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
       ' WHERE target_t.magazine = ' + #34 + Mag + #34;
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     dm.GetMagazineData(Mag);
     SetLength(SampleTrans, RecordCount + 1);
@@ -4470,7 +4471,7 @@ begin
       + 'WHERE project_t.project_nr=' + #34 + dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsString + #34 + ';'; ;
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     grdSamplesOfProject.Columns[0].Width := 60;
     grdSamplesOfProject.Columns[1].Width := 100;
@@ -4600,6 +4601,7 @@ begin
   btnQuerySubmitter.Enabled := true;
   GetSamplesForReport(rgpExport.ItemIndex = 2);
   btnGuessReportNameClick(self);
+  btnReport.Enabled := true;
 end;
 
 procedure TfrmMAMS.cmbStep1CloseUp(Sender: TObject);
@@ -4633,7 +4635,7 @@ begin
       Close;
       SQL.Text := 'SELECT project_nr, project, in_date FROM project_t WHERE user_nr='
         + IntToStr(cmbSubmNameReport.KeyValue) + ' ORDER BY in_date DESC;';
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       cmbProjectOfReport.DropDown;
     end;
@@ -5440,18 +5442,18 @@ begin
     begin
       ServerRoot := '\\Riesling\KTA\';
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
-      dm.SendToLog('Server Root found: '+ ServerRoot);
+      LogWindow.addLogEntry('Server Root found: '+ ServerRoot);
 
       //enable buttons in order to load the docs if the correct folders can be found
       fname := ServerRoot + 'SAMS Documents\';
       if DirectoryExists(fname) then
         begin
           btnProjectLetters.Enabled:=true;
-          dm.SendToLog('Document path found: '+fname);
+          LogWindow.addLogEntry('Document path found: '+fname);
         end
         else
         begin
-          dm.SendToLog('Document folder does not exist!');
+          LogWindow.addLogEntry('Document folder does not exist!');
         end;
     end
     else
@@ -5469,11 +5471,11 @@ begin
     if FileExists(fname) then
     begin
      SampleFoto.Picture.LoadFromFile(fname);
-     dm.SendToLog('Image path found: '+fname);
+     LogWindow.addLogEntry('Image path found: '+fname);
     end
     else
     begin
-      dm.SendToLog('Image path does not exist!');
+      LogWindow.addLogEntry('Image path does not exist!');
     end;
   end;
 end;
@@ -5643,7 +5645,7 @@ begin
           '  WHERE sample_nr=' + IntTostr(sample_nr) + ' AND prep_nr=' + IntTostr(prep_nr) + ';';
 //        //   ClibBoard.SetTextBuf(PChar(s));
         dm.adoCmd.CommandText := s;
-        dm.SendToLog(s);
+        LogWindow.addLogEntry(s);
         dm.adoCmd.Execute;
       end;
       Next;
@@ -5672,7 +5674,7 @@ begin
           '  WHERE sample_nr=' + IntTostr(sample_nr) + ' AND prep_nr=' + IntTostr(prep_nr) + ';';
         //   ClibBoard.SetTextBuf(PChar(s));
         dm.adoCmd.CommandText := s;
-        dm.SendToLog(s);
+        LogWindow.addLogEntry(s);
         dm.adoCmd.Execute;
         dm.SetProjectStatusRunning(sample_nr);
       end;
@@ -5866,7 +5868,7 @@ begin
   for i := 1 to 10 do s := ReplaceStr(s, '""', 'NULL');
   //   ClibBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
-  dm.SendToLog(s);
+  LogWindow.addLogEntry(s);
   dm.adoCmd.Execute;
 end;
 
@@ -5926,7 +5928,7 @@ begin
       ProjectName + '"' + ' AND user_t.user_nr=' + IntToStr(glbUserNr) + ';';
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     ProjectExists := false;
     if RecordCount > 0 then
@@ -5958,7 +5960,7 @@ begin
         ' AND (in_date BETWEEN ' + '"' + s1 + '"' + ' AND ' + '"' + s2 + '"' + ');';
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
       if RecordCount > 0 then
       begin
@@ -6303,15 +6305,16 @@ procedure TfrmMAMS.ReportsSetupOptions;
 var
   i: integer;
 begin
-  with grdReportHeadings do begin
+  with grdReportHeadings do
+  begin
     for i := 1 to RowCount - 1 do cells[0, i] := IntToStr(i);
     ColWidths[0] := 20;
     ColWidths[1] := 80;
     ColWidths[2] := 120;
     ColWidths[3] := 120;
     cells[1, 0] := 'Field database';
-    cells[2, 0] := 'Column English';
-    cells[3, 0] := 'Column German';
+    cells[2, 0] := 'Column in Report';
+    //cells[3, 0] := 'Column German';
   end;
   with dm.qryDB, grdReportHeadings do
   begin
@@ -6321,7 +6324,7 @@ begin
       'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'WHERE sample_t.sample_nr=1' + ';';
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
     for i := 1 to RowCount - 1 do // label row number
 //    begin
@@ -6401,7 +6404,7 @@ var
         ' last_name=' + #34 + grdPreviewUser.Cells[1, 2] + #34;
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
-      dm.Sendtolog(SQL.Text);
+      LogWindow.addLogEntry(SQL.Text);
       Open;
     end;
     with grdShowUsers do
@@ -6673,7 +6676,7 @@ begin
     SQL.Text := 'SELECT DISTINCT magazine from target_t  ' +
       ' WHERE magazine not like "set%" order by magazine desc;';
 //      '  order by magazine desc;';
-    dm.Sendtolog(SQL.Text);
+    LogWindow.addLogEntry(SQL.Text);
     Open;
   end;
 

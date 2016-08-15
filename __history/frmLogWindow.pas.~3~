@@ -1,0 +1,50 @@
+unit frmLogWindow;
+// simple window that shows a ListBox field
+// the ListBox can be accessed through methods
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus,ClipBrd;
+
+type
+  TLogWindow = class(TForm)
+    ListBox: TListBox;
+    PopupMenu1: TPopupMenu;
+    Clear1: TMenuItem;
+    toclipboard1: TMenuItem;
+    procedure Clear1Click(Sender: TObject);
+    procedure toclipboard1Click(Sender: TObject);
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+    procedure addLogEntry(const logstring : string);
+  end;
+
+var
+  LogWindow: TLogWindow;
+
+implementation
+
+procedure TfrmLogWindow.addLogEntry(const logstring : string);
+begin
+  ListBox.Items.Add(logstring);
+end;
+
+{$R *.dfm}
+
+procedure TLogWindow.Clear1Click(Sender: TObject);
+begin
+ListBox.Clear;
+end;
+
+procedure TLogWindow.toclipboard1Click(Sender: TObject);
+begin
+// save selected line to clipboard
+ClipBoard.AsText:=Listbox.Items[ListBox.Itemindex];
+end;
+
+end.
