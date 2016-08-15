@@ -1,6 +1,7 @@
 unit frmLogWindow;
 // simple window that shows a ListBox field
 // the ListBox can be accessed through methods
+// logging is only enabled when the window is open (through the Enabled-Property
 
 interface
 
@@ -16,11 +17,15 @@ type
     toclipboard1: TMenuItem;
     procedure Clear1Click(Sender: TObject);
     procedure toclipboard1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
+    LoggingEnabled : boolean;   //is logging enabled?   default is false
 
   public
     { Public declarations }
+    property Enabled : boolean read LoggingEnabled write LoggingEnabled;  //property that reads or sets the internal variable whether or not logging is enabled
     procedure addLogEntry(const logstring : string);
   end;
 
@@ -30,8 +35,13 @@ var
 implementation
 
 procedure TLogWindow.addLogEntry(const logstring : string);
+// add line to the LitsBox
+//only if logging is enabled (typically when WIndow is open)
 begin
-  ListBox.Items.Add(logstring);
+  If LoggingEnabled = true THEN   // only log when logging is enabled
+  begin
+    ListBox.Items.Add(logstring);
+  end;
 end;
 
 {$R *.dfm}
@@ -39,6 +49,16 @@ end;
 procedure TLogWindow.Clear1Click(Sender: TObject);
 begin
 ListBox.Clear;
+end;
+
+procedure TLogWindow.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ LogWindow.Enabled:=false; //enable logging when window is being displayed
+end;
+
+procedure TLogWindow.FormShow(Sender: TObject);
+begin
+ LogWindow.Enabled:=true; //enable logging when window is being displayed
 end;
 
 procedure TLogWindow.toclipboard1Click(Sender: TObject);
