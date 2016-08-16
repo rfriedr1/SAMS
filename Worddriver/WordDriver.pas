@@ -1110,7 +1110,7 @@ begin
           If Assigned(FieldList.Objects[i]) then
             Text:=Tfield(FieldList.Objects[i]).AsString
           else
-            Text:='';
+            //Text:='';
       Dataset.Next;
       If Not Dataset.EOF then
         TR:=T.Rows.Add(EmptyParam);
@@ -1457,7 +1457,7 @@ begin
           If Assigned(FieldList.Objects[i]) then
             Text:=Tfield(FieldList.Objects[i]).AsString
           else
-            Text:='';
+            //Text:='';
       Dataset.Next;
       If Not Dataset.EOF then
         TR:=T.Rows.Add(EmptyParam);
@@ -1809,7 +1809,7 @@ begin
           If Assigned(FieldList.Objects[i]) then
             Text:=Tfield(FieldList.Objects[i]).AsString
           else
-            Text:='';
+            //Text:='';
       Dataset.Next;
       If Not Dataset.EOF then
         TR:=T.Rows.Add(EmptyParam);
@@ -2161,7 +2161,7 @@ begin
           If Assigned(FieldList.Objects[i]) then
             Text:=Tfield(FieldList.Objects[i]).AsString
           else
-            Text:='';
+            //Text:='';
       Dataset.Next;
       If Not Dataset.EOF then
         TR:=T.Rows.Add(EmptyParam);
@@ -2517,7 +2517,7 @@ begin
           If Assigned(FieldList.Objects[i]) then
             Text:=Tfield(FieldList.Objects[i]).AsString
           else
-            Text:='';
+            //Text:='';
       Dataset.Next;
       If Not Dataset.EOF then
         TR:=T.Rows.Add(EmptyParam);
@@ -2858,7 +2858,7 @@ begin
         If Assigned(FieldList.Objects[i]) then
           R2.Text:=Tfield(FieldList.Objects[i]).AsString
         else
-          R2.Text:='';
+          //R2.Text:='';
         end;
       Dataset.Next;
       If Not Dataset.EOF then
@@ -3168,7 +3168,7 @@ begin
           If Assigned(FieldList.Objects[i]) then
             C.setString(Tfield(FieldList.Objects[i]).AsString)
           else
-            C.setString('');
+            //C.setString('');
           end;
         Dataset.Next;
         If Not Dataset.EOF then

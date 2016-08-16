@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = edtMonthStat
+  ActiveControl = lbxBatch
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1274
@@ -265,7 +265,7 @@ object frmMAMS: TfrmMAMS
     Top = 50
     Width = 1274
     Height = 750
-    ActivePage = tbsDBInfo
+    ActivePage = tbsLabPlan
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1680,7 +1680,7 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 120
           Width = 297
-          Height = 528
+          Height = 448
           Align = alClient
           ItemHeight = 13
           TabOrder = 0
@@ -1715,14 +1715,13 @@ object frmMAMS: TfrmMAMS
         end
         object Panel5: TPanel
           Left = 2
-          Top = 648
+          Top = 568
           Width = 297
-          Height = 72
+          Height = 152
           Align = alBottom
-          Caption = 'Panel5'
           TabOrder = 2
           object btnSaveBatch: TButton
-            Left = 81
+            Left = 97
             Top = 14
             Width = 120
             Height = 45
@@ -1734,15 +1733,25 @@ object frmMAMS: TfrmMAMS
             OnClick = btnSaveBatchClick
           end
           object btnPrintBatch: TButton
-            Left = 207
-            Top = 14
-            Width = 75
-            Height = 45
+            Left = 96
+            Top = 104
+            Width = 121
+            Height = 38
             Hint = 'print pre-treatment protocols'
             Caption = 'print'
             ParentShowHint = False
             ShowHint = True
             TabOrder = 1
+            Visible = False
+            OnClick = btnPrintBatchClick
+          end
+          object edtFilenamePrepDocTemplate: TJvFilenameEdit
+            Left = 16
+            Top = 77
+            Width = 265
+            Height = 21
+            TabOrder = 2
+            Text = ''
             Visible = False
           end
         end
@@ -6661,7 +6670,7 @@ object frmMAMS: TfrmMAMS
     Left = 1208
     Top = 136
     Bitmap = {
-      494C010110001300800410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013008C0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7432,7 +7441,7 @@ object frmMAMS: TfrmMAMS
     Left = 1120
     Top = 160
     Bitmap = {
-      494C01015000F806AC0518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806B80518001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -13682,7 +13691,7 @@ object frmMAMS: TfrmMAMS
     Left = 1176
     Top = 160
     Bitmap = {
-      494C01014B004F00800420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F008C0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -23724,8 +23733,8 @@ object frmMAMS: TfrmMAMS
   object cdsExport: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 984
-    Top = 72
+    Left = 976
+    Top = 80
   end
   object dsExport: TDataSource
     DataSet = cdsExport

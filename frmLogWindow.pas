@@ -25,8 +25,14 @@ type
 
   public
     { Public declarations }
+    /// <summary>Flag whether or not logging is enables</summary>
+    /// <comments>logging is always enabled when log window is open</comments>
     property Enabled : boolean read LoggingEnabled write LoggingEnabled;  //property that reads or sets the internal variable whether or not logging is enabled
+    /// <summary>adds an entry to the log window ListBox</summary>
+    /// <comments>entries are only logged when the log window is open</comments>
     procedure addLogEntry(const logstring : string);
+    /// <summary>clears the ListBox in the Log Window</summary>
+    procedure Clear;
   end;
 
 var
@@ -34,9 +40,14 @@ var
 
 implementation
 
+procedure TLogWindow.Clear;
+begin
+  ListBox.Clear;
+end;
+
 procedure TLogWindow.addLogEntry(const logstring : string);
-// add line to the LitsBox
-//only if logging is enabled (typically when WIndow is open)
+/// add line to the LitsBox
+///only if logging is enabled (typically when WIndow is open)
 begin
   If LoggingEnabled = true THEN   // only log when logging is enabled
   begin

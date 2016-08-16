@@ -703,6 +703,7 @@ type
     edtSaveReportToFolder: TJvDirectoryEdit;
     btnGuessReportName: TButton;
     StaticText5: TStaticText;
+    edtFilenamePrepDocTemplate: TJvFilenameEdit;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -976,6 +977,7 @@ type
     procedure btnProjectLettersClick(Sender: TObject);
     procedure edtReportFileNameChange(Sender: TObject);
     procedure btnGuessReportNameClick(Sender: TObject);
+    procedure btnPrintBatchClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1051,8 +1053,16 @@ type
     procedure UpdateUser(const LastName: string);
     procedure GetPlanned;
     procedure CheckProjectExists;
+    ///  <summary>get all samples of the selected user and project from the DB
+    ///  and display in the report format</summary>
+    ///  <param name="DoExportHalle"> When set to true it changes the output of the
+    ///  table to a different layout so that it can be used for exporting data
+    ///  to the Halle database </param>
     procedure GetSamplesForReport(DoExportHalle: boolean);
+    /// <summary>Alternates the row colors in Listboxes</summary>
+    /// <comments></comments>
     procedure AlternateRowColors(Sender: TObject; State: TGridDrawState);
+    /// <summary>Calculates the yield from mass before and after prep</summary>
     procedure CalculateYield;
 
   public
@@ -1271,12 +1281,13 @@ var
 begin
 
 // old way of doing it using worddriver
-  CreateCds(true); //create in memory DB with the information that should be transfered to the report table
-  FillCds;
+  CreateCds(true); //create in-memory-DB with the table headers from the current ReportGrid
+  FillCds;  // enter the data óf the ReportGrid into the in-memory-DB, do caluclations etc etc
 
-// ###### part 1 get get and fill in info about user
+// ###### part 1 get and fill in user info
 // query database for information such as last name etc etc
-  with dm.qryDb do begin // get user_info from user_t
+  with dm.qryDb do // get user_info from user_t
+  begin
     Close;
     SQL.Text := 'SELECT first_name, last_name, organisation, institute, address_1, address_2,' +
       ' town, postcode, country, email FROM user_t ' +
@@ -1291,7 +1302,8 @@ begin
   CreateWordExport;
 
   // fill in the information such as last name etc into the word file
-  with FWord do begin
+  with FWord do
+  begin
     //SaveFileName := edtSaveReportAs.FileName;
     SaveFileName := TPath.Combine(edtSaveReporttoFolder.Text,edtReportFileName.Text);
     LogWindow.addLogEntry('File name for Report = ' + SaveFileName);
@@ -1643,6 +1655,98 @@ begin
     //s.YValues := dm.qryDBPlot.FieldByName('fm').Text;
     //s.XValues.ValueSource := dm.qryDBPlot.FieldByName('magazine').Text;
     //s.YValues.ValueSource := dm.qryDBPlot.FieldByName('fm').Text;
+end;
+
+procedure TfrmMAMS.btnPrintBatchClick(Sender: TObject);
+VAR i: integer;
+    s, sample_nr : string;
+begin
+ // gather information that need to be written to word
+ // use the infor from the current batch and create an in-memory-datasource
+ // first create the table
+
+ //create in-memory-dataset
+    cdsExport.Close;  //cdsExport is a ClientDataSet that is being build in-memory and can be used like a database
+  with cdsExport.FieldDefs do    // create FieldDefinitions  aka Tcolumn names
+  begin
+    Clear;
+    with AddFieldDef do  //add new field to the dataset
+    begin
+      Name := 'sample_nr';
+      DataType := ftString;
+    end;
+    with AddFieldDef do
+    begin
+      Name := 'user_Last_name';
+      DataType := ftString;
+      Size := 40;
+    end;
+    with AddFieldDef do
+    begin
+      Name := 'user_label';
+      DataType := ftString;
+      Size := 40;
+    end;
+  end;
+  cdsExport.CreateDataSet;  // now make an actual dataset out of it
+  cdsExport.Close;
+  // the corresponding datasource is called dsExport
+
+  //fill cdsExport with data from the batch
+  //take infor from PrepGrid and extract MAMS
+  cdsExport.Open;
+  for i := 0 to lbxBatch.Count - 1 do
+    begin
+      cdsExport.Edit;
+      cdsExport.Append;
+      sample_nr := Trim(ExtractWord(1, lbxBatch.Items[i], ['|']));
+      s := 'SELECT sample_nr, user_label, last_name FROM sample_v ' +
+           'WHERE sample_nr = ' + sample_nr +
+           ';';
+      //dm.qryDB.Close;
+      dm.qryDB.SQL.Text := s;
+      LogWindow.addLogEntry(s);
+      dm.qryDB.Open;
+      cdsExport.Fields.Fields[0].Value := dm.qryDB.FieldByName('sample_nr').AsString;  //Sample_nr
+      cdsExport.Fields.Fields[1].Value := dm.qryDB.FieldByName('last_name').AsString;  //Sample_nr
+      cdsExport.Fields.Fields[2].Value := dm.qryDB.FieldByName('user_label').AsString;  //Sample_nr
+      dm.qryDB.Close;
+    end;
+    cdsExport.Post;
+    cdsExport.Close;
+
+ // connect to WordApplication
+ CreateWordExport;
+
+ // fill in the information into the word file
+  cdsExport.Open;
+  with FWord do
+  begin
+    //SaveFileName := edtSaveReportAs.FileName;
+    FileName := edtFilenamePrepDocTemplate.Filename;  //template
+    LogWindow.addLogEntry('PrepBatch Document: Template = ' + FileName);
+    OutPutDir:= edtFilenamePrepDocTemplate.InitialDir;
+    //OutPutDir := edtSaveReporttoFolder.Text;
+    SaveFileName := TPath.Combine(OutPutDir,'prep_test');
+    LogWindow.addLogEntry('PrepBatch Document: Document Name = ' + SaveFileName);
+//    FileName := 'C:\Temp\SAMS\C14AgeTableTemplate.doc';
+    Save := true;
+    KeepWordOpen := true;
+    DataSource := dsExport;
+//    DataSource := dm.dsSampleOfSubmitter;
+    WordVersion := wvDetect;
+    LogWindow.addLogEntry('PrepBatch Document: WordVersion found = ' + GetWordVersion);
+//    DocumentMode := dmNewTable;
+    DocumentMode := dmFillTable;
+    TableTag := 'Table';
+    //replace Text in template (this is not for the table)
+    FValues.Add('batch_name=' + edtBatchName.Text);
+    Values := FValues;
+    KeepDocumentsOpen := true;
+    Execute;
+  end;
+
+
 end;
 
 procedure TfrmMAMS.btnProjectLettersClick(Sender: TObject);
@@ -3024,7 +3128,8 @@ begin
   //enable save button
   btnSaveBatch.Enabled := (Length(edtBatchName.Text) > 0) and (lbxBatch.Items.Count > 0);
   //show print button only if prep batch is selected
-  btnPrintBatch.Visible := (Length(edtBatchName.Text) > 0) and (lbxBatch.Items.Count > 0) and (rgpTask.ItemIndex = 0);
+  btnPrintBatch.Visible := (Length(edtBatchName.Text) > 0) and (rgpTask.ItemIndex = 0);
+  edtFilenamePrepDocTemplate.Visible := (Length(edtBatchName.Text) > 0) and (rgpTask.ItemIndex = 0);
 end;
 
 procedure TfrmMAMS.edtCatalystChange(Sender: TObject);

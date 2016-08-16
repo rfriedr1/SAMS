@@ -1,0 +1,27 @@
+[General]
+Name=SAMS_v1
+Project=1
+[Classes]
+Count=22
+Class0="TfrmMAMS","TForm","SAMS_Main","0","Z:\my data\KTL\Software\GitHub\SAMS\SAMS_Main.pas"
+Class1="TGridCracker","TStringgrid","SAMS_Main","0","Z:\my data\KTL\Software\GitHub\SAMS\SAMS_Main.pas"
+Class2="TAboutBox","TForm","About","0","Z:\my data\KTL\Software\GitHub\SAMS\About.pas"
+Class3="Tdm","TDataModule","_dm","0","Z:\my data\KTL\Software\GitHub\SAMS\_dm.pas"
+Class4="TMdRecordView","TCustomGrid","MdRView","0","Z:\my data\KTL\Software\GitHub\SAMS\MdRView.pas"
+Class5="TMdRecordLink","TDataLink","MdRView","0","Z:\my data\KTL\Software\GitHub\SAMS\MdRView.pas"
+Class6="TfrmLogSql","TForm","_LogSQL","0","Z:\my data\KTL\Software\GitHub\SAMS\_LogSQL.pas"
+Class7="TOLEWord","TComponent","WordDriver","13","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class8="TWordDriver","TComponent","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class9="TWord97Driver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class10="TWord2000Driver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class11="TWord2003Driver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class12="TWord2007Driver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class13="TWordXPDriver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class14="EWordDriver","Exception","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class15="TGenericWordDriver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class16="TOfficeWriterDriver","TOleWord","WordDriver","0","Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordDriver.pas"
+Class17="TFormStorageLocations","TForm","StorageLocations","0","Z:\my data\KTL\Software\GitHub\SAMS\StorageLocations.pas"
+Class18="TfrmStart","TForm","frmStartScreen","0","Z:\my data\KTL\Software\GitHub\SAMS\frmStartScreen.pas"
+Class19="TfrmDBSearch","TForm","FormDBSearch","0","Z:\my data\KTL\Software\GitHub\SAMS\FormDBSearch.pas"
+Class20="TLogWindow","TForm","frmLogWindow","12","Z:\my data\KTL\Software\GitHub\SAMS\frmLogWindow.pas"
+Class21="TfrmNewUser","TForm","FormNewUser","0","Z:\my data\KTL\Software\GitHub\SAMS\FormNewUser.pas"
