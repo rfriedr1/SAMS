@@ -40,7 +40,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
-  myVersion = '1.6.9 Aug-11-2016';
+  myVersion = '1.7.0 Sept-18-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -704,6 +704,11 @@ type
     btnGuessReportName: TButton;
     StaticText5: TStaticText;
     edtFilenamePrepDocTemplate: TJvFilenameEdit;
+    StaticText6: TStaticText;
+    gbxProjectTools: TGroupBox;
+    btnSetSamplingDateTo1950: TButton;
+    Label110: TLabel;
+    DBEditProjectNr: TDBEdit;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -751,6 +756,7 @@ type
       const FromPage: TJvWizardCustomPage);
     procedure wizSelectPretreatmentEnterPage(Sender: TObject;
       const FromPage: TJvWizardCustomPage);
+    ///  <summary>actually insert user, project and samples into the database</summary>
     procedure wizFinalPageFinishButtonClick(Sender: TObject; var Stop: Boolean);
     procedure wizFinalPageEnterPage(Sender: TObject;
       const FromPage: TJvWizardCustomPage);
@@ -978,6 +984,7 @@ type
     procedure edtReportFileNameChange(Sender: TObject);
     procedure btnGuessReportNameClick(Sender: TObject);
     procedure btnPrintBatchClick(Sender: TObject);
+    procedure btnSetSamplingDateTo1950Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1074,6 +1081,7 @@ type
 
 var
   frmMAMS: TfrmMAMS;
+  //LogWindow: TLogWindow;
 
 implementation
 
@@ -1482,6 +1490,23 @@ begin
   end;
 end;
 
+procedure TfrmMAMS.btnSetSamplingDateTo1950Click(Sender: TObject);
+VAR s: STring;
+begin
+
+//  if dm.adoConnKTL.Connected then
+//    Begin
+//    s := 'UPDATE sample_t SET ' +
+//      'sampling_date=' + #34 + FormatDateTime('YYYY-MM-DD', edtSamplingDate.Date) + #34 +
+//      '  WHERE project_nr=' + IntTostr(sample_nr) + ';';
+//    //   ClibBoard.SetTextBuf(PChar(s));
+//    dm.adoCmd.CommandText := s;
+//    LogWindow.addLogEntry(s);
+//    dm.adoCmd.Execute;
+//    end;
+
+end;
+
 procedure TfrmMAMS.btnStartTaskClick(Sender: TObject);
 begin
   SetTaskStartDate;
@@ -1699,17 +1724,18 @@ begin
     begin
       cdsExport.Edit;
       cdsExport.Append;
-      sample_nr := ExtractWord(1, lbxBatch.Items[i], ['|']);
+      sample_nr := Trim(ExtractWord(1, lbxBatch.Items[i], ['|']));
       s := 'SELECT sample_nr, user_label, last_name FROM sample_v ' +
            'WHERE sample_nr = ' + sample_nr +
            ';';
-      dm.qryDB.Close;
+      //dm.qryDB.Close;
       dm.qryDB.SQL.Text := s;
       LogWindow.addLogEntry(s);
       dm.qryDB.Open;
-      cdsExport.Fields.Fields[0].Value := dm.qryDB.DataSource.DataSet.FieldByName('sample_nr');  //Sample_nr
-      cdsExport.Fields.Fields[1].Value := dm.qryDB.DataSource.DataSet.FieldByName('last_name');  //Sample_nr
-      cdsExport.Fields.Fields[2].Value := dm.qryDB.DataSource.DataSet.FieldByName('user_label');  //Sample_nr
+      cdsExport.Fields.Fields[0].Value := dm.qryDB.FieldByName('sample_nr').AsString;  //Sample_nr
+      cdsExport.Fields.Fields[1].Value := dm.qryDB.FieldByName('last_name').AsString;  //Sample_nr
+      cdsExport.Fields.Fields[2].Value := dm.qryDB.FieldByName('user_label').AsString;  //Sample_nr
+      dm.qryDB.Close;
     end;
     cdsExport.Post;
     cdsExport.Close;
@@ -2122,56 +2148,56 @@ begin
       cmd := 'UPDATE target_t SET ';
       s := edtWeightCombustion.Text;
       s := ReplaceStr(s, ',', '.');
-      if length(s) = 0 then s := '0';
+      if length(s) = 0 then s := 'NULL';
       cmd := cmd + 'weight_combustion=' + s;
       s := edtCatalyst.Text;
       s := ReplaceStr(s, ',', '.');
       if length(s) = 0 then s := '0';
-      cmd := cmd + ' ,catalyst=' + s;
+      cmd := cmd + ',catalyst=' + s;
       s := edtCO2init.Text;
       s := ReplaceStr(s, ',', '.');
-      if Length(s) > 0 then cmd := cmd + ' ,co2_init=' + s;
+      if Length(s) > 0 then cmd := cmd + ',co2_init=' + s;
       s := edtCO2final.Text;
       s := ReplaceStr(s, ',', '.');
-      if Length(s) > 0 then cmd := cmd + ' ,co2_final=' + s;
+      if Length(s) > 0 then cmd := cmd + ',co2_final=' + s;
       s := edtH2init.Text;
       s := ReplaceStr(s, ',', '.');
-      if Length(s) > 0 then cmd := cmd + ' ,hydro_init=' + s;
+      if Length(s) > 0 then cmd := cmd + ',hydro_init=' + s;
       s := edtH2final.Text;
       s := ReplaceStr(s, ',', '.');
       if Length(s) > 0 then
-        cmd := cmd + ' ,hydro_final=' + s
+        cmd := cmd + ',hydro_final=' + s
       else
-        cmd := cmd + ' ,hydro_final=NULL ';
+        cmd := cmd + ',hydro_final=NULL ';
       s := edtReactTime.Text;
       s := ReplaceStr(s, ',', '.');
-      if Length(s) > 0 then cmd := cmd + ' ,react_time=' + s;
+      if Length(s) > 0 then cmd := cmd + ',react_time=' + s;
 
       // saves graph dates if entered
       if edtGraphDate.Date > 0 then
       begin
       s := FormatDateTime('YYYY-MM-DD', DateOf(edtGraphDate.Date));
-      cmd := cmd + ' ,graph_date=' + #34 + s + #34;
+      cmd := cmd + ',graph_date=' + #34 + s + #34;
       end;
       if (edtTargetPressed.Date > 0) then
       begin
         s := FormatDateTime('YYYY-MM-DD', DateOf(edtTargetPressed.Date));
-        cmd := cmd + ' ,target_pressed=' + #34 + s + #34;
+        cmd := cmd + ',target_pressed=' + #34 + s + #34;
       end;
       if (edtGraphitized.Date > 0) then
       begin
         s := FormatDateTime('YYYY-MM-DD', DateOf(edtGraphitized.Date));
-        cmd := cmd + ' ,graphitized=' + #34 + s + #34;
+        cmd := cmd + ',graphitized=' + #34 + s + #34;
       end;
       s := edtGraphBatch.Text;
       if Length(s) > 0 then
-        cmd := cmd + ' ,graph_batch=' + #34 + s + #34
+        cmd := cmd + ',graph_batch=' + #34 + s + #34
       else
-        cmd := cmd + ' ,graph_batch=NULL ';
+        cmd := cmd + ',graph_batch=NULL ';
       if chkTargetDiscarded.Checked then
-        cmd := cmd + ' ,stop=1'
+        cmd := cmd + ',stop=1'
       else
-        cmd := cmd + ' ,stop=0';
+        cmd := cmd + ',stop=0';
       cmd := cmd + ' WHERE sample_nr=' + IntToStr(round(edtSampleNr.Value)) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
         ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
@@ -2181,18 +2207,20 @@ begin
 
       with dm.qryTest do
       begin
-        SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo ' +
+        SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo' +
           ' WHERE sample_nr=' + IntToStr(round(edtSampleNr.Value)) +
           ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) +
           ' AND target_nr=' + IntToStr(round(edtSampleTargetNr.Value)) + ';';
         if Trim(memTargetComments.Lines.Text) = '' then
         begin
+          Parameters.ParamByName('TargetMemo').DataType:=ftString;
           Parameters.ParamByName('TargetMemo').Value := NULL;
         end
         else
         begin
           Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
         end;
+          LogWindow.addLogEntry(SQL.Text);
           //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
@@ -2251,14 +2279,14 @@ begin
   else
     s5 := #34 + edtSampPrep5.Text + #34;
   s := 'UPDATE preparation_t SET ' +
-    ' step1_method=' + s1 + ',' +
-    ' step2_method=' + s2 + ',' +
-    ' step3_method=' + s3 + ',' +
-    ' step4_method=' + s4 + ',' +
-    ' step5_method=' + s5 + ',' +
-    ' prep_end=' + prep_end_str + ',' +
-    ' p_no_leftover=' + inttostr(leftover) + ',' +
-    ' stop= ' + PrepStop +
+    'step1_method=' + s1 + ',' +
+    'step2_method=' + s2 + ',' +
+    'step3_method=' + s3 + ',' +
+    'step4_method=' + s4 + ',' +
+    'step5_method=' + s5 + ',' +
+    'prep_end=' + prep_end_str + ',' +
+    'p_no_leftover=' + inttostr(leftover) + ',' +
+    'stop=' + PrepStop +
     ' WHERE sample_nr=' + IntToStr(sample_nr) +
     ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
@@ -2283,8 +2311,8 @@ begin
         swend := 'NULL';
         end;
 
-      CommandText :=  'UPDATE preparation_t SET weight_start=' + swstart + ', ' +
-                      ' weight_end=' + swend +
+      CommandText :=  'UPDATE preparation_t SET weight_start=' + swstart + ',' +
+                      'weight_end=' + swend +
                       ' WHERE sample_nr=' + IntToStr(Sample_Nr) + ' AND prep_nr=' +
                       IntToStr(round(edtSamplePrepNr.Value)) + ';';
       LogWindow.addLogEntry(CommandText);
@@ -2299,15 +2327,17 @@ begin
       SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
         ' WHERE sample_nr=' + IntToStr(sample_nr) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
+      Parameters.ParamByName('PrepMemo').DataType:=ftString;
       Parameters.ParamByName('PrepMemo').Value := memPrepComments.Lines.Text;
+      LogWindow.addLogEntry(SQL.Text);
       ExecSQL;
     end
     else
     Begin
-      SQL.Text := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
+      SQL.Text := 'UPDATE preparation_t SET prep_comment=NULL' +
         ' WHERE sample_nr=' + IntToStr(sample_nr) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
-      Parameters.ParamByName('PrepMemo').Value := NULL;
+      LogWindow.addLogEntry(SQL.Text);
       ExecSQL;
     End;
   end;
@@ -3535,6 +3565,7 @@ begin
   // PROBLEM PROBLEM PROBLEM PROBLEM
   dm.qryDB.Close; // get project_nr des gerade eingefügten Samples  !!!!!!!!!! project name is NOT unique PROBLEM!!!!
   //dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';// add WHERE project = ' + #34 + ProjectName + #34 + "AND user_nr= '+ #34 + user_nr + #34
+
   // new query hopefully solves the problem with non-unique projet names
   dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + 'AND user_nr= '+ #34 + inttostr(user_nr) + #34 + ';';
   LogWindow.addLogEntry(dm.qryDB.SQL.Text);
@@ -3554,10 +3585,8 @@ begin
         'sample_t.weight,user_comment,material,fraction, type, sampling_date) VALUES(' +
         IntToStr(project_nr);
       for Acol := 1 to 4 do  //add user_lable, user_label_nr, user_desc1, user_desc2 to the query
-        if length(cells[ACol, Arow]) > 0 then
-          s := s + ',' + #34 + cells[ACol, Arow] + #34
-        else
-          s := s + ',' + 'NULL';
+        if length(cells[ACol, Arow]) > 0 then s := s + ',' + #34 + ReplaceStr(cells[ACol, Arow],'?','') + #34 //remove '?' from string
+        else s := s + ',' + 'NULL';
       if length(cells[5, ARow]) > 0 then
       begin // add weight to the query
         strWeight := cells[5, Arow];
@@ -4590,10 +4619,13 @@ procedure TfrmMAMS.grdProjectsCellClick(Column: TColumn);
 // clicking on the project grid
 // things that happen when selecting a project
 var
-  s: string;
+  s, project_nr: string;
+
 begin
   grdSamplesOfProject.Visible := true;
-  dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString);  // query database for all project info
+  project_nr:= dm.dsProjectsOfUser.DataSet.FieldByName('project_nr').AsString;
+  dm.QueryProject(dm.dsProjectsOfUser.DataSet.FieldByName('project').AsString;);  // query database for all project info
+
   GetSamples; // queries the database for all samples of this project and displays them in the SampleOfProject Grid
 
   (*with dm.qrySamplesOfProject do begin
@@ -6451,6 +6483,8 @@ begin
   wizFinalPage.EnableButton(bkFinish, true);
 end;
 
+
+
 procedure TfrmMAMS.wizFinalPageFinishButtonClick(Sender: TObject;  var Stop: Boolean);
 // sample import is done, insert sample into database
 begin
@@ -6639,6 +6673,8 @@ begin
   edtEndYear.Value := Year;
   edtStartAna.Value := 1;
   edtEndAna.Value := 1000000;
+
+  //LogWindow:=LogWindow.Create(self);
 
   frmStart.MemoStartScreenMessages.Lines.Clear;
   StatusBar.Panels[2].Text:='creating Database objects...';      //display a status in the status bar
