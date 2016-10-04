@@ -120,7 +120,6 @@ type
     actLabPlan: TAction;
     actOptions: TAction;
     actInsertSamples: TAction;
-    Splitter1: TSplitter;
     actUserInfo: TAction;
     pgtMain: TPageControl;
     tbsInsertSamples: TTabSheet;
@@ -707,7 +706,6 @@ type
     btnSetSamplingDateTo1950: TButton;
     Label110: TLabel;
     DBEditProjectNr: TDBEdit;
-    ToolButton8: TToolButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -984,6 +982,7 @@ type
     procedure btnGuessReportNameClick(Sender: TObject);
     procedure btnPrintBatchClick(Sender: TObject);
     procedure btnSetSamplingDateTo1950Click(Sender: TObject);
+    procedure ToolBar1Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1146,7 +1145,10 @@ procedure TfrmMAMS.btnQueryToPretreatClick(Sender: TObject);
 var
   s: string;
 begin
-  with dm.qryDb do begin
+    if dm.adoConnKTL.Connected then
+  Begin
+  with dm.qryDb do
+  begin
     SQL.Text := 'SELECT sample_nr, user_t.last_name, user_label, user_label_nr, in_date, desired_date, weight FROM sample_t '
       + ' INNER JOIN user_t ON  (sample_t.user_nr = user_t.user_nr) WHERE av_fm IS NULL ORDER BY desired_date ;';
     DisableControls;
@@ -1159,6 +1161,7 @@ begin
       EnableControls;
     end;
   end;
+  End;
 end;
 
 procedure TfrmMAMS.tnstoClick(Sender: TObject);
@@ -1166,7 +1169,9 @@ var
   i, j, m: integer;
 begin
   i := 0;
-  with dm.qryMagazineData do begin
+
+  with dm.qryMagazineData do
+  begin
     First;
     repeat //wenn tar=1 und prep=1
       if (FieldByName('target_nr').AsInteger = 1) and (FieldByName('prep_nr').AsInteger = 1) then
@@ -1179,7 +1184,8 @@ begin
     edtMeanAge.Clear;
     edtSigmaAge.Clear;
     edtC13Mean.Clear;
-    with dm.qryMagazineData do begin
+    with dm.qryMagazineData do
+    begin
       First;
       repeat //wenn tar=1 und prep=1
         if (FieldByName('target_nr').AsInteger = 1) and (FieldByName('prep_nr').AsInteger = 1) then begin
@@ -1270,8 +1276,12 @@ var
     f: string;
   begin
   // this is the old way of doing it using worddriver
-    if not chkPreliminaryReport.Checked and not chkAllProjects.Checked then begin // insert repaort name in project_t
-      with dm.adoCmd do begin
+    if not chkPreliminaryReport.Checked and not chkAllProjects.Checked then
+    begin // insert repaort name in project_t
+    if dm.adoConnKTL.Connected then
+    Begin
+      with dm.adoCmd do
+      begin
         //f := ExtractFileName(edtSaveReportAs.Text);
         //f := ReplaceString(f, #34, '');
         f:=edtReportFileName.Text;
@@ -1284,6 +1294,7 @@ var
         Execute;
       end;
     end;
+    end;
   end;
 
 
@@ -1295,17 +1306,20 @@ begin
 
 // ###### part 1 get and fill in user info
 // query database for information such as last name etc etc
-  with dm.qryDb do // get user_info from user_t
-  begin
-    Close;
-    SQL.Text := 'SELECT first_name, last_name, organisation, institute, address_1, address_2,' +
-      ' town, postcode, country, email FROM user_t ' +
-      'WHERE user_nr=' + IntToStr(cmbSubmNameReport.KeyValue) + ';';
-    s := SQL.Text;
-//    ClipBoard.SetTextBuf(PChar(s));
-    LogWindow.addLogEntry(SQL.Text);
-    Open;
-  end;
+  IF dm.adoConnKTL.Connected THEN
+  Begin
+    with dm.qryDb do // get user_info from user_t
+    begin
+      Close;
+      SQL.Text := 'SELECT first_name, last_name, organisation, institute, address_1, address_2,' +
+        ' town, postcode, country, email FROM user_t ' +
+        'WHERE user_nr=' + IntToStr(cmbSubmNameReport.KeyValue) + ';';
+      s := SQL.Text;
+  //    ClipBoard.SetTextBuf(PChar(s));
+      LogWindow.addLogEntry(SQL.Text);
+      Open;
+    end;
+  End;
 
   // main routine for export to word
   CreateWordExport;
@@ -2448,7 +2462,6 @@ begin
   wizInputSamples.ActivePage := wizStartPage;
   btnInsertNewUser.Visible := false;
   btnInsertExistingUser.Visible := false;
-  ToolBarButtonsState(Sender);
 end;
 
 procedure TfrmMAMS.actLabTasksExecute(Sender: TObject);
@@ -6315,6 +6328,12 @@ begin
   end;
 end;
 
+procedure TfrmMAMS.ToolBar1Click(Sender: TObject);
+begin
+ //keep the current button pressed
+ ToolBarButtonsState(Sender);
+end;
+
 procedure TfrmMAMS.ToolBarButtonsState(Sender: TObject);
 var
   i: integer;
@@ -6781,7 +6800,7 @@ begin
       frmStart.MemoStartScreenMessages.Lines.Add('DB - connected');
     Except
         frmStart.MemoStartScreenMessages.Lines.Add('DB - not able to connect');
-        showmessage('unable to connect to the database. Make sure an ODBC driver is selected and you are connected to the network.');
+        showmessage('Unable to connect to the database. Make sure an ODBC driver is selected and you are connected to the network.');
     End;
       end;
   s := dm.adoConnKTL.ConnectionString;
@@ -6857,14 +6876,18 @@ end;
 
 procedure TfrmMAMS.GetListOfRecentMagazines(MonthsBack: integer);
 begin
-  with dm.qryMagazines do begin
-    Close;
-    SQL.Text := 'SELECT DISTINCT magazine from target_t  ' +
-      ' WHERE magazine not like "set%" order by magazine desc;';
-//      '  order by magazine desc;';
-    LogWindow.addLogEntry(SQL.Text);
-    Open;
-  end;
+  if dm.adoConnKTL.Connected then
+  Begin
+    with dm.qryMagazines do
+    begin
+      Close;
+      SQL.Text := 'SELECT DISTINCT magazine from target_t  ' +
+        ' WHERE magazine not like "set%" order by magazine desc;';
+  //      '  order by magazine desc;';
+      LogWindow.addLogEntry(SQL.Text);
+      Open;
+    end;
+  End;
 
 end;
 

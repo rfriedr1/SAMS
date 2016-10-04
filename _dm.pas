@@ -297,7 +297,8 @@ Var
   ADOCmd: TADOCommand;
 begin
  // insert sample into sample_t
- if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+ if adoConnKTL.Connected then
+ begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       try
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
@@ -365,7 +366,8 @@ Var
   ADOCmd: TADOCommand;
   ADODataSet: TADODataSet;
 begin
-if adoConnKTL.Connected then begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+if adoConnKTL.Connected then
+begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       ADODataSet:= TADODataSet.Create(nil);   // create dataset object - this time we get a result from the command so we need a dataset
       try
@@ -398,18 +400,29 @@ function Tdm.CheckProjectOfUser_nr(project_name: string; user_nr: integer): bool
 var
   s : string;
 begin
-   with qryDb do begin
+   with qryDb do
+   begin
      Close;
      SQL.Text := 'SELECT project FROM project_t INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project=' + #34 + project_name + #34 + ' AND project_t.user_nr=' + IntToStr(user_nr) + ';';
      s := SQL.Text;
      //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
-     if Fields.Fields[0].AsString=project_name then begin
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
+     if Fields.Fields[0].AsString=project_name then
+     begin
         Result:=true;
      end
-     else begin
+     else
+     begin
        Result:=false;
      end;
      //Result := Fields.Fields[0].AsString;
@@ -428,7 +441,15 @@ begin
      //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      if Fields.Fields[0].AsString=sample_name then begin
         Result:=true;
      end
@@ -447,7 +468,8 @@ Var
   ADOCmd: TADOCommand;
 begin
 result:= false;
-if adoConnKTL.Connected then begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+if adoConnKTL.Connected then
+begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       try
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
@@ -476,15 +498,26 @@ procedure Tdm.CheckProjectStatus;
 var
   project_nr : integer;
 begin
-  with qryDb do begin
+  with qryDb do
+  begin
     SQL.Text := 'SELECT project_nr, project, status FROM project_t WHERE status<>"closed";';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
     First;
-    while not EOF do begin
+    while not EOF do
+    begin
        project_nr := Fields.FieldByName('project_nr').AsInteger;
        frmMAMS.lblProject.Caption :=  Fields.Fields[1].AsString;
-       with qryDb1 do begin  // suche offene samples
+       with qryDb1 do
+       begin  // suche offene samples
           SQL.Text :=
             'SELECT sample_t.sample_nr FROM sample_t ' +
             'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
@@ -493,13 +526,31 @@ begin
             ' AND preparation_t.stop=0 AND target_t.stop=0 AND sample_t.c14_age IS NULL ' +
             ';';
           LogWindow.addLogEntry(SQL.Text);
-          Open;
-          if qryDb1.RecordCount=0 then begin   // alles datiert oder nottobedated
-             with adoCmd do begin
+              IF dm.adoConnKTL.Connected THEN
+              Begin
+                Try
+                  Open;
+                  LogWindow.addLogEntry('executed');
+                Except
+                  ShowMessage('problem opening the database');
+                End;
+              End;
+          if qryDb1.RecordCount=0 then
+          begin   // alles datiert oder nottobedated
+             with adoCmd do
+             begin
                CommandText := 'UPDATE project_t SET status="closed" WHERE project_nr=' +
                             IntToStr(project_nr) + ';';
                LogWindow.addLogEntry(CommandText);
-               Execute;
+               IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
              end;
           end;
        end;
@@ -516,7 +567,15 @@ begin
         IntTostr(PrepNr) + ',' +
         IntTostr(SampleNr) +
         ');';
-  adoCmd.Execute;
+  IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
 end;
 
 procedure Tdm.CreateBlankTargetRecord(SampleNr, PrepNr, TargetNr: integer);
@@ -527,22 +586,54 @@ begin
           IntTostr(PrepNr) + ',' +
           IntTostr(SampleNr)  +
           ');';
-   adoCmd.Execute;
+   IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
 end;
 
 procedure Tdm.DeleteFromDb(SampleNr: integer);
 begin
    with adoCmd do begin
      CommandText := 'DELETE FROM target_t WHERE sample_nr=' + IntToStr(SampleNr);
-     Execute;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
    with adoCmd do begin
      CommandText := 'DELETE FROM  preparation_t WHERE sample_nr=' + IntToStr(SampleNr);
-     Execute;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
    with adoCmd do begin
      CommandText := 'DELETE FROM sample_t WHERE sample_nr=' + IntToStr(SampleNr);
-     Execute;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
 end;
 
@@ -570,7 +661,15 @@ begin
        s := SQL.Text;
   //     ClipBoard.SetTextBuf(PChar(s));
        LogWindow.addLogEntry(SQL.Text);
-       Open;
+       IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
     end;
   Result := qryInPrep.RecordCount;
 end;
@@ -598,7 +697,15 @@ begin
       s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
   Result := qryPlanned.RecordCount;
 end;
@@ -626,7 +733,15 @@ begin
                    ' ORDER BY project_t.in_date;' ;
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
   Result := qryWaitingForGraph.RecordCount;
 end;
@@ -650,7 +765,15 @@ begin
                 ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type="arch" ';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
   end;
@@ -675,7 +798,15 @@ begin
                 ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type NOT IN("blank","oxa1","oxa","oxa2") ';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
   end;
@@ -688,7 +819,15 @@ begin
                   IntToStr(SampleNr) + ' AND prep_nr=' + IntToStr(PrepNr) +
                   ' AND target_nr=' + IntToStr(TargetNr)+';';
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
 end;
 
@@ -707,7 +846,15 @@ begin
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
    LogWindow.addLogEntry(SQL.Text);
-   Open;
+   IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
  end;
 end;
 
@@ -722,7 +869,15 @@ begin
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -737,7 +892,15 @@ begin
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -754,7 +917,15 @@ begin
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -780,7 +951,15 @@ begin
                 ' WHERE magazine IS NULL AND graphitized IS NOT NULL and stop=0 ' +
                 ' and sample_t.type like ' + s +'and sample_t.user_label like' + s2 + ';';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 
 end;
@@ -800,7 +979,15 @@ begin
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      First;
      StepNr := 0;
      StepFound := false;
@@ -824,7 +1011,15 @@ begin
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -839,7 +1034,15 @@ begin
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -856,7 +1059,15 @@ begin
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -873,7 +1084,15 @@ begin
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -888,7 +1107,15 @@ begin
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -903,7 +1130,15 @@ begin
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -923,7 +1158,15 @@ begin
                  ';';
      s := SQL.Text;
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
 end;
 
@@ -962,7 +1205,15 @@ begin
     //StrToClipBoard(s,300);
     SQL.Text := s;
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 end;
 
@@ -984,7 +1235,15 @@ begin
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         LogWindow.addLogEntry(SQL.Text);
-        Open;
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
       end;
     if qryDb.RecordCount > 0 then
     begin
@@ -1014,7 +1273,15 @@ begin
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         LogWindow.addLogEntry(SQL.Text);
-        Open;
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
       end;
     end;
 end;
@@ -1035,7 +1302,15 @@ begin
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         LogWindow.addLogEntry(SQL.Text);
-        Open;
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
       end;
 
     if qryDb.RecordCount > 0 then
@@ -1067,7 +1342,15 @@ begin
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         LogWindow.addLogEntry(SQL.Text);
-        Open;
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
       end;
     end;
 end;
@@ -1096,7 +1379,15 @@ begin
         //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         LogWindow.addLogEntry(SQL.Text);
-        Open;
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
       end;
 end;
 
@@ -1110,7 +1401,15 @@ begin
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
 end;
 
@@ -1133,7 +1432,15 @@ begin
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
     Result := RecordCount;
   end;
 end;
@@ -1145,7 +1452,15 @@ begin
     SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method, ' +
       'step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) + ';';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 end;
 
@@ -1164,7 +1479,15 @@ begin
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 end;
 
@@ -1175,7 +1498,15 @@ begin
   with qryProject do begin
     SQL.Text := 'SELECT * FROM project_t WHERE project='+#34+ProjectName+#34+';';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 end;
 
@@ -1190,7 +1521,15 @@ begin
 //    strClipBoard := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(strClipboard));
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 end;
 
@@ -1201,26 +1540,47 @@ var
   GraphDate : TDateTime;
   SampleNr : integer;
 begin
-  with qryDb do begin
+  with qryDb do
+  begin
     SQL.Text := 'SELECT magazine, sample_nr FROM target_t WHERE graph_date IS NULL AND c14_age IS NOT NULL';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
-    if RecordCount>0 then begin
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
+    if RecordCount>0 then
+    begin
       First;
-      while Not EOF do begin
+      while Not EOF do
+      begin
         Magazine := Fields.Fields[0].AsString;
         SampleNr := Fields.Fields[1].AsInteger;
-        if Pos('MA',Magazine)>0 then begin
+        if Pos('MA',Magazine)>0 then
+        begin
           Y := StrToInt(copy(Magazine,3,2)) + 2000;
           Mo := StrToInt(copy(Magazine,5,2));
           D := StrToInt(copy(Magazine,7,2));
           GraphDate := EncodeDate(Y,Mo,D);
-          with adoCmd do begin
+          with adoCmd do
+          begin
             CommandText := 'UPDATE target_t SET graph_date=' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(GraphDate)) + #34 +
             ' WHERE sample_nr=' + IntToStr(SampleNr) +
             ';';
-            Execute;
+            IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
           end;
         end;
         Next;
@@ -1232,24 +1592,51 @@ end;
 
 procedure Tdm.SetGraphitized;
 begin
-   with adoCmd do begin
+   with adoCmd do
+   begin
       CommandText := 'UPDATE target_t SET graphitized=graph_date ' +
             ' WHERE graph_date is not null and graphitized is null and sample_nr>19000' +
             ';';
-      Execute;
+      IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
    end;
 end;
 
 procedure Tdm.SetProjectStatusRunning(sample_nr: integer);
 begin
-  with qryDB do begin
+  with qryDB do
+  begin
     SQL.Text := 'SELECT project_nr FROM sample_t WHERE sample_nr=' + IntToStr(sample_nr);
     LogWindow.addLogEntry(SQL.Text);
-    Open;
-    if RecordCount=1 then begin
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
+    if RecordCount=1 then
+    begin
        adoCmd.CommandText := 'UPDATE project_t SET status="running" WHERE project_nr=' +
                               qryDB.Fields.Fields[0].AsString;
-       adoCmd.Execute;
+       IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
     end;
   end;
 end;
@@ -1285,14 +1672,30 @@ begin
     s := SQL.Text;
 //  ClipBoard.SetTextBuf(PChar(s));
      LogWindow.addLogEntry(SQL.Text);
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
   with qrySample2 do begin
     SQL.Text := 'SELECT magazine,position,fm,fm_sig,dc13,calcset,c14_age,' +
         'c14_age_sig,cal1sMin,cal1sMax,cal2sMin,cal2sMax FROM target_t' +
         ' WHERE sample_nr=' + IntToStr(Nr2) + ';';
       LogWindow.addLogEntry(SQL.Text);
-      Open;
+      IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
     c := FormatSettings.DecimalSeparator;
     FormatSettings.DecimalSeparator := '.';
@@ -1312,7 +1715,15 @@ begin
   s := s + ' WHERE sample_nr=' + IntToStr(Nr2) + ';';
 //  ClipBoard.SetTextBuf(PChar(s));
   adoCmd.CommandText := s;
-  adoCmd.Execute;
+  IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   s := 'UPDATE target_t SET ';
   s := s + 'magazine=' + #34 + qrySample2.FieldByName('magazine').AsString + #34 + ',';
   s := s + 'position=' + qrySample2.FieldByName('position').AsString+ ',';
@@ -1329,7 +1740,15 @@ begin
   s := s + ' WHERE sample_nr=' + IntToStr(Nr1) + ';';
 //  ClipBoard.SetTextBuf(PChar(s));
   adoCmd.CommandText := s;
-  adoCmd.Execute;
+  IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   FormatSettings.DecimalSeparator := c;
   qrySample1.Close;
   qrySample2.Close;
@@ -1345,7 +1764,15 @@ begin
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
     Result := (RecordCount>0);
   end;
 end;
@@ -1357,29 +1784,42 @@ var
   c14age, c14age_sig : string;
   fm, fm_sig, fC14age : extended;
 begin
-  with qryDB1 do begin
+  with qryDB1 do
+  begin
     SQL.Text := 'SELECT c14_age, c14_age_sig, fm, fm_sig, Cal1sMin, Cal1sMax,' +
                 ' Cal2sMin, Cal2sMax, dc13, dc13_sig ' +
                 ' FROM target_t WHERE sample_nr='+IntToStr(SampleNr) +
                 ' AND prep_nr=' + IntToStr(PrepNr) +
                 ' AND target_nr=' + IntToStr(TargetNr) +';';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
-  with adoCmd do begin
+  with adoCmd do
+  begin
     c := FormatSettings.DecimalSeparator;
     FormatSettings.DecimalSeparator := '.';
     c14age := qryDb1.FieldByName('c14_age').AsString;
     c14age_sig := qryDb1.FieldByName('c14_age_sig').AsString;
-    if Length(c14age)=0 then begin
+    if Length(c14age)=0 then
+    begin
       c14age:='99999';
       c14age_sig := '99999';
     end
-    else begin
+    else
+    begin
       fm := qryDb1.FieldByName('fm').AsFloat;
       fm_sig := qryDb1.FieldByName('fm_sig').AsFloat;
       if fm_sig<0.0005 then fm_sig := 0.0005;
-      if fm<2*fm_sig then begin
+      if fm<2*fm_sig then
+      begin
         fC14Age := -Ln(fm+2*fm_sig)*8033;
         fC14Age := round(fC14Age/100)*100;
         C14Age :=  Format('%5.0f',[fC14Age]);
@@ -1403,7 +1843,15 @@ begin
     s := CommandText;
     FormatSettings.DecimalSeparator := c;
 //    ClipBoard.SetTextBuf(PChar(s));
-    Execute;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
   end;
 
 end;
@@ -1417,7 +1865,15 @@ begin
   begin
     SQL.Text := 'SELECT Auftrags_Nr_,mams_project_nr FROM tab_auftraege t where Auftrags_Nr_ IS NOT NULL and mams_project_nr IS NOT NULL order by mams_project_nr desc;';
     LogWindow.addLogEntry(SQL.Text);
-    Open;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
     First;
     while not EOF do
     begin
@@ -1426,13 +1882,29 @@ begin
          MAMSProjectNr := qryCEZA.Fields.Fields[1].AsInteger;
          SQL.Text := 'SELECT AuftragsNr FROM project_t WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
          LogWindow.addLogEntry(SQL.Text);
-         Open;
+         IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
          if  Fields.Fields[0].IsNull then
            with adoCmd do
            begin
              CommandText := 'UPDATE project_t SET AuftragsNr=' + IntToStr(qryCEZA.Fields.Fields[0].AsInteger) +
                             ' WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
-             Execute;               
+             IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    ShowMessage('problem opening the database');
+                  End;
+                End;
            end;
        end;
        Next;
