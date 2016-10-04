@@ -43,7 +43,7 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_UnitSearchPath>Z:\my data\KTL\Software\GitHub\SAMS\Worddriver;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VCL_Custom_Styles>&quot;Turquoise Gray|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\TurquoiseGray.vsf&quot;</VCL_Custom_Styles>
+        <VCL_Custom_Styles>Emerald|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\Emerald.vsf;SAMS_flat|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\SAMS_flat.vsf;&quot;Turquoise Gray|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\TurquoiseGray.vsf&quot;</VCL_Custom_Styles>
         <DCC_K>false</DCC_K>
         <DCC_UsePackage>vcl;rtl;vclx;dbrtl;vcldb;adortl;dbxcds;dbexpress;vclib;ibxpress;xmlrtl;vclactnband;inet;IntrawebDB_80_100;Intraweb_80_100;vclie;inetdbbde;inetdbxpress;IndyCore;IndySystem;dclOfficeXP;VclSmp;soaprtl;dsnap;IndyProtocols;dsnapcon;websnap;webdsnap;bdertl;vcldbx;TeeImage710;TeeLanguage710;TeePro710;TeeGL710;TeeUI710;TeeDB710;Tee710;TeeTree2D10Tee7;CPortLib10;Jcl;JclVcl;JvCoreD10R;JvSystemD10R;JvStdCtrlsD10R;JvAppFrmD10R;JvCmpD10R;JvCryptD10R;JvCtrlsD10R;JvCustomD10R;JvDBD10R;JvDlgsD10R;JvDockingD10R;JvDotNetCtrlsD10R;JvHMID10R;JvInterpreterD10R;JvJansD10R;JvMMD10R;JvNetD10R;JvPageCompsD10R;JvPluginD10R;JvPrintPreviewD10R;JvRuntimeDesignD10R;JvValidatorsD10R;JvWizardD10R;JvXPCtrlsD10R;MdDataPack;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_RangeChecking>true</DCC_RangeChecking>
@@ -145,6 +145,7 @@
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k220.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp220.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k220.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="\\Mac\Home\Downloads\30232_mida_converter_basic_for_rad_studio_xe8\MidaBasicDesign220.bpl">File \\Mac\Home\Downloads\30232_mida_converter_basic_for_rad_studio_xe8\MidaBasicDesign220.bpl not found</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
@@ -568,9 +569,9 @@
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
             </Deployment>
             <ModelSupport>False</ModelSupport>
         </BorlandProject>

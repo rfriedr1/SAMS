@@ -120,7 +120,6 @@ type
     actLabPlan: TAction;
     actOptions: TAction;
     actInsertSamples: TAction;
-    Splitter1: TSplitter;
     actUserInfo: TAction;
     pgtMain: TPageControl;
     tbsInsertSamples: TTabSheet;
@@ -434,7 +433,6 @@ type
     Label87: TLabel;
     DBMemo1: TDBMemo;
     ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
     Button6: TButton;
     btnAdmin: TToolButton;
     actAdmin: TAction;
@@ -586,7 +584,6 @@ type
     Label79: TLabel;
     JvDirEdt_Server_Report_Path: TJvDirectoryEdit;
     Label98: TLabel;
-    ToolButton9: TToolButton;
     btnDBPlot: TToolButton;
     tbsDBPlot: TTabSheet;
     gbxPlotProperties: TGroupBox;
@@ -985,6 +982,7 @@ type
     procedure btnGuessReportNameClick(Sender: TObject);
     procedure btnPrintBatchClick(Sender: TObject);
     procedure btnSetSamplingDateTo1950Click(Sender: TObject);
+    procedure ToolBar1Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1071,6 +1069,8 @@ type
     procedure AlternateRowColors(Sender: TObject; State: TGridDrawState);
     /// <summary>Calculates the yield from mass before and after prep</summary>
     procedure CalculateYield;
+    /// <summary>keeps the button of the toolbar pressed</summary>
+    procedure ToolBarButtonsState(Sender: TObject);
 
   public
     SampleModified: boolean;
@@ -1369,10 +1369,13 @@ begin
     Open;
   end;    *)
 
-
   btnSendMailEnglish.Enabled := true;
   btnSendMailGerman.Enabled := true;
-end;
+
+  //also export the oxcal data right away just as one would push the export button
+  btnExportClick(self);
+
+  end;
 
 procedure TfrmMAMS.btnSaveUserProfileClick(Sender: TObject);
 begin
@@ -2506,12 +2509,16 @@ begin
   pgtMain.ActivePage := tbsUserInfo;
   cmbUsernameUserInfo.ListSource.DataSet.Active := false;
   cmbUsernameUserInfo.ListSource.DataSet.Active := true;
+  //ToolButton2.Style.tbsCheck:=true;
+  //ToolButton2.Down:=True;
 end;
 
 procedure TfrmMAMS.actUserProjectsExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsProjectsOfUser;
   cmbSubmitterNameProject.SetFocus;
+  //ToolButton3.Style.tbsCheck:=true;
+  //ToolButton3.Down:=True;
   //cmbSubmitterNameProject.KeyValue := 1;
 end;
 
@@ -6303,6 +6310,45 @@ begin
   //display yield in percent from weights and round
   begin
     YieldLabel.Caption := '';
+  end;
+end;
+
+procedure TfrmMAMS.ToolBar1Click(Sender: TObject);
+begin
+ //keep the current button pressed
+ ToolBarButtonsState(Sender);
+end;
+
+procedure TfrmMAMS.ToolBarButtonsState(Sender: TObject);
+var
+  i: integer;
+  name: string;
+begin
+  //ToolButton1.Style.tbsCheck:=true;
+  //  ToolButton1.Down:=False;
+  //  ToolButton2.Down:=False;
+  //  ToolButton3.Down:=False;
+  //  btnSubmitter.Down:=False;
+  //  btnEditSample.Down:=False;
+  //  btnTransfer.Down:=False;
+  //  btnAdmin.Down:=False;
+  //  ToolButton10.Down:=False;
+  //  btnDBPlot.Down:=False;
+  //  btnShowPrior.Down:=False;
+  //  ToolButton5.Down:=False;
+  //  btnShowPretreat.Down:=False;
+  //  btnNewSample.Down:=False;
+  //  ToolButton4.Down:=False;
+  //  ToolButton6.Down:=False;
+  //  ToolBtnSendMail.Down:=False;
+  name := (Sender AS TToolButton).Name;
+  LogWindow.addLogEntry('found unit name '+ name);
+  for i := 0 to ToolBar1.ButtonCount - 1 do
+  begin
+    if ToolBar1.Buttons[i].Name = name then
+    begin
+      ToolBar1.Buttons[i].Down := true;
+    end;
   end;
 end;
 

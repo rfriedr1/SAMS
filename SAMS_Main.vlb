@@ -366,9 +366,6 @@ Coordinates=488,1350,130,36
 [Panel3]
 Coordinates=1408,212,55,58
 
-[Splitter1]
-Coordinates=416,1350,62,36
-
 [cmbProjectOfReport]
 Coordinates=275,1350,131,36
 
@@ -890,9 +887,6 @@ Coordinates=793,1212,124,36
 
 [edtStartYear]
 Coordinates=696,1212,87,36
-
-[ToolButton8]
-Coordinates=602,1212,84,36
 
 [actUserInfo]
 Coordinates=157,1666,80,36
@@ -1488,9 +1482,6 @@ Coordinates=1513,144,77,58
 [Panel1]
 Coordinates=1104,416,55,58
 
-[ToolButton9]
-Coordinates=508,1074,84,36
-
 [Label67]
 Coordinates=459,416,60,58
 
@@ -1840,7 +1831,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=1562,1120,113,36
+Coordinates=416,1350,62,36
 Visible=True
 
 [btnPrintBatch]

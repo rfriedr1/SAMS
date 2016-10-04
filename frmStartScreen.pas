@@ -9,10 +9,9 @@ uses
 
 type
   TfrmStart = class(TForm)
-    StaticText1: TStaticText;
     MemoStartScreenMessages: TMemo;
-    StaticText2: TStaticText;
-    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
   private
     { Private declarations }
   public
