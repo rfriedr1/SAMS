@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = grdSamplesOfProject
+  ActiveControl = HomeGridPanel
   Caption = 'SAMS '
   ClientHeight = 1032
   ClientWidth = 1595
@@ -140,8 +140,15 @@ object frmMAMS: TfrmMAMS
     Transparent = False
     StyleElements = [seFont, seBorder]
     Wrapable = False
-    object ToolButton1: TToolButton
+    object ToolbtnHome: TToolButton
       Left = 0
+      Top = 0
+      Caption = 'HOME'
+      ImageIndex = 32
+      OnClick = ToolbtnHomeClick
+    end
+    object ToolButton1: TToolButton
+      Left = 91
       Top = 0
       Action = actInsertSamples
       ImageIndex = 67
@@ -149,7 +156,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton3: TToolButton
-      Left = 91
+      Left = 182
       Top = 0
       Action = actUserProjects
       ImageIndex = 66
@@ -157,13 +164,13 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton2: TToolButton
-      Left = 182
+      Left = 273
       Top = 0
       Action = actUserInfo
       ImageIndex = 65
     end
     object btnSubmitter: TToolButton
-      Left = 273
+      Left = 364
       Top = 0
       Action = actReport
       ImageIndex = 63
@@ -171,7 +178,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object btnEditSample: TToolButton
-      Left = 364
+      Left = 455
       Top = 0
       Action = actSampleInfo
       ImageIndex = 64
@@ -179,35 +186,35 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object btnTransfer: TToolButton
-      Left = 455
+      Left = 546
       Top = 0
       Caption = 'Transfer'
       ImageIndex = 68
       OnClick = btnTransferClick
     end
     object btnAdmin: TToolButton
-      Left = 546
+      Left = 637
       Top = 0
       Caption = 'DB Admin'
       ImageIndex = 75
       OnClick = btnAdminClick
     end
     object ToolButton10: TToolButton
-      Left = 637
+      Left = 728
       Top = 0
       Caption = 'DB Info'
       ImageIndex = 77
       OnClick = ToolButton10Click
     end
     object btnDBPlot: TToolButton
-      Left = 728
+      Left = 819
       Top = 0
       Caption = 'DB Plot'
       ImageIndex = 61
       OnClick = btnDBPlotClick
     end
     object btnShowPrior: TToolButton
-      Left = 819
+      Left = 910
       Top = 0
       Hint = 'create batches for prep and graphitization'
       Action = actLabPlan
@@ -217,7 +224,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton5: TToolButton
-      Left = 910
+      Left = 1001
       Top = 0
       Action = actLabTasks
       ImageIndex = 74
@@ -225,7 +232,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object btnShowPretreat: TToolButton
-      Left = 1001
+      Left = 1092
       Top = 0
       Hint = 'show samples current status'
       Action = actLabStats
@@ -235,7 +242,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton7: TToolButton
-      Left = 1092
+      Left = 1183
       Top = 0
       Width = 8
       Caption = 'ToolButton7'
@@ -243,7 +250,7 @@ object frmMAMS: TfrmMAMS
       Style = tbsSeparator
     end
     object btnNewSample: TToolButton
-      Left = 1100
+      Left = 1191
       Top = 0
       Action = actOptions
       ImageIndex = 62
@@ -251,20 +258,20 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton4: TToolButton
-      Left = 1191
+      Left = 1282
       Top = 0
       Action = actTables
       ImageIndex = 73
     end
     object ToolButton6: TToolButton
-      Left = 1282
+      Left = 1373
       Top = 0
       Caption = 'Accounting'
       ImageIndex = 70
       OnClick = ToolButton6Click
     end
     object ToolBtnSendMail: TToolButton
-      Left = 1373
+      Left = 1464
       Top = 0
       Action = actSendMail
       ImageIndex = 71
@@ -279,7 +286,7 @@ object frmMAMS: TfrmMAMS
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsHome
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -290,10 +297,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Insert samples'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object wizInputSamples: TJvWizard
         Left = 0
         Top = 0
@@ -503,9 +506,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Invoice address'
           OnEnterPage = wizInputInvoiceAddressEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel29: TPanel
             Left = 0
             Top = 70
@@ -619,9 +619,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Project Info'
           OnEnterPage = wizInputProjectEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox4: TGroupBox
             Left = 0
             Top = 70
@@ -908,9 +905,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select material'
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 751
             Top = 70
@@ -1030,9 +1024,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object pnlSetType: TPanel
             Left = 1245
             Top = 70
@@ -1086,9 +1077,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select pretreatment'
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object lbxDefinePrepSteps: TListBox
             Left = 1165
             Top = 70
@@ -1131,9 +1119,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Insert all data'
           OnEnterPage = wizFinalPageEnterPage
           OnFinishButtonClick = wizFinalPageFinishButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
@@ -1250,10 +1235,16 @@ object frmMAMS: TfrmMAMS
             Margins.Right = 4
             Margins.Bottom = 4
             Anchors = [akLeft, akTop, akBottom]
-            Ctl3D = True
+            Ctl3D = False
             DataSource = dm.dsSamplesOfProject
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
+            ParentFont = False
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1326,10 +1317,16 @@ object frmMAMS: TfrmMAMS
             Margins.Right = 4
             Margins.Bottom = 4
             Align = alTop
-            Ctl3D = True
+            Ctl3D = False
             DataSource = dm.dsProjectsOfUser
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
+            ParentFont = False
             TabOrder = 3
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1773,7 +1770,7 @@ object frmMAMS: TfrmMAMS
                 Left = 497
                 Top = 85
                 Width = 176
-                Height = 128
+                Height = 331
                 Caption = 'Project Tools'
                 TabOrder = 11
                 object btnSetSamplingDateTo1950: TButton
@@ -1806,10 +1803,6 @@ object frmMAMS: TfrmMAMS
             Margins.Right = 4
             Margins.Bottom = 4
             Caption = 'Sample data'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object gbxSampleRight: TGroupBox
               Left = 441
               Top = 0
@@ -2116,10 +2109,6 @@ object frmMAMS: TfrmMAMS
             Margins.Bottom = 4
             Caption = 'Sample foto'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object SampleFoto: TImage
               Left = 0
               Top = 51
@@ -2168,10 +2157,6 @@ object frmMAMS: TfrmMAMS
             Margins.Bottom = 4
             Caption = 'Calibration graph'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object JvImage1: TJvImage
               Left = 145
               Top = 36
@@ -2190,10 +2175,6 @@ object frmMAMS: TfrmMAMS
             Margins.Bottom = 4
             Caption = 'Project docs'
             ImageIndex = 4
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object btnProjectLetters: TButton
               Left = 39
               Top = 120
@@ -2245,10 +2226,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Lab plan'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gbxBatch: TGroupBox
         Left = 1210
         Top = 0
@@ -2777,7 +2754,7 @@ object frmMAMS: TfrmMAMS
           object StaticText1: TStaticText
             Left = 2
             Top = 18
-            Width = 263
+            Width = 991
             Height = 20
             Margins.Left = 4
             Margins.Top = 4
@@ -2803,10 +2780,6 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 7
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox13: TGroupBox
         Left = 0
         Top = 0
@@ -2936,10 +2909,6 @@ object frmMAMS: TfrmMAMS
           Margins.Right = 4
           Margins.Bottom = 4
           Caption = 'tbsPrepTask'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox14: TGroupBox
             Left = 0
             Top = 0
@@ -3184,10 +3153,6 @@ object frmMAMS: TfrmMAMS
           Margins.Bottom = 4
           Caption = 'tbsGraphTask'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
       end
     end
@@ -3198,10 +3163,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'User report'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -3553,20 +3514,20 @@ object frmMAMS: TfrmMAMS
               00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FDF7B8C31E71CE71CE71CE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
               E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
               E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
               E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
               FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
-              E71CFF7FFF7FFF7FFF7FFF7F2925DF7BFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
               E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
               E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7BE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
@@ -3576,7 +3537,7 @@ object frmMAMS: TfrmMAMS
               E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
-              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7BFF7F6B2D
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
               FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
               FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
               E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
@@ -3793,10 +3754,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Sample info'
       ImageIndex = 9
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gbxSampleIdetification: TGroupBox
         Left = 0
         Top = 0
@@ -4050,20 +4007,20 @@ object frmMAMS: TfrmMAMS
               00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FDF7B8C31E71CE71CE71CE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
               E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
               E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
               E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
               FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
-              E71CFF7FFF7FFF7FFF7FFF7F2925DF7BFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
               E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
               E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7BE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
@@ -4073,7 +4030,7 @@ object frmMAMS: TfrmMAMS
               E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
               FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
-              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7BFF7F6B2D
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
               FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
               FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
               E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
@@ -6430,10 +6387,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'User info'
       ImageIndex = 11
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox24: TGroupBox
         Left = 0
         Top = 0
@@ -6836,9 +6789,9 @@ object frmMAMS: TfrmMAMS
           TabOrder = 15
         end
         object btnSaveUserProfile: TBitBtn
-          Left = 280
+          Left = 288
           Top = 725
-          Width = 361
+          Width = 353
           Height = 60
           Hint = 'Save changes'
           Margins.Left = 4
@@ -6949,10 +6902,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Options'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox28: TGroupBox
         Left = 1263
         Top = 0
@@ -7143,10 +7092,6 @@ object frmMAMS: TfrmMAMS
           Margins.Right = 4
           Margins.Bottom = 4
           Caption = 'TabGeneral'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabDatabase: TTabSheet
           Margins.Left = 4
@@ -7155,10 +7100,6 @@ object frmMAMS: TfrmMAMS
           Margins.Bottom = 4
           Caption = 'TabDatabase'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object StaticText6: TStaticText
             Left = 16
             Top = 56
@@ -7240,17 +7181,13 @@ object frmMAMS: TfrmMAMS
           Margins.Bottom = 4
           Caption = 'TabEmail'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
       end
       object btnSaveOptions: TButton
         Left = 695
         Top = 841
         Width = 542
-        Height = 31
+        Height = 40
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -7267,10 +7204,6 @@ object frmMAMS: TfrmMAMS
       Caption = 'Types, materials, pretr. steps'
       ImageIndex = 2
       OnExit = tbsTypesMatExit
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox7: TGroupBox
         Left = 875
         Top = 0
@@ -7467,10 +7400,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Lab stats'
       ImageIndex = 9
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object JvNetscapeSplitter1: TJvNetscapeSplitter
         Left = 904
         Top = 0
@@ -7799,10 +7728,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Accounting'
       ImageIndex = 10
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
@@ -8107,10 +8032,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'Transfer Age'
       ImageIndex = 12
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox25: TGroupBox
         Left = 988
         Top = 0
@@ -8387,10 +8308,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'SendMail'
       ImageIndex = 13
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel31: TPanel
         Left = 0
         Top = 0
@@ -8579,10 +8496,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'tbsDBPlot'
       ImageIndex = 14
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object SplitterDBPlot: TSplitter
         Left = 291
         Top = 141
@@ -8797,10 +8710,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 4
       Caption = 'tbsDBInfo'
       ImageIndex = 15
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBoxMeasuredSamples: TGroupBox
         Left = 0
         Top = 0
@@ -8962,9 +8871,189 @@ object frmMAMS: TfrmMAMS
         end
       end
     end
+    object tbsHome: TTabSheet
+      Margins.Top = 20
+      Caption = 'Home'
+      ImageIndex = 16
+      object Label111: TLabel
+        AlignWithMargins = True
+        Left = 3
+        Top = 20
+        Width = 1581
+        Height = 36
+        Margins.Top = 20
+        Margins.Bottom = 10
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Home - Status Overview'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -30
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 321
+      end
+      object HomeGridPanel: TGridPanel
+        Left = 0
+        Top = 66
+        Width = 1587
+        Height = 864
+        Align = alClient
+        BevelOuter = bvNone
+        ColumnCollection = <
+          item
+            Value = 16.714818899649950000
+          end
+          item
+            Value = 16.695076812468040000
+          end
+          item
+            Value = 16.675923118959180000
+          end
+          item
+            Value = 16.657005221383970000
+          end
+          item
+            Value = 16.638092192791830000
+          end
+          item
+            Value = 16.619083754747040000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = gpxHomeOxasBlanks
+            Row = 0
+            RowSpan = 2
+          end
+          item
+            Column = 1
+            ColumnSpan = 2
+            Control = gbxHomeProjectsDue
+            Row = 0
+            RowSpan = 2
+          end>
+        Padding.Left = 10
+        Padding.Top = 10
+        Padding.Right = 10
+        Padding.Bottom = 10
+        RowCollection = <
+          item
+            Value = 16.716796599141120000
+          end
+          item
+            Value = 16.692537636706250000
+          end
+          item
+            Value = 16.673992799052010000
+          end
+          item
+            Value = 16.657132502448150000
+          end
+          item
+            Value = 16.639429375300830000
+          end
+          item
+            Value = 16.620111087351630000
+          end>
+        TabOrder = 0
+        ExplicitTop = 0
+        ExplicitHeight = 930
+        object gpxHomeOxasBlanks: TGroupBox
+          Left = 20
+          Top = 20
+          Width = 241
+          Height = 261
+          Align = alClient
+          Caption = 'Available Oxas and Blanks'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          ExplicitLeft = 0
+          ExplicitTop = 1
+          ExplicitWidth = 264
+          ExplicitHeight = 309
+          object pnlHomeNumberOfOxas: TPanel
+            Left = 0
+            Top = 48
+            Width = 241
+            Height = 100
+            Hint = '<5 Red, 6..10 Yellow, >10 Green'
+            BevelOuter = bvNone
+            Caption = 'Oxas'
+            Color = clYellow
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -30
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            StyleElements = [seFont, seBorder]
+          end
+          object pnlHomeNumberOfBlanks: TPanel
+            Left = 0
+            Top = 158
+            Width = 241
+            Height = 100
+            Hint = '<3 Red, 3..6 Yellow, >6 Green'
+            Margins.Left = 10
+            BevelOuter = bvNone
+            Caption = 'Blanks'
+            Color = clYellow
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGrayText
+            Font.Height = -30
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Padding.Left = 10
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            StyleElements = [seFont, seBorder]
+          end
+        end
+        object gbxHomeProjectsDue: TGroupBox
+          Left = 281
+          Top = 20
+          Width = 502
+          Height = 261
+          Align = alClient
+          Caption = 'Projects due'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          ExplicitLeft = 529
+          ExplicitTop = 1
+          ExplicitWidth = 528
+          ExplicitHeight = 309
+        end
+      end
+    end
   end
   object MainMenu1: TMainMenu
     Images = ImageList1
+    OwnerDraw = True
     Left = 1296
     Top = 88
     object File1: TMenuItem
@@ -9177,7 +9266,7 @@ object frmMAMS: TfrmMAMS
     Left = 1384
     Top = 88
     Bitmap = {
-      494C010110001300C80410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300DC0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9859,8 +9948,8 @@ object frmMAMS: TfrmMAMS
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
-    Left = 1032
-    Top = 8
+    Left = 1416
+    Top = 320
     object Cut1: TMenuItem
       Action = EditCut1
     end
@@ -9948,7 +10037,7 @@ object frmMAMS: TfrmMAMS
     Left = 1512
     Top = 88
     Bitmap = {
-      494C01015000F8063C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F8065C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10551,7 +10640,7 @@ object frmMAMS: TfrmMAMS
       3900393939003939390039393900393939003939390039393900393939003939
       3900393939003939390039393900393939003939390039393900393939003939
       3900393939003939390039393900424242000000000000000000000000000000
-      00000000000000000000FFF7F700636363003939390039393900393939003939
+      0000000000000000000000000000636363003939390039393900393939003939
       3900393939003939390042424200525252009494940000000000000000000000
       0000000000000000000000000000000000000000000039393900393939003939
       3900393939000000000039393900393939003939390039393900393939003939
@@ -10599,7 +10688,7 @@ object frmMAMS: TfrmMAMS
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF003939
       3900FFFFFF00FFFFFF0039393900FFFFFF00FFFFFF0039393900FFFFFF00FFFF
       FF0039393900FFFFFF0000000000393939000000000000000000000000004A4A
-      4A00FFF7F7000000000000000000000000000000000000000000000000000000
+      4A00000000000000000000000000000000000000000000000000000000000000
       0000000000008C8C8C004A4A4A00393939003939390039393900393939003939
       3900393939003939390000000000000000000000000039393900393939003939
       3900393939000000000039393900393939003939390039393900393939003939
@@ -10648,7 +10737,7 @@ object frmMAMS: TfrmMAMS
       3900FFFFFF00FFFFFF0039393900FFFFFF00FFFFFF0039393900FFFFFF00FFFF
       FF0039393900FFFFFF0000000000393939000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      000000000000FFFFF70039393900393939003939390039393900393939003939
+      0000000000000000000039393900393939003939390039393900393939003939
       3900393939003939390000000000000000000000000039393900393939000000
       0000000000000000000039393900393939003939390039393900393939003939
       3900393939003939390039393900393939003939390039393900393939003939
@@ -10732,7 +10821,7 @@ object frmMAMS: TfrmMAMS
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF0000000000393939000000000039393900393939003939
       3900393939003939390039393900393939004242420084848400000000000000
-      0000000000000000000000000000000000000000000000000000FFFFF7000000
+      0000000000000000000000000000000000000000000000000000000000000000
       00005A5A5A000000000000000000000000000000000039393900393939003939
       3900393939000000000039393900393939003939390039393900393939003939
       3900393939003939390039393900393939003939390039393900393939003939
@@ -16019,12 +16108,12 @@ object frmMAMS: TfrmMAMS
       1800800003F0FF8703F181801801800007F0FF8703F181800001800007F0FF87
       03F181C0000380000FFC7F1F03F181E0000780001FFC3E1F03F183F0000F8000
       3FFC3E1F000007FC003F80003FFC3E1FFFFFFF840001FFFFE0FFFFFFFF83FF9C
-      0001800000000000FC007F840001800000000000FC003B8400018000007FFFFE
-      F000039C0001800000400002E7F003840001800000400002E7F8038400018000
+      0001800000000000FE007F840001800000000000FC003B8400018000007FFFFE
+      F000039C0001800000400002E7F003840001800000400002EFF8038400018000
       00400002FFFC039C0001800000400002FFFE03840001800000400002FFFE0384
-      0001800000400002FFF8039C0001800000400002FFFFFF840001800000400002
+      0001800000400002FFFC039C0001800000400002FFFFFF840001800000400002
       FFFFFF840001800000400002807FFF9C000180000040000280FFFF8400018000
-      0041000280FFFF840001800000400002807FFB9C0001800020400002803FD784
+      0041000280FFFF840001800000400002807FFB9C0001800020400002803FF784
       0001800000400002800FCF84000180000040000280001F9C0001800000400002
       B0003F840001800000400002F800FF8400018000007FFFFEFF03FFBFFFFFF800
       00000000FFFFFF800001000000000000FFFFFFFFFFFFFF83FFFFFFFFFFFFFF00
@@ -16198,7 +16287,7 @@ object frmMAMS: TfrmMAMS
     Left = 1440
     Top = 88
     Bitmap = {
-      494C01014B004F00C80420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00DC0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26241,7 +26330,7 @@ object frmMAMS: TfrmMAMS
     Aggregates = <>
     Params = <>
     Left = 984
-    Top = 8
+    Top = 16
   end
   object dsExport: TDataSource
     DataSet = cdsExport
@@ -26259,8 +26348,8 @@ object frmMAMS: TfrmMAMS
         SASL = IdSASLLogin1
       end>
     Username = 'do-not-reply@cez-archaeometrie.de'
-    Left = 1136
-    Top = 8
+    Left = 1232
+    Top = 320
   end
   object mesgMessage: TIdMessage
     AttachmentEncoding = 'UUE'
@@ -26273,8 +26362,8 @@ object frmMAMS: TfrmMAMS
     Recipients = <>
     ReplyTo = <>
     ConvertPreamble = True
-    Left = 1088
-    Top = 8
+    Left = 1328
+    Top = 312
   end
   object SSLHandler: TIdSSLIOHandlerSocketOpenSSL
     Destination = 'mbox1.belwue.de:587'
@@ -26285,16 +26374,16 @@ object frmMAMS: TfrmMAMS
     SSLOptions.Mode = sslmUnassigned
     SSLOptions.VerifyMode = []
     SSLOptions.VerifyDepth = 0
-    Left = 1196
-    Top = 10
+    Left = 1428
+    Top = 250
   end
   object IdUserPassProvider1: TIdUserPassProvider
-    Left = 1300
-    Top = 10
+    Left = 1236
+    Top = 242
   end
   object IdSASLLogin1: TIdSASLLogin
     UserPassProvider = IdUserPassProvider1
-    Left = 1252
-    Top = 10
+    Left = 1332
+    Top = 242
   end
 end

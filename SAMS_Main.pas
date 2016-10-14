@@ -706,6 +706,14 @@ type
     btnSetSamplingDateTo1950: TButton;
     Label110: TLabel;
     DBEditProjectNr: TDBEdit;
+    tbsHome: TTabSheet;
+    HomeGridPanel: TGridPanel;
+    gpxHomeOxasBlanks: TGroupBox;
+    gbxHomeProjectsDue: TGroupBox;
+    ToolbtnHome: TToolButton;
+    pnlHomeNumberOfOxas: TPanel;
+    pnlHomeNumberOfBlanks: TPanel;
+    Label111: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -983,6 +991,7 @@ type
     procedure btnPrintBatchClick(Sender: TObject);
     procedure btnSetSamplingDateTo1950Click(Sender: TObject);
     procedure ToolBar1Click(Sender: TObject);
+    procedure ToolbtnHomeClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1534,6 +1543,7 @@ begin
 
   if dm.adoConnKTL.Connected then
     Begin
+    Screen.Cursor:=CrHourGlass;
     LogWindow.addLogEntry('Updating sampling date to 1950-01-02 for all samples of project ' + DBEditProjectNr.Text);
     s := 'UPDATE sample_t SET ' +
       'sampling_date="1950-01-01" '+
@@ -1544,8 +1554,10 @@ begin
     try
       dm.adoCmd.Execute;
       LogWindow.addLogEntry('Update performed.');
+      Screen.Cursor:=CrDefault;
     Except
       LogWindow.addLogEntry('Update NOT performed.');
+      Screen.Cursor:=CrDefault;
     end;
     end;
 
@@ -6910,6 +6922,29 @@ begin
 end;
 
 
+procedure TfrmMAMS.ToolbtnHomeClick(Sender: TObject);
+// show home tab and reload all the data in the tab
+begin
+  // show Home tab
+  pgtMain.ActivePage := tbsHome;
+
+  // #### update available Oxas und Blanks
+  // load number of oxas
+  dm.GetNOxaBlank(true);
+  pnlHomeNumberOfOxas.Caption := '# Oxas = ' + IntToStr(dm.qryDB.RecordCount);
+  if dm.qryDB.RecordCount < 5 then pnlHomeNumberOfOxas.Color:=clRed;
+  if (dm.qryDB.RecordCount in [6..10]) then pnlHomeNumberOfOxas.Color:=clYellow;
+  if dm.qryDB.RecordCount > 10 then pnlHomeNumberOfOxas.Color:=clGreen;
+  // load number of Blanks
+  dm.GetNOxaBlank(false);
+  pnlHomeNumberOfBlanks.Caption := '# Blanks = ' + IntToStr(dm.qryDB.RecordCount);
+  if dm.qryDB.RecordCount < 3 then pnlHomeNumberOfBlanks.Color:=clRed;
+  if (dm.qryDB.RecordCount in [4..6]) then pnlHomeNumberOfBlanks.Color:=clYellow;
+  if dm.qryDB.RecordCount > 6 then pnlHomeNumberOfBlanks.Color:=clGreen;
+  // ####
+
+end;
+
 procedure TfrmMAMS.SetupCommonPretreatment;
 begin
 //  gbxSelectPretreatment.Parent := pnlSetCommonPretreatment;
@@ -7424,7 +7459,12 @@ begin
   frmStart.Hide; frmStart.Free;
 
   // switch pgtMain to SampleInfo and show sample info of the currently selected Sample_nr
-  actSampleInfoExecute(self);
+  //actSampleInfoExecute(self);
+
+  // switch to home tab  and update data
+  pgtMain.ActivePage := tbsHome;
+  ToolbtnHomeClick(Self);
+
 end;
 
 function TfrmMAMS.GetFileName: string;
