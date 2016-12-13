@@ -2,41 +2,53 @@ object frmDBSearch: TfrmDBSearch
   Left = 0
   Top = 0
   Caption = 'Database Search'
-  ClientHeight = 673
-  ClientWidth = 425
+  ClientHeight = 841
+  ClientWidth = 531
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   OnShow = FormShow
   DesignSize = (
-    425
-    673)
-  PixelsPerInch = 96
-  TextHeight = 13
+    531
+    841)
+  PixelsPerInch = 120
+  TextHeight = 17
   object lblSearchResults: TLabel
-    Left = 8
-    Top = 253
-    Width = 71
-    Height = 13
+    Left = 10
+    Top = 316
+    Width = 89
+    Height = 17
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Search Results'
   end
   object StaticText1: TStaticText
-    Left = 24
-    Top = 24
-    Width = 323
-    Height = 17
+    Left = 30
+    Top = 30
+    Width = 403
+    Height = 21
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Database will be searched for any appearance of the search term.'
     TabOrder = 0
   end
   object btnSearch: TButton
-    Left = 312
-    Top = 80
-    Width = 105
-    Height = 101
+    Left = 390
+    Top = 100
+    Width = 131
+    Height = 126
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Anchors = [akTop, akRight]
     Caption = 'Search'
     TabOrder = 1
@@ -44,31 +56,43 @@ object frmDBSearch: TfrmDBSearch
   end
   object DBGridSearchResults: TDBGrid
     Left = 0
-    Top = 272
-    Width = 425
-    Height = 393
+    Top = 340
+    Width = 531
+    Height = 491
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -11
+    TitleFont.Height = -14
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
   object StaticText2: TStaticText
-    Left = 288
-    Top = 249
-    Width = 129
-    Height = 17
+    Left = 360
+    Top = 311
+    Width = 162
+    Height = 21
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Anchors = [akTop, akRight]
     Caption = 'Double Click to see Details'
     TabOrder = 3
   end
   object RadioGroup1: TRadioGroup
-    Left = 24
-    Top = 72
-    Width = 273
-    Height = 57
+    Left = 30
+    Top = 90
+    Width = 341
+    Height = 71
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'search context'
     Columns = 2
     Items.Strings = (
@@ -78,12 +102,20 @@ object frmDBSearch: TfrmDBSearch
     TabOrder = 4
   end
   object edtSearchPhrase: TLabeledEdit
-    Left = 24
-    Top = 160
-    Width = 273
+    Left = 30
+    Top = 200
+    Width = 341
     Height = 21
-    EditLabel.Width = 69
-    EditLabel.Height = 13
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
+    EditLabel.Width = 87
+    EditLabel.Height = 17
+    EditLabel.Margins.Left = 4
+    EditLabel.Margins.Top = 4
+    EditLabel.Margins.Right = 4
+    EditLabel.Margins.Bottom = 4
     EditLabel.Caption = 'Search Phrase'
     TabOrder = 5
   end

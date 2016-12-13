@@ -40,7 +40,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
-  myVersion = '1.7.1 Sept-23-2016';
+  myVersion = '1.7.2 Dec-13-2016';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -6106,7 +6106,8 @@ end;
 
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
-  fname: string;
+  fname, fotoDir: string;
+
 begin
   if pgtSample.ActivePage <> tbsProject then
   begin
@@ -6116,7 +6117,6 @@ begin
       ServerRoot := '\\Riesling\KTA\';
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
       LogWindow.addLogEntry('Server Root found: '+ ServerRoot);
-
       //enable buttons in order to load the docs if the correct folders can be found
       fname := ServerRoot + 'SAMS Documents\';
       if DirectoryExists(fname) then
@@ -6136,20 +6136,37 @@ begin
     end;
   end;
   Statusbar.Panels[2].Text := fname;
+
   // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
   begin
-    fname := ServerRoot + 'SAMS Images\' + edtSampleNr.Text + '.jpg';
-    Statusbar.Panels[2].Text := fname;
-    if FileExists(fname) then
-    begin
-     SampleFoto.Picture.LoadFromFile(fname);
-     LogWindow.addLogEntry('Image path found: '+fname);
-    end
-    else
-    begin
-      LogWindow.addLogEntry('Image path does not exist!');
-    end;
+    fotoDir := ServerRoot + 'SAMS Images\';
+    fname := fotoDir + edtSampleNr.Text + '.jpg';
+    LogWindow.addLogEntry('Image path should be: '+fname);
+    Statusbar.Panels[2].Text := 'looking for image at :' + fname;
+    // check whether Directory exists
+    // followed by file exists
+    if DirectoryExists(fotoDir, False) then
+      begin
+        LogWindow.addLogEntry('Directory exists :'+fotoDir);
+        if FileExists(fname) then
+          begin
+            SampleFoto.Picture.LoadFromFile(fname);
+            LogWindow.addLogEntry('Image found: '+fname);
+          end
+          else
+          begin
+            ShowMessage('Unable to find image. Drive is connected but image is missing');
+            LogWindow.addLogEntry('Image file does not exist!');
+          end;
+      end
+      else
+      begin
+        LogWindow.addLogEntry('Directory does not exist :'+fotoDir);
+        ShowMessage('Unable to find directory "' + fotoDir + '". Make sure network drive is connected.');
+      end;
+
+
   end;
 end;
 

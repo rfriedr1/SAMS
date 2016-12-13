@@ -319,9 +319,6 @@ Coordinates=736,824,60,58
 [Label98]
 Coordinates=1806,280,60,58
 
-[btnNewPrep]
-Coordinates=1399,280,85,58
-
 [dbchkFreeOfCharge2]
 Coordinates=1050,1350,138,36
 Visible=True
@@ -1831,7 +1828,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=416,1350,62,36
+Coordinates=1399,280,85,58
 Visible=True
 
 [btnPrintBatch]

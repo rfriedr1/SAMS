@@ -414,7 +414,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      if Fields.Fields[0].AsString=project_name then
@@ -447,7 +450,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      if Fields.Fields[0].AsString=sample_name then begin
@@ -508,7 +514,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     First;
@@ -532,7 +541,10 @@ begin
                   Open;
                   LogWindow.addLogEntry('executed');
                 Except
-                  ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                 End;
               End;
           if qryDb1.RecordCount=0 then
@@ -548,7 +560,10 @@ begin
                     adoCmd.Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
              end;
@@ -573,7 +588,10 @@ begin
                     adoCmd.Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
 end;
@@ -592,7 +610,10 @@ begin
                     adoCmd.Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
 end;
@@ -607,7 +628,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -619,7 +643,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -631,7 +658,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -667,7 +697,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     end;
@@ -703,7 +736,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -739,7 +775,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -771,7 +810,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
 //    ClipBoard.AsText := SQL.Text;
@@ -804,7 +846,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
 //    ClipBoard.AsText := SQL.Text;
@@ -825,7 +870,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -852,7 +900,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
  end;
@@ -875,7 +926,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsInteger;
@@ -898,7 +952,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsInteger;
@@ -923,7 +980,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsInteger;
@@ -957,7 +1017,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -985,7 +1048,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      First;
@@ -1017,7 +1083,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsInteger;
@@ -1040,7 +1109,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsString;
@@ -1065,7 +1137,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsString;
@@ -1090,7 +1165,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsString;
@@ -1113,7 +1191,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsString;
@@ -1136,7 +1217,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
      Result := Fields.Fields[0].AsString;
@@ -1164,7 +1248,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -1211,7 +1298,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1241,7 +1331,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
       end;
@@ -1279,7 +1372,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
       end;
@@ -1308,7 +1404,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
       end;
@@ -1348,7 +1447,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
       end;
@@ -1385,7 +1487,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
       end;
@@ -1407,7 +1512,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -1438,7 +1546,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     Result := RecordCount;
@@ -1458,7 +1569,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1485,7 +1599,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1504,7 +1621,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1527,7 +1647,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1550,7 +1673,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     if RecordCount>0 then
@@ -1578,7 +1704,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
           end;
@@ -1603,7 +1732,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
    end;
@@ -1621,7 +1753,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     if RecordCount=1 then
@@ -1634,7 +1769,10 @@ begin
                     adoCmd.Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     end;
@@ -1678,7 +1816,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1693,7 +1834,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1721,7 +1865,10 @@ begin
                     adoCmd.Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   s := 'UPDATE target_t SET ';
@@ -1746,7 +1893,10 @@ begin
                     adoCmd.Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   FormatSettings.DecimalSeparator := c;
@@ -1770,7 +1920,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     Result := (RecordCount>0);
@@ -1798,7 +1951,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1849,7 +2005,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
@@ -1871,7 +2030,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
     First;
@@ -1888,7 +2050,10 @@ begin
                     Open;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
          if  Fields.Fields[0].IsNull then
@@ -1902,7 +2067,10 @@ begin
                     Execute;
                     LogWindow.addLogEntry('executed');
                   Except
-                    ShowMessage('problem opening the database');
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
                   End;
                 End;
            end;

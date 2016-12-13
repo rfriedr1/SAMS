@@ -1,0 +1,82 @@
+unit FormWebCam;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, StdCtrls, Buttons, ExtCtrls, ShellAPI;
+
+type
+  TfrmWebCam = class(TForm)
+  ComboBox1: TComboBox;
+  procedure FormCreate(Sender: TObject);
+  procedure FormDestroy(Sender: TObject);
+  procedure Timer1Timer(Sender: TObject);
+  procedure BitBtn2Click(Sender: TObject);
+  procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmWebCam: TfrmWebCam;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  uWebcam, uFunctions;
+
+procedure FormWebCam.BitBtn2Click(Sender: TObject);
+begin
+  if BitBtn2.Caption = 'Start' then
+  begin
+    if IsNumber(ComboBox1.Text[1]) then
+    begin
+      ConnectWebcam(StrToInt(ComboBox1.Text[1]));
+      Timer1.Enabled := True;
+      BitBtn2.Caption := 'Stop';
+    end
+    else
+      MessageBox(Application.Handle,'You must select a webcam to capture from','ERROR',0);
+  end
+  else
+  begin
+    Timer1.Enabled := False;
+    CloseWebcam;
+    BitBtn2.Caption := 'Start';
+  end;
+end;
+
+procedure FormWebCam.FormCreate(Sender: TObject);
+begin
+  WebcamInit;
+  TimeSeparator := '-';
+  BitBtn1.Click;
+end;
+
+procedure FormWebCam.FormDestroy(Sender: TObject);
+begin
+  CloseWebcam;
+end;
+
+procedure FormWebCam.Timer1Timer(Sender: TObject);
+var
+  FilePath : String;
+begin
+  FilePath := ExtractFilePath(ParamStr(0))+TimetoStr(Time())+'.bmp';
+  CaptureWebcam(FilePath);
+  Image1.Picture.LoadFromFile(FilePath);
+end;
+
+procedure FormWebCam.BitBtn1Click(Sender: TObject);
+begin
+  ComboBox1.Clear;
+  WebcamList;
+  ComboBox1.Text := 'Please select a webcam to capture from';
+end;
+
+end.
