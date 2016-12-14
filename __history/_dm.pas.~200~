@@ -211,7 +211,7 @@ type
     function TargetRecordExistsForSample(SampleNr : integer) : boolean;
     procedure TransferAgeFromTarget(SampleNr, PrepNr, TargetNr : integer);
     procedure TransferMA_Nr_To_MAMS;
-    procedure SendToLog(s:string);
+    //procedure SendToLog(s:string);
     function ReplaceUmlaute(s: string): string;
   end;
 
@@ -227,14 +227,14 @@ implementation
 uses
   Clipbrd, DateUtils, SAMS_Main, _LogSQL, frmLogWindow;
 
-procedure Tdm.SendToLog(s:string);
-//sends the string to the log window if the window is open
-begin
-  if LogWindow.Showing then
-  begin
-    LogWindow.ListBox.Items.Add(s);
-  end;
-end;
+//procedure Tdm.SendToLog(s:string);
+////sends the string to the log window if the window is open
+//begin
+//  if LogWindow.Showing then
+//  begin
+//    LogWindow.ListBox.Items.Add(s);
+//  end;
+//end;
 
 procedure Tdm.adoConnKTLExecuteComplete(Connection: TADOConnection;
   RecordsAffected: Integer; const Error: Error; var EventStatus: TEventStatus;
@@ -270,7 +270,7 @@ begin
         ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 +');';    // set query text
         //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
-        SendToLog(ADOCmd.CommandText);
+        LogWindow.addLogEntry(ADOCmd.CommandText);
         ADOCmd.Execute; // issue command (no result set must be returned)
       except
         ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
@@ -297,7 +297,8 @@ Var
   ADOCmd: TADOCommand;
 begin
  // insert sample into sample_t
- if adoConnKTL.Connected then begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+ if adoConnKTL.Connected then
+ begin           // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       try
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
@@ -365,7 +366,8 @@ Var
   ADOCmd: TADOCommand;
   ADODataSet: TADODataSet;
 begin
-if adoConnKTL.Connected then begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+if adoConnKTL.Connected then
+begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       ADODataSet:= TADODataSet.Create(nil);   // create dataset object - this time we get a result from the command so we need a dataset
       try
@@ -398,18 +400,32 @@ function Tdm.CheckProjectOfUser_nr(project_name: string; user_nr: integer): bool
 var
   s : string;
 begin
-   with qryDb do begin
+   with qryDb do
+   begin
      Close;
      SQL.Text := 'SELECT project FROM project_t INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project=' + #34 + project_name + #34 + ' AND project_t.user_nr=' + IntToStr(user_nr) + ';';
      s := SQL.Text;
      //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(s);
-     Open;
-     if Fields.Fields[0].AsString=project_name then begin
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+     if Fields.Fields[0].AsString=project_name then
+     begin
         Result:=true;
      end
-     else begin
+     else
+     begin
        Result:=false;
      end;
      //Result := Fields.Fields[0].AsString;
@@ -427,8 +443,19 @@ begin
      s := SQL.Text;
      //ShowMessage(s);
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(s);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      if Fields.Fields[0].AsString=sample_name then begin
         Result:=true;
      end
@@ -447,7 +474,8 @@ Var
   ADOCmd: TADOCommand;
 begin
 result:= false;
-if adoConnKTL.Connected then begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
+if adoConnKTL.Connected then
+begin            // only perform command if connection is established (use ADOCommand because it can also handle queries that don't return datasets)
       ADOCmd:= TADOCommand.Create(nil);       // create new command object
       try
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
@@ -476,15 +504,29 @@ procedure Tdm.CheckProjectStatus;
 var
   project_nr : integer;
 begin
-  with qryDb do begin
+  with qryDb do
+  begin
     SQL.Text := 'SELECT project_nr, project, status FROM project_t WHERE status<>"closed";';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
     First;
-    while not EOF do begin
+    while not EOF do
+    begin
        project_nr := Fields.FieldByName('project_nr').AsInteger;
        frmMAMS.lblProject.Caption :=  Fields.Fields[1].AsString;
-       with qryDb1 do begin  // suche offene samples
+       with qryDb1 do
+       begin  // suche offene samples
           SQL.Text :=
             'SELECT sample_t.sample_nr FROM sample_t ' +
             'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
@@ -492,14 +534,38 @@ begin
             'WHERE project_nr=' + IntToStr(project_nr) +
             ' AND preparation_t.stop=0 AND target_t.stop=0 AND sample_t.c14_age IS NULL ' +
             ';';
-          SendToLog(SQL.Text);
-          Open;
-          if qryDb1.RecordCount=0 then begin   // alles datiert oder nottobedated
-             with adoCmd do begin
+          LogWindow.addLogEntry(SQL.Text);
+              IF dm.adoConnKTL.Connected THEN
+              Begin
+                Try
+                  Open;
+                  LogWindow.addLogEntry('executed');
+                Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                End;
+              End;
+          if qryDb1.RecordCount=0 then
+          begin   // alles datiert oder nottobedated
+             with adoCmd do
+             begin
                CommandText := 'UPDATE project_t SET status="closed" WHERE project_nr=' +
                             IntToStr(project_nr) + ';';
-               SendToLog(CommandText);
-               Execute;
+               LogWindow.addLogEntry(CommandText);
+               IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
              end;
           end;
        end;
@@ -516,7 +582,18 @@ begin
         IntTostr(PrepNr) + ',' +
         IntTostr(SampleNr) +
         ');';
-  adoCmd.Execute;
+  IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
 end;
 
 procedure Tdm.CreateBlankTargetRecord(SampleNr, PrepNr, TargetNr: integer);
@@ -527,22 +604,66 @@ begin
           IntTostr(PrepNr) + ',' +
           IntTostr(SampleNr)  +
           ');';
-   adoCmd.Execute;
+   IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
 end;
 
 procedure Tdm.DeleteFromDb(SampleNr: integer);
 begin
    with adoCmd do begin
      CommandText := 'DELETE FROM target_t WHERE sample_nr=' + IntToStr(SampleNr);
-     Execute;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
    with adoCmd do begin
      CommandText := 'DELETE FROM  preparation_t WHERE sample_nr=' + IntToStr(SampleNr);
-     Execute;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
    with adoCmd do begin
      CommandText := 'DELETE FROM sample_t WHERE sample_nr=' + IntToStr(SampleNr);
-     Execute;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
 end;
 
@@ -569,8 +690,19 @@ begin
                     ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
        s := SQL.Text;
   //     ClipBoard.SetTextBuf(PChar(s));
-       SendToLog(s);
-       Open;
+       LogWindow.addLogEntry(SQL.Text);
+       IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
     end;
   Result := qryInPrep.RecordCount;
 end;
@@ -597,8 +729,19 @@ begin
         SQL.Text := SQL.Text + ' AND sample_t.not_tobedated=0;';
       s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(s);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
   Result := qryPlanned.RecordCount;
 end;
@@ -626,7 +769,18 @@ begin
                    ' ORDER BY project_t.in_date;' ;
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     Open;
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
   Result := qryWaitingForGraph.RecordCount;
 end;
@@ -649,8 +803,19 @@ begin
                 ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
                 ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type="arch" ';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
   end;
@@ -674,8 +839,19 @@ begin
                 ' OR graph_date BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 +
                 ' OR graphitized BETWEEN ' + #34 + s1 + #34 + ' AND ' + #34 + s2 + #34 + ')' +
                 ' AND sample_t.type NOT IN("blank","oxa1","oxa","oxa2") ';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
 //    ClipBoard.AsText := SQL.Text;
     Result := RecordCount;
   end;
@@ -687,8 +863,19 @@ begin
      SQL.Text :=  'SELECT weight_combustion FROM target_t WHERE sample_nr=' +
                   IntToStr(SampleNr) + ' AND prep_nr=' + IntToStr(PrepNr) +
                   ' AND target_nr=' + IntToStr(TargetNr)+';';
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
 end;
 
@@ -706,8 +893,19 @@ begin
                 ' WHERE magazine='+ #34 + Magazine + #34 + ' AND target_t.fm IS NOT NULL;';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-   SendToLog(SQL.Text);
-   Open;
+   LogWindow.addLogEntry(SQL.Text);
+   IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
  end;
 end;
 
@@ -721,8 +919,19 @@ begin
      SQL.Text := 'SELECT Max(prep_nr) FROM preparation_t WHERE sample_nr='+IntToStr(sample_nr) + ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -736,8 +945,19 @@ begin
      SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -753,8 +973,19 @@ begin
                  ' AND prep_nr=' + IntToStr(prep_nr)+ ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -779,8 +1010,19 @@ begin
                 ' INNER JOIN sample_t ON sample_t.sample_nr=target_t.sample_nr ' +
                 ' WHERE magazine IS NULL AND graphitized IS NOT NULL and stop=0 ' +
                 ' and sample_t.type like ' + s +'and sample_t.user_label like' + s2 + ';';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 
 end;
@@ -799,8 +1041,19 @@ begin
                  ' AND prep_nr=' + IntTostr(prep_nr) + ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      First;
      StepNr := 0;
      StepFound := false;
@@ -823,8 +1076,19 @@ begin
      SQL.Text := 'SELECT project_nr FROM sample_t WHERE sample_nr='+IntToStr(sample_nr) + ';';
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsInteger;
    end;
 end;
@@ -838,8 +1102,19 @@ begin
      SQL.Text := 'SELECT project FROM project_t WHERE project_nr='+IntToStr(project_nr) + ';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -855,8 +1130,19 @@ begin
      SQL.Text := 'SELECT project_nr FROM project_t WHERE project='+ #34 + project_name + #34 + ' AND user_nr=' + #34 + user_nr + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -872,8 +1158,19 @@ begin
      SQL.Text := 'SELECT sample_nr FROM sample_t WHERE user_label='+ #34 + sample_name + #34 + ' AND project_nr=' + #34 + project_nr + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -887,8 +1184,19 @@ begin
      SQL.Text := 'SELECT user_t.last_name FROM project_t INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_nr='+IntToStr(project_nr) + ';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -902,8 +1210,19 @@ begin
      SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + last_name + #34 +';';
      s := SQL.Text;
      //ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
      Result := Fields.Fields[0].AsString;
    end;
 end;
@@ -922,8 +1241,19 @@ begin
                  ' AND user_t.last_name<>"intern" ' +  //user intern
                  ';';
      s := SQL.Text;
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
 end;
 
@@ -961,8 +1291,19 @@ begin
     s := s + ';';
     //StrToClipBoard(s,300);
     SQL.Text := s;
-    SendToLog(s);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 end;
 
@@ -983,8 +1324,19 @@ begin
           ' batch IS NULL;';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
-        SendToLog(SQL.Text);
-        Open;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
       end;
     if qryDb.RecordCount > 0 then
     begin
@@ -1013,8 +1365,19 @@ begin
           ';';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
-        SendToLog(SQL.Text);
-        Open;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
       end;
     end;
 end;
@@ -1034,8 +1397,19 @@ begin
           ' batch IS NULL AND prep_end IS NULL;';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
-        SendToLog(SQL.Text);
-        Open;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
       end;
 
     if qryDb.RecordCount > 0 then
@@ -1066,8 +1440,19 @@ begin
           ';';
 //        ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
-        SendToLog(SQL.Text);
-        Open;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
       end;
     end;
 end;
@@ -1095,8 +1480,19 @@ begin
           ' AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
         //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
-        SendToLog(SQL.Text);
-        Open;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
       end;
 end;
 
@@ -1109,8 +1505,19 @@ begin
                   IntToStr(SampleNr) + ' AND prep_nr=' + IntToStr(PrepNr) +';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
 end;
 
@@ -1132,8 +1539,19 @@ begin
         ' AND last_name=' + #34 + LastName + #34;
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
     Result := RecordCount;
   end;
 end;
@@ -1144,8 +1562,19 @@ begin
     Close;
     SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method, ' +
       'step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) + ';';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 end;
 
@@ -1163,8 +1592,19 @@ begin
     'WHERE target_t.sample_nr=' + IntToStr(sample_nr) + ' AND target_t.prep_nr=1 and target_t.target_nr=1;';
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 end;
 
@@ -1174,8 +1614,19 @@ procedure Tdm.QueryProject(const ProjectName: string);
 begin
   with qryProject do begin
     SQL.Text := 'SELECT * FROM project_t WHERE project='+#34+ProjectName+#34+';';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 end;
 
@@ -1189,8 +1640,19 @@ begin
       'WHERE sample_t.sample_nr=' + IntToStr(sample_nr) + ';';
 //    strClipBoard := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(strClipboard));
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 end;
 
@@ -1201,26 +1663,53 @@ var
   GraphDate : TDateTime;
   SampleNr : integer;
 begin
-  with qryDb do begin
+  with qryDb do
+  begin
     SQL.Text := 'SELECT magazine, sample_nr FROM target_t WHERE graph_date IS NULL AND c14_age IS NOT NULL';
-    SendToLog(SQL.Text);
-    Open;
-    if RecordCount>0 then begin
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+    if RecordCount>0 then
+    begin
       First;
-      while Not EOF do begin
+      while Not EOF do
+      begin
         Magazine := Fields.Fields[0].AsString;
         SampleNr := Fields.Fields[1].AsInteger;
-        if Pos('MA',Magazine)>0 then begin
+        if Pos('MA',Magazine)>0 then
+        begin
           Y := StrToInt(copy(Magazine,3,2)) + 2000;
           Mo := StrToInt(copy(Magazine,5,2));
           D := StrToInt(copy(Magazine,7,2));
           GraphDate := EncodeDate(Y,Mo,D);
-          with adoCmd do begin
+          with adoCmd do
+          begin
             CommandText := 'UPDATE target_t SET graph_date=' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(GraphDate)) + #34 +
             ' WHERE sample_nr=' + IntToStr(SampleNr) +
             ';';
-            Execute;
+            IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
           end;
         end;
         Next;
@@ -1232,24 +1721,60 @@ end;
 
 procedure Tdm.SetGraphitized;
 begin
-   with adoCmd do begin
+   with adoCmd do
+   begin
       CommandText := 'UPDATE target_t SET graphitized=graph_date ' +
             ' WHERE graph_date is not null and graphitized is null and sample_nr>19000' +
             ';';
-      Execute;
+      IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
    end;
 end;
 
 procedure Tdm.SetProjectStatusRunning(sample_nr: integer);
 begin
-  with qryDB do begin
+  with qryDB do
+  begin
     SQL.Text := 'SELECT project_nr FROM sample_t WHERE sample_nr=' + IntToStr(sample_nr);
-    SendToLog(SQL.Text);
-    Open;
-    if RecordCount=1 then begin
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+    if RecordCount=1 then
+    begin
        adoCmd.CommandText := 'UPDATE project_t SET status="running" WHERE project_nr=' +
                               qryDB.Fields.Fields[0].AsString;
-       adoCmd.Execute;
+       IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
     end;
   end;
 end;
@@ -1284,15 +1809,37 @@ begin
         ' WHERE sample_nr=' + IntToStr(Nr1) + ';';
     s := SQL.Text;
 //  ClipBoard.SetTextBuf(PChar(s));
-     SendToLog(SQL.Text);
-     Open;
+     LogWindow.addLogEntry(SQL.Text);
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
   with qrySample2 do begin
     SQL.Text := 'SELECT magazine,position,fm,fm_sig,dc13,calcset,c14_age,' +
         'c14_age_sig,cal1sMin,cal1sMax,cal2sMin,cal2sMax FROM target_t' +
         ' WHERE sample_nr=' + IntToStr(Nr2) + ';';
-      SendToLog(SQL.Text);
-      Open;
+      LogWindow.addLogEntry(SQL.Text);
+      IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
     c := FormatSettings.DecimalSeparator;
     FormatSettings.DecimalSeparator := '.';
@@ -1312,7 +1859,18 @@ begin
   s := s + ' WHERE sample_nr=' + IntToStr(Nr2) + ';';
 //  ClipBoard.SetTextBuf(PChar(s));
   adoCmd.CommandText := s;
-  adoCmd.Execute;
+  IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   s := 'UPDATE target_t SET ';
   s := s + 'magazine=' + #34 + qrySample2.FieldByName('magazine').AsString + #34 + ',';
   s := s + 'position=' + qrySample2.FieldByName('position').AsString+ ',';
@@ -1329,7 +1887,18 @@ begin
   s := s + ' WHERE sample_nr=' + IntToStr(Nr1) + ';';
 //  ClipBoard.SetTextBuf(PChar(s));
   adoCmd.CommandText := s;
-  adoCmd.Execute;
+  IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    adoCmd.Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   FormatSettings.DecimalSeparator := c;
   qrySample1.Close;
   qrySample2.Close;
@@ -1344,8 +1913,19 @@ begin
     SQL.Text := 'Select * FROM target_t WHERE sample_nr=' + IntToStr(SampleNr) + ';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
     Result := (RecordCount>0);
   end;
 end;
@@ -1357,29 +1937,45 @@ var
   c14age, c14age_sig : string;
   fm, fm_sig, fC14age : extended;
 begin
-  with qryDB1 do begin
+  with qryDB1 do
+  begin
     SQL.Text := 'SELECT c14_age, c14_age_sig, fm, fm_sig, Cal1sMin, Cal1sMax,' +
                 ' Cal2sMin, Cal2sMax, dc13, dc13_sig ' +
                 ' FROM target_t WHERE sample_nr='+IntToStr(SampleNr) +
                 ' AND prep_nr=' + IntToStr(PrepNr) +
                 ' AND target_nr=' + IntToStr(TargetNr) +';';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
-  with adoCmd do begin
+  with adoCmd do
+  begin
     c := FormatSettings.DecimalSeparator;
     FormatSettings.DecimalSeparator := '.';
     c14age := qryDb1.FieldByName('c14_age').AsString;
     c14age_sig := qryDb1.FieldByName('c14_age_sig').AsString;
-    if Length(c14age)=0 then begin
+    if Length(c14age)=0 then
+    begin
       c14age:='99999';
       c14age_sig := '99999';
     end
-    else begin
+    else
+    begin
       fm := qryDb1.FieldByName('fm').AsFloat;
       fm_sig := qryDb1.FieldByName('fm_sig').AsFloat;
       if fm_sig<0.0005 then fm_sig := 0.0005;
-      if fm<2*fm_sig then begin
+      if fm<2*fm_sig then
+      begin
         fC14Age := -Ln(fm+2*fm_sig)*8033;
         fC14Age := round(fC14Age/100)*100;
         C14Age :=  Format('%5.0f',[fC14Age]);
@@ -1403,7 +1999,18 @@ begin
     s := CommandText;
     FormatSettings.DecimalSeparator := c;
 //    ClipBoard.SetTextBuf(PChar(s));
-    Execute;
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
   end;
 
 end;
@@ -1416,8 +2023,19 @@ begin
   with qryCEZA do
   begin
     SQL.Text := 'SELECT Auftrags_Nr_,mams_project_nr FROM tab_auftraege t where Auftrags_Nr_ IS NOT NULL and mams_project_nr IS NOT NULL order by mams_project_nr desc;';
-    SendToLog(SQL.Text);
-    Open;
+    LogWindow.addLogEntry(SQL.Text);
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
     First;
     while not EOF do
     begin
@@ -1425,14 +2043,36 @@ begin
        begin
          MAMSProjectNr := qryCEZA.Fields.Fields[1].AsInteger;
          SQL.Text := 'SELECT AuftragsNr FROM project_t WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
-         SendToLog(SQL.Text);
-         Open;
+         LogWindow.addLogEntry(SQL.Text);
+         IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
          if  Fields.Fields[0].IsNull then
            with adoCmd do
            begin
              CommandText := 'UPDATE project_t SET AuftragsNr=' + IntToStr(qryCEZA.Fields.Fields[0].AsInteger) +
                             ' WHERE Project_nr=' + IntToStr(MAMSProjectNr) + ';';
-             Execute;               
+             IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.adoConnKTL.Connected:=True;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
            end;
        end;
        Next;

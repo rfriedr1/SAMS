@@ -5574,7 +5574,8 @@ begin
     cmbSampleFraction.KeyValue := 0;
     cmbSampleType.KeyValue := 0;
 
-    // query the database and get all sample info ########################
+    // ########################
+    // query the database and get all sample info
     dm.GetSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
     TFloatField(FieldByName('c14_age')).DisplayFormat := '0';

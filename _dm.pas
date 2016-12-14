@@ -213,6 +213,7 @@ type
     procedure TransferMA_Nr_To_MAMS;
     //procedure SendToLog(s:string);
     function ReplaceUmlaute(s: string): string;
+    procedure DBreconnect;
   end;
 
 var
@@ -416,7 +417,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -452,7 +453,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -516,7 +517,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -543,7 +544,7 @@ begin
                 Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                 End;
               End;
@@ -562,7 +563,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -590,7 +591,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -612,7 +613,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -630,7 +631,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -645,7 +646,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -660,7 +661,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -699,7 +700,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -738,7 +739,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -777,7 +778,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -812,7 +813,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -848,7 +849,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -872,7 +873,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -902,7 +903,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -928,7 +929,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -954,7 +955,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -982,7 +983,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1019,7 +1020,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                   dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1050,7 +1051,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1085,7 +1086,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                   dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1111,7 +1112,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1139,7 +1140,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                   dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1167,7 +1168,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1193,7 +1194,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1219,7 +1220,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1250,7 +1251,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1268,43 +1269,52 @@ begin
   begin
     Close;
     s :=
-' SELECT sample_t.sample_nr, project_t.project_comment, sample_t.lab_comment, freeofcharge, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
-' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
-' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
-' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
-' prep_comment, weight_start, weight_medium, weight_end,' +
-' prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
-  s := s + ', target_t.target_nr,' +
-            ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
-            ' magazine, position, precis, cycle_min, cycle_max, catalyst, cathode_nr, reactor_nr,' +
-            ' co2_init, co2_final, hydro_init, hydro_final, react_time, target_pressed, target_t.stop,' +
-            ' fm, fm_sig, dc13, dc13_sig,calcset, editallowed, target_t.c14_age, target_t.c14_age_sig,' +
-            ' target_t.cal1sMin, target_t.cal1sMax, target_t.cal2sMin, target_t.cal2sMax, target_t.graph_date, ' +
-            ' target_t.target_comment, target_t.graph_batch, target_t.graphitized ';
+        ' SELECT sample_t.sample_nr, project_t.project_comment, sample_t.lab_comment, freeofcharge, s_no_leftover, s_storage_loc, prep_storage_loc, type, material, fraction, pre_sub_treat, sample_t.weight, preparation, sampling_date,' +
+        ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
+        ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, in_date, desired_date, out_date, priority, status,' +
+        ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
+        ' prep_comment, weight_start, weight_medium, weight_end,' +
+        ' prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
+    s := s + ', target_t.target_nr,' +
+        ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
+        ' magazine, position, precis, cycle_min, cycle_max, catalyst, cathode_nr, reactor_nr,' +
+        ' co2_init, co2_final, hydro_init, hydro_final, react_time, target_pressed, target_t.stop,' +
+        ' fm, fm_sig, dc13, dc13_sig,calcset, editallowed, target_t.c14_age, target_t.c14_age_sig,' +
+        ' target_t.cal1sMin, target_t.cal1sMax, target_t.cal2sMin, target_t.cal2sMax, target_t.graph_date, ' +
+        ' target_t.target_comment, target_t.graph_batch, target_t.graphitized ';
     s := s + ' FROM sample_t ' +
          'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
          'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
          'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ';
     s := s + 'INNER JOIN (select * from target_t WHERE sample_nr='+IntToStr(SampleNr)+' AND prep_nr='+ IntToStr(PrepNr) +' AND target_nr='+ IntToStr(TargetNr) +') target_t ON target_t.sample_nr=sample_t.sample_nr ';
     s := s + 'WHERE sample_t.sample_nr=' + IntToStr(SampleNr) + ' AND preparation_t.prep_nr=' + IntToStr(PrepNr) + ' ';
+
     if HasTarget then s := s + ' AND target_nr=' + IntToStr(TargetNr);
     s := s + ';';
     //StrToClipBoard(s,300);
     SQL.Text := s;
     LogWindow.addLogEntry(SQL.Text);
     IF dm.adoConnKTL.Connected THEN
-                Begin
-                  Try
-                    Open;
-                    LogWindow.addLogEntry('executed');
-                  Except
-                    // connections is closed, reconnect by setting connected to true and test again
-                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
-                    //ShowMessage('Database connection is closed.');
-                  End;
-                End;
+        begin
+          try
+            Open;
+            LogWindow.addLogEntry('executed');
+          except
+            // connections is closed, reconnect by setting connected to true and test again
+            LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+            dm.DBreconnect;
+            // dm.adoConnKTL.Open();
+            //ShowMessage('Database connection is closed.');
+          end;
+        end;
   end;
+end;
+
+procedure Tdm.DBreconnect;
+// reconnect to the database
+begin
+  dm.adoConnKTL.Close;
+  dm.adoConnKTL.Open;
 end;
 
 procedure Tdm.GetSamplesAvailableForPrep(const method: string);
@@ -1333,7 +1343,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1374,7 +1384,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1406,7 +1416,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1449,7 +1459,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1489,7 +1499,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1514,7 +1524,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1548,7 +1558,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1571,7 +1581,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1601,7 +1611,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1623,7 +1633,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1649,7 +1659,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1675,7 +1685,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1706,7 +1716,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1734,7 +1744,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1755,7 +1765,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1771,7 +1781,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1818,7 +1828,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1836,7 +1846,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1867,7 +1877,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1895,7 +1905,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1922,7 +1932,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1953,7 +1963,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2007,7 +2017,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2032,7 +2042,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2052,7 +2062,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2069,7 +2079,7 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
-                    dm.adoConnKTL.Connected:=True;
+                    dm.DBreconnect;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
