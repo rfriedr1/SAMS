@@ -527,7 +527,6 @@ type
     edtC13Mean: TLabeledEdit;
     btnTransferTargetData: TButton;
     grdPendingReports: TDBGrid;
-    btnPendingReports: TButton;
     tbsProjectDocs: TTabSheet;
     lblReport: TLabel;
     chkPreliminaryReport: TCheckBox;
@@ -586,7 +585,6 @@ type
     btnDBPlot: TToolButton;
     tbsDBPlot: TTabSheet;
     gbxPlotProperties: TGroupBox;
-    btnPlotQuery: TButton;
     MemoDBPlotQuery: TMemo;
     gbxDBPlotQueryData: TGroupBox;
     gbxDBPlot: TGroupBox;
@@ -683,7 +681,6 @@ type
     DBMemo3: TDBMemo;
     StaticText2: TStaticText;
     StaticText3: TStaticText;
-    btnUpdateNoOxBlanks: TButton;
     cmbFilterSampleMaterial: TDBLookupComboBox;
     lblFilterSampleType: TLabel;
     DBedtMagazine: TDBEdit;
@@ -714,6 +711,9 @@ type
     pnlHomeNumberOfBlanks: TPanel;
     Label111: TLabel;
     btnMonthStat: TBitBtn;
+    btnPendingReports: TBitBtn;
+    btnUpdateNoOxBlanks: TBitBtn;
+    btnPlotQuery: TBitBtn;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;

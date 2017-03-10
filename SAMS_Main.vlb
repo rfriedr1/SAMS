@@ -540,9 +540,6 @@ Coordinates=2284,892,70,58
 [btnDeleteUser]
 Coordinates=199,892,97,58
 
-[btnPendingReports]
-Coordinates=2201,756,125,58
-
 [DBEdit26]
 Coordinates=179,1304,69,36
 
@@ -1461,9 +1458,6 @@ Coordinates=1395,10,79,58
 [actOptions]
 Coordinates=2022,1814,76,36
 
-[btnPlotQuery]
-Coordinates=10,892,90,58
-
 [GroupBox32]
 Coordinates=389,552,86,58
 
@@ -1825,7 +1819,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=1396,824,91,58
+Coordinates=10,892,90,58
 Visible=True
 
 [btnPrintBatch]
@@ -2079,9 +2073,6 @@ Coordinates=1621,1701,166,58
 
 [dm.dsTargetsAvailable]
 Coordinates=563,1666,146,36
-
-[btnUpdateNoOxBlanks]
-Coordinates=2221,1451,145,58
 
 [dm.qryProjectsSinceYear]
 Coordinates=482,357,160,58
