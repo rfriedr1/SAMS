@@ -1,10 +1,9 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = edtMonthStat
   Caption = 'SAMS '
   ClientHeight = 824
-  ClientWidth = 1316
+  ClientWidth = 1412
   Color = clWindow
   Constraints.MinHeight = 883
   Constraints.MinWidth = 1290
@@ -78,7 +77,7 @@ object frmMAMS: TfrmMAMS
   object StatusBar: TStatusBar
     Left = 0
     Top = 800
-    Width = 1316
+    Width = 1412
     Height = 24
     AutoHint = True
     Panels = <
@@ -95,7 +94,7 @@ object frmMAMS: TfrmMAMS
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1316
+    Width = 1412
     Height = 47
     ButtonHeight = 44
     ButtonWidth = 77
@@ -252,9 +251,9 @@ object frmMAMS: TfrmMAMS
   object pgtMain: TPageControl
     Left = 0
     Top = 47
-    Width = 1316
+    Width = 1412
     Height = 753
-    ActivePage = tbsDBInfo
+    ActivePage = tbsHome
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -264,7 +263,7 @@ object frmMAMS: TfrmMAMS
       object wizInputSamples: TJvWizard
         Left = 0
         Top = 0
-        Width = 1308
+        Width = 1404
         Height = 725
         ActivePage = wizStartPage
         ButtonBarHeight = 42
@@ -294,7 +293,7 @@ object frmMAMS: TfrmMAMS
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
         DesignSize = (
-          1308
+          1404
           725)
         object wizStartPage: TJvWizardInteriorPage
           Header.ParentFont = False
@@ -322,7 +321,7 @@ object frmMAMS: TfrmMAMS
           object Panel4: TPanel
             Left = 0
             Top = 70
-            Width = 1163
+            Width = 1259
             Height = 106
             Align = alTop
             Font.Charset = DEFAULT_CHARSET
@@ -416,7 +415,7 @@ object frmMAMS: TfrmMAMS
           object grdShowUsers: TDBGrid
             Left = 361
             Top = 176
-            Width = 802
+            Width = 898
             Height = 507
             Align = alClient
             DataSource = dm.dsUserInfo
@@ -453,7 +452,7 @@ object frmMAMS: TfrmMAMS
           object Panel29: TPanel
             Left = 0
             Top = 70
-            Width = 1163
+            Width = 1259
             Height = 72
             Align = alTop
             Font.Charset = DEFAULT_CHARSET
@@ -525,7 +524,7 @@ object frmMAMS: TfrmMAMS
           object grdShowInvoice: TDBGrid
             Left = 361
             Top = 142
-            Width = 802
+            Width = 898
             Height = 541
             Align = alClient
             DataSource = dm.dsInvoice
@@ -806,7 +805,7 @@ object frmMAMS: TfrmMAMS
           object pnlSetMaterial: TPanel
             Left = 611
             Top = 70
-            Width = 552
+            Width = 648
             Height = 613
             Align = alClient
             Caption = 'pnlSetMaterial'
@@ -814,7 +813,7 @@ object frmMAMS: TfrmMAMS
             object Panel6: TPanel
               Left = 1
               Top = 1
-              Width = 550
+              Width = 646
               Height = 611
               Align = alClient
               Caption = 'pnlSetMaterial'
@@ -822,7 +821,7 @@ object frmMAMS: TfrmMAMS
               object lbxMaterial: TListBox
                 Left = 1
                 Top = 1
-                Width = 432
+                Width = 528
                 Height = 609
                 Align = alClient
                 ItemHeight = 13
@@ -831,7 +830,7 @@ object frmMAMS: TfrmMAMS
                 OnMouseDown = lbxMaterialMouseDown
               end
               object lbxFraction: TListBox
-                Left = 433
+                Left = 529
                 Top = 1
                 Width = 116
                 Height = 609
@@ -867,7 +866,7 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
           object pnlSetType: TPanel
-            Left = 1034
+            Left = 1130
             Top = 70
             Width = 129
             Height = 613
@@ -909,7 +908,7 @@ object frmMAMS: TfrmMAMS
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
           object lbxDefinePrepSteps: TListBox
-            Left = 970
+            Left = 1066
             Top = 70
             Width = 193
             Height = 613
@@ -946,7 +945,7 @@ object frmMAMS: TfrmMAMS
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
-            Width = 1163
+            Width = 1259
             Height = 613
             Align = alClient
             Color = clCream
@@ -1193,7 +1192,7 @@ object frmMAMS: TfrmMAMS
       object Panel2: TPanel
         Left = 596
         Top = 0
-        Width = 712
+        Width = 808
         Height = 725
         Align = alClient
         Caption = 'Panel2'
@@ -1201,7 +1200,7 @@ object frmMAMS: TfrmMAMS
         object pgtSample: TPageControl
           Left = 1
           Top = 1
-          Width = 710
+          Width = 806
           Height = 723
           ActivePage = tbsFoto
           Align = alClient
@@ -1219,7 +1218,7 @@ object frmMAMS: TfrmMAMS
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
-              Width = 702
+              Width = 798
               Height = 689
               Align = alClient
               Caption = 'Project Data'
@@ -1484,14 +1483,14 @@ object frmMAMS: TfrmMAMS
             object gbxSampleRight: TGroupBox
               Left = 353
               Top = 0
-              Width = 349
+              Width = 445
               Height = 689
               Align = alClient
               TabOrder = 0
               object GroupBox35: TGroupBox
                 Left = 2
                 Top = 21
-                Width = 345
+                Width = 441
                 Height = 358
                 Align = alTop
                 Caption = 'Target'
@@ -1537,7 +1536,7 @@ object frmMAMS: TfrmMAMS
                 object gbxTargetComment: TGroupBox
                   Left = 208
                   Top = 23
-                  Width = 135
+                  Width = 231
                   Height = 333
                   Align = alClient
                   Caption = 'Comment'
@@ -1551,7 +1550,7 @@ object frmMAMS: TfrmMAMS
                   object DBMemoTargetComment: TDBMemo
                     Left = 2
                     Top = 15
-                    Width = 131
+                    Width = 227
                     Height = 316
                     Align = alClient
                     DataField = 'target_comment'
@@ -1563,7 +1562,7 @@ object frmMAMS: TfrmMAMS
               object GroupBox36: TGroupBox
                 Left = 2
                 Top = 379
-                Width = 345
+                Width = 441
                 Height = 308
                 Align = alClient
                 Caption = 'Dates'
@@ -1723,7 +1722,7 @@ object frmMAMS: TfrmMAMS
             object SampleFoto: TImage
               Left = 0
               Top = 41
-              Width = 702
+              Width = 798
               Height = 648
               Align = alClient
               Stretch = True
@@ -1733,7 +1732,7 @@ object frmMAMS: TfrmMAMS
             object Panel27: TPanel
               Left = 0
               Top = 0
-              Width = 702
+              Width = 798
               Height = 41
               Align = alTop
               TabOrder = 0
@@ -1798,7 +1797,7 @@ object frmMAMS: TfrmMAMS
       Caption = 'Lab plan'
       ImageIndex = 8
       object gbxBatch: TGroupBox
-        Left = 1006
+        Left = 1102
         Top = 0
         Width = 302
         Height = 725
@@ -2010,15 +2009,53 @@ object frmMAMS: TfrmMAMS
           ShowHint = True
           TabOrder = 3
         end
-        object btnUpdateNoOxBlanks: TButton
+        object btnUpdateNoOxBlanks: TBitBtn
           Left = 100
           Top = 327
           Width = 53
           Height = 37
           Hint = 'update number of available Oxas and Blanks'
-          ImageAlignment = iaCenter
-          ImageIndex = 72
-          Images = ImageList2
+          Glyph.Data = {
+            C2040000424DC204000000000000420000002800000018000000180000000100
+            10000300000080040000120B0000120B00000000000000000000007C0000E003
+            00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+            E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+            E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+            E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+            FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+            E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+            FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+            E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+            CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7F}
+          ParentDoubleBuffered = True
           ParentShowHint = False
           ShowHint = True
           TabOrder = 4
@@ -2028,7 +2065,7 @@ object frmMAMS: TfrmMAMS
       object GroupBox31: TGroupBox
         Left = 169
         Top = 0
-        Width = 837
+        Width = 933
         Height = 725
         Align = alClient
         Caption = 'Create Batches'
@@ -2036,7 +2073,7 @@ object frmMAMS: TfrmMAMS
         object Panel7: TPanel
           Left = 2
           Top = 15
-          Width = 833
+          Width = 929
           Height = 73
           Align = alTop
           TabOrder = 0
@@ -2160,7 +2197,7 @@ object frmMAMS: TfrmMAMS
         object gbxSamplesAvailable: TGroupBox
           Left = 2
           Top = 88
-          Width = 833
+          Width = 929
           Height = 635
           Align = alClient
           Caption = 'Samples available'
@@ -2168,7 +2205,7 @@ object frmMAMS: TfrmMAMS
           object grdSamplesAvailable: TJvDBGrid
             Left = 2
             Top = 32
-            Width = 829
+            Width = 925
             Height = 601
             Align = alClient
             DataSource = dm.dsSamplesAvailable
@@ -2194,7 +2231,7 @@ object frmMAMS: TfrmMAMS
           object StaticText1: TStaticText
             Left = 2
             Top = 15
-            Width = 829
+            Width = 925
             Height = 17
             Align = alTop
             Caption = 'Double Click on a sample to add it to a batch.'
@@ -2302,7 +2339,7 @@ object frmMAMS: TfrmMAMS
       object pgtLabTasks: TPageControl
         Left = 297
         Top = 0
-        Width = 1011
+        Width = 1107
         Height = 725
         ActivePage = tbsGraphTask
         Align = alClient
@@ -2354,7 +2391,7 @@ object frmMAMS: TfrmMAMS
           object gbxPresentTask: TGroupBox
             Left = 237
             Top = 0
-            Width = 766
+            Width = 862
             Height = 694
             Align = alClient
             Caption = 'Present task'
@@ -2362,7 +2399,7 @@ object frmMAMS: TfrmMAMS
             object Panel10: TPanel
               Left = 2
               Top = 18
-              Width = 762
+              Width = 858
               Height = 126
               Align = alTop
               TabOrder = 0
@@ -2496,7 +2533,7 @@ object frmMAMS: TfrmMAMS
       object Panel13: TPanel
         Left = 0
         Top = 0
-        Width = 1308
+        Width = 1404
         Height = 209
         Align = alTop
         TabOrder = 0
@@ -2908,7 +2945,7 @@ object frmMAMS: TfrmMAMS
       object grdSamplesOfSubmitter: TDBGrid
         Left = 0
         Top = 209
-        Width = 1308
+        Width = 1404
         Height = 516
         Align = alClient
         DataSource = dm.dsSampleOfSubmitter
@@ -2931,7 +2968,7 @@ object frmMAMS: TfrmMAMS
       object gbxSampleIdetification: TGroupBox
         Left = 0
         Top = 0
-        Width = 1308
+        Width = 1404
         Height = 66
         Align = alTop
         Caption = 'Sample Identification'
@@ -4921,7 +4958,7 @@ object frmMAMS: TfrmMAMS
       object GroupBox24: TGroupBox
         Left = 0
         Top = 0
-        Width = 1308
+        Width = 1404
         Height = 725
         Align = alClient
         Caption = 'User Information'
@@ -5286,7 +5323,7 @@ object frmMAMS: TfrmMAMS
       Caption = 'Options'
       ImageIndex = 5
       object GroupBox28: TGroupBox
-        Left = 1049
+        Left = 1145
         Top = 0
         Width = 259
         Height = 725
@@ -5825,7 +5862,7 @@ object frmMAMS: TfrmMAMS
       object GroupBox8: TGroupBox
         Left = 733
         Top = 0
-        Width = 575
+        Width = 671
         Height = 725
         Align = alClient
         Caption = 'waiting for graphitisation'
@@ -5833,7 +5870,7 @@ object frmMAMS: TfrmMAMS
         object Panel22: TPanel
           Left = 2
           Top = 15
-          Width = 571
+          Width = 667
           Height = 42
           Align = alTop
           TabOrder = 0
@@ -5866,7 +5903,7 @@ object frmMAMS: TfrmMAMS
             ParentFont = False
           end
           object btnSendWaitForGraphToExcel: TButton
-            Left = 511
+            Left = 607
             Top = 1
             Width = 59
             Height = 40
@@ -5887,7 +5924,7 @@ object frmMAMS: TfrmMAMS
         object grdWaitingForGraph: TDBGrid
           Left = 2
           Top = 57
-          Width = 571
+          Width = 667
           Height = 666
           Align = alClient
           DataSource = dm.dsWaitingForGraph
@@ -6122,7 +6159,7 @@ object frmMAMS: TfrmMAMS
       object GroupBox25: TGroupBox
         Left = 790
         Top = 0
-        Width = 518
+        Width = 614
         Height = 725
         Align = alClient
         Caption = 'Click on the targets you wish to take into account'
@@ -6130,7 +6167,7 @@ object frmMAMS: TfrmMAMS
         object StrGrdTargetData: TJvStringGrid
           Left = 2
           Top = 15
-          Width = 514
+          Width = 610
           Height = 202
           Align = alTop
           FixedCols = 0
@@ -6451,7 +6488,7 @@ object frmMAMS: TfrmMAMS
       object gbxPlotProperties: TGroupBox
         Left = 0
         Top = 0
-        Width = 1308
+        Width = 1404
         Height = 113
         Align = alTop
         Caption = 'DB Query'
@@ -6467,20 +6504,6 @@ object frmMAMS: TfrmMAMS
             'able but not in the plot. If column 1 is not a number (e.g. '#39'mag' +
             'azine'#39') it will be converted to consecutive numbers.'
           WordWrap = True
-        end
-        object btnPlotQuery: TButton
-          Left = 784
-          Top = 26
-          Width = 91
-          Height = 84
-          Hint = 'Get Data from Database'
-          ImageAlignment = iaCenter
-          ImageIndex = 72
-          Images = ImageList2
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 0
-          OnClick = btnPlotQueryClick
         end
         object MemoDBPlotQuery: TMemo
           Left = 100
@@ -6519,6 +6542,58 @@ object frmMAMS: TfrmMAMS
           TabOrder = 3
           OnClick = btnDBPlotSaveQueryClick
         end
+        object btnPlotQuery: TBitBtn
+          Left = 784
+          Top = 26
+          Width = 91
+          Height = 84
+          Hint = 'Get Data from Database'
+          Glyph.Data = {
+            C2040000424DC204000000000000420000002800000018000000180000000100
+            10000300000080040000120B0000120B00000000000000000000007C0000E003
+            00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+            E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+            E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+            E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+            FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+            E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+            FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+            E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+            CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7F}
+          ParentDoubleBuffered = True
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = btnPlotQueryClick
+        end
       end
       object gbxDBPlotQueryData: TGroupBox
         Left = 0
@@ -6547,7 +6622,7 @@ object frmMAMS: TfrmMAMS
       object gbxDBPlot: TGroupBox
         Left = 249
         Top = 113
-        Width = 1059
+        Width = 1155
         Height = 612
         Align = alClient
         Caption = 'DB Plot'
@@ -6555,7 +6630,7 @@ object frmMAMS: TfrmMAMS
         object DBChart: TChart
           Left = 2
           Top = 15
-          Width = 1055
+          Width = 1151
           Height = 595
           BottomWall.Visible = False
           LeftWall.Visible = False
@@ -6629,15 +6704,53 @@ object frmMAMS: TfrmMAMS
             Value = 2015.000000000000000000
             TabOrder = 0
           end
-          object btnMonthStat: TButton
+          object btnMonthStat: TBitBtn
             Left = 112
             Top = 6
             Width = 75
             Height = 37
             Hint = 'get numbers of samples per month'
-            ImageAlignment = iaCenter
-            ImageIndex = 72
-            Images = ImageList2
+            Glyph.Data = {
+              C2040000424DC204000000000000420000002800000018000000180000000100
+              10000300000080040000120B0000120B00000000000000000000007C0000E003
+              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7F}
+            ParentDoubleBuffered = True
             ParentShowHint = False
             ShowHint = True
             TabOrder = 1
@@ -6678,7 +6791,7 @@ object frmMAMS: TfrmMAMS
       object GroupBoxPendingReports: TGroupBox
         Left = 216
         Top = 0
-        Width = 1092
+        Width = 1188
         Height = 725
         Align = alClient
         Caption = 'Pending Reports'
@@ -6686,7 +6799,7 @@ object frmMAMS: TfrmMAMS
         object grdPendingReports: TDBGrid
           Left = 2
           Top = 72
-          Width = 1088
+          Width = 1184
           Height = 651
           Align = alClient
           DataSource = dm.dsPendingReports
@@ -6703,7 +6816,7 @@ object frmMAMS: TfrmMAMS
         object Panel32: TPanel
           Left = 2
           Top = 15
-          Width = 1088
+          Width = 1184
           Height = 57
           Align = alTop
           TabOrder = 1
@@ -6716,20 +6829,6 @@ object frmMAMS: TfrmMAMS
             Style = lsRecordNo
             Transparent = True
           end
-          object btnPendingReports: TButton
-            Left = 21
-            Top = 8
-            Width = 82
-            Height = 35
-            Hint = 'display pending reports'
-            ImageAlignment = iaCenter
-            ImageIndex = 72
-            Images = ImageList2
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 0
-            OnClick = btnPendingReportsClick
-          end
           object StaticText2: TStaticText
             Left = 217
             Top = 34
@@ -6737,6 +6836,58 @@ object frmMAMS: TfrmMAMS
             Height = 17
             Caption = 'Colors: Olive = 2 weeks till deadline, red = deadline missed'
             TabOrder = 1
+          end
+          object btnPendingReports: TBitBtn
+            Left = 21
+            Top = 8
+            Width = 82
+            Height = 35
+            Hint = 'display pending reports'
+            Glyph.Data = {
+              C2040000424DC204000000000000420000002800000018000000180000000100
+              10000300000080040000120B0000120B00000000000000000000007C0000E003
+              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7F}
+            ParentDoubleBuffered = True
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnClick = btnPendingReportsClick
           end
         end
       end
@@ -6752,7 +6903,7 @@ object frmMAMS: TfrmMAMS
         AlignWithMargins = True
         Left = 2
         Top = 16
-        Width = 1304
+        Width = 1400
         Height = 29
         Margins.Left = 2
         Margins.Top = 16
@@ -6772,7 +6923,7 @@ object frmMAMS: TfrmMAMS
       object HomeGridPanel: TGridPanel
         Left = 0
         Top = 53
-        Width = 1308
+        Width = 1404
         Height = 672
         Margins.Left = 2
         Margins.Top = 2
@@ -6808,7 +6959,6 @@ object frmMAMS: TfrmMAMS
           end
           item
             Column = 1
-            ColumnSpan = 2
             Control = gbxHomeProjectsDue
             Row = 0
             RowSpan = 2
@@ -6840,7 +6990,7 @@ object frmMAMS: TfrmMAMS
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
-          Width = 199
+          Width = 216
           Height = 202
           Margins.Left = 2
           Margins.Top = 2
@@ -6856,12 +7006,12 @@ object frmMAMS: TfrmMAMS
           ParentFont = False
           TabOrder = 0
           DesignSize = (
-            199
+            216
             202)
           object pnlHomeNumberOfOxas: TPanel
             Left = 0
             Top = 38
-            Width = 198
+            Width = 215
             Height = 72
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
             Margins.Left = 2
@@ -6888,9 +7038,9 @@ object frmMAMS: TfrmMAMS
           end
           object pnlHomeNumberOfBlanks: TPanel
             Left = 0
-            Top = 141
-            Width = 198
-            Height = 65
+            Top = 128
+            Width = 215
+            Height = 78
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
             Margins.Left = 8
             Margins.Top = 2
@@ -6917,16 +7067,16 @@ object frmMAMS: TfrmMAMS
           end
         end
         object gbxHomeProjectsDue: TGroupBox
-          Left = 231
+          Left = 248
           Top = 16
-          Width = 414
+          Width = 215
           Height = 202
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
           Align = alClient
-          Caption = 'Projects due'
+          Caption = 'Number of samples'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -14
@@ -6934,6 +7084,66 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitWidth = 446
+          DesignSize = (
+            215
+            202)
+          object pnlHomeNumberofUnprepdSamples: TPanel
+            Left = 0
+            Top = 38
+            Width = 215
+            Height = 72
+            Hint = '<5 Red, 6..10 Yellow, >10 Green'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Anchors = [akLeft, akTop, akRight]
+            BevelOuter = bvNone
+            Caption = 'unprep'#39'd'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            StyleElements = [seFont, seBorder]
+          end
+          object pnlHomeNumberofReadyForGraph: TPanel
+            Left = 0
+            Top = 126
+            Width = 215
+            Height = 72
+            Hint = '<5 Red, 6..10 Yellow, >10 Green'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Anchors = [akLeft, akTop, akRight]
+            BevelOuter = bvNone
+            Caption = 'ready for graph'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            StyleElements = [seFont, seBorder]
+          end
         end
       end
     end
@@ -6941,8 +7151,8 @@ object frmMAMS: TfrmMAMS
   object MainMenu1: TMainMenu
     Images = ImageList1
     OwnerDraw = True
-    Left = 1296
-    Top = 88
+    Left = 1136
+    Top = 80
     object File1: TMenuItem
       Caption = '&File'
       Hint = 'File related commands'
@@ -7008,8 +7218,8 @@ object frmMAMS: TfrmMAMS
   end
   object ActionList1: TActionList
     Images = ImageList2
-    Left = 1232
-    Top = 120
+    Left = 1136
+    Top = 144
     object actInsertSamples: TAction
       Caption = 'Insert samples'
       ImageIndex = 49
@@ -7150,10 +7360,10 @@ object frmMAMS: TfrmMAMS
   end
   object ImageList1: TImageList
     AllocBy = 10
-    Left = 1384
+    Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300FC0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300000510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7823,20 +8033,21 @@ object frmMAMS: TfrmMAMS
   object LoadDialog: TOpenDialog
     DefaultExt = 'rtf'
     Filter = 'All Files (*.*)|*.*'
-    Left = 528
+    Left = 536
+    Top = 64
   end
   object SaveDialog: TSaveDialog
     DefaultExt = 'rtf'
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 856
-    Top = 8
+    Left = 840
+    Top = 64
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
-    Left = 1416
-    Top = 320
+    Left = 1288
+    Top = 328
     object Cut1: TMenuItem
       Action = EditCut1
     end
@@ -7884,7 +8095,7 @@ object frmMAMS: TfrmMAMS
     WordFormat = wdTableFormatGrid4
     Visible = True
     Left = 592
-    Top = 8
+    Top = 64
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -7900,31 +8111,31 @@ object frmMAMS: TfrmMAMS
     Footer.Strings = (
       '</body></html>')
     DocTitle = 'Grid to HTML Export'
-    Left = 656
-    Top = 8
+    Left = 648
+    Top = 64
   end
   object XMLExport: TJvDBGridXMLExport
     Grid = grdTypes
     FileName = 'c:\temp\report.xml'
-    Left = 728
-    Top = 8
+    Left = 712
+    Top = 64
   end
   object ExcelExport: TJvDBGridExcelExport
     Caption = 'Exporting to MS Excel...'
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 800
-    Top = 8
+    Left = 776
+    Top = 64
   end
   object ImageList2: TImageList
     DrawingStyle = dsTransparent
     Height = 24
     Width = 24
-    Left = 1512
+    Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F8067C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806800618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14171,10 +14382,10 @@ object frmMAMS: TfrmMAMS
   object ImageList3: TImageList
     Height = 32
     Width = 32
-    Left = 1440
+    Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00FC0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00000520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -24216,13 +24427,13 @@ object frmMAMS: TfrmMAMS
   object cdsExport: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 984
-    Top = 16
+    Left = 952
+    Top = 72
   end
   object dsExport: TDataSource
     DataSet = cdsExport
-    Left = 920
-    Top = 8
+    Left = 896
+    Top = 64
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
@@ -24235,7 +24446,7 @@ object frmMAMS: TfrmMAMS
         SASL = IdSASLLogin1
       end>
     Username = 'do-not-reply@cez-archaeometrie.de'
-    Left = 1232
+    Left = 1128
     Top = 320
   end
   object mesgMessage: TIdMessage
@@ -24249,8 +24460,8 @@ object frmMAMS: TfrmMAMS
     Recipients = <>
     ReplyTo = <>
     ConvertPreamble = True
-    Left = 1328
-    Top = 312
+    Left = 1224
+    Top = 328
   end
   object SSLHandler: TIdSSLIOHandlerSocketOpenSSL
     Destination = 'mbox1.belwue.de:587'
@@ -24261,16 +24472,16 @@ object frmMAMS: TfrmMAMS
     SSLOptions.Mode = sslmUnassigned
     SSLOptions.VerifyMode = []
     SSLOptions.VerifyDepth = 0
-    Left = 1428
+    Left = 1292
     Top = 250
   end
   object IdUserPassProvider1: TIdUserPassProvider
-    Left = 1236
+    Left = 1132
     Top = 242
   end
   object IdSASLLogin1: TIdSASLLogin
     UserPassProvider = IdUserPassProvider1
-    Left = 1332
+    Left = 1220
     Top = 242
   end
 end

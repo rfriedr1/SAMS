@@ -253,7 +253,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsDBPlot
+    ActivePage = tbsHome
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -6933,22 +6933,19 @@ object frmMAMS: TfrmMAMS
         BevelOuter = bvNone
         ColumnCollection = <
           item
-            Value = 16.714818899649950000
+            Value = 20.046336322913160000
           end
           item
-            Value = 16.695076812468040000
+            Value = 20.022659337733680000
           end
           item
-            Value = 16.675923118959180000
+            Value = 19.999688022028140000
           end
           item
-            Value = 16.657005221383970000
+            Value = 19.976999499969250000
           end
           item
-            Value = 16.638092192791830000
-          end
-          item
-            Value = 16.619083754747040000
+            Value = 19.954316817355750000
           end>
         ControlCollection = <
           item
@@ -6959,10 +6956,9 @@ object frmMAMS: TfrmMAMS
           end
           item
             Column = 1
-            ColumnSpan = 2
             Control = gbxHomeProjectsDue
             Row = 0
-            RowSpan = 2
+            RowSpan = 3
           end>
         Padding.Left = 8
         Padding.Top = 8
@@ -6991,7 +6987,7 @@ object frmMAMS: TfrmMAMS
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
-          Width = 216
+          Width = 262
           Height = 202
           Margins.Left = 2
           Margins.Top = 2
@@ -6999,27 +6995,27 @@ object frmMAMS: TfrmMAMS
           Margins.Bottom = 2
           Align = alClient
           Caption = 'Available Oxas and Blanks'
+          Ctl3D = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
+          ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          DesignSize = (
-            216
-            202)
+          ExplicitWidth = 216
           object pnlHomeNumberOfOxas: TPanel
-            Left = 0
-            Top = 38
-            Width = 215
+            Left = 1
+            Top = 18
+            Width = 260
             Height = 72
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
             Margins.Left = 2
             Margins.Top = 2
             Margins.Right = 2
             Margins.Bottom = 2
-            Anchors = [akLeft, akTop, akRight]
+            Align = alTop
             BevelOuter = bvNone
             Caption = 'Oxas'
             Color = clYellow
@@ -7036,18 +7032,21 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+            ExplicitLeft = 0
+            ExplicitTop = 38
+            ExplicitWidth = 215
           end
           object pnlHomeNumberOfBlanks: TPanel
-            Left = 0
-            Top = 141
-            Width = 215
-            Height = 65
+            Left = 1
+            Top = 128
+            Width = 260
+            Height = 73
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
             Margins.Left = 8
             Margins.Top = 2
             Margins.Right = 2
             Margins.Bottom = 2
-            Anchors = [akLeft, akTop, akRight]
+            Align = alBottom
             BevelOuter = bvNone
             Caption = 'Blanks'
             Color = clYellow
@@ -7068,16 +7067,16 @@ object frmMAMS: TfrmMAMS
           end
         end
         object gbxHomeProjectsDue: TGroupBox
-          Left = 248
+          Left = 294
           Top = 16
-          Width = 446
-          Height = 202
+          Width = 261
+          Height = 311
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
           Align = alClient
-          Caption = 'Projects due'
+          Caption = 'Number of samples'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -14
@@ -7085,6 +7084,96 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitLeft = 248
+          ExplicitWidth = 215
+          ExplicitHeight = 202
+          object pnlHomeNumberofUnprepdSamples: TPanel
+            Left = 2
+            Top = 19
+            Width = 257
+            Height = 72
+            Hint = 'number of unprep'#39'd samples waiting'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'unprep'#39'd'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            StyleElements = [seFont, seBorder]
+            ExplicitLeft = 0
+            ExplicitTop = 38
+            ExplicitWidth = 215
+          end
+          object pnlHomeNumberofReadyForGraph: TPanel
+            Left = 2
+            Top = 128
+            Width = 257
+            Height = 72
+            Hint = 'number of prep'#39'd samples ready for graphitization'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            BevelOuter = bvNone
+            Caption = 'ready for graph'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            StyleElements = [seFont, seBorder]
+          end
+          object pnlNumberofSamplesReadyForMeas: TPanel
+            Left = 2
+            Top = 237
+            Width = 257
+            Height = 72
+            Hint = 'number of prep'#39'd samples ready measurement'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Align = alBottom
+            BevelOuter = bvNone
+            Caption = 'ready for meas'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            StyleElements = [seFont, seBorder]
+            ExplicitTop = 232
+          end
         end
       end
     end
@@ -7304,7 +7393,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300000510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300040510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7974,15 +8063,16 @@ object frmMAMS: TfrmMAMS
   object LoadDialog: TOpenDialog
     DefaultExt = 'rtf'
     Filter = 'All Files (*.*)|*.*'
-    Left = 528
+    Left = 536
+    Top = 64
   end
   object SaveDialog: TSaveDialog
     DefaultExt = 'rtf'
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 856
-    Top = 8
+    Left = 840
+    Top = 64
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -8035,7 +8125,7 @@ object frmMAMS: TfrmMAMS
     WordFormat = wdTableFormatGrid4
     Visible = True
     Left = 592
-    Top = 8
+    Top = 64
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -8051,22 +8141,22 @@ object frmMAMS: TfrmMAMS
     Footer.Strings = (
       '</body></html>')
     DocTitle = 'Grid to HTML Export'
-    Left = 656
-    Top = 8
+    Left = 648
+    Top = 64
   end
   object XMLExport: TJvDBGridXMLExport
     Grid = grdTypes
     FileName = 'c:\temp\report.xml'
-    Left = 728
-    Top = 8
+    Left = 712
+    Top = 64
   end
   object ExcelExport: TJvDBGridExcelExport
     Caption = 'Exporting to MS Excel...'
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 800
-    Top = 8
+    Left = 776
+    Top = 64
   end
   object ImageList2: TImageList
     DrawingStyle = dsTransparent
@@ -8075,7 +8165,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806800618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806840618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14325,7 +14415,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00000520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00040520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -24367,13 +24457,13 @@ object frmMAMS: TfrmMAMS
   object cdsExport: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 984
-    Top = 16
+    Left = 952
+    Top = 72
   end
   object dsExport: TDataSource
     DataSet = cdsExport
-    Left = 920
-    Top = 8
+    Left = 896
+    Top = 64
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus

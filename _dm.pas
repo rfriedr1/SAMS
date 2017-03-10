@@ -156,6 +156,8 @@ type
     qryProjectHasResults: TADOQuery;
     qryDBPlot: TADOQuery;
     dsDBPlot: TDataSource;
+    qryWaitingForMeas: TADOQuery;
+    dsWaitingForMeas: TDataSource;
     procedure adoConnKTLExecuteComplete(Connection: TADOConnection;
       RecordsAffected: Integer; const Error: Error;
       var EventStatus: TEventStatus; const Command: _Command;
@@ -177,6 +179,7 @@ type
     function GetAllInPrep : integer;
     function GetAllPlanned(ShowOnHold : boolean) : integer;
     function GetAllWaitingForGraph : integer;
+    function GetAllWaitingForMeas : integer;
     function GetArchSamplesOfMonth(Year, Month : word) : integer;
     function GetAllSamplesOfMonth(Year, Month : word) : integer;
     procedure GetMagazineData(Magazine : string);
@@ -740,6 +743,7 @@ begin
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
                     dm.DBreconnect;
+                    Open;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -779,11 +783,52 @@ begin
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB connection is closed, reconnecting...');
                     dm.DBreconnect;
+                    Open;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
   end;
   Result := qryWaitingForGraph.RecordCount;
+end;
+
+function Tdm.GetAllWaitingForMeas : integer;
+// get all samples that are graphitized but not measured
+var
+  s : string;
+begin
+  with qryWaitingForMeas do
+  begin
+     Close;
+     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.desired_date ' +
+                   ' FROM sample_t ' +
+                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+                   'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
+                   ' WHERE preparation_t.prep_end IS NOT NULL and target_t.graphitized IS NOT NULL ' +
+                   ' and target_t.target_pressed IS NOT NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
+                   ' and preparation_t.stop=0 and  target_t.stop=0 ' +
+                   ' and project_t.out_date IS NULL ' +
+                   ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
+                   ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
+                   ' ORDER BY sample_t.sample_nr;' ;
+     s := SQL.Text;
+//     ClipBoard.SetTextBuf(PChar(s));
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB connection is closed, reconnecting...');
+                    dm.DBreconnect;
+                    Open;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+  end;
+  Result := qryWaitingForMeas.RecordCount;
 end;
 
 function Tdm.GetArchSamplesOfMonth(Year, Month: word): integer;

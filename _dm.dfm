@@ -5,7 +5,7 @@ object dm: Tdm
   object qrySubmit: TADOQuery
     Parameters = <>
     Left = 632
-    Top = 592
+    Top = 632
   end
   object qryDB: TADOQuery
     Connection = adoConnKTL
@@ -34,7 +34,7 @@ object dm: Tdm
         'SELECT user_nr, first_name, last_name, organisation from user_t ' +
         'where correspondance=1 ORDER BY last_name;')
     Left = 728
-    Top = 592
+    Top = 632
   end
   object dsQryDb: TDataSource
     DataSet = qryDB
@@ -866,12 +866,12 @@ object dm: Tdm
     Connection = adoConnKTL
     Parameters = <>
     Left = 632
-    Top = 648
+    Top = 688
   end
   object dsPendingReports: TDataSource
     DataSet = qryPendingReports
     Left = 728
-    Top = 645
+    Top = 685
   end
   object qrySample1: TADOQuery
     Connection = adoConnKTL
@@ -895,7 +895,7 @@ object dm: Tdm
     Connection = adoConnKTL
     Parameters = <>
     Left = 632
-    Top = 704
+    Top = 744
   end
   object qryDBPlot: TADOQuery
     Connection = adoConnKTL
@@ -908,5 +908,16 @@ object dm: Tdm
     DataSet = qryDBPlot
     Left = 968
     Top = 272
+  end
+  object qryWaitingForMeas: TADOQuery
+    Connection = adoConnKTL
+    Parameters = <>
+    Left = 632
+    Top = 592
+  end
+  object dsWaitingForMeas: TDataSource
+    DataSet = qryWaitingForMeas
+    Left = 728
+    Top = 592
   end
 end

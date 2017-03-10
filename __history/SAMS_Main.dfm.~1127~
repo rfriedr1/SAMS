@@ -1,7 +1,6 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = edtMonthStat
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1412
@@ -91,7 +90,6 @@ object frmMAMS: TfrmMAMS
       item
         Width = 50
       end>
-    ExplicitWidth = 1316
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -113,7 +111,6 @@ object frmMAMS: TfrmMAMS
     Transparent = False
     StyleElements = [seFont, seBorder]
     Wrapable = False
-    ExplicitWidth = 1316
     object ToolbtnHome: TToolButton
       Left = 0
       Top = 0
@@ -256,15 +253,13 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsDBInfo
+    ActivePage = tbsHome
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
-    ExplicitWidth = 1316
     object tbsInsertSamples: TTabSheet
       Caption = 'Insert samples'
       ImageIndex = 8
-      ExplicitWidth = 1308
       object wizInputSamples: TJvWizard
         Left = 0
         Top = 0
@@ -297,7 +292,6 @@ object frmMAMS: TfrmMAMS
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
-        ExplicitWidth = 1308
         DesignSize = (
           1404
           725)
@@ -324,7 +318,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select user'
           OnEnterPage = wizStartPageEnterPage
           OnBackButtonClick = wizStartPageBackButtonClick
-          ExplicitWidth = 1163
           object Panel4: TPanel
             Left = 0
             Top = 70
@@ -338,7 +331,6 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitWidth = 1163
             object Label14: TLabel
               Left = 120
               Top = 18
@@ -457,7 +449,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Invoice address'
           OnEnterPage = wizInputInvoiceAddressEnterPage
-          ExplicitWidth = 1163
           object Panel29: TPanel
             Left = 0
             Top = 70
@@ -471,7 +462,6 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitWidth = 1163
             object btnInsertNewInvoice: TButton
               Left = 36
               Top = 31
@@ -568,7 +558,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Project Info'
           OnEnterPage = wizInputProjectEnterPage
-          ExplicitWidth = 1163
           object GroupBox4: TGroupBox
             Left = 0
             Top = 70
@@ -767,7 +756,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select material'
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
-          ExplicitWidth = 1163
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 601
             Top = 70
@@ -822,7 +810,6 @@ object frmMAMS: TfrmMAMS
             Align = alClient
             Caption = 'pnlSetMaterial'
             TabOrder = 1
-            ExplicitWidth = 552
             object Panel6: TPanel
               Left = 1
               Top = 1
@@ -831,7 +818,6 @@ object frmMAMS: TfrmMAMS
               Align = alClient
               Caption = 'pnlSetMaterial'
               TabOrder = 0
-              ExplicitWidth = 550
               object lbxMaterial: TListBox
                 Left = 1
                 Top = 1
@@ -842,7 +828,6 @@ object frmMAMS: TfrmMAMS
                 TabOrder = 0
                 OnDblClick = lbxMaterialDblClick
                 OnMouseDown = lbxMaterialMouseDown
-                ExplicitWidth = 432
               end
               object lbxFraction: TListBox
                 Left = 529
@@ -854,7 +839,6 @@ object frmMAMS: TfrmMAMS
                 TabOrder = 1
                 OnDblClick = lbxFractionDblClick
                 OnMouseDown = lbxFractionMouseDown
-                ExplicitLeft = 433
               end
             end
           end
@@ -881,7 +865,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
-          ExplicitWidth = 1163
           object pnlSetType: TPanel
             Left = 1130
             Top = 70
@@ -890,7 +873,6 @@ object frmMAMS: TfrmMAMS
             Align = alRight
             Caption = 'pnlSetType'
             TabOrder = 0
-            ExplicitLeft = 1034
             object lbxTypes: TListBox
               Left = 1
               Top = 1
@@ -925,7 +907,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select pretreatment'
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
-          ExplicitWidth = 1163
           object lbxDefinePrepSteps: TListBox
             Left = 1066
             Top = 70
@@ -935,7 +916,6 @@ object frmMAMS: TfrmMAMS
             ItemHeight = 13
             TabOrder = 0
             OnMouseDown = lbxDefinePrepStepsMouseDown
-            ExplicitLeft = 970
           end
         end
         object wizFinalPage: TJvWizardInteriorPage
@@ -962,7 +942,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Insert all data'
           OnEnterPage = wizFinalPageEnterPage
           OnFinishButtonClick = wizFinalPageFinishButtonClick
-          ExplicitWidth = 1163
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
@@ -980,7 +959,6 @@ object frmMAMS: TfrmMAMS
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitWidth = 1163
           end
         end
         object JvWizardRouteMapList1: TJvWizardRouteMapList
@@ -1011,7 +989,6 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 9
       ParentFont = False
-      ExplicitWidth = 1308
       object gbxProjectsOfUser: TGroupBox
         Left = 0
         Top = 0
@@ -1220,7 +1197,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 1
-        ExplicitWidth = 712
         object pgtSample: TPageControl
           Left = 1
           Top = 1
@@ -1236,11 +1212,9 @@ object frmMAMS: TfrmMAMS
           ParentFont = False
           TabOrder = 0
           OnChange = pgtSampleChange
-          ExplicitWidth = 710
           object tbsProject: TTabSheet
             Caption = 'Project data'
             ImageIndex = 3
-            ExplicitWidth = 702
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
@@ -1255,7 +1229,6 @@ object frmMAMS: TfrmMAMS
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitWidth = 702
               object Label16: TLabel
                 Left = 120
                 Top = 123
@@ -1507,7 +1480,6 @@ object frmMAMS: TfrmMAMS
           end
           object tbsSampleOfProject: TTabSheet
             Caption = 'Sample data'
-            ExplicitWidth = 702
             object gbxSampleRight: TGroupBox
               Left = 353
               Top = 0
@@ -1515,7 +1487,6 @@ object frmMAMS: TfrmMAMS
               Height = 689
               Align = alClient
               TabOrder = 0
-              ExplicitWidth = 349
               object GroupBox35: TGroupBox
                 Left = 2
                 Top = 21
@@ -1531,7 +1502,6 @@ object frmMAMS: TfrmMAMS
                 Padding.Top = 5
                 ParentFont = False
                 TabOrder = 0
-                ExplicitWidth = 345
                 object gbxTargetData: TGroupBox
                   Left = 2
                   Top = 23
@@ -1577,7 +1547,6 @@ object frmMAMS: TfrmMAMS
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
-                  ExplicitWidth = 135
                   object DBMemoTargetComment: TDBMemo
                     Left = 2
                     Top = 15
@@ -1587,7 +1556,6 @@ object frmMAMS: TfrmMAMS
                     DataField = 'target_comment'
                     DataSource = dm.dsTarget
                     TabOrder = 0
-                    ExplicitWidth = 131
                   end
                 end
               end
@@ -1605,7 +1573,6 @@ object frmMAMS: TfrmMAMS
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 1
-                ExplicitWidth = 345
               end
             end
             object gbxSampleLeft: TGroupBox
@@ -1752,7 +1719,6 @@ object frmMAMS: TfrmMAMS
           object tbsFoto: TTabSheet
             Caption = 'Sample foto'
             ImageIndex = 1
-            ExplicitWidth = 702
             object SampleFoto: TImage
               Left = 0
               Top = 41
@@ -1770,7 +1736,6 @@ object frmMAMS: TfrmMAMS
               Height = 41
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 702
               object StaticText4: TStaticText
                 Left = 16
                 Top = 12
@@ -1786,7 +1751,6 @@ object frmMAMS: TfrmMAMS
           object TabSheet5: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
-            ExplicitWidth = 702
             object JvImage1: TJvImage
               Left = 116
               Top = 29
@@ -1797,7 +1761,6 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
-            ExplicitWidth = 702
             object btnProjectLetters: TButton
               Left = 31
               Top = 96
@@ -1833,7 +1796,6 @@ object frmMAMS: TfrmMAMS
     object tbsLabPlan: TTabSheet
       Caption = 'Lab plan'
       ImageIndex = 8
-      ExplicitWidth = 1308
       object gbxBatch: TGroupBox
         Left = 1102
         Top = 0
@@ -1842,7 +1804,6 @@ object frmMAMS: TfrmMAMS
         Align = alRight
         Caption = 'Batch'
         TabOrder = 0
-        ExplicitLeft = 1006
         object lbxBatch: TListBox
           Left = 2
           Top = 120
@@ -2048,15 +2009,53 @@ object frmMAMS: TfrmMAMS
           ShowHint = True
           TabOrder = 3
         end
-        object btnUpdateNoOxBlanks: TButton
+        object btnUpdateNoOxBlanks: TBitBtn
           Left = 100
           Top = 327
           Width = 53
           Height = 37
           Hint = 'update number of available Oxas and Blanks'
-          ImageAlignment = iaCenter
-          ImageIndex = 72
-          Images = ImageList2
+          Glyph.Data = {
+            C2040000424DC204000000000000420000002800000018000000180000000100
+            10000300000080040000120B0000120B00000000000000000000007C0000E003
+            00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+            E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+            E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+            E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+            FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+            E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+            FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+            E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+            CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7F}
+          ParentDoubleBuffered = True
           ParentShowHint = False
           ShowHint = True
           TabOrder = 4
@@ -2071,7 +2070,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Create Batches'
         TabOrder = 2
-        ExplicitWidth = 837
         object Panel7: TPanel
           Left = 2
           Top = 15
@@ -2079,7 +2077,6 @@ object frmMAMS: TfrmMAMS
           Height = 73
           Align = alTop
           TabOrder = 0
-          ExplicitWidth = 833
           object rgpTask: TRadioGroup
             Left = 1
             Top = 1
@@ -2205,7 +2202,6 @@ object frmMAMS: TfrmMAMS
           Align = alClient
           Caption = 'Samples available'
           TabOrder = 1
-          ExplicitWidth = 833
           object grdSamplesAvailable: TJvDBGrid
             Left = 2
             Top = 32
@@ -2240,7 +2236,6 @@ object frmMAMS: TfrmMAMS
             Align = alTop
             Caption = 'Double Click on a sample to add it to a batch.'
             TabOrder = 1
-            ExplicitWidth = 829
           end
         end
       end
@@ -2254,7 +2249,6 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 7
       ParentFont = False
-      ExplicitWidth = 1308
       object GroupBox13: TGroupBox
         Left = 0
         Top = 0
@@ -2350,10 +2344,8 @@ object frmMAMS: TfrmMAMS
         ActivePage = tbsGraphTask
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 1011
         object tbsPrepTask: TTabSheet
           Caption = 'tbsPrepTask'
-          ExplicitWidth = 1003
           object GroupBox14: TGroupBox
             Left = 0
             Top = 0
@@ -2404,7 +2396,6 @@ object frmMAMS: TfrmMAMS
             Align = alClient
             Caption = 'Present task'
             TabOrder = 1
-            ExplicitWidth = 766
             object Panel10: TPanel
               Left = 2
               Top = 18
@@ -2412,7 +2403,6 @@ object frmMAMS: TfrmMAMS
               Height = 126
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 762
               object GroupBox16: TGroupBox
                 Left = 145
                 Top = 1
@@ -2534,14 +2524,12 @@ object frmMAMS: TfrmMAMS
         object tbsGraphTask: TTabSheet
           Caption = 'tbsGraphTask'
           ImageIndex = 1
-          ExplicitWidth = 1003
         end
       end
     end
     object tbsUserReport: TTabSheet
       Caption = 'User report'
       ImageIndex = 6
-      ExplicitWidth = 1308
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -2549,7 +2537,6 @@ object frmMAMS: TfrmMAMS
         Height = 209
         Align = alTop
         TabOrder = 0
-        ExplicitWidth = 1308
         object GroupBox15: TGroupBox
           Left = 615
           Top = 0
@@ -2978,7 +2965,6 @@ object frmMAMS: TfrmMAMS
     object tbsSampleInfo: TTabSheet
       Caption = 'Sample info'
       ImageIndex = 9
-      ExplicitWidth = 1308
       object gbxSampleIdetification: TGroupBox
         Left = 0
         Top = 0
@@ -2988,7 +2974,6 @@ object frmMAMS: TfrmMAMS
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1308
         object btnIncSampleNr: TSpinButton
           Left = 190
           Top = 18
@@ -4970,7 +4955,6 @@ object frmMAMS: TfrmMAMS
     object tbsUserInfo: TTabSheet
       Caption = 'User info'
       ImageIndex = 11
-      ExplicitWidth = 1308
       object GroupBox24: TGroupBox
         Left = 0
         Top = 0
@@ -4985,7 +4969,6 @@ object frmMAMS: TfrmMAMS
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitWidth = 1308
         object Label73: TLabel
           Left = 61
           Top = 82
@@ -5339,7 +5322,6 @@ object frmMAMS: TfrmMAMS
     object tbsOptions: TTabSheet
       Caption = 'Options'
       ImageIndex = 5
-      ExplicitWidth = 1308
       object GroupBox28: TGroupBox
         Left = 1145
         Top = 0
@@ -5348,7 +5330,6 @@ object frmMAMS: TfrmMAMS
         Align = alRight
         Caption = 'Test Only!!!'
         TabOrder = 0
-        ExplicitLeft = 1049
         object DBGrid1: TDBGrid
           Left = 40
           Top = 265
@@ -5577,7 +5558,6 @@ object frmMAMS: TfrmMAMS
       Caption = 'Types, materials, pretr. steps'
       ImageIndex = 2
       OnExit = tbsTypesMatExit
-      ExplicitWidth = 1308
       object GroupBox7: TGroupBox
         Left = 700
         Top = 0
@@ -5722,7 +5702,6 @@ object frmMAMS: TfrmMAMS
     object tbsLabStats: TTabSheet
       Caption = 'Lab stats'
       ImageIndex = 9
-      ExplicitWidth = 1308
       object JvNetscapeSplitter1: TJvNetscapeSplitter
         Left = 723
         Top = 0
@@ -5888,7 +5867,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'waiting for graphitisation'
         TabOrder = 2
-        ExplicitWidth = 575
         object Panel22: TPanel
           Left = 2
           Top = 15
@@ -5896,7 +5874,6 @@ object frmMAMS: TfrmMAMS
           Height = 42
           Align = alTop
           TabOrder = 0
-          ExplicitWidth = 571
           object JvDBStatusLabel4: TJvDBStatusLabel
             Left = 4
             Top = 20
@@ -5934,7 +5911,6 @@ object frmMAMS: TfrmMAMS
             Caption = 'Excel'
             TabOrder = 0
             OnClick = btnSendWaitForGraphToExcelClick
-            ExplicitLeft = 511
           end
           object StaticText3: TStaticText
             Left = 139
@@ -5968,7 +5944,6 @@ object frmMAMS: TfrmMAMS
     object tbsAccounting: TTabSheet
       Caption = 'Accounting'
       ImageIndex = 10
-      ExplicitWidth = 1308
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
@@ -6045,7 +6020,6 @@ object frmMAMS: TfrmMAMS
     object tbsAdmin: TTabSheet
       Caption = 'Admin'
       ImageIndex = 11
-      ExplicitWidth = 1308
       object GroupBoxMADBTasks: TGroupBox
         Left = 0
         Top = 0
@@ -6182,7 +6156,6 @@ object frmMAMS: TfrmMAMS
     object tbsTransferAge: TTabSheet
       Caption = 'Transfer Age'
       ImageIndex = 12
-      ExplicitWidth = 1308
       object GroupBox25: TGroupBox
         Left = 790
         Top = 0
@@ -6191,7 +6164,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Click on the targets you wish to take into account'
         TabOrder = 1
-        ExplicitWidth = 518
         object StrGrdTargetData: TJvStringGrid
           Left = 2
           Top = 15
@@ -6208,7 +6180,6 @@ object frmMAMS: TfrmMAMS
           FixedFont.Height = -11
           FixedFont.Name = 'Tahoma'
           FixedFont.Style = []
-          ExplicitWidth = 514
           ColWidths = (
             64
             64
@@ -6385,7 +6356,6 @@ object frmMAMS: TfrmMAMS
     object tbsSendMail: TTabSheet
       Caption = 'SendMail'
       ImageIndex = 13
-      ExplicitWidth = 1308
       object Panel31: TPanel
         Left = 0
         Top = 0
@@ -6507,7 +6477,6 @@ object frmMAMS: TfrmMAMS
       Hint = 'Full SQL-Query to get data from the database'
       Caption = 'tbsDBPlot'
       ImageIndex = 14
-      ExplicitWidth = 1308
       object SplitterDBPlot: TSplitter
         Left = 233
         Top = 113
@@ -6524,7 +6493,6 @@ object frmMAMS: TfrmMAMS
         Align = alTop
         Caption = 'DB Query'
         TabOrder = 0
-        ExplicitWidth = 1308
         object Label99: TLabel
           Left = 881
           Top = 26
@@ -6536,20 +6504,6 @@ object frmMAMS: TfrmMAMS
             'able but not in the plot. If column 1 is not a number (e.g. '#39'mag' +
             'azine'#39') it will be converted to consecutive numbers.'
           WordWrap = True
-        end
-        object btnPlotQuery: TButton
-          Left = 784
-          Top = 26
-          Width = 91
-          Height = 84
-          Hint = 'Get Data from Database'
-          ImageAlignment = iaCenter
-          ImageIndex = 72
-          Images = ImageList2
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 0
-          OnClick = btnPlotQueryClick
         end
         object MemoDBPlotQuery: TMemo
           Left = 100
@@ -6588,6 +6542,58 @@ object frmMAMS: TfrmMAMS
           TabOrder = 3
           OnClick = btnDBPlotSaveQueryClick
         end
+        object btnPlotQuery: TBitBtn
+          Left = 784
+          Top = 26
+          Width = 91
+          Height = 84
+          Hint = 'Get Data from Database'
+          Glyph.Data = {
+            C2040000424DC204000000000000420000002800000018000000180000000100
+            10000300000080040000120B0000120B00000000000000000000007C0000E003
+            00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+            E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+            E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+            E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+            E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+            E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+            FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+            FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+            E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+            FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+            E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+            CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+            FF7FFF7FFF7F}
+          ParentDoubleBuffered = True
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = btnPlotQueryClick
+        end
       end
       object gbxDBPlotQueryData: TGroupBox
         Left = 0
@@ -6621,7 +6627,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'DB Plot'
         TabOrder = 2
-        ExplicitWidth = 1059
         object DBChart: TChart
           Left = 2
           Top = 15
@@ -6653,7 +6658,6 @@ object frmMAMS: TfrmMAMS
           View3DOptions.Orthogonal = False
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 1055
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -6677,7 +6681,6 @@ object frmMAMS: TfrmMAMS
     object tbsDBInfo: TTabSheet
       Caption = 'tbsDBInfo'
       ImageIndex = 15
-      ExplicitWidth = 1308
       object GroupBoxMeasuredSamples: TGroupBox
         Left = 0
         Top = 0
@@ -6701,15 +6704,53 @@ object frmMAMS: TfrmMAMS
             Value = 2015.000000000000000000
             TabOrder = 0
           end
-          object btnMonthStat: TButton
+          object btnMonthStat: TBitBtn
             Left = 112
             Top = 6
             Width = 75
             Height = 37
             Hint = 'get numbers of samples per month'
-            ImageAlignment = iaCenter
-            ImageIndex = 72
-            Images = ImageList2
+            Glyph.Data = {
+              C2040000424DC204000000000000420000002800000018000000180000000100
+              10000300000080040000120B0000120B00000000000000000000007C0000E003
+              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7F}
+            ParentDoubleBuffered = True
             ParentShowHint = False
             ShowHint = True
             TabOrder = 1
@@ -6755,7 +6796,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Pending Reports'
         TabOrder = 1
-        ExplicitWidth = 1092
         object grdPendingReports: TDBGrid
           Left = 2
           Top = 72
@@ -6780,7 +6820,6 @@ object frmMAMS: TfrmMAMS
           Height = 57
           Align = alTop
           TabOrder = 1
-          ExplicitWidth = 1088
           object JvDBStatusLabel10: TJvDBStatusLabel
             Left = 109
             Top = 21
@@ -6790,20 +6829,6 @@ object frmMAMS: TfrmMAMS
             Style = lsRecordNo
             Transparent = True
           end
-          object btnPendingReports: TButton
-            Left = 21
-            Top = 8
-            Width = 82
-            Height = 35
-            Hint = 'display pending reports'
-            ImageAlignment = iaCenter
-            ImageIndex = 73
-            Images = ImageList2
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 0
-            OnClick = btnPendingReportsClick
-          end
           object StaticText2: TStaticText
             Left = 217
             Top = 34
@@ -6811,6 +6836,58 @@ object frmMAMS: TfrmMAMS
             Height = 17
             Caption = 'Colors: Olive = 2 weeks till deadline, red = deadline missed'
             TabOrder = 1
+          end
+          object btnPendingReports: TBitBtn
+            Left = 21
+            Top = 8
+            Width = 82
+            Height = 35
+            Hint = 'display pending reports'
+            Glyph.Data = {
+              C2040000424DC204000000000000420000002800000018000000180000000100
+              10000300000080040000120B0000120B00000000000000000000007C0000E003
+              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7F}
+            ParentDoubleBuffered = True
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnClick = btnPendingReportsClick
           end
         end
       end
@@ -6822,7 +6899,6 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 2
       Caption = 'Home'
       ImageIndex = 16
-      ExplicitWidth = 1308
       object Label111: TLabel
         AlignWithMargins = True
         Left = 2
@@ -6883,7 +6959,6 @@ object frmMAMS: TfrmMAMS
           end
           item
             Column = 1
-            ColumnSpan = 2
             Control = gbxHomeProjectsDue
             Row = 0
             RowSpan = 2
@@ -6912,7 +6987,6 @@ object frmMAMS: TfrmMAMS
             Value = 16.620111087351630000
           end>
         TabOrder = 0
-        ExplicitWidth = 1308
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
@@ -6931,7 +7005,6 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 199
           DesignSize = (
             216
             202)
@@ -6962,13 +7035,12 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
-            ExplicitWidth = 198
           end
           object pnlHomeNumberOfBlanks: TPanel
             Left = 0
-            Top = 141
+            Top = 128
             Width = 215
-            Height = 65
+            Height = 78
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
             Margins.Left = 8
             Margins.Top = 2
@@ -6992,20 +7064,19 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
-            ExplicitWidth = 198
           end
         end
         object gbxHomeProjectsDue: TGroupBox
           Left = 248
           Top = 16
-          Width = 446
+          Width = 215
           Height = 202
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
           Align = alClient
-          Caption = 'Projects due'
+          Caption = 'Number of samples'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -14
@@ -7013,8 +7084,66 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitLeft = 231
-          ExplicitWidth = 414
+          ExplicitWidth = 446
+          DesignSize = (
+            215
+            202)
+          object pnlHomeNumberofUnprepdSamples: TPanel
+            Left = 0
+            Top = 38
+            Width = 215
+            Height = 72
+            Hint = '<5 Red, 6..10 Yellow, >10 Green'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Anchors = [akLeft, akTop, akRight]
+            BevelOuter = bvNone
+            Caption = 'unprep'#39'd'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            StyleElements = [seFont, seBorder]
+          end
+          object pnlHomeNumberofReadyForGraph: TPanel
+            Left = 0
+            Top = 126
+            Width = 215
+            Height = 72
+            Hint = '<5 Red, 6..10 Yellow, >10 Green'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Anchors = [akLeft, akTop, akRight]
+            BevelOuter = bvNone
+            Caption = 'ready for graph'
+            Color = clSilver
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            StyleElements = [seFont, seBorder]
+          end
         end
       end
     end
@@ -7234,7 +7363,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300FC0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300000510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7904,15 +8033,16 @@ object frmMAMS: TfrmMAMS
   object LoadDialog: TOpenDialog
     DefaultExt = 'rtf'
     Filter = 'All Files (*.*)|*.*'
-    Left = 528
+    Left = 536
+    Top = 64
   end
   object SaveDialog: TSaveDialog
     DefaultExt = 'rtf'
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 856
-    Top = 8
+    Left = 840
+    Top = 64
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -7965,7 +8095,7 @@ object frmMAMS: TfrmMAMS
     WordFormat = wdTableFormatGrid4
     Visible = True
     Left = 592
-    Top = 8
+    Top = 64
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -7981,22 +8111,22 @@ object frmMAMS: TfrmMAMS
     Footer.Strings = (
       '</body></html>')
     DocTitle = 'Grid to HTML Export'
-    Left = 656
-    Top = 8
+    Left = 648
+    Top = 64
   end
   object XMLExport: TJvDBGridXMLExport
     Grid = grdTypes
     FileName = 'c:\temp\report.xml'
-    Left = 728
-    Top = 8
+    Left = 712
+    Top = 64
   end
   object ExcelExport: TJvDBGridExcelExport
     Caption = 'Exporting to MS Excel...'
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 800
-    Top = 8
+    Left = 776
+    Top = 64
   end
   object ImageList2: TImageList
     DrawingStyle = dsTransparent
@@ -8005,7 +8135,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F8067C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806800618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14255,7 +14385,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00FC0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00000520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -24297,13 +24427,13 @@ object frmMAMS: TfrmMAMS
   object cdsExport: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 984
-    Top = 16
+    Left = 952
+    Top = 72
   end
   object dsExport: TDataSource
     DataSet = cdsExport
-    Left = 920
-    Top = 8
+    Left = 896
+    Top = 64
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus

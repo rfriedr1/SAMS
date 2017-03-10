@@ -40,7 +40,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
-  myVersion = '1.7.1 Sept-23-2016';
+  myVersion = '1.7.4 March-10-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -476,7 +476,6 @@ type
     Panel28: TPanel;
     stgMonthStat: TStringGrid;
     edtMonthStat: TJvSpinEdit;
-    btnMonthStat: TButton;
     btnSetGraphDate: TButton;
     Panel29: TPanel;
     grdShowUsers: TDBGrid;
@@ -528,7 +527,6 @@ type
     edtC13Mean: TLabeledEdit;
     btnTransferTargetData: TButton;
     grdPendingReports: TDBGrid;
-    btnPendingReports: TButton;
     tbsProjectDocs: TTabSheet;
     lblReport: TLabel;
     chkPreliminaryReport: TCheckBox;
@@ -587,7 +585,6 @@ type
     btnDBPlot: TToolButton;
     tbsDBPlot: TTabSheet;
     gbxPlotProperties: TGroupBox;
-    btnPlotQuery: TButton;
     MemoDBPlotQuery: TMemo;
     gbxDBPlotQueryData: TGroupBox;
     gbxDBPlot: TGroupBox;
@@ -684,7 +681,6 @@ type
     DBMemo3: TDBMemo;
     StaticText2: TStaticText;
     StaticText3: TStaticText;
-    btnUpdateNoOxBlanks: TButton;
     cmbFilterSampleMaterial: TDBLookupComboBox;
     lblFilterSampleType: TLabel;
     DBedtMagazine: TDBEdit;
@@ -714,6 +710,10 @@ type
     pnlHomeNumberOfOxas: TPanel;
     pnlHomeNumberOfBlanks: TPanel;
     Label111: TLabel;
+    btnMonthStat: TBitBtn;
+    btnPendingReports: TBitBtn;
+    btnUpdateNoOxBlanks: TBitBtn;
+    btnPlotQuery: TBitBtn;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -5574,7 +5574,8 @@ begin
     cmbSampleFraction.KeyValue := 0;
     cmbSampleType.KeyValue := 0;
 
-    // query the database and get all sample info ########################
+    // ########################
+    // query the database and get all sample info
     dm.GetSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
     TFloatField(FieldByName('c14_age')).DisplayFormat := '0';
@@ -6146,7 +6147,7 @@ begin
     Statusbar.Panels[2].Text := 'looking for image at :' + fname;
     // check whether Directory exists
     // followed by file exists
-    if DirectoryExists(fotoDir) then
+    if DirectoryExists(fotoDir, False) then
       begin
         LogWindow.addLogEntry('Directory exists :'+fotoDir);
         if FileExists(fname) then
