@@ -1,13 +1,13 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = DBMemo_LabComment
+  ActiveControl = edtMonthStat
   Caption = 'SAMS '
-  ClientHeight = 1032
-  ClientWidth = 1603
+  ClientHeight = 824
+  ClientWidth = 1412
   Color = clWindow
-  Constraints.MinHeight = 1104
-  Constraints.MinWidth = 1613
+  Constraints.MinHeight = 883
+  Constraints.MinWidth = 1290
   ParentFont = True
   Icon.Data = {
     0000010001002020100000000000E80200001600000028000000200000004000
@@ -42,72 +42,44 @@ object frmMAMS: TfrmMAMS
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 96
+  TextHeight = 13
   object JvMarkupLabel2: TJvMarkupLabel
-    Left = 800
-    Top = 590
-    Width = 250
-    Height = 125
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 640
+    Top = 472
     Text = ''
   end
   object JvMarkupLabel3: TJvMarkupLabel
-    Left = 500
-    Top = 280
-    Width = 250
-    Height = 125
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 400
+    Top = 224
     Text = ''
   end
   object Label72: TLabel
-    Left = 130
-    Top = 190
-    Width = 44
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 104
+    Top = 152
+    Width = 37
+    Height = 13
     Caption = 'Label72'
   end
   object JvDBStatusLabel8: TJvDBStatusLabel
-    Left = 850
-    Top = 80
-    Width = 111
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 680
+    Top = 64
+    Width = 96
+    Height = 13
     Transparent = True
   end
   object JvDBStatusLabel9: TJvDBStatusLabel
-    Left = 1000
-    Top = 80
-    Width = 111
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 800
+    Top = 64
+    Width = 96
+    Height = 13
     Transparent = True
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 1008
-    Width = 1603
+    Top = 800
+    Width = 1412
     Height = 24
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
     AutoHint = True
     Panels = <
       item
@@ -123,12 +95,12 @@ object frmMAMS: TfrmMAMS
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1603
+    Width = 1412
     Height = 47
-    ButtonHeight = 47
-    ButtonWidth = 91
+    ButtonHeight = 44
+    ButtonWidth = 77
     Caption = 'ToolBar1'
-    Color = clMoneyGreen
+    Color = clMenuBar
     EdgeInner = esNone
     EdgeOuter = esNone
     HotTrackColor = clMoneyGreen
@@ -148,7 +120,7 @@ object frmMAMS: TfrmMAMS
       OnClick = ToolbtnHomeClick
     end
     object ToolButton1: TToolButton
-      Left = 91
+      Left = 77
       Top = 0
       Action = actInsertSamples
       ImageIndex = 67
@@ -156,7 +128,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton3: TToolButton
-      Left = 182
+      Left = 154
       Top = 0
       Action = actUserProjects
       ImageIndex = 66
@@ -164,13 +136,13 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton2: TToolButton
-      Left = 273
+      Left = 231
       Top = 0
       Action = actUserInfo
       ImageIndex = 65
     end
     object btnSubmitter: TToolButton
-      Left = 364
+      Left = 308
       Top = 0
       Action = actReport
       ImageIndex = 63
@@ -178,7 +150,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object btnEditSample: TToolButton
-      Left = 455
+      Left = 385
       Top = 0
       Action = actSampleInfo
       ImageIndex = 64
@@ -186,35 +158,35 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object btnTransfer: TToolButton
-      Left = 546
+      Left = 462
       Top = 0
       Caption = 'Transfer'
       ImageIndex = 68
       OnClick = btnTransferClick
     end
     object btnAdmin: TToolButton
-      Left = 637
+      Left = 539
       Top = 0
       Caption = 'DB Admin'
       ImageIndex = 75
       OnClick = btnAdminClick
     end
     object ToolButton10: TToolButton
-      Left = 728
+      Left = 616
       Top = 0
       Caption = 'DB Info'
       ImageIndex = 77
       OnClick = ToolButton10Click
     end
     object btnDBPlot: TToolButton
-      Left = 819
+      Left = 693
       Top = 0
       Caption = 'DB Plot'
       ImageIndex = 61
       OnClick = btnDBPlotClick
     end
     object btnShowPrior: TToolButton
-      Left = 910
+      Left = 770
       Top = 0
       Hint = 'create batches for prep and graphitization'
       Action = actLabPlan
@@ -224,7 +196,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton5: TToolButton
-      Left = 1001
+      Left = 847
       Top = 0
       Action = actLabTasks
       ImageIndex = 74
@@ -232,7 +204,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object btnShowPretreat: TToolButton
-      Left = 1092
+      Left = 924
       Top = 0
       Hint = 'show samples current status'
       Action = actLabStats
@@ -242,7 +214,7 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton7: TToolButton
-      Left = 1183
+      Left = 1001
       Top = 0
       Width = 8
       Caption = 'ToolButton7'
@@ -250,7 +222,7 @@ object frmMAMS: TfrmMAMS
       Style = tbsSeparator
     end
     object btnNewSample: TToolButton
-      Left = 1191
+      Left = 1009
       Top = 0
       Action = actOptions
       ImageIndex = 62
@@ -258,20 +230,20 @@ object frmMAMS: TfrmMAMS
       ShowHint = True
     end
     object ToolButton4: TToolButton
-      Left = 1282
+      Left = 1086
       Top = 0
       Action = actTables
       ImageIndex = 73
     end
     object ToolButton6: TToolButton
-      Left = 1373
+      Left = 1163
       Top = 0
       Caption = 'Accounting'
       ImageIndex = 70
       OnClick = ToolButton6Click
     end
     object ToolBtnSendMail: TToolButton
-      Left = 1464
+      Left = 1240
       Top = 0
       Action = actSendMail
       ImageIndex = 71
@@ -280,67 +252,51 @@ object frmMAMS: TfrmMAMS
   object pgtMain: TPageControl
     Left = 0
     Top = 47
-    Width = 1603
-    Height = 961
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
-    ActivePage = tbsSampleInfo
+    Width = 1412
+    Height = 753
+    ActivePage = tbsDBInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
     object tbsInsertSamples: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Insert samples'
       ImageIndex = 8
       object wizInputSamples: TJvWizard
         Left = 0
         Top = 0
-        Width = 1595
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1404
+        Height = 725
         ActivePage = wizStartPage
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
-        ButtonStart.Width = 106
+        ButtonStart.Width = 85
         ButtonLast.Caption = 'To &Last Page'
         ButtonLast.NumGlyphs = 1
-        ButtonLast.Width = 106
+        ButtonLast.Width = 85
         ButtonBack.Caption = '< &Back'
         ButtonBack.NumGlyphs = 1
-        ButtonBack.Width = 94
+        ButtonBack.Width = 76
         ButtonNext.Caption = '&Next >'
         ButtonNext.NumGlyphs = 1
-        ButtonNext.Width = 94
+        ButtonNext.Width = 75
         ButtonFinish.Caption = '&Finish'
         ButtonFinish.NumGlyphs = 1
-        ButtonFinish.Width = 94
+        ButtonFinish.Width = 75
         ButtonCancel.Caption = 'Cancel'
         ButtonCancel.NumGlyphs = 1
         ButtonCancel.ModalResult = 2
-        ButtonCancel.Width = 94
+        ButtonCancel.Width = 76
         ButtonHelp.Caption = '&Help'
         ButtonHelp.NumGlyphs = 1
-        ButtonHelp.Width = 94
+        ButtonHelp.Width = 75
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
         DesignSize = (
-          1595
-          930)
+          1404
+          725)
         object wizStartPage: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 'Input new samples from list as supplied by user'
@@ -366,42 +322,30 @@ object frmMAMS: TfrmMAMS
           object Panel4: TPanel
             Left = 0
             Top = 70
-            Width = 1414
-            Height = 133
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 1259
+            Height = 106
             Align = alTop
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -20
+            Font.Height = -16
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             TabOrder = 0
             object Label14: TLabel
-              Left = 150
-              Top = 23
-              Width = 163
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 120
+              Top = 18
+              Width = 130
+              Height = 19
               Alignment = taRightJustify
               Caption = 'Sample import file'
               WordWrap = True
             end
             object edtNewSamplesFilename: TJvFilenameEdit
-              Left = 320
-              Top = 21
-              Width = 971
-              Height = 32
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 256
+              Top = 17
+              Width = 777
+              Height = 27
               OnAfterDialog = edtNewSamplesFilenameAfterDialog
               Flat = False
               ParentFlat = False
@@ -411,27 +355,19 @@ object frmMAMS: TfrmMAMS
               Text = ''
             end
             object btnInsertNewUser: TButton
-              Left = 114
-              Top = 80
-              Width = 211
-              Height = 46
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 91
+              Top = 64
+              Width = 169
+              Height = 37
               Caption = 'Add new user'
               TabOrder = 1
               OnClick = btnInsertNewUserClick
             end
             object btnInsertExistingUser: TButton
-              Left = 710
-              Top = 80
-              Width = 341
-              Height = 46
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 568
+              Top = 64
+              Width = 273
+              Height = 37
               Caption = 'Use selected user'
               TabOrder = 2
               OnClick = btnInsertExistingUserClick
@@ -439,13 +375,9 @@ object frmMAMS: TfrmMAMS
           end
           object grdPreviewUser: TJvStringGrid
             Left = 0
-            Top = 203
-            Width = 451
-            Height = 685
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 176
+            Width = 361
+            Height = 507
             Align = alLeft
             ColCount = 2
             DefaultRowHeight = 20
@@ -460,33 +392,45 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
+            ColWidths = (
+              64
+              64)
+            RowHeights = (
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20)
           end
           object grdShowUsers: TDBGrid
-            Left = 451
-            Top = 203
-            Width = 963
-            Height = 685
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 361
+            Top = 176
+            Width = 898
+            Height = 507
             Align = alClient
             DataSource = dm.dsUserInfo
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 2
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
-            TitleFont.Height = -13
+            TitleFont.Height = -11
             TitleFont.Name = 'Tahoma'
             TitleFont.Style = []
             OnCellClick = grdShowUsersCellClick
           end
         end
         object wizInputInvoiceAddress: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 'Title'
@@ -509,42 +453,30 @@ object frmMAMS: TfrmMAMS
           object Panel29: TPanel
             Left = 0
             Top = 70
-            Width = 1414
-            Height = 90
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 1259
+            Height = 72
             Align = alTop
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -20
+            Font.Height = -16
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             TabOrder = 0
             object btnInsertNewInvoice: TButton
-              Left = 45
-              Top = 39
-              Width = 341
-              Height = 44
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 36
+              Top = 31
+              Width = 273
+              Height = 35
               Caption = 'Insert new invoice address'
               TabOrder = 0
               OnClick = btnInsertNewInvoiceClick
             end
             object btnInsertSelectedInvoice: TButton
-              Left = 614
-              Top = 43
-              Width = 341
-              Height = 40
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 491
+              Top = 34
+              Width = 273
+              Height = 32
               Caption = 'Use selected invoice address'
               TabOrder = 1
               OnClick = btnInsertSelectedInvoiceClick
@@ -552,13 +484,9 @@ object frmMAMS: TfrmMAMS
           end
           object grdInvoiceAddress: TJvStringGrid
             Left = 0
-            Top = 160
-            Width = 451
-            Height = 728
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 142
+            Width = 361
+            Height = 541
             Align = alLeft
             ColCount = 2
             DefaultRowHeight = 20
@@ -573,33 +501,45 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
+            ColWidths = (
+              64
+              64)
+            RowHeights = (
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20
+              20)
           end
           object grdShowInvoice: TDBGrid
-            Left = 451
-            Top = 160
-            Width = 963
-            Height = 728
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 361
+            Top = 142
+            Width = 898
+            Height = 541
             Align = alClient
             DataSource = dm.dsInvoice
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 2
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
-            TitleFont.Height = -13
+            TitleFont.Height = -11
             TitleFont.Name = 'Tahoma'
             TitleFont.Style = []
             OnCellClick = grdShowInvoiceCellClick
           end
         end
         object wizInputProject: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 'Define project'
@@ -622,129 +562,81 @@ object frmMAMS: TfrmMAMS
           object GroupBox4: TGroupBox
             Left = 0
             Top = 70
-            Width = 561
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 449
+            Height = 613
             Align = alLeft
             Caption = 'Project data'
             TabOrder = 0
             object Label15: TLabel
-              Left = 140
-              Top = 139
-              Width = 49
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 112
+              Top = 111
+              Width = 41
+              Height = 13
               Caption = 'Date in :'
             end
             object Label20: TLabel
-              Left = 116
-              Top = 181
-              Width = 72
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 93
+              Top = 145
+              Width = 60
+              Height = 13
               Caption = 'Result until :'
             end
             object Label21: TLabel
-              Left = 105
-              Top = 283
-              Width = 81
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 84
+              Top = 226
+              Width = 69
+              Height = 13
               Caption = 'Project type  :'
             end
             object Label22: TLabel
-              Left = 91
-              Top = 318
-              Width = 94
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 73
+              Top = 254
+              Width = 80
+              Height = 13
               Caption = 'Research type  :'
             end
             object Label23: TLabel
-              Left = 21
-              Top = 404
-              Width = 164
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 17
+              Top = 323
+              Width = 136
+              Height = 13
               Caption = 'Link to user documents at   :'
             end
             object Label1: TLabel
-              Left = 103
-              Top = 356
-              Width = 83
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 82
+              Top = 285
+              Width = 71
+              Height = 13
               Caption = 'Report  type  :'
             end
             object edtProjectName: TLabeledEdit
-              Left = 199
-              Top = 40
-              Width = 341
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
-              EditLabel.Width = 89
-              EditLabel.Height = 16
-              EditLabel.Margins.Left = 4
-              EditLabel.Margins.Top = 4
-              EditLabel.Margins.Right = 4
-              EditLabel.Margins.Bottom = 4
+              Left = 159
+              Top = 32
+              Width = 273
+              Height = 21
+              EditLabel.Width = 73
+              EditLabel.Height = 13
               EditLabel.Caption = 'Project name : '
               LabelPosition = lpLeft
               TabOrder = 0
               OnChange = edtProjectNameChange
             end
             object edtProjectComment: TLabeledEdit
-              Left = 199
-              Top = 78
-              Width = 341
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
-              EditLabel.Width = 68
-              EditLabel.Height = 16
-              EditLabel.Margins.Left = 4
-              EditLabel.Margins.Top = 4
-              EditLabel.Margins.Right = 4
-              EditLabel.Margins.Bottom = 4
+              Left = 159
+              Top = 62
+              Width = 273
+              Height = 21
+              EditLabel.Width = 55
+              EditLabel.Height = 13
               EditLabel.Caption = 'Comment : '
               LabelPosition = lpLeft
               TabOrder = 1
             end
             object rgpPriority: TRadioGroup
-              Left = 409
-              Top = 131
-              Width = 131
-              Height = 132
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 327
+              Top = 105
+              Width = 105
+              Height = 105
               Caption = 'Priority'
               ItemIndex = 1
               Items.Strings = (
@@ -754,62 +646,42 @@ object frmMAMS: TfrmMAMS
               TabOrder = 2
             end
             object edtPrice: TLabeledEdit
-              Left = 199
-              Top = 214
-              Width = 140
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
-              EditLabel.Width = 87
-              EditLabel.Height = 16
-              EditLabel.Margins.Left = 4
-              EditLabel.Margins.Top = 4
-              EditLabel.Margins.Right = 4
-              EditLabel.Margins.Bottom = 4
+              Left = 159
+              Top = 171
+              Width = 112
+              Height = 21
+              EditLabel.Width = 70
+              EditLabel.Height = 13
               EditLabel.Caption = 'Price/sample : '
               LabelPosition = lpLeft
               TabOrder = 3
               Text = '300'
             end
             object edtInDate: TJvDateTimePicker
-              Left = 199
-              Top = 139
-              Width = 140
+              Left = 159
+              Top = 111
+              Width = 112
               Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
               Date = 0.944212418980896500
               Time = 0.944212418980896500
               TabOrder = 4
               DropDownDate = 40191.000000000000000000
             end
             object edtDesiredDate: TJvDateTimePicker
-              Left = 199
-              Top = 176
-              Width = 140
+              Left = 159
+              Top = 141
+              Width = 112
               Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
               Date = 40139.944212418980000000
               Time = 40139.944212418980000000
               TabOrder = 5
               DropDownDate = 40139.000000000000000000
             end
             object cmbProjectType: TDBLookupComboBox
-              Left = 199
-              Top = 283
-              Width = 341
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 159
+              Top = 226
+              Width = 273
+              Height = 21
               DropDownRows = 10
               KeyField = 'indexnr'
               ListField = 'type'
@@ -818,14 +690,10 @@ object frmMAMS: TfrmMAMS
               TabOrder = 6
             end
             object cmbResearchType: TDBLookupComboBox
-              Left = 199
-              Top = 320
-              Width = 341
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 159
+              Top = 256
+              Width = 273
+              Height = 21
               KeyField = 'indexnr'
               ListField = 'research'
               ListFieldIndex = 1
@@ -833,14 +701,10 @@ object frmMAMS: TfrmMAMS
               TabOrder = 7
             end
             object cmbReportType: TDBLookupComboBox
-              Left = 200
-              Top = 359
-              Width = 341
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 160
+              Top = 287
+              Width = 273
+              Height = 21
               KeyField = 'indexnr'
               ListField = 'type'
               ListFieldIndex = 1
@@ -848,38 +712,26 @@ object frmMAMS: TfrmMAMS
               TabOrder = 8
             end
             object edtUserDocuments: TJvDirectoryEdit
-              Left = 199
-              Top = 400
-              Width = 340
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 159
+              Top = 320
+              Width = 272
+              Height = 21
               DialogKind = dkWin32
               ButtonWidth = 26
               TabOrder = 9
               Text = ''
             end
             object chkFreeOfCharge: TCheckBox
-              Left = 199
-              Top = 480
-              Width = 121
-              Height = 21
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 159
+              Top = 384
+              Width = 97
+              Height = 17
               Caption = 'Free Of Charge'
               TabOrder = 10
             end
           end
         end
         object wizSelectMaterial: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 'Select sample material and fraction'
@@ -906,30 +758,21 @@ object frmMAMS: TfrmMAMS
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
           object JvNetscapeSplitter2: TJvNetscapeSplitter
-            Left = 751
+            Left = 601
             Top = 70
-            Width = 13
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Height = 613
             Align = alLeft
             Maximized = False
             Minimized = False
             ButtonCursor = crDefault
-            ExplicitTop = 88
-            ExplicitHeight = 762
+            ExplicitTop = 56
+            ExplicitHeight = 654
           end
           object grdPreviewSamples: TJvStringGrid
             Left = 0
             Top = 70
-            Width = 751
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 601
+            Height = 613
             Align = alLeft
             ColCount = 10
             DefaultRowHeight = 20
@@ -942,55 +785,58 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
+            ColWidths = (
+              64
+              64
+              64
+              64
+              64
+              64
+              64
+              64
+              64
+              64)
+            RowHeights = (
+              20
+              20
+              20
+              20
+              20)
           end
           object pnlSetMaterial: TPanel
-            Left = 764
+            Left = 611
             Top = 70
-            Width = 650
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 648
+            Height = 613
             Align = alClient
             Caption = 'pnlSetMaterial'
             TabOrder = 1
             object Panel6: TPanel
               Left = 1
               Top = 1
-              Width = 648
-              Height = 816
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 646
+              Height = 611
               Align = alClient
               Caption = 'pnlSetMaterial'
               TabOrder = 0
               object lbxMaterial: TListBox
                 Left = 1
                 Top = 1
-                Width = 502
-                Height = 814
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 528
+                Height = 609
                 Align = alClient
+                ItemHeight = 13
                 TabOrder = 0
                 OnDblClick = lbxMaterialDblClick
                 OnMouseDown = lbxMaterialMouseDown
               end
               object lbxFraction: TListBox
-                Left = 503
+                Left = 529
                 Top = 1
-                Width = 144
-                Height = 814
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 116
+                Height = 609
                 Align = alRight
+                ItemHeight = 13
                 TabOrder = 1
                 OnDblClick = lbxFractionDblClick
                 OnMouseDown = lbxFractionMouseDown
@@ -999,10 +845,6 @@ object frmMAMS: TfrmMAMS
           end
         end
         object wizSelectType: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 'Select sample type'
@@ -1025,27 +867,20 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
           object pnlSetType: TPanel
-            Left = 1253
+            Left = 1130
             Top = 70
-            Width = 161
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 129
+            Height = 613
             Align = alRight
             Caption = 'pnlSetType'
             TabOrder = 0
             object lbxTypes: TListBox
               Left = 1
               Top = 1
-              Width = 159
-              Height = 816
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 127
+              Height = 611
               Align = alClient
+              ItemHeight = 13
               TabOrder = 0
               OnDblClick = lbxTypesDblClick
               OnMouseDown = lbxTypesMouseDown
@@ -1053,10 +888,6 @@ object frmMAMS: TfrmMAMS
           end
         end
         object wizSelectPretreatment: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 'Select pretreatment'
@@ -1078,24 +909,17 @@ object frmMAMS: TfrmMAMS
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
           object lbxDefinePrepSteps: TListBox
-            Left = 1173
+            Left = 1066
             Top = 70
-            Width = 241
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 193
+            Height = 613
             Align = alRight
+            ItemHeight = 13
             TabOrder = 0
             OnMouseDown = lbxDefinePrepStepsMouseDown
           end
         end
         object wizFinalPage: TJvWizardInteriorPage
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Header.ParentFont = False
           Header.Title.Color = clNone
           Header.Title.Text = 
@@ -1122,17 +946,13 @@ object frmMAMS: TfrmMAMS
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
-            Width = 1414
-            Height = 818
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 1259
+            Height = 613
             Align = alClient
             Color = clCream
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Arial'
             Font.Style = []
             Lines.Strings = (
@@ -1145,13 +965,9 @@ object frmMAMS: TfrmMAMS
         object JvWizardRouteMapList1: TJvWizardRouteMapList
           Left = 0
           Top = 0
-          Width = 181
-          Height = 888
+          Width = 145
+          Height = 683
           Cursor = crHandPoint
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           ActiveFont.Charset = DEFAULT_CHARSET
           ActiveFont.Color = clWindowText
           ActiveFont.Height = -13
@@ -1166,14 +982,10 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsProjectsOfUser: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'User projects'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ImageIndex = 9
@@ -1181,18 +993,14 @@ object frmMAMS: TfrmMAMS
       object gbxProjectsOfUser: TGroupBox
         Left = 0
         Top = 0
-        Width = 745
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 596
+        Height = 725
         Align = alLeft
         Caption = 'Projects of user'
         Ctl3D = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentCtl3D = False
@@ -1200,46 +1008,35 @@ object frmMAMS: TfrmMAMS
         TabOrder = 0
         object GroupBox30: TGroupBox
           Left = 1
-          Top = 71
-          Width = 743
-          Height = 858
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 58
+          Width = 594
+          Height = 666
           Align = alClient
-          Padding.Top = 19
+          Padding.Top = 15
           TabOrder = 0
           DesignSize = (
-            743
-            858)
+            594
+            666)
           object lbl_Project_NumberOfSamples: TLabel
-            Left = 20
-            Top = 325
-            Width = 82
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 16
+            Top = 260
+            Width = 67
+            Height = 16
             Caption = '# Samples:'
             Visible = False
           end
           object grdSamplesOfProject: TDBGrid
             Left = 0
-            Top = 349
-            Width = 735
-            Height = 396
-            Margins.Left = 4
+            Top = 279
+            Width = 588
+            Height = 317
             Margins.Top = 0
-            Margins.Right = 4
-            Margins.Bottom = 4
             Anchors = [akLeft, akTop, akBottom]
             Ctl3D = False
             DataSource = dm.dsSamplesOfProject
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -17
+            Font.Height = -14
             Font.Name = 'Tahoma'
             Font.Style = []
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1259,29 +1056,21 @@ object frmMAMS: TfrmMAMS
           end
           object Panel_Buttons: TPanel
             Left = 1
-            Top = 792
-            Width = 741
-            Height = 65
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 613
+            Width = 592
+            Height = 52
             Align = alBottom
             BevelOuter = bvLowered
             TabOrder = 1
             DesignSize = (
-              741
-              65)
+              592
+              52)
             object btn_report_page: TButton
               Left = 0
               Top = 2
-              Width = 94
-              Height = 61
+              Width = 75
+              Height = 48
               Hint = 'go to report page using the current project'
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
               Anchors = [akLeft, akBottom]
               Caption = 'report'
               ParentShowHint = False
@@ -1291,15 +1080,11 @@ object frmMAMS: TfrmMAMS
             end
           end
           object btnAddNewSamples: TButton
-            Left = 671
-            Top = 302
-            Width = 65
-            Height = 43
+            Left = 537
+            Top = 242
+            Width = 52
+            Height = 34
             Hint = 'add new sample to the selected project'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
@@ -1309,19 +1094,15 @@ object frmMAMS: TfrmMAMS
           end
           object grdProjects: TDBGrid
             Left = 1
-            Top = 39
-            Width = 741
-            Height = 255
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 32
+            Width = 592
+            Height = 204
             Align = alTop
             Ctl3D = False
             DataSource = dm.dsProjectsOfUser
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -17
+            Font.Height = -14
             Font.Name = 'Tahoma'
             Font.Style = []
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1337,15 +1118,11 @@ object frmMAMS: TfrmMAMS
             OnDrawColumnCell = grdProjectsDrawColumnCell
           end
           object btnAddNewProject: TButton
-            Left = 671
+            Left = 537
             Top = 1
-            Width = 65
-            Height = 38
+            Width = 52
+            Height = 30
             Hint = 'adds a new Project to the selected user'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
@@ -1357,30 +1134,23 @@ object frmMAMS: TfrmMAMS
         end
         object Panel33: TPanel
           Left = 1
-          Top = 20
-          Width = 743
-          Height = 51
-          Margins.Left = 4
+          Top = 17
+          Width = 594
+          Height = 41
           Margins.Top = 0
-          Margins.Right = 4
-          Margins.Bottom = 4
           Align = alTop
           Caption = 'Panel33'
           TabOrder = 1
           object cmbSubmitterNameProject: TDBLookupComboBox
-            Left = 8
+            Left = 6
             Top = 2
-            Width = 590
-            Height = 36
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 472
+            Height = 31
             Ctl3D = True
             DropDownRows = 25
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -25
+            Font.Height = -20
             Font.Name = 'Arial'
             Font.Style = []
             KeyField = 'user_nr'
@@ -1395,15 +1165,11 @@ object frmMAMS: TfrmMAMS
             OnKeyUp = cmbSubmitterNameProjectKeyUp
           end
           object btn_UserInfo: TButton
-            Left = 601
+            Left = 481
             Top = 0
-            Width = 68
-            Height = 43
+            Width = 54
+            Height = 34
             Hint = 'Show User Info'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Info'
             ParentShowHint = False
             ShowHint = True
@@ -1411,15 +1177,11 @@ object frmMAMS: TfrmMAMS
             OnClick = btn_UserInfoClick
           end
           object btnAddNewUser2: TButton
-            Left = 671
+            Left = 537
             Top = 0
-            Width = 63
-            Height = 43
+            Width = 50
+            Height = 34
             Hint = 'add new user'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
@@ -1429,177 +1191,125 @@ object frmMAMS: TfrmMAMS
         end
       end
       object Panel2: TPanel
-        Left = 745
+        Left = 596
         Top = 0
-        Width = 850
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 808
+        Height = 725
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 1
         object pgtSample: TPageControl
           Left = 1
           Top = 1
-          Width = 848
-          Height = 928
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 806
+          Height = 723
           ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -20
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
           TabOrder = 0
           OnChange = pgtSampleChange
           object tbsProject: TTabSheet
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Project data'
             ImageIndex = 3
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
-              Width = 840
-              Height = 889
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 798
+              Height = 689
               Align = alClient
               Caption = 'Project Data'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
-              Font.Height = -14
+              Font.Height = -11
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
               TabOrder = 0
               object Label16: TLabel
-                Left = 150
-                Top = 154
-                Width = 115
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 120
+                Top = 123
+                Width = 93
+                Height = 13
                 Caption = 'associated User nr.'
               end
               object Label67: TLabel
-                Left = 91
-                Top = 465
-                Width = 36
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 73
+                Top = 372
+                Width = 29
+                Height = 13
                 Caption = 'Letter'
               end
               object Label66: TLabel
-                Left = 71
-                Top = 291
-                Width = 57
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 57
+                Top = 233
+                Width = 45
+                Height = 13
                 Caption = 'Reported'
               end
               object Label65: TLabel
-                Left = 83
-                Top = 266
-                Width = 45
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 66
+                Top = 213
+                Width = 36
+                Height = 13
                 Caption = 'Desired'
               end
               object Label45: TLabel
-                Left = 73
-                Top = 240
-                Width = 55
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 58
+                Top = 192
+                Width = 44
+                Height = 13
                 Caption = 'Received'
               end
               object Label40: TLabel
-                Left = 35
-                Top = 506
-                Width = 96
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 28
+                Top = 405
+                Width = 74
+                Height = 13
                 Caption = 'Invoice number'
               end
               object Label27: TLabel
-                Left = 89
-                Top = 200
-                Width = 39
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 71
+                Top = 160
+                Width = 31
+                Height = 13
                 Caption = 'Status'
               end
               object Label26: TLabel
-                Left = 49
-                Top = 93
-                Width = 82
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 39
+                Top = 74
+                Width = 63
+                Height = 13
                 Caption = 'Project name'
               end
               object lbl_ProjectComment: TLabel
-                Left = 71
-                Top = 355
-                Width = 61
-                Height = 17
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 57
+                Top = 284
+                Width = 45
+                Height = 13
                 Caption = 'Comment'
               end
               object Label110: TLabel
-                Left = 200
-                Top = 121
-                Width = 65
-                Height = 17
+                Left = 160
+                Top = 97
+                Width = 51
+                Height = 13
+                Margins.Left = 2
+                Margins.Top = 2
+                Margins.Right = 2
+                Margins.Bottom = 2
                 Caption = 'Project nr.'
               end
               object DBEdit_AssocUserNr: TDBEdit
-                Left = 279
-                Top = 150
-                Width = 81
-                Height = 25
+                Left = 223
+                Top = 120
+                Width = 65
+                Height = 21
                 Hint = 'user nr associated with this project '
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
                 DataField = 'user_nr'
                 DataSource = dm.dsProject
                 ParentShowHint = False
@@ -1607,15 +1317,11 @@ object frmMAMS: TfrmMAMS
                 TabOrder = 0
               end
               object btnSaveInvoiceNr: TButton
-                Left = 145
-                Top = 615
-                Width = 216
-                Height = 50
+                Left = 116
+                Top = 492
+                Width = 173
+                Height = 40
                 Hint = 'Updates the database with the new Project data'
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
                 HotImageIndex = 76
                 ImageAlignment = iaCenter
                 ImageIndex = 76
@@ -1626,27 +1332,19 @@ object frmMAMS: TfrmMAMS
                 OnClick = btnSaveInvoiceNrClick
               end
               object DBEdit_Letter: TDBEdit
-                Left = 145
-                Top = 461
-                Width = 216
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 369
+                Width = 173
+                Height = 21
                 DataField = 'letter'
                 DataSource = dm.dsProject
                 TabOrder = 2
               end
               object JvDBDateTimePicker3: TJvDBDateTimePicker
-                Left = 145
-                Top = 284
-                Width = 109
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 227
+                Width = 87
+                Height = 21
                 Date = 40210.397922083340000000
                 Time = 40210.397922083340000000
                 TabOrder = 3
@@ -1656,14 +1354,10 @@ object frmMAMS: TfrmMAMS
                 DataSource = dm.dsProject
               end
               object JvDBDateTimePicker2: TJvDBDateTimePicker
-                Left = 145
-                Top = 259
-                Width = 109
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 207
+                Width = 87
+                Height = 21
                 Date = 40210.397922083340000000
                 Time = 40210.397922083340000000
                 TabOrder = 4
@@ -1673,14 +1367,10 @@ object frmMAMS: TfrmMAMS
                 DataSource = dm.dsProject
               end
               object JvDBDateTimePicker1: TJvDBDateTimePicker
-                Left = 145
-                Top = 234
-                Width = 109
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 187
+                Width = 87
+                Height = 21
                 Date = 40210.397922083340000000
                 Time = 40210.397922083340000000
                 TabOrder = 5
@@ -1690,31 +1380,23 @@ object frmMAMS: TfrmMAMS
                 DataSource = dm.dsProject
               end
               object DBEdit_InvoiceNumber: TDBEdit
-                Left = 145
-                Top = 501
-                Width = 216
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 401
+                Width = 173
+                Height = 21
                 DataField = 'invoice_nr'
                 DataSource = dm.dsProject
                 TabOrder = 6
               end
               object DBLookupComboBox1: TDBLookupComboBox
-                Left = 145
-                Top = 193
-                Width = 216
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 154
+                Width = 173
+                Height = 21
                 DropDownRows = 20
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -14
+                Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = []
                 KeyField = 'indexnr'
@@ -1724,40 +1406,28 @@ object frmMAMS: TfrmMAMS
                 TabOrder = 7
               end
               object DBEdit_ProjectName: TDBEdit
-                Left = 145
-                Top = 89
-                Width = 216
-                Height = 25
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 71
+                Width = 173
+                Height = 21
                 DataField = 'project'
                 DataSource = dm.dsProject
                 TabOrder = 8
               end
               object DBMemo_ProjectComment: TDBMemo
-                Left = 144
-                Top = 351
-                Width = 217
-                Height = 65
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 115
+                Top = 281
+                Width = 174
+                Height = 52
                 DataField = 'project_comment'
                 DataSource = dm.dsProject
                 TabOrder = 9
               end
               object dbchkFreeOfCharge1: TDBCheckBox
-                Left = 145
-                Top = 563
-                Width = 121
-                Height = 21
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 116
+                Top = 450
+                Width = 97
+                Height = 17
                 Caption = 'free of charge'
                 DataField = 'FreeOfCharge'
                 DataSource = dm.dsProject
@@ -1767,18 +1437,26 @@ object frmMAMS: TfrmMAMS
                 OnClick = dbchkFreeOfCharge1Click
               end
               object gbxProjectTools: TGroupBox
-                Left = 497
-                Top = 85
-                Width = 176
-                Height = 331
+                Left = 398
+                Top = 68
+                Width = 140
+                Height = 265
+                Margins.Left = 2
+                Margins.Top = 2
+                Margins.Right = 2
+                Margins.Bottom = 2
                 Caption = 'Project Tools'
                 TabOrder = 11
                 object btnSetSamplingDateTo1950: TButton
-                  Left = 3
-                  Top = 32
-                  Width = 169
-                  Height = 49
+                  Left = 2
+                  Top = 26
+                  Width = 136
+                  Height = 39
                   Hint = 'set the sampling date of all samples of this project to 1950'
+                  Margins.Left = 2
+                  Margins.Top = 2
+                  Margins.Right = 2
+                  Margins.Bottom = 2
                   Caption = '1950'
                   ParentShowHint = False
                   ShowHint = True
@@ -1787,10 +1465,14 @@ object frmMAMS: TfrmMAMS
                 end
               end
               object DBEditProjectNr: TDBEdit
-                Left = 280
-                Top = 118
-                Width = 81
-                Height = 25
+                Left = 224
+                Top = 94
+                Width = 65
+                Height = 21
+                Margins.Left = 2
+                Margins.Top = 2
+                Margins.Right = 2
+                Margins.Bottom = 2
                 DataField = 'project_nr'
                 DataSource = dm.dsProject
                 TabOrder = 12
@@ -1798,104 +1480,79 @@ object frmMAMS: TfrmMAMS
             end
           end
           object tbsSampleOfProject: TTabSheet
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Sample data'
             object gbxSampleRight: TGroupBox
-              Left = 441
+              Left = 353
               Top = 0
-              Width = 399
-              Height = 889
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 445
+              Height = 689
               Align = alClient
               TabOrder = 0
               object GroupBox35: TGroupBox
                 Left = 2
-                Top = 26
-                Width = 395
-                Height = 448
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Top = 21
+                Width = 441
+                Height = 358
                 Align = alTop
                 Caption = 'Target'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = []
-                Padding.Top = 6
+                Padding.Top = 5
                 ParentFont = False
                 TabOrder = 0
                 object gbxTargetData: TGroupBox
                   Left = 2
-                  Top = 27
-                  Width = 258
-                  Height = 419
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Top = 23
+                  Width = 206
+                  Height = 333
                   Align = alLeft
                   Caption = 'Data'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -14
+                  Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
                   object grdTarget: TMdRecordView
                     Left = 2
-                    Top = 19
-                    Width = 254
-                    Height = 398
-                    Margins.Left = 4
-                    Margins.Top = 4
-                    Margins.Right = 4
-                    Margins.Bottom = 4
+                    Top = 15
+                    Width = 202
+                    Height = 316
                     DataSource = dm.dsTarget
                     Align = alClient
                     DefaultRowHeight = 18
                     TabOrder = 0
                     ColWidths = (
                       64
-                      164)
+                      116)
+                    RowHeights = (
+                      18
+                      18)
                   end
                 end
                 object gbxTargetComment: TGroupBox
-                  Left = 260
-                  Top = 27
-                  Width = 133
-                  Height = 419
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 208
+                  Top = 23
+                  Width = 231
+                  Height = 333
                   Align = alClient
                   Caption = 'Comment'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -14
+                  Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
                   object DBMemoTargetComment: TDBMemo
                     Left = 2
-                    Top = 19
-                    Width = 129
-                    Height = 398
-                    Margins.Left = 4
-                    Margins.Top = 4
-                    Margins.Right = 4
-                    Margins.Bottom = 4
+                    Top = 15
+                    Width = 227
+                    Height = 316
                     Align = alClient
                     DataField = 'target_comment'
                     DataSource = dm.dsTarget
@@ -1905,18 +1562,14 @@ object frmMAMS: TfrmMAMS
               end
               object GroupBox36: TGroupBox
                 Left = 2
-                Top = 474
-                Width = 395
-                Height = 413
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Top = 379
+                Width = 441
+                Height = 308
                 Align = alClient
                 Caption = 'Dates'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = []
                 ParentFont = False
@@ -1926,96 +1579,75 @@ object frmMAMS: TfrmMAMS
             object gbxSampleLeft: TGroupBox
               Left = 0
               Top = 0
-              Width = 441
-              Height = 889
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 353
+              Height = 689
               Align = alLeft
               TabOrder = 1
               object gbxSelectPretreatment: TGroupBox
                 Left = 2
-                Top = 474
-                Width = 437
-                Height = 413
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Top = 379
+                Width = 349
+                Height = 308
                 Align = alClient
                 Caption = 'Pretreatment'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = []
-                Padding.Top = 6
+                Padding.Top = 5
                 ParentFont = False
                 TabOrder = 0
                 object GroupBox29: TGroupBox
                   Left = 2
-                  Top = 27
-                  Width = 260
-                  Height = 384
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Top = 23
+                  Width = 208
+                  Height = 283
                   Align = alLeft
                   Caption = 'Steps'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -14
+                  Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
                   object grdShowPrepSteps: TMdRecordView
                     Left = 2
-                    Top = 19
-                    Width = 256
-                    Height = 363
-                    Margins.Left = 4
-                    Margins.Top = 4
-                    Margins.Right = 4
-                    Margins.Bottom = 4
+                    Top = 15
+                    Width = 204
+                    Height = 266
                     DataSource = dm.dsPrepSteps
                     Align = alClient
                     DefaultRowHeight = 18
                     TabOrder = 0
                     ColWidths = (
                       64
-                      166)
+                      118)
+                    RowHeights = (
+                      18
+                      18)
                   end
                 end
                 object GroupBox32: TGroupBox
-                  Left = 262
-                  Top = 27
-                  Width = 173
-                  Height = 384
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 210
+                  Top = 23
+                  Width = 137
+                  Height = 283
                   Align = alClient
                   Caption = 'Comment'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
-                  Font.Height = -14
+                  Font.Height = -11
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
                   object DBMemo2: TDBMemo
                     Left = 2
-                    Top = 19
-                    Width = 169
-                    Height = 363
-                    Margins.Left = 4
-                    Margins.Top = 4
-                    Margins.Right = 4
-                    Margins.Bottom = 4
+                    Top = 15
+                    Width = 133
+                    Height = 266
                     Align = alClient
                     DataField = 'prep_comment'
                     DataSource = dm.dsPrepSteps
@@ -2025,74 +1657,57 @@ object frmMAMS: TfrmMAMS
               end
               object GroupBox34: TGroupBox
                 Left = 2
-                Top = 26
-                Width = 437
-                Height = 448
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Top = 21
+                Width = 349
+                Height = 358
                 Align = alTop
                 Caption = 'Sample'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = []
-                Padding.Top = 13
+                Padding.Top = 10
                 ParentFont = False
                 TabOrder = 1
                 object GroupBox1: TGroupBox
                   Left = 2
-                  Top = 34
-                  Width = 258
-                  Height = 412
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Top = 28
+                  Width = 206
+                  Height = 328
                   Align = alLeft
                   Caption = 'Data'
                   TabOrder = 0
                   object grdSample: TMdRecordView
                     Left = 2
-                    Top = 21
-                    Width = 431
-                    Height = 389
-                    Margins.Left = 4
-                    Margins.Top = 4
-                    Margins.Right = 4
-                    Margins.Bottom = 4
+                    Top = 18
+                    Width = 344
+                    Height = 308
                     DataSource = dm.dsSample
                     Align = alLeft
                     DefaultRowHeight = 18
                     TabOrder = 0
                     ColWidths = (
                       64
-                      341)
+                      258)
+                    RowHeights = (
+                      18
+                      18)
                   end
                 end
                 object GroupBox9: TGroupBox
-                  Left = 260
-                  Top = 34
-                  Width = 175
-                  Height = 412
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 208
+                  Top = 28
+                  Width = 139
+                  Height = 328
                   Align = alClient
                   Caption = 'Lab Comment'
                   TabOrder = 1
                   object DBMemo3: TDBMemo
                     Left = 2
-                    Top = 21
-                    Width = 171
-                    Height = 389
-                    Margins.Left = 4
-                    Margins.Top = 4
-                    Margins.Right = 4
-                    Margins.Bottom = 4
+                    Top = 18
+                    Width = 135
+                    Height = 308
                     Align = alClient
                     DataField = 'lab_comment'
                     DataSource = dm.dsSample
@@ -2103,46 +1718,30 @@ object frmMAMS: TfrmMAMS
             end
           end
           object tbsFoto: TTabSheet
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Sample foto'
             ImageIndex = 1
             object SampleFoto: TImage
               Left = 0
-              Top = 51
-              Width = 840
-              Height = 838
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Top = 41
+              Width = 798
+              Height = 648
               Align = alClient
               Stretch = True
-              ExplicitWidth = 825
-              ExplicitHeight = 807
+              ExplicitWidth = 672
+              ExplicitHeight = 670
             end
             object Panel27: TPanel
               Left = 0
               Top = 0
-              Width = 840
-              Height = 51
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Width = 798
+              Height = 41
               Align = alTop
               TabOrder = 0
               object StaticText4: TStaticText
-                Left = 20
-                Top = 15
-                Width = 710
-                Height = 28
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Left = 16
+                Top = 12
+                Width = 564
+                Height = 23
                 Caption = 
                   'connect to the network drive (\\Riesling\KTA) if the foto is not' +
                   ' being displayed '
@@ -2151,66 +1750,42 @@ object frmMAMS: TfrmMAMS
             end
           end
           object TabSheet5: TTabSheet
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Calibration graph'
             ImageIndex = 2
             object JvImage1: TJvImage
-              Left = 145
-              Top = 36
-              Width = 656
-              Height = 555
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 116
+              Top = 29
+              Width = 525
+              Height = 444
             end
           end
           object tbsProjectDocs: TTabSheet
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Project docs'
             ImageIndex = 4
             object btnProjectLetters: TButton
-              Left = 39
-              Top = 120
-              Width = 271
-              Height = 41
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 31
+              Top = 96
+              Width = 217
+              Height = 33
               Caption = 'Project Letters'
               Enabled = False
               TabOrder = 0
               OnClick = btnProjectLettersClick
             end
             object btnSampleSpreadsheet: TButton
-              Left = 39
-              Top = 169
-              Width = 271
-              Height = 41
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 31
+              Top = 135
+              Width = 217
+              Height = 33
               Caption = 'Sample Spreadsheet'
               Enabled = False
               TabOrder = 1
             end
             object Button1: TButton
-              Left = 39
-              Top = 218
-              Width = 271
-              Height = 41
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 31
+              Top = 174
+              Width = 217
+              Height = 33
               Caption = 'Report'
               Enabled = False
               TabOrder = 2
@@ -2220,75 +1795,48 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsLabPlan: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Lab plan'
       ImageIndex = 8
       object gbxBatch: TGroupBox
-        Left = 1218
+        Left = 1102
         Top = 0
-        Width = 377
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 302
+        Height = 725
         Align = alRight
         Caption = 'Batch'
         TabOrder = 0
         object lbxBatch: TListBox
           Left = 2
-          Top = 149
-          Width = 373
-          Height = 589
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 120
+          Width = 298
+          Height = 451
           Align = alClient
+          ItemHeight = 13
           TabOrder = 0
           OnDragDrop = lbxBatchDragDrop
           OnDragOver = lbxBatchDragOver
         end
         object Panel8: TPanel
           Left = 2
-          Top = 18
-          Width = 373
-          Height = 131
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 298
+          Height = 105
           Align = alTop
           TabOrder = 1
           object Label106: TLabel
-            Left = 20
-            Top = 108
-            Width = 79
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 16
+            Top = 86
+            Width = 69
+            Height = 13
             Caption = 'Batch Content'
           end
           object edtBatchName: TLabeledEdit
-            Left = 23
-            Top = 46
-            Width = 318
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            EditLabel.Width = 83
-            EditLabel.Height = 16
-            EditLabel.Margins.Left = 4
-            EditLabel.Margins.Top = 4
-            EditLabel.Margins.Right = 4
-            EditLabel.Margins.Bottom = 4
+            Left = 18
+            Top = 37
+            Width = 255
+            Height = 21
+            EditLabel.Width = 70
+            EditLabel.Height = 13
             EditLabel.Caption = 'Name of batch'
             TabOrder = 0
             OnChange = edtBatchNameChange
@@ -2296,24 +1844,16 @@ object frmMAMS: TfrmMAMS
         end
         object Panel5: TPanel
           Left = 2
-          Top = 738
-          Width = 373
-          Height = 190
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 571
+          Width = 298
+          Height = 152
           Align = alBottom
           TabOrder = 2
           object btnSaveBatch: TButton
-            Left = 121
-            Top = 18
-            Width = 150
-            Height = 56
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 97
+            Top = 14
+            Width = 120
+            Height = 45
             Caption = 'save batch'
             ImageIndex = 76
             ImageMargins.Left = 5
@@ -2322,15 +1862,11 @@ object frmMAMS: TfrmMAMS
             OnClick = btnSaveBatchClick
           end
           object btnPrintBatch: TButton
-            Left = 120
-            Top = 130
-            Width = 151
-            Height = 48
+            Left = 96
+            Top = 104
+            Width = 121
+            Height = 38
             Hint = 'print pre-treatment protocols'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'print'
             ParentShowHint = False
             ShowHint = True
@@ -2339,14 +1875,10 @@ object frmMAMS: TfrmMAMS
             OnClick = btnPrintBatchClick
           end
           object edtFilenamePrepDocTemplate: TJvFilenameEdit
-            Left = 20
-            Top = 96
-            Width = 331
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 16
+            Top = 77
+            Width = 265
+            Height = 21
             ButtonWidth = 26
             TabOrder = 2
             Text = ''
@@ -2357,43 +1889,31 @@ object frmMAMS: TfrmMAMS
       object GroupBoxCreateTargets: TGroupBox
         Left = 0
         Top = 0
-        Width = 211
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 169
+        Height = 725
         Align = alLeft
         Caption = 'Create Targets'
         TabOrder = 1
         DesignSize = (
-          211
-          930)
+          169
+          725)
         object Label91: TLabel
-          Left = 18
-          Top = 271
-          Width = 104
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 14
+          Top = 217
+          Width = 88
+          Height = 13
           Caption = 'Number of targets'
         end
         object lblOxa: TLabel
-          Left = 18
-          Top = 409
-          Width = 45
-          Height = 19
+          Left = 14
+          Top = 327
+          Width = 35
+          Height = 16
           Hint = 'number of Oxa2'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'lblOxa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -2401,19 +1921,15 @@ object frmMAMS: TfrmMAMS
           ShowHint = True
         end
         object lblBlank: TLabel
-          Left = 18
-          Top = 435
-          Width = 55
-          Height = 19
+          Left = 14
+          Top = 348
+          Width = 43
+          Height = 16
           Hint = 'number of Pthalic acids'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'lblBlank'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -2421,34 +1937,26 @@ object frmMAMS: TfrmMAMS
           ShowHint = True
         end
         object Label100: TLabel
-          Left = 18
-          Top = 385
-          Width = 148
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 14
+          Top = 308
+          Width = 124
+          Height = 13
           Caption = 'Available for Analysis:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
         object btnCreateSamples: TButton
-          Left = 18
-          Top = 301
-          Width = 181
-          Height = 40
+          Left = 14
+          Top = 241
+          Width = 145
+          Height = 32
           Hint = 
             'create selected number of targets, User name will be set to '#39'int' +
             'ern'#39
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Create'
           ParentShowHint = False
           ShowHint = True
@@ -2456,15 +1964,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnCreateSamplesClick
         end
         object rgpSampleType: TRadioGroup
-          Left = 18
-          Top = 41
-          Width = 181
-          Height = 223
+          Left = 14
+          Top = 33
+          Width = 145
+          Height = 178
           Hint = 'select type of the new sample and its targets to be created'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Sample Type'
           ItemIndex = 0
           Items.Strings = (
@@ -2480,32 +1984,24 @@ object frmMAMS: TfrmMAMS
           TabOrder = 1
         end
         object edtNumberOfTargets: TJvSpinEdit
-          Left = 148
-          Top = 268
-          Width = 51
-          Height = 24
+          Left = 118
+          Top = 214
+          Width = 41
+          Height = 21
           Hint = 'number of targtes to be created for the  selected sample type'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Value = 5.000000000000000000
           ParentShowHint = False
           ShowHint = True
           TabOrder = 2
         end
         object memoOxaBlank: TMemo
-          Left = 4
-          Top = 463
-          Width = 196
-          Height = 433
+          Left = 3
+          Top = 370
+          Width = 157
+          Height = 347
           Hint = 
             'number of Oxas and Blanks that are already available (graphitize' +
             'd)'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Anchors = [akLeft, akTop, akBottom]
           Lines.Strings = (
             '')
@@ -2515,15 +2011,11 @@ object frmMAMS: TfrmMAMS
           TabOrder = 3
         end
         object btnUpdateNoOxBlanks: TButton
-          Left = 125
-          Top = 409
-          Width = 66
-          Height = 46
+          Left = 100
+          Top = 327
+          Width = 53
+          Height = 37
           Hint = 'update number of available Oxas and Blanks'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           ImageAlignment = iaCenter
           ImageIndex = 72
           Images = ImageList2
@@ -2534,43 +2026,31 @@ object frmMAMS: TfrmMAMS
         end
       end
       object GroupBox31: TGroupBox
-        Left = 211
+        Left = 169
         Top = 0
-        Width = 1007
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 933
+        Height = 725
         Align = alClient
         Caption = 'Create Batches'
         TabOrder = 2
         object Panel7: TPanel
           Left = 2
-          Top = 18
-          Width = 1003
-          Height = 91
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 929
+          Height = 73
           Align = alTop
           TabOrder = 0
           object rgpTask: TRadioGroup
             Left = 1
             Top = 1
-            Width = 382
-            Height = 89
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 305
+            Height = 71
             Align = alLeft
             Caption = 'create batch for'
             Columns = 2
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ItemIndex = 0
@@ -2582,19 +2062,15 @@ object frmMAMS: TfrmMAMS
             OnClick = rgpTaskClick
           end
           object btnRefreshSamplesAvailable: TButton
-            Left = 818
+            Left = 654
             Top = 1
-            Width = 93
-            Height = 89
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 75
+            Height = 71
             Align = alLeft
             Caption = 'Apply query'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
@@ -2603,54 +2079,38 @@ object frmMAMS: TfrmMAMS
             OnClick = btnRefreshSamplesAvailableClick
           end
           object pnlPrepChoice: TPanel
-            Left = 383
+            Left = 306
             Top = 1
-            Width = 435
-            Height = 89
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 348
+            Height = 71
             Align = alLeft
             BevelEdges = []
             BevelOuter = bvNone
             TabOrder = 2
             object Label25: TLabel
-              Left = 8
-              Top = 51
-              Width = 51
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 6
+              Top = 41
+              Width = 43
+              Height = 13
               Caption = 'Method :'
             end
             object lblFilterSampleType: TLabel
-              Left = 26
-              Top = 19
-              Width = 33
-              Height = 16
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 21
+              Top = 15
+              Width = 28
+              Height = 13
               Caption = 'Type:'
             end
             object cmbPretreatMethod: TDBLookupComboBox
-              Left = 69
-              Top = 45
-              Width = 359
-              Height = 27
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 55
+              Top = 36
+              Width = 287
+              Height = 24
               DropDownRows = 20
               Enabled = False
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
-              Font.Height = -16
+              Font.Height = -13
               Font.Name = 'Arial'
               Font.Style = [fsBold]
               KeyField = 'indexnr'
@@ -2661,14 +2121,10 @@ object frmMAMS: TfrmMAMS
               OnClick = cmbPretreatMethodClick
             end
             object cmbFilterSampleMaterial: TDBLookupComboBox
-              Left = 70
-              Top = 11
-              Width = 358
-              Height = 24
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 56
+              Top = 9
+              Width = 286
+              Height = 21
               KeyField = 'indexnr'
               ListField = 'material'
               ListSource = dm.dsMaterial
@@ -2677,31 +2133,23 @@ object frmMAMS: TfrmMAMS
             end
           end
           object Panel1: TPanel
-            Left = 911
+            Left = 729
             Top = 1
-            Width = 160
-            Height = 89
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 128
+            Height = 71
             Align = alLeft
             BevelOuter = bvNone
             TabOrder = 3
             object JvDBStatusLabel3: TJvDBStatusLabel
-              Left = 21
-              Top = 31
-              Width = 138
-              Height = 19
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Left = 17
+              Top = 25
+              Width = 111
+              Height = 16
               DataSource = dm.dsSamplesAvailable
               Style = lsRecordNo
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
-              Font.Height = -16
+              Font.Height = -13
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
@@ -2711,25 +2159,17 @@ object frmMAMS: TfrmMAMS
         end
         object gbxSamplesAvailable: TGroupBox
           Left = 2
-          Top = 109
-          Width = 1003
-          Height = 819
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 88
+          Width = 929
+          Height = 635
           Align = alClient
           Caption = 'Samples available'
           TabOrder = 1
           object grdSamplesAvailable: TJvDBGrid
             Left = 2
-            Top = 38
-            Width = 999
-            Height = 779
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 32
+            Width = 925
+            Height = 601
             Align = alClient
             DataSource = dm.dsSamplesAvailable
             Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
@@ -2737,7 +2177,7 @@ object frmMAMS: TfrmMAMS
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
-            TitleFont.Height = -13
+            TitleFont.Height = -11
             TitleFont.Name = 'Tahoma'
             TitleFont.Style = []
             OnCellClick = grdSamplesAvailableCellClick
@@ -2748,18 +2188,14 @@ object frmMAMS: TfrmMAMS
             SelectColumnsDialogStrings.OK = '&OK'
             SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
             EditControls = <>
-            RowsHeight = 20
-            TitleRowHeight = 20
+            RowsHeight = 17
+            TitleRowHeight = 17
           end
           object StaticText1: TStaticText
             Left = 2
-            Top = 18
-            Width = 999
-            Height = 20
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Top = 15
+            Width = 925
+            Height = 17
             Align = alTop
             Caption = 'Double Click on a sample to add it to a batch.'
             TabOrder = 1
@@ -2768,14 +2204,10 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsLabTasks: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Lab tasks'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ImageIndex = 7
@@ -2783,36 +2215,24 @@ object frmMAMS: TfrmMAMS
       object GroupBox13: TGroupBox
         Left = 0
         Top = 0
-        Width = 371
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 297
+        Height = 725
         Align = alLeft
         Caption = 'Batch Information'
         TabOrder = 0
         object Panel9: TPanel
           Left = 2
-          Top = 84
-          Width = 367
-          Height = 62
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 68
+          Width = 293
+          Height = 50
           Align = alTop
           TabOrder = 0
           object btnLoadBatch: TButton
-            Left = 3
+            Left = 2
             Top = 0
-            Width = 361
-            Height = 54
+            Width = 289
+            Height = 43
             Hint = 'get batches from database'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Load batches'
             ParentShowHint = False
             ShowHint = True
@@ -2822,13 +2242,9 @@ object frmMAMS: TfrmMAMS
         end
         object rgpLabTask: TRadioGroup
           Left = 2
-          Top = 21
-          Width = 367
-          Height = 63
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 18
+          Width = 293
+          Height = 50
           Align = alTop
           Columns = 2
           ItemIndex = 1
@@ -2840,20 +2256,16 @@ object frmMAMS: TfrmMAMS
         end
         object grdActiveBatches: TJvDBGrid
           Left = 2
-          Top = 146
-          Width = 367
-          Height = 343
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 118
+          Width = 293
+          Height = 274
           Align = alTop
           DataSource = dm.dsActiveBatches
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 2
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -16
+          TitleFont.Height = -13
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnCellClick = grdActiveBatchesCellClick
@@ -2861,25 +2273,21 @@ object frmMAMS: TfrmMAMS
           SelectColumnsDialogStrings.OK = '&OK'
           SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
           EditControls = <>
-          RowsHeight = 23
-          TitleRowHeight = 23
+          RowsHeight = 20
+          TitleRowHeight = 20
         end
         object grdSamplesOfLabTask: TJvDBGrid
           Left = 2
-          Top = 489
-          Width = 367
-          Height = 439
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 392
+          Width = 293
+          Height = 331
           Align = alClient
           DataSource = dm.dsSamplesOfLabtask
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 3
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -16
+          TitleFont.Height = -13
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnCellClick = grdSamplesOfLabTaskCellClick
@@ -2887,174 +2295,124 @@ object frmMAMS: TfrmMAMS
           SelectColumnsDialogStrings.OK = '&OK'
           SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
           EditControls = <>
-          RowsHeight = 23
-          TitleRowHeight = 23
+          RowsHeight = 20
+          TitleRowHeight = 20
         end
       end
       object pgtLabTasks: TPageControl
-        Left = 371
+        Left = 297
         Top = 0
-        Width = 1224
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1107
+        Height = 725
         ActivePage = tbsGraphTask
         Align = alClient
         TabOrder = 1
         object tbsPrepTask: TTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'tbsPrepTask'
           object GroupBox14: TGroupBox
             Left = 0
             Top = 0
-            Width = 296
-            Height = 896
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 237
+            Height = 694
             Align = alLeft
             Caption = 'Predefined steps'
             TabOrder = 0
             object lbPrepTimesHelp: TJvMarkupLabel
               Left = 2
-              Top = 21
-              Width = 292
-              Height = 201
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Top = 18
+              Width = 233
+              Height = 161
               Text = ''
               Align = alTop
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
-              Font.Height = -16
+              Font.Height = -13
               Font.Name = 'Tahoma'
               Font.Style = []
               Color = 16054758
               ParentColor = False
               ParentFont = False
-              ExplicitLeft = 3
-              ExplicitTop = 23
-              ExplicitWidth = 291
+              ExplicitTop = 17
             end
             object lbxPrepSteps: TListBox
               Left = 2
-              Top = 222
-              Width = 292
-              Height = 301
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Top = 179
+              Width = 233
+              Height = 240
               Align = alTop
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
-              Font.Height = -20
+              Font.Height = -16
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
-              ItemHeight = 24
+              ItemHeight = 19
               ParentFont = False
               TabOrder = 0
               OnClick = lbxPrepStepsClick
             end
           end
           object gbxPresentTask: TGroupBox
-            Left = 296
+            Left = 237
             Top = 0
-            Width = 920
-            Height = 896
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 862
+            Height = 694
             Align = alClient
             Caption = 'Present task'
             TabOrder = 1
             object Panel10: TPanel
               Left = 2
-              Top = 21
-              Width = 916
-              Height = 158
-              Margins.Left = 4
-              Margins.Top = 4
-              Margins.Right = 4
-              Margins.Bottom = 4
+              Top = 18
+              Width = 858
+              Height = 126
               Align = alTop
               TabOrder = 0
               object GroupBox16: TGroupBox
-                Left = 181
+                Left = 145
                 Top = 1
-                Width = 180
-                Height = 156
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 144
+                Height = 124
                 Align = alLeft
                 Caption = 'End'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 0
                 object dtEndTaskDate: TDateTimePicker
-                  Left = 10
-                  Top = 33
-                  Width = 163
-                  Height = 27
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 8
+                  Top = 26
+                  Width = 130
+                  Height = 24
                   Date = 40163.574474456020000000
                   Time = 40163.574474456020000000
                   TabOrder = 0
                 end
                 object dtEndTime: TDateTimePicker
-                  Left = -1136
-                  Top = 439
-                  Width = 157
-                  Height = 27
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = -909
+                  Top = 351
+                  Width = 126
+                  Height = 24
                   Date = 40163.574474456020000000
                   Time = 40163.574474456020000000
                   Kind = dtkTime
                   TabOrder = 1
                 end
                 object btnEndTask: TButton
-                  Left = 9
-                  Top = 108
-                  Width = 162
-                  Height = 31
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 7
+                  Top = 86
+                  Width = 130
+                  Height = 25
                   Caption = 'Set in database'
                   TabOrder = 2
                   OnClick = btnEndTaskClick
                 end
                 object dtEndTaskTime: TDateTimePicker
-                  Left = 8
-                  Top = 70
-                  Width = 162
-                  Height = 27
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 6
+                  Top = 56
+                  Width = 130
+                  Height = 24
                   Date = 40163.574474456020000000
                   Format = 'HH:mm'
                   Time = 40163.574474456020000000
@@ -3065,43 +2423,31 @@ object frmMAMS: TfrmMAMS
               object GroupBox17: TGroupBox
                 Left = 1
                 Top = 1
-                Width = 180
-                Height = 156
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 144
+                Height = 124
                 Align = alLeft
                 Caption = 'Start'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 1
                 object dtStartTaskDate: TDateTimePicker
-                  Left = 9
-                  Top = 33
-                  Width = 162
-                  Height = 27
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 7
+                  Top = 26
+                  Width = 130
+                  Height = 24
                   Date = 40163.574474456020000000
                   Time = 40163.574474456020000000
                   TabOrder = 0
                 end
                 object dtStartTaskTime: TDateTimePicker
-                  Left = 9
-                  Top = 70
-                  Width = 162
-                  Height = 27
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 7
+                  Top = 56
+                  Width = 130
+                  Height = 24
                   Date = 40163.574474456020000000
                   Format = 'HH:mm'
                   Time = 40163.574474456020000000
@@ -3109,33 +2455,25 @@ object frmMAMS: TfrmMAMS
                   TabOrder = 1
                 end
                 object btnStartTask: TButton
-                  Left = 9
-                  Top = 108
-                  Width = 162
-                  Height = 31
-                  Margins.Left = 4
-                  Margins.Top = 4
-                  Margins.Right = 4
-                  Margins.Bottom = 4
+                  Left = 7
+                  Top = 86
+                  Width = 130
+                  Height = 25
                   Caption = 'Set in database'
                   TabOrder = 2
                   OnClick = btnStartTaskClick
                 end
               end
               object btnSetSampleReadyForGraph: TBitBtn
-                Left = 361
+                Left = 289
                 Top = 1
-                Width = 132
-                Height = 156
-                Margins.Left = 4
-                Margins.Top = 4
-                Margins.Right = 4
-                Margins.Bottom = 4
+                Width = 105
+                Height = 124
                 Align = alLeft
                 Caption = 'Set sample ready for graphitization'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -16
+                Font.Height = -13
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
@@ -3147,166 +2485,110 @@ object frmMAMS: TfrmMAMS
           end
         end
         object tbsGraphTask: TTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'tbsGraphTask'
           ImageIndex = 1
         end
       end
     end
     object tbsUserReport: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'User report'
       ImageIndex = 6
       object Panel13: TPanel
         Left = 0
         Top = 0
-        Width = 1595
-        Height = 261
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1404
+        Height = 209
         Align = alTop
         TabOrder = 0
         object GroupBox15: TGroupBox
-          Left = 769
+          Left = 615
           Top = 0
-          Width = 672
-          Height = 269
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 538
+          Height = 215
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
-            Left = 25
-            Top = 51
-            Width = 54
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 41
+            Width = 44
+            Height = 13
             Caption = 'Template'
           end
           object Label19: TLabel
-            Left = 23
-            Top = 111
-            Width = 126
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 18
+            Top = 89
+            Width = 104
+            Height = 16
             Caption = 'Save report as ....'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
           end
           object Label108: TLabel
-            Left = 24
-            Top = 139
-            Width = 38
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 19
+            Top = 111
+            Width = 32
+            Height = 13
             Caption = 'folder:'
           end
           object Label109: TLabel
-            Left = 25
-            Top = 191
-            Width = 144
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 153
+            Width = 120
+            Height = 13
             Caption = 'file name (no extension):'
           end
           object btnReport: TButton
-            Left = 488
-            Top = 191
-            Width = 145
-            Height = 50
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 390
+            Top = 153
+            Width = 116
+            Height = 40
             Caption = 'Create report'
             TabOrder = 0
             WordWrap = True
             OnClick = btnReportClick
           end
           object edtWordTemplate: TJvFilenameEdit
-            Left = 21
-            Top = 71
-            Width = 610
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 17
+            Top = 57
+            Width = 488
+            Height = 21
             ButtonWidth = 26
             TabOrder = 1
             Text = 'edtWordTemplate'
           end
           object chkCalBP: TCheckBox
-            Left = 23
-            Top = 28
-            Width = 178
-            Height = 13
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 18
+            Top = 22
+            Width = 143
+            Height = 11
             Caption = 'cal BP (instead of AD/BC)'
             TabOrder = 2
           end
           object chkPreliminaryReport: TCheckBox
-            Left = 359
-            Top = 214
-            Width = 121
-            Height = 21
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 287
+            Top = 171
+            Width = 97
+            Height = 17
             Caption = 'preliminary'
             TabOrder = 3
           end
           object edtReportFileName: TEdit
-            Left = 24
-            Top = 211
-            Width = 277
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 19
+            Top = 169
+            Width = 222
+            Height = 21
             TabOrder = 4
             OnChange = edtReportFileNameChange
           end
           object edtSaveReportToFolder: TJvDirectoryEdit
-            Left = 23
-            Top = 158
-            Width = 608
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 18
+            Top = 126
+            Width = 487
+            Height = 21
             AcceptFiles = False
             DialogKind = dkWin32
             DialogText = 'select folder'
@@ -3316,15 +2598,11 @@ object frmMAMS: TfrmMAMS
             Text = ''
           end
           object btnGuessReportName: TButton
-            Left = 306
-            Top = 211
-            Width = 32
-            Height = 28
+            Left = 245
+            Top = 169
+            Width = 25
+            Height = 22
             Hint = 'Guess the report name from the user name and report number'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = '<'
             ParentShowHint = False
             ShowHint = True
@@ -3335,127 +2613,87 @@ object frmMAMS: TfrmMAMS
         object GroupBox26: TGroupBox
           Left = 1
           Top = 1
-          Width = 760
-          Height = 259
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 608
+          Height = 207
           Align = alLeft
           Caption = 'Data Selection'
           TabOrder = 1
           object Jahr: TLabel
-            Left = 179
-            Top = 114
-            Width = 15
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 143
+            Top = 91
+            Width = 12
+            Height = 13
             Caption = 'To'
           end
           object JvDBStatusLabel5: TJvDBStatusLabel
-            Left = 4
-            Top = 223
-            Width = 138
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 3
+            Top = 178
+            Width = 111
+            Height = 16
             DataSource = dm.dsSampleOfSubmitter
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             Transparent = True
           end
           object Label17: TLabel
-            Left = 111
-            Top = 73
-            Width = 56
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 89
+            Top = 58
+            Width = 47
+            Height = 13
             Caption = 'or project'
           end
           object Label41: TLabel
-            Left = 15
-            Top = 31
-            Width = 56
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 12
+            Top = 25
+            Width = 46
+            Height = 13
             Caption = 'Submitter'
           end
           object Label46: TLabel
-            Left = 48
-            Top = 114
-            Width = 31
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 38
+            Top = 91
+            Width = 26
+            Height = 13
             Caption = 'Year:'
           end
           object Label47: TLabel
-            Left = 9
-            Top = 148
-            Width = 69
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 7
+            Top = 118
+            Width = 37
+            Height = 26
             Caption = 'Sample Nr.:'
             WordWrap = True
           end
           object Label48: TLabel
-            Left = 179
-            Top = 148
-            Width = 15
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 143
+            Top = 118
+            Width = 12
+            Height = 13
             Caption = 'To'
           end
           object lblReport: TLabel
-            Left = 594
-            Top = 70
-            Width = 66
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 475
+            Top = 56
+            Width = 53
+            Height = 16
             Caption = 'lblProject'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
           end
           object radgrpStatus: TRadioGroup
-            Left = 293
-            Top = 101
-            Width = 152
-            Height = 113
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 234
+            Top = 81
+            Width = 122
+            Height = 90
             Caption = 'Flags'
             ItemIndex = 3
             Items.Strings = (
@@ -3466,14 +2704,10 @@ object frmMAMS: TfrmMAMS
             TabOrder = 0
           end
           object rgpExport: TRadioGroup
-            Left = 453
-            Top = 101
-            Width = 133
-            Height = 113
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 362
+            Top = 81
+            Width = 107
+            Height = 90
             Caption = 'Export Style'
             ItemIndex = 0
             Items.Strings = (
@@ -3483,15 +2717,11 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
           end
           object btnExport: TButton
-            Left = 453
-            Top = 211
-            Width = 133
-            Height = 30
+            Left = 362
+            Top = 169
+            Width = 107
+            Height = 24
             Hint = 'Export displayed table according to "Export style"'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'Export'
             ParentShowHint = False
             ShowHint = True
@@ -3499,15 +2729,11 @@ object frmMAMS: TfrmMAMS
             OnClick = btnExportClick
           end
           object btnQuerySubmitter: TBitBtn
-            Left = 594
-            Top = 106
-            Width = 150
-            Height = 135
+            Left = 475
+            Top = 85
+            Width = 120
+            Height = 108
             Hint = 'reload samples'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -3554,44 +2780,32 @@ object frmMAMS: TfrmMAMS
             OnClick = btnQuerySubmitterClick
           end
           object chkAllProjects: TCheckBox
-            Left = 14
-            Top = 71
-            Width = 87
-            Height = 22
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 11
+            Top = 57
+            Width = 70
+            Height = 17
             Alignment = taLeftJustify
             Caption = 'All projects'
             TabOrder = 4
             OnClick = chkAllProjectsClick
           end
           object chkLECurrent: TCheckBox
-            Left = 84
-            Top = 178
-            Width = 121
-            Height = 21
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 67
+            Top = 142
+            Width = 97
+            Height = 17
             Caption = 'Show LE current'
             TabOrder = 5
           end
           object cmbProjectOfReport: TDBLookupComboBox
-            Left = 178
-            Top = 64
-            Width = 408
-            Height = 27
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 142
+            Top = 51
+            Width = 327
+            Height = 24
             DropDownRows = 10
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Arial'
             Font.Style = [fsBold]
             KeyField = 'project_nr'
@@ -3602,17 +2816,13 @@ object frmMAMS: TfrmMAMS
             OnCloseUp = cmbProjectOfReportCloseUp
           end
           object cmbSubmNameReport: TDBLookupComboBox
-            Left = 80
-            Top = 26
-            Width = 506
-            Height = 27
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 64
+            Top = 21
+            Width = 405
+            Height = 24
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Arial'
             Font.Style = [fsBold]
             KeyField = 'user_nr'
@@ -3626,97 +2836,69 @@ object frmMAMS: TfrmMAMS
             OnKeyUp = cmbSubmNameReportKeyUp
           end
           object edtEndAna: TJvValidateEdit
-            Left = 200
-            Top = 144
-            Width = 86
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 160
+            Top = 115
+            Width = 69
+            Height = 21
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
             TabOrder = 8
           end
           object edtEndYear: TJvValidateEdit
-            Left = 201
-            Top = 110
-            Width = 85
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 161
+            Top = 88
+            Width = 68
+            Height = 21
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
             TabOrder = 9
           end
           object edtStartAna: TJvValidateEdit
-            Left = 85
-            Top = 144
-            Width = 86
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 68
+            Top = 115
+            Width = 69
+            Height = 21
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '1'
             TabOrder = 10
           end
           object edtStartYear: TJvValidateEdit
-            Left = 85
-            Top = 110
-            Width = 86
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 68
+            Top = 88
+            Width = 69
+            Height = 21
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
             TabOrder = 11
           end
           object StaticText5: TStaticText
-            Left = 594
-            Top = 50
-            Width = 58
-            Height = 20
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 475
+            Top = 40
+            Width = 50
+            Height = 17
             Caption = 'Project#:'
             TabOrder = 12
           end
         end
         object btnSendMailEnglish: TButton
-          Left = 1466
-          Top = 123
-          Width = 94
-          Height = 60
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 1173
+          Top = 98
+          Width = 75
+          Height = 48
           Caption = 'Send confirmation'
           TabOrder = 2
           WordWrap = True
           OnClick = btnSendMailEnglishClick
         end
         object btnSendMailGerman: TButton
-          Left = 1466
-          Top = 183
-          Width = 94
-          Height = 57
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 1173
+          Top = 146
+          Width = 75
+          Height = 46
           Caption = 'Best'#228'tigung mailen'
           TabOrder = 3
           WordWrap = True
@@ -3725,20 +2907,16 @@ object frmMAMS: TfrmMAMS
       end
       object grdSamplesOfSubmitter: TDBGrid
         Left = 0
-        Top = 261
-        Width = 1595
-        Height = 669
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 209
+        Width = 1404
+        Height = 516
         Align = alClient
         DataSource = dm.dsSampleOfSubmitter
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
-        TitleFont.Height = -13
+        TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnDrawColumnCell = grdSamplesOfSubmitterDrawColumnCell
@@ -3748,34 +2926,22 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsSampleInfo: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Sample info'
       ImageIndex = 9
       object gbxSampleIdetification: TGroupBox
         Left = 0
         Top = 0
-        Width = 1595
-        Height = 83
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1404
+        Height = 66
         Align = alTop
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
         object btnIncSampleNr: TSpinButton
-          Left = 238
-          Top = 23
-          Width = 25
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 190
+          Top = 18
+          Width = 20
+          Height = 25
           DownGlyph.Data = {
             0E010000424D0E01000000000000360000002800000009000000060000000100
             200000000000D800000000000000000000000000000000000000008080000080
@@ -3801,50 +2967,34 @@ object frmMAMS: TfrmMAMS
           OnUpClick = btnIncSampleNrUpClick
         end
         object Panel15: TGroupBox
-          Left = 571
-          Top = 19
-          Width = 383
-          Height = 56
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 457
+          Top = 15
+          Width = 306
+          Height = 45
           Color = clBtnFace
           ParentColor = False
           TabOrder = 1
           object Label42: TLabel
-            Left = 50
-            Top = 18
-            Width = 87
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 40
+            Top = 14
+            Width = 74
+            Height = 13
             Caption = 'Preparation Nr.'
             Transparent = True
           end
           object lbPrepNr: TLabel
-            Left = 93
-            Top = 34
-            Width = 22
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 74
+            Top = 27
+            Width = 20
+            Height = 13
             Caption = '1..2'
             Transparent = True
           end
           object edtSamplePrepNr: TJvSpinEdit
-            Left = 149
-            Top = 14
-            Width = 57
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 119
+            Top = 11
+            Width = 46
+            Height = 21
             TabStop = False
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
@@ -3853,14 +3003,10 @@ object frmMAMS: TfrmMAMS
             OnChange = edtSamplePrepNrChange
           end
           object btnNewPrep: TBitBtn
-            Left = 292
+            Left = 234
             Top = 0
-            Width = 91
-            Height = 56
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 72
+            Height = 45
             Caption = 'New prep.'
             TabOrder = 1
             TabStop = False
@@ -3869,50 +3015,34 @@ object frmMAMS: TfrmMAMS
           end
         end
         object Panel11: TGroupBox
-          Left = 962
-          Top = 19
-          Width = 269
-          Height = 56
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 770
+          Top = 15
+          Width = 215
+          Height = 45
           Color = clBtnFace
           ParentColor = False
           TabOrder = 2
           object lbTarget: TLabel
-            Left = 25
-            Top = 18
-            Width = 59
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 14
+            Width = 50
+            Height = 13
             Caption = 'Target Nr.'
             Transparent = True
           end
           object lbTargetnr: TLabel
-            Left = 44
-            Top = 34
-            Width = 22
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 35
+            Top = 27
+            Width = 20
+            Height = 13
             Caption = '1..2'
             Transparent = True
           end
           object edtSampleTargetNr: TJvSpinEdit
-            Left = 94
-            Top = 14
-            Width = 47
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 75
+            Top = 11
+            Width = 38
+            Height = 21
             TabStop = False
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
@@ -3921,14 +3051,10 @@ object frmMAMS: TfrmMAMS
             OnChange = edtSampleTargetNrChange
           end
           object btnNewTarget: TBitBtn
-            Left = 175
+            Left = 140
             Top = 0
-            Width = 94
-            Height = 56
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 75
+            Height = 45
             Caption = 'New target'
             TabOrder = 1
             TabStop = False
@@ -3936,53 +3062,41 @@ object frmMAMS: TfrmMAMS
           end
         end
         object GroupBox19: TGroupBox
-          Left = 6
-          Top = 19
-          Width = 558
-          Height = 56
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 5
+          Top = 15
+          Width = 446
+          Height = 45
           Color = clBtnFace
           ParentBackground = False
           ParentColor = False
           TabOrder = 3
           object Label29: TLabel
-            Left = 14
-            Top = 16
-            Width = 96
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 11
+            Top = 13
+            Width = 77
+            Height = 19
             Caption = 'Sample nr.'
             Color = clMoneyGreen
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -20
+            Font.Height = -16
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentColor = False
             ParentFont = False
           end
           object edtSampleNr: TJvValidateEdit
-            Left = 116
-            Top = 13
-            Width = 148
-            Height = 32
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 93
+            Top = 10
+            Width = 118
+            Height = 27
             Color = clMoneyGreen
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '1'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -20
+            Font.Height = -16
             Font.Name = 'Tahoma'
             Font.Style = []
             MaxValue = 100000000.000000000000000000
@@ -3992,15 +3106,11 @@ object frmMAMS: TfrmMAMS
             OnKeyUp = edtSampleNrKeyUp
           end
           object btnDoSampleQuery: TBitBtn
-            Left = 294
+            Left = 235
             Top = 0
-            Width = 263
-            Height = 56
+            Width = 211
+            Height = 45
             Hint = 'query database'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -4049,14 +3159,10 @@ object frmMAMS: TfrmMAMS
             OnClick = btnDoSampleQueryClick
           end
           object btnSampleNrUpDown: TUpDown
-            Left = 265
-            Top = 16
-            Width = 21
-            Height = 31
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 212
+            Top = 13
+            Width = 17
+            Height = 25
             Min = -100000000
             Max = 100000000
             TabOrder = 2
@@ -4065,207 +3171,135 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxTarget: TGroupBox
-        Left = 956
-        Top = 83
-        Width = 275
-        Height = 847
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 765
+        Top = 66
+        Width = 220
+        Height = 659
         Align = alLeft
         Caption = 'Graphitization and target'
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 3
         DesignSize = (
-          275
-          847)
+          220
+          659)
         object Label103: TLabel
-          Left = 8
-          Top = 595
-          Width = 55
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 6
+          Top = 476
+          Width = 45
+          Height = 13
           Caption = 'Comment'
         end
         object Label12: TLabel
-          Left = 43
-          Top = 90
-          Width = 45
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 34
+          Top = 72
+          Width = 40
+          Height = 13
           Caption = 'Catalyst'
         end
         object Label59: TLabel
-          Left = 45
-          Top = 115
-          Width = 45
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 36
+          Top = 92
+          Width = 38
+          Height = 13
           Caption = 'CO2 init'
         end
         object Label60: TLabel
-          Left = 38
-          Top = 140
-          Width = 52
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 30
+          Top = 112
+          Width = 44
+          Height = 13
           Caption = 'CO2 final'
         end
         object Label61: TLabel
-          Left = 55
-          Top = 166
-          Width = 36
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 44
+          Top = 133
+          Width = 30
+          Height = 13
           Caption = 'H2 init'
         end
         object Label62: TLabel
-          Left = 48
-          Top = 190
-          Width = 43
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 38
+          Top = 152
+          Width = 36
+          Height = 13
           Caption = 'H2 final'
         end
         object Label63: TLabel
-          Left = 24
-          Top = 224
-          Width = 65
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 19
+          Top = 179
+          Width = 55
+          Height = 13
           Caption = 'React. time'
         end
         object Label64: TLabel
-          Left = 41
-          Top = 284
-          Width = 49
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 33
+          Top = 227
+          Width = 41
+          Height = 13
           Caption = 'Pressed '
         end
         object Label71: TLabel
-          Left = 18
-          Top = 44
-          Width = 71
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 14
+          Top = 35
+          Width = 60
+          Height = 13
           Caption = 'Weight used'
         end
         object Label90: TLabel
-          Left = 25
-          Top = 260
-          Width = 64
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 208
+          Width = 54
+          Height = 13
           Caption = 'Graphitized'
         end
         object Label92: TLabel
-          Left = 40
-          Top = 350
-          Width = 69
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 32
+          Top = 280
+          Width = 59
+          Height = 13
           Caption = 'Graph batch'
         end
         object Label95: TLabel
-          Left = 23
-          Top = 308
-          Width = 65
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 18
+          Top = 246
+          Width = 56
+          Height = 13
           Caption = 'graph_date'
         end
         object gbxEAData: TGroupBox
-          Left = 8
-          Top = 420
-          Width = 260
-          Height = 121
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 6
+          Top = 336
+          Width = 208
+          Height = 97
           Caption = 'EA data'
           TabOrder = 0
           object Label43: TLabel
-            Left = 21
-            Top = 31
-            Width = 24
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 17
+            Top = 25
+            Width = 21
+            Height = 13
             Caption = 'C %'
           end
           object Label44: TLabel
-            Left = 21
-            Top = 55
-            Width = 24
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 17
+            Top = 44
+            Width = 21
+            Height = 13
             Caption = 'N %'
           end
           object Label49: TLabel
-            Left = 25
-            Top = 83
-            Width = 21
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 66
+            Width = 18
+            Height = 13
             Caption = 'C:N'
           end
           object edtSampleCPercent: TDBEdit
-            Left = 56
-            Top = 28
-            Width = 65
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 45
+            Top = 22
+            Width = 52
+            Height = 21
             TabStop = False
             Ctl3D = True
             DataField = 'conc_c'
@@ -4274,14 +3308,10 @@ object frmMAMS: TfrmMAMS
             TabOrder = 0
           end
           object edtSampleNPercent: TDBEdit
-            Left = 56
-            Top = 53
-            Width = 65
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 45
+            Top = 42
+            Width = 52
+            Height = 21
             TabStop = False
             Ctl3D = True
             DataField = 'conc_n'
@@ -4290,14 +3320,10 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
           end
           object edtSampleCNRatio: TDBEdit
-            Left = 56
-            Top = 78
-            Width = 65
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 45
+            Top = 62
+            Width = 52
+            Height = 21
             TabStop = False
             Ctl3D = True
             DataField = 'cn_ratio'
@@ -4308,15 +3334,11 @@ object frmMAMS: TfrmMAMS
             TabOrder = 2
           end
           object btnSaveCN: TBitBtn
-            Left = 120
-            Top = 27
-            Width = 85
-            Height = 76
+            Left = 96
+            Top = 22
+            Width = 68
+            Height = 60
             Hint = 'Save changes'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -4367,14 +3389,10 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesGraph: TBitBtn
           Left = 1
-          Top = 700
-          Width = 274
-          Height = 50
+          Top = 560
+          Width = 219
+          Height = 40
           Hint = 'Save changes'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -4424,15 +3442,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveChangesGraphClick
         end
         object btnFillDateToday: TButton
-          Left = 224
-          Top = 280
-          Width = 34
-          Height = 24
+          Left = 179
+          Top = 224
+          Width = 27
+          Height = 19
           Hint = 'set all fields to todays date'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'T'
           ParentShowHint = False
           ShowHint = True
@@ -4441,15 +3455,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnFillDateTodayClick
         end
         object chkTargetDiscarded: TDBCheckBox
-          Left = 96
-          Top = 565
-          Width = 98
-          Height = 20
+          Left = 77
+          Top = 452
+          Width = 78
+          Height = 16
           Hint = 'target discarded'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           TabStop = False
           Caption = 'Discarded'
           DataField = 'stop_1'
@@ -4462,14 +3472,10 @@ object frmMAMS: TfrmMAMS
           OnClick = chkTargetDiscardedClick
         end
         object edtCatalyst: TDBEdit
-          Left = 100
-          Top = 88
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 70
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'catalyst'
@@ -4480,14 +3486,10 @@ object frmMAMS: TfrmMAMS
           OnClick = edtWeightCombustionClick
         end
         object edtCO2final: TDBEdit
-          Left = 100
-          Top = 138
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 110
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'co2_final'
@@ -4498,14 +3500,10 @@ object frmMAMS: TfrmMAMS
           OnClick = edtWeightCombustionClick
         end
         object edtCO2init: TDBEdit
-          Left = 100
-          Top = 113
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 90
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'co2_init'
@@ -4516,14 +3514,10 @@ object frmMAMS: TfrmMAMS
           OnClick = edtWeightCombustionClick
         end
         object edtGraphBatch: TDBEdit
-          Left = 38
-          Top = 374
-          Width = 183
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 30
+          Top = 299
+          Width = 147
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'graph_batch'
@@ -4533,14 +3527,10 @@ object frmMAMS: TfrmMAMS
           OnChange = edtGraphBatchChange
         end
         object edtGraphDate: TJvDBDateTimePicker
-          Left = 100
-          Top = 255
-          Width = 121
+          Left = 80
+          Top = 204
+          Width = 97
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 9
@@ -4552,14 +3542,10 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object edtGraphitized: TJvDBDateTimePicker
-          Left = 100
-          Top = 303
-          Width = 121
+          Left = 80
+          Top = 242
+          Width = 97
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 10
@@ -4571,14 +3557,10 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object edtH2final: TDBEdit
-          Left = 100
-          Top = 188
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 150
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'hydro_final'
@@ -4589,14 +3571,10 @@ object frmMAMS: TfrmMAMS
           OnClick = edtWeightCombustionClick
         end
         object edtH2init: TDBEdit
-          Left = 100
-          Top = 163
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 130
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'hydro_init'
@@ -4607,14 +3585,10 @@ object frmMAMS: TfrmMAMS
           OnClick = edtWeightCombustionClick
         end
         object edtReactTime: TDBEdit
-          Left = 100
-          Top = 221
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 177
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'react_time'
@@ -4625,14 +3599,10 @@ object frmMAMS: TfrmMAMS
           OnClick = edtWeightCombustionClick
         end
         object edtTargetPressed: TJvDBDateTimePicker
-          Left = 100
-          Top = 279
-          Width = 121
+          Left = 80
+          Top = 223
+          Width = 97
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 14
@@ -4644,14 +3614,10 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object edtWeightCombustion: TDBEdit
-          Left = 100
-          Top = 40
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 32
+          Width = 97
+          Height = 21
           Ctl3D = True
           DataField = 'weight_combustion'
           DataSource = dm.dsGraphWeight
@@ -4662,13 +3628,9 @@ object frmMAMS: TfrmMAMS
         end
         object memTargetComments: TDBMemo
           Left = 1
-          Top = 619
-          Width = 270
-          Height = 72
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 495
+          Width = 216
+          Height = 58
           TabStop = False
           Ctl3D = True
           DataField = 'target_comment'
@@ -4679,157 +3641,105 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxAdministration: TGroupBox
-        Left = 299
-        Top = 83
-        Width = 267
-        Height = 847
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 239
+        Top = 66
+        Width = 214
+        Height = 659
         Align = alLeft
         Caption = 'Project Administration'
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 4
         DesignSize = (
-          267
-          847)
+          214
+          659)
         object Label28: TLabel
-          Left = 45
-          Top = 285
-          Width = 64
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 36
+          Top = 228
+          Width = 56
+          Height = 13
           Caption = 'ReportDate'
         end
         object Label37: TLabel
-          Left = 60
-          Top = 236
-          Width = 51
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 48
+          Top = 189
+          Width = 44
+          Height = 13
           Caption = 'Received'
         end
         object Label39: TLabel
-          Left = 69
-          Top = 261
-          Width = 43
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 55
+          Top = 209
+          Width = 36
+          Height = 13
           Caption = 'Desired'
         end
         object Label53: TLabel
-          Left = 74
-          Top = 339
-          Width = 36
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 59
+          Top = 271
+          Width = 31
+          Height = 13
           Caption = 'Status'
         end
         object Label24: TLabel
-          Left = 25
-          Top = 161
-          Width = 66
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 129
+          Width = 54
+          Height = 13
           Caption = 'MA number'
         end
         object Label3: TLabel
-          Left = 25
-          Top = 491
-          Width = 43
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 393
+          Width = 36
+          Height = 13
           Caption = 'User Nr'
         end
         object Label31: TLabel
-          Left = 28
-          Top = 61
-          Width = 76
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 22
+          Top = 49
+          Width = 63
+          Height = 13
           Caption = 'Project name'
         end
         object Label32: TLabel
-          Left = 25
-          Top = 440
-          Width = 62
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 352
+          Width = 51
+          Height = 13
           Caption = 'User name'
         end
         object Label93: TLabel
-          Left = 25
-          Top = 541
-          Width = 42
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 433
+          Width = 36
+          Height = 13
           Caption = 'Report '
         end
         object Label97: TLabel
-          Left = 25
-          Top = 113
-          Width = 89
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 90
+          Width = 74
+          Height = 13
           Caption = 'Project Number'
         end
         object Comment: TLabel
-          Left = 8
-          Top = 595
-          Width = 55
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 6
+          Top = 476
+          Width = 45
+          Height = 13
           Caption = 'Comment'
         end
         object cmbProjectStatus: TDBLookupComboBox
-          Left = 120
-          Top = 333
-          Width = 121
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 96
+          Top = 266
+          Width = 97
+          Height = 21
           Ctl3D = True
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
           KeyField = 'indexnr'
@@ -4841,14 +3751,10 @@ object frmMAMS: TfrmMAMS
           TabStop = False
         end
         object edtSampleInfoDesiredDate: TJvDBDateTimePicker
-          Left = 123
-          Top = 256
-          Width = 118
+          Left = 98
+          Top = 205
+          Width = 95
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 1
@@ -4859,14 +3765,10 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object edtSampleInfoInDate: TJvDBDateTimePicker
-          Left = 123
-          Top = 233
-          Width = 118
+          Left = 98
+          Top = 186
+          Width = 95
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 2
@@ -4877,14 +3779,10 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object edtSampleInfoOutDate: TJvDBDateTimePicker
-          Left = 123
-          Top = 280
-          Width = 118
+          Left = 98
+          Top = 224
+          Width = 95
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 3
@@ -4895,15 +3793,11 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object btnChangeProject: TButton
-          Left = 188
-          Top = 129
-          Width = 53
-          Height = 29
+          Left = 150
+          Top = 103
+          Width = 43
+          Height = 23
           Hint = 'Changes the associated project of that sample.'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'change'
           ParentShowHint = False
           ShowHint = True
@@ -4912,14 +3806,10 @@ object frmMAMS: TfrmMAMS
           OnClick = btnChangeProjectClick
         end
         object edtInvoiceNr: TDBEdit
-          Left = 25
-          Top = 180
-          Width = 216
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 144
+          Width = 173
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'invoice_nr'
@@ -4929,14 +3819,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 5
         end
         object edtProjectNr: TDBEdit
-          Left = 25
-          Top = 130
-          Width = 155
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 104
+          Width = 124
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'project_nr'
@@ -4946,14 +3832,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 6
         end
         object edtReport: TDBEdit
-          Left = 25
-          Top = 560
-          Width = 216
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 448
+          Width = 173
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'report'
@@ -4963,14 +3845,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 7
         end
         object edtSampleProjectName: TDBEdit
-          Left = 25
-          Top = 80
-          Width = 216
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 64
+          Width = 173
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'project'
@@ -4980,14 +3858,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 8
         end
         object edtSampleUser: TDBEdit
-          Left = 25
-          Top = 459
-          Width = 216
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 367
+          Width = 173
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'last_name'
@@ -4997,14 +3871,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 9
         end
         object edtUserNr: TDBEdit
-          Left = 25
-          Top = 510
-          Width = 106
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 408
+          Width = 85
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'user_nr'
@@ -5015,16 +3885,12 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesAdmin: TBitBtn
           Left = 1
-          Top = 700
-          Width = 266
-          Height = 50
+          Top = 560
+          Width = 213
+          Height = 40
           Hint = 
             'Saving changes to the project data will update all samples that ' +
             'belong to this project.'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -5074,20 +3940,16 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveChangesAdminClick
         end
         object dbchkFreeOfCharge2: TDBCheckBox
-          Left = 70
-          Top = 399
-          Width = 121
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 56
+          Top = 319
+          Width = 97
+          Height = 17
           Caption = 'free of charge'
           DataField = 'FreeOfCharge'
           DataSource = dm.dsSampleInfo
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -5097,14 +3959,10 @@ object frmMAMS: TfrmMAMS
           OnClick = dbchkFreeOfCharge2Click
         end
         object DBMemo_ProjComment: TDBMemo
-          Left = 11
-          Top = 619
-          Width = 253
-          Height = 72
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 9
+          Top = 495
+          Width = 202
+          Height = 58
           Ctl3D = True
           DataField = 'project_comment'
           DataSource = dm.dsSampleInfo
@@ -5113,302 +3971,214 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxAnaResults: TGroupBox
-        Left = 1231
-        Top = 83
-        Width = 284
-        Height = 847
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 985
+        Top = 66
+        Width = 227
+        Height = 659
         Align = alLeft
         Caption = 'Analysis Results (target)'
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 5
         object Label2: TLabel
-          Left = 60
-          Top = 119
-          Width = 18
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 48
+          Top = 95
+          Width = 14
+          Height = 13
           Caption = 'Fm'
         end
         object Label4: TLabel
-          Left = 150
-          Top = 118
-          Width = 13
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 120
+          Top = 94
+          Width = 12
+          Height = 13
           Caption = '+-'
         end
         object Label5: TLabel
-          Left = 46
-          Top = 191
-          Width = 29
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 37
+          Top = 153
+          Width = 25
+          Height = 13
           Caption = 'd13C'
         end
         object Label6: TLabel
-          Left = 150
-          Top = 191
-          Width = 13
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 120
+          Top = 153
+          Width = 12
+          Height = 13
           Caption = '+-'
         end
         object Label7: TLabel
-          Left = 20
-          Top = 143
-          Width = 59
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 114
+          Width = 46
+          Height = 13
           Caption = 'C14 Age'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 150
-          Top = 143
-          Width = 17
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 120
+          Top = 114
+          Width = 14
+          Height = 13
           Caption = '+-'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label9: TLabel
-          Left = 44
-          Top = 243
-          Width = 33
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 35
+          Top = 194
+          Width = 27
+          Height = 13
           Caption = 'cal 1s'
         end
         object Label11: TLabel
-          Left = 44
-          Top = 266
-          Width = 33
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 35
+          Top = 213
+          Width = 27
+          Height = 13
           Caption = 'cal 2s'
         end
         object Label10: TLabel
-          Left = 39
-          Top = 316
-          Width = 41
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 31
+          Top = 253
+          Width = 35
+          Height = 13
           Caption = 'Calcset'
         end
         object Label38: TLabel
-          Left = 21
-          Top = 44
-          Width = 54
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 17
+          Top = 35
+          Width = 45
+          Height = 13
           Caption = 'Magazine'
         end
         object DBEdit1: TDBEdit
-          Left = 85
-          Top = 114
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 68
+          Top = 91
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'fm'
           DataSource = dm.dsSampleInfo
           TabOrder = 0
         end
         object DBEdit2: TDBEdit
-          Left = 175
-          Top = 114
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 140
+          Top = 91
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'fm_sig'
           DataSource = dm.dsSampleInfo
           TabOrder = 1
         end
         object edtC13: TDBEdit
-          Left = 85
-          Top = 188
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 68
+          Top = 150
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'dc13'
           DataSource = dm.dsSampleInfo
           TabOrder = 2
         end
         object DBEdit4: TDBEdit
-          Left = 175
-          Top = 188
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 140
+          Top = 150
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'dc13_sig'
           DataSource = dm.dsSampleInfo
           TabOrder = 3
         end
         object DBEdit5: TDBEdit
-          Left = 85
-          Top = 139
-          Width = 60
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 68
+          Top = 111
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'c14_age'
           DataSource = dm.dsSampleInfo
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 4
         end
         object DBEdit6: TDBEdit
-          Left = 175
-          Top = 139
-          Width = 60
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 140
+          Top = 111
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'c14_age_sig'
           DataSource = dm.dsSampleInfo
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 5
         end
         object DBEdit7: TDBEdit
-          Left = 85
-          Top = 239
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 68
+          Top = 191
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'cal1sMin'
           DataSource = dm.dsSampleInfo
           TabOrder = 6
         end
         object DBEdit8: TDBEdit
-          Left = 175
-          Top = 239
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 140
+          Top = 191
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'cal1sMax'
           DataSource = dm.dsSampleInfo
           TabOrder = 7
         end
         object DBEdit9: TDBEdit
-          Left = 85
-          Top = 264
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 68
+          Top = 211
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'cal2sMin'
           DataSource = dm.dsSampleInfo
           TabOrder = 8
         end
         object DBEdit10: TDBEdit
-          Left = 175
-          Top = 264
-          Width = 60
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 140
+          Top = 211
+          Width = 48
+          Height = 21
           TabStop = False
           DataField = 'cal2sMax'
           DataSource = dm.dsSampleInfo
           TabOrder = 9
         end
         object DBEdit11: TDBEdit
-          Left = 85
-          Top = 313
-          Width = 151
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 68
+          Top = 250
+          Width = 121
+          Height = 21
           TabStop = False
           DataField = 'calcset'
           DataSource = dm.dsSampleInfo
@@ -5416,14 +4186,10 @@ object frmMAMS: TfrmMAMS
         end
         object btnTransferAgeToSample: TButton
           Left = 1
-          Top = 371
-          Width = 283
-          Height = 50
+          Top = 297
+          Width = 226
+          Height = 40
           Hint = 'transfers age from target table to sample table'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Transfer to sample'
           ParentShowHint = False
           ShowHint = True
@@ -5432,14 +4198,10 @@ object frmMAMS: TfrmMAMS
           OnClick = btnTransferAgeToSampleClick
         end
         object DBedtMagazine: TDBEdit
-          Left = 83
-          Top = 32
-          Width = 152
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 66
+          Top = 26
+          Width = 122
+          Height = 21
           DataField = 'magazine'
           DataSource = dm.dsSampleInfo
           TabOrder = 12
@@ -5447,180 +4209,120 @@ object frmMAMS: TfrmMAMS
       end
       object gbxSampleInfo: TGroupBox
         Left = 0
-        Top = 83
-        Width = 299
-        Height = 847
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 66
+        Width = 239
+        Height = 659
         Align = alLeft
         Caption = 'Sample Info'
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
         DesignSize = (
-          299
-          847)
+          239
+          659)
         object Label30: TLabel
-          Left = 20
-          Top = 61
-          Width = 79
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 49
+          Width = 63
+          Height = 13
           Caption = 'Sample name'
         end
         object Label33: TLabel
-          Left = 20
-          Top = 110
-          Width = 94
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 88
+          Width = 76
+          Height = 13
           Caption = 'Sample label nr.'
         end
         object Label34: TLabel
-          Left = 20
-          Top = 164
-          Width = 93
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 131
+          Width = 76
+          Height = 13
           Caption = 'Sample descr. 1'
         end
         object Label35: TLabel
-          Left = 20
-          Top = 214
-          Width = 93
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 171
+          Width = 76
+          Height = 13
           Caption = 'Sample descr. 2'
         end
         object Label36: TLabel
-          Left = 20
-          Top = 264
-          Width = 46
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 211
+          Width = 38
+          Height = 13
           Caption = 'Material'
         end
         object Label51: TLabel
-          Left = 149
-          Top = 264
-          Width = 46
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 119
+          Top = 211
+          Width = 39
+          Height = 13
           Caption = 'Fraction'
         end
         object Label52: TLabel
-          Left = 19
-          Top = 436
-          Width = 83
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 15
+          Top = 349
+          Width = 68
+          Height = 13
           Caption = 'User comment'
         end
         object Label68: TLabel
-          Left = 149
-          Top = 318
-          Width = 109
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 119
+          Top = 254
+          Width = 92
+          Height = 13
           Caption = 'Weight as received'
         end
         object Label94: TLabel
-          Left = 20
-          Top = 378
-          Width = 82
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 302
+          Width = 67
+          Height = 13
           Caption = 'Sampling date'
         end
         object Ta: TLabel
-          Left = 20
-          Top = 316
-          Width = 28
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 253
+          Width = 24
+          Height = 13
           Caption = 'Type'
         end
         object Label104: TLabel
-          Left = 19
-          Top = 494
-          Width = 88
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 15
+          Top = 395
+          Width = 73
+          Height = 13
           Caption = 'sample storage'
         end
         object Label105: TLabel
-          Left = 135
-          Top = 494
-          Width = 134
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 108
+          Top = 395
+          Width = 111
+          Height = 13
           Caption = 'prep'#39'd material storage'
         end
         object Label13: TLabel
-          Left = 8
-          Top = 595
-          Width = 79
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 6
+          Top = 476
+          Width = 65
+          Height = 13
           Caption = 'Lab Comment'
         end
         object chkNotToBeDated: TDBCheckBox
-          Left = 20
-          Top = 33
-          Width = 121
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 26
+          Width = 97
+          Height = 17
           TabStop = False
           Caption = 'not to be dated'
           DataField = 'not_tobedated'
           DataSource = dm.dsSampleInfo
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -5629,14 +4331,10 @@ object frmMAMS: TfrmMAMS
           ValueUnchecked = '0'
         end
         object chkSamplingThisYear: TCheckBox
-          Left = 149
-          Top = 394
-          Width = 121
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 119
+          Top = 315
+          Width = 97
+          Height = 17
           TabStop = False
           Caption = 'this year'
           Ctl3D = True
@@ -5645,19 +4343,15 @@ object frmMAMS: TfrmMAMS
           OnClick = chkSamplingThisYearClick
         end
         object cmbSampleFraction: TDBLookupComboBox
-          Left = 149
-          Top = 280
-          Width = 121
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 119
+          Top = 224
+          Width = 97
+          Height = 21
           Ctl3D = True
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
           KeyField = 'indexnr'
@@ -5669,19 +4363,15 @@ object frmMAMS: TfrmMAMS
           TabStop = False
         end
         object cmbSampleMaterial: TDBLookupComboBox
-          Left = 20
-          Top = 280
-          Width = 121
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 224
+          Width = 97
+          Height = 21
           Ctl3D = True
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
           KeyField = 'indexnr'
@@ -5693,14 +4383,10 @@ object frmMAMS: TfrmMAMS
           TabStop = False
         end
         object cmbSampleType: TDBLookupComboBox
-          Left = 20
-          Top = 333
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 266
+          Width = 97
+          Height = 21
           Ctl3D = True
           KeyField = 'indexnr'
           ListField = 'type'
@@ -5710,14 +4396,10 @@ object frmMAMS: TfrmMAMS
           TabStop = False
         end
         object DBEdit16: TDBEdit
-          Left = 149
-          Top = 334
-          Width = 121
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 119
+          Top = 267
+          Width = 97
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'weight'
@@ -5726,14 +4408,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 5
         end
         object edtSampleDescr1: TDBEdit
-          Left = 20
-          Top = 180
-          Width = 249
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 144
+          Width = 199
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'user_desc1'
@@ -5742,14 +4420,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 6
         end
         object edtSampleDescr2: TDBEdit
-          Left = 20
-          Top = 230
-          Width = 249
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 184
+          Width = 199
+          Height = 21
           TabStop = False
           BevelEdges = []
           Ctl3D = True
@@ -5759,14 +4433,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 7
         end
         object edtSampleLabelNr: TDBEdit
-          Left = 20
-          Top = 130
-          Width = 249
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 104
+          Width = 199
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'user_label_nr'
@@ -5775,14 +4445,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 8
         end
         object edtSampleName: TDBEdit
-          Left = 20
-          Top = 80
-          Width = 249
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 64
+          Width = 199
+          Height = 21
           TabStop = False
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -5793,14 +4459,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 9
         end
         object edtSampleUserComment: TDBEdit
-          Left = 19
-          Top = 454
-          Width = 249
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 15
+          Top = 363
+          Width = 199
+          Height = 21
           TabStop = False
           Ctl3D = True
           DataField = 'user_comment'
@@ -5809,14 +4471,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 10
         end
         object edtSamplingDate: TJvDBDateTimePicker
-          Left = 20
-          Top = 394
-          Width = 109
+          Left = 16
+          Top = 315
+          Width = 87
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 11
@@ -5827,15 +4485,11 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object chkSampleNoLeftover: TDBCheckBox
-          Left = 105
-          Top = 563
-          Width = 121
-          Height = 21
+          Left = 84
+          Top = 450
+          Width = 97
+          Height = 17
           Hint = 'no sample material left'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           TabStop = False
           Caption = 'no leftover'
           Ctl3D = True
@@ -5849,15 +4503,11 @@ object frmMAMS: TfrmMAMS
           ValueUnchecked = '0'
         end
         object edtSampleStorageLoc: TDBEdit
-          Left = 19
-          Top = 511
-          Width = 109
-          Height = 24
+          Left = 15
+          Top = 409
+          Width = 87
+          Height = 21
           Hint = 'storage location of the unprep'#39'd sample'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           TabStop = False
           Ctl3D = True
           DataField = 's_storage_loc'
@@ -5868,15 +4518,11 @@ object frmMAMS: TfrmMAMS
           TabOrder = 13
         end
         object edtPrepSampleStorageLoc: TDBEdit
-          Left = 135
-          Top = 511
-          Width = 134
-          Height = 24
+          Left = 108
+          Top = 409
+          Width = 107
+          Height = 21
           Hint = 'stoarge location of the pre-prep'#39'd material'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           TabStop = False
           Ctl3D = True
           DataField = 'prep_storage_loc'
@@ -5888,14 +4534,10 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesUserSuppliedInfo: TBitBtn
           Left = 1
-          Top = 700
-          Width = 298
-          Height = 50
+          Top = 560
+          Width = 238
+          Height = 40
           Hint = 'Save changes'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -5945,14 +4587,10 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveChangesUserSuppliedInfoClick
         end
         object DBMemo_LabComment: TDBMemo
-          Left = 4
-          Top = 619
-          Width = 287
-          Height = 72
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 3
+          Top = 495
+          Width = 230
+          Height = 58
           Ctl3D = True
           DataField = 'lab_comment'
           DataSource = dm.dsSampleInfo
@@ -5961,101 +4599,69 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxSamplePretreatment: TGroupBox
-        Left = 566
-        Top = 83
-        Width = 390
-        Height = 847
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 453
+        Top = 66
+        Width = 312
+        Height = 659
         Align = alLeft
         Caption = 'Pretreatment'
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 2
         DesignSize = (
-          390
-          847)
+          312
+          659)
         object Label102: TLabel
-          Left = 8
-          Top = 595
-          Width = 55
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 6
+          Top = 476
+          Width = 45
+          Height = 13
           Caption = 'Comment'
         end
         object Label50: TLabel
-          Left = 81
-          Top = 476
-          Width = 55
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 65
+          Top = 381
+          Width = 47
+          Height = 13
           Caption = 'Prep. end'
         end
         object Label69: TLabel
-          Left = 28
-          Top = 406
-          Width = 105
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 22
+          Top = 325
+          Width = 90
+          Height = 13
           Caption = 'Weight after prep.'
         end
         object Label70: TLabel
-          Left = 13
-          Top = 48
-          Width = 115
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 10
+          Top = 38
+          Width = 98
+          Height = 13
           Caption = 'Weight before prep.'
         end
         object YieldLabel: TLabel
-          Left = 289
-          Top = 406
-          Width = 27
-          Height = 16
+          Left = 231
+          Top = 325
+          Width = 22
+          Height = 13
           Hint = 'Yield = weight after/weigt before'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Yield'
           ParentShowHint = False
           ShowHint = True
         end
         object Label107: TLabel
-          Left = 249
-          Top = 406
-          Width = 32
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 199
+          Top = 325
+          Width = 26
+          Height = 13
           Caption = 'Yield:'
         end
         object btnSaveChangesPrep: TBitBtn
           Left = 1
-          Top = 700
-          Width = 389
-          Height = 50
+          Top = 560
+          Width = 311
+          Height = 40
           Hint = 'Save changes'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -6105,15 +4711,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveChangesPrepClick
         end
         object chkPrepDiscarded: TDBCheckBox
-          Left = 100
-          Top = 564
-          Width = 81
-          Height = 21
+          Left = 80
+          Top = 451
+          Width = 65
+          Height = 17
           Hint = 'preparation discarded'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           TabStop = False
           Caption = 'Discarded'
           DataField = 'stop'
@@ -6125,15 +4727,11 @@ object frmMAMS: TfrmMAMS
           ValueUnchecked = '0'
         end
         object chkPrepNoLeftover: TDBCheckBox
-          Left = 238
-          Top = 564
-          Width = 121
-          Height = 21
+          Left = 190
+          Top = 451
+          Width = 97
+          Height = 17
           Hint = 'no prepared material left'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           TabStop = False
           Caption = 'no leftover'
           DataField = 'p_no_leftover'
@@ -6145,14 +4743,10 @@ object frmMAMS: TfrmMAMS
           ValueUnchecked = '0'
         end
         object edtPrepEnd: TJvDBDateTimePicker
-          Left = 148
-          Top = 473
-          Width = 108
+          Left = 118
+          Top = 378
+          Width = 87
           Height = 21
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 4
@@ -6163,14 +4757,10 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object edtWeightEnd: TDBEdit
-          Left = 148
-          Top = 403
-          Width = 86
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 118
+          Top = 322
+          Width = 69
+          Height = 21
           Ctl3D = True
           DataField = 'weight_end'
           DataSource = dm.dsWeights
@@ -6180,14 +4770,10 @@ object frmMAMS: TfrmMAMS
           OnExit = edtWeightEndExit
         end
         object edtWeightStart: TDBEdit
-          Left = 145
-          Top = 44
-          Width = 83
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 116
+          Top = 35
+          Width = 66
+          Height = 21
           Ctl3D = True
           DataField = 'weight_start'
           DataSource = dm.dsWeights
@@ -6196,80 +4782,52 @@ object frmMAMS: TfrmMAMS
           OnChange = edtWeightStartChange
         end
         object gbxPrepSteps: TGroupBox
-          Left = 9
-          Top = 78
-          Width = 230
-          Height = 308
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 7
+          Top = 62
+          Width = 184
+          Height = 247
           Caption = 'Prep Steps'
           TabOrder = 6
           object Label54: TLabel
-            Left = 19
-            Top = 59
-            Width = 16
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 15
+            Top = 47
+            Width = 13
+            Height = 13
             Caption = '1 :'
           end
           object Label55: TLabel
-            Left = 19
-            Top = 83
-            Width = 16
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 15
+            Top = 66
+            Width = 13
+            Height = 13
             Caption = '2 :'
           end
           object Label56: TLabel
-            Left = 19
-            Top = 108
-            Width = 16
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 15
+            Top = 86
+            Width = 13
+            Height = 13
             Caption = '3 :'
           end
           object Label57: TLabel
-            Left = 19
-            Top = 133
-            Width = 16
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 15
+            Top = 106
+            Width = 13
+            Height = 13
             Caption = '4 :'
           end
           object Label58: TLabel
-            Left = 19
-            Top = 158
-            Width = 16
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 15
+            Top = 126
+            Width = 13
+            Height = 13
             Caption = '5 :'
           end
           object edtSampPrep1: TEdit
-            Left = 43
-            Top = 54
-            Width = 180
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 34
+            Top = 43
+            Width = 144
+            Height = 21
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -6279,14 +4837,10 @@ object frmMAMS: TfrmMAMS
             OnDragOver = edtSampPrep1DragOver
           end
           object edtSampPrep2: TEdit
-            Left = 43
-            Top = 79
-            Width = 180
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 34
+            Top = 63
+            Width = 144
+            Height = 21
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -6296,14 +4850,10 @@ object frmMAMS: TfrmMAMS
             OnDragOver = edtSampPrep1DragOver
           end
           object edtSampPrep3: TEdit
-            Left = 43
-            Top = 104
-            Width = 180
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 34
+            Top = 83
+            Width = 144
+            Height = 21
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -6313,14 +4863,10 @@ object frmMAMS: TfrmMAMS
             OnDragOver = edtSampPrep1DragOver
           end
           object edtSampPrep4: TEdit
-            Left = 43
-            Top = 129
-            Width = 180
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 34
+            Top = 103
+            Width = 144
+            Height = 21
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -6330,14 +4876,10 @@ object frmMAMS: TfrmMAMS
             OnDragOver = edtSampPrep1DragOver
           end
           object edtSampPrep5: TEdit
-            Left = 43
-            Top = 154
-            Width = 180
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 34
+            Top = 123
+            Width = 144
+            Height = 21
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -6348,29 +4890,22 @@ object frmMAMS: TfrmMAMS
           end
         end
         object lbxSteps: TListBox
-          Left = 235
-          Top = 88
-          Width = 148
-          Height = 298
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 188
+          Top = 70
+          Width = 118
+          Height = 239
           TabStop = False
           Ctl3D = True
+          ItemHeight = 13
           ParentCtl3D = False
           TabOrder = 7
           OnMouseDown = lbxStepsMouseDown
         end
         object memPrepComments: TDBMemo
-          Left = 4
-          Top = 619
-          Width = 382
-          Height = 72
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 3
+          Top = 495
+          Width = 306
+          Height = 58
           TabStop = False
           Ctl3D = True
           DataField = 'prep_comment'
@@ -6381,221 +4916,145 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsUserInfo: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'User info'
       ImageIndex = 11
       object GroupBox24: TGroupBox
         Left = 0
         Top = 0
-        Width = 1595
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1404
+        Height = 725
         Align = alClient
         Caption = 'User Information'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
         TabOrder = 0
         object Label73: TLabel
-          Left = 76
-          Top = 103
-          Width = 79
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 61
+          Top = 82
+          Width = 65
+          Height = 16
           Caption = 'First  name'
         end
         object Label74: TLabel
-          Left = 68
-          Top = 156
-          Width = 90
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 54
+          Top = 125
+          Width = 72
+          Height = 16
           Caption = 'Organisation'
         end
         object Label75: TLabel
-          Left = 100
-          Top = 188
-          Width = 58
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 80
+          Top = 150
+          Width = 46
+          Height = 16
           Caption = 'Institute'
         end
         object Label76: TLabel
-          Left = 86
-          Top = 219
-          Width = 71
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 69
+          Top = 175
+          Width = 57
+          Height = 16
           Caption = 'Address 1'
         end
         object Label77: TLabel
-          Left = 86
-          Top = 250
-          Width = 71
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 69
+          Top = 200
+          Width = 57
+          Height = 16
           Caption = 'Address 2'
         end
         object Label78: TLabel
-          Left = 40
-          Top = 281
-          Width = 116
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 32
+          Top = 225
+          Width = 93
+          Height = 16
           Caption = 'Postal Code/City'
         end
         object Label80: TLabel
-          Left = 103
-          Top = 313
-          Width = 56
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 82
+          Top = 250
+          Width = 44
+          Height = 16
           Caption = 'Country'
         end
         object Label81: TLabel
-          Left = 90
-          Top = 606
-          Width = 69
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 72
+          Top = 485
+          Width = 55
+          Height = 16
           Caption = 'Comment'
         end
         object Label82: TLabel
-          Left = 98
-          Top = 375
-          Width = 58
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 78
+          Top = 300
+          Width = 46
+          Height = 16
           Caption = 'Phone 1'
         end
         object Label83: TLabel
-          Left = 98
-          Top = 406
-          Width = 58
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 78
+          Top = 325
+          Width = 46
+          Height = 16
           Caption = 'Phone 2'
         end
         object Label84: TLabel
-          Left = 124
-          Top = 438
-          Width = 24
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 99
+          Top = 350
+          Width = 20
+          Height = 16
           Caption = 'Fax'
         end
         object Label85: TLabel
-          Left = 113
-          Top = 469
-          Width = 39
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 90
+          Top = 375
+          Width = 31
+          Height = 16
           Caption = 'Email'
         end
         object Label86: TLabel
-          Left = 116
-          Top = 500
-          Width = 36
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 93
+          Top = 400
+          Width = 30
+          Height = 16
           Caption = 'www'
         end
         object Label87: TLabel
-          Left = 99
-          Top = 554
-          Width = 57
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 79
+          Top = 443
+          Width = 45
+          Height = 16
           Caption = 'Account'
         end
         object Label101: TLabel
-          Left = 83
-          Top = 64
-          Width = 74
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 66
+          Top = 51
+          Width = 60
+          Height = 16
           Caption = 'Last Name'
         end
         object DBEdit12: TDBEdit
-          Left = 165
-          Top = 98
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 78
+          Width = 381
+          Height = 24
           DataField = 'first_name'
           DataSource = dm.dsUserInfo
           TabOrder = 0
         end
         object cmbUsernameUserInfo: TDBLookupComboBox
-          Left = 165
-          Top = 60
-          Width = 366
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 48
+          Width = 293
+          Height = 24
           DropDownRows = 15
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           KeyField = 'user_nr'
@@ -6607,197 +5066,137 @@ object frmMAMS: TfrmMAMS
           OnExit = cmbUsernameUserInfoExit
         end
         object DBEdit17: TDBEdit
-          Left = 165
-          Top = 156
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 125
+          Width = 381
+          Height = 24
           DataField = 'organisation'
           DataSource = dm.dsUserInfo
           TabOrder = 2
         end
         object DBEdit18: TDBEdit
-          Left = 165
-          Top = 188
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 150
+          Width = 381
+          Height = 24
           DataField = 'institute'
           DataSource = dm.dsUserInfo
           TabOrder = 3
         end
         object DBEdit19: TDBEdit
-          Left = 165
-          Top = 219
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 175
+          Width = 381
+          Height = 24
           DataField = 'address_1'
           DataSource = dm.dsUserInfo
           TabOrder = 4
         end
         object DBEdit20: TDBEdit
-          Left = 165
-          Top = 250
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 200
+          Width = 381
+          Height = 24
           DataField = 'address_2'
           DataSource = dm.dsUserInfo
           TabOrder = 5
         end
         object DBEdit21: TDBEdit
-          Left = 165
-          Top = 281
-          Width = 86
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 225
+          Width = 69
+          Height = 24
           DataField = 'postcode'
           DataSource = dm.dsUserInfo
           TabOrder = 6
         end
         object DBEdit22: TDBEdit
-          Left = 259
-          Top = 281
-          Width = 382
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 207
+          Top = 225
+          Width = 306
+          Height = 24
           DataField = 'town'
           DataSource = dm.dsUserInfo
           TabOrder = 7
         end
         object DBEdit23: TDBEdit
-          Left = 165
-          Top = 313
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 250
+          Width = 381
+          Height = 24
           DataField = 'country'
           DataSource = dm.dsUserInfo
           TabOrder = 8
         end
         object DBEdit24: TDBEdit
-          Left = 165
-          Top = 375
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 300
+          Width = 381
+          Height = 24
           DataField = 'phone_1'
           DataSource = dm.dsUserInfo
           TabOrder = 9
         end
         object DBEdit25: TDBEdit
-          Left = 165
-          Top = 406
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 325
+          Width = 381
+          Height = 24
           DataField = 'phone_2'
           DataSource = dm.dsUserInfo
           TabOrder = 10
         end
         object DBEdit26: TDBEdit
-          Left = 165
-          Top = 438
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 350
+          Width = 381
+          Height = 24
           DataField = 'fax'
           DataSource = dm.dsUserInfo
           TabOrder = 11
         end
         object DBEdit27: TDBEdit
-          Left = 165
-          Top = 469
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 375
+          Width = 381
+          Height = 24
           DataField = 'email'
           DataSource = dm.dsUserInfo
           TabOrder = 12
         end
         object DBEdit28: TDBEdit
-          Left = 165
-          Top = 500
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 400
+          Width = 381
+          Height = 24
           DataField = 'www'
           DataSource = dm.dsUserInfo
           TabOrder = 13
         end
         object DBEdit29: TDBEdit
-          Left = 165
-          Top = 548
-          Width = 476
-          Height = 27
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 438
+          Width = 381
+          Height = 24
           DataField = 'account'
           DataSource = dm.dsUserInfo
           TabOrder = 14
         end
         object DBMemo1: TDBMemo
-          Left = 165
-          Top = 606
-          Width = 476
-          Height = 112
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 132
+          Top = 485
+          Width = 381
+          Height = 89
           DataField = 'user_comment'
           DataSource = dm.dsUserInfo
           TabOrder = 15
         end
         object btnSaveUserProfile: TBitBtn
-          Left = 288
-          Top = 725
-          Width = 353
-          Height = 60
+          Left = 230
+          Top = 580
+          Width = 283
+          Height = 48
           Hint = 'Save changes'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
             10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -6845,15 +5244,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveUserProfileClick
         end
         object DBEdit_UserNr: TDBEdit
-          Left = 551
-          Top = 60
-          Width = 90
-          Height = 27
+          Left = 441
+          Top = 48
+          Width = 72
+          Height = 24
           Hint = 'User Nr'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           DataField = 'user_nr'
           DataSource = dm.dsUserInfo
           Enabled = False
@@ -6862,15 +5257,11 @@ object frmMAMS: TfrmMAMS
           TabOrder = 17
         end
         object btnAddNewUser: TButton
-          Left = 649
-          Top = 60
-          Width = 64
-          Height = 62
+          Left = 519
+          Top = 48
+          Width = 51
+          Height = 50
           Hint = 'add new user to database'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = '+'
           ParentShowHint = False
           ShowHint = True
@@ -6878,15 +5269,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnAddNewUserClick
         end
         object btnUserExportClipboard: TButton
-          Left = 165
-          Top = 725
-          Width = 115
-          Height = 60
+          Left = 132
+          Top = 580
+          Width = 92
+          Height = 48
           Hint = 'save user data in clipboard'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'Clipboard'
           ParentShowHint = False
           ShowHint = True
@@ -6896,89 +5283,61 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsOptions: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Options'
       ImageIndex = 5
       object GroupBox28: TGroupBox
-        Left = 1271
+        Left = 1145
         Top = 0
-        Width = 324
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 259
+        Height = 725
         Align = alRight
         Caption = 'Test Only!!!'
         TabOrder = 0
         object DBGrid1: TDBGrid
-          Left = 50
-          Top = 331
-          Width = 255
-          Height = 410
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 40
+          Top = 265
+          Width = 204
+          Height = 328
           DataSource = dsExport
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
         object btnTransferC14Age: TButton
-          Left = 46
-          Top = 45
-          Width = 138
-          Height = 33
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 37
+          Top = 36
+          Width = 110
+          Height = 26
           Caption = 'TransferC14Age'
           TabOrder = 1
           OnClick = btnTransferC14AgeClick
         end
         object Button5: TButton
-          Left = 46
-          Top = 85
-          Width = 138
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 37
+          Top = 68
+          Width = 110
+          Height = 25
           Caption = 'Test userprofile'
           TabOrder = 2
           OnClick = Button5Click
         end
         object Button3: TButton
-          Left = 46
-          Top = 124
-          Width = 138
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 37
+          Top = 99
+          Width = 110
+          Height = 25
           Caption = 'Copy MA nr'
           TabOrder = 3
           OnClick = Button3Click
         end
         object Button6: TButton
-          Left = 46
-          Top = 163
-          Width = 138
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 37
+          Top = 130
+          Width = 110
+          Height = 25
           Caption = '+100 to projectnr'
           TabOrder = 4
           OnClick = Button6Click
@@ -6987,47 +5346,33 @@ object frmMAMS: TfrmMAMS
       object GroupBox11: TGroupBox
         Left = 0
         Top = 0
-        Width = 511
-        Height = 899
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 409
+        Height = 719
         Caption = 'Table headings for report'
         TabOrder = 1
         object lbExportHeader: TJvMarkupLabel
           Left = 2
-          Top = 499
-          Width = 507
-          Height = 398
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 400
+          Width = 405
+          Height = 317
           Text = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Tahoma'
           Font.Style = []
           Color = 16054758
           ParentColor = False
           ParentFont = False
-          ExplicitLeft = 3
-          ExplicitTop = 504
-          ExplicitWidth = 506
-          ExplicitHeight = 392
+          ExplicitTop = 397
+          ExplicitHeight = 321
         end
         object grdReportHeadings: TJvStringGrid
           Left = 2
-          Top = 18
-          Width = 507
-          Height = 462
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 405
+          Height = 370
           Align = alTop
           ColCount = 4
           RowCount = 14
@@ -7041,29 +5386,41 @@ object frmMAMS: TfrmMAMS
           FixedFont.Height = -11
           FixedFont.Name = 'Tahoma'
           FixedFont.Style = []
+          ColWidths = (
+            64
+            64
+            64
+            64)
+          RowHeights = (
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24)
         end
         object Panel23: TPanel
           Left = 2
-          Top = 480
-          Width = 507
-          Height = 19
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 385
+          Width = 405
+          Height = 15
           Align = alTop
           TabOrder = 1
         end
       end
       object OptionsTree: TTreeView
-        Left = 532
-        Top = 18
-        Width = 151
-        Height = 815
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 426
+        Top = 14
+        Width = 120
+        Height = 652
         Indent = 19
         TabOrder = 2
         OnClick = OptionsTreeClick
@@ -7076,35 +5433,27 @@ object frmMAMS: TfrmMAMS
           FFFFFFFFFFFFFF000000000000000000000000010545006D00610069006C00}
       end
       object TabOptionsPages: TPageControl
-        Left = 691
-        Top = 18
-        Width = 550
-        Height = 815
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 553
+        Top = 14
+        Width = 440
+        Height = 652
         ActivePage = TabDatabase
         TabOrder = 3
         object TabGeneral: TTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'TabGeneral'
         end
         object TabDatabase: TTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'TabDatabase'
           ImageIndex = 1
           object StaticText6: TStaticText
-            Left = 16
-            Top = 56
-            Width = 766
-            Height = 95
+            Left = 13
+            Top = 45
+            Width = 613
+            Height = 76
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
             AutoSize = False
             Caption = 
               'presently SAMS uses an ODBC connection that needs to be set by M' +
@@ -7113,43 +5462,27 @@ object frmMAMS: TfrmMAMS
           end
         end
         object TabPaths: TTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'TabPaths'
           ImageIndex = 2
           object Label98: TLabel
-            Left = 25
-            Top = 131
-            Width = 148
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 105
+            Width = 126
+            Height = 13
             Caption = 'Path to Reports on Server'
           end
           object Label79: TLabel
-            Left = 29
-            Top = 66
-            Width = 146
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 23
+            Top = 53
+            Width = 123
+            Height = 13
             Caption = 'Path to Images on Server'
           end
           object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
-            Left = 24
-            Top = 90
-            Width = 379
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 19
+            Top = 72
+            Width = 303
+            Height = 21
             DialogKind = dkWin32
             DialogOptions = [sdPrompt]
             DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
@@ -7158,14 +5491,10 @@ object frmMAMS: TfrmMAMS
             Text = 'JvDirEdt_Server_Image_Path'
           end
           object JvDirEdt_Server_Report_Path: TJvDirectoryEdit
-            Left = 24
-            Top = 155
-            Width = 379
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 19
+            Top = 124
+            Width = 303
+            Height = 21
             DialogKind = dkWin32
             DialogOptions = [sdPrompt]
             DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
@@ -7175,75 +5504,51 @@ object frmMAMS: TfrmMAMS
           end
         end
         object TabEmail: TTabSheet
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'TabEmail'
           ImageIndex = 3
         end
       end
       object btnSaveOptions: TButton
-        Left = 695
-        Top = 841
-        Width = 542
-        Height = 40
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 556
+        Top = 673
+        Width = 434
+        Height = 32
         Caption = 'Save'
         TabOrder = 4
       end
     end
     object tbsTypesMat: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Types, materials, pretr. steps'
       ImageIndex = 2
       OnExit = tbsTypesMatExit
       object GroupBox7: TGroupBox
-        Left = 875
+        Left = 700
         Top = 0
-        Width = 406
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 325
+        Height = 725
         Align = alLeft
         Caption = 'Pretreatment '
         TabOrder = 0
         object grdPretreatment: TDBGrid
           Left = 2
-          Top = 49
-          Width = 402
-          Height = 879
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 40
+          Width = 321
+          Height = 683
           Align = alClient
           DataSource = dm.dsMethod
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnTitleClick = grdPretreatmentTitleClick
         end
         object DBNavigator3: TDBNavigator
           Left = 2
-          Top = 18
-          Width = 402
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 321
+          Height = 25
           DataSource = dm.dsMethod
           Align = alTop
           ParentShowHint = False
@@ -7254,43 +5559,31 @@ object frmMAMS: TfrmMAMS
       object GroupBox6: TGroupBox
         Left = 0
         Top = 0
-        Width = 288
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 230
+        Height = 725
         Align = alLeft
         Caption = 'Sample types'
         TabOrder = 1
         object grdTypes: TDBGrid
           Left = 2
-          Top = 49
-          Width = 284
-          Height = 879
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 40
+          Width = 226
+          Height = 683
           Align = alClient
           DataSource = dm.dsTypes
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnTitleClick = grdTypesTitleClick
         end
         object DBNavigator4: TDBNavigator
           Left = 2
-          Top = 18
-          Width = 284
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 226
+          Height = 25
           DataSource = dm.dsTypes
           Align = alTop
           ParentShowHint = False
@@ -7299,45 +5592,33 @@ object frmMAMS: TfrmMAMS
         end
       end
       object GroupBox12: TGroupBox
-        Left = 288
+        Left = 230
         Top = 0
-        Width = 300
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 240
+        Height = 725
         Align = alLeft
         Caption = 'Sample material'
         TabOrder = 2
         object grdMaterial: TDBGrid
           Left = 2
-          Top = 49
-          Width = 296
-          Height = 879
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 40
+          Width = 236
+          Height = 683
           Align = alClient
           DataSource = dm.dsMaterial
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnTitleClick = grdMaterialTitleClick
         end
         object DBNavigator2: TDBNavigator
           Left = 2
-          Top = 18
-          Width = 296
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 236
+          Height = 25
           DataSource = dm.dsMaterial
           Align = alTop
           ParentShowHint = False
@@ -7346,45 +5627,33 @@ object frmMAMS: TfrmMAMS
         end
       end
       object GroupBox2: TGroupBox
-        Left = 588
+        Left = 470
         Top = 0
-        Width = 287
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 230
+        Height = 725
         Align = alLeft
         Caption = 'Fraction'
         TabOrder = 3
         object grdFraction: TDBGrid
           Left = 2
-          Top = 49
-          Width = 283
-          Height = 879
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 40
+          Width = 226
+          Height = 683
           Align = alClient
           DataSource = dm.dsFraction
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnTitleClick = grdFractionTitleClick
         end
         object DBNavigator1: TDBNavigator
           Left = 2
-          Top = 18
-          Width = 283
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 226
+          Height = 25
           DataSource = dm.dsMethod
           Align = alTop
           ParentShowHint = False
@@ -7394,93 +5663,63 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsLabStats: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Lab stats'
       ImageIndex = 9
       object JvNetscapeSplitter1: TJvNetscapeSplitter
-        Left = 904
+        Left = 723
         Top = 0
-        Width = 12
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Height = 725
         Align = alLeft
         Maximized = False
         Minimized = False
         ButtonCursor = crDefault
-        ExplicitHeight = 903
+        ExplicitHeight = 744
       end
       object JvNetscapeSplitter3: TJvNetscapeSplitter
-        Left = 461
+        Left = 369
         Top = 0
-        Width = 13
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Height = 725
         Align = alLeft
         Maximized = False
         Minimized = False
         ButtonCursor = crDefault
-        ExplicitHeight = 903
+        ExplicitHeight = 744
       end
       object gbxInPrep: TGroupBox
-        Left = 474
+        Left = 379
         Top = 0
-        Width = 430
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 344
+        Height = 725
         Align = alLeft
         Caption = 'In  prep.'
         TabOrder = 0
         object Panel21: TPanel
           Left = 2
-          Top = 18
-          Width = 426
-          Height = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 340
+          Height = 42
           Align = alTop
           TabOrder = 0
           object JvDBStatusLabel6: TJvDBStatusLabel
-            Left = 25
-            Top = 19
-            Width = 138
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 15
+            Width = 111
+            Height = 16
             DataSource = dm.dsInPrep
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             Transparent = True
           end
           object btnSendInPrepToExcel: TButton
-            Left = 351
+            Left = 280
             Top = 1
-            Width = 74
-            Height = 50
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 59
+            Height = 40
             Align = alRight
             Caption = 'Excel'
             TabOrder = 0
@@ -7489,20 +5728,16 @@ object frmMAMS: TfrmMAMS
         end
         object grdInPrep: TDBGrid
           Left = 2
-          Top = 70
-          Width = 426
-          Height = 858
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 57
+          Width = 340
+          Height = 666
           Align = alClient
           DataSource = dm.dsInPrep
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnDrawColumnCell = grdInPrepDrawColumnCell
@@ -7513,58 +5748,42 @@ object frmMAMS: TfrmMAMS
       object gbxLabStatPlanned: TGroupBox
         Left = 0
         Top = 0
-        Width = 461
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 369
+        Height = 725
         Align = alLeft
         Caption = 'Planned'
         TabOrder = 1
         object Panel3: TPanel
           Left = 2
-          Top = 18
-          Width = 457
-          Height = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 365
+          Height = 42
           Align = alTop
           TabOrder = 0
           object JvDBStatusLabel1: TJvDBStatusLabel
-            Left = 30
-            Top = 25
-            Width = 138
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 24
+            Top = 20
+            Width = 111
+            Height = 16
             DataSource = dm.dsPlanned
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             Transparent = True
           end
           object chkShowOnHold: TCheckBox
-            Left = 195
-            Top = 20
-            Width = 101
-            Height = 25
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 156
+            Top = 16
+            Width = 81
+            Height = 20
             Caption = 'Incl. nd.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
@@ -7573,14 +5792,10 @@ object frmMAMS: TfrmMAMS
             OnClick = chkShowOnHoldClick
           end
           object btnSendPlannedToExcel: TButton
-            Left = 382
+            Left = 305
             Top = 1
-            Width = 74
-            Height = 50
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 59
+            Height = 40
             Align = alRight
             Caption = 'Excel'
             TabOrder = 1
@@ -7589,20 +5804,16 @@ object frmMAMS: TfrmMAMS
         end
         object grdPlanned: TDBGrid
           Left = 2
-          Top = 70
-          Width = 457
-          Height = 858
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 57
+          Width = 365
+          Height = 666
           Align = alClient
           DataSource = dm.dsPlanned
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnCellClick = grdPlannedCellClick
@@ -7612,107 +5823,79 @@ object frmMAMS: TfrmMAMS
         end
       end
       object GroupBox8: TGroupBox
-        Left = 916
+        Left = 733
         Top = 0
-        Width = 679
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 671
+        Height = 725
         Align = alClient
         Caption = 'waiting for graphitisation'
         TabOrder = 2
         object Panel22: TPanel
           Left = 2
-          Top = 18
-          Width = 675
-          Height = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 667
+          Height = 42
           Align = alTop
           TabOrder = 0
           object JvDBStatusLabel4: TJvDBStatusLabel
-            Left = 28
-            Top = 25
-            Width = 138
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 4
+            Top = 20
+            Width = 111
+            Height = 16
             DataSource = dm.dsWaitingForGraph
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             Transparent = True
           end
           object lblTotal: TLabel
-            Left = 238
-            Top = 16
-            Width = 53
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 142
+            Top = -3
+            Width = 42
+            Height = 16
             Caption = 'lblTotal'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
           end
           object btnSendWaitForGraphToExcel: TButton
-            Left = 600
+            Left = 607
             Top = 1
-            Width = 74
-            Height = 50
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 59
+            Height = 40
             Align = alRight
             Caption = 'Excel'
             TabOrder = 0
             OnClick = btnSendWaitForGraphToExcelClick
           end
           object StaticText3: TStaticText
-            Left = 174
-            Top = 24
-            Width = 346
-            Height = 20
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 139
+            Top = 19
+            Width = 286
+            Height = 17
             Caption = 'Colors: Olive = 2 weeks till deadline, red = deadline missed'
             TabOrder = 1
           end
         end
         object grdWaitingForGraph: TDBGrid
           Left = 2
-          Top = 70
-          Width = 675
-          Height = 858
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 57
+          Width = 667
+          Height = 666
           Align = alClient
           DataSource = dm.dsWaitingForGraph
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnDrawColumnCell = grdWaitingForGraphDrawColumnCell
@@ -7722,87 +5905,59 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsAccounting: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Accounting'
       ImageIndex = 10
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
-        Width = 1261
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1009
+        Height = 725
         Align = alLeft
         Caption = 'All projects since ...'
         TabOrder = 0
         object Panel24: TPanel
           Left = 2
-          Top = 18
-          Width = 1257
-          Height = 52
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 1005
+          Height = 42
           Align = alTop
           TabOrder = 0
           object JvDBStatusLabel7: TJvDBStatusLabel
-            Left = 276
-            Top = 19
-            Width = 138
-            Height = 19
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 221
+            Top = 15
+            Width = 111
+            Height = 16
             DataSource = dm.dsProjectsSinceYear
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -16
+            Font.Height = -13
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
             Transparent = True
           end
           object edtProjectsSinceYear: TJvSpinEdit
-            Left = 20
-            Top = 13
-            Width = 111
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 16
+            Top = 10
+            Width = 89
+            Height = 21
             TabOrder = 0
           end
           object btnRefreshProjectsSinceYear: TButton
-            Left = 160
-            Top = 10
-            Width = 94
-            Height = 31
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 128
+            Top = 8
+            Width = 75
+            Height = 25
             Caption = 'Refresh'
             TabOrder = 1
             OnClick = btnRefreshProjectsSinceYearClick
           end
           object tnstor: TButton
-            Left = 430
-            Top = 11
-            Width = 94
-            Height = 32
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 344
+            Top = 9
+            Width = 75
+            Height = 25
             Caption = 'Export Excel'
             TabOrder = 2
             OnClick = tnstorClick
@@ -7810,70 +5965,50 @@ object frmMAMS: TfrmMAMS
         end
         object grdProjectsSinceYear: TDBGrid
           Left = 2
-          Top = 70
-          Width = 1257
-          Height = 858
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 57
+          Width = 1005
+          Height = 666
           Align = alClient
           DataSource = dm.dsProjectsSinceYear
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
       end
     end
     object tbsAdmin: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Admin'
       ImageIndex = 11
       object GroupBoxMADBTasks: TGroupBox
         Left = 0
         Top = 0
-        Width = 281
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 225
+        Height = 725
         Align = alLeft
         Caption = 'MA Database tasks'
         TabOrder = 0
         DesignSize = (
-          281
-          930)
+          225
+          725)
         object Button7: TButton
-          Left = 20
-          Top = 35
-          Width = 241
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 16
+          Top = 28
+          Width = 193
+          Height = 25
           Caption = 'Create SET entries for current year'
           TabOrder = 0
           OnClick = Button7Click
         end
         object DBGrid2: TDBGrid
           AlignWithMargins = True
-          Left = 4
-          Top = 121
-          Width = 276
-          Height = 787
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 3
+          Top = 97
+          Width = 221
+          Height = 610
           Anchors = [akLeft, akTop, akBottom]
           Ctl3D = True
           DataSource = dm.dsCEZA
@@ -7881,20 +6016,16 @@ object frmMAMS: TfrmMAMS
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
         object Button8: TButton
-          Left = 20
-          Top = 74
-          Width = 241
-          Height = 31
+          Left = 16
+          Top = 59
+          Width = 193
+          Height = 25
           Hint = 'transfers MA invoice numbers to MAMS projects'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'transfer MA-Nr.'
           ParentShowHint = False
           ShowHint = True
@@ -7903,122 +6034,82 @@ object frmMAMS: TfrmMAMS
         end
       end
       object GroupBoxModifyDB: TGroupBox
-        Left = 281
+        Left = 225
         Top = 0
-        Width = 273
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 218
+        Height = 725
         Align = alLeft
         Caption = 'Modify'
         TabOrder = 1
         object lblProject: TLabel
-          Left = 114
-          Top = 109
-          Width = 53
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 91
+          Top = 87
+          Width = 44
+          Height = 13
           Caption = 'lblProject'
         end
         object Sample1: TLabel
-          Left = 30
-          Top = 170
-          Width = 50
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 24
+          Top = 136
+          Width = 40
+          Height = 13
           Caption = 'Sample1'
         end
         object Label96: TLabel
-          Left = 168
-          Top = 171
-          Width = 50
-          Height = 16
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 134
+          Top = 137
+          Width = 40
+          Height = 13
           Caption = 'Sample2'
         end
         object btnDeleteUser: TButton
-          Left = 30
-          Top = 35
-          Width = 211
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 24
+          Top = 28
+          Width = 169
+          Height = 25
           Caption = 'Remove users without projects'
           TabOrder = 0
           OnClick = btnDeleteUserClick
         end
         object btnSetGraphDate: TButton
-          Left = 30
-          Top = 74
-          Width = 211
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 24
+          Top = 59
+          Width = 169
+          Height = 25
           Caption = 'Set Graphitized'
           TabOrder = 1
           OnClick = btnSetGraphDateClick
         end
         object btnCheckProjectStatus: TButton
-          Left = 30
-          Top = 133
-          Width = 211
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 24
+          Top = 106
+          Width = 169
+          Height = 25
           Caption = 'Check Project Status'
           TabOrder = 2
           OnClick = btnCheckProjectStatusClick
         end
         object edtSample1: TJvEdit
-          Left = 26
-          Top = 194
-          Width = 74
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 21
+          Top = 155
+          Width = 59
+          Height = 21
           TabOrder = 3
           Text = '16959'
         end
         object edtSample2: TJvEdit
-          Left = 168
-          Top = 194
-          Width = 73
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 134
+          Top = 155
+          Width = 59
+          Height = 21
           TabOrder = 4
           Text = '17059'
         end
         object btnSwapResults: TButton
-          Left = 26
-          Top = 228
-          Width = 215
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 21
+          Top = 182
+          Width = 172
+          Height = 25
           Caption = 'Swap'
           TabOrder = 5
           OnClick = btnSwapResultsClick
@@ -8026,33 +6117,21 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsTransferAge: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Transfer Age'
       ImageIndex = 12
       object GroupBox25: TGroupBox
-        Left = 988
+        Left = 790
         Top = 0
-        Width = 607
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 614
+        Height = 725
         Align = alClient
         Caption = 'Click on the targets you wish to take into account'
         TabOrder = 1
         object StrGrdTargetData: TJvStringGrid
           Left = 2
-          Top = 18
-          Width = 603
-          Height = 252
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 610
+          Height = 202
           Align = alTop
           FixedCols = 0
           TabOrder = 0
@@ -8064,89 +6143,69 @@ object frmMAMS: TfrmMAMS
           FixedFont.Height = -11
           FixedFont.Name = 'Tahoma'
           FixedFont.Style = []
+          ColWidths = (
+            64
+            64
+            64
+            64
+            64)
+          RowHeights = (
+            24
+            24
+            24
+            24
+            24)
         end
         object btnCalculateMean: TButton
-          Left = 219
-          Top = 300
-          Width = 112
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 175
+          Top = 240
+          Width = 90
+          Height = 25
           Caption = 'Calculate'
           TabOrder = 1
           OnClick = btnCalculateMeanClick
         end
         object edtMeanAge: TLabeledEdit
-          Left = 150
-          Top = 360
-          Width = 141
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
-          EditLabel.Width = 85
-          EditLabel.Height = 16
-          EditLabel.Margins.Left = 4
-          EditLabel.Margins.Top = 4
-          EditLabel.Margins.Right = 4
-          EditLabel.Margins.Bottom = 4
+          Left = 120
+          Top = 288
+          Width = 113
+          Height = 21
+          EditLabel.Width = 71
+          EditLabel.Height = 13
           EditLabel.Caption = 'Mean c14 age:'
           LabelPosition = lpLeft
           ReadOnly = True
           TabOrder = 2
         end
         object edtSigmaAge: TLabeledEdit
-          Left = 319
-          Top = 360
-          Width = 151
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
-          EditLabel.Width = 13
-          EditLabel.Height = 16
-          EditLabel.Margins.Left = 4
-          EditLabel.Margins.Top = 4
-          EditLabel.Margins.Right = 4
-          EditLabel.Margins.Bottom = 4
+          Left = 255
+          Top = 288
+          Width = 121
+          Height = 21
+          EditLabel.Width = 12
+          EditLabel.Height = 13
           EditLabel.Caption = '+-'
           LabelPosition = lpLeft
           ReadOnly = True
           TabOrder = 3
         end
         object edtC13Mean: TLabeledEdit
-          Left = 150
-          Top = 394
-          Width = 141
-          Height = 24
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
-          EditLabel.Width = 60
-          EditLabel.Height = 16
-          EditLabel.Margins.Left = 4
-          EditLabel.Margins.Top = 4
-          EditLabel.Margins.Right = 4
-          EditLabel.Margins.Bottom = 4
+          Left = 120
+          Top = 315
+          Width = 113
+          Height = 21
+          EditLabel.Width = 50
+          EditLabel.Height = 13
           EditLabel.Caption = 'Mean c13:'
           LabelPosition = lpLeft
           ReadOnly = True
           TabOrder = 4
         end
         object btnTransferTargetData: TButton
-          Left = 220
-          Top = 440
-          Width = 111
-          Height = 31
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 176
+          Top = 352
+          Width = 89
+          Height = 25
           Caption = 'Transfer age'
           Enabled = False
           TabOrder = 5
@@ -8156,143 +6215,99 @@ object frmMAMS: TfrmMAMS
       object gbxMagazines: TGroupBox
         Left = 0
         Top = 0
-        Width = 988
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 790
+        Height = 725
         Align = alLeft
         Caption = 'Click on magazine to transfer ages'
         TabOrder = 0
         object Panel16: TPanel
           Left = 2
-          Top = 18
-          Width = 984
-          Height = 51
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 786
+          Height = 41
           Align = alTop
           TabOrder = 0
           object Label88: TLabel
-            Left = 11
-            Top = 20
-            Width = 24
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 9
+            Top = 16
+            Width = 21
+            Height = 13
             Caption = 'Past'
           end
           object Label89: TLabel
-            Left = 116
-            Top = 20
-            Width = 36
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 93
+            Top = 16
+            Width = 30
+            Height = 13
             Caption = 'month'
           end
           object lbMagazine: TLabel
-            Left = 583
-            Top = 21
-            Width = 54
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 466
+            Top = 17
+            Width = 45
+            Height = 13
             Caption = 'Magazine'
           end
           object tnsto: TButton
-            Left = 306
-            Top = 13
-            Width = 269
-            Height = 31
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 245
+            Top = 10
+            Width = 215
+            Height = 25
             Caption = 'Transfer age'
             TabOrder = 0
             OnClick = tnstoClick
           end
           object edtMagazineMonths: TJvSpinEdit
-            Left = 53
-            Top = 14
-            Width = 56
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 42
+            Top = 11
+            Width = 45
+            Height = 21
             TabOrder = 1
           end
         end
         object Panel25: TPanel
           Left = 2
-          Top = 69
-          Width = 168
-          Height = 859
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 56
+          Width = 134
+          Height = 667
           Align = alLeft
           Caption = 'Panel25'
           TabOrder = 1
           object grdMagazines: TDBGrid
             Left = 1
             Top = 1
-            Width = 166
-            Height = 857
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 132
+            Height = 665
             Align = alClient
             DataSource = dm.dsMagazines
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
-            TitleFont.Height = -13
+            TitleFont.Height = -11
             TitleFont.Name = 'Tahoma'
             TitleFont.Style = []
             OnCellClick = grdMagazinesCellClick
           end
         end
         object Panel26: TPanel
-          Left = 170
-          Top = 69
-          Width = 816
-          Height = 859
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 136
+          Top = 56
+          Width = 652
+          Height = 667
           Align = alClient
           Caption = 'Panel26'
           TabOrder = 2
           object grdMagazineData: TDBGrid
             Left = 1
             Top = 1
-            Width = 814
-            Height = 857
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Width = 650
+            Height = 665
             Align = alClient
             DataSource = dm.dsMagazineData
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
-            TitleFont.Height = -13
+            TitleFont.Height = -11
             TitleFont.Name = 'Tahoma'
             TitleFont.Style = []
             OnCellClick = grdMagazineDataCellClick
@@ -8302,158 +6317,98 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsSendMail: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'SendMail'
       ImageIndex = 13
       object Panel31: TPanel
         Left = 0
         Top = 0
-        Width = 671
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 537
+        Height = 725
         Align = alLeft
         Caption = 'Panel31'
         TabOrder = 0
         object Panel30: TPanel
           Left = 1
           Top = 1
-          Width = 669
-          Height = 240
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Width = 535
+          Height = 192
           Align = alTop
           ParentShowHint = False
           ShowHint = True
           TabOrder = 0
           object btnSendMail: TButton
-            Left = 525
-            Top = 141
-            Width = 94
-            Height = 62
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 420
+            Top = 113
+            Width = 75
+            Height = 49
             Caption = 'Send'
             TabOrder = 0
             OnClick = btnSendMailClick
           end
           object edtMailFrom: TLabeledEdit
-            Left = 80
-            Top = 20
-            Width = 410
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            EditLabel.Width = 35
-            EditLabel.Height = 16
-            EditLabel.Margins.Left = 4
-            EditLabel.Margins.Top = 4
-            EditLabel.Margins.Right = 4
-            EditLabel.Margins.Bottom = 4
+            Left = 64
+            Top = 16
+            Width = 328
+            Height = 21
+            EditLabel.Width = 28
+            EditLabel.Height = 13
             EditLabel.Caption = 'From:'
             LabelPosition = lpLeft
             TabOrder = 1
             Text = 'do-not-reply@cez-archaeometrie.de'
           end
           object edtMailTo: TLabeledEdit
-            Left = 80
-            Top = 53
-            Width = 410
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            EditLabel.Width = 20
-            EditLabel.Height = 16
-            EditLabel.Margins.Left = 4
-            EditLabel.Margins.Top = 4
-            EditLabel.Margins.Right = 4
-            EditLabel.Margins.Bottom = 4
+            Left = 64
+            Top = 42
+            Width = 328
+            Height = 21
+            EditLabel.Width = 16
+            EditLabel.Height = 13
             EditLabel.Caption = 'To:'
             LabelPosition = lpLeft
             TabOrder = 2
           end
           object edtMailSubject: TLabeledEdit
-            Left = 80
-            Top = 120
-            Width = 410
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            EditLabel.Width = 48
-            EditLabel.Height = 16
-            EditLabel.Margins.Left = 4
-            EditLabel.Margins.Top = 4
-            EditLabel.Margins.Right = 4
-            EditLabel.Margins.Bottom = 4
+            Left = 64
+            Top = 96
+            Width = 328
+            Height = 21
+            EditLabel.Width = 40
+            EditLabel.Height = 13
             EditLabel.Caption = 'Subject:'
             LabelPosition = lpLeft
             TabOrder = 3
           end
           object edtSMTPServer: TLabeledEdit
-            Left = 80
-            Top = 176
-            Width = 410
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            EditLabel.Width = 38
-            EditLabel.Height = 16
-            EditLabel.Margins.Left = 4
-            EditLabel.Margins.Top = 4
-            EditLabel.Margins.Right = 4
-            EditLabel.Margins.Bottom = 4
+            Left = 64
+            Top = 141
+            Width = 328
+            Height = 21
+            EditLabel.Width = 30
+            EditLabel.Height = 13
             EditLabel.Caption = 'SMTP:'
             LabelPosition = lpLeft
             TabOrder = 4
             Text = 'mbox1.belwue.de'
           end
           object chkSendCopyToSender: TCheckBox
-            Left = 498
-            Top = 25
-            Width = 121
-            Height = 21
+            Left = 398
+            Top = 20
+            Width = 97
+            Height = 17
             Hint = 'sends a copy of the email to the sender'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             Caption = 'copy to sender'
             ParentShowHint = False
             ShowHint = True
             TabOrder = 5
           end
           object edtMailCC: TLabeledEdit
-            Left = 80
-            Top = 86
-            Width = 410
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            EditLabel.Width = 21
-            EditLabel.Height = 16
-            EditLabel.Margins.Left = 4
-            EditLabel.Margins.Top = 4
-            EditLabel.Margins.Right = 4
-            EditLabel.Margins.Bottom = 4
+            Left = 64
+            Top = 69
+            Width = 328
+            Height = 21
+            EditLabel.Width = 18
+            EditLabel.Height = 13
             EditLabel.Caption = 'CC:'
             LabelPosition = lpLeft
             TabOrder = 6
@@ -8461,13 +6416,9 @@ object frmMAMS: TfrmMAMS
         end
         object MailMemo: TMemo
           Left = 1
-          Top = 241
-          Width = 669
-          Height = 485
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 193
+          Width = 535
+          Height = 388
           Align = alTop
           Anchors = [akLeft, akTop, akRight, akBottom]
           ScrollBars = ssBoth
@@ -8475,14 +6426,11 @@ object frmMAMS: TfrmMAMS
         end
         object lboxStatus: TListBox
           Left = 1
-          Top = 726
-          Width = 669
-          Height = 203
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 581
+          Width = 535
+          Height = 143
           Align = alClient
+          ItemHeight = 13
           ScrollWidth = 10
           TabOrder = 2
         end
@@ -8490,45 +6438,29 @@ object frmMAMS: TfrmMAMS
     end
     object tbsDBPlot: TTabSheet
       Hint = 'Full SQL-Query to get data from the database'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'tbsDBPlot'
       ImageIndex = 14
       object SplitterDBPlot: TSplitter
-        Left = 291
-        Top = 141
-        Width = 20
-        Height = 789
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 233
+        Top = 113
+        Width = 16
+        Height = 612
         Beveled = True
-        ExplicitHeight = 758
+        ExplicitHeight = 633
       end
       object gbxPlotProperties: TGroupBox
         Left = 0
         Top = 0
-        Width = 1595
-        Height = 141
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1404
+        Height = 113
         Align = alTop
         Caption = 'DB Query'
         TabOrder = 0
         object Label99: TLabel
-          Left = 1101
-          Top = 33
-          Width = 356
-          Height = 64
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 881
+          Top = 26
+          Width = 283
+          Height = 65
           Caption = 
             'Use regular SQL syntax in query. First column will be plotted as' +
             ' X, second column as Y. All other columns are displayed in the t' +
@@ -8537,15 +6469,11 @@ object frmMAMS: TfrmMAMS
           WordWrap = True
         end
         object btnPlotQuery: TButton
-          Left = 980
-          Top = 33
-          Width = 114
-          Height = 105
+          Left = 784
+          Top = 26
+          Width = 91
+          Height = 84
           Hint = 'Get Data from Database'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           ImageAlignment = iaCenter
           ImageIndex = 72
           Images = ImageList2
@@ -8555,15 +6483,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnPlotQueryClick
         end
         object MemoDBPlotQuery: TMemo
-          Left = 125
-          Top = 33
-          Width = 848
-          Height = 105
+          Left = 100
+          Top = 26
+          Width = 678
+          Height = 84
           Hint = 'Full SQL-Query that pulls data from the DB'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Lines.Strings = (
             '')
           ParentShowHint = False
@@ -8572,15 +6496,11 @@ object frmMAMS: TfrmMAMS
           TabOrder = 1
         end
         object btnDBPlotLoadQuery: TButton
-          Left = 24
-          Top = 33
-          Width = 94
-          Height = 31
+          Left = 19
+          Top = 26
+          Width = 75
+          Height = 25
           Hint = 'load query from file'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'load'
           ParentShowHint = False
           ShowHint = True
@@ -8588,15 +6508,11 @@ object frmMAMS: TfrmMAMS
           OnClick = btnDBPlotLoadQueryClick
         end
         object btnDBPlotSaveQuery: TButton
-          Left = 24
-          Top = 71
-          Width = 94
-          Height = 32
+          Left = 19
+          Top = 57
+          Width = 75
+          Height = 25
           Hint = 'save query to file'
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
           Caption = 'save'
           ParentShowHint = False
           ShowHint = True
@@ -8606,57 +6522,41 @@ object frmMAMS: TfrmMAMS
       end
       object gbxDBPlotQueryData: TGroupBox
         Left = 0
-        Top = 141
-        Width = 291
-        Height = 789
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Top = 113
+        Width = 233
+        Height = 612
         Align = alLeft
         Caption = 'Query Data'
         TabOrder = 1
         object DBGridDBPlot: TDBGrid
           Left = 2
-          Top = 18
-          Width = 287
-          Height = 769
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 229
+          Height = 595
           Align = alClient
           DataSource = dm.dsDBPlot
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
       end
       object gbxDBPlot: TGroupBox
-        Left = 311
-        Top = 141
-        Width = 1284
-        Height = 789
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 249
+        Top = 113
+        Width = 1155
+        Height = 612
         Align = alClient
         Caption = 'DB Plot'
         TabOrder = 2
         object DBChart: TChart
           Left = 2
-          Top = 18
-          Width = 1280
-          Height = 769
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 1151
+          Height = 595
           BottomWall.Visible = False
           LeftWall.Visible = False
           Legend.Visible = False
@@ -8704,60 +6604,78 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsDBInfo: TTabSheet
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'tbsDBInfo'
       ImageIndex = 15
       object GroupBoxMeasuredSamples: TGroupBox
         Left = 0
         Top = 0
-        Width = 270
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 216
+        Height = 725
         Align = alLeft
         Caption = 'Number measured samples'
         TabOrder = 0
         object Panel28: TPanel
           Left = 2
-          Top = 18
-          Width = 266
-          Height = 71
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 212
+          Height = 57
           Align = alTop
           TabOrder = 0
           object edtMonthStat: TJvSpinEdit
-            Left = 25
-            Top = 19
-            Width = 86
-            Height = 24
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 20
+            Top = 15
+            Width = 69
+            Height = 21
             Value = 2015.000000000000000000
             TabOrder = 0
           end
-          object btnMonthStat: TButton
-            Left = 140
-            Top = 8
-            Width = 94
-            Height = 46
+          object btnMonthStat: TBitBtn
+            Left = 112
+            Top = 6
+            Width = 75
+            Height = 37
             Hint = 'get numbers of samples per month'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            ImageAlignment = iaCenter
-            ImageIndex = 72
-            Images = ImageList2
+            Glyph.Data = {
+              C2040000424DC204000000000000420000002800000018000000180000000100
+              10000300000080040000120B0000120B00000000000000000000007C0000E003
+              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7F}
+            ParentDoubleBuffered = True
             ParentShowHint = False
             ShowHint = True
             TabOrder = 1
@@ -8766,49 +6684,55 @@ object frmMAMS: TfrmMAMS
         end
         object stgMonthStat: TStringGrid
           Left = 2
-          Top = 89
-          Width = 258
-          Height = 839
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 72
+          Width = 206
+          Height = 651
           Align = alLeft
           ColCount = 2
           DefaultColWidth = 100
           RowCount = 14
           FixedRows = 0
           TabOrder = 1
+          ColWidths = (
+            100
+            100)
+          RowHeights = (
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24
+            24)
         end
       end
       object GroupBoxPendingReports: TGroupBox
-        Left = 270
+        Left = 216
         Top = 0
-        Width = 1325
-        Height = 930
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Width = 1188
+        Height = 725
         Align = alClient
         Caption = 'Pending Reports'
         TabOrder = 1
         object grdPendingReports: TDBGrid
           Left = 2
-          Top = 89
-          Width = 1321
-          Height = 839
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 72
+          Width = 1184
+          Height = 651
           Align = alClient
           DataSource = dm.dsPendingReports
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
-          TitleFont.Height = -13
+          TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnDrawColumnCell = grdPendingReportsDrawColumnCell
@@ -8816,40 +6740,28 @@ object frmMAMS: TfrmMAMS
         end
         object Panel32: TPanel
           Left = 2
-          Top = 18
-          Width = 1321
-          Height = 71
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Top = 15
+          Width = 1184
+          Height = 57
           Align = alTop
           TabOrder = 1
           object JvDBStatusLabel10: TJvDBStatusLabel
-            Left = 136
-            Top = 26
-            Width = 118
-            Height = 16
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 109
+            Top = 21
+            Width = 102
+            Height = 13
             DataSource = dm.dsPendingReports
             Style = lsRecordNo
             Transparent = True
           end
           object btnPendingReports: TButton
-            Left = 26
-            Top = 10
-            Width = 103
-            Height = 44
+            Left = 21
+            Top = 8
+            Width = 82
+            Height = 35
             Hint = 'display pending reports'
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
             ImageAlignment = iaCenter
-            ImageIndex = 72
+            ImageIndex = 73
             Images = ImageList2
             ParentShowHint = False
             ShowHint = True
@@ -8857,14 +6769,10 @@ object frmMAMS: TfrmMAMS
             OnClick = btnPendingReportsClick
           end
           object StaticText2: TStaticText
-            Left = 271
-            Top = 43
-            Width = 346
-            Height = 20
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
+            Left = 217
+            Top = 34
+            Width = 286
+            Height = 17
             Caption = 'Colors: Olive = 2 weeks till deadline, red = deadline missed'
             TabOrder = 1
           end
@@ -8872,33 +6780,42 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsHome: TTabSheet
-      Margins.Top = 20
+      Margins.Left = 2
+      Margins.Top = 16
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'Home'
       ImageIndex = 16
       object Label111: TLabel
         AlignWithMargins = True
-        Left = 3
-        Top = 20
-        Width = 1589
-        Height = 36
-        Margins.Top = 20
-        Margins.Bottom = 10
+        Left = 2
+        Top = 16
+        Width = 1400
+        Height = 29
+        Margins.Left = 2
+        Margins.Top = 16
+        Margins.Right = 2
+        Margins.Bottom = 8
         Align = alTop
         Alignment = taCenter
         Caption = 'Home - Status Overview'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -30
+        Font.Height = -24
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 321
+        ExplicitWidth = 260
       end
       object HomeGridPanel: TGridPanel
         Left = 0
-        Top = 66
-        Width = 1595
-        Height = 864
+        Top = 53
+        Width = 1404
+        Height = 672
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
         Align = alClient
         BevelOuter = bvNone
         ColumnCollection = <
@@ -8934,10 +6851,10 @@ object frmMAMS: TfrmMAMS
             Row = 0
             RowSpan = 2
           end>
-        Padding.Left = 10
-        Padding.Top = 10
-        Padding.Right = 10
-        Padding.Bottom = 10
+        Padding.Left = 8
+        Padding.Top = 8
+        Padding.Right = 8
+        Padding.Bottom = 8
         RowCollection = <
           item
             Value = 16.716796599141120000
@@ -8959,28 +6876,36 @@ object frmMAMS: TfrmMAMS
           end>
         TabOrder = 0
         object gpxHomeOxasBlanks: TGroupBox
-          Left = 20
-          Top = 20
-          Width = 243
-          Height = 261
+          Left = 16
+          Top = 16
+          Width = 216
+          Height = 202
+          Margins.Left = 2
+          Margins.Top = 2
+          Margins.Right = 2
+          Margins.Bottom = 2
           Align = alClient
           Caption = 'Available Oxas and Blanks'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -18
+          Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
           TabOrder = 0
           DesignSize = (
-            243
-            261)
+            216
+            202)
           object pnlHomeNumberOfOxas: TPanel
             Left = 0
-            Top = 48
-            Width = 241
-            Height = 89
+            Top = 38
+            Width = 215
+            Height = 72
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
             Anchors = [akLeft, akTop, akRight]
             BevelOuter = bvNone
             Caption = 'Oxas'
@@ -8988,7 +6913,7 @@ object frmMAMS: TfrmMAMS
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -30
+            Font.Height = -24
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentBackground = False
@@ -9001,11 +6926,14 @@ object frmMAMS: TfrmMAMS
           end
           object pnlHomeNumberOfBlanks: TPanel
             Left = 0
-            Top = 176
-            Width = 241
-            Height = 82
+            Top = 141
+            Width = 215
+            Height = 65
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
-            Margins.Left = 10
+            Margins.Left = 8
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
             Anchors = [akLeft, akTop, akRight]
             BevelOuter = bvNone
             Caption = 'Blanks'
@@ -9013,10 +6941,10 @@ object frmMAMS: TfrmMAMS
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clGrayText
-            Font.Height = -30
+            Font.Height = -24
             Font.Name = 'Tahoma'
             Font.Style = []
-            Padding.Left = 10
+            Padding.Left = 8
             ParentBackground = False
             ParentCtl3D = False
             ParentFont = False
@@ -9027,15 +6955,19 @@ object frmMAMS: TfrmMAMS
           end
         end
         object gbxHomeProjectsDue: TGroupBox
-          Left = 283
-          Top = 20
-          Width = 504
-          Height = 261
+          Left = 248
+          Top = 16
+          Width = 446
+          Height = 202
+          Margins.Left = 2
+          Margins.Top = 2
+          Margins.Right = 2
+          Margins.Bottom = 2
           Align = alClient
           Caption = 'Projects due'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -18
+          Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -9047,8 +6979,8 @@ object frmMAMS: TfrmMAMS
   object MainMenu1: TMainMenu
     Images = ImageList1
     OwnerDraw = True
-    Left = 1296
-    Top = 88
+    Left = 1136
+    Top = 80
     object File1: TMenuItem
       Caption = '&File'
       Hint = 'File related commands'
@@ -9114,8 +7046,8 @@ object frmMAMS: TfrmMAMS
   end
   object ActionList1: TActionList
     Images = ImageList2
-    Left = 1232
-    Top = 120
+    Left = 1136
+    Top = 144
     object actInsertSamples: TAction
       Caption = 'Insert samples'
       ImageIndex = 49
@@ -9256,10 +7188,10 @@ object frmMAMS: TfrmMAMS
   end
   object ImageList1: TImageList
     AllocBy = 10
-    Left = 1384
+    Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300EC0410001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300000510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9941,8 +7873,8 @@ object frmMAMS: TfrmMAMS
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
-    Left = 1416
-    Top = 320
+    Left = 1288
+    Top = 328
     object Cut1: TMenuItem
       Action = EditCut1
     end
@@ -10027,10 +7959,10 @@ object frmMAMS: TfrmMAMS
     DrawingStyle = dsTransparent
     Height = 24
     Width = 24
-    Left = 1512
+    Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F8066C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806800618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16277,10 +14209,10 @@ object frmMAMS: TfrmMAMS
   object ImageList3: TImageList
     Height = 32
     Width = 32
-    Left = 1440
+    Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00EC0420002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00000520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26341,7 +24273,7 @@ object frmMAMS: TfrmMAMS
         SASL = IdSASLLogin1
       end>
     Username = 'do-not-reply@cez-archaeometrie.de'
-    Left = 1232
+    Left = 1128
     Top = 320
   end
   object mesgMessage: TIdMessage
@@ -26355,8 +24287,8 @@ object frmMAMS: TfrmMAMS
     Recipients = <>
     ReplyTo = <>
     ConvertPreamble = True
-    Left = 1328
-    Top = 312
+    Left = 1224
+    Top = 328
   end
   object SSLHandler: TIdSSLIOHandlerSocketOpenSSL
     Destination = 'mbox1.belwue.de:587'
@@ -26367,16 +24299,16 @@ object frmMAMS: TfrmMAMS
     SSLOptions.Mode = sslmUnassigned
     SSLOptions.VerifyMode = []
     SSLOptions.VerifyDepth = 0
-    Left = 1428
+    Left = 1292
     Top = 250
   end
   object IdUserPassProvider1: TIdUserPassProvider
-    Left = 1236
+    Left = 1132
     Top = 242
   end
   object IdSASLLogin1: TIdSASLLogin
     UserPassProvider = IdUserPassProvider1
-    Left = 1332
+    Left = 1220
     Top = 242
   end
 end

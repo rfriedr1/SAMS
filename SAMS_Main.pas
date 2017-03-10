@@ -40,7 +40,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
 
 const
-  myVersion = '1.7.2 Dec-13-2016';
+  myVersion = '1.7.4 March-10-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -476,7 +476,6 @@ type
     Panel28: TPanel;
     stgMonthStat: TStringGrid;
     edtMonthStat: TJvSpinEdit;
-    btnMonthStat: TButton;
     btnSetGraphDate: TButton;
     Panel29: TPanel;
     grdShowUsers: TDBGrid;
@@ -714,6 +713,7 @@ type
     pnlHomeNumberOfOxas: TPanel;
     pnlHomeNumberOfBlanks: TPanel;
     Label111: TLabel;
+    btnMonthStat: TBitBtn;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;

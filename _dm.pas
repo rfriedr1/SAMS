@@ -767,7 +767,7 @@ begin
                    ' and project_t.out_date IS NULL ' +
                    ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
                    ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
-                   ' ORDER BY project_t.in_date;' ;
+                   ' ORDER BY sample_t.sample_nr;' ;
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      IF dm.adoConnKTL.Connected THEN
@@ -1303,6 +1303,7 @@ begin
             // connections is closed, reconnect by setting connected to true and test again
             LogWindow.addLogEntry('DB connection is closed, reconnecting...');
             dm.DBreconnect;
+            Open;
             // dm.adoConnKTL.Open();
             //ShowMessage('Database connection is closed.');
           end;

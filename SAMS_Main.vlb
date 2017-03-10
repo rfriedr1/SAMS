@@ -573,9 +573,6 @@ Coordinates=287,416,162,58
 [GroupBox15]
 Coordinates=1497,824,86,58
 
-[btnMonthStat]
-Coordinates=1396,824,91,58
-
 [btnFillDateToday]
 Coordinates=379,620,112,58
 
@@ -1828,7 +1825,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=1399,280,85,58
+Coordinates=1396,824,91,58
 Visible=True
 
 [btnPrintBatch]

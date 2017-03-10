@@ -22,7 +22,7 @@ begin
   Application.Initialize;
   //create and display StartScreen
   frmStart := TfrmStart.Create(nil); frmStart.Show; frmStart.Update;
-  TStyleManager.TrySetStyle('SAMS_flat');
+  TStyleManager.TrySetStyle('Turquoise Gray');
   Application.Title := 'SAMS';
   Application.CreateForm(TfrmMAMS, frmMAMS);
   Application.CreateForm(TAboutBox, AboutBox);
