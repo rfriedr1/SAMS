@@ -37,7 +37,8 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils;
+  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
+  Vcl.ValEdit;
 
 const
   myVersion = '1.7.4 March-10-2017';
@@ -717,6 +718,8 @@ type
     pnlHomeNumberofUnprepdSamples: TPanel;
     pnlHomeNumberofReadyForGraph: TPanel;
     pnlNumberofSamplesReadyForMeas: TPanel;
+    ValueListEditorPaths: TValueListEditor;
+    BalloonHint1: TBalloonHint;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;

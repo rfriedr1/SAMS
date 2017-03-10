@@ -6936,7 +6936,7 @@ object frmMAMS: TfrmMAMS
             Value = 20.046336322913170000
           end
           item
-            Value = 20.022659337733680000
+            Value = 20.022659337733690000
           end
           item
             Value = 19.999688022028150000
@@ -6945,7 +6945,7 @@ object frmMAMS: TfrmMAMS
             Value = 19.976999499969260000
           end
           item
-            Value = 19.954316817355760000
+            Value = 19.954316817355750000
           end>
         ControlCollection = <
           item
@@ -6958,7 +6958,7 @@ object frmMAMS: TfrmMAMS
             Column = 1
             Control = gbxHomeProjectsDue
             Row = 0
-            RowSpan = 2
+            RowSpan = 3
           end>
         Padding.Left = 8
         Padding.Top = 8
@@ -6995,18 +6995,19 @@ object frmMAMS: TfrmMAMS
           Margins.Bottom = 2
           Align = alClient
           Caption = 'Available Oxas and Blanks'
+          Ctl3D = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
+          ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 216
           object pnlHomeNumberOfOxas: TPanel
-            Left = 2
-            Top = 19
-            Width = 258
+            Left = 1
+            Top = 18
+            Width = 260
             Height = 72
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
             Margins.Left = 2
@@ -7030,15 +7031,12 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 0
-            ExplicitTop = 38
-            ExplicitWidth = 215
           end
           object pnlHomeNumberOfBlanks: TPanel
-            Left = 2
-            Top = 122
-            Width = 258
-            Height = 78
+            Left = 1
+            Top = 128
+            Width = 260
+            Height = 73
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
             Margins.Left = 8
             Margins.Top = 2
@@ -7062,16 +7060,13 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 0
-            ExplicitTop = 128
-            ExplicitWidth = 215
           end
         end
         object gbxHomeProjectsDue: TGroupBox
           Left = 294
           Top = 16
           Width = 261
-          Height = 202
+          Height = 311
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -7085,8 +7080,6 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitLeft = 248
-          ExplicitWidth = 215
           object pnlHomeNumberofUnprepdSamples: TPanel
             Left = 2
             Top = 19
@@ -7100,7 +7093,7 @@ object frmMAMS: TfrmMAMS
             Align = alTop
             BevelOuter = bvNone
             Caption = 'unprep'#39'd'
-            Color = clSilver
+            Color = clSkyBlue
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -7114,9 +7107,6 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 0
-            ExplicitTop = 38
-            ExplicitWidth = 215
           end
           object pnlHomeNumberofReadyForGraph: TPanel
             Left = 2
@@ -7128,10 +7118,9 @@ object frmMAMS: TfrmMAMS
             Margins.Top = 2
             Margins.Right = 2
             Margins.Bottom = 2
-            Align = alBottom
             BevelOuter = bvNone
             Caption = 'ready for graph'
-            Color = clSilver
+            Color = clSkyBlue
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -7145,8 +7134,34 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 0
-            ExplicitWidth = 215
+          end
+          object pnlNumberofSamplesReadyForMeas: TPanel
+            Left = 2
+            Top = 237
+            Width = 257
+            Height = 72
+            Hint = 'number of prep'#39'd samples ready measurement'
+            Margins.Left = 2
+            Margins.Top = 2
+            Margins.Right = 2
+            Margins.Bottom = 2
+            Align = alBottom
+            BevelOuter = bvNone
+            Caption = 'ready for meas'
+            Color = clSkyBlue
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            StyleElements = [seFont, seBorder]
           end
         end
       end
@@ -7367,7 +7382,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300040510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300080510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8139,7 +8154,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806840618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806880618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14389,7 +14404,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00040520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00080520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

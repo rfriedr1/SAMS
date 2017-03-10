@@ -5,14 +5,13 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  JvExStdCtrls, JvMemo;
+  JvExStdCtrls, JvMemo, Vcl.Imaging.pngimage;
 
 type
   TfrmStart = class(TForm)
-    StaticText1: TStaticText;
     MemoStartScreenMessages: TMemo;
-    VersionLabel: TLabel;
-    procedure FormShow(Sender: TObject);
+    Label1: TLabel;
+    Label2: TLabel;
   private
     { Private declarations }
   public
@@ -25,11 +24,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TfrmStart.FormShow(Sender: TObject);
-// runs some code as soon as the form shows
-begin
-  sleep(1000);
-end;
 
 end.

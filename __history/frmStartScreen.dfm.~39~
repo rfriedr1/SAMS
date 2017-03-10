@@ -4,7 +4,7 @@ object frmStart: TfrmStart
   BorderStyle = bsToolWindow
   ClientHeight = 426
   ClientWidth = 608
-  Color = clActiveCaption
+  Color = clGrayText
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clCream
   Font.Height = -14

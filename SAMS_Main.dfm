@@ -1029,7 +1029,9 @@ object frmMAMS: TfrmMAMS
             Top = 279
             Width = 588
             Height = 317
+            Hint = 'list of samples associated to the project'
             Margins.Top = 0
+            CustomHint = BalloonHint1
             Anchors = [akLeft, akTop, akBottom]
             Ctl3D = False
             DataSource = dm.dsSamplesOfProject
@@ -1041,6 +1043,8 @@ object frmMAMS: TfrmMAMS
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
             ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1070,6 +1074,7 @@ object frmMAMS: TfrmMAMS
               Width = 75
               Height = 48
               Hint = 'go to report page using the current project'
+              CustomHint = BalloonHint1
               Anchors = [akLeft, akBottom]
               Caption = 'report'
               ParentShowHint = False
@@ -1084,6 +1089,7 @@ object frmMAMS: TfrmMAMS
             Width = 52
             Height = 34
             Hint = 'add new sample to the selected project'
+            CustomHint = BalloonHint1
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
@@ -1096,6 +1102,8 @@ object frmMAMS: TfrmMAMS
             Top = 32
             Width = 592
             Height = 204
+            Hint = 'list of projects associated to the user'
+            CustomHint = BalloonHint1
             Align = alTop
             Ctl3D = False
             DataSource = dm.dsProjectsOfUser
@@ -1107,6 +1115,8 @@ object frmMAMS: TfrmMAMS
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
             ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 3
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1122,6 +1132,7 @@ object frmMAMS: TfrmMAMS
             Width = 52
             Height = 30
             Hint = 'adds a new Project to the selected user'
+            CustomHint = BalloonHint1
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
@@ -1145,6 +1156,8 @@ object frmMAMS: TfrmMAMS
             Top = 2
             Width = 472
             Height = 31
+            Hint = 'select users last name'
+            CustomHint = BalloonHint1
             Ctl3D = True
             DropDownRows = 25
             Font.Charset = DEFAULT_CHARSET
@@ -1157,6 +1170,8 @@ object frmMAMS: TfrmMAMS
             ListSource = dm.dsUserInfo
             ParentCtl3D = False
             ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
             OnCloseUp = cmbSubmitterNameProjectCloseUp
             OnEnter = edtSubmNameEnter
@@ -1169,6 +1184,7 @@ object frmMAMS: TfrmMAMS
             Width = 54
             Height = 34
             Hint = 'Show User Info'
+            CustomHint = BalloonHint1
             Caption = 'Info'
             ParentShowHint = False
             ShowHint = True
@@ -1181,6 +1197,7 @@ object frmMAMS: TfrmMAMS
             Width = 50
             Height = 34
             Hint = 'add new user'
+            CustomHint = BalloonHint1
             Caption = '+'
             ParentShowHint = False
             ShowHint = True
@@ -2270,6 +2287,7 @@ object frmMAMS: TfrmMAMS
             Width = 289
             Height = 43
             Hint = 'get batches from database'
+            CustomHint = BalloonHint1
             Caption = 'Load batches'
             ParentShowHint = False
             ShowHint = True
@@ -2542,6 +2560,7 @@ object frmMAMS: TfrmMAMS
           Top = 0
           Width = 538
           Height = 215
+          CustomHint = BalloonHint1
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
@@ -2549,6 +2568,7 @@ object frmMAMS: TfrmMAMS
             Top = 41
             Width = 44
             Height = 13
+            CustomHint = BalloonHint1
             Caption = 'Template'
           end
           object Label19: TLabel
@@ -2556,6 +2576,7 @@ object frmMAMS: TfrmMAMS
             Top = 89
             Width = 104
             Height = 16
+            CustomHint = BalloonHint1
             Caption = 'Save report as ....'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -2569,6 +2590,7 @@ object frmMAMS: TfrmMAMS
             Top = 111
             Width = 32
             Height = 13
+            CustomHint = BalloonHint1
             Caption = 'folder:'
           end
           object Label109: TLabel
@@ -2576,6 +2598,7 @@ object frmMAMS: TfrmMAMS
             Top = 153
             Width = 120
             Height = 13
+            CustomHint = BalloonHint1
             Caption = 'file name (no extension):'
           end
           object btnReport: TButton
@@ -2583,6 +2606,7 @@ object frmMAMS: TfrmMAMS
             Top = 153
             Width = 116
             Height = 40
+            CustomHint = BalloonHint1
             Caption = 'Create report'
             TabOrder = 0
             WordWrap = True
@@ -2593,6 +2617,7 @@ object frmMAMS: TfrmMAMS
             Top = 57
             Width = 488
             Height = 21
+            CustomHint = BalloonHint1
             ButtonWidth = 26
             TabOrder = 1
             Text = 'edtWordTemplate'
@@ -2602,6 +2627,7 @@ object frmMAMS: TfrmMAMS
             Top = 22
             Width = 143
             Height = 11
+            CustomHint = BalloonHint1
             Caption = 'cal BP (instead of AD/BC)'
             TabOrder = 2
           end
@@ -2610,6 +2636,7 @@ object frmMAMS: TfrmMAMS
             Top = 171
             Width = 97
             Height = 17
+            CustomHint = BalloonHint1
             Caption = 'preliminary'
             TabOrder = 3
           end
@@ -2618,6 +2645,7 @@ object frmMAMS: TfrmMAMS
             Top = 169
             Width = 222
             Height = 21
+            CustomHint = BalloonHint1
             TabOrder = 4
             OnChange = edtReportFileNameChange
           end
@@ -2626,6 +2654,7 @@ object frmMAMS: TfrmMAMS
             Top = 126
             Width = 487
             Height = 21
+            CustomHint = BalloonHint1
             AcceptFiles = False
             DialogKind = dkWin32
             DialogText = 'select folder'
@@ -2640,6 +2669,7 @@ object frmMAMS: TfrmMAMS
             Width = 25
             Height = 22
             Hint = 'Guess the report name from the user name and report number'
+            CustomHint = BalloonHint1
             Caption = '<'
             ParentShowHint = False
             ShowHint = True
@@ -2718,6 +2748,7 @@ object frmMAMS: TfrmMAMS
             Top = 56
             Width = 53
             Height = 16
+            CustomHint = BalloonHint1
             Caption = 'lblProject'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -2731,6 +2762,7 @@ object frmMAMS: TfrmMAMS
             Top = 81
             Width = 122
             Height = 90
+            CustomHint = BalloonHint1
             Caption = 'Flags'
             ItemIndex = 3
             Items.Strings = (
@@ -2745,6 +2777,7 @@ object frmMAMS: TfrmMAMS
             Top = 81
             Width = 107
             Height = 90
+            CustomHint = BalloonHint1
             Caption = 'Export Style'
             ItemIndex = 0
             Items.Strings = (
@@ -2759,6 +2792,7 @@ object frmMAMS: TfrmMAMS
             Width = 107
             Height = 24
             Hint = 'Export displayed table according to "Export style"'
+            CustomHint = BalloonHint1
             Caption = 'Export'
             ParentShowHint = False
             ShowHint = True
@@ -2771,6 +2805,7 @@ object frmMAMS: TfrmMAMS
             Width = 120
             Height = 108
             Hint = 'reload samples'
+            CustomHint = BalloonHint1
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -2821,6 +2856,7 @@ object frmMAMS: TfrmMAMS
             Top = 57
             Width = 70
             Height = 17
+            CustomHint = BalloonHint1
             Alignment = taLeftJustify
             Caption = 'All projects'
             TabOrder = 4
@@ -2831,6 +2867,7 @@ object frmMAMS: TfrmMAMS
             Top = 142
             Width = 97
             Height = 17
+            CustomHint = BalloonHint1
             Caption = 'Show LE current'
             TabOrder = 5
           end
@@ -2839,6 +2876,7 @@ object frmMAMS: TfrmMAMS
             Top = 51
             Width = 327
             Height = 24
+            CustomHint = BalloonHint1
             DropDownRows = 10
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -2857,6 +2895,7 @@ object frmMAMS: TfrmMAMS
             Top = 21
             Width = 405
             Height = 24
+            CustomHint = BalloonHint1
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2877,6 +2916,7 @@ object frmMAMS: TfrmMAMS
             Top = 115
             Width = 69
             Height = 21
+            CustomHint = BalloonHint1
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
@@ -2887,6 +2927,7 @@ object frmMAMS: TfrmMAMS
             Top = 88
             Width = 68
             Height = 21
+            CustomHint = BalloonHint1
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
@@ -2897,6 +2938,7 @@ object frmMAMS: TfrmMAMS
             Top = 115
             Width = 69
             Height = 21
+            CustomHint = BalloonHint1
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '1'
@@ -2907,6 +2949,7 @@ object frmMAMS: TfrmMAMS
             Top = 88
             Width = 69
             Height = 21
+            CustomHint = BalloonHint1
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             EditText = '0'
@@ -2926,6 +2969,7 @@ object frmMAMS: TfrmMAMS
           Top = 98
           Width = 75
           Height = 48
+          CustomHint = BalloonHint1
           Caption = 'Send confirmation'
           TabOrder = 2
           WordWrap = True
@@ -2936,6 +2980,7 @@ object frmMAMS: TfrmMAMS
           Top = 146
           Width = 75
           Height = 46
+          CustomHint = BalloonHint1
           Caption = 'Best'#228'tigung mailen'
           TabOrder = 3
           WordWrap = True
@@ -2947,6 +2992,7 @@ object frmMAMS: TfrmMAMS
         Top = 209
         Width = 1404
         Height = 516
+        CustomHint = BalloonHint1
         Align = alClient
         DataSource = dm.dsSampleOfSubmitter
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
@@ -3032,6 +3078,7 @@ object frmMAMS: TfrmMAMS
             Top = 11
             Width = 46
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
@@ -3044,6 +3091,7 @@ object frmMAMS: TfrmMAMS
             Top = 0
             Width = 72
             Height = 45
+            CustomHint = BalloonHint1
             Caption = 'New prep.'
             TabOrder = 1
             TabStop = False
@@ -3080,6 +3128,7 @@ object frmMAMS: TfrmMAMS
             Top = 11
             Width = 38
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
@@ -3092,6 +3141,7 @@ object frmMAMS: TfrmMAMS
             Top = 0
             Width = 75
             Height = 45
+            CustomHint = BalloonHint1
             Caption = 'New target'
             TabOrder = 1
             TabStop = False
@@ -3127,6 +3177,7 @@ object frmMAMS: TfrmMAMS
             Top = 10
             Width = 118
             Height = 27
+            CustomHint = BalloonHint1
             Color = clMoneyGreen
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
@@ -3148,6 +3199,7 @@ object frmMAMS: TfrmMAMS
             Width = 211
             Height = 45
             Hint = 'query database'
+            CustomHint = BalloonHint1
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -3337,6 +3389,7 @@ object frmMAMS: TfrmMAMS
             Top = 22
             Width = 52
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             DataField = 'conc_c'
@@ -3349,6 +3402,7 @@ object frmMAMS: TfrmMAMS
             Top = 42
             Width = 52
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             DataField = 'conc_n'
@@ -3361,6 +3415,7 @@ object frmMAMS: TfrmMAMS
             Top = 62
             Width = 52
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             DataField = 'cn_ratio'
@@ -3376,6 +3431,7 @@ object frmMAMS: TfrmMAMS
             Width = 68
             Height = 60
             Hint = 'Save changes'
+            CustomHint = BalloonHint1
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -3430,6 +3486,7 @@ object frmMAMS: TfrmMAMS
           Width = 219
           Height = 40
           Hint = 'Save changes'
+          CustomHint = BalloonHint1
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -3484,6 +3541,7 @@ object frmMAMS: TfrmMAMS
           Width = 27
           Height = 19
           Hint = 'set all fields to todays date'
+          CustomHint = BalloonHint1
           Caption = 'T'
           ParentShowHint = False
           ShowHint = True
@@ -3497,6 +3555,7 @@ object frmMAMS: TfrmMAMS
           Width = 78
           Height = 16
           Hint = 'target discarded'
+          CustomHint = BalloonHint1
           TabStop = False
           Caption = 'Discarded'
           DataField = 'stop_1'
@@ -3513,6 +3572,7 @@ object frmMAMS: TfrmMAMS
           Top = 70
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'catalyst'
@@ -3527,6 +3587,7 @@ object frmMAMS: TfrmMAMS
           Top = 110
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'co2_final'
@@ -3541,6 +3602,7 @@ object frmMAMS: TfrmMAMS
           Top = 90
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'co2_init'
@@ -3555,6 +3617,7 @@ object frmMAMS: TfrmMAMS
           Top = 299
           Width = 147
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'graph_batch'
@@ -3568,6 +3631,7 @@ object frmMAMS: TfrmMAMS
           Top = 204
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 9
@@ -3583,6 +3647,7 @@ object frmMAMS: TfrmMAMS
           Top = 242
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 10
@@ -3598,6 +3663,7 @@ object frmMAMS: TfrmMAMS
           Top = 150
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'hydro_final'
@@ -3612,6 +3678,7 @@ object frmMAMS: TfrmMAMS
           Top = 130
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'hydro_init'
@@ -3626,6 +3693,7 @@ object frmMAMS: TfrmMAMS
           Top = 177
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'react_time'
@@ -3640,6 +3708,7 @@ object frmMAMS: TfrmMAMS
           Top = 223
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 14
@@ -3655,6 +3724,7 @@ object frmMAMS: TfrmMAMS
           Top = 32
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'weight_combustion'
           DataSource = dm.dsGraphWeight
@@ -3668,6 +3738,7 @@ object frmMAMS: TfrmMAMS
           Top = 495
           Width = 216
           Height = 58
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'target_comment'
@@ -3772,6 +3843,7 @@ object frmMAMS: TfrmMAMS
           Top = 266
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
@@ -3792,6 +3864,7 @@ object frmMAMS: TfrmMAMS
           Top = 205
           Width = 95
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 1
@@ -3806,6 +3879,7 @@ object frmMAMS: TfrmMAMS
           Top = 186
           Width = 95
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 2
@@ -3820,6 +3894,7 @@ object frmMAMS: TfrmMAMS
           Top = 224
           Width = 95
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 3
@@ -3835,6 +3910,7 @@ object frmMAMS: TfrmMAMS
           Width = 43
           Height = 23
           Hint = 'Changes the associated project of that sample.'
+          CustomHint = BalloonHint1
           Caption = 'change'
           ParentShowHint = False
           ShowHint = True
@@ -3847,6 +3923,7 @@ object frmMAMS: TfrmMAMS
           Top = 144
           Width = 173
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'invoice_nr'
@@ -3860,6 +3937,7 @@ object frmMAMS: TfrmMAMS
           Top = 104
           Width = 124
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'project_nr'
@@ -3873,6 +3951,7 @@ object frmMAMS: TfrmMAMS
           Top = 448
           Width = 173
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'report'
@@ -3886,6 +3965,7 @@ object frmMAMS: TfrmMAMS
           Top = 64
           Width = 173
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'project'
@@ -3899,6 +3979,7 @@ object frmMAMS: TfrmMAMS
           Top = 367
           Width = 173
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'last_name'
@@ -3912,6 +3993,7 @@ object frmMAMS: TfrmMAMS
           Top = 408
           Width = 85
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'user_nr'
@@ -3928,6 +4010,7 @@ object frmMAMS: TfrmMAMS
           Hint = 
             'Saving changes to the project data will update all samples that ' +
             'belong to this project.'
+          CustomHint = BalloonHint1
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -3981,6 +4064,7 @@ object frmMAMS: TfrmMAMS
           Top = 319
           Width = 97
           Height = 17
+          CustomHint = BalloonHint1
           Caption = 'free of charge'
           DataField = 'FreeOfCharge'
           DataSource = dm.dsSampleInfo
@@ -4000,6 +4084,7 @@ object frmMAMS: TfrmMAMS
           Top = 495
           Width = 202
           Height = 58
+          CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'project_comment'
           DataSource = dm.dsSampleInfo
@@ -4104,6 +4189,7 @@ object frmMAMS: TfrmMAMS
           Top = 91
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'fm'
           DataSource = dm.dsSampleInfo
@@ -4114,6 +4200,7 @@ object frmMAMS: TfrmMAMS
           Top = 91
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'fm_sig'
           DataSource = dm.dsSampleInfo
@@ -4124,6 +4211,7 @@ object frmMAMS: TfrmMAMS
           Top = 150
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'dc13'
           DataSource = dm.dsSampleInfo
@@ -4134,6 +4222,7 @@ object frmMAMS: TfrmMAMS
           Top = 150
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'dc13_sig'
           DataSource = dm.dsSampleInfo
@@ -4144,6 +4233,7 @@ object frmMAMS: TfrmMAMS
           Top = 111
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'c14_age'
           DataSource = dm.dsSampleInfo
@@ -4160,6 +4250,7 @@ object frmMAMS: TfrmMAMS
           Top = 111
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'c14_age_sig'
           DataSource = dm.dsSampleInfo
@@ -4176,6 +4267,7 @@ object frmMAMS: TfrmMAMS
           Top = 191
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'cal1sMin'
           DataSource = dm.dsSampleInfo
@@ -4186,6 +4278,7 @@ object frmMAMS: TfrmMAMS
           Top = 191
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'cal1sMax'
           DataSource = dm.dsSampleInfo
@@ -4196,6 +4289,7 @@ object frmMAMS: TfrmMAMS
           Top = 211
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'cal2sMin'
           DataSource = dm.dsSampleInfo
@@ -4206,6 +4300,7 @@ object frmMAMS: TfrmMAMS
           Top = 211
           Width = 48
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'cal2sMax'
           DataSource = dm.dsSampleInfo
@@ -4216,6 +4311,7 @@ object frmMAMS: TfrmMAMS
           Top = 250
           Width = 121
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           DataField = 'calcset'
           DataSource = dm.dsSampleInfo
@@ -4227,6 +4323,7 @@ object frmMAMS: TfrmMAMS
           Width = 226
           Height = 40
           Hint = 'transfers age from target table to sample table'
+          CustomHint = BalloonHint1
           Caption = 'Transfer to sample'
           ParentShowHint = False
           ShowHint = True
@@ -4239,6 +4336,7 @@ object frmMAMS: TfrmMAMS
           Top = 26
           Width = 122
           Height = 21
+          CustomHint = BalloonHint1
           DataField = 'magazine'
           DataSource = dm.dsSampleInfo
           TabOrder = 12
@@ -4353,6 +4451,7 @@ object frmMAMS: TfrmMAMS
           Top = 26
           Width = 97
           Height = 17
+          CustomHint = BalloonHint1
           TabStop = False
           Caption = 'not to be dated'
           DataField = 'not_tobedated'
@@ -4372,6 +4471,7 @@ object frmMAMS: TfrmMAMS
           Top = 315
           Width = 97
           Height = 17
+          CustomHint = BalloonHint1
           TabStop = False
           Caption = 'this year'
           Ctl3D = True
@@ -4384,6 +4484,7 @@ object frmMAMS: TfrmMAMS
           Top = 224
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
@@ -4404,6 +4505,7 @@ object frmMAMS: TfrmMAMS
           Top = 224
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           DropDownRows = 20
           Font.Charset = DEFAULT_CHARSET
@@ -4424,6 +4526,7 @@ object frmMAMS: TfrmMAMS
           Top = 266
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           KeyField = 'indexnr'
           ListField = 'type'
@@ -4437,6 +4540,7 @@ object frmMAMS: TfrmMAMS
           Top = 267
           Width = 97
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'weight'
@@ -4449,6 +4553,7 @@ object frmMAMS: TfrmMAMS
           Top = 144
           Width = 199
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'user_desc1'
@@ -4461,6 +4566,7 @@ object frmMAMS: TfrmMAMS
           Top = 184
           Width = 199
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           BevelEdges = []
           Ctl3D = True
@@ -4474,6 +4580,7 @@ object frmMAMS: TfrmMAMS
           Top = 104
           Width = 199
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'user_label_nr'
@@ -4486,6 +4593,7 @@ object frmMAMS: TfrmMAMS
           Top = 64
           Width = 199
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -4500,6 +4608,7 @@ object frmMAMS: TfrmMAMS
           Top = 363
           Width = 199
           Height = 21
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'user_comment'
@@ -4512,6 +4621,7 @@ object frmMAMS: TfrmMAMS
           Top = 315
           Width = 87
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 11
@@ -4527,6 +4637,7 @@ object frmMAMS: TfrmMAMS
           Width = 97
           Height = 17
           Hint = 'no sample material left'
+          CustomHint = BalloonHint1
           TabStop = False
           Caption = 'no leftover'
           Ctl3D = True
@@ -4545,6 +4656,7 @@ object frmMAMS: TfrmMAMS
           Width = 87
           Height = 21
           Hint = 'storage location of the unprep'#39'd sample'
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 's_storage_loc'
@@ -4560,6 +4672,7 @@ object frmMAMS: TfrmMAMS
           Width = 107
           Height = 21
           Hint = 'stoarge location of the pre-prep'#39'd material'
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'prep_storage_loc'
@@ -4575,6 +4688,7 @@ object frmMAMS: TfrmMAMS
           Width = 238
           Height = 40
           Hint = 'Save changes'
+          CustomHint = BalloonHint1
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -4628,6 +4742,7 @@ object frmMAMS: TfrmMAMS
           Top = 495
           Width = 230
           Height = 58
+          CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'lab_comment'
           DataSource = dm.dsSampleInfo
@@ -4682,6 +4797,7 @@ object frmMAMS: TfrmMAMS
           Width = 22
           Height = 13
           Hint = 'Yield = weight after/weigt before'
+          CustomHint = BalloonHint1
           Caption = 'Yield'
           ParentShowHint = False
           ShowHint = True
@@ -4699,6 +4815,7 @@ object frmMAMS: TfrmMAMS
           Width = 311
           Height = 40
           Hint = 'Save changes'
+          CustomHint = BalloonHint1
           Anchors = [akLeft, akBottom]
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
@@ -4753,6 +4870,7 @@ object frmMAMS: TfrmMAMS
           Width = 65
           Height = 17
           Hint = 'preparation discarded'
+          CustomHint = BalloonHint1
           TabStop = False
           Caption = 'Discarded'
           DataField = 'stop'
@@ -4769,6 +4887,7 @@ object frmMAMS: TfrmMAMS
           Width = 97
           Height = 17
           Hint = 'no prepared material left'
+          CustomHint = BalloonHint1
           TabStop = False
           Caption = 'no leftover'
           DataField = 'p_no_leftover'
@@ -4784,6 +4903,7 @@ object frmMAMS: TfrmMAMS
           Top = 378
           Width = 87
           Height = 21
+          CustomHint = BalloonHint1
           Date = 40210.397922083340000000
           Time = 40210.397922083340000000
           TabOrder = 4
@@ -4798,6 +4918,7 @@ object frmMAMS: TfrmMAMS
           Top = 322
           Width = 69
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'weight_end'
           DataSource = dm.dsWeights
@@ -4811,6 +4932,7 @@ object frmMAMS: TfrmMAMS
           Top = 35
           Width = 66
           Height = 21
+          CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'weight_start'
           DataSource = dm.dsWeights
@@ -4865,6 +4987,7 @@ object frmMAMS: TfrmMAMS
             Top = 43
             Width = 144
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -4878,6 +5001,7 @@ object frmMAMS: TfrmMAMS
             Top = 63
             Width = 144
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -4891,6 +5015,7 @@ object frmMAMS: TfrmMAMS
             Top = 83
             Width = 144
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -4904,6 +5029,7 @@ object frmMAMS: TfrmMAMS
             Top = 103
             Width = 144
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -4917,6 +5043,7 @@ object frmMAMS: TfrmMAMS
             Top = 123
             Width = 144
             Height = 21
+            CustomHint = BalloonHint1
             TabStop = False
             Ctl3D = True
             ParentCtl3D = False
@@ -4931,6 +5058,7 @@ object frmMAMS: TfrmMAMS
           Top = 70
           Width = 118
           Height = 239
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           ItemHeight = 13
@@ -4943,6 +5071,7 @@ object frmMAMS: TfrmMAMS
           Top = 495
           Width = 306
           Height = 58
+          CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'prep_comment'
@@ -5234,6 +5363,7 @@ object frmMAMS: TfrmMAMS
           Width = 283
           Height = 48
           Hint = 'Save changes'
+          CustomHint = BalloonHint1
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
             10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -5299,6 +5429,7 @@ object frmMAMS: TfrmMAMS
           Width = 51
           Height = 50
           Hint = 'add new user to database'
+          CustomHint = BalloonHint1
           Caption = '+'
           ParentShowHint = False
           ShowHint = True
@@ -5311,6 +5442,7 @@ object frmMAMS: TfrmMAMS
           Width = 92
           Height = 48
           Hint = 'save user data in clipboard'
+          CustomHint = BalloonHint1
           Caption = 'Clipboard'
           ParentShowHint = False
           ShowHint = True
@@ -5410,6 +5542,7 @@ object frmMAMS: TfrmMAMS
           Top = 15
           Width = 405
           Height = 370
+          CustomHint = BalloonHint1
           Align = alTop
           ColCount = 4
           RowCount = 14
@@ -5458,6 +5591,7 @@ object frmMAMS: TfrmMAMS
         Top = 14
         Width = 120
         Height = 652
+        CustomHint = BalloonHint1
         Indent = 19
         TabOrder = 2
         OnClick = OptionsTreeClick
@@ -5474,7 +5608,7 @@ object frmMAMS: TfrmMAMS
         Top = 14
         Width = 440
         Height = 652
-        ActivePage = TabDatabase
+        ActivePage = TabPaths
         TabOrder = 3
         object TabGeneral: TTabSheet
           Caption = 'TabGeneral'
@@ -5539,6 +5673,16 @@ object frmMAMS: TfrmMAMS
             TabOrder = 1
             Text = 'JvDirEdt_Server_Report_Path'
           end
+          object ValueListEditorPaths: TValueListEditor
+            Left = 16
+            Top = 151
+            Width = 306
+            Height = 300
+            Strings.Strings = (
+              'Server Image Location='
+              'Server Reports Location=')
+            TabOrder = 2
+          end
         end
         object TabEmail: TTabSheet
           Caption = 'TabEmail'
@@ -5571,6 +5715,7 @@ object frmMAMS: TfrmMAMS
           Top = 40
           Width = 321
           Height = 683
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsMethod
           TabOrder = 0
@@ -5606,6 +5751,7 @@ object frmMAMS: TfrmMAMS
           Top = 40
           Width = 226
           Height = 683
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsTypes
           TabOrder = 0
@@ -5641,6 +5787,7 @@ object frmMAMS: TfrmMAMS
           Top = 40
           Width = 236
           Height = 683
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsMaterial
           TabOrder = 0
@@ -5676,6 +5823,7 @@ object frmMAMS: TfrmMAMS
           Top = 40
           Width = 226
           Height = 683
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsFraction
           TabOrder = 0
@@ -5742,6 +5890,7 @@ object frmMAMS: TfrmMAMS
             Top = 15
             Width = 111
             Height = 16
+            CustomHint = BalloonHint1
             DataSource = dm.dsInPrep
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
@@ -5757,6 +5906,7 @@ object frmMAMS: TfrmMAMS
             Top = 1
             Width = 59
             Height = 40
+            CustomHint = BalloonHint1
             Align = alRight
             Caption = 'Excel'
             TabOrder = 0
@@ -5768,6 +5918,7 @@ object frmMAMS: TfrmMAMS
           Top = 57
           Width = 340
           Height = 666
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsInPrep
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
@@ -5802,6 +5953,7 @@ object frmMAMS: TfrmMAMS
             Top = 20
             Width = 111
             Height = 16
+            CustomHint = BalloonHint1
             DataSource = dm.dsPlanned
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
@@ -5833,6 +5985,7 @@ object frmMAMS: TfrmMAMS
             Top = 1
             Width = 59
             Height = 40
+            CustomHint = BalloonHint1
             Align = alRight
             Caption = 'Excel'
             TabOrder = 1
@@ -5844,6 +5997,7 @@ object frmMAMS: TfrmMAMS
           Top = 57
           Width = 365
           Height = 666
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsPlanned
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
@@ -5879,6 +6033,7 @@ object frmMAMS: TfrmMAMS
             Top = 20
             Width = 111
             Height = 16
+            CustomHint = BalloonHint1
             DataSource = dm.dsWaitingForGraph
             Style = lsRecordNo
             Font.Charset = DEFAULT_CHARSET
@@ -5907,6 +6062,7 @@ object frmMAMS: TfrmMAMS
             Top = 1
             Width = 59
             Height = 40
+            CustomHint = BalloonHint1
             Align = alRight
             Caption = 'Excel'
             TabOrder = 0
@@ -5926,6 +6082,7 @@ object frmMAMS: TfrmMAMS
           Top = 57
           Width = 667
           Height = 666
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsWaitingForGraph
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
@@ -5979,6 +6136,7 @@ object frmMAMS: TfrmMAMS
             Top = 10
             Width = 89
             Height = 21
+            CustomHint = BalloonHint1
             TabOrder = 0
           end
           object btnRefreshProjectsSinceYear: TButton
@@ -5986,6 +6144,7 @@ object frmMAMS: TfrmMAMS
             Top = 8
             Width = 75
             Height = 25
+            CustomHint = BalloonHint1
             Caption = 'Refresh'
             TabOrder = 1
             OnClick = btnRefreshProjectsSinceYearClick
@@ -5995,6 +6154,7 @@ object frmMAMS: TfrmMAMS
             Top = 9
             Width = 75
             Height = 25
+            CustomHint = BalloonHint1
             Caption = 'Export Excel'
             TabOrder = 2
             OnClick = tnstorClick
@@ -6005,6 +6165,7 @@ object frmMAMS: TfrmMAMS
           Top = 57
           Width = 1005
           Height = 666
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsProjectsSinceYear
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
@@ -6036,6 +6197,7 @@ object frmMAMS: TfrmMAMS
           Top = 28
           Width = 193
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Create SET entries for current year'
           TabOrder = 0
           OnClick = Button7Click
@@ -6046,6 +6208,7 @@ object frmMAMS: TfrmMAMS
           Top = 97
           Width = 221
           Height = 610
+          CustomHint = BalloonHint1
           Anchors = [akLeft, akTop, akBottom]
           Ctl3D = True
           DataSource = dm.dsCEZA
@@ -6063,6 +6226,7 @@ object frmMAMS: TfrmMAMS
           Width = 193
           Height = 25
           Hint = 'transfers MA invoice numbers to MAMS projects'
+          CustomHint = BalloonHint1
           Caption = 'transfer MA-Nr.'
           ParentShowHint = False
           ShowHint = True
@@ -6104,6 +6268,7 @@ object frmMAMS: TfrmMAMS
           Top = 28
           Width = 169
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Remove users without projects'
           TabOrder = 0
           OnClick = btnDeleteUserClick
@@ -6113,6 +6278,7 @@ object frmMAMS: TfrmMAMS
           Top = 59
           Width = 169
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Set Graphitized'
           TabOrder = 1
           OnClick = btnSetGraphDateClick
@@ -6122,6 +6288,7 @@ object frmMAMS: TfrmMAMS
           Top = 106
           Width = 169
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Check Project Status'
           TabOrder = 2
           OnClick = btnCheckProjectStatusClick
@@ -6131,6 +6298,7 @@ object frmMAMS: TfrmMAMS
           Top = 155
           Width = 59
           Height = 21
+          CustomHint = BalloonHint1
           TabOrder = 3
           Text = '16959'
         end
@@ -6139,6 +6307,7 @@ object frmMAMS: TfrmMAMS
           Top = 155
           Width = 59
           Height = 21
+          CustomHint = BalloonHint1
           TabOrder = 4
           Text = '17059'
         end
@@ -6147,6 +6316,7 @@ object frmMAMS: TfrmMAMS
           Top = 182
           Width = 172
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Swap'
           TabOrder = 5
           OnClick = btnSwapResultsClick
@@ -6169,6 +6339,7 @@ object frmMAMS: TfrmMAMS
           Top = 15
           Width = 610
           Height = 202
+          CustomHint = BalloonHint1
           Align = alTop
           FixedCols = 0
           TabOrder = 0
@@ -6198,6 +6369,7 @@ object frmMAMS: TfrmMAMS
           Top = 240
           Width = 90
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Calculate'
           TabOrder = 1
           OnClick = btnCalculateMeanClick
@@ -6207,6 +6379,7 @@ object frmMAMS: TfrmMAMS
           Top = 288
           Width = 113
           Height = 21
+          CustomHint = BalloonHint1
           EditLabel.Width = 71
           EditLabel.Height = 13
           EditLabel.Caption = 'Mean c14 age:'
@@ -6219,6 +6392,7 @@ object frmMAMS: TfrmMAMS
           Top = 288
           Width = 121
           Height = 21
+          CustomHint = BalloonHint1
           EditLabel.Width = 12
           EditLabel.Height = 13
           EditLabel.Caption = '+-'
@@ -6231,6 +6405,7 @@ object frmMAMS: TfrmMAMS
           Top = 315
           Width = 113
           Height = 21
+          CustomHint = BalloonHint1
           EditLabel.Width = 50
           EditLabel.Height = 13
           EditLabel.Caption = 'Mean c13:'
@@ -6243,6 +6418,7 @@ object frmMAMS: TfrmMAMS
           Top = 352
           Width = 89
           Height = 25
+          CustomHint = BalloonHint1
           Caption = 'Transfer age'
           Enabled = False
           TabOrder = 5
@@ -6290,6 +6466,7 @@ object frmMAMS: TfrmMAMS
             Top = 10
             Width = 215
             Height = 25
+            CustomHint = BalloonHint1
             Caption = 'Transfer age'
             TabOrder = 0
             OnClick = tnstoClick
@@ -6299,6 +6476,7 @@ object frmMAMS: TfrmMAMS
             Top = 11
             Width = 45
             Height = 21
+            CustomHint = BalloonHint1
             TabOrder = 1
           end
         end
@@ -6315,6 +6493,7 @@ object frmMAMS: TfrmMAMS
             Top = 1
             Width = 132
             Height = 665
+            CustomHint = BalloonHint1
             Align = alClient
             DataSource = dm.dsMagazines
             TabOrder = 0
@@ -6339,6 +6518,7 @@ object frmMAMS: TfrmMAMS
             Top = 1
             Width = 650
             Height = 665
+            CustomHint = BalloonHint1
             Align = alClient
             DataSource = dm.dsMagazineData
             TabOrder = 0
@@ -6378,6 +6558,7 @@ object frmMAMS: TfrmMAMS
             Top = 113
             Width = 75
             Height = 49
+            CustomHint = BalloonHint1
             Caption = 'Send'
             TabOrder = 0
             OnClick = btnSendMailClick
@@ -6387,6 +6568,7 @@ object frmMAMS: TfrmMAMS
             Top = 16
             Width = 328
             Height = 21
+            CustomHint = BalloonHint1
             EditLabel.Width = 28
             EditLabel.Height = 13
             EditLabel.Caption = 'From:'
@@ -6399,6 +6581,7 @@ object frmMAMS: TfrmMAMS
             Top = 42
             Width = 328
             Height = 21
+            CustomHint = BalloonHint1
             EditLabel.Width = 16
             EditLabel.Height = 13
             EditLabel.Caption = 'To:'
@@ -6410,6 +6593,7 @@ object frmMAMS: TfrmMAMS
             Top = 96
             Width = 328
             Height = 21
+            CustomHint = BalloonHint1
             EditLabel.Width = 40
             EditLabel.Height = 13
             EditLabel.Caption = 'Subject:'
@@ -6421,6 +6605,7 @@ object frmMAMS: TfrmMAMS
             Top = 141
             Width = 328
             Height = 21
+            CustomHint = BalloonHint1
             EditLabel.Width = 30
             EditLabel.Height = 13
             EditLabel.Caption = 'SMTP:'
@@ -6444,6 +6629,7 @@ object frmMAMS: TfrmMAMS
             Top = 69
             Width = 328
             Height = 21
+            CustomHint = BalloonHint1
             EditLabel.Width = 18
             EditLabel.Height = 13
             EditLabel.Caption = 'CC:'
@@ -6456,6 +6642,7 @@ object frmMAMS: TfrmMAMS
           Top = 193
           Width = 535
           Height = 388
+          CustomHint = BalloonHint1
           Align = alTop
           Anchors = [akLeft, akTop, akRight, akBottom]
           ScrollBars = ssBoth
@@ -6511,6 +6698,7 @@ object frmMAMS: TfrmMAMS
           Width = 678
           Height = 84
           Hint = 'Full SQL-Query that pulls data from the DB'
+          CustomHint = BalloonHint1
           Lines.Strings = (
             '')
           ParentShowHint = False
@@ -6524,6 +6712,7 @@ object frmMAMS: TfrmMAMS
           Width = 75
           Height = 25
           Hint = 'load query from file'
+          CustomHint = BalloonHint1
           Caption = 'load'
           ParentShowHint = False
           ShowHint = True
@@ -6536,6 +6725,7 @@ object frmMAMS: TfrmMAMS
           Width = 75
           Height = 25
           Hint = 'save query to file'
+          CustomHint = BalloonHint1
           Caption = 'save'
           ParentShowHint = False
           ShowHint = True
@@ -6548,6 +6738,7 @@ object frmMAMS: TfrmMAMS
           Width = 91
           Height = 84
           Hint = 'Get Data from Database'
+          CustomHint = BalloonHint1
           Glyph.Data = {
             C2040000424DC204000000000000420000002800000018000000180000000100
             10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -6608,6 +6799,7 @@ object frmMAMS: TfrmMAMS
           Top = 15
           Width = 229
           Height = 595
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsDBPlot
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -6632,6 +6824,7 @@ object frmMAMS: TfrmMAMS
           Top = 15
           Width = 1151
           Height = 595
+          CustomHint = BalloonHint1
           BottomWall.Visible = False
           LeftWall.Visible = False
           Legend.Visible = False
@@ -6701,6 +6894,7 @@ object frmMAMS: TfrmMAMS
             Top = 15
             Width = 69
             Height = 21
+            CustomHint = BalloonHint1
             Value = 2015.000000000000000000
             TabOrder = 0
           end
@@ -6710,6 +6904,7 @@ object frmMAMS: TfrmMAMS
             Width = 75
             Height = 37
             Hint = 'get numbers of samples per month'
+            CustomHint = BalloonHint1
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -6762,6 +6957,7 @@ object frmMAMS: TfrmMAMS
           Top = 72
           Width = 206
           Height = 651
+          CustomHint = BalloonHint1
           Align = alLeft
           ColCount = 2
           DefaultColWidth = 100
@@ -6801,6 +6997,7 @@ object frmMAMS: TfrmMAMS
           Top = 72
           Width = 1184
           Height = 651
+          CustomHint = BalloonHint1
           Align = alClient
           DataSource = dm.dsPendingReports
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -6843,6 +7040,7 @@ object frmMAMS: TfrmMAMS
             Width = 82
             Height = 35
             Hint = 'display pending reports'
+            CustomHint = BalloonHint1
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
               10000300000080040000120B0000120B00000000000000000000007C0000E003
@@ -6933,16 +7131,16 @@ object frmMAMS: TfrmMAMS
         BevelOuter = bvNone
         ColumnCollection = <
           item
-            Value = 20.046336322913160000
+            Value = 20.046336322913170000
           end
           item
-            Value = 20.022659337733680000
+            Value = 20.022659337733690000
           end
           item
             Value = 19.999688022028140000
           end
           item
-            Value = 19.976999499969250000
+            Value = 19.976999499969260000
           end
           item
             Value = 19.954316817355750000
@@ -6966,29 +7164,32 @@ object frmMAMS: TfrmMAMS
         Padding.Bottom = 8
         RowCollection = <
           item
-            Value = 16.716796599141120000
+            Value = 14.377121375050850000
           end
           item
-            Value = 16.692537636706250000
+            Value = 14.356257685928920000
           end
           item
-            Value = 16.673992799052010000
+            Value = 14.340308375290700000
           end
           item
-            Value = 16.657132502448150000
+            Value = 14.325807838106120000
           end
           item
-            Value = 16.639429375300830000
+            Value = 14.310582432556340000
           end
           item
-            Value = 16.620111087351630000
+            Value = 14.293967923373520000
+          end
+          item
+            Value = 13.995954369693560000
           end>
         TabOrder = 0
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
           Width = 262
-          Height = 202
+          Height = 172
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -7004,18 +7205,20 @@ object frmMAMS: TfrmMAMS
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 216
+          ExplicitHeight = 202
           object pnlHomeNumberOfOxas: TPanel
-            Left = 1
-            Top = 18
-            Width = 260
-            Height = 72
+            AlignWithMargins = True
+            Left = 6
+            Top = 24
+            Width = 250
+            Height = 70
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
-            Margins.Left = 2
-            Margins.Top = 2
-            Margins.Right = 2
-            Margins.Bottom = 2
-            Align = alTop
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            CustomHint = BalloonHint1
+            Align = alBottom
             BevelOuter = bvNone
             Caption = 'Oxas'
             Color = clYellow
@@ -7032,20 +7235,19 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 0
-            ExplicitTop = 38
-            ExplicitWidth = 215
           end
           object pnlHomeNumberOfBlanks: TPanel
-            Left = 1
-            Top = 128
-            Width = 260
-            Height = 73
+            AlignWithMargins = True
+            Left = 6
+            Top = 104
+            Width = 250
+            Height = 62
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
-            Margins.Left = 8
-            Margins.Top = 2
-            Margins.Right = 2
-            Margins.Bottom = 2
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            CustomHint = BalloonHint1
             Align = alBottom
             BevelOuter = bvNone
             Caption = 'Blanks'
@@ -7070,7 +7272,7 @@ object frmMAMS: TfrmMAMS
           Left = 294
           Top = 16
           Width = 261
-          Height = 311
+          Height = 266
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -7084,23 +7286,23 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitLeft = 248
-          ExplicitWidth = 215
-          ExplicitHeight = 202
+          ExplicitHeight = 311
           object pnlHomeNumberofUnprepdSamples: TPanel
-            Left = 2
-            Top = 19
-            Width = 257
+            AlignWithMargins = True
+            Left = 7
+            Top = 24
+            Width = 247
             Height = 72
             Hint = 'number of unprep'#39'd samples waiting'
-            Margins.Left = 2
-            Margins.Top = 2
-            Margins.Right = 2
-            Margins.Bottom = 2
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            CustomHint = BalloonHint1
             Align = alTop
             BevelOuter = bvNone
             Caption = 'unprep'#39'd'
-            Color = clSilver
+            Color = clSkyBlue
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -7114,29 +7316,36 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 0
-            ExplicitTop = 38
-            ExplicitWidth = 215
+            ExplicitLeft = 2
+            ExplicitTop = 19
+            ExplicitWidth = 257
           end
           object pnlHomeNumberofReadyForGraph: TPanel
-            Left = 2
-            Top = 128
-            Width = 257
-            Height = 72
+            AlignWithMargins = True
+            Left = 7
+            Top = 106
+            Width = 247
+            Height = 71
             Hint = 'number of prep'#39'd samples ready for graphitization'
-            Margins.Left = 2
-            Margins.Top = 2
-            Margins.Right = 2
-            Margins.Bottom = 2
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            CustomHint = BalloonHint1
+            Align = alClient
             BevelOuter = bvNone
             Caption = 'ready for graph'
-            Color = clSilver
+            Color = clSkyBlue
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -24
             Font.Name = 'Tahoma'
             Font.Style = []
+            Padding.Left = 10
+            Padding.Top = 10
+            Padding.Right = 10
+            Padding.Bottom = 10
             ParentBackground = False
             ParentCtl3D = False
             ParentFont = False
@@ -7144,21 +7353,27 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
+            ExplicitLeft = 2
+            ExplicitTop = 104
+            ExplicitWidth = 257
+            ExplicitHeight = 72
           end
           object pnlNumberofSamplesReadyForMeas: TPanel
-            Left = 2
-            Top = 237
-            Width = 257
+            AlignWithMargins = True
+            Left = 7
+            Top = 187
+            Width = 247
             Height = 72
             Hint = 'number of prep'#39'd samples ready measurement'
-            Margins.Left = 2
-            Margins.Top = 2
-            Margins.Right = 2
-            Margins.Bottom = 2
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            CustomHint = BalloonHint1
             Align = alBottom
             BevelOuter = bvNone
             Caption = 'ready for meas'
-            Color = clSilver
+            Color = clSkyBlue
             Ctl3D = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -7172,7 +7387,9 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 2
             StyleElements = [seFont, seBorder]
-            ExplicitTop = 232
+            ExplicitLeft = 2
+            ExplicitTop = 237
+            ExplicitWidth = 257
           end
         end
       end
@@ -7393,7 +7610,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300040510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300080510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8064,7 +8281,6 @@ object frmMAMS: TfrmMAMS
     DefaultExt = 'rtf'
     Filter = 'All Files (*.*)|*.*'
     Left = 536
-    Top = 64
   end
   object SaveDialog: TSaveDialog
     DefaultExt = 'rtf'
@@ -8072,7 +8288,7 @@ object frmMAMS: TfrmMAMS
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
     Left = 840
-    Top = 64
+    Top = 48
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -8125,7 +8341,6 @@ object frmMAMS: TfrmMAMS
     WordFormat = wdTableFormatGrid4
     Visible = True
     Left = 592
-    Top = 64
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -8142,13 +8357,12 @@ object frmMAMS: TfrmMAMS
       '</body></html>')
     DocTitle = 'Grid to HTML Export'
     Left = 648
-    Top = 64
   end
   object XMLExport: TJvDBGridXMLExport
     Grid = grdTypes
     FileName = 'c:\temp\report.xml'
     Left = 712
-    Top = 64
+    Top = 32
   end
   object ExcelExport: TJvDBGridExcelExport
     Caption = 'Exporting to MS Excel...'
@@ -8156,7 +8370,7 @@ object frmMAMS: TfrmMAMS
     Visible = True
     AutoFit = False
     Left = 776
-    Top = 64
+    Top = 32
   end
   object ImageList2: TImageList
     DrawingStyle = dsTransparent
@@ -8165,7 +8379,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806840618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806880618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14415,7 +14629,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00040520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00080520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -24458,12 +24672,12 @@ object frmMAMS: TfrmMAMS
     Aggregates = <>
     Params = <>
     Left = 952
-    Top = 72
+    Top = 48
   end
   object dsExport: TDataSource
     DataSet = cdsExport
     Left = 896
-    Top = 64
+    Top = 48
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
@@ -24513,5 +24727,9 @@ object frmMAMS: TfrmMAMS
     UserPassProvider = IdUserPassProvider1
     Left = 1220
     Top = 242
+  end
+  object BalloonHint1: TBalloonHint
+    Left = 1009
+    Top = 85
   end
 end
