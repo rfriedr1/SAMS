@@ -19,6 +19,7 @@ type
     DBGrid1: TDBGrid;
     edtStatus: TEdit;
     GroupBox1: TGroupBox;
+    BalloonHint1: TBalloonHint;
     procedure btnSaveClick(Sender: TObject);
     procedure edtStartSampleIDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);

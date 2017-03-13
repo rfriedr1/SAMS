@@ -811,6 +811,7 @@ begin
                    ' and project_t.out_date IS NULL ' +
                    ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
                    ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
+                   ' and user_label NOT LIKE ' + #34 + 'HEI_%' + #34 +
                    ' ORDER BY sample_t.sample_nr;' ;
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));

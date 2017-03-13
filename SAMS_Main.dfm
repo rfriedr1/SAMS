@@ -116,6 +116,8 @@ object frmMAMS: TfrmMAMS
       Top = 0
       Caption = 'HOME'
       ImageIndex = 32
+      ParentShowHint = False
+      ShowHint = True
       OnClick = ToolbtnHomeClick
     end
     object ToolButton1: TToolButton
@@ -139,6 +141,8 @@ object frmMAMS: TfrmMAMS
       Top = 0
       Action = actUserInfo
       ImageIndex = 65
+      ParentShowHint = False
+      ShowHint = True
     end
     object btnSubmitter: TToolButton
       Left = 308
@@ -161,6 +165,8 @@ object frmMAMS: TfrmMAMS
       Top = 0
       Caption = 'Transfer'
       ImageIndex = 68
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btnTransferClick
     end
     object btnAdmin: TToolButton
@@ -168,20 +174,28 @@ object frmMAMS: TfrmMAMS
       Top = 0
       Caption = 'DB Admin'
       ImageIndex = 75
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btnAdminClick
     end
     object ToolButton10: TToolButton
       Left = 616
       Top = 0
+      Hint = 'show certain information retrieved from the database'
       Caption = 'DB Info'
       ImageIndex = 77
+      ParentShowHint = False
+      ShowHint = True
       OnClick = ToolButton10Click
     end
     object btnDBPlot: TToolButton
       Left = 693
       Top = 0
+      Hint = 'create plots from the database'
       Caption = 'DB Plot'
       ImageIndex = 61
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btnDBPlotClick
     end
     object btnShowPrior: TToolButton
@@ -197,6 +211,7 @@ object frmMAMS: TfrmMAMS
     object ToolButton5: TToolButton
       Left = 847
       Top = 0
+      Hint = 'show lab tasks'
       Action = actLabTasks
       ImageIndex = 74
       ParentShowHint = False
@@ -205,7 +220,7 @@ object frmMAMS: TfrmMAMS
     object btnShowPretreat: TToolButton
       Left = 924
       Top = 0
-      Hint = 'show samples current status'
+      Hint = 'show current status of unfinished samples'
       Action = actLabStats
       Caption = 'sample status'
       ImageIndex = 69
@@ -223,6 +238,7 @@ object frmMAMS: TfrmMAMS
     object btnNewSample: TToolButton
       Left = 1009
       Top = 0
+      Hint = 'Options page'
       Action = actOptions
       ImageIndex = 62
       ParentShowHint = False
@@ -231,21 +247,30 @@ object frmMAMS: TfrmMAMS
     object ToolButton4: TToolButton
       Left = 1086
       Top = 0
+      Hint = 'create entries in some important tables'
       Action = actTables
       ImageIndex = 73
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton6: TToolButton
       Left = 1163
       Top = 0
+      Hint = 'accounting information'
       Caption = 'Accounting'
       ImageIndex = 70
+      ParentShowHint = False
+      ShowHint = True
       OnClick = ToolButton6Click
     end
     object ToolBtnSendMail: TToolButton
       Left = 1240
       Top = 0
+      Hint = 'create and send emails'
       Action = actSendMail
       ImageIndex = 71
+      ParentShowHint = False
+      ShowHint = True
     end
   end
   object pgtMain: TPageControl
@@ -253,7 +278,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsHome
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1088,7 +1113,7 @@ object frmMAMS: TfrmMAMS
             Top = 242
             Width = 52
             Height = 34
-            Hint = 'add new sample to the selected project'
+            Hint = 'create a new sample'
             CustomHint = BalloonHint1
             Caption = '+'
             ParentShowHint = False
@@ -1131,7 +1156,7 @@ object frmMAMS: TfrmMAMS
             Top = 1
             Width = 52
             Height = 30
-            Hint = 'adds a new Project to the selected user'
+            Hint = 'create a new project'
             CustomHint = BalloonHint1
             Caption = '+'
             ParentShowHint = False
@@ -1196,7 +1221,7 @@ object frmMAMS: TfrmMAMS
             Top = 0
             Width = 50
             Height = 34
-            Hint = 'add new user'
+            Hint = 'create new user'
             CustomHint = BalloonHint1
             Caption = '+'
             ParentShowHint = False
@@ -1219,7 +1244,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 806
           Height = 723
-          ActivePage = tbsFoto
+          ActivePage = tbsProjectDocs
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1326,34 +1351,24 @@ object frmMAMS: TfrmMAMS
                 Width = 65
                 Height = 21
                 Hint = 'user nr associated with this project '
+                CustomHint = BalloonHint1
                 DataField = 'user_nr'
                 DataSource = dm.dsProject
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 0
               end
-              object btnSaveInvoiceNr: TButton
-                Left = 116
-                Top = 492
-                Width = 173
-                Height = 40
-                Hint = 'Updates the database with the new Project data'
-                HotImageIndex = 76
-                ImageAlignment = iaCenter
-                ImageIndex = 76
-                Images = ImageList2
-                ParentShowHint = False
-                ShowHint = True
-                TabOrder = 1
-                OnClick = btnSaveInvoiceNrClick
-              end
               object DBEdit_Letter: TDBEdit
                 Left = 116
                 Top = 369
                 Width = 173
                 Height = 21
+                Hint = 'filename of the project letter'
+                CustomHint = BalloonHint1
                 DataField = 'letter'
                 DataSource = dm.dsProject
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 2
               end
               object JvDBDateTimePicker3: TJvDBDateTimePicker
@@ -1361,8 +1376,12 @@ object frmMAMS: TfrmMAMS
                 Top = 227
                 Width = 87
                 Height = 21
+                Hint = 'report date'
+                CustomHint = BalloonHint1
                 Date = 40210.397922083340000000
                 Time = 40210.397922083340000000
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 3
                 DropDownDate = 40209.000000000000000000
                 NullText = 'not set'
@@ -1374,8 +1393,12 @@ object frmMAMS: TfrmMAMS
                 Top = 207
                 Width = 87
                 Height = 21
+                Hint = 'desired date for the report'
+                CustomHint = BalloonHint1
                 Date = 40210.397922083340000000
                 Time = 40210.397922083340000000
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 4
                 DropDownDate = 40209.000000000000000000
                 NullText = 'not set'
@@ -1387,8 +1410,12 @@ object frmMAMS: TfrmMAMS
                 Top = 187
                 Width = 87
                 Height = 21
+                Hint = 'date the samples of this project where received'
+                CustomHint = BalloonHint1
                 Date = 40210.397922083340000000
                 Time = 40210.397922083340000000
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 5
                 DropDownDate = 40209.000000000000000000
                 NullText = 'not set'
@@ -1400,8 +1427,12 @@ object frmMAMS: TfrmMAMS
                 Top = 401
                 Width = 173
                 Height = 21
+                Hint = 'internal invoice number'
+                CustomHint = BalloonHint1
                 DataField = 'invoice_nr'
                 DataSource = dm.dsProject
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 6
               end
               object DBLookupComboBox1: TDBLookupComboBox
@@ -1409,6 +1440,8 @@ object frmMAMS: TfrmMAMS
                 Top = 154
                 Width = 173
                 Height = 21
+                Hint = 'status of the project'
+                CustomHint = BalloonHint1
                 DropDownRows = 20
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -1419,6 +1452,8 @@ object frmMAMS: TfrmMAMS
                 ListField = 'status'
                 ListSource = dm.dsProjectStatus
                 ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 7
               end
               object DBEdit_ProjectName: TDBEdit
@@ -1426,8 +1461,12 @@ object frmMAMS: TfrmMAMS
                 Top = 71
                 Width = 173
                 Height = 21
+                Hint = 'project name'
+                CustomHint = BalloonHint1
                 DataField = 'project'
                 DataSource = dm.dsProject
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 8
               end
               object DBMemo_ProjectComment: TDBMemo
@@ -1435,8 +1474,12 @@ object frmMAMS: TfrmMAMS
                 Top = 281
                 Width = 174
                 Height = 52
+                Hint = 'project related comments'
+                CustomHint = BalloonHint1
                 DataField = 'project_comment'
                 DataSource = dm.dsProject
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 9
               end
               object dbchkFreeOfCharge1: TDBCheckBox
@@ -1444,9 +1487,13 @@ object frmMAMS: TfrmMAMS
                 Top = 450
                 Width = 97
                 Height = 17
+                Hint = 'flag project as free of charge'
+                CustomHint = BalloonHint1
                 Caption = 'free of charge'
                 DataField = 'FreeOfCharge'
                 DataSource = dm.dsProject
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 10
                 ValueChecked = '1'
                 ValueUnchecked = '0'
@@ -1473,6 +1520,7 @@ object frmMAMS: TfrmMAMS
                   Margins.Top = 2
                   Margins.Right = 2
                   Margins.Bottom = 2
+                  CustomHint = BalloonHint1
                   Caption = '1950'
                   ParentShowHint = False
                   ShowHint = True
@@ -1485,13 +1533,70 @@ object frmMAMS: TfrmMAMS
                 Top = 94
                 Width = 65
                 Height = 21
+                Hint = 'internal project number'
                 Margins.Left = 2
                 Margins.Top = 2
                 Margins.Right = 2
                 Margins.Bottom = 2
+                CustomHint = BalloonHint1
                 DataField = 'project_nr'
                 DataSource = dm.dsProject
+                ParentShowHint = False
+                ShowHint = True
                 TabOrder = 12
+              end
+              object btnSaveInvoiceNr: TBitBtn
+                Left = 116
+                Top = 492
+                Width = 173
+                Height = 40
+                Hint = 'Updates the database with the new Project data'
+                CustomHint = BalloonHint1
+                Glyph.Data = {
+                  C2040000424DC204000000000000420000002800000018000000180000000100
+                  10000300000080040000120B0000120B00000000000000000000007C0000E003
+                  00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71C
+                  E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CFF7FE71CE71CE71CE71CFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+                  E71CE71CE71CFF7FFF7FFF7FE71CE71CE71CE71CFF7FE71CE71CE71CE71CFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+                  E71CE71CE71CFF7FFF7FFF7FE71CE71CE71CE71CFF7FE71CE71CE71CE71CFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+                  E71CE71CE71CFF7FFF7FFF7FE71CE71CE71CE71CFF7FE71CE71CE71CE71CFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CFF7FE71CE71CE71CE71CFF7F
+                  FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
+                  E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CFF7FE71CE71CE71CE71CE71C
+                  E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
+                  E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CFF7FE71CE71CE71CE71CE71C
+                  E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                  FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CFF7FE71CE71CE71CE71CE71C
+                  E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FE71C
+                  E71CE71CFF7FFF7FE71CE71CE71CE71CE71CE71CFF7FE71CE71CE71CE71CE71C
+                  E71CFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CFF7FFF7FE71CE71CE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FE71C
+                  E71CE71CFF7FFF7FE71CE71CE71CE71CE71CE71CFF7FE71CE71CE71CE71CE71C
+                  E71CFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CFF7FFF7FE71CE71CE71CE71C
+                  E71CE71CFF7FE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FE71C
+                  E71CE71CFF7FFF7FE71CE71CE71CE71CE71CFF7FFF7FE71CE71CE71CE71CE71C
+                  E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
+                  FF7FFF7FFF7F}
+                ParentDoubleBuffered = True
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+                OnClick = btnSaveInvoiceNrClick
               end
             end
           end
@@ -1538,9 +1643,13 @@ object frmMAMS: TfrmMAMS
                     Top = 15
                     Width = 202
                     Height = 316
+                    Hint = 'data related to the target'
+                    CustomHint = BalloonHint1
                     DataSource = dm.dsTarget
                     Align = alClient
                     DefaultRowHeight = 18
+                    ParentShowHint = False
+                    ShowHint = True
                     TabOrder = 0
                     ColWidths = (
                       64
@@ -1569,9 +1678,13 @@ object frmMAMS: TfrmMAMS
                     Top = 15
                     Width = 227
                     Height = 316
+                    Hint = 'comments related to the target'
+                    CustomHint = BalloonHint1
                     Align = alClient
                     DataField = 'target_comment'
                     DataSource = dm.dsTarget
+                    ParentShowHint = False
+                    ShowHint = True
                     TabOrder = 0
                   end
                 end
@@ -1633,9 +1746,13 @@ object frmMAMS: TfrmMAMS
                     Top = 15
                     Width = 204
                     Height = 266
+                    Hint = 'pre treatment steps performed on the samples'
+                    CustomHint = BalloonHint1
                     DataSource = dm.dsPrepSteps
                     Align = alClient
                     DefaultRowHeight = 18
+                    ParentShowHint = False
+                    ShowHint = True
                     TabOrder = 0
                     ColWidths = (
                       64
@@ -1664,9 +1781,13 @@ object frmMAMS: TfrmMAMS
                     Top = 15
                     Width = 133
                     Height = 266
+                    Hint = 'lab comments related to the pre-treatment'
+                    CustomHint = BalloonHint1
                     Align = alClient
                     DataField = 'prep_comment'
                     DataSource = dm.dsPrepSteps
+                    ParentShowHint = False
+                    ShowHint = True
                     TabOrder = 0
                   end
                 end
@@ -1699,9 +1820,13 @@ object frmMAMS: TfrmMAMS
                     Top = 18
                     Width = 344
                     Height = 308
+                    Hint = 'data provided with the sample'
+                    CustomHint = BalloonHint1
                     DataSource = dm.dsSample
                     Align = alLeft
                     DefaultRowHeight = 18
+                    ParentShowHint = False
+                    ShowHint = True
                     TabOrder = 0
                     ColWidths = (
                       64
@@ -1724,9 +1849,13 @@ object frmMAMS: TfrmMAMS
                     Top = 18
                     Width = 135
                     Height = 308
+                    Hint = 'lab comment realted to the sample'
+                    CustomHint = BalloonHint1
                     Align = alClient
                     DataField = 'lab_comment'
                     DataSource = dm.dsSample
+                    ParentShowHint = False
+                    ShowHint = True
                     TabOrder = 0
                   end
                 end
@@ -1783,8 +1912,12 @@ object frmMAMS: TfrmMAMS
               Top = 96
               Width = 217
               Height = 33
+              Hint = 'download and show project letter'
+              CustomHint = BalloonHint1
               Caption = 'Project Letters'
               Enabled = False
+              ParentShowHint = False
+              ShowHint = True
               TabOrder = 0
               OnClick = btnProjectLettersClick
             end
@@ -1793,8 +1926,12 @@ object frmMAMS: TfrmMAMS
               Top = 135
               Width = 217
               Height = 33
+              Hint = 'download and show the sample spreadsheet'
+              CustomHint = BalloonHint1
               Caption = 'Sample Spreadsheet'
               Enabled = False
+              ParentShowHint = False
+              ShowHint = True
               TabOrder = 1
             end
             object Button1: TButton
@@ -1802,8 +1939,12 @@ object frmMAMS: TfrmMAMS
               Top = 174
               Width = 217
               Height = 33
+              Hint = 'download and show the report'
+              CustomHint = BalloonHint1
               Caption = 'Report'
               Enabled = False
+              ParentShowHint = False
+              ShowHint = True
               TabOrder = 2
             end
           end
@@ -3070,7 +3211,10 @@ object frmMAMS: TfrmMAMS
             Top = 27
             Width = 20
             Height = 13
+            Hint = 'number of available preps'
             Caption = '1..2'
+            ParentShowHint = False
+            ShowHint = True
             Transparent = True
           end
           object edtSamplePrepNr: TJvSpinEdit
@@ -3078,11 +3222,14 @@ object frmMAMS: TfrmMAMS
             Top = 11
             Width = 46
             Height = 21
+            Hint = 'preparation number of the selected sample'
             CustomHint = BalloonHint1
             TabStop = False
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
             Value = 1.000000000000000000
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
             OnChange = edtSamplePrepNrChange
           end
@@ -3091,8 +3238,11 @@ object frmMAMS: TfrmMAMS
             Top = 0
             Width = 72
             Height = 45
+            Hint = 'create a new prep entry'
             CustomHint = BalloonHint1
             Caption = 'New prep.'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 1
             TabStop = False
             WordWrap = True
@@ -3120,7 +3270,10 @@ object frmMAMS: TfrmMAMS
             Top = 27
             Width = 20
             Height = 13
+            Hint = 'number of available targets'
             Caption = '1..2'
+            ParentShowHint = False
+            ShowHint = True
             Transparent = True
           end
           object edtSampleTargetNr: TJvSpinEdit
@@ -3128,11 +3281,14 @@ object frmMAMS: TfrmMAMS
             Top = 11
             Width = 38
             Height = 21
+            Hint = 'target number of the selected sample'
             CustomHint = BalloonHint1
             TabStop = False
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
             Value = 1.000000000000000000
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
             OnChange = edtSampleTargetNrChange
           end
@@ -3141,8 +3297,11 @@ object frmMAMS: TfrmMAMS
             Top = 0
             Width = 75
             Height = 45
+            Hint = 'create a new target entry'
             CustomHint = BalloonHint1
             Caption = 'New target'
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 1
             TabStop = False
             OnClick = btnNewTargetClick
@@ -3177,6 +3336,7 @@ object frmMAMS: TfrmMAMS
             Top = 10
             Width = 118
             Height = 27
+            Hint = 'sample number '
             CustomHint = BalloonHint1
             Color = clMoneyGreen
             CriticalPoints.MaxValueIncluded = False
@@ -3190,6 +3350,8 @@ object frmMAMS: TfrmMAMS
             MaxValue = 100000000.000000000000000000
             MinValue = 1.000000000000000000
             ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 1
             OnKeyUp = edtSampleNrKeyUp
           end
@@ -3430,7 +3592,7 @@ object frmMAMS: TfrmMAMS
             Top = 22
             Width = 68
             Height = 60
-            Hint = 'Save changes'
+            Hint = 'save EA data'
             CustomHint = BalloonHint1
             Glyph.Data = {
               C2040000424DC204000000000000420000002800000018000000180000000100
@@ -3663,12 +3825,15 @@ object frmMAMS: TfrmMAMS
           Top = 150
           Width = 97
           Height = 21
+          Hint = 'final amount of H2 after reaction'
           CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'hydro_final'
           DataSource = dm.dsSampleInfo
           ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 11
           OnChange = edtH2finalChange
           OnClick = edtWeightCombustionClick
@@ -3678,12 +3843,15 @@ object frmMAMS: TfrmMAMS
           Top = 130
           Width = 97
           Height = 21
+          Hint = 'added amount of H2 to the CO2'
           CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
           DataField = 'hydro_init'
           DataSource = dm.dsSampleInfo
           ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 12
           OnChange = edtH2initChange
           OnClick = edtWeightCombustionClick
@@ -3724,11 +3892,14 @@ object frmMAMS: TfrmMAMS
           Top = 32
           Width = 97
           Height = 21
+          Hint = 'weight of sample used for combustion'
           CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'weight_combustion'
           DataSource = dm.dsGraphWeight
           ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 4
           OnChange = edtWeightCombustionChange
           OnClick = edtWeightCombustionClick
@@ -4178,8 +4349,8 @@ object frmMAMS: TfrmMAMS
           Caption = 'Calcset'
         end
         object Label38: TLabel
-          Left = 17
-          Top = 35
+          Left = 15
+          Top = 27
           Width = 45
           Height = 13
           Caption = 'Magazine'
@@ -4918,11 +5089,14 @@ object frmMAMS: TfrmMAMS
           Top = 322
           Width = 69
           Height = 21
+          Hint = 'weight after prep'
           CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'weight_end'
           DataSource = dm.dsWeights
           ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 3
           OnChange = edtWeightEndChange
           OnExit = edtWeightEndExit
@@ -4932,11 +5106,14 @@ object frmMAMS: TfrmMAMS
           Top = 35
           Width = 66
           Height = 21
+          Hint = 'weight before prep'
           CustomHint = BalloonHint1
           Ctl3D = True
           DataField = 'weight_start'
           DataSource = dm.dsWeights
           ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 2
           OnChange = edtWeightStartChange
         end
@@ -5682,6 +5859,13 @@ object frmMAMS: TfrmMAMS
               'Server Image Location='
               'Server Reports Location=')
             TabOrder = 2
+            ColWidths = (
+              150
+              150)
+            RowHeights = (
+              18
+              18
+              18)
           end
         end
         object TabEmail: TTabSheet
@@ -7137,7 +7321,7 @@ object frmMAMS: TfrmMAMS
             Value = 20.022659337733690000
           end
           item
-            Value = 19.999688022028140000
+            Value = 19.999688022028130000
           end
           item
             Value = 19.976999499969260000
@@ -7205,7 +7389,6 @@ object frmMAMS: TfrmMAMS
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitHeight = 202
           object pnlHomeNumberOfOxas: TPanel
             AlignWithMargins = True
             Left = 6
@@ -7286,7 +7469,6 @@ object frmMAMS: TfrmMAMS
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 311
           object pnlHomeNumberofUnprepdSamples: TPanel
             AlignWithMargins = True
             Left = 7
@@ -7316,9 +7498,6 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 2
-            ExplicitTop = 19
-            ExplicitWidth = 257
           end
           object pnlHomeNumberofReadyForGraph: TPanel
             AlignWithMargins = True
@@ -7353,10 +7532,6 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 2
-            ExplicitTop = 104
-            ExplicitWidth = 257
-            ExplicitHeight = 72
           end
           object pnlNumberofSamplesReadyForMeas: TPanel
             AlignWithMargins = True
@@ -7387,9 +7562,6 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 2
             StyleElements = [seFont, seBorder]
-            ExplicitLeft = 2
-            ExplicitTop = 237
-            ExplicitWidth = 257
           end
         end
       end
@@ -7610,7 +7782,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300080510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013000C0510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8340,7 +8512,8 @@ object frmMAMS: TfrmMAMS
     Silent = False
     WordFormat = wdTableFormatGrid4
     Visible = True
-    Left = 592
+    Left = 600
+    Top = 40
   end
   object HTMLExport: TJvDBGridHTMLExport
     Caption = 'Exporting to HTML...'
@@ -8356,7 +8529,8 @@ object frmMAMS: TfrmMAMS
     Footer.Strings = (
       '</body></html>')
     DocTitle = 'Grid to HTML Export'
-    Left = 648
+    Left = 656
+    Top = 40
   end
   object XMLExport: TJvDBGridXMLExport
     Grid = grdTypes
@@ -8379,7 +8553,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806880618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F8068C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14629,7 +14803,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00080520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F000C0520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -384,7 +384,6 @@ type
     Label66: TLabel;
     DBEdit_Letter: TDBEdit;
     Label67: TLabel;
-    btnSaveInvoiceNr: TButton;
     ToolButton6: TToolButton;
     tbsAccounting: TTabSheet;
     GroupBox5: TGroupBox;
@@ -720,6 +719,7 @@ type
     pnlNumberofSamplesReadyForMeas: TPanel;
     ValueListEditorPaths: TValueListEditor;
     BalloonHint1: TBalloonHint;
+    btnSaveInvoiceNr: TBitBtn;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;

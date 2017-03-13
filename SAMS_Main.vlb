@@ -1641,9 +1641,6 @@ Coordinates=3441,661,78,36
 [gbxPresentTask]
 Coordinates=806,824,107,58
 
-[btnSaveInvoiceNr]
-Coordinates=716,484,116,58
-
 [GroupBox12]
 Coordinates=644,552,86,58
 
@@ -1819,7 +1816,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=10,892,90,58
+Coordinates=716,484,116,58
 Visible=True
 
 [btnPrintBatch]
