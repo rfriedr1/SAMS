@@ -920,4 +920,15 @@ object dm: Tdm
     Left = 728
     Top = 592
   end
+  object qryWaitingExpress: TADOQuery
+    Connection = adoConnKTL
+    Parameters = <>
+    Left = 632
+    Top = 800
+  end
+  object dsWaitingExpress: TDataSource
+    DataSet = qryWaitingExpress
+    Left = 728
+    Top = 800
+  end
 end

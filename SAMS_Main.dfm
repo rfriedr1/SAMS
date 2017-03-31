@@ -278,7 +278,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsHome
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1069,7 +1069,7 @@ object frmMAMS: TfrmMAMS
             ParentCtl3D = False
             ParentFont = False
             ParentShowHint = False
-            ShowHint = True
+            ShowHint = False
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1141,7 +1141,7 @@ object frmMAMS: TfrmMAMS
             ParentCtl3D = False
             ParentFont = False
             ParentShowHint = False
-            ShowHint = True
+            ShowHint = False
             TabOrder = 3
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -3422,7 +3422,7 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxTarget: TGroupBox
-        Left = 765
+        Left = 759
         Top = 66
         Width = 220
         Height = 659
@@ -3436,7 +3436,7 @@ object frmMAMS: TfrmMAMS
           659)
         object Label103: TLabel
           Left = 6
-          Top = 476
+          Top = 447
           Width = 45
           Height = 13
           Caption = 'Comment'
@@ -3506,7 +3506,7 @@ object frmMAMS: TfrmMAMS
         end
         object Label92: TLabel
           Left = 32
-          Top = 280
+          Top = 271
           Width = 59
           Height = 13
           Caption = 'Graph batch'
@@ -3520,7 +3520,7 @@ object frmMAMS: TfrmMAMS
         end
         object gbxEAData: TGroupBox
           Left = 6
-          Top = 336
+          Top = 317
           Width = 208
           Height = 97
           Caption = 'EA data'
@@ -3644,7 +3644,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesGraph: TBitBtn
           Left = 1
-          Top = 560
+          Top = 531
           Width = 219
           Height = 40
           Hint = 'Save changes'
@@ -3712,8 +3712,8 @@ object frmMAMS: TfrmMAMS
           OnClick = btnFillDateTodayClick
         end
         object chkTargetDiscarded: TDBCheckBox
-          Left = 77
-          Top = 452
+          Left = 69
+          Top = 420
           Width = 78
           Height = 16
           Hint = 'target discarded'
@@ -3776,7 +3776,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtGraphBatch: TDBEdit
           Left = 30
-          Top = 299
+          Top = 290
           Width = 147
           Height = 21
           CustomHint = BalloonHint1
@@ -3906,7 +3906,7 @@ object frmMAMS: TfrmMAMS
         end
         object memTargetComments: TDBMemo
           Left = 1
-          Top = 495
+          Top = 466
           Width = 216
           Height = 58
           CustomHint = BalloonHint1
@@ -3920,7 +3920,7 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxAdministration: TGroupBox
-        Left = 239
+        Left = 233
         Top = 66
         Width = 214
         Height = 659
@@ -3934,21 +3934,21 @@ object frmMAMS: TfrmMAMS
           659)
         object Label28: TLabel
           Left = 36
-          Top = 228
+          Top = 206
           Width = 56
           Height = 13
           Caption = 'ReportDate'
         end
         object Label37: TLabel
           Left = 48
-          Top = 189
+          Top = 167
           Width = 44
           Height = 13
           Caption = 'Received'
         end
         object Label39: TLabel
           Left = 55
-          Top = 209
+          Top = 187
           Width = 36
           Height = 13
           Caption = 'Desired'
@@ -3962,56 +3962,56 @@ object frmMAMS: TfrmMAMS
         end
         object Label24: TLabel
           Left = 20
-          Top = 129
+          Top = 107
           Width = 54
           Height = 13
           Caption = 'MA number'
         end
         object Label3: TLabel
           Left = 20
-          Top = 393
+          Top = 313
           Width = 36
           Height = 13
           Caption = 'User Nr'
         end
         object Label31: TLabel
           Left = 22
-          Top = 49
+          Top = 27
           Width = 63
           Height = 13
           Caption = 'Project name'
         end
         object Label32: TLabel
           Left = 20
-          Top = 352
+          Top = 272
           Width = 51
           Height = 13
           Caption = 'User name'
         end
         object Label93: TLabel
           Left = 20
-          Top = 433
+          Top = 353
           Width = 36
           Height = 13
           Caption = 'Report '
         end
         object Label97: TLabel
           Left = 20
-          Top = 90
+          Top = 68
           Width = 74
           Height = 13
           Caption = 'Project Number'
         end
         object Comment: TLabel
           Left = 6
-          Top = 476
+          Top = 447
           Width = 45
           Height = 13
           Caption = 'Comment'
         end
         object cmbProjectStatus: TDBLookupComboBox
           Left = 96
-          Top = 266
+          Top = 244
           Width = 97
           Height = 21
           CustomHint = BalloonHint1
@@ -4032,7 +4032,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoDesiredDate: TJvDBDateTimePicker
           Left = 98
-          Top = 205
+          Top = 183
           Width = 95
           Height = 21
           CustomHint = BalloonHint1
@@ -4047,7 +4047,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoInDate: TJvDBDateTimePicker
           Left = 98
-          Top = 186
+          Top = 164
           Width = 95
           Height = 21
           CustomHint = BalloonHint1
@@ -4062,7 +4062,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoOutDate: TJvDBDateTimePicker
           Left = 98
-          Top = 224
+          Top = 202
           Width = 95
           Height = 21
           CustomHint = BalloonHint1
@@ -4077,7 +4077,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnChangeProject: TButton
           Left = 150
-          Top = 103
+          Top = 81
           Width = 43
           Height = 23
           Hint = 'Changes the associated project of that sample.'
@@ -4091,7 +4091,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtInvoiceNr: TDBEdit
           Left = 20
-          Top = 144
+          Top = 122
           Width = 173
           Height = 21
           CustomHint = BalloonHint1
@@ -4105,7 +4105,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtProjectNr: TDBEdit
           Left = 20
-          Top = 104
+          Top = 82
           Width = 124
           Height = 21
           CustomHint = BalloonHint1
@@ -4119,7 +4119,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtReport: TDBEdit
           Left = 20
-          Top = 448
+          Top = 368
           Width = 173
           Height = 21
           CustomHint = BalloonHint1
@@ -4133,7 +4133,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleProjectName: TDBEdit
           Left = 20
-          Top = 64
+          Top = 42
           Width = 173
           Height = 21
           CustomHint = BalloonHint1
@@ -4147,7 +4147,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleUser: TDBEdit
           Left = 20
-          Top = 367
+          Top = 287
           Width = 173
           Height = 21
           CustomHint = BalloonHint1
@@ -4161,7 +4161,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtUserNr: TDBEdit
           Left = 20
-          Top = 408
+          Top = 328
           Width = 85
           Height = 21
           CustomHint = BalloonHint1
@@ -4175,7 +4175,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesAdmin: TBitBtn
           Left = 1
-          Top = 560
+          Top = 531
           Width = 213
           Height = 40
           Hint = 
@@ -4231,8 +4231,8 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveChangesAdminClick
         end
         object dbchkFreeOfCharge2: TDBCheckBox
-          Left = 56
-          Top = 319
+          Left = 24
+          Top = 416
           Width = 97
           Height = 17
           CustomHint = BalloonHint1
@@ -4252,7 +4252,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBMemo_ProjComment: TDBMemo
           Left = 9
-          Top = 495
+          Top = 466
           Width = 202
           Height = 58
           CustomHint = BalloonHint1
@@ -4264,7 +4264,7 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxAnaResults: TGroupBox
-        Left = 985
+        Left = 979
         Top = 66
         Width = 227
         Height = 659
@@ -4516,7 +4516,7 @@ object frmMAMS: TfrmMAMS
       object gbxSampleInfo: TGroupBox
         Left = 0
         Top = 66
-        Width = 239
+        Width = 233
         Height = 659
         Align = alLeft
         Caption = 'Sample Info'
@@ -4524,102 +4524,102 @@ object frmMAMS: TfrmMAMS
         ParentCtl3D = False
         TabOrder = 0
         DesignSize = (
-          239
+          233
           659)
         object Label30: TLabel
           Left = 16
-          Top = 49
+          Top = 27
           Width = 63
           Height = 13
           Caption = 'Sample name'
         end
         object Label33: TLabel
           Left = 16
-          Top = 88
+          Top = 66
           Width = 76
           Height = 13
           Caption = 'Sample label nr.'
         end
         object Label34: TLabel
           Left = 16
-          Top = 131
+          Top = 109
           Width = 76
           Height = 13
           Caption = 'Sample descr. 1'
         end
         object Label35: TLabel
           Left = 16
-          Top = 171
+          Top = 149
           Width = 76
           Height = 13
           Caption = 'Sample descr. 2'
         end
         object Label36: TLabel
           Left = 16
-          Top = 211
+          Top = 189
           Width = 38
           Height = 13
           Caption = 'Material'
         end
         object Label51: TLabel
           Left = 119
-          Top = 211
+          Top = 189
           Width = 39
           Height = 13
           Caption = 'Fraction'
         end
         object Label52: TLabel
           Left = 15
-          Top = 349
+          Top = 313
           Width = 68
           Height = 13
           Caption = 'User comment'
         end
         object Label68: TLabel
           Left = 119
-          Top = 254
+          Top = 230
           Width = 92
           Height = 13
           Caption = 'Weight as received'
         end
         object Label94: TLabel
           Left = 16
-          Top = 302
+          Top = 271
           Width = 67
           Height = 13
           Caption = 'Sampling date'
         end
         object Ta: TLabel
           Left = 16
-          Top = 253
+          Top = 229
           Width = 24
           Height = 13
           Caption = 'Type'
         end
         object Label104: TLabel
           Left = 15
-          Top = 395
+          Top = 359
           Width = 73
           Height = 13
           Caption = 'sample storage'
         end
         object Label105: TLabel
           Left = 108
-          Top = 395
+          Top = 359
           Width = 111
           Height = 13
           Caption = 'prep'#39'd material storage'
         end
         object Label13: TLabel
-          Left = 6
-          Top = 476
+          Left = 3
+          Top = 447
           Width = 65
           Height = 13
           Caption = 'Lab Comment'
         end
         object chkNotToBeDated: TDBCheckBox
-          Left = 16
-          Top = 26
+          Left = 15
+          Top = 416
           Width = 97
           Height = 17
           CustomHint = BalloonHint1
@@ -4639,7 +4639,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkSamplingThisYear: TCheckBox
           Left = 119
-          Top = 315
+          Top = 284
           Width = 97
           Height = 17
           CustomHint = BalloonHint1
@@ -4652,7 +4652,7 @@ object frmMAMS: TfrmMAMS
         end
         object cmbSampleFraction: TDBLookupComboBox
           Left = 119
-          Top = 224
+          Top = 202
           Width = 97
           Height = 21
           CustomHint = BalloonHint1
@@ -4673,7 +4673,7 @@ object frmMAMS: TfrmMAMS
         end
         object cmbSampleMaterial: TDBLookupComboBox
           Left = 16
-          Top = 224
+          Top = 202
           Width = 97
           Height = 21
           CustomHint = BalloonHint1
@@ -4694,7 +4694,7 @@ object frmMAMS: TfrmMAMS
         end
         object cmbSampleType: TDBLookupComboBox
           Left = 16
-          Top = 266
+          Top = 242
           Width = 97
           Height = 21
           CustomHint = BalloonHint1
@@ -4708,7 +4708,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBEdit16: TDBEdit
           Left = 119
-          Top = 267
+          Top = 243
           Width = 97
           Height = 21
           CustomHint = BalloonHint1
@@ -4721,7 +4721,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleDescr1: TDBEdit
           Left = 16
-          Top = 144
+          Top = 122
           Width = 199
           Height = 21
           CustomHint = BalloonHint1
@@ -4734,7 +4734,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleDescr2: TDBEdit
           Left = 16
-          Top = 184
+          Top = 162
           Width = 199
           Height = 21
           CustomHint = BalloonHint1
@@ -4748,7 +4748,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleLabelNr: TDBEdit
           Left = 16
-          Top = 104
+          Top = 82
           Width = 199
           Height = 21
           CustomHint = BalloonHint1
@@ -4761,7 +4761,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleName: TDBEdit
           Left = 16
-          Top = 64
+          Top = 42
           Width = 199
           Height = 21
           CustomHint = BalloonHint1
@@ -4776,7 +4776,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleUserComment: TDBEdit
           Left = 15
-          Top = 363
+          Top = 327
           Width = 199
           Height = 21
           CustomHint = BalloonHint1
@@ -4789,7 +4789,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSamplingDate: TJvDBDateTimePicker
           Left = 16
-          Top = 315
+          Top = 284
           Width = 87
           Height = 21
           CustomHint = BalloonHint1
@@ -4803,8 +4803,8 @@ object frmMAMS: TfrmMAMS
           DataSource = dm.dsSampleInfo
         end
         object chkSampleNoLeftover: TDBCheckBox
-          Left = 84
-          Top = 450
+          Left = 136
+          Top = 416
           Width = 97
           Height = 17
           Hint = 'no sample material left'
@@ -4823,7 +4823,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleStorageLoc: TDBEdit
           Left = 15
-          Top = 409
+          Top = 373
           Width = 87
           Height = 21
           Hint = 'storage location of the unprep'#39'd sample'
@@ -4839,7 +4839,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtPrepSampleStorageLoc: TDBEdit
           Left = 108
-          Top = 409
+          Top = 373
           Width = 107
           Height = 21
           Hint = 'stoarge location of the pre-prep'#39'd material'
@@ -4854,9 +4854,9 @@ object frmMAMS: TfrmMAMS
           TabOrder = 14
         end
         object btnSaveChangesUserSuppliedInfo: TBitBtn
-          Left = 1
-          Top = 560
-          Width = 238
+          Left = 3
+          Top = 530
+          Width = 224
           Height = 40
           Hint = 'Save changes'
           CustomHint = BalloonHint1
@@ -4909,8 +4909,8 @@ object frmMAMS: TfrmMAMS
           OnClick = btnSaveChangesUserSuppliedInfoClick
         end
         object DBMemo_LabComment: TDBMemo
-          Left = 3
-          Top = 495
+          Left = 0
+          Top = 466
           Width = 230
           Height = 58
           CustomHint = BalloonHint1
@@ -4922,7 +4922,7 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxSamplePretreatment: TGroupBox
-        Left = 453
+        Left = 447
         Top = 66
         Width = 312
         Height = 659
@@ -4936,7 +4936,7 @@ object frmMAMS: TfrmMAMS
           659)
         object Label102: TLabel
           Left = 6
-          Top = 476
+          Top = 447
           Width = 45
           Height = 13
           Caption = 'Comment'
@@ -4982,7 +4982,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesPrep: TBitBtn
           Left = 1
-          Top = 560
+          Top = 531
           Width = 311
           Height = 40
           Hint = 'Save changes'
@@ -5037,7 +5037,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkPrepDiscarded: TDBCheckBox
           Left = 80
-          Top = 451
+          Top = 416
           Width = 65
           Height = 17
           Hint = 'preparation discarded'
@@ -5054,7 +5054,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkPrepNoLeftover: TDBCheckBox
           Left = 190
-          Top = 451
+          Top = 416
           Width = 97
           Height = 17
           Hint = 'no prepared material left'
@@ -5075,11 +5075,11 @@ object frmMAMS: TfrmMAMS
           Width = 87
           Height = 21
           CustomHint = BalloonHint1
-          Date = 40210.397922083340000000
-          Time = 40210.397922083340000000
+          Date = 0.397922083342564300
+          Time = 0.397922083342564300
           TabOrder = 4
           TabStop = False
-          DropDownDate = 40209.000000000000000000
+          DropDownDate = 42766.000000000000000000
           NullText = 'not set'
           DataField = 'prep_end'
           DataSource = dm.dsSampleInfo
@@ -5245,7 +5245,7 @@ object frmMAMS: TfrmMAMS
         end
         object memPrepComments: TDBMemo
           Left = 3
-          Top = 495
+          Top = 466
           Width = 306
           Height = 58
           CustomHint = BalloonHint1
@@ -5603,8 +5603,8 @@ object frmMAMS: TfrmMAMS
         object btnAddNewUser: TButton
           Left = 519
           Top = 48
-          Width = 51
-          Height = 50
+          Width = 58
+          Height = 54
           Hint = 'add new user to database'
           CustomHint = BalloonHint1
           Caption = '+'
@@ -7341,6 +7341,11 @@ object frmMAMS: TfrmMAMS
             Control = gbxHomeProjectsDue
             Row = 0
             RowSpan = 3
+          end
+          item
+            Column = 2
+            Control = gpxHomeExpress
+            Row = 0
           end>
         Padding.Left = 8
         Padding.Top = 8
@@ -7564,6 +7569,45 @@ object frmMAMS: TfrmMAMS
             StyleElements = [seFont, seBorder]
           end
         end
+        object gpxHomeExpress: TGroupBox
+          Left = 571
+          Top = 16
+          Width = 261
+          Height = 78
+          Align = alClient
+          Caption = 'Number of Express Samples'
+          TabOrder = 2
+          object pnlHomeNumberofExpress: TPanel
+            AlignWithMargins = True
+            Left = 7
+            Top = 20
+            Width = 247
+            Height = 51
+            Hint = 'number of express samples to be measured'
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            CustomHint = BalloonHint1
+            Align = alClient
+            BevelOuter = bvNone
+            Caption = 'express'
+            Color = clSkyBlue
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            StyleElements = [seFont, seBorder]
+          end
+        end
       end
     end
   end
@@ -7782,7 +7826,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C0101100013000C0510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300240510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8553,7 +8597,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F8068C0618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806A40618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14803,7 +14847,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F000C0520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00240520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

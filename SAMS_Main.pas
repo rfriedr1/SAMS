@@ -38,10 +38,10 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
-  Vcl.ValEdit;
+  Vcl.ValEdit, Math;
 
 const
-  myVersion = '1.7.4 March-10-2017';
+  myVersion = '1.7.5 March-31-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -720,6 +720,8 @@ type
     ValueListEditorPaths: TValueListEditor;
     BalloonHint1: TBalloonHint;
     btnSaveInvoiceNr: TBitBtn;
+    gpxHomeExpress: TGroupBox;
+    pnlHomeNumberofExpress: TPanel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -6894,10 +6896,12 @@ begin
 end;
 
 procedure TfrmMAMS.CalculateYield;
+VAR yield: double;
 begin
   if not (edtWeightEnd.Text = '') AND not (edtweightstart.Text = '') then
   begin
-    YieldLabel.Caption := floattostr(round(100 * (strtofloat(edtWeightEnd.Text) / strtofloat(edtWeightStart.text)))) + ' %';
+    yield := SimpleRoundTo(100 * (strtofloat(edtWeightEnd.Text) / strtofloat(edtWeightStart.text)),-2);
+    YieldLabel.Caption := floattostr(yield) + ' %';
   end
   else
   //display yield in percent from weights and round
@@ -6948,6 +6952,7 @@ end;
 
 procedure TfrmMAMS.ToolbtnHomeClick(Sender: TObject);
 // show home tab and reload all the data in the tab
+VAR express: integer;
 begin
   // show Home tab
   pgtMain.ActivePage := tbsHome;
@@ -6966,14 +6971,18 @@ begin
   if (dm.qryDB.RecordCount in [4..6]) then pnlHomeNumberOfBlanks.Color:=clYellow;
   if dm.qryDB.RecordCount > 6 then pnlHomeNumberOfBlanks.Color:=clGreen;
 
-  // ### update number of unprep'd samples and samples ready for graph
+  // ### update number of unprep'd samples and samples ready for graph and express
   // unpre'd samples
   pnlHomeNumberofUnprepdSamples.Caption := '# to prep: ' + IntToStr(dm.GetAllPlanned(False));
   // ready for graph
   pnlHomeNumberofReadyForGraph.Caption := '# to graph: ' + IntToStr(dm.GetAllWaitingForGraph);
   // ready for meas
   pnlNumberofSamplesReadyForMeas.Caption := '# to meas: ' + IntToStr(dm.GetAllWaitingForMeas);
-
+  // number of express samples
+  express:=dm.GetWaitingExpress;
+  pnlHomeNumberofExpress.Caption := '# express: ' + IntToStr(express);
+  if express>0 then pnlHomeNumberofExpress.Color:=clRed
+  else pnlHomeNumberofExpress.Color:=clGreen;
 
 
 end;
@@ -7586,7 +7595,7 @@ end;
 procedure TfrmMAMS.grdSamplesAvailableMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  ShowMessage('test');
+  // ShowMessage('test');
   grdSamplesAvailable.mousetocell(x, y, DragCol, DragRow);
   grdSamplesAvailable.BeginDrag(false, 5);
 end;
