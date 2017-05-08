@@ -97,13 +97,13 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
   // set query with sampleID#s to first record
   ADOQueryIDs.First;
 
-  //go through data that are displayed in DBGrid
+  // go through data that are displayed in DBGrid
   // create the UPDATE query depending on what data are given
   // then update records in DB
   while NOT ADOQueryIDs.Eof do
     begin
       // check first if there are already values stored in the database
-      // or certzain values such as 0
+      // or certain values such as 0
       // then set flag accordingly
       // for sample location
       LogWindow.addLogEntry('storrage locations -- check if record update is allowed');
@@ -122,26 +122,44 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
 
       // see if one of the above flags is triggered
       // then show message and let user decide what to do
-      can_update_flag3:= false;
-      if ((can_update_flag1 = true) AND (can_update_flag2 = true)) then can_update_flag3:= true
-      else
+//      can_update_flag3:= false;
+//      if ((can_update_flag1 = true) AND (can_update_flag2 = true)) then can_update_flag3:= true
+//      else
+//        begin
+//          button:= messagedlg('sample nr: ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ' location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
+//          if button = mrYes then can_update_flag3:= true;
+//        end;
+//      LogWindow.addLogEntry('storrage locations -- allow update=' + booltostr(can_update_flag3));
+
+      // if user wants to update sample_storrage location although there is already a value given
+      // show error and  let user decide
+      LogWindow.addLogEntry('storrage locations -- check flags and user input');
+      if ((trim(edtSampleStorageLoc.Text) <> '') AND (can_update_flag1 = false)) then
         begin
-          button:= messagedlg('sample nr: ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ' location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
-          if button = mrYes then can_update_flag3:= true;
+          button:= messagedlg('sample nr: ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ' SAMPLE location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
+          if button = mrYes then can_update_flag1:= true;
+          LogWindow.addLogEntry('storrage locations -- sample_loc_flag=' + booltostr(can_update_flag3));
         end;
-      LogWindow.addLogEntry('storrage locations -- allow update=' + booltostr(can_update_flag3));
+      // if user wants to update prep_storrage location although there is already a value given
+      // show error and  let user decide
+      if ((trim(edtPrepStorageLoc.Text) <> '') AND (can_update_flag2 = false)) then
+        begin
+          button:= messagedlg('sample nr: ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ' PREP location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
+          if button = mrYes then can_update_flag2:= true;
+          LogWindow.addLogEntry('storrage locations -- sample_loc_flag=' + booltostr(can_update_flag2));
+        end;
 
       // if flag is true then perfrom update for that sample
-      if can_update_flag3 = true  then
+      if ((can_update_flag1 = true) OR (can_update_flag2 = true)) then
         begin
           s := 'UPDATE sample_t SET ';
-          if (trim(edtSampleStorageLoc.Text) <> '') then                   //SampleStorageLocation is given
+          if ((trim(edtSampleStorageLoc.Text) <> '') AND (can_update_flag1 = true)) then //SampleStorageLocation is given
             begin
             s := s + 's_storage_loc = ' + #34 + trim(edtSampleStorageLoc.Text) + #34;
             end;
-          if (trim(edtPrepStorageLoc.Text) <> '') then                     //PrepStorageLocation is given
+          if ((trim(edtPrepStorageLoc.Text) <> '') AND (can_update_flag2 = true)) then  //PrepStorageLocation is given
             begin
-            if (trim(edtSampleStorageLoc.Text) <> '') then s := s + ', ';  // add "," if both values are given
+            if ((trim(edtSampleStorageLoc.Text) <> '') AND (can_update_flag1 = true)) then s := s + ', ';  // add "," if both values are given
             s := s + 'prep_storage_loc = ' + #34 + trim(edtPrepStorageLoc.Text) + #34;
             end;
           s := s+ ' WHERE sample_nr = ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ';';

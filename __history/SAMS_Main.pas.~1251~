@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math;
 
 const
-  myVersion = '1.7.4 March-10-2017';
+  myVersion = '1.7.5 March-31-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -7541,7 +7541,8 @@ begin
   dm.qryProjectsOfUser.Open;
 //  dm.qryProjectsOfUser.
   grdProjects.Visible := true;
-//  grdProjects.Columns[3].Width := 1;
+  grdProjects.Columns[1].Width := 20;
+  grdProjects.Columns[2].Width := 20;
 end;
 
 procedure TfrmMAMS.GetSampleofUserProject;

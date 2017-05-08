@@ -812,6 +812,7 @@ begin
                    ' and target_t.target_pressed IS NOT NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
                    ' and preparation_t.stop=0 and  target_t.stop=0 ' +
                    ' and project_t.out_date IS NULL ' +
+                   ' and target_t.fm is NULL' +
                    ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
                    ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
                    ' and user_label NOT LIKE ' + #34 + 'HEI_%' + #34 +

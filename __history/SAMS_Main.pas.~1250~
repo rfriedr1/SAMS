@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math;
 
 const
-  myVersion = '1.7.4 March-10-2017';
+  myVersion = '1.7.5 March-31-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -720,6 +720,8 @@ type
     ValueListEditorPaths: TValueListEditor;
     BalloonHint1: TBalloonHint;
     btnSaveInvoiceNr: TBitBtn;
+    gpxHomeExpress: TGroupBox;
+    pnlHomeNumberofExpress: TPanel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -6898,12 +6900,8 @@ VAR yield: double;
 begin
   if not (edtWeightEnd.Text = '') AND not (edtweightstart.Text = '') then
   begin
-    yield := floattostr(SimpleRoundTo(100 * (strtofloat(edtWeightEnd.Text) / strtofloat(edtWeightStart.text)),2));
-    YieldLabel.Caption := yield + ' %';
-    if yield < 0.49 then
-      begin
-        YieldLabel.Color := clRed;
-      end;
+    yield := SimpleRoundTo(100 * (strtofloat(edtWeightEnd.Text) / strtofloat(edtWeightStart.text)),-2);
+    YieldLabel.Caption := floattostr(yield) + ' %';
   end
   else
   //display yield in percent from weights and round
@@ -6954,6 +6952,7 @@ end;
 
 procedure TfrmMAMS.ToolbtnHomeClick(Sender: TObject);
 // show home tab and reload all the data in the tab
+VAR express: integer;
 begin
   // show Home tab
   pgtMain.ActivePage := tbsHome;
@@ -6972,14 +6971,18 @@ begin
   if (dm.qryDB.RecordCount in [4..6]) then pnlHomeNumberOfBlanks.Color:=clYellow;
   if dm.qryDB.RecordCount > 6 then pnlHomeNumberOfBlanks.Color:=clGreen;
 
-  // ### update number of unprep'd samples and samples ready for graph
+  // ### update number of unprep'd samples and samples ready for graph and express
   // unpre'd samples
   pnlHomeNumberofUnprepdSamples.Caption := '# to prep: ' + IntToStr(dm.GetAllPlanned(False));
   // ready for graph
   pnlHomeNumberofReadyForGraph.Caption := '# to graph: ' + IntToStr(dm.GetAllWaitingForGraph);
   // ready for meas
   pnlNumberofSamplesReadyForMeas.Caption := '# to meas: ' + IntToStr(dm.GetAllWaitingForMeas);
-
+  // number of express samples
+  express:=dm.GetWaitingExpress;
+  pnlHomeNumberofExpress.Caption := '# express: ' + IntToStr(express);
+  if express>0 then pnlHomeNumberofExpress.Color:=clRed
+  else pnlHomeNumberofExpress.Color:=clGreen;
 
 
 end;
@@ -7538,7 +7541,8 @@ begin
   dm.qryProjectsOfUser.Open;
 //  dm.qryProjectsOfUser.
   grdProjects.Visible := true;
-//  grdProjects.Columns[3].Width := 1;
+  grdProjects.Columns[1].Width := 50;
+  grdProjects.Columns[2].Width := 20;
 end;
 
 procedure TfrmMAMS.GetSampleofUserProject;
@@ -7592,7 +7596,7 @@ end;
 procedure TfrmMAMS.grdSamplesAvailableMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  ShowMessage('test');
+  // ShowMessage('test');
   grdSamplesAvailable.mousetocell(x, y, DragCol, DragRow);
   grdSamplesAvailable.BeginDrag(false, 5);
 end;

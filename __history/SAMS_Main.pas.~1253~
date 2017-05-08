@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math;
 
 const
-  myVersion = '1.7.4 March-10-2017';
+  myVersion = '1.7.5 March-31-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -6952,6 +6952,7 @@ end;
 
 procedure TfrmMAMS.ToolbtnHomeClick(Sender: TObject);
 // show home tab and reload all the data in the tab
+VAR express: integer;
 begin
   // show Home tab
   pgtMain.ActivePage := tbsHome;
@@ -6978,8 +6979,10 @@ begin
   // ready for meas
   pnlNumberofSamplesReadyForMeas.Caption := '# to meas: ' + IntToStr(dm.GetAllWaitingForMeas);
   // number of express samples
-  pnlHomeNumberofExpress.Caption := '# express: ' + IntToStr(dm.GetWaitingExpress);
-
+  express:=dm.GetWaitingExpress;
+  pnlHomeNumberofExpress.Caption := '# express: ' + IntToStr(express);
+  if express>0 then pnlHomeNumberofExpress.Color:=clRed
+  else pnlHomeNumberofExpress.Color:=clGreen;
 
 
 end;
@@ -7538,7 +7541,8 @@ begin
   dm.qryProjectsOfUser.Open;
 //  dm.qryProjectsOfUser.
   grdProjects.Visible := true;
-//  grdProjects.Columns[3].Width := 1;
+  grdProjects.Columns[0].Width := 50;
+  grdProjects.Columns[1].Width := 20;
 end;
 
 procedure TfrmMAMS.GetSampleofUserProject;

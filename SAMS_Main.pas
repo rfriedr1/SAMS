@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math;
 
 const
-  myVersion = '1.7.5 March-31-2017';
+  myVersion = '1.7.6 Mai-8-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -722,6 +722,8 @@ type
     btnSaveInvoiceNr: TBitBtn;
     gpxHomeExpress: TGroupBox;
     pnlHomeNumberofExpress: TPanel;
+    DBGrid3: TDBGrid;
+    DBGrid4: TDBGrid;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -7541,7 +7543,8 @@ begin
   dm.qryProjectsOfUser.Open;
 //  dm.qryProjectsOfUser.
   grdProjects.Visible := true;
-//  grdProjects.Columns[3].Width := 1;
+  grdProjects.Columns[0].Width := 200;
+  //grdProjects.Columns[1].Width := 80;
 end;
 
 procedure TfrmMAMS.GetSampleofUserProject;

@@ -19,6 +19,7 @@ type
     DBGrid1: TDBGrid;
     edtStatus: TEdit;
     GroupBox1: TGroupBox;
+    BalloonHint1: TBalloonHint;
     procedure btnSaveClick(Sender: TObject);
     procedure edtStartSampleIDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -79,7 +80,7 @@ procedure TFormStorageLocations.btnSaveClick(Sender: TObject);
 // of teh selected samples
 Var
   ADOCmdUpdate : TADOCommand;
-  s: string;
+  s, s2: string;
   i, button: integer;
   can_update_flag1: boolean; // flag that determines whether the record can be updated for Sample_Loc
   can_update_flag2: boolean; // flag that determines whether the record can be updated for Prep_loc
@@ -96,25 +97,27 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
   // set query with sampleID#s to first record
   ADOQueryIDs.First;
 
-  //go through data that are displayed in DBGrid
+  // go through data that are displayed in DBGrid
   // create the UPDATE query depending on what data are given
   // then update records in DB
   while NOT ADOQueryIDs.Eof do
     begin
       // check first if there are already values stored in the database
-      // or certzain values such as 0
+      // or certain values such as 0
       // then set flag accordingly
       // for sample location
       LogWindow.addLogEntry('storrage locations -- check if record update is allowed');
       can_update_flag1:= true;
       if (ADOQueryIDs.FieldByName('Sample_Loc').AsString <> '') then can_update_flag1:= false
-      else if (ADOQueryIDs.FieldByName('Sample_Loc').AsString = '0') then can_update_flag1:= true;
+      else if (ADOQueryIDs.FieldByName('Sample_Loc').AsString = '0') then can_update_flag1:= true
+      else if (ADOQueryIDs.FieldByName('Sample_Loc').AsString = ' ') then can_update_flag1:= true;
       LogWindow.addLogEntry('storrage locations -- sample_loc_flag=' + booltostr(can_update_flag1));
 
       // for prep location
       can_update_flag2:= true;
       if (ADOQueryIDs.FieldByName('Prep_Loc').AsString <> '') then can_update_flag2:= false
-      else if (ADOQueryIDs.FieldByName('Prep_Loc').AsString = '0') then can_update_flag2:= true;
+      else if (ADOQueryIDs.FieldByName('Prep_Loc').AsString = '0') then can_update_flag2:= true
+      else if (ADOQueryIDs.FieldByName('Prep_Loc').AsString = ' ') then can_update_flag2:= true;
       LogWindow.addLogEntry('storrage locations -- pre_loc_flag=' + booltostr(can_update_flag2));
 
       // see if one of the above flags is triggered
@@ -123,37 +126,50 @@ if (trim(edtSampleStorageLoc.Text) <> '') OR (trim(edtPrepStorageLoc.Text) <> ''
       if ((can_update_flag1 = true) AND (can_update_flag2 = true)) then can_update_flag3:= true
       else
         begin
-          button:= messagedlg('location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
+          button:= messagedlg('sample nr: ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ' location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
           if button = mrYes then can_update_flag3:= true;
         end;
       LogWindow.addLogEntry('storrage locations -- allow update=' + booltostr(can_update_flag3));
+
+      // if user wants to update sample_storrage location although there is already a value given
+      // show error and  let user decide
+      LogWindow.addLogEntry('storrage locations -- check flags and user input');
+      if ((trim(edtSampleStorageLoc.Text) <> '') AND (can_update_flag1 = false)) then
+        begin
+          button:= messagedlg('sample nr: ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ' SAMPLE location already exists - OVERWRITE?', mtWarning, [mbYes, mbNo], 0, mbNo);
+          if button = mrYes then can_update_flag1:= true;
+          LogWindow.addLogEntry('storrage locations -- sample_loc_flag=' + booltostr(can_update_flag3));
+        end;
 
       // if flag is true then perfrom update for that sample
       if can_update_flag3 = true  then
         begin
           s := 'UPDATE sample_t SET ';
-          if (trim(edtSampleStorageLoc.Text) <> '') then                   //SampleStorageLocation is given
+          if (trim(edtSampleStorageLoc.Text) <> '') then //SampleStorageLocation is given
             begin
             s := s + 's_storage_loc = ' + #34 + trim(edtSampleStorageLoc.Text) + #34;
             end;
-          if (trim(edtPrepStorageLoc.Text) <> '') then                     //PrepStorageLocation is given
+          if (trim(edtPrepStorageLoc.Text) <> '') then  //PrepStorageLocation is given
             begin
             if (trim(edtSampleStorageLoc.Text) <> '') then s := s + ', ';  // add "," if both values are given
             s := s + 'prep_storage_loc = ' + #34 + trim(edtPrepStorageLoc.Text) + #34;
             end;
           s := s+ ' WHERE sample_nr = ' + ADOQueryIDs.FieldByName('sample_nr').AsString + ';';
-          edtStatus.Text := 'updating Sample_nr = ' +  ADOQueryIDs.FieldByName('sample_nr').AsString;
-          //ShowMessage(s);
+
           LogWindow.addLogEntry('storrage locations -- Query: ' + s);
+
+          s2 := 'updating Sample_nr = ' +  ADOQueryIDs.FieldByName('sample_nr').AsString;
+          edtStatus.Text := s2;
+          LogWindow.addLogEntry('storrage locations -- ' + s2);
+          //ShowMessage(s);
           ADOCmdUpdate.CommandText := s;
-          //ADOCmdUpdate.Execute;
-          ADOQueryIDs.Next;
+          ADOCmdUpdate.Execute;
         end;
 
-
-        //show an updated DBGrid by executing the SearchClick
-        btnSearchClick(self);
+        ADOQueryIDs.Next;
     end;
+    //show an updated DBGrid by executing the SearchClick
+    btnSearchClick(self);
   end;
 
 end;
