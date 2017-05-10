@@ -1697,9 +1697,10 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help_t.measurecount FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samplecount, help_t.measurecount FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       'LEFT JOIN (select project_nr, count(sample_nr) AS measurecount FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS samplecount FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';
 
