@@ -844,7 +844,7 @@ begin
   with qryWaitingExpress do
   begin
      Close;
-     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.desired_date ' +
+     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_t.last_name, project_t.project, user_label, project_t.desired_date ' +
                    ' FROM sample_t ' +
                    'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +

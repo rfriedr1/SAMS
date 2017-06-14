@@ -1,6 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
+  ActiveControl = edtMonthStat
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1412
@@ -7105,7 +7106,7 @@ object frmMAMS: TfrmMAMS
             Width = 69
             Height = 21
             CustomHint = BalloonHint1
-            Value = 2015.000000000000000000
+            Value = 2017.000000000000000000
             TabOrder = 0
           end
           object btnMonthStat: TBitBtn
@@ -7372,6 +7373,7 @@ object frmMAMS: TfrmMAMS
             Column = 2
             Control = gpxHomeExpress
             Row = 0
+            RowSpan = 3
           end>
         Padding.Left = 8
         Padding.Top = 8
@@ -7417,20 +7419,20 @@ object frmMAMS: TfrmMAMS
           Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
+          Padding.Left = 5
+          Padding.Top = 5
+          Padding.Right = 5
+          Padding.Bottom = 5
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
           object pnlHomeNumberOfOxas: TPanel
             AlignWithMargins = True
-            Left = 6
-            Top = 24
-            Width = 250
+            Left = 9
+            Top = 25
+            Width = 244
             Height = 70
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
             CustomHint = BalloonHint1
             Align = alBottom
             BevelOuter = bvNone
@@ -7452,15 +7454,11 @@ object frmMAMS: TfrmMAMS
           end
           object pnlHomeNumberOfBlanks: TPanel
             AlignWithMargins = True
-            Left = 6
-            Top = 104
-            Width = 250
+            Left = 9
+            Top = 101
+            Width = 244
             Height = 62
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
             CustomHint = BalloonHint1
             Align = alBottom
             BevelOuter = bvNone
@@ -7472,7 +7470,6 @@ object frmMAMS: TfrmMAMS
             Font.Height = -24
             Font.Name = 'Tahoma'
             Font.Style = []
-            Padding.Left = 8
             ParentBackground = False
             ParentCtl3D = False
             ParentFont = False
@@ -7498,19 +7495,19 @@ object frmMAMS: TfrmMAMS
           Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
+          Padding.Left = 5
+          Padding.Top = 5
+          Padding.Right = 5
+          Padding.Bottom = 5
           ParentFont = False
           TabOrder = 1
           object pnlHomeNumberofUnprepdSamples: TPanel
             AlignWithMargins = True
-            Left = 7
-            Top = 24
-            Width = 247
+            Left = 10
+            Top = 27
+            Width = 241
             Height = 72
             Hint = 'number of unprep'#39'd samples waiting'
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
             CustomHint = BalloonHint1
             Align = alTop
             BevelOuter = bvNone
@@ -7532,15 +7529,11 @@ object frmMAMS: TfrmMAMS
           end
           object pnlHomeNumberofReadyForGraph: TPanel
             AlignWithMargins = True
-            Left = 7
-            Top = 106
-            Width = 247
-            Height = 71
+            Left = 10
+            Top = 105
+            Width = 241
+            Height = 73
             Hint = 'number of prep'#39'd samples ready for graphitization'
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
             CustomHint = BalloonHint1
             Align = alClient
             BevelOuter = bvNone
@@ -7552,10 +7545,6 @@ object frmMAMS: TfrmMAMS
             Font.Height = -24
             Font.Name = 'Tahoma'
             Font.Style = []
-            Padding.Left = 10
-            Padding.Top = 10
-            Padding.Right = 10
-            Padding.Bottom = 10
             ParentBackground = False
             ParentCtl3D = False
             ParentFont = False
@@ -7566,15 +7555,11 @@ object frmMAMS: TfrmMAMS
           end
           object pnlNumberofSamplesReadyForMeas: TPanel
             AlignWithMargins = True
-            Left = 7
-            Top = 187
-            Width = 247
+            Left = 10
+            Top = 184
+            Width = 241
             Height = 72
             Hint = 'number of prep'#39'd samples ready measurement'
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
             CustomHint = BalloonHint1
             Align = alBottom
             BevelOuter = bvNone
@@ -7599,7 +7584,7 @@ object frmMAMS: TfrmMAMS
           Left = 571
           Top = 16
           Width = 261
-          Height = 78
+          Height = 266
           Align = alClient
           Caption = 'Number of Express Samples'
           Font.Charset = DEFAULT_CHARSET
@@ -7607,21 +7592,21 @@ object frmMAMS: TfrmMAMS
           Font.Height = -14
           Font.Name = 'Tahoma'
           Font.Style = []
+          Padding.Left = 5
+          Padding.Top = 5
+          Padding.Right = 5
+          Padding.Bottom = 5
           ParentFont = False
           TabOrder = 2
           object pnlHomeNumberofExpress: TPanel
             AlignWithMargins = True
-            Left = 7
-            Top = 24
-            Width = 247
-            Height = 47
+            Left = 10
+            Top = 27
+            Width = 241
+            Height = 52
             Hint = 'number of express samples to be measured'
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
             CustomHint = BalloonHint1
-            Align = alClient
+            Align = alTop
             BevelOuter = bvNone
             Caption = 'express'
             Color = clSkyBlue
@@ -7638,6 +7623,29 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+          end
+          object DBGridHomeExpressSamples: TDBGrid
+            Left = 7
+            Top = 82
+            Width = 247
+            Height = 177
+            CustomHint = BalloonHint1
+            Align = alClient
+            BorderStyle = bsNone
+            Ctl3D = False
+            DataSource = dm.dsWaitingExpress
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ParentCtl3D = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -14
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            OnDrawColumnCell = DBGridHomeExpressSamplesDrawColumnCell
+            OnDblClick = DBGridHomeExpressSamplesDblClick
           end
         end
       end
@@ -7858,7 +7866,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300380510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300440510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8629,7 +8637,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806B80618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806C40618001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14879,7 +14887,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00380520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00440520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

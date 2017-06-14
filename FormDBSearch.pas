@@ -49,19 +49,18 @@ begin
 
   case RadioGroup1.ItemIndex of
     0: // Users
-        s:='';
+        s:='SELECT * from user_t WHERE CONCAT_WS(";",user_nr,last_name,first_name,organisation,address_1,address_2,town,country) LIKE ' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
     1: // Projects
-        s:='';
+        s:='SELECT * from project_t WHERE CONCAT_WS(";",project_nr,project,invoice,AuftragsNr,order_nr) LIKE ' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
     2: // samples
         // concatenate all fields of the table and search the resulting string
-        s := 'SELECT * from sample_t WHERE CONCAT_WS('+#34+';'+#34+',sample_nr,project_nr,photo,type,material,user_label) LIKE ' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
+        s := 'SELECT * from sample_t WHERE CONCAT_WS(";",sample_nr,project_nr,type,material,user_label,user_desc1,user_desc2,MA_nr) LIKE ' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
   end;
-
+  //showmessage(s);
   // concatenate all fields of the table and search the resulting string
   //s := 'SELECT * from sample_t WHERE CONCAT_WS('+#34+';'+#34+',sample_nr,project_nr,photo,type,material,user_label) LIKE ' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
   ADOQuerySearch.SQL.Add(s);
   ADOQuerySearch.Open;
-  //ShowMessage(s);
 
 // Create the data source.
   DataSrcSearch := TDataSource.Create(Self);
