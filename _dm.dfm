@@ -812,9 +812,9 @@ object dm: Tdm
   end
   object adoConnectionCEZA: TADOConnection
     ConnectionString = 
-      'Provider=MSDASQL.1;Password=kromerbernd;Persist Security Info=Tr' +
-      'ue;User ID=Kromer;Data Source=db_ma_proben;Initial Catalog=db_ma' +
-      '_proben'
+      'Provider=MSDASQL.1;Password=Pe02_Du01?;Persist Security Info=Tru' +
+      'e;User ID=C14_MAMS;Data Source=db_ma_proben;Initial Catalog=db_m' +
+      'a_proben'
     LoginPrompt = False
     Provider = 'MSDASQL.1'
     Left = 960

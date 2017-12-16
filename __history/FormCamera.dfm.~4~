@@ -1,0 +1,179 @@
+object CameraWindow: TCameraWindow
+  Left = 392
+  Top = 223
+  Caption = 'Camera'
+  ClientHeight = 541
+  ClientWidth = 760
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnResize = FormResize
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 377
+    Top = 0
+    Width = 7
+    Height = 541
+    OnMoved = Splitter1Moved
+    ExplicitHeight = 544
+  end
+  object Panel_Left: TPanel
+    Left = 0
+    Top = 0
+    Width = 377
+    Height = 541
+    Align = alLeft
+    TabOrder = 0
+    inline Frame_Video1: TFrame1
+      Left = 1
+      Top = 1
+      Width = 375
+      Height = 539
+      Align = alClient
+      TabOrder = 0
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 375
+      ExplicitHeight = 539
+      inherited Panel_Top: TPanel
+        Width = 375
+        ExplicitWidth = 375
+        DesignSize = (
+          375
+          104)
+        inherited Label_Cameras: TLabel
+          Width = 52
+          ExplicitWidth = 52
+        end
+        inherited Label3: TLabel
+          Width = 51
+          ExplicitWidth = 51
+        end
+        inherited Label4: TLabel
+          Width = 44
+          ExplicitWidth = 44
+        end
+      end
+      inherited Panel_Bottom: TPanel
+        Width = 375
+        Height = 435
+        ExplicitWidth = 375
+        ExplicitHeight = 435
+        DesignSize = (
+          375
+          435)
+        inherited Label_VideoSize: TLabel
+          Width = 50
+          ExplicitWidth = 50
+        end
+        inherited Label_fps: TLabel
+          Width = 90
+          ExplicitWidth = 90
+        end
+        inherited Label2: TLabel
+          Width = 49
+          ExplicitWidth = 49
+        end
+        inherited PaintBox_Video: TPaintBox
+          Width = 367
+          Height = 479
+          ExplicitWidth = 367
+          ExplicitHeight = 499
+        end
+      end
+    end
+  end
+  object Panel_Right: TPanel
+    Left = 384
+    Top = 0
+    Width = 376
+    Height = 541
+    Align = alClient
+    TabOrder = 1
+    inline Frame_Video2: TFrame1
+      Left = 1
+      Top = 1
+      Width = 374
+      Height = 539
+      Align = alClient
+      TabOrder = 0
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 374
+      ExplicitHeight = 539
+      inherited Panel_Top: TPanel
+        Width = 374
+        ExplicitWidth = 374
+        DesignSize = (
+          374
+          104)
+        inherited Label_Cameras: TLabel
+          Width = 52
+          ExplicitWidth = 52
+        end
+        inherited Label3: TLabel
+          Width = 51
+          ExplicitWidth = 51
+        end
+        inherited Label4: TLabel
+          Width = 44
+          ExplicitWidth = 44
+        end
+      end
+      inherited Panel_Bottom: TPanel
+        Width = 374
+        Height = 435
+        ExplicitWidth = 374
+        ExplicitHeight = 435
+        DesignSize = (
+          374
+          435)
+        inherited Label_VideoSize: TLabel
+          Width = 50
+          ExplicitWidth = 50
+        end
+        inherited Label_fps: TLabel
+          Width = 90
+          ExplicitWidth = 90
+        end
+        inherited Label2: TLabel
+          Width = 49
+          ExplicitWidth = 49
+        end
+        inherited PaintBox_Video: TPaintBox
+          Left = 5
+          Top = 31
+          Width = 374
+          Height = 454
+          ExplicitLeft = 5
+          ExplicitTop = 31
+          ExplicitWidth = 374
+          ExplicitHeight = 454
+        end
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 368
+    Top = 8
+    object File1: TMenuItem
+      Caption = '&File'
+      object Quit1: TMenuItem
+        Caption = '&Quit'
+        OnClick = Quit1Click
+      end
+    end
+  end
+end

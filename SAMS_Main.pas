@@ -38,10 +38,10 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
-  Vcl.ValEdit, Math;
+  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames;
 
 const
-  myVersion = '1.7.6 Mai-8-2017';
+  myVersion = '1.8.1 Dec-13-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -725,6 +725,12 @@ type
     DBGrid3: TDBGrid;
     DBGrid4: TDBGrid;
     DBGridHomeExpressSamples: TDBGrid;
+    lblSelectedPlotRow: TLabel;
+    btn_RemoveProject: TButton;
+    DBCheckBox1: TDBCheckBox;
+    ActivityIndicator_processed_samples: TActivityIndicator;
+    actCamera: TAction;
+    Action11: TMenuItem;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1007,6 +1013,11 @@ type
     procedure DBGridHomeExpressSamplesDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
+    procedure DBGridDBPlotCellClick(Column: TColumn);
+    procedure btn_RemoveProjectClick(Sender: TObject);
+    procedure pgtSampleExit(Sender: TObject);
+    procedure actCameraExecute(Sender: TObject);
+    procedure grdPendingReportsTitleClick(Column: TColumn);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1038,6 +1049,7 @@ type
     KTLsupervisor: boolean;
     WeightsChanged, TargetDataChanged: boolean;
     ServerRoot: string;
+    fVideoImage: TVideoImage; // image object that holds the webcam data
     procedure ToggleCheckbox(acol, arow: integer);
     procedure ClearInsertSampleGrids;
     procedure CreateCds(German: boolean);
@@ -1762,6 +1774,12 @@ begin
 
   JvFormStorage1.SaveFormPlacement; // perform a save of all form values of SAMS including the query so it will be retrieved the next time automatically
 
+  //add line numbers to dbgrid
+  // add column
+    //TColumn(DBGridDBPlot.Columns.Insert(0)).Title.Caption := 'OK';
+    //TStringGrid(DBGridDBPlot).Cells[1,1] := 'test';
+
+
   //Plot Data in DBChart
     DBChart.ClearChart;                     //clear the chart
     DBChart.AddSeries(TpointSeries);        // add new data series TPoint Style
@@ -1781,7 +1799,7 @@ begin
 
     //add datapoints from the DBGrid, go through all the data in the DBGrid and send to the plot
     DBGridDBPlot.DataSource.DataSet.First;   // go to the first datapoint in the dataset
-    for i := 0 to DBGridDBPlot.DataSource.DataSet.RecordCount-1 do begin
+    for i := 1 to DBGridDBPlot.DataSource.DataSet.RecordCount do begin
       if NOT TryStrToFloat(DBGridDBPlot.DataSource.DataSet.FieldByName(xlabel).AsString, xvalue) then xvalue:=i; //try to convert x-value to a number, if it doesn't work use index i as value
       yvalue:= DBGridDBPlot.DataSource.DataSet.FieldByName(ylabel).AsExtended; //get y value from dataset
       DBChart.Series[0].AddXY(xvalue,yvalue,'',clTeeColor);  //add xy to plot
@@ -1932,12 +1950,13 @@ begin
     Canvas.Pen.Color := clBlack;
     Canvas.Brush.Color := clWhite;
     //Canvas.TextOut(X+10,Y,Sender.Series[0].GetHorizAxis.LabelValue(ValueIndex)+','+Sender.Series[0].GetVertAxis.LabelValue(ValueIndex));
-    Canvas.TextOut(X+10,Y,Sender.Series[0].XValue[ValueIndex].ToString()+','+Sender.Series[0].YValue[ValueIndex].ToString());
+    Canvas.TextOut(X+10,Y,Sender.Series[0].XValue[ValueIndex].ToString()+', '+Sender.Series[0].YValue[ValueIndex].ToString());
 
     DBGridDBPlot.SetFocus;
     //locate the clicked data point in the table by locating the x and y values
     if DBGridDBPlot.DataSource.DataSet.Locate(DBGridDBPlot.Columns.Items[0].FieldName+';'+DBGridDBPlot.Columns.Items[1].FieldName,VarArrayOf([Sender.Series[0].XValue[ValueIndex],Sender.Series[0].YValue[ValueIndex]]),[loCaseInsensitive]) = false Then
-       ShowMessage(DBGridDBPlot.Columns.Items[0].FieldName +';'+ DBGridDBPlot.Columns.Items[1].FieldName + ' and '+Sender.Series[0].XValue[ValueIndex].ToString + ',' + Sender.Series[0].YValue[ValueIndex].ToString );
+       ShowMessage(DBGridDBPlot.Columns.Items[0].FieldName + ' = ' + Sender.Series[0].XValue[ValueIndex].ToString + #13 + DBGridDBPlot.Columns.Items[1].FieldName + ' = '+ Sender.Series[0].YValue[ValueIndex].ToString );
+    DBGridDBPlot.SelectedRows.CurrentRowSelected := true;
 
     //DBGridDBPlot.SetFocus;
     //DBGridDBPlot.DataSource.DataSet.First;
@@ -2165,6 +2184,39 @@ begin
   dm.TransferMA_Nr_To_MAMS;
 end;
 
+
+procedure TfrmMAMS.btn_RemoveProjectClick(Sender: TObject);
+// remove the selected project from the database
+VAR
+  project_nr, number_of_samples, result, buttonSelected: integer;
+begin
+
+  // get project number from the table
+  project_nr := grdProjects.DataSource.DataSet.FieldByName('project_nr').AsInteger;
+  // showmessage(grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString);
+
+  buttonSelected := messagedlg('Delete selected Project (' + inttostr(project_nr) + ')?',mtError, mbOKCancel, 0);
+  if buttonSelected = mrOK then
+    Begin
+         // check whether or not samples still exist in that project
+        number_of_samples := dm.GetSamplesByProjectNr(project_nr);
+         //showmessage(inttostr(number_of_samples));
+
+        // if number_of_samples is zero then remove project
+        if number_of_samples = 0 then
+          begin
+              result := dm.RemoveProjectByProjectNr(project_nr);
+              // showmessage(inttostr(result));
+              cmbSubmitterNameProjectCloseUp(self);
+          end
+          else
+          begin
+            showmessage('there are still ' + inttostr(number_of_samples) + ' samples associated to the project. Delete samples first.');
+          end;
+
+    End;
+
+end;
 
 procedure TfrmMAMS.btn_report_pageClick(Sender: TObject);
 begin
@@ -2723,6 +2775,11 @@ end;
 procedure TfrmMAMS.actTablesExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsTypesMat;
+end;
+
+procedure TfrmMAMS.actCameraExecute(Sender: TObject);
+begin
+  CameraWindow.Show;
 end;
 
 procedure TfrmMAMS.actInsertSamplesExecute(Sender: TObject);
@@ -3505,18 +3562,54 @@ end;
 
 procedure TfrmMAMS.btnMonthStatClick(Sender: TObject);
 var
-  i, n, sum: integer;
+  i, n_graph, n_meas, sum_graph, sum_meas, n_recvd, sum_recvd: integer;
 begin
-  sum := 0;
+  sum_graph := 0;
+  sum_meas := 0;
+  sum_recvd := 0;
+  // create headers and sizes
+  stgMonthStat.Cells[0, 0] := 'month';
+  stgMonthStat.ColWidths[0] := 40;
+
+  stgMonthStat.Cells[1, 0] := 'received';
+  stgMonthStat.ColWidths[1] := 80;
+
+  stgMonthStat.Cells[2, 0] := 'graphitized';
+  stgMonthStat.ColWidths[2] := 80;
+
+  stgMonthStat.Cells[3, 0] := 'measured';
+  stgMonthStat.ColWidths[3] := 80;
+
+  ActivityIndicator_processed_samples.BringToFront;
+  ActivityIndicator_processed_samples.StartAnimation;
+  ActivityIndicator_processed_samples.Animate:= True;
+
+  // go through every month of that year and query DB
+  // fill in data into the string grid
   for i := 1 to 12 do
   begin
     //n := dm.GetArchSamplesOfMonth(trunc(edtMonthStat.Value), i);
-    n := dm.GetAllSamplesOfMonth(trunc(edtMonthStat.Value), i);
+    n_recvd := dm.GetAllSamplesOfMonth(trunc(edtMonthStat.Value), i, 0);
+    n_graph := dm.GetAllSamplesOfMonth(trunc(edtMonthStat.Value), i, 1);
+    n_meas := dm.GetAllSamplesOfMonth(trunc(edtMonthStat.Value), i, 2);
     stgMonthStat.Cells[0, i] := IntToStr(i);
-    stgMonthStat.Cells[1, i] := IntToStr(n);
-    sum := sum + n;
+    stgMonthStat.Cells[1, i] := IntToStr(n_recvd);
+    stgMonthStat.Cells[2, i] := IntToStr(n_graph);
+    stgMonthStat.Cells[3, i] := IntToStr(n_meas);
+    sum_recvd := sum_recvd + n_recvd;
+    sum_graph := sum_graph + n_graph;
+    sum_meas := sum_meas + n_meas;
+    Application.ProcessMessages;
   end;
-  stgMonthStat.Cells[1, 13] := IntToStr(sum);
+
+  // fill in sum of all counts
+  stgMonthStat.Cells[0, 13] := 'total';
+  stgMonthStat.Cells[1, 13] := IntToStr(sum_recvd);
+  stgMonthStat.Cells[2, 13] := IntToStr(sum_graph);
+  stgMonthStat.Cells[3, 13] := IntToStr(sum_meas);
+
+  ActivityIndicator_processed_samples.StopAnimation;
+  ActivityIndicator_processed_samples.SendToBack;
 end;
 
 procedure TfrmMAMS.btnNewPrepClick(Sender: TObject);
@@ -3735,11 +3828,12 @@ end;
 
 procedure TfrmMAMS.edtWeightEndExit(Sender: TObject);
 begin
-// set PrepEnd Date to today automatically if not set already and if weight end is set
+// set PrepEnd Date to today automatically if not set already and if weight_end is set
   if (Sender AS TDBEdit).Text <> '' then begin
       if edtPrepEnd.Date = 0 then begin
+          edtPrepEnd.DataSource.Edit;
           edtPrepEnd.Date:= DATE;
-          edtPrepEnd.Update;
+          //edtPrepEnd.Update;
     //edtPrepEnd.Refresh;
       end;
   end;
@@ -4928,6 +5022,30 @@ begin
   TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
+procedure TfrmMAMS.grdPendingReportsTitleClick(Column: TColumn);
+//sort by selected column
+{$J+}
+const PreviousColumnIndex: integer = -1;
+{$J-}
+begin
+  if grdTypes.DataSource.DataSet is TCustomADODataSet then
+    with TCustomADODataSet(grdPendingReports.DataSource.DataSet) do
+    begin
+      try
+        grdTypes.Columns[PreviousColumnIndex].title.Font.Style :=
+          grdTypes.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+      except
+      end;
+      Column.title.Font.Style := Column.title.Font.Style + [fsBold];
+      PreviousColumnIndex := Column.Index;
+      if (Pos(WideString(Column.Field.FieldName), Sort) = 1)
+        and (Pos(WideString(' DESC'), Sort) = 0) then
+        Sort := Column.Field.FieldName + ' DESC'
+      else
+        Sort := Column.Field.FieldName + ' ASC';
+    end;
+end;
+
 procedure TfrmMAMS.grdPlannedCellClick(Column: TColumn);
 var
   sample_nr: integer;
@@ -5538,6 +5656,15 @@ begin
   InvoiceExists := true;
 end;
 
+procedure TfrmMAMS.DBGridDBPlotCellClick(Column: TColumn);
+// when clicking on a cell, display the record number in a lable
+// select datapoint in plot
+begin
+  lblSelectedPlotRow.Caption := 'selected: ' + inttostr(DBGridDBPlot.DataSource.DataSet.RecNo);
+
+  //DBChart.Series[0].Selected
+end;
+
 procedure TfrmMAMS.DBGridHomeExpressSamplesDblClick(Sender: TObject);
 // jump to the sample info page of the selected sample
 Var samplenr :string;
@@ -6144,8 +6271,12 @@ end;
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
   fname, fotoDir: string;
+  DeviceList, VideoSizesList: TStringList;
+  i,j: Integer;
 
 begin
+
+
   if pgtSample.ActivePage <> tbsProject then
   begin
     //Prepare folder infomration for images, documents etc etc
@@ -6202,9 +6333,16 @@ begin
         LogWindow.addLogEntry('Directory does not exist :'+fotoDir);
         ShowMessage('Unable to find directory "' + fotoDir + '". Make sure network drive is connected.');
       end;
-
-
   end;
+
+  
+
+end;
+
+procedure TfrmMAMS.pgtSampleExit(Sender: TObject);
+begin
+  LogWindow.addLogEntry('stopping video');
+  fVideoImage.VideoStop;  // stop webcam video
 end;
 
 procedure TfrmMAMS.rgpLabTaskClick(Sender: TObject);
@@ -6821,15 +6959,26 @@ begin
           end;
         end;
         SQL.Add(s + ' ORDER BY  sample_t.sample_nr');
+        LogWindow.addLogEntry(s);
       end
       else
       begin
-//      Probennr. Labor	BP-Ergebnis	+/-	delta13C	cal max 1sigma	cal min 1sigma 	cal max 2sigma	cal min 2sigma
-//     Kollagengehalt (%)	C:N ratio	F14C	Magazin
+      // Halle export:
+      // Probennr. Labor,	BP-Ergebnis,	+/-,	delta13C, Datierungsverfahren, Bearbeiter, Calibrierungsprogram,
+      // cal max 1sigma,	cal min 1sigma, 	cal max 2sigma,	cal min 2sigma,
+      // Kollagengehalt(%),	Kohlenstoffmenge, C:N ratio,	F14C, Fraktion, Zuverlaessigkeit,	Tag der Datierung
         s := 'SELECT DISTINCT sample_t.sample_nr, ' +
           ' sample_t.C14_age, sample_t.C14_age_sig, av_dc13*1000 as dc13, ' +
-          '  sample_t.Cal1sMax,  sample_t.Cal1sMin, sample_t.Cal2sMax, sample_t.Cal2sMin,' +
-          ' weight_end/weight_start*100 AS collpc, conc_c/conc_n*14/12 as cn_ratio, conc_c, av_fm, av_fm_sig, target_t.magazine ';
+          #34 + '14C AMS' + #34 + ' AS DatVerfahren, ' +
+          #34 + 'n.a.' + #34 + ' AS Bearbeiter, ' +
+          #34 + 'SwissCal' + #34 + ' AS CalProgr, ' +
+          ' sample_t.Cal1sMax,  sample_t.Cal1sMin, sample_t.Cal2sMax, sample_t.Cal2sMin,' +
+          ' weight_end/weight_start*100 AS collpc,' +
+          ' weight_combustion * conc_c/100 AS c, ' +
+          ' conc_c/conc_n*14/12 as cn_ratio, av_fm, ' +
+          #34 + 'n.a.' + #34 + ' AS Fraktion, ' +
+          #34 + 'n.a.' + #34 + ' AS Zuverl, ' +
+          'concat(substring(target_t.magazine, 7, 2),".",substring(target_t.magazine, 5, 2),".",substring(target_t.magazine, 3, 2)) AS MessDatum ';
         s := s +
           ' FROM sample_t  ' +
           'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
@@ -6841,6 +6990,7 @@ begin
           IntToStr(round(edtStartAna.Value)) + ')' + ' AND ( sample_t.sample_nr <= ' +
           IntToStr(round(edtEndAna.Value)) + ')';
         SQL.Add(s + ' ORDER BY  sample_t.sample_nr');
+        LogWindow.addLogEntry(s);
       end;
 
     //    SortOrderStr := 'SampNr';
@@ -6855,10 +7005,11 @@ begin
       TFloatField(FieldByName('c14_age')).DisplayWidth := 5;
       TFloatField(FieldByName('c14_age_sig')).DisplayFormat := '0';
       TFloatField(FieldByName('av_fm')).DisplayFormat := '0.0000';
-      TFloatField(FieldByName('av_fm_sig')).DisplayFormat := '0.0000';
+      if rgpExport.ItemIndex <> 2 then TFloatField(FieldByName('av_fm_sig')).DisplayFormat := '0.0000'; // not for LD Halle
       TFloatField(FieldByName('dc13')).DisplayFormat := '0.0';
-      TFloatField(FieldByName('conc_c')).DisplayFormat := '0.0';
-      if radgrpStatus.ItemIndex = 2 then TFloatField(FieldByName('conc_n')).DisplayFormat := '0.0'; // if LDA Halle is selected as export, don't use conc_n (doesn't excist)
+      if rgpExport.ItemIndex <> 2 then TFloatField(FieldByName('conc_c')).DisplayFormat := '0.0';
+      //if radgrpStatus.ItemIndex = 2 then TFloatField(FieldByName('conc_n')).DisplayFormat := '0.0'; // if LDA Halle is selected as export, don't use conc_n (doesn't excist)
+      if rgpExport.ItemIndex = 2 then TFloatField(FieldByName('c')).DisplayFormat := '0.0'; // if LDA Halle is selected as export
       TFloatField(FieldByName('cn_ratio')).DisplayFormat := '0.0';
       TFloatField(FieldByName('collpc')).DisplayFormat := '0.0';
       if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then TFloatField(FieldByName('ANA')).DisplayFormat := '0.0';

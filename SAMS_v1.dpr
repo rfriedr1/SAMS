@@ -14,7 +14,9 @@ uses
   frmStartScreen in 'frmStartScreen.pas' {frmStart},
   FormDBSearch in 'FormDBSearch.pas' {frmDBSearch},
   frmLogWindow in 'frmLogWindow.pas' {LogWindow},
-  FormNewUser in 'FormNewUser.pas' {frmNewUser};
+  FormNewUser in 'FormNewUser.pas' {frmNewUser},
+  Frame_Video in 'Frame_Video.pas' {VideoFrame: TFrame},
+  FormCamera in 'FormCamera.pas' {CameraWindow};
 
 {$R *.RES}
 
@@ -32,6 +34,7 @@ begin
   Application.CreateForm(TfrmDBSearch, frmDBSearch);
   Application.CreateForm(TLogWindow, LogWindow);
   Application.CreateForm(TfrmNewUser, frmNewUser);
+  Application.CreateForm(TCameraWindow, CameraWindow);
   //  Application.CreateForm(TfrmInputNewSamples, frmInputNewSamples);
   // closing the StartScreen happens in OnShow of the frmMAMS as soon as everything has been loaded
    // frmStart.Hide; frmStart.Free;

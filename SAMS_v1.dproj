@@ -63,6 +63,8 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\WebCam\GRBLize;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <Icon_MainIcon>SAMS_v1_Icon.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <DCC_UsePackage>SMExportXE7;office2K;officeXPrt;$(DCC_UsePackage)</DCC_UsePackage>
@@ -77,7 +79,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <Icon_MainIcon>SAMS_v1_Icon.ico</Icon_MainIcon>
         <BT_BuildType>Debug</BT_BuildType>
-        <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\Worddriver;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\Worddriver;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;Y:\my data\KTL\Software\GitHub\SAMS\WebCam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
         <Debugger_RunParams>db_dmams_VPN rfriedrich P1card.1</Debugger_RunParams>
     </PropertyGroup>
@@ -126,6 +128,15 @@
             <Form>frmNewUser</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Frame_Video.pas">
+            <Form>VideoFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="FormCamera.pas">
+            <Form>CameraWindow</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="SAMS_v1.todo"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
@@ -148,6 +159,7 @@
                     <Source Name="MainSource">SAMS_v1.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\CPortLibDXE.bpl">ComPort Library</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k240.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp240.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
