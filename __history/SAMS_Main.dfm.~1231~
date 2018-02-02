@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = btnReport
+  ActiveControl = btnPlotQuery
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1412
@@ -279,7 +279,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsUserReport
+    ActivePage = tbsDBPlot
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1245,7 +1245,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 806
           Height = 723
-          ActivePage = tbsCamera
+          ActivePage = tbsProjectDocs
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1982,52 +1982,6 @@ object frmMAMS: TfrmMAMS
               ParentShowHint = False
               ShowHint = True
               TabOrder = 2
-            end
-          end
-          object tbsCamera: TTabSheet
-            Caption = 'Camera'
-            ImageIndex = 5
-            object PaintBoxCamera: TPaintBox
-              Left = 35
-              Top = 50
-              Width = 445
-              Height = 350
-            end
-            object btnCamera_TakeImg: TButton
-              Left = 592
-              Top = 153
-              Width = 153
-              Height = 47
-              Caption = 'take'
-              Enabled = False
-              TabOrder = 0
-            end
-            object ComboBoxCameras: TComboBox
-              Left = 592
-              Top = 50
-              Width = 153
-              Height = 27
-              Hint = 'List of available cameras'
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-              Text = 'ComboBoxCameras'
-            end
-            object ComboBoxVideoSizes: TComboBox
-              Left = 592
-              Top = 83
-              Width = 153
-              Height = 27
-              TabOrder = 2
-              Text = 'ComboBoxVideoSizes'
-            end
-            object BitBtn1: TBitBtn
-              Left = 592
-              Top = 306
-              Width = 153
-              Height = 47
-              Caption = 'BitBtn1'
-              TabOrder = 3
             end
           end
         end
@@ -7317,6 +7271,7 @@ object frmMAMS: TfrmMAMS
           TitleFont.Style = []
           OnDrawColumnCell = grdPendingReportsDrawColumnCell
           OnDblClick = grdPendingReportsDblClick
+          OnTitleClick = grdPendingReportsTitleClick
         end
         object Panel32: TPanel
           Left = 2
@@ -7971,7 +7926,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300940510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300A80510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8742,7 +8697,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806140718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806280718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14992,7 +14947,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00940520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00A80520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

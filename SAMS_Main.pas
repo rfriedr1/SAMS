@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames;
 
 const
-  myVersion = '1.8.1 Dec-13-2017';
+  myVersion = '1.8.2 Feb-2-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -1714,10 +1714,19 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samplecount, help_t.measurecount FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samples, help_t.measured, help3_t.discardprep, help4_t.discardtarget FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
-      'LEFT JOIN (select project_nr, count(sample_nr) AS measurecount FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
-      'LEFT JOIN (select project_nr, count(sample_nr) AS samplecount FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      //create and join to a table to count the measured samples in all project
+      'LEFT JOIN (select project_nr, count(sample_nr) AS measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      //create and join to a table to count the number of received samples in all project
+      'LEFT JOIN (select project_nr, count(sample_nr) AS samples FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      //create and join to a table to count the dicarded preps in all project
+      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discardprep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+      'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE preparation_t.stop = "1" GROUP BY sample_t.project_nr) help3_t ON project_t.project_nr=help3_t.project_nr ' +
+      //create and join to a table to count the dicarded preps in all project
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discardtarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
+      'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE target_t.stop = "1" GROUP BY sample_t.project_nr) help4_t ON project_t.project_nr=help4_t.project_nr ' +
+      // only list projects within a certain time frame and without out_date
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';
 
@@ -1789,6 +1798,7 @@ begin
     DBChart.BottomWall.Visible:=false;
     DBChart.DepthAxis.Visible:=false;
     DBChart.BottomAxis.Labels:=true;
+    // DBChart.Series[0].Marks.Visible :=true;
     DBChart.Legend.Visible:=false;
     DBChart.View3D:=false;
 
@@ -1796,13 +1806,14 @@ begin
     ylabel:=DBGridDBPlot.Columns.Items[1].Title.Caption;  //get name of the second column
     DBChart.BottomAxis.Title.Caption:=xlabel; //set the x-axis title to the name of the first column
     DBChart.LeftAxis.Title.Caption:=ylabel; //set the left y-axis title to the name of the first column
+    DBChart.LeftAxis.AxisValuesFormat := '0.0000';
 
     //add datapoints from the DBGrid, go through all the data in the DBGrid and send to the plot
     DBGridDBPlot.DataSource.DataSet.First;   // go to the first datapoint in the dataset
     for i := 1 to DBGridDBPlot.DataSource.DataSet.RecordCount do begin
       if NOT TryStrToFloat(DBGridDBPlot.DataSource.DataSet.FieldByName(xlabel).AsString, xvalue) then xvalue:=i; //try to convert x-value to a number, if it doesn't work use index i as value
       yvalue:= DBGridDBPlot.DataSource.DataSet.FieldByName(ylabel).AsExtended; //get y value from dataset
-      DBChart.Series[0].AddXY(xvalue,yvalue,'',clTeeColor);  //add xy to plot
+      DBChart.Series[0].AddXY(xvalue,yvalue,inttostr(DBGridDBPlot.DataSource.DataSet.RecNo),clTeeColor);  //add xy to plot, recordNo as label
       DBGridDBPlot.DataSource.DataSet.Next;  // move to the next datapoint in the dataset
     end;
 
@@ -1955,8 +1966,12 @@ begin
     DBGridDBPlot.SetFocus;
     //locate the clicked data point in the table by locating the x and y values
     if DBGridDBPlot.DataSource.DataSet.Locate(DBGridDBPlot.Columns.Items[0].FieldName+';'+DBGridDBPlot.Columns.Items[1].FieldName,VarArrayOf([Sender.Series[0].XValue[ValueIndex],Sender.Series[0].YValue[ValueIndex]]),[loCaseInsensitive]) = false Then
-       ShowMessage(DBGridDBPlot.Columns.Items[0].FieldName + ' = ' + Sender.Series[0].XValue[ValueIndex].ToString + #13 + DBGridDBPlot.Columns.Items[1].FieldName + ' = '+ Sender.Series[0].YValue[ValueIndex].ToString );
-    DBGridDBPlot.SelectedRows.CurrentRowSelected := true;
+      begin
+        //ShowMessage('TableIndex =' + Sender.Series[0].Labels[ValueIndex] + #13 + DBGridDBPlot.Columns.Items[0].FieldName + ' = ' + Sender.Series[0].XValue[ValueIndex].ToString + #13 + DBGridDBPlot.Columns.Items[1].FieldName + ' = '+ Sender.Series[0].YValue[ValueIndex].ToString);
+        DBGridDBPlot.SelectedRows.CurrentRowSelected := true;
+        // the label of the selected datapoint holds the row-number inside the DBGrid
+        DBGridDBPlot.DataSource.DataSet.RecNo := Sender.Series[0].Labels[ValueIndex].ToInteger;
+      end;
 
     //DBGridDBPlot.SetFocus;
     //DBGridDBPlot.DataSource.DataSet.First;
@@ -2501,6 +2516,7 @@ begin
         End;
       End;
 
+      // save the comment field
       with dm.qryTest do
       begin
         SQL.Text := 'UPDATE target_t SET target_comment=:TargetMemo' +
@@ -5005,7 +5021,7 @@ procedure TfrmMAMS.grdPendingReportsDrawColumnCell(Sender: TObject;
 // fill cell 'sample count' red, when value >0
 begin
   AlternateRowColors(Sender, State);
-  if dm.qryPendingReports.FieldByName('measurecount').AsInteger>0 Then     //if samplecount is bigger than 0 change the color of the row
+  if dm.qryPendingReports.FieldByName('measured').AsInteger>0 Then     //if samplecount is bigger than 0 change the color of the row
      Begin
      TDBGrid(Sender).Canvas.Brush.Color:=clSkyBlue;
      End;
@@ -5659,8 +5675,14 @@ end;
 procedure TfrmMAMS.DBGridDBPlotCellClick(Column: TColumn);
 // when clicking on a cell, display the record number in a lable
 // select datapoint in plot
+Var list: TlabelsList;
 begin
   lblSelectedPlotRow.Caption := 'selected: ' + inttostr(DBGridDBPlot.DataSource.DataSet.RecNo);
+  // using the recNo, find the datapoint where label==recNo
+  list := DBChart.Series[0].Labels;
+  DBChart.Series[0].Selected;
+  //showmessage(list.Labels[DBGridDBPlot.DataSource.DataSet.RecNo]);
+
 
   //DBChart.Series[0].Selected
 end;

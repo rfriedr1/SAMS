@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames;
 
 const
-  myVersion = '1.7.9 Nov-21-2017';
+  myVersion = '1.8.1 Dec-13-2017';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -729,12 +729,6 @@ type
     btn_RemoveProject: TButton;
     DBCheckBox1: TDBCheckBox;
     ActivityIndicator_processed_samples: TActivityIndicator;
-    tbsCamera: TTabSheet;
-    PaintBoxCamera: TPaintBox;
-    btnCamera_TakeImg: TButton;
-    ComboBoxCameras: TComboBox;
-    ComboBoxVideoSizes: TComboBox;
-    BitBtn1: TBitBtn;
     actCamera: TAction;
     Action11: TMenuItem;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
@@ -1023,6 +1017,7 @@ type
     procedure btn_RemoveProjectClick(Sender: TObject);
     procedure pgtSampleExit(Sender: TObject);
     procedure actCameraExecute(Sender: TObject);
+    procedure grdPendingReportsTitleClick(Column: TColumn);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1793,7 +1788,8 @@ begin
     DBChart.LeftWall.Visible:=false;
     DBChart.BottomWall.Visible:=false;
     DBChart.DepthAxis.Visible:=false;
-    DBChart.BottomAxis.Labels:=true;
+    DBChart.BottomAxis.Labels:=false;
+    DBChart.Series[0].Marks.Visible :=true;
     DBChart.Legend.Visible:=false;
     DBChart.View3D:=false;
 
@@ -1801,13 +1797,14 @@ begin
     ylabel:=DBGridDBPlot.Columns.Items[1].Title.Caption;  //get name of the second column
     DBChart.BottomAxis.Title.Caption:=xlabel; //set the x-axis title to the name of the first column
     DBChart.LeftAxis.Title.Caption:=ylabel; //set the left y-axis title to the name of the first column
+    DBChart.LeftAxis.AxisValuesFormat := '0.0000';
 
     //add datapoints from the DBGrid, go through all the data in the DBGrid and send to the plot
     DBGridDBPlot.DataSource.DataSet.First;   // go to the first datapoint in the dataset
-    for i := 1 to DBGridDBPlot.DataSource.DataSet.RecordCount-1 do begin
+    for i := 1 to DBGridDBPlot.DataSource.DataSet.RecordCount do begin
       if NOT TryStrToFloat(DBGridDBPlot.DataSource.DataSet.FieldByName(xlabel).AsString, xvalue) then xvalue:=i; //try to convert x-value to a number, if it doesn't work use index i as value
       yvalue:= DBGridDBPlot.DataSource.DataSet.FieldByName(ylabel).AsExtended; //get y value from dataset
-      DBChart.Series[0].AddXY(xvalue,yvalue,'',clTeeColor);  //add xy to plot
+      DBChart.Series[0].AddXY(xvalue,yvalue,inttostr(DBGridDBPlot.DataSource.DataSet.RecNo),clTeeColor);  //add xy to plot, recordNo as label
       DBGridDBPlot.DataSource.DataSet.Next;  // move to the next datapoint in the dataset
     end;
 
@@ -1960,8 +1957,12 @@ begin
     DBGridDBPlot.SetFocus;
     //locate the clicked data point in the table by locating the x and y values
     if DBGridDBPlot.DataSource.DataSet.Locate(DBGridDBPlot.Columns.Items[0].FieldName+';'+DBGridDBPlot.Columns.Items[1].FieldName,VarArrayOf([Sender.Series[0].XValue[ValueIndex],Sender.Series[0].YValue[ValueIndex]]),[loCaseInsensitive]) = false Then
-       ShowMessage(DBGridDBPlot.Columns.Items[0].FieldName + ' = ' + Sender.Series[0].XValue[ValueIndex].ToString + #13 + DBGridDBPlot.Columns.Items[1].FieldName + ' = '+ Sender.Series[0].YValue[ValueIndex].ToString );
-    DBGridDBPlot.SelectedRows.CurrentRowSelected := true;
+      begin
+        //ShowMessage('TableIndex =' + Sender.Series[0].Labels[ValueIndex] + #13 + DBGridDBPlot.Columns.Items[0].FieldName + ' = ' + Sender.Series[0].XValue[ValueIndex].ToString + #13 + DBGridDBPlot.Columns.Items[1].FieldName + ' = '+ Sender.Series[0].YValue[ValueIndex].ToString);
+        DBGridDBPlot.SelectedRows.CurrentRowSelected := true;
+        // the label of the selected datapoint holds the row-number inside the DBGrid
+        DBGridDBPlot.DataSource.DataSet.RecNo := Sender.Series[0].Labels[ValueIndex].ToInteger;
+      end;
 
     //DBGridDBPlot.SetFocus;
     //DBGridDBPlot.DataSource.DataSet.First;
@@ -5027,6 +5028,30 @@ begin
   TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
+procedure TfrmMAMS.grdPendingReportsTitleClick(Column: TColumn);
+//sort by selected column
+{$J+}
+const PreviousColumnIndex: integer = -1;
+{$J-}
+begin
+  if grdTypes.DataSource.DataSet is TCustomADODataSet then
+    with TCustomADODataSet(grdPendingReports.DataSource.DataSet) do
+    begin
+      try
+        grdTypes.Columns[PreviousColumnIndex].title.Font.Style :=
+          grdTypes.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+      except
+      end;
+      Column.title.Font.Style := Column.title.Font.Style + [fsBold];
+      PreviousColumnIndex := Column.Index;
+      if (Pos(WideString(Column.Field.FieldName), Sort) = 1)
+        and (Pos(WideString(' DESC'), Sort) = 0) then
+        Sort := Column.Field.FieldName + ' DESC'
+      else
+        Sort := Column.Field.FieldName + ' ASC';
+    end;
+end;
+
 procedure TfrmMAMS.grdPlannedCellClick(Column: TColumn);
 var
   sample_nr: integer;
@@ -5640,8 +5665,14 @@ end;
 procedure TfrmMAMS.DBGridDBPlotCellClick(Column: TColumn);
 // when clicking on a cell, display the record number in a lable
 // select datapoint in plot
+Var list: TlabelsList;
 begin
   lblSelectedPlotRow.Caption := 'selected: ' + inttostr(DBGridDBPlot.DataSource.DataSet.RecNo);
+  // using the recNo, find the datapoint where label==recNo
+  list := DBChart.Series[0].Labels;
+  DBChart.Series[0].Selected;
+  //showmessage(list.Labels[DBGridDBPlot.DataSource.DataSet.RecNo]);
+
 
   //DBChart.Series[0].Selected
 end;
@@ -6257,12 +6288,6 @@ var
 
 begin
 
-  if pgtSample.ActivePage <> tbsCamera then // make sure camera is not streaming video
-    Begin
-      //LogWindow.addLogEntry('stopping video');
-      //fVideoImage.VideoStop;  // stop webcam video
-      //fVideoImage.Destroy;
-    End ;
 
   if pgtSample.ActivePage <> tbsProject then
   begin
@@ -6322,100 +6347,7 @@ begin
       end;
   end;
 
-  // camera tab
-  if pgtSample.ActivePage = tbsCamera then
-  begin
-    btnCamera_TakeImg.Enabled := false;
-    Screen.Cursor := crHourGlass;
-    Application.ProcessMessages;
-
-    LogWindow.addLogEntry('initializing video object...');
-    // Create instance of our video image class.
-    fVideoImage:= TVideoImage.Create;
-    LogWindow.addLogEntry('video object created');
-    // Tell fVideoImage where to paint the images it receives from the camera
-    // (Only in case we do not want to modify the images by ourselves)
-    fVideoImage.SetDisplayCanvas(PaintBoxCamera.Canvas);
-    // Get list of available cameras
-    LogWindow.addLogEntry('retrieving video devices...');
-    DeviceList := TStringList.Create;
-    fVideoImage.GetListOfDevices(DeviceList);
-    LogWindow.addLogEntry('retrieved video devices');
-    Screen.Cursor := crDefault;
-    Application.ProcessMessages;
-
-    IF DeviceList.Count < 1 then
-    begin
-      // If no camera has been found, terminate program
-      LogWindow.addLogEntry('No video device found');
-      Statusbar.Panels[2].Text := 'No video device found';
-      MessageDlg('No video device found.', mtError, [mbOK], 0);
-      exit;
-    end
-    else begin
-      // If at least one camera has been found, populate ListBox
-      ComboboxCameras.items.Assign(DeviceList);
-      ComboboxCameras.ItemIndex := 0;
-      btnCamera_TakeImg.Enabled := true;
-
-      Statusbar.Panels[2].Text := 'Video device(s) found';
-      for j := 0 to DeviceList.Count-1 do
-        Begin
-          LogWindow.addLogEntry('Video device ' + inttostr(j+1) + ' found  [' + DeviceList[j] + ']');
-        End;
-
-      if DeviceList.Count = 1 then // use the one and only device as camera
-        Begin
-          LogWindow.addLogEntry('using the one available video device');
-
-          LogWindow.addLogEntry('get available video sizes');
-          //VideoSizesList.Create;
-          //fVideoImage.GetListOfSupportedVideoSizes(VideoSizesList);
-          //ComboBoxVideoSizes.Items.Assign(VideoSizesList);
-
-          //fVideoImage.ShowProperty;
-
-          LogWindow.addLogEntry('start video');
-          fVideoImage.VideoStart(DeviceList[0]);
-        End;
-
-      if DeviceList.Count > 1 then // load the camera device from the settings???
-        Begin
-          LogWindow.addLogEntry('using the selected video device');
-          LogWindow.addLogEntry('start video');
-          fVideoImage.VideoStart(ComboBoxCameras.Items[ComboBoxCameras.itemindex]); // for now use the first device
-        End;
-
-    end;
-
-    // image properties
-    fotoDir := ServerRoot + 'SAMS Images\';
-    fname := fotoDir + edtSampleNr.Text + '.jpg';
-    LogWindow.addLogEntry('new image path should be: '+fname);
-    Statusbar.Panels[2].Text := 'creating image at :' + fname;
-
-    // check whether Directory exists
-    // followed by file exists
-    if DirectoryExists(fotoDir, False) then
-      begin
-        LogWindow.addLogEntry('Directory exists :'+fotoDir);
-        if FileExists(fname) then
-          begin
-            //SampleFoto.Picture.LoadFromFile(fname);
-            LogWindow.addLogEntry('an image already exists: '+fname);
-            //ShowMessage('Image file exists already');
-          end
-          else
-          begin
-            LogWindow.addLogEntry('Image file does not exist yet');
-          end;
-      end
-      else
-      begin
-        LogWindow.addLogEntry('Directory does not exist :'+fotoDir);
-        ShowMessage('Unable to find directory "' + fotoDir + '". Make sure network drive is connected.');
-      end;
-  end;
+  
 
 end;
 
@@ -7054,11 +6986,11 @@ begin
           #34 + 'SwissCal' + #34 + ' AS CalProgr, ' +
           ' sample_t.Cal1sMax,  sample_t.Cal1sMin, sample_t.Cal2sMax, sample_t.Cal2sMin,' +
           ' weight_end/weight_start*100 AS collpc,' +
-          ' weight_combustion * conc_c AS c, ' +
+          ' weight_combustion * conc_c/100 AS c, ' +
           ' conc_c/conc_n*14/12 as cn_ratio, av_fm, ' +
           #34 + 'n.a.' + #34 + ' AS Fraktion, ' +
           #34 + 'n.a.' + #34 + ' AS Zuverl, ' +
-          'concat(substring(target_t.magazine, 7, 2),"-",substring(target_t.magazine, 5, 2),"-",substring(target_t.magazine, 3, 2)) AS MessDatum ';
+          'concat(substring(target_t.magazine, 7, 2),".",substring(target_t.magazine, 5, 2),".",substring(target_t.magazine, 3, 2)) AS MessDatum ';
         s := s +
           ' FROM sample_t  ' +
           'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
