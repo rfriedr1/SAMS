@@ -558,9 +558,6 @@ Coordinates=2364,892,86,58
 [ToolButton1]
 Coordinates=2327,1258,84,36
 
-[GroupBox11]
-Coordinates=2118,892,86,58
-
 [btnIncSampleNr]
 Coordinates=2210,1258,107,36
 
@@ -2151,4 +2148,7 @@ Coordinates=2013,1559,67,58
 
 [edtReportFileName]
 Coordinates=2488,1,126,58
+
+[grpbox_TableHeadings]
+Coordinates=2118,892,86,58
 

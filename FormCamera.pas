@@ -9,7 +9,8 @@ interface
 
 uses
   Windows, Classes, Controls, Forms, ExtCtrls, Frame_Video, Menus,
-  StdCtrls, Vcl.Mask, JvExMask, JvToolEdit;
+  StdCtrls, Vcl.Mask, JvExMask, JvToolEdit, JvComponentBase, IniFiles, SysUtils,
+  Dialogs, jpeg, Graphics;
 
 
 type
@@ -36,6 +37,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure btnSnapImageClick(Sender: TObject);
+    procedure edtMAMSChange(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
   private
     { Private declarations }
     SplitterRatio : double;
@@ -46,15 +49,12 @@ type
 
 var
   CameraWindow: TCameraWindow;
+  myIni : TIniFile;
 
 
 implementation
 
 {$R *.dfm}
-
-
-
-
 
 
 
@@ -69,10 +69,37 @@ end;
 
 
 
+procedure TCameraWindow.btnSaveClick(Sender: TObject);
+Var
+  Bmp: TBitmap;
+  jpgImage: TJPEGImage;
+begin
+ // create bmp from PaintBox
+ Bmp := TBitmap.Create();
+ Bmp.SetSize(PaintBoxImage.Canvas.ClipRect.Right, PaintBoxImage.Canvas.ClipRect.Bottom);
+ BitBlt(Bmp.Canvas.Handle, 0, 0, PaintBoxImage.Width, PaintBoxImage.Height, PaintBoxImage.Canvas.Handle, 0, 0, SRCCOPY);
+ //BitBlt(Bmp.Canvas.Handle, 0, 0, Width, Height, Canvas.Handle, 0, 0, SRCCOPY);
+
+ // create IMage first
+ jpgImage := TJPEGImage.Create();
+ jpgImage.Assign(Bmp);
+ jpgImage.SaveToFile(edtPathToImage.Text);
+
+end;
+
 procedure TCameraWindow.btnSnapImageClick(Sender: TObject);
+Var
+  Source: TRect;
 begin
   // tell Frame_Video1 to get an image from the camera
-  //Frame_Video1.
+  Source := Rect(0, 0, Frame_Video1.PaintBox_Video.Width, Frame_Video1.PaintBox_Video.Height);
+  PaintBoxImage.Canvas.CopyRect(Source, Frame_Video1.PaintBox_Video.Canvas, Source);
+end;
+
+procedure TCameraWindow.edtMAMSChange(Sender: TObject);
+begin
+ // update the path
+ edtPathToImage.Text := myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', '') + '\'  + edtMAMS.Text + '.jpg'
 end;
 
 procedure TCameraWindow.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -81,8 +108,25 @@ begin
 end;
 
 procedure TCameraWindow.FormShow(Sender: TObject);
+Var
+pathToIni : string;
 begin
+  // initialize the video frame
   Frame_Video1.InitFrame;
+
+  // create iniFile Object and connect to the ini file that SAMS uses
+  pathToIni := extractFilePath(paramstr(0)) + 'Persistent.ini';
+  myIni := TiniFile.Create(pathToIni);
+  if fileexists(pathToIni) then
+    Begin
+      if myIni.ValueExists('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text') then
+      Begin
+        //showmessage(pathToIni);
+        //showmessage(myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', 'test'));
+        edtPathToImage.Text := myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', '');
+      End;
+    End
+
 end;
 
 procedure TCameraWindow.Quit1Click(Sender: TObject);

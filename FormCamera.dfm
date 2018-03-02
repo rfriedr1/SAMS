@@ -132,15 +132,14 @@ object CameraWindow: TCameraWindow
       Top = 17
       Width = 233
       Height = 21
-      Enabled = False
       TabOrder = 0
-      Text = 'MAMS'
+      OnChange = edtMAMSChange
     end
     object edtPathToImage: TJvDirectoryEdit
       Left = 80
       Top = 44
       Width = 233
-      Height = 41
+      Height = 21
       DialogKind = dkWin32
       TabOrder = 1
       Text = 'PathToImage'
@@ -161,6 +160,7 @@ object CameraWindow: TCameraWindow
       Height = 40
       Caption = 'Save'
       TabOrder = 3
+      OnClick = btnSaveClick
     end
   end
   object MainMenu1: TMainMenu

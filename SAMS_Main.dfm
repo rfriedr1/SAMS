@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = edtMonthStat
+  ActiveControl = DBGrid1
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1412
@@ -279,7 +279,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsDBInfo
+    ActivePage = tbsOptions
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -5751,18 +5751,19 @@ object frmMAMS: TfrmMAMS
           TitleFont.Style = []
         end
       end
-      object GroupBox11: TGroupBox
-        Left = 0
+      object grpbox_TableHeadings: TGroupBox
+        Left = 705
         Top = 0
-        Width = 409
-        Height = 719
+        Width = 440
+        Height = 725
+        Align = alClient
         Caption = 'Table headings for report'
         TabOrder = 1
         object lbExportHeader: TJvMarkupLabel
           Left = 2
           Top = 400
-          Width = 405
-          Height = 317
+          Width = 436
+          Height = 323
           Text = ''
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -5774,12 +5775,13 @@ object frmMAMS: TfrmMAMS
           ParentColor = False
           ParentFont = False
           ExplicitTop = 397
+          ExplicitWidth = 405
           ExplicitHeight = 321
         end
         object grdReportHeadings: TJvStringGrid
           Left = 2
           Top = 15
-          Width = 405
+          Width = 436
           Height = 370
           CustomHint = BalloonHint1
           Align = alTop
@@ -5819,129 +5821,149 @@ object frmMAMS: TfrmMAMS
         object Panel23: TPanel
           Left = 2
           Top = 385
-          Width = 405
+          Width = 436
           Height = 15
           Align = alTop
           TabOrder = 1
         end
       end
-      object OptionsTree: TTreeView
-        Left = 426
-        Top = 14
-        Width = 120
-        Height = 652
-        CustomHint = BalloonHint1
-        Indent = 19
+      object grpboxAppOptions: TGroupBox
+        Left = 0
+        Top = 0
+        Width = 705
+        Height = 725
+        Align = alLeft
+        Caption = 'App Options'
         TabOrder = 2
-        OnClick = OptionsTreeClick
-        Items.NodeData = {
-          03040000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
-          00000000000107470065006E006500720061006C002E00000000000000000000
-          00FFFFFFFFFFFFFFFF0000000000000000000000000108440061007400610062
-          00610073006500280000000000000000000000FFFFFFFFFFFFFFFF0000000000
-          00000000000000010550006100740068007300280000000000000000000000FF
-          FFFFFFFFFFFFFF000000000000000000000000010545006D00610069006C00}
-      end
-      object TabOptionsPages: TPageControl
-        Left = 553
-        Top = 14
-        Width = 440
-        Height = 652
-        ActivePage = TabPaths
-        TabOrder = 3
-        object TabGeneral: TTabSheet
-          Caption = 'TabGeneral'
+        object OptionsTree: TTreeView
+          Left = 2
+          Top = 15
+          Width = 120
+          Height = 676
+          CustomHint = BalloonHint1
+          Align = alLeft
+          Indent = 19
+          TabOrder = 0
+          OnClick = OptionsTreeClick
+          Items.NodeData = {
+            03040000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+            00000000000107470065006E006500720061006C002E00000000000000000000
+            00FFFFFFFFFFFFFFFF0000000000000000000000000108440061007400610062
+            00610073006500280000000000000000000000FFFFFFFFFFFFFFFF0000000000
+            00000000000000010550006100740068007300280000000000000000000000FF
+            FFFFFFFFFFFFFF000000000000000000000000010545006D00610069006C00}
         end
-        object TabDatabase: TTabSheet
-          Caption = 'TabDatabase'
-          ImageIndex = 1
-          object StaticText6: TStaticText
-            Left = 13
-            Top = 45
-            Width = 613
-            Height = 76
-            Margins.Left = 2
-            Margins.Top = 2
-            Margins.Right = 2
-            Margins.Bottom = 2
-            AutoSize = False
-            Caption = 
-              'presently SAMS uses an ODBC connection that needs to be set by M' +
-              'S Windows. the name of the ODBC drifer needs to be  "DBMAMS"'
-            TabOrder = 0
+        object TabOptionsPages: TPageControl
+          Left = 122
+          Top = 15
+          Width = 581
+          Height = 676
+          ActivePage = TabEmail
+          Align = alClient
+          TabOrder = 1
+          object TabGeneral: TTabSheet
+            Caption = 'TabGeneral'
+            object c: TStaticText
+              Left = 34
+              Top = 37
+              Width = 124
+              Height = 17
+              Caption = 'general program settings'
+              TabOrder = 0
+            end
+          end
+          object TabDatabase: TTabSheet
+            Caption = 'TabDatabase'
+            ImageIndex = 1
+            object StaticText6: TStaticText
+              Left = 16
+              Top = 42
+              Width = 434
+              Height = 76
+              Margins.Left = 2
+              Margins.Top = 2
+              Margins.Right = 2
+              Margins.Bottom = 2
+              AutoSize = False
+              Caption = 
+                'presently SAMS uses an ODBC connection that needs to be set by M' +
+                'S Windows. the name of the ODBC drifer needs to be  "DBMAMS"'
+              TabOrder = 0
+            end
+          end
+          object TabPaths: TTabSheet
+            Caption = 'TabPaths'
+            ImageIndex = 2
+            object Label98: TLabel
+              Left = 25
+              Top = 137
+              Width = 126
+              Height = 13
+              Caption = 'Path to Reports on Server'
+            end
+            object Label79: TLabel
+              Left = 28
+              Top = 85
+              Width = 123
+              Height = 13
+              Caption = 'Path to Images on Server'
+            end
+            object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
+              Left = 24
+              Top = 104
+              Width = 303
+              Height = 21
+              DialogKind = dkWin32
+              DialogOptions = [sdPrompt]
+              DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+              ButtonWidth = 26
+              TabOrder = 0
+              Text = 'JvDirEdt_Server_Image_Path'
+            end
+            object JvDirEdt_Server_Report_Path: TJvDirectoryEdit
+              Left = 24
+              Top = 156
+              Width = 303
+              Height = 21
+              DialogKind = dkWin32
+              DialogOptions = [sdPrompt]
+              DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
+              ButtonWidth = 26
+              TabOrder = 1
+              Text = 'JvDirEdt_Server_Report_Path'
+            end
+            object StaticText8: TStaticText
+              Left = 28
+              Top = 37
+              Width = 67
+              Height = 17
+              Caption = 'path settings'
+              TabOrder = 2
+            end
+          end
+          object TabEmail: TTabSheet
+            Caption = 'TabEmail'
+            ImageIndex = 3
+            object StaticText9: TStaticText
+              Left = 42
+              Top = 45
+              Width = 69
+              Height = 17
+              Caption = 'email settings'
+              TabOrder = 0
+            end
           end
         end
-        object TabPaths: TTabSheet
-          Caption = 'TabPaths'
-          ImageIndex = 2
-          object Label98: TLabel
-            Left = 20
-            Top = 105
-            Width = 126
-            Height = 13
-            Caption = 'Path to Reports on Server'
-          end
-          object Label79: TLabel
-            Left = 23
-            Top = 53
-            Width = 123
-            Height = 13
-            Caption = 'Path to Images on Server'
-          end
-          object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
-            Left = 19
-            Top = 72
-            Width = 303
-            Height = 21
-            DialogKind = dkWin32
-            DialogOptions = [sdPrompt]
-            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
-            ButtonWidth = 26
-            TabOrder = 0
-            Text = 'JvDirEdt_Server_Image_Path'
-          end
-          object JvDirEdt_Server_Report_Path: TJvDirectoryEdit
-            Left = 19
-            Top = 124
-            Width = 303
-            Height = 21
-            DialogKind = dkWin32
-            DialogOptions = [sdPrompt]
-            DialogOptionsWin32 = [odOnlyDirectory, odStatusAvailable, odNewDialogStyle]
-            ButtonWidth = 26
-            TabOrder = 1
-            Text = 'JvDirEdt_Server_Report_Path'
-          end
-          object ValueListEditorPaths: TValueListEditor
-            Left = 16
-            Top = 151
-            Width = 306
-            Height = 300
-            Strings.Strings = (
-              'Server Image Location='
-              'Server Reports Location=')
-            TabOrder = 2
-            ColWidths = (
-              150
-              150)
-            RowHeights = (
-              18
-              18
-              18)
-          end
+        object btnSaveOptions: TButton
+          Left = 2
+          Top = 691
+          Width = 701
+          Height = 32
+          Align = alBottom
+          Caption = 'Save'
+          TabOrder = 2
+          OnClick = btnSaveOptionsClick
         end
-        object TabEmail: TTabSheet
-          Caption = 'TabEmail'
-          ImageIndex = 3
-        end
-      end
-      object btnSaveOptions: TButton
-        Left = 556
-        Top = 673
-        Width = 434
-        Height = 32
-        Caption = 'Save'
-        TabOrder = 4
       end
     end
     object tbsTypesMat: TTabSheet
@@ -7926,7 +7948,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300B80510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300CC0510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8635,7 +8657,9 @@ object frmMAMS: TfrmMAMS
       'edtSMTPServer.Text'
       'MemoDBPlotQuery.Lines'
       'chkSendCopyToSender.Checked'
-      'edtSaveReportToFolder.Text')
+      'edtSaveReportToFolder.Text'
+      'JvDirEdt_Server_Image_Path.Text'
+      'JvDirEdt_Server_Report_Path.Text')
     StoredValues = <>
     Left = 312
     Top = 72
@@ -8697,7 +8721,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806380718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F8064C0718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14947,7 +14971,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00B80520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00CC0520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

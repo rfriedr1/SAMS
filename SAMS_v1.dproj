@@ -81,14 +81,14 @@
         <BT_BuildType>Debug</BT_BuildType>
         <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\Worddriver;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;Y:\my data\KTL\Software\GitHub\SAMS\WebCam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
-        <Debugger_RunParams>db_dmams_VPN rfriedrich P1card.1</Debugger_RunParams>
+        <Debugger_RunParams>db_dmams_KTL rfriedrich P1card.1</Debugger_RunParams>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <Debugger_RunParams>db_dmams rfriedrich P1card.1</Debugger_RunParams>
+        <Debugger_RunParams>db_dmams_KTL rfriedrich P1card.1</Debugger_RunParams>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -182,40 +182,25 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="SAMS_v1.todo" Configuration="Release" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="SAMS_v1.todo" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="C:\Program Files\SAMS\SAMS_v1.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>SAMS_v1.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="SAMS_v1.todo" Configuration="Debug" Class="ProjectFile"/>
-                <DeployClass Name="DependencyModule">
+                <DeployFile LocalName="SAMS_v1.todo" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
                     </Platform>
+                </DeployFile>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -595,12 +580,27 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
