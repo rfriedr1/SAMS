@@ -614,36 +614,50 @@ object VideoFrame: TVideoFrame
     Height = 476
     Align = alClient
     TabOrder = 1
-    DesignSize = (
-      368
-      476)
-    object Label_VideoSize: TLabel
-      Left = 8
-      Top = 12
-      Width = 48
-      Height = 13
-      Caption = 'Video Size'
-    end
-    object Label_fps: TLabel
-      Left = 144
-      Top = 12
-      Width = 91
-      Height = 13
-      Caption = 'Frames per second'
-    end
-    object Label2: TLabel
-      Left = 296
-      Top = 12
-      Width = 50
-      Height = 13
-      Caption = 'Difference'
-    end
     object PaintBox_Video: TPaintBox
-      Left = 8
-      Top = 32
-      Width = 359
-      Height = 436
-      Anchors = [akLeft, akTop, akRight, akBottom]
+      Left = 1
+      Top = 41
+      Width = 366
+      Height = 434
+      Align = alClient
+      ExplicitLeft = 8
+      ExplicitTop = 32
+      ExplicitWidth = 359
+      ExplicitHeight = 436
+    end
+    object GroupBox1: TGroupBox
+      Left = 1
+      Top = 1
+      Width = 366
+      Height = 40
+      Align = alTop
+      Caption = 'GroupBox1'
+      TabOrder = 0
+      object Label_fps: TLabel
+        Left = 130
+        Top = 15
+        Width = 103
+        Height = 18
+        Caption = 'Frames per second'
+      end
+      object Label_VideoSize: TLabel
+        Left = 2
+        Top = 15
+        Width = 48
+        Height = 23
+        Align = alLeft
+        Caption = 'Video Size'
+        ExplicitHeight = 22
+      end
+      object Label2: TLabel
+        Left = 314
+        Top = 15
+        Width = 50
+        Height = 23
+        Align = alRight
+        Caption = 'Difference'
+        ExplicitHeight = 22
+      end
     end
   end
   object PopupMenu1: TPopupMenu

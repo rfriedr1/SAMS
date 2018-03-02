@@ -2808,6 +2808,9 @@ end;
 procedure TfrmMAMS.actCameraExecute(Sender: TObject);
 begin
   CameraWindow.Show;
+
+  // send active sample number to dialog
+  CameraWindow.edtMAMS.Text := edtSampleNr.Text;
 end;
 
 procedure TfrmMAMS.actInsertSamplesExecute(Sender: TObject);

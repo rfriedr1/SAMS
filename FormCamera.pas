@@ -29,6 +29,8 @@ type
     PaintBoxImage: TPaintBox;
     btnSnapImage: TButton;
     btnSave: TButton;
+    GroupBox1: TGroupBox;
+    lbl_SaveSuccessfull: TLabel;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -83,7 +85,23 @@ begin
  // create IMage first
  jpgImage := TJPEGImage.Create();
  jpgImage.Assign(Bmp);
- jpgImage.SaveToFile(edtPathToImage.Text);
+
+ // save jpeg
+ // showmessage(extractfilepath(edtPathToImage.Text));
+ // check that directory really exists
+ if directoryexists(extractfilepath(edtPathToImage.Text)) then
+  begin
+   jpgImage.SaveToFile(edtPathToImage.Text);
+   lbl_SaveSuccessfull.Caption := 'Saved';
+   lbl_SaveSuccessfull.Visible := True;
+  end
+ else
+   begin
+   lbl_SaveSuccessfull.Caption := 'Not Saved';
+   lbl_SaveSuccessfull.Visible := True;
+   //showmessage('error saving file.');
+   end;
+
 
 end;
 
@@ -94,6 +112,9 @@ begin
   // tell Frame_Video1 to get an image from the camera
   Source := Rect(0, 0, Frame_Video1.PaintBox_Video.Width, Frame_Video1.PaintBox_Video.Height);
   PaintBoxImage.Canvas.CopyRect(Source, Frame_Video1.PaintBox_Video.Canvas, Source);
+
+  lbl_SaveSuccessfull.Caption := 'Not Saved';
+  lbl_SaveSuccessfull.Visible := True;
 end;
 
 procedure TCameraWindow.edtMAMSChange(Sender: TObject);
@@ -113,6 +134,9 @@ pathToIni : string;
 begin
   // initialize the video frame
   Frame_Video1.InitFrame;
+
+  // some settings
+  lbl_SaveSuccessfull.Visible := False;
 
   // create iniFile Object and connect to the ini file that SAMS uses
   pathToIni := extractFilePath(paramstr(0)) + 'Persistent.ini';

@@ -42,6 +42,7 @@ type
     SpeedButton1: TSpeedButton;
     Label4: TLabel;
     Bevel1: TBevel;
+    GroupBox1: TGroupBox;
     procedure Updatelistofcameras1Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure SpeedButton_RunVideoClick(Sender: TObject);
