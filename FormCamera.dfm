@@ -58,6 +58,9 @@ object CameraWindow: TCameraWindow
           Caption = 'Camera '
           ExplicitWidth = 39
         end
+        inherited SpeedButton_VidSize: TSpeedButton
+          OnClick = Frame_Video1SpeedButton_VidSizeClick
+        end
         inherited Label3: TLabel
           Width = 51
           ExplicitWidth = 51
@@ -75,6 +78,8 @@ object CameraWindow: TCameraWindow
         inherited PaintBox_Video: TPaintBox
           Width = 373
           Height = 393
+          ExplicitWidth = 373
+          ExplicitHeight = 393
         end
         inherited GroupBox1: TGroupBox
           Width = 373
@@ -85,12 +90,17 @@ object CameraWindow: TCameraWindow
           end
           inherited Label_VideoSize: TLabel
             Width = 50
+            Height = 23
             ExplicitWidth = 50
           end
           inherited Label2: TLabel
             Left = 322
             Width = 49
+            Height = 23
+            ExplicitLeft = 261
+            ExplicitTop = 23
             ExplicitWidth = 49
+            ExplicitHeight = 23
           end
         end
       end
@@ -123,11 +133,8 @@ object CameraWindow: TCameraWindow
       Width = 374
       Height = 141
       Align = alTop
-      Caption = 'GroupBox1'
+      Caption = 'Save Image'
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 44
-      ExplicitWidth = 339
       object Label1: TLabel
         Left = 32
         Top = 20
@@ -171,7 +178,10 @@ object CameraWindow: TCameraWindow
         Top = 73
         Width = 105
         Height = 40
+        Hint = 'get image'
         Caption = 'Snap'
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 2
         OnClick = btnSnapImageClick
       end
@@ -180,7 +190,10 @@ object CameraWindow: TCameraWindow
         Top = 73
         Width = 106
         Height = 40
+        Hint = 'save image to given location'
         Caption = 'Save'
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
         OnClick = btnSaveClick
       end

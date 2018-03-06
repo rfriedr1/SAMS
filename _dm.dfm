@@ -87,7 +87,6 @@ object dm: Tdm
     Top = 364
   end
   object adoConnKTL: TADOConnection
-    KeepConnection = False
     LoginPrompt = False
     Provider = 'MSDASQL.1'
     OnExecuteComplete = adoConnKTLExecuteComplete

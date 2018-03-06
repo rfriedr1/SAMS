@@ -41,6 +41,7 @@ type
     procedure btnSnapImageClick(Sender: TObject);
     procedure edtMAMSChange(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
+    procedure Frame_Video1SpeedButton_VidSizeClick(Sender: TObject);
   private
     { Private declarations }
     SplitterRatio : double;
@@ -150,6 +151,12 @@ begin
         edtPathToImage.Text := myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', '');
       End;
     End
+
+end;
+
+procedure TCameraWindow.Frame_Video1SpeedButton_VidSizeClick(Sender: TObject);
+begin
+  Frame_Video1.SpeedButton_VidSizeClick(Sender);
 
 end;
 
