@@ -38,10 +38,10 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
-  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames;
+  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
 
 const
-  myVersion = '1.8.2 Feb-6-2018';
+  myVersion = '1.8.3 March-2-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -734,6 +734,8 @@ type
     StaticText8: TStaticText;
     c: TStaticText;
     StaticText9: TStaticText;
+    JvAppIniFileStoragePrep: TJvAppIniFileStorage;
+    btn_initest: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1022,6 +1024,7 @@ type
     procedure actCameraExecute(Sender: TObject);
     procedure grdPendingReportsTitleClick(Column: TColumn);
     procedure btnSaveOptionsClick(Sender: TObject);
+    procedure btn_initestClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1121,6 +1124,7 @@ type
 
 var
   frmMAMS: TfrmMAMS;
+  myPrepIni : TIniFile;
   //LogWindow: TLogWindow;
 
 implementation
@@ -2206,6 +2210,11 @@ begin
 end;
 
 
+procedure TfrmMAMS.btn_initestClick(Sender: TObject);
+begin
+  myPrepIni
+end;
+
 procedure TfrmMAMS.btn_RemoveProjectClick(Sender: TObject);
 // remove the selected project from the database
 VAR
@@ -2808,6 +2817,9 @@ end;
 procedure TfrmMAMS.actCameraExecute(Sender: TObject);
 begin
   CameraWindow.Show;
+
+  // send active sample number to dialog
+  CameraWindow.edtMAMS.Text := edtSampleNr.Text;
 end;
 
 procedure TfrmMAMS.actInsertSamplesExecute(Sender: TObject);
@@ -4558,6 +4570,8 @@ end;
 procedure TfrmMAMS.FormCreate(Sender: TObject);
 var
   bmp: TBitmap;
+  pathToIni: string;
+  txtFile: textFile;
 begin
   FCheck := TBitmap.Create;
   FNoCheck := TBitmap.Create;
@@ -4586,6 +4600,18 @@ begin
   finally
     bmp.free
   end;
+
+  // create iniFile Object for AutoPrep (assign prep according to material)
+  // and connect to the ini file that SAMS uses
+  pathToIni := extractFilePath(paramstr(0)) + 'autoprep.ini';
+  myPrepIni := TiniFile.Create(pathToIni);
+  if not fileexists(pathToIni) then
+    Begin
+      // create new empty text file
+      AssignFile(txtFile,pathToini);
+      Rewrite(txtFile);
+      CloseFile(txtFile);
+    End
 
 end;
 
@@ -7331,7 +7357,7 @@ begin
   //dispaly General Tab
   TabOptionsPages.ActivePage := TabGeneral;
   // set treeView to general
-  OptionsTree.Items[1].Selected := True;
+  OptionsTree.Items[0].Selected := True;
   OptionsTree.Refresh;
   //values are automatically loaded using JvFormStorage1
 

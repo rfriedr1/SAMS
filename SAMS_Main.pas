@@ -38,7 +38,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
-  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames;
+  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
 
 const
   myVersion = '1.8.3 March-2-2018';
@@ -734,6 +734,8 @@ type
     StaticText8: TStaticText;
     c: TStaticText;
     StaticText9: TStaticText;
+    JvAppIniFileStoragePrep: TJvAppIniFileStorage;
+    btn_initest: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1022,6 +1024,7 @@ type
     procedure actCameraExecute(Sender: TObject);
     procedure grdPendingReportsTitleClick(Column: TColumn);
     procedure btnSaveOptionsClick(Sender: TObject);
+    procedure btn_initestClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1121,13 +1124,14 @@ type
 
 var
   frmMAMS: TfrmMAMS;
+  myPrepIni : TIniFile;
   //LogWindow: TLogWindow;
 
 implementation
 
 uses
   SysUtils, about, SHFolder, Clipbrd, CommCtrl, DateUtils, JvJCLUtils,
-  IniFiles, _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
+  _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
   StorageLocations, FormDBSearch;
 
 {$R *.dfm}
@@ -2205,6 +2209,13 @@ begin
   dm.TransferMA_Nr_To_MAMS;
 end;
 
+
+procedure TfrmMAMS.btn_initestClick(Sender: TObject);
+var test: Tstrings;
+begin
+  myPrepIni.ReadSections(test);
+  showmessage(test.GetText);
+end;
 
 procedure TfrmMAMS.btn_RemoveProjectClick(Sender: TObject);
 // remove the selected project from the database
@@ -4561,6 +4572,8 @@ end;
 procedure TfrmMAMS.FormCreate(Sender: TObject);
 var
   bmp: TBitmap;
+  pathToIni: string;
+  txtFile: textFile;
 begin
   FCheck := TBitmap.Create;
   FNoCheck := TBitmap.Create;
@@ -4589,6 +4602,18 @@ begin
   finally
     bmp.free
   end;
+
+  // create iniFile Object for AutoPrep (assign prep according to material)
+  // and connect to the ini file that SAMS uses
+  pathToIni := extractFilePath(paramstr(0)) + 'autoprep.ini';
+  myPrepIni := TiniFile.Create(pathToIni);
+  if not fileexists(pathToIni) then
+    Begin
+      // create new empty text file
+      AssignFile(txtFile,pathToini);
+      Rewrite(txtFile);
+      CloseFile(txtFile);
+    End
 
 end;
 

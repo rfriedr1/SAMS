@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = DBGrid1
+  ActiveControl = DBMemo_LabComment
   Caption = 'SAMS '
   ClientHeight = 824
   ClientWidth = 1412
@@ -279,7 +279,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1412
     Height = 753
-    ActivePage = tbsOptions
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -5759,9 +5759,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Table headings for report'
         TabOrder = 1
-        ExplicitLeft = 0
-        ExplicitWidth = 409
-        ExplicitHeight = 719
         object lbExportHeader: TJvMarkupLabel
           Left = 2
           Top = 400
@@ -5800,7 +5797,6 @@ object frmMAMS: TfrmMAMS
           FixedFont.Height = -11
           FixedFont.Name = 'Tahoma'
           FixedFont.Style = []
-          ExplicitWidth = 405
           ColWidths = (
             64
             64
@@ -5829,7 +5825,6 @@ object frmMAMS: TfrmMAMS
           Height = 15
           Align = alTop
           TabOrder = 1
-          ExplicitWidth = 405
         end
       end
       object grpboxAppOptions: TGroupBox
@@ -5840,9 +5835,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'App Options'
         TabOrder = 2
-        ExplicitLeft = 416
-        ExplicitTop = 8
-        ExplicitHeight = 493
         object OptionsTree: TTreeView
           Left = 2
           Top = 15
@@ -5860,36 +5852,33 @@ object frmMAMS: TfrmMAMS
             00610073006500280000000000000000000000FFFFFFFFFFFFFFFF0000000000
             00000000000000010550006100740068007300280000000000000000000000FF
             FFFFFFFFFFFFFF000000000000000000000000010545006D00610069006C00}
-          ExplicitLeft = 65
-          ExplicitTop = -547
-          ExplicitHeight = 652
         end
         object TabOptionsPages: TPageControl
           Left = 122
           Top = 15
           Width = 581
           Height = 676
-          ActivePage = TabPaths
+          ActivePage = TabEmail
           Align = alClient
           TabOrder = 1
-          ExplicitLeft = -255
-          ExplicitTop = -547
-          ExplicitWidth = 440
-          ExplicitHeight = 652
           object TabGeneral: TTabSheet
             Caption = 'TabGeneral'
-            ExplicitWidth = 432
-            ExplicitHeight = 624
+            object c: TStaticText
+              Left = 34
+              Top = 37
+              Width = 124
+              Height = 17
+              Caption = 'general program settings'
+              TabOrder = 0
+            end
           end
           object TabDatabase: TTabSheet
             Caption = 'TabDatabase'
             ImageIndex = 1
-            ExplicitWidth = 432
-            ExplicitHeight = 624
             object StaticText6: TStaticText
-              Left = 13
-              Top = 45
-              Width = 613
+              Left = 16
+              Top = 42
+              Width = 434
               Height = 76
               Margins.Left = 2
               Margins.Top = 2
@@ -5905,25 +5894,23 @@ object frmMAMS: TfrmMAMS
           object TabPaths: TTabSheet
             Caption = 'TabPaths'
             ImageIndex = 2
-            ExplicitWidth = 437
-            ExplicitHeight = 628
             object Label98: TLabel
-              Left = 20
-              Top = 105
+              Left = 25
+              Top = 137
               Width = 126
               Height = 13
               Caption = 'Path to Reports on Server'
             end
             object Label79: TLabel
-              Left = 23
-              Top = 53
+              Left = 28
+              Top = 85
               Width = 123
               Height = 13
               Caption = 'Path to Images on Server'
             end
             object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
-              Left = 19
-              Top = 72
+              Left = 24
+              Top = 104
               Width = 303
               Height = 21
               DialogKind = dkWin32
@@ -5934,8 +5921,8 @@ object frmMAMS: TfrmMAMS
               Text = 'JvDirEdt_Server_Image_Path'
             end
             object JvDirEdt_Server_Report_Path: TJvDirectoryEdit
-              Left = 19
-              Top = 124
+              Left = 24
+              Top = 156
               Width = 303
               Height = 21
               DialogKind = dkWin32
@@ -5945,12 +5932,26 @@ object frmMAMS: TfrmMAMS
               TabOrder = 1
               Text = 'JvDirEdt_Server_Report_Path'
             end
+            object StaticText8: TStaticText
+              Left = 28
+              Top = 37
+              Width = 67
+              Height = 17
+              Caption = 'path settings'
+              TabOrder = 2
+            end
           end
           object TabEmail: TTabSheet
             Caption = 'TabEmail'
             ImageIndex = 3
-            ExplicitWidth = 432
-            ExplicitHeight = 624
+            object StaticText9: TStaticText
+              Left = 42
+              Top = 45
+              Width = 69
+              Height = 17
+              Caption = 'email settings'
+              TabOrder = 0
+            end
           end
         end
         object btnSaveOptions: TButton
@@ -5962,9 +5963,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Save'
           TabOrder = 2
           OnClick = btnSaveOptionsClick
-          ExplicitLeft = 271
-          ExplicitTop = 673
-          ExplicitWidth = 434
         end
       end
     end
@@ -7950,7 +7948,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300C80510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300D80510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8723,7 +8721,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806480718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806580718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14973,7 +14971,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00C80520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00D80520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -25075,5 +25073,13 @@ object frmMAMS: TfrmMAMS
   object BalloonHint1: TBalloonHint
     Left = 1009
     Top = 85
+  end
+  object JvAppIniFileStoragePrep: TJvAppIniFileStorage
+    StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
+    StorageOptions.BooleanStringFalseValues = 'FALSE, NO, N'
+    FileName = 'autoprep.ini'
+    SubStorages = <>
+    Left = 204
+    Top = 129
   end
 end
