@@ -276,11 +276,11 @@ begin
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
         ADOCmd.Parameters.Clear;              // clear all Parameters
         ADOCmd.CommandType:=cmdtext;          // set command type to text
-        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 +');';    // set query text
+        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status, out_date) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 + ',' + 'NULL' + ');';    // set query text
         //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
         LogWindow.addLogEntry(ADOCmd.CommandText);
-        ADOCmd.Execute; // issue command (no result set must be returned)
+        //ADOCmd.Execute; // issue command (no result set must be returned)
       except
         ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
         result:='none';
@@ -942,6 +942,7 @@ begin
                    ' and project_t.out_date IS NULL ' +
                    ' ORDER BY sample_t.sample_nr;' ;
      s := SQL.Text;
+     LogWindow.addLogEntry(s);
 //     ClipBoard.SetTextBuf(PChar(s));
      IF dm.adoConnKTL.Connected THEN
                 Begin
