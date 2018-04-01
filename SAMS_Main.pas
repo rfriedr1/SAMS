@@ -1744,9 +1744,19 @@ begin
       Begin
         Try
           Open;
-          LogWindow.addLogEntry('executed');
+          LogWindow.addLogEntry('DB -- query executed');
         Except
-          ShowMessage('problem opening the database');
+          //ShowMessage('problem opening the database');
+          // connections is closed, reconnect by setting connected to true and test again
+            LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
+            Open;
         End;
       End;
     with grdPendingReports do

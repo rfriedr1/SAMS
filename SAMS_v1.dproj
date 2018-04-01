@@ -42,7 +42,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <Custom_Styles>&quot;Turquoise Gray|VCLSTYLE|$(BDSCOMMONDIR)\Styles\SAMS_flat.vsf&quot;</Custom_Styles>
-        <DCC_UnitSearchPath>Z:\my data\KTL\Software\GitHub\SAMS\Worddriver;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>Z:\my data\KTL\Software\GitHub\SAMS\Worddriver;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Z:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;Y:\my data\KTL\Software\GitHub\SAMS\WebCam;Y:\my data\KTL\Software\GitHub\SAMS\WebCam\GRBLize;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VCL_Custom_Styles>Emerald|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\Emerald.vsf;SAMS_flat|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\SAMS_flat.vsf;&quot;Turquoise Gray|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\16.0\Styles\TurquoiseGray.vsf&quot;</VCL_Custom_Styles>
         <DCC_K>false</DCC_K>
@@ -63,7 +63,7 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\WebCam\GRBLize;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\Worddriver;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Icon_MainIcon>SAMS_v1_Icon.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
@@ -77,7 +77,6 @@
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <Icon_MainIcon>SAMS_v1_Icon.ico</Icon_MainIcon>
         <BT_BuildType>Debug</BT_BuildType>
         <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\Worddriver;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word97;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2003;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\Word2007;Y:\my data\KTL\Software\GitHub\SAMS\Worddriver\WordXP;Y:\my data\KTL\Software\GitHub\SAMS\WebCam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
@@ -88,6 +87,7 @@
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <DCC_UnitSearchPath>Y:\my data\KTL\Software\GitHub\SAMS\WebCam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Debugger_RunParams>db_dmams_KTL rfriedrich P1card.1</Debugger_RunParams>
     </PropertyGroup>
     <ItemGroup>
@@ -182,6 +182,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="SAMS_v1.todo" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="SAMS_v1.todo" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="C:\Program Files\SAMS\SAMS_v1.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
@@ -189,18 +195,27 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="SAMS_v1.todo" Configuration="Release" Class="ProjectFile">
+                <DeployClass Name="DependencyModule">
                     <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
                     </Platform>
-                </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -580,27 +595,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

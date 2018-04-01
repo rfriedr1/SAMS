@@ -1131,7 +1131,7 @@ implementation
 
 uses
   SysUtils, about, SHFolder, Clipbrd, CommCtrl, DateUtils, JvJCLUtils,
-  IniFiles, _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
+  _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
   StorageLocations, FormDBSearch;
 
 {$R *.dfm}
@@ -2211,8 +2211,10 @@ end;
 
 
 procedure TfrmMAMS.btn_initestClick(Sender: TObject);
+var test: Tstrings;
 begin
-  myPrepIni
+  myPrepIni.ReadSections(test);
+  showmessage(test.GetText);
 end;
 
 procedure TfrmMAMS.btn_RemoveProjectClick(Sender: TObject);
