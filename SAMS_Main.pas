@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
 
 const
-  myVersion = '1.8.3 March-2-2018';
+  myVersion = '1.8.4 May-4-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -2876,7 +2876,7 @@ end;
 
 procedure TfrmMAMS.actSearchDatabaseExecute(Sender: TObject);
 begin
-  frmDBSearch.ShowModal;
+  frmDBSearch.Show;
 end;
 
 procedure TfrmMAMS.actSendMailExecute(Sender: TObject);

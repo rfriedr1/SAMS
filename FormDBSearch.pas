@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, System.UITypes, _dm, ADODB;
+  Vcl.DBGrids, Vcl.ExtCtrls, System.UITypes, _dm, ADODB, Sams_Main;
 
 type
   TfrmDBSearch = class(TForm)
@@ -14,10 +14,11 @@ type
     DBGridSearchResults: TDBGrid;
     StaticText2: TStaticText;
     lblSearchResults: TLabel;
-    RadioGroup1: TRadioGroup;
+    RadioGroupSearchContext: TRadioGroup;
     edtSearchPhrase: TLabeledEdit;
     procedure FormShow(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
+    procedure DBGridSearchResultsDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,7 +48,7 @@ begin
   // concatenate the columns and use the concatenated field in WHERE field LIKE
   // so all fields can be searched an ones
 
-  case RadioGroup1.ItemIndex of
+  case RadioGroupSearchContext.ItemIndex of
     0: // Users
         s:='SELECT * from user_t WHERE CONCAT_WS(";",user_nr,last_name,first_name,organisation,address_1,address_2,town,country) LIKE ' + #34 + '%' + edtSearchPhrase.Text + '%' + #34 +';';
     1: // Projects
@@ -79,6 +80,37 @@ begin
 //  end;
 
 
+end;
+
+procedure TfrmDBSearch.DBGridSearchResultsDblClick(Sender: TObject);
+begin
+// display info of the selected project or sample in main SAMS window
+// depending on the radio group selection, perform different actions
+    case RadioGroupSearchContext.ItemIndex of // Oder eben "case TRadioGroupN.ItemIndex of"
+      0: //Users
+       begin
+        // display user in SAMS
+        frmMAMS.cmbSubmitterNameProject.KeyValue:=DBGridSearchResults.DataSource.DataSet.FieldByName('user_nr').AsString;
+        frmMAMS.cmbSubmitterNameProjectCloseUp(Self);
+        frmMAMS.actUserProjectsExecute(Self);
+       end;
+      1: //Projects
+       begin
+       // Display all projects of the selected user in SAMS
+        frmMAMS.cmbSubmitterNameProject.KeyValue:=DBGridSearchResults.DataSource.DataSet.FieldByName('user_nr').AsString;
+        frmMAMS.cmbSubmitterNameProjectCloseUp(Self);
+        frmMAMS.actUserProjectsExecute(Self);
+        frmMAMS.grdProjects.DataSource.DataSet.Locate('project_nr',DBGridSearchResults.DataSource.DataSet.FieldByName('project_nr').AsString,[loPartialKey]);
+        frmMAMS.grdProjectsCellClick(Nil);
+       end;
+      2: // Samples
+       begin
+         // set sample number in SAMS
+          frmMAMS.edtSampleNr.Value:=DBGridSearchResults.DataSource.DataSet.FieldByName('sample_nr').AsString;
+        // simulate a click on the sample info button in SAMS
+          frmMAMS.actSampleInfoExecute(Self);
+       end;
+    end;
 end;
 
 procedure TfrmDBSearch.FormShow(Sender: TObject);

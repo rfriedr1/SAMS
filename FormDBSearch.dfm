@@ -71,6 +71,7 @@ object frmDBSearch: TfrmDBSearch
     TitleFont.Height = -14
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = DBGridSearchResultsDblClick
   end
   object StaticText2: TStaticText
     Left = 360
@@ -85,7 +86,7 @@ object frmDBSearch: TfrmDBSearch
     Caption = 'Double Click to see Details'
     TabOrder = 3
   end
-  object RadioGroup1: TRadioGroup
+  object RadioGroupSearchContext: TRadioGroup
     Left = 30
     Top = 90
     Width = 341
@@ -94,7 +95,7 @@ object frmDBSearch: TfrmDBSearch
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    Caption = 'search context'
+    Caption = 'Search Context'
     Columns = 2
     Items.Strings = (
       'Users'

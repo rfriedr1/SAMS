@@ -421,7 +421,7 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -438,10 +438,12 @@ begin
      if Fields.Fields[0].AsString=project_name then
      begin
         Result:=true;
+        LogWindow.addLogEntry('DB -- Projects exists already');
      end
      else
      begin
        Result:=false;
+       LogWindow.addLogEntry('DB -- Projects does not yet exist.');
      end;
      //Result := Fields.Fields[0].AsString;
    end;
@@ -463,7 +465,7 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -533,7 +535,7 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -566,7 +568,7 @@ begin
               Begin
                 Try
                   Open;
-                  LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                  LogWindow.addLogEntry('DB -- query executed...');
                 Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -591,7 +593,7 @@ begin
                 Begin
                   Try
                     adoCmd.Execute;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -625,7 +627,7 @@ begin
                 Begin
                   Try
                     adoCmd.Execute;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -653,7 +655,7 @@ begin
                 Begin
                   Try
                     adoCmd.Execute;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');;
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -764,7 +766,7 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -809,7 +811,7 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
@@ -990,7 +992,7 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
