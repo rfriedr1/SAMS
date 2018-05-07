@@ -19,6 +19,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
     procedure DBGridSearchResultsDblClick(Sender: TObject);
+    procedure DBGridAutoSizeColumn(Grid: TDBGrid; Column: integer);
+    procedure DBGridAutoSizeAllColumns(Grid: TDBGrid);
   private
     { Private declarations }
   public
@@ -47,6 +49,7 @@ begin
   // get all column names of that table
   // concatenate the columns and use the concatenated field in WHERE field LIKE
   // so all fields can be searched an ones
+  if edtSearchPhrase.Text = '' then Exit;
 
   case RadioGroupSearchContext.ItemIndex of
     0: // Users
@@ -79,6 +82,8 @@ begin
 //    DBGrid1.Columns.Items[3].Width := 60;
 //  end;
 
+// auto scale the column width's
+DBGridAutoSizeAllColumns(DBGridSearchResults);
 
 end;
 
@@ -127,6 +132,46 @@ begin
       Exit;
     end;
   end;
+end;
+
+procedure TfrmDBSearch.DBGridAutoSizeColumn(Grid: TDBGrid; Column: integer);
+// determines the longest string in Column of the DBGrid
+// and adjusts the Column Width accordingly
+var
+  W, WMax, WTitle: integer;
+begin
+  WMax := 0;
+  // set datasource to teh first record
+  Grid.DataSource.DataSet.First;
+  // loop through all records and get longest string of all records of this column
+  while not Grid.DataSource.DataSet.EOF do
+  begin
+    W := Grid.Canvas.TextWidth(Grid.Columns[Column].Field.AsString);
+    if W > WMax then WMax := W;
+    Grid.DataSource.DataSet.Next;
+  end;
+  // Column width has to be at least the width of the title
+  WTitle := Grid.Canvas.TextWidth(Grid.Columns[Column].Title.Caption);
+  //ShowMessage(Grid.Columns[Column].Title.Caption);
+  if (WMax + 10) < WTitle then WMax := WTitle;
+  Grid.Columns[Column].Width:= WMax + 10;
+end;
+
+procedure TfrmDBSearch.DBGridAutoSizeAllColumns(Grid: TDBGrid);
+// autosizes all columns of the DBGrid
+var
+  Column, W, WMax: integer;
+begin
+  if Grid.Columns.Count = 0 then Exit;
+  // disable controls in order to speed up screen update
+  Grid.DataSource.DataSet.DisableControls;
+  // loop through all colums and adkust width
+  for Column:=0 to (Grid.Columns.Count-1) do
+    begin
+      DBGridAutoSizeColumn(Grid, Column);
+    end;
+  // enable controls again
+  Grid.DataSource.DataSet.EnableControls;
 end;
 
 end.
