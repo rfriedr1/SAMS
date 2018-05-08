@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
 
 const
-  myVersion = '1.8.3 March-2-2018';
+  myVersion = '1.8.4 May-4-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -2265,6 +2265,7 @@ begin
   pgtMain.ActivePage:=tbsUserReport; //go to report page
 
   cmbSubmNameReport.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+  // ShowMessage(cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsString);
   cmbSubmNameReportCloseUp(self); //correct user is selected now show their projects
   cmbProjectOfReport.ListSource.DataSet.Locate('project_nr',grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString,[loPartialKey]);//now the projects are being displayed, select the correct project
   cmbProjectOfReport.KeyValue:=  grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString;  //not sure why I have to do this
@@ -2876,7 +2877,7 @@ end;
 
 procedure TfrmMAMS.actSearchDatabaseExecute(Sender: TObject);
 begin
-  frmDBSearch.ShowModal;
+  frmDBSearch.Show;
 end;
 
 procedure TfrmMAMS.actSendMailExecute(Sender: TObject);
@@ -5492,6 +5493,7 @@ end;
 
 procedure TfrmMAMS.cmbSubmNameReportCloseUp(Sender: TObject);
 begin
+  if cmbSubmNameReport.KeyValue = Null then exit;
   if not chkAllProjects.Checked then
   begin
     with dm.qryProjectsOfReport do

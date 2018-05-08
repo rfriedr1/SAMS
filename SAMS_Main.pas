@@ -2265,6 +2265,7 @@ begin
   pgtMain.ActivePage:=tbsUserReport; //go to report page
 
   cmbSubmNameReport.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+  // ShowMessage(cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsString);
   cmbSubmNameReportCloseUp(self); //correct user is selected now show their projects
   cmbProjectOfReport.ListSource.DataSet.Locate('project_nr',grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString,[loPartialKey]);//now the projects are being displayed, select the correct project
   cmbProjectOfReport.KeyValue:=  grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString;  //not sure why I have to do this
@@ -2902,6 +2903,7 @@ begin
   pgtMain.ActivePage := tbsUserInfo;
   cmbUsernameUserInfo.ListSource.DataSet.Active := false;
   cmbUsernameUserInfo.ListSource.DataSet.Active := true;
+
   //ToolButton2.Style.tbsCheck:=true;
   //ToolButton2.Down:=True;
 end;
@@ -2909,7 +2911,7 @@ end;
 procedure TfrmMAMS.actUserProjectsExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsProjectsOfUser;
-  cmbSubmitterNameProject.SetFocus;
+  //cmbSubmitterNameProject.SetFocus;
   //ToolButton3.Style.tbsCheck:=true;
   //ToolButton3.Down:=True;
   //cmbSubmitterNameProject.KeyValue := 1;
@@ -5474,6 +5476,7 @@ end;
 procedure TfrmMAMS.cmbSubmitterNameProjectCloseUp(Sender: TObject);
 // when dropdown list closes, show the projects associated to this user
 begin
+  if cmbSubmitterNameProject.KeyValue = Null then exit;
   GetProjects;
   cmbUsernameUserInfo.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list in user info to correct user_nr in case user switches to this page
   btnAddNewProject.Visible:=true;
@@ -5492,6 +5495,7 @@ end;
 
 procedure TfrmMAMS.cmbSubmNameReportCloseUp(Sender: TObject);
 begin
+  if cmbSubmNameReport.KeyValue = Null then exit;
   if not chkAllProjects.Checked then
   begin
     with dm.qryProjectsOfReport do
