@@ -280,7 +280,7 @@ begin
         //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
         LogWindow.addLogEntry(ADOCmd.CommandText);
-        //ADOCmd.Execute; // issue command (no result set must be returned)
+        ADOCmd.Execute; // issue command (no result set must be returned)
       except
         ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
         result:='none';
@@ -2704,6 +2704,7 @@ end;
 function Tdm.ReplaceUmlaute(s: string): string;
 var i: integer;
 begin
+  result := '';
   for i := 1 to length(s) do
   begin
     Case s[i] of

@@ -1722,18 +1722,24 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samples, help_t.measured, help3_t.discardprep, help4_t.discardtarget FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.SAMPLES, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help_t.MEASURED FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       //create and join to a table to count the measured samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS MEASURED FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
       //create and join to a table to count the number of received samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS samples FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS SAMPLES FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
-      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discardprep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE preparation_t.stop = "1" GROUP BY sample_t.project_nr) help3_t ON project_t.project_nr=help3_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
-      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discardtarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discTarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE target_t.stop = "1" GROUP BY sample_t.project_nr) help4_t ON project_t.project_nr=help4_t.project_nr ' +
+      //create and join a table to count all samples that already have a prep_end
+      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS prepDone FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr = sample_t.sample_nr ' +
+      'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(prep_end) GROUP BY sample_t.project_nr) help5_t ON project_t.project_nr=help5_t.project_nr ' +
+      //create and join a table to count all samples that already have a graphitized
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS graphDone FROM target_t INNER JOIN sample_t ON target_t.sample_nr = sample_t.sample_nr ' +
+      'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(graphitized) GROUP BY sample_t.project_nr) help6_t ON project_t.project_nr=help6_t.project_nr ' +
       // only list projects within a certain time frame and without out_date
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY desired_date;';
@@ -1761,10 +1767,19 @@ begin
       End;
     with grdPendingReports do
     begin
-      Columns[0].Width := 160;
-      Columns[1].Width := 120;
-      Columns[2].Width := 100;
-      Columns[3].Width := 80;
+      Columns[0].Width := 180; // project
+      Columns[1].Width := 120; // last name
+      Columns[2].Width := 100; // first name
+      Columns[3].Width := 80;  // in date
+      Columns[4].Width := 80;  // desired date
+      Columns[5].Width := 60;  // project nr
+      Columns[6].Width := 60;  // user nr
+      Columns[7].Width := 70;  // samples
+      Columns[8].Width := 70;  // discarded prep
+      Columns[9].Width := 70;  // prepDone
+      Columns[10].Width := 70;  // discraded target
+      Columns[11].Width := 70;  // graphDone
+      Columns[11].Width := 70;  // measured
     end;
 
   grdPendingReportsTitleClick(grdPendingReports.Columns[4])
@@ -2265,7 +2280,7 @@ begin
   pgtMain.ActivePage:=tbsUserReport; //go to report page
 
   cmbSubmNameReport.KeyValue:=cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
-  ShowMessage(cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsString);
+  // ShowMessage(cmbSubmitterNameProject.ListSource.DataSet.FieldByName('user_nr').AsString);
   cmbSubmNameReportCloseUp(self); //correct user is selected now show their projects
   cmbProjectOfReport.ListSource.DataSet.Locate('project_nr',grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString,[loPartialKey]);//now the projects are being displayed, select the correct project
   cmbProjectOfReport.KeyValue:=  grdProjects.DataSource.DataSet.FieldByName('project_nr').AsString;  //not sure why I have to do this
@@ -2911,7 +2926,7 @@ end;
 procedure TfrmMAMS.actUserProjectsExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsProjectsOfUser;
-  cmbSubmitterNameProject.SetFocus;
+  //cmbSubmitterNameProject.SetFocus;
   //ToolButton3.Style.tbsCheck:=true;
   //ToolButton3.Down:=True;
   //cmbSubmitterNameProject.KeyValue := 1;
@@ -2970,6 +2985,7 @@ begin
         buttonSelected:=MessageDlg('Projekt does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
         if buttonSelected=mrOK then
         begin
+              //ShowMessage('UserNr: ' + user_nr + ', project_name: ' + project_name);
               project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);  //add new project and return project number
               GetProjects; // reload projects list
         end;

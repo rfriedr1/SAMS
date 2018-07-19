@@ -1722,7 +1722,7 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samples, help_t.measured, help3_t.discardprep, help4_t.discardtarget FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samples, help5_t.prepEnd, help_t.measured, help3_t.discardprep, help4_t.discardtarget FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       //create and join to a table to count the measured samples in all project
       'LEFT JOIN (select project_nr, count(sample_nr) AS measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
@@ -1734,6 +1734,8 @@ begin
       //create and join to a table to count the dicarded preps in all project
       'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discardtarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE target_t.stop = "1" GROUP BY sample_t.project_nr) help4_t ON project_t.project_nr=help4_t.project_nr ' +
+      //create and join a table to count all samples that already have a prep_end
+      'LEFT JOIN (select project_nr, count(sample_nr) AS prepEnd FROM sample_t WHERE NOT ISNULL(prep_end) GROUP BY project_nr) help5_t ON project_t.project_nr=help_t5.project_nr ' +
       // only list projects within a certain time frame and without out_date
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY desired_date;';
@@ -2901,8 +2903,9 @@ end;
 procedure TfrmMAMS.actUserInfoExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsUserInfo;
-  //cmbUsernameUserInfo.ListSource.DataSet.Active := false;
-  //cmbUsernameUserInfo.ListSource.DataSet.Active := true;
+  cmbUsernameUserInfo.ListSource.DataSet.Active := false;
+  cmbUsernameUserInfo.ListSource.DataSet.Active := true;
+
   //ToolButton2.Style.tbsCheck:=true;
   //ToolButton2.Down:=True;
 end;
@@ -2910,7 +2913,7 @@ end;
 procedure TfrmMAMS.actUserProjectsExecute(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsProjectsOfUser;
-  cmbSubmitterNameProject.SetFocus;
+  //cmbSubmitterNameProject.SetFocus;
   //ToolButton3.Style.tbsCheck:=true;
   //ToolButton3.Down:=True;
   //cmbSubmitterNameProject.KeyValue := 1;
@@ -2969,6 +2972,7 @@ begin
         buttonSelected:=MessageDlg('Projekt does not exist yet. Proceed?',mtError, mbOKCancel, 0); // show another confirmation dialog
         if buttonSelected=mrOK then
         begin
+              //ShowMessage('UserNr: ' + user_nr + ', project_name: ' + project_name);
               project_nr:=dm.AddNewProjectByUserNr(user_nr, project_name);  //add new project and return project number
               GetProjects; // reload projects list
         end;

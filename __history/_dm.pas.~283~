@@ -276,11 +276,11 @@ begin
         ADOCmd.Connection:=adoConnKTL;        // set DB connection
         ADOCmd.Parameters.Clear;              // clear all Parameters
         ADOCmd.CommandType:=cmdtext;          // set command type to text
-        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 +');';    // set query text
+        ADOCmd.CommandText:='INSERT INTO project_t (project, user_nr, in_date, desired_date, status, out_date) VALUES ( '  + #34 + project_name + #34 + ',' + #34 + user_nr + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', Date) + #34 + ',' + #34 + FormatDateTime('YYYY-MM-DD', IncMonth(Date,+3)) + #34 + ',' + #34 + 'planned' + #34 + ',' + 'NULL' + ');';    // set query text
         //ShowMessage(ADOCmd.CommandText);
         //ADOCmd.Parameters.ParamByName('param1').Value := last_name;      //insert parameter value into query
         LogWindow.addLogEntry(ADOCmd.CommandText);
-        ADOCmd.Execute; // issue command (no result set must be returned)
+        //ADOCmd.Execute; // issue command (no result set must be returned)
       except
         ShowMessage('Unknown error encountered while inserting into DB.');   //somehting went wrong
         result:='none';
@@ -421,21 +421,29 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
      if Fields.Fields[0].AsString=project_name then
      begin
         Result:=true;
+        LogWindow.addLogEntry('DB -- Projects exists already');
      end
      else
      begin
        Result:=false;
+       LogWindow.addLogEntry('DB -- Projects does not yet exist.');
      end;
      //Result := Fields.Fields[0].AsString;
    end;
@@ -457,11 +465,17 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -521,11 +535,17 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -548,11 +568,17 @@ begin
               Begin
                 Try
                   Open;
-                  LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                  LogWindow.addLogEntry('DB -- query executed...');
                 Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                 End;
               End;
@@ -567,11 +593,17 @@ begin
                 Begin
                   Try
                     adoCmd.Execute;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -595,11 +627,17 @@ begin
                 Begin
                   Try
                     adoCmd.Execute;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      adoCmd.Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -617,11 +655,17 @@ begin
                 Begin
                   Try
                     adoCmd.Execute;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');;
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      adoCmd.Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -639,7 +683,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -654,7 +704,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -669,7 +725,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -704,11 +766,17 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -743,11 +811,17 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     Open;
                     //ShowMessage('Database connection is closed.');
                   End;
@@ -787,7 +861,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     Open;
                     //ShowMessage('Database connection is closed.');
                   End;
@@ -829,7 +909,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     Open;
                     //ShowMessage('Database connection is closed.');
                   End;
@@ -858,6 +944,7 @@ begin
                    ' and project_t.out_date IS NULL ' +
                    ' ORDER BY sample_t.sample_nr;' ;
      s := SQL.Text;
+     LogWindow.addLogEntry(s);
 //     ClipBoard.SetTextBuf(PChar(s));
      IF dm.adoConnKTL.Connected THEN
                 Begin
@@ -867,7 +954,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     Open;
                     //ShowMessage('Database connection is closed.');
                   End;
@@ -899,11 +992,17 @@ begin
                 Begin
                   Try
                     Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    LogWindow.addLogEntry('DB -- query executed...');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -936,7 +1035,8 @@ begin
                  ' INNER JOIN user_t ON project_t.user_nr = user_t.user_nr' +
                  ' WHERE sample_t.type NOT IN ("oxa2", "oxa1", "blank")' +
                  ' AND sample_t.user_label NOT LIKE "%IAEA%"' +
-                 ' AND year(in_date) = ' + #34 + inttostr(Year) + #34;
+                 ' AND year(in_date) = ' + #34 + inttostr(Year) + #34 +
+                 ' AND month(in_date) = ' + #34 + inttostr(Month) + #34;
         LogWindow.addLogEntry(qryDb.SQL.Text);
         IF dm.adoConnKTL.Connected THEN
                     Begin
@@ -949,7 +1049,13 @@ begin
                       Except
                         // connections is closed, reconnect by setting connected to true and test again
                         LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                        dm.DBreconnect;
+                          Try
+                            dm.DBreconnect;
+                            LogWindow.addLogEntry('DB -- execute query again');
+                            qryDb.Open;
+                          Except
+                             LogWindow.addLogEntry('DB -- can not reconnect');
+                          End;
                         //ShowMessage('Database connection is closed.');
                       End;
                     End
@@ -985,7 +1091,13 @@ begin
                       Except
                         // connections is closed, reconnect by setting connected to true and test again
                         LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                        dm.DBreconnect;
+                        Try
+                          dm.DBreconnect;
+                          LogWindow.addLogEntry('DB -- execute query again');
+                          qryDb.Open;
+                        Except
+                           LogWindow.addLogEntry('DB -- can not reconnect');
+                        End;
                         //ShowMessage('Database connection is closed.');
                       End;
                     End
@@ -1021,7 +1133,13 @@ begin
                           Except
                             // connections is closed, reconnect by setting connected to true and test again
                             LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                            dm.DBreconnect;
+                            Try
+                              dm.DBreconnect;
+                              LogWindow.addLogEntry('DB -- execute query again');
+                              qryDb.Open;
+                            Except
+                               LogWindow.addLogEntry('DB -- can not reconnect');
+                            End;
                             //ShowMessage('Database connection is closed.');
                           End;
                         End
@@ -1049,7 +1167,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1079,7 +1203,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1105,7 +1235,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1131,7 +1267,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1159,7 +1301,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1196,7 +1344,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                   dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1227,7 +1381,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1262,7 +1422,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                   dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1288,7 +1454,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1315,7 +1487,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1345,7 +1523,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                     Result := 1;
                   End;
@@ -1373,7 +1557,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                   dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1401,7 +1591,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1427,7 +1623,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1453,7 +1655,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1484,7 +1692,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1535,7 +1749,13 @@ begin
           except
             // connections is closed, reconnect by setting connected to true and test again
             LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-            dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
             Open;
             // dm.adoConnKTL.Open();
             //ShowMessage('Database connection is closed.');
@@ -1577,7 +1797,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1618,7 +1844,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1650,7 +1882,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1693,7 +1931,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1733,7 +1977,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1758,7 +2008,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1792,7 +2048,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1815,7 +2077,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1845,7 +2113,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1867,7 +2141,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1893,7 +2173,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1919,7 +2205,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1950,7 +2242,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1978,7 +2276,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1999,7 +2303,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2015,7 +2325,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      adoCmd.Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2062,7 +2378,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2080,7 +2402,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2111,7 +2439,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      adoCmd.Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2139,7 +2473,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      adoCmd.Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2166,7 +2506,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2197,7 +2543,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2251,7 +2603,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2276,7 +2634,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2296,7 +2660,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -2313,7 +2683,13 @@ begin
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
                     LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    dm.DBreconnect;
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
