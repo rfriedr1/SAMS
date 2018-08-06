@@ -1245,7 +1245,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 806
           Height = 723
-          ActivePage = tbsProjectDocs
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1903,30 +1903,75 @@ object frmMAMS: TfrmMAMS
             ImageIndex = 1
             object SampleFoto: TImage
               Left = 0
-              Top = 41
+              Top = 108
               Width = 798
-              Height = 648
+              Height = 581
               Align = alClient
+              Proportional = True
               Stretch = True
+              ExplicitTop = 41
               ExplicitWidth = 672
               ExplicitHeight = 670
+            end
+            object Splitter1: TSplitter
+              Left = 0
+              Top = 105
+              Width = 798
+              Height = 3
+              Cursor = crVSplit
+              Align = alTop
+              ExplicitTop = 161
+              ExplicitWidth = 528
             end
             object Panel27: TPanel
               Left = 0
               Top = 0
               Width = 798
-              Height = 41
+              Height = 105
               Align = alTop
               TabOrder = 0
+              object SpeedButton1: TSpeedButton
+                Left = 717
+                Top = 24
+                Width = 80
+                Height = 80
+                Hint = 'download image from server'
+                Align = alRight
+                Constraints.MinWidth = 80
+                Caption = 'download'
+                Flat = True
+                ParentShowHint = False
+                ShowHint = True
+                OnClick = SpeedButton1Click
+                ExplicitLeft = 747
+              end
               object StaticText4: TStaticText
-                Left = 16
-                Top = 12
-                Width = 564
+                Left = 1
+                Top = 1
+                Width = 796
                 Height = 23
+                Align = alTop
                 Caption = 
                   'connect to the network drive (\\Riesling\KTA) if the foto is not' +
                   ' being displayed '
                 TabOrder = 0
+                ExplicitLeft = 16
+                ExplicitTop = 12
+                ExplicitWidth = 564
+              end
+              object ImageFilesListBox: TListBox
+                Left = 1
+                Top = 24
+                Width = 716
+                Height = 80
+                Align = alClient
+                Constraints.MinWidth = 50
+                Ctl3D = False
+                ItemHeight = 19
+                ParentCtl3D = False
+                TabOrder = 1
+                OnClick = ImageFilesListBoxClick
+                ExplicitWidth = 688
               end
             end
           end
@@ -7957,7 +8002,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300F80510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300040610001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8730,7 +8775,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806780718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806840718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14980,7 +15025,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00F80520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00040620002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -25090,5 +25135,9 @@ object frmMAMS: TfrmMAMS
     SubStorages = <>
     Left = 204
     Top = 129
+  end
+  object SavePictureDialog: TSavePictureDialog
+    Left = 1125
+    Top = 422
   end
 end

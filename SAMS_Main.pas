@@ -37,11 +37,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
-  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
+  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
+  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs;
 
 const
-  myVersion = '1.8.5 July-14-2018';
+  myVersion = '1.8.6 Aug-06-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -736,6 +736,10 @@ type
     StaticText9: TStaticText;
     JvAppIniFileStoragePrep: TJvAppIniFileStorage;
     btn_initest: TButton;
+    ImageFilesListBox: TListBox;
+    Splitter1: TSplitter;
+    SpeedButton1: TSpeedButton;
+    SavePictureDialog: TSavePictureDialog;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1025,6 +1029,8 @@ type
     procedure grdPendingReportsTitleClick(Column: TColumn);
     procedure btnSaveOptionsClick(Sender: TObject);
     procedure btn_initestClick(Sender: TObject);
+    procedure ImageFilesListBoxClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -3947,6 +3953,27 @@ begin
   StringList.Free;
 end;
 
+procedure TfrmMAMS.ImageFilesListBoxClick(Sender: TObject);
+VAR
+  fname: string;
+  ListBox: TListBox;
+begin
+// load image according to the path that is selected in the ListBox
+   ListBox := Sender as TListBox;
+   fname := ListBox.Items[ListBox.ItemIndex];
+   LogWindow.addLogEntry('selected image: ' + fname);
+   if FileExists(fname) then
+     begin
+       SampleFoto.Picture.LoadFromFile(fname);
+       LogWindow.addLogEntry('Image found: '+fname);
+     end
+     else
+     begin
+       ShowMessage('Unable to find image. Drive is connected but image is missing');
+       LogWindow.addLogEntry('Image file does not exist!');
+     end;
+end;
+
 procedure TfrmMAMS.InsertNewSamplesInDb;
 // used for sample import using a wizzard
 // Insert SAmples into Database
@@ -6362,19 +6389,19 @@ end;
 
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
-  fname, fotoDir: string;
+  fname, fnamePattern, fotoDir: string;
   DeviceList, VideoSizesList: TStringList;
+  FilesList: TStringDynArray;
   i,j: Integer;
 
 begin
 
-
   if pgtSample.ActivePage <> tbsProject then
   begin
-    //Prepare folder infomration for images, documents etc etc
+    //Prepare folder information for images, documents etc etc
     if DirectoryExists('\\Riesling\KTA') then
     begin
-      ServerRoot := '\\Riesling\KTA\';
+      ServerRoot := '\\Riesling\KTA\';  // this is the root folder which is located on a server
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
       LogWindow.addLogEntry('Server Root found: '+ ServerRoot);
       //enable buttons in order to load the docs if the correct folders can be found
@@ -6400,15 +6427,33 @@ begin
   // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
   begin
-    fotoDir := ServerRoot + 'SAMS Images\';
+    ImageFilesListBox.Clear;
+    fotoDir := ServerRoot + 'SAMS Images\';    // this is the folder where the images are stored
     fname := fotoDir + edtSampleNr.Text + '.jpg';
+    fnamePattern := edtSampleNr.Text + '*.jpg';
     LogWindow.addLogEntry('Image path should be: '+fname);
-    Statusbar.Panels[2].Text := 'looking for image at :' + fname;
+    Statusbar.Panels[2].Text := 'looking for images:' + fname;
+
     // check whether Directory exists
-    // followed by file exists
+    // load found files into a ListBox in case more than one file exists
+    // load the first file of the file list into the image control
+
+    LogWindow.addLogEntry('check image directory :'+fotoDir);
     if DirectoryExists(fotoDir, False) then
       begin
         LogWindow.addLogEntry('Directory exists :'+fotoDir);
+        // look for all images that fit the pattern, multiple images are xxb.jpg, xxc.jpg
+        // save found files in FilesList
+        LogWindow.addLogEntry('looking for multiple files matching:'+fnamePattern);
+        FilesList := TDirectory.GetFiles(fotoDir, fnamePattern, TSearchOption.soAllDirectories);
+        LogWindow.addLogEntry('number of matching files found:' + inttostr(Length(FilesList)));
+        LogWindow.addLogEntry('displaying files in ListBox');
+        for i := 0 to Length(FilesList)-1 do
+          Begin
+             ImageFilesListBox.Items.Add(FilesList[i]);
+          End;
+
+        // load main image
         if FileExists(fname) then
           begin
             SampleFoto.Picture.LoadFromFile(fname);
@@ -6427,7 +6472,7 @@ begin
       end;
   end;
 
-  
+
 
 end;
 
@@ -6687,6 +6732,37 @@ procedure TfrmMAMS.smtpSendMailStatus(ASender: TObject;
   const AStatus: TIdStatus; const AStatusText: string);
 begin
   Status(AStatusText);
+end;
+
+procedure TfrmMAMS.SpeedButton1Click(Sender: TObject);
+// download selected image of the listbox to the local machine
+var
+  fname: string;
+begin
+  // get path of the selected image
+  fname := ImageFilesListBox.Items[ImageFilesListBox.ItemIndex];
+  LogWindow.addLogEntry('download image from: ' + fname);
+  // download
+  if FileExists(fname) then
+    begin
+      LogWindow.addLogEntry('source file exists');
+      SavePictureDialog.FileName := extractfilename(fname);
+      if SavePictureDialog.Execute then
+        begin
+          //actually copy the file to disk
+          LogWindow.addLogEntry('copy file to: ' + SavePictureDialog.FileName);
+          Try
+            LogWindow.addLogEntry('start copying');
+            TFile.Copy(fname, SavePictureDialog.FileName);
+            LogWindow.addLogEntry('copying finished');
+          Except;
+            LogWindow.addLogEntry('problem saving image');
+            ShowMessage('Problems saving file.');
+          End;
+        end;
+    end;
+
+
 end;
 
 procedure TfrmMAMS.Status(const AMsg: string);

@@ -37,11 +37,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
+  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
 
 const
-  myVersion = '1.8.4 May-4-2018';
+  myVersion = '1.8.5 July-14-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -736,6 +736,8 @@ type
     StaticText9: TStaticText;
     JvAppIniFileStoragePrep: TJvAppIniFileStorage;
     btn_initest: TButton;
+    ImageFilesListBox: TListBox;
+    Splitter1: TSplitter;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1722,17 +1724,17 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samples, help3_t.discardPrep, help5_t.prepDone, help4_t.discardTarget, help6_t.graphDone, help_t.measured FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.SAMPLES, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help_t.MEASURED FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       //create and join to a table to count the measured samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS MEASURED FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
       //create and join to a table to count the number of received samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS samples FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS SAMPLES FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
-      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discardPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE preparation_t.stop = "1" GROUP BY sample_t.project_nr) help3_t ON project_t.project_nr=help3_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
-      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discardTarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discTarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE target_t.stop = "1" GROUP BY sample_t.project_nr) help4_t ON project_t.project_nr=help4_t.project_nr ' +
       //create and join a table to count all samples that already have a prep_end
       'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS prepDone FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr = sample_t.sample_nr ' +
@@ -6362,19 +6364,19 @@ end;
 
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
-  fname, fotoDir: string;
+  fname, fnamePattern, fotoDir: string;
   DeviceList, VideoSizesList: TStringList;
+  FilesList: TStringDynArray;
   i,j: Integer;
 
 begin
 
-
   if pgtSample.ActivePage <> tbsProject then
   begin
-    //Prepare folder infomration for images, documents etc etc
+    //Prepare folder information for images, documents etc etc
     if DirectoryExists('\\Riesling\KTA') then
     begin
-      ServerRoot := '\\Riesling\KTA\';
+      ServerRoot := '\\Riesling\KTA\';  // this is the root folder which is located on a server
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
       LogWindow.addLogEntry('Server Root found: '+ ServerRoot);
       //enable buttons in order to load the docs if the correct folders can be found
@@ -6400,15 +6402,32 @@ begin
   // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
   begin
-    fotoDir := ServerRoot + 'SAMS Images\';
+    fotoDir := ServerRoot + 'SAMS Images\';    // this is the folder where the images are stored
     fname := fotoDir + edtSampleNr.Text + '.jpg';
+    fnamePattern := edtSampleNr.Text + '*.jpg';
     LogWindow.addLogEntry('Image path should be: '+fname);
-    Statusbar.Panels[2].Text := 'looking for image at :' + fname;
+    Statusbar.Panels[2].Text := 'looking for images:' + fname;
+
     // check whether Directory exists
-    // followed by file exists
+    // load found files into a ListBox in case more than one file exists
+    // load the first file of the file list into the image control
+
+    LogWindow.addLogEntry('check image directory :'+fotoDir);
     if DirectoryExists(fotoDir, False) then
       begin
         LogWindow.addLogEntry('Directory exists :'+fotoDir);
+        // look for all images that fit the pattern, multiple images are xxb.jpg, xxc.jpg
+        // save found files in FilesList
+        LogWindow.addLogEntry('looking for multiple files matching:'+fnamePattern);
+        FilesList := TDirectory.GetFiles(fotoDir, fnamePattern, TSearchOption.soAllDirectories);
+        LogWindow.addLogEntry('number of matching files found:' + inttostr(Length(FilesList)));
+        LogWindow.addLogEntry('displaying files in ListBox');
+        for i := 0 to Length(FilesList)-1 do
+          Begin
+             ImageFilesListBox.Items.Add(FilesList[i]);
+          End;
+        Length(FilesList);
+
         if FileExists(fname) then
           begin
             SampleFoto.Picture.LoadFromFile(fname);
@@ -6427,7 +6446,7 @@ begin
       end;
   end;
 
-  
+
 
 end;
 

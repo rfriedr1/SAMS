@@ -1245,7 +1245,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 806
           Height = 723
-          ActivePage = tbsProjectDocs
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1903,11 +1903,12 @@ object frmMAMS: TfrmMAMS
             ImageIndex = 1
             object SampleFoto: TImage
               Left = 0
-              Top = 41
+              Top = 161
               Width = 798
-              Height = 648
+              Height = 528
               Align = alClient
               Stretch = True
+              ExplicitTop = 41
               ExplicitWidth = 672
               ExplicitHeight = 670
             end
@@ -1928,6 +1929,18 @@ object frmMAMS: TfrmMAMS
                   ' being displayed '
                 TabOrder = 0
               end
+            end
+            object ImageFilesListBox: TListBox
+              Left = 0
+              Top = 41
+              Width = 798
+              Height = 120
+              Align = alTop
+              Constraints.MinWidth = 50
+              Ctl3D = False
+              ItemHeight = 19
+              ParentCtl3D = False
+              TabOrder = 1
             end
           end
           object TabSheet5: TTabSheet
@@ -3079,7 +3092,7 @@ object frmMAMS: TfrmMAMS
             Font.Name = 'Arial'
             Font.Style = [fsBold]
             KeyField = 'user_nr'
-            ListField = 'last_name;first_name'
+            ListField = 'last_name; first_name; user_nr'
             ListSource = dm.dsUserInfo
             ParentFont = False
             TabOrder = 7
@@ -7957,7 +7970,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300E80510001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300040610001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -8730,7 +8743,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015000F806680718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015000F806840718001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -14980,7 +14993,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00E80520002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00040620002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

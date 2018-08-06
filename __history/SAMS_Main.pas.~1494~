@@ -37,11 +37,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
+  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
 
 const
-  myVersion = '1.8.4 May-4-2018';
+  myVersion = '1.8.5 July-14-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -736,6 +736,8 @@ type
     StaticText9: TStaticText;
     JvAppIniFileStoragePrep: TJvAppIniFileStorage;
     btn_initest: TButton;
+    ImageFilesListBox: TListBox;
+    Splitter1: TSplitter;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -6362,19 +6364,19 @@ end;
 
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
-  fname, fotoDir: string;
+  fname, fnamePattern, fotoDir: string;
   DeviceList, VideoSizesList: TStringList;
+  FilesList: TStringDynArray;
   i,j: Integer;
 
 begin
 
-
   if pgtSample.ActivePage <> tbsProject then
   begin
-    //Prepare folder infomration for images, documents etc etc
+    //Prepare folder information for images, documents etc etc
     if DirectoryExists('\\Riesling\KTA') then
     begin
-      ServerRoot := '\\Riesling\KTA\';
+      ServerRoot := '\\Riesling\KTA\';  // this is the root folder which is located on a server
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
       LogWindow.addLogEntry('Server Root found: '+ ServerRoot);
       //enable buttons in order to load the docs if the correct folders can be found
@@ -6400,15 +6402,33 @@ begin
   // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
   begin
-    fotoDir := ServerRoot + 'SAMS Images\';
+    ImageFilesListBox.Clear;
+    fotoDir := ServerRoot + 'SAMS Images\';    // this is the folder where the images are stored
     fname := fotoDir + edtSampleNr.Text + '.jpg';
+    fnamePattern := edtSampleNr.Text + '*.jpg';
     LogWindow.addLogEntry('Image path should be: '+fname);
-    Statusbar.Panels[2].Text := 'looking for image at :' + fname;
+    Statusbar.Panels[2].Text := 'looking for images:' + fname;
+
     // check whether Directory exists
-    // followed by file exists
+    // load found files into a ListBox in case more than one file exists
+    // load the first file of the file list into the image control
+
+    LogWindow.addLogEntry('check image directory :'+fotoDir);
     if DirectoryExists(fotoDir, False) then
       begin
         LogWindow.addLogEntry('Directory exists :'+fotoDir);
+        // look for all images that fit the pattern, multiple images are xxb.jpg, xxc.jpg
+        // save found files in FilesList
+        LogWindow.addLogEntry('looking for multiple files matching:'+fnamePattern);
+        FilesList := TDirectory.GetFiles(fotoDir, fnamePattern, TSearchOption.soAllDirectories);
+        LogWindow.addLogEntry('number of matching files found:' + inttostr(Length(FilesList)));
+        LogWindow.addLogEntry('displaying files in ListBox');
+        for i := 0 to Length(FilesList)-1 do
+          Begin
+             ImageFilesListBox.Items.Add(FilesList[i]);
+          End;
+        Length(FilesList);
+
         if FileExists(fname) then
           begin
             SampleFoto.Picture.LoadFromFile(fname);
@@ -6427,7 +6447,7 @@ begin
       end;
   end;
 
-  
+
 
 end;
 

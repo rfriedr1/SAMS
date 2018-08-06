@@ -37,11 +37,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
-  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*),System.IOUtils,
-  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles;
+  frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
+  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs;
 
 const
-  myVersion = '1.8.4 May-4-2018';
+  myVersion = '1.8.5 July-14-2018';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -736,6 +736,10 @@ type
     StaticText9: TStaticText;
     JvAppIniFileStoragePrep: TJvAppIniFileStorage;
     btn_initest: TButton;
+    ImageFilesListBox: TListBox;
+    Splitter1: TSplitter;
+    SpeedButton1: TSpeedButton;
+    SavePictureDialog: TSavePictureDialog;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1025,6 +1029,8 @@ type
     procedure grdPendingReportsTitleClick(Column: TColumn);
     procedure btnSaveOptionsClick(Sender: TObject);
     procedure btn_initestClick(Sender: TObject);
+    procedure ImageFilesListBoxClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1722,21 +1728,24 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.samples, help5_t.prepDone, help_t.measured, help3_t.discardPrep, help4_t.discardTarget FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.SAMPLES, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help_t.MEASURED FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       //create and join to a table to count the measured samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS MEASURED FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
       //create and join to a table to count the number of received samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS samples FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS SAMPLES FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
-      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discardPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+      'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE preparation_t.stop = "1" GROUP BY sample_t.project_nr) help3_t ON project_t.project_nr=help3_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
-      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discardTarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS discTarget FROM target_t INNER JOIN sample_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE target_t.stop = "1" GROUP BY sample_t.project_nr) help4_t ON project_t.project_nr=help4_t.project_nr ' +
       //create and join a table to count all samples that already have a prep_end
       'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS prepDone FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr = sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(prep_end) GROUP BY sample_t.project_nr) help5_t ON project_t.project_nr=help5_t.project_nr ' +
+      //create and join a table to count all samples that already have a graphitized
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS graphDone FROM target_t INNER JOIN sample_t ON target_t.sample_nr = sample_t.sample_nr ' +
+      'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(graphitized) GROUP BY sample_t.project_nr) help6_t ON project_t.project_nr=help6_t.project_nr ' +
       // only list projects within a certain time frame and without out_date
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY desired_date;';
@@ -1764,10 +1773,19 @@ begin
       End;
     with grdPendingReports do
     begin
-      Columns[0].Width := 160;
-      Columns[1].Width := 120;
-      Columns[2].Width := 100;
-      Columns[3].Width := 80;
+      Columns[0].Width := 180; // project
+      Columns[1].Width := 120; // last name
+      Columns[2].Width := 100; // first name
+      Columns[3].Width := 80;  // in date
+      Columns[4].Width := 80;  // desired date
+      Columns[5].Width := 60;  // project nr
+      Columns[6].Width := 60;  // user nr
+      Columns[7].Width := 70;  // samples
+      Columns[8].Width := 70;  // discarded prep
+      Columns[9].Width := 70;  // prepDone
+      Columns[10].Width := 70;  // discraded target
+      Columns[11].Width := 70;  // graphDone
+      Columns[11].Width := 70;  // measured
     end;
 
   grdPendingReportsTitleClick(grdPendingReports.Columns[4])
@@ -3933,6 +3951,27 @@ begin
 //  CloseFile(OutF);
   ClipBoard.Close;
   StringList.Free;
+end;
+
+procedure TfrmMAMS.ImageFilesListBoxClick(Sender: TObject);
+VAR
+  fname: string;
+  ListBox: TListBox;
+begin
+// load image according to the path that is selected in the ListBox
+   ListBox := Sender as TListBox;
+   fname := ListBox.Items[ListBox.ItemIndex];
+   LogWindow.addLogEntry('selected image: ' + fname);
+   if FileExists(fname) then
+     begin
+       SampleFoto.Picture.LoadFromFile(fname);
+       LogWindow.addLogEntry('Image found: '+fname);
+     end
+     else
+     begin
+       ShowMessage('Unable to find image. Drive is connected but image is missing');
+       LogWindow.addLogEntry('Image file does not exist!');
+     end;
 end;
 
 procedure TfrmMAMS.InsertNewSamplesInDb;
@@ -6350,19 +6389,19 @@ end;
 
 procedure TfrmMAMS.pgtSampleChange(Sender: TObject);
 var
-  fname, fotoDir: string;
+  fname, fnamePattern, fotoDir: string;
   DeviceList, VideoSizesList: TStringList;
+  FilesList: TStringDynArray;
   i,j: Integer;
 
 begin
 
-
   if pgtSample.ActivePage <> tbsProject then
   begin
-    //Prepare folder infomration for images, documents etc etc
+    //Prepare folder information for images, documents etc etc
     if DirectoryExists('\\Riesling\KTA') then
     begin
-      ServerRoot := '\\Riesling\KTA\';
+      ServerRoot := '\\Riesling\KTA\';  // this is the root folder which is located on a server
       gbxProjectsOfUser.Caption := ' Projects of user (server)';
       LogWindow.addLogEntry('Server Root found: '+ ServerRoot);
       //enable buttons in order to load the docs if the correct folders can be found
@@ -6388,15 +6427,33 @@ begin
   // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
   begin
-    fotoDir := ServerRoot + 'SAMS Images\';
+    ImageFilesListBox.Clear;
+    fotoDir := ServerRoot + 'SAMS Images\';    // this is the folder where the images are stored
     fname := fotoDir + edtSampleNr.Text + '.jpg';
+    fnamePattern := edtSampleNr.Text + '*.jpg';
     LogWindow.addLogEntry('Image path should be: '+fname);
-    Statusbar.Panels[2].Text := 'looking for image at :' + fname;
+    Statusbar.Panels[2].Text := 'looking for images:' + fname;
+
     // check whether Directory exists
-    // followed by file exists
+    // load found files into a ListBox in case more than one file exists
+    // load the first file of the file list into the image control
+
+    LogWindow.addLogEntry('check image directory :'+fotoDir);
     if DirectoryExists(fotoDir, False) then
       begin
         LogWindow.addLogEntry('Directory exists :'+fotoDir);
+        // look for all images that fit the pattern, multiple images are xxb.jpg, xxc.jpg
+        // save found files in FilesList
+        LogWindow.addLogEntry('looking for multiple files matching:'+fnamePattern);
+        FilesList := TDirectory.GetFiles(fotoDir, fnamePattern, TSearchOption.soAllDirectories);
+        LogWindow.addLogEntry('number of matching files found:' + inttostr(Length(FilesList)));
+        LogWindow.addLogEntry('displaying files in ListBox');
+        for i := 0 to Length(FilesList)-1 do
+          Begin
+             ImageFilesListBox.Items.Add(FilesList[i]);
+          End;
+
+        // load main image
         if FileExists(fname) then
           begin
             SampleFoto.Picture.LoadFromFile(fname);
@@ -6415,7 +6472,7 @@ begin
       end;
   end;
 
-  
+
 
 end;
 
@@ -6675,6 +6732,37 @@ procedure TfrmMAMS.smtpSendMailStatus(ASender: TObject;
   const AStatus: TIdStatus; const AStatusText: string);
 begin
   Status(AStatusText);
+end;
+
+procedure TfrmMAMS.SpeedButton1Click(Sender: TObject);
+// download selected image of the listbox to the local machine
+var
+  fname: string;
+begin
+  // get path of the selected image
+  fname := ImageFilesListBox.Items[ImageFilesListBox.ItemIndex];
+  LogWindow.addLogEntry('download image from: ' + fname);
+  // download
+  if FileExists(fname) then
+    begin
+      LogWindow.addLogEntry('source file exists');
+      SavePictureDialog.FileName := extractfilename(fname);
+      if SavePictureDialog.Execute then
+        begin
+          //actually copy the file to disk
+          LogWindow.addLogEntry('copy file to: ' + SavePictureDialog.FileName);
+          Try
+            LogWindow.addLogEntry('start copying');
+            TFile.Copy(fname, SavePictureDialog.FileName);
+            LogWindow.addLogEntry('copying finished');
+          Except;
+            LogWindow.addLogEntry('problem saving image');
+            ShowMessage('Problems saving file.');
+          End;
+        end;
+    end;
+
+
 end;
 
 procedure TfrmMAMS.Status(const AMsg: string);
