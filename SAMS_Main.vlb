@@ -819,9 +819,6 @@ Coordinates=1417,1212,161,36
 [Label18]
 Coordinates=220,824,60,58
 
-[GroupBox24]
-Coordinates=1216,688,86,58
-
 [edtPrepSampleStorageLoc]
 Coordinates=1238,1212,169,36
 
@@ -2151,4 +2148,7 @@ Coordinates=2488,1,126,58
 
 [grpbox_TableHeadings]
 Coordinates=2118,892,86,58
+
+[gpbUserInfo]
+Coordinates=1216,688,86,58
 

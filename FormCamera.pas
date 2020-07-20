@@ -108,11 +108,20 @@ end;
 
 procedure TCameraWindow.btnSnapImageClick(Sender: TObject);
 Var
-  Source: TRect;
+  RectSource, RectDestination: TRect;
+  CanvasSource: TCanvas;
+  GraphicSource: TBitmap;
 begin
   // tell Frame_Video1 to get an image from the camera
-  Source := Rect(0, 0, Frame_Video1.PaintBox_Video.Width, Frame_Video1.PaintBox_Video.Height);
-  PaintBoxImage.Canvas.CopyRect(Source, Frame_Video1.PaintBox_Video.Canvas, Source);
+  RectSource := Rect(0, 0, Frame_Video1.PaintBox_Video.Width, Frame_Video1.PaintBox_Video.Height);
+  RectDestination := Rect(0, 0, PaintBoxImage.Width, PaintBoxImage.Height);
+  CanvasSource := Frame_Video1.PaintBox_Video.Canvas;
+  // copy image into PaintBoxImage Canvas
+  PaintBoxImage.Canvas.CopyRect(RectDestination, CanvasSource, RectSource);
+
+  // GraphicSource.Create();
+  // GraphicSource.Canvas.CopyRect(RectDestination, CanvasSource, RectSource);
+  // PaintBoxImage.Canvas.StretchDraw(RectDestination, GraphicSource);
 
   lbl_SaveSuccessfull.Caption := 'Not Saved';
   lbl_SaveSuccessfull.Visible := True;

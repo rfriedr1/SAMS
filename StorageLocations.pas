@@ -20,10 +20,13 @@ type
     edtStatus: TEdit;
     GroupBox1: TGroupBox;
     BalloonHint1: TBalloonHint;
+    WarningLabel: TLabel;
     procedure btnSaveClick(Sender: TObject);
     procedure edtStartSampleIDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -42,6 +45,7 @@ implementation
 procedure TFormStorageLocations.btnSearchClick(Sender: TObject);
 Var
   s: string;
+  ReturnToSender, Returned, CNAna, CNAnaMoved: integer;
 
 begin
 //create datasource and query, ADOConnection has been checked at FormShow, uses the ADOConnection from _dm
@@ -49,10 +53,17 @@ begin
 // Create the query
   ADOQueryIDs := TADOQuery.Create(Self);
   ADOQueryIDs.Connection := dm.ADOConnKTL;
-  s := 'SELECT sample_nr, user_label, s_storage_loc AS Sample_Loc, prep_storage_loc AS Prep_Loc FROM sample_t WHERE sample_nr BETWEEN ' + edtStartSampleID.Text + ' AND ' + edtEndSampleID.Text + ';';
+  s := 'SELECT sample_nr, user_label, s_storage_loc AS Sample_Loc, ' +
+  'prep_storage_loc AS Prep_Loc, return_to_sender AS Return_Sample, ' +
+  'returned_to_sender as Returned, ' +
+  'CNIsotopA as CNAna, ' +
+  'CNIsotopAMoved as CNAna_Moved ' +
+  'FROM sample_t ' +
+  'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr ' +
+  'WHERE sample_nr BETWEEN ' + edtStartSampleID.Text + ' AND ' + edtEndSampleID.Text + ';';
+  //ShowMessage(s);
   ADOQueryIDs.SQL.Add(s);
   ADOQueryIDs.Open;
-  //ShowMessage(s);
 
 // Create the data source.
   DataSrc := TDataSource.Create(Self);
@@ -66,13 +77,73 @@ begin
   begin
     DBGrid1.Columns.Items[0].Width := 60;
     DBGrid1.Columns.Items[1].Width := 120;
-    DBGrid1.Columns.Items[2].Width := 60;
-    DBGrid1.Columns.Items[3].Width := 60;
+    DBGrid1.Columns.Items[2].Width := 70;
+    DBGrid1.Columns.Items[3].Width := 70;
+    DBGrid1.Columns.Items[4].Width := 77;
+    DBGrid1.Columns.Items[5].Width := 60;
+    DBGrid1.Columns.Items[6].Width := 55;
+    DBGrid1.Columns.Items[7].Width := 75;
   end;
 
   btnSave.Enabled:=true;
+  WarningLabel.Visible := False;
+
+  // check wheterh or not to display the warning label that samples
+  // exist that need to be returned to to CN
+  // go through all records
+  ADOQueryIDs.DisableControls;
+  ADOQueryIDs.First;
+  while not ADOQueryIDs.Eof do
+    begin
+      ReturnToSender := ADOQueryIDs.FieldByName('Return_Sample').AsInteger;
+      Returned := ADOQueryIDs.FieldByName('Returned').AsInteger;
+      CNAna := ADOQueryIDs.FieldByName('CNAna').AsInteger;
+      CNAnaMoved := ADOQueryIDs.FieldByName('CNAna_Moved').AsInteger;
+      if (ReturnToSender-Returned = 1) OR (CNAna-CNAnaMoved = 1) Then
+        begin
+          WarningLabel.Visible := True;
+          WarningLabel.Caption := 'Attention: Return to sender / CN Analysis';
+        end;
+      ADOQueryIDs.Next;
+    end;
+    ADOQueryIDs.First;
+    ADOQueryIDs.EnableControls;
 
   //ADOQuery.Close;
+end;
+
+procedure TFormStorageLocations.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+VAR ReturnToSender, Returned, CNAna, CNAnaMoved: integer;
+begin
+
+  ReturnToSender := DBGrid1.DataSource.DataSet.FieldByName('Return_Sample').AsInteger;
+  Returned := DBGrid1.DataSource.DataSet.FieldByName('Returned').AsInteger;
+  CNAna := DBGrid1.DataSource.DataSet.FieldByName('CNAna').AsInteger;
+  CNAnaMoved := DBGrid1.DataSource.DataSet.FieldByName('CNAna_Moved').AsInteger;
+
+  // change cell color to red when return to sender is true
+  if Column.FieldName='Return_Sample' then
+  begin
+      if ReturnToSender-Returned = 1 Then
+          Begin
+          TDBGrid(Sender).Canvas.Brush.Color:=clRed;
+          End;
+  end
+  else TDBGrid(Sender).Canvas.Brush.Color:=clWindow;
+
+
+  // change row color to red when return to sender is true
+  if Column.FieldName='CNAna' then
+  begin
+      if CNAna-CNAnaMoved = 1 Then
+          Begin
+          TDBGrid(Sender).Canvas.Brush.Color:=clRed;
+          End;
+  end
+  else TDBGrid(Sender).Canvas.Brush.Color:=clWindow;
+
+  TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TFormStorageLocations.btnSaveClick(Sender: TObject);
@@ -199,10 +270,12 @@ begin
     begin
       MessageDlg('Error while connecting to DB', mtError,
                   [mbOK], 0);
-
       Exit;
     end;
   end;
+
+// Some settings
+  WarningLabel.Visible := False;
 
 end;
 

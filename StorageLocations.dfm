@@ -4,7 +4,7 @@ object FormStorageLocations: TFormStorageLocations
   ActiveControl = btnClose
   Caption = 'FormStorageLocations'
   ClientHeight = 574
-  ClientWidth = 348
+  ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,14 +14,31 @@ object FormStorageLocations: TFormStorageLocations
   OldCreateOrder = False
   OnShow = FormShow
   DesignSize = (
-    348
+    635
     574)
   PixelsPerInch = 96
   TextHeight = 13
+  object WarningLabel: TLabel
+    Left = 72
+    Top = 82
+    Width = 88
+    Height = 16
+    Caption = 'WarningLabel'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+    StyleElements = [seClient, seBorder]
+  end
   object edtSampleStorageLoc: TLabeledEdit
-    Left = 32
-    Top = 397
-    Width = 281
+    Left = 72
+    Top = 461
+    Width = 129
     Height = 21
     Hint = 'location of the remaining sample material'
     CustomHint = BalloonHint1
@@ -33,26 +50,11 @@ object FormStorageLocations: TFormStorageLocations
     ShowHint = True
     TabOrder = 0
   end
-  object edtPrepStorageLoc: TLabeledEdit
-    Left = 32
-    Top = 445
-    Width = 281
-    Height = 21
-    Hint = 'location of the remaining prep'#39'd material'
-    CustomHint = BalloonHint1
-    Anchors = [akLeft, akBottom]
-    EditLabel.Width = 111
-    EditLabel.Height = 13
-    EditLabel.Caption = 'prep'#39'd material loaction'
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 1
-  end
   object btnClose: TButton
-    Left = 208
-    Top = 501
+    Left = 391
+    Top = 496
     Width = 105
-    Height = 25
+    Height = 38
     Hint = 'close window without saving changes'
     CustomHint = BalloonHint1
     Anchors = [akLeft, akBottom]
@@ -61,13 +63,13 @@ object FormStorageLocations: TFormStorageLocations
     ModalResult = 8
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 1
   end
   object btnSave: TButton
-    Left = 32
-    Top = 501
-    Width = 113
-    Height = 25
+    Left = 72
+    Top = 496
+    Width = 291
+    Height = 38
     Hint = 'save storage locations to database'
     CustomHint = BalloonHint1
     Anchors = [akLeft, akBottom]
@@ -75,58 +77,60 @@ object FormStorageLocations: TFormStorageLocations
     Enabled = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 2
     OnClick = btnSaveClick
   end
-  object btnSearch: TButton
-    Left = 64
-    Top = 97
-    Width = 209
-    Height = 25
-    Hint = 'search and display samples according to given IDs'
-    CustomHint = BalloonHint1
-    Caption = 'Search (Return)'
-    Default = True
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 4
-    OnClick = btnSearchClick
-  end
   object DBGrid1: TDBGrid
-    Left = 0
-    Top = 136
-    Width = 347
-    Height = 225
+    Left = 1
+    Top = 104
+    Width = 634
+    Height = 329
     Hint = 'list of found samples'
     CustomHint = BalloonHint1
     Anchors = [akLeft, akTop, akRight, akBottom]
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDrawColumnCell = DBGrid1DrawColumnCell
   end
   object edtStatus: TEdit
     Left = 0
     Top = 553
-    Width = 348
+    Width = 635
     Height = 21
     Align = alBottom
     BorderStyle = bsNone
-    TabOrder = 6
+    TabOrder = 4
+    ExplicitWidth = 612
   end
   object GroupBox1: TGroupBox
-    Left = 8
-    Top = 8
-    Width = 336
+    Left = 0
+    Top = 0
+    Width = 635
     Height = 73
+    Align = alTop
     Caption = 'Sample ID'#39's MAMS'
-    TabOrder = 7
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    ExplicitWidth = 612
     object edtStartSampleID: TLabeledEdit
-      Left = 40
+      Left = 72
       Top = 32
       Width = 121
       Height = 21
@@ -143,7 +147,7 @@ object FormStorageLocations: TFormStorageLocations
       OnChange = edtStartSampleIDChange
     end
     object edtEndSampleID: TLabeledEdit
-      Left = 200
+      Left = 232
       Top = 32
       Width = 121
       Height = 21
@@ -158,9 +162,38 @@ object FormStorageLocations: TFormStorageLocations
       ShowHint = True
       TabOrder = 1
     end
+    object btnSearch: TButton
+      Left = 391
+      Top = 16
+      Width = 82
+      Height = 54
+      Hint = 'search and display samples according to given IDs'
+      CustomHint = BalloonHint1
+      Caption = 'Search'
+      Default = True
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      OnClick = btnSearchClick
+    end
+  end
+  object edtPrepStorageLoc: TLabeledEdit
+    Left = 232
+    Top = 461
+    Width = 131
+    Height = 21
+    Hint = 'location of the remaining prep'#39'd material'
+    CustomHint = BalloonHint1
+    Anchors = [akLeft, akBottom]
+    EditLabel.Width = 111
+    EditLabel.Height = 13
+    EditLabel.Caption = 'prep'#39'd material loaction'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
   end
   object BalloonHint1: TBalloonHint
-    Left = 288
-    Top = 96
+    Left = 528
+    Top = 24
   end
 end

@@ -38,10 +38,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   System.ImageList, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
-  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs;
+  Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs,
+  Vcl.Touch.Keyboard;
 
 const
-  myVersion = '1.8.6 Aug-06-2018';
+  myVersion = '1.9.8 May-25-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -285,7 +286,7 @@ type
     Label57: TLabel;
     Label58: TLabel;
     chkPrepDiscarded: TDBCheckBox;
-    GroupBox24: TGroupBox;
+    gpbUserInfo: TGroupBox;
     tbsLabStats: TTabSheet;
     gbxInPrep: TGroupBox;
     pnlPrepChoice: TPanel;
@@ -740,6 +741,83 @@ type
     Splitter1: TSplitter;
     SpeedButton1: TSpeedButton;
     SavePictureDialog: TSavePictureDialog;
+    Label112: TLabel;
+    Label113: TLabel;
+    Label114: TLabel;
+    dbchkreturnToSender: TDBCheckBox;
+    dbchkCNIsotopA: TDBCheckBox;
+    ToolButtonSampleExchange: TToolButton;
+    SampleExchange: TTabSheet;
+    DBGridSampleExchange: TDBGrid;
+    RadioGroupSampleExchange: TRadioGroup;
+    Panel12: TPanel;
+    SpeedButton2: TSpeedButton;
+    DBCheckBoxReturnedToSender: TDBCheckBox;
+    DBCheckBoxReturnedToSender2: TDBCheckBox;
+    dbchkCNIsotopAMoved: TDBCheckBox;
+    DBEditMANr: TDBEdit;
+    Label115: TLabel;
+    chkInsertReturnToSender: TCheckBox;
+    checkInsertAllCNIsotopA: TCheckBox;
+    Label116: TLabel;
+    DBEdit3: TDBEdit;
+    Label117: TLabel;
+    DBEdit13: TDBEdit;
+    Label118: TLabel;
+    Label119: TLabel;
+    tbsTouch: TTabSheet;
+    TouchKeyboardWeights: TTouchKeyboard;
+    Label120: TLabel;
+    edtTouchWeightsMAMS: TJvValidateEdit;
+    edtTouchWeightsPrepNr: TJvValidateEdit;
+    edtTouchWeightsTargetNr: TJvValidateEdit;
+    Label121: TLabel;
+    Label122: TLabel;
+    DBedtTouchWeightsBeforePrep: TDBEdit;
+    Label123: TLabel;
+    DBedtTouchWeightsAfterPrep: TDBEdit;
+    Label124: TLabel;
+    DBedtTouchWeightsCombustion: TDBEdit;
+    Label125: TLabel;
+    ToolButtonTouch: TToolButton;
+    btnTouchWeightsMAMSUp: TBitBtn;
+    btnTouchWeightsPrepNrUp: TBitBtn;
+    btnTouchWeightsTargetNrUp: TBitBtn;
+    btnTouchWeightsMAMSDown: TBitBtn;
+    btnTouchWeightsPrepNrDown: TBitBtn;
+    btnTouchWeightsTargetNrDown: TBitBtn;
+    lblTouchWeightsNPrep: TLabel;
+    lblTouchWeightsNTargets: TLabel;
+    btnTouchWeightsPrepSave: TBitBtn;
+    DBedtTouchWeightsLastName: TDBEdit;
+    DBedtTouchWeightsUserLabel: TDBEdit;
+    lblTouchWeightsLastName: TLabel;
+    Label126: TLabel;
+    DBchkTouchWeightsSampleNoLeftover: TDBCheckBox;
+    GroupBoxTouchWeightsPrep: TGroupBox;
+    GroupBoxTouchWeightsGraph: TGroupBox;
+    DBchkTouchWeightsPrepNoLeftover: TDBCheckBox;
+    btnTouchWeightsPrepNeedsSaving: TSpeedButton;
+    gbxTouchWeightsGraphBatch: TGroupBox;
+    btnTouchWeightsAddToGraphBatch: TButton;
+    edtTouchWeightsBatchName: TEdit;
+    Label127: TLabel;
+    btnTouchWeightsBatchNameMag: TButton;
+    btnTouchWeightsBatchNameAge1: TButton;
+    btnTouchWeightsBatchNameAge2: TButton;
+    pnlTouchWeightsMAMS: TPanel;
+    btnTouchWeightsGraphSave: TBitBtn;
+    btnTouchWeightsGraphNeedsSaving: TSpeedButton;
+    ListBoxTouchWeightsBatch: TListBox;
+    btnTouchWeightsSaveBatch: TBitBtn;
+    btnTouchWeightsClearGraphBatchList: TBitBtn;
+    DBedtTouchWeightsUserLabelNumber: TDBEdit;
+    Label128: TLabel;
+    DBMemoTouchWeightsTargetComment: TDBMemo;
+    Label129: TLabel;
+    btnTouchWeightsGraphBatchNeedsSaving: TSpeedButton;
+    DBMemoTouchWeightsPrepComment: TDBMemo;
+    Label130: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1031,6 +1109,51 @@ type
     procedure btn_initestClick(Sender: TObject);
     procedure ImageFilesListBoxClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure ToolButtonSampleExchangeClick(Sender: TObject);
+    procedure DBGridSampleExchangeDblClick(Sender: TObject);
+    procedure DBGridSampleExchangeDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
+    procedure DBGridSampleExchangeCellClick(Column: TColumn);
+    procedure btnTouchWeightsMAMSUpClick(Sender: TObject);
+    procedure btnTouchWeightsMAMSDownClick(Sender: TObject);
+    procedure btnTouchWeightsPrepNrUpClick(Sender: TObject);
+    procedure btnTouchWeightsPrepNrDownClick(Sender: TObject);
+    procedure btnTouchWeightsTargetNrUpClick(Sender: TObject);
+    procedure btnTouchWeightsTargetNrDownClick(Sender: TObject);
+    procedure edtSampleNrChange(Sender: TObject);
+    procedure ToolButtonTouchClick(Sender: TObject);
+    procedure edtTouchWeightsMAMSChange(Sender: TObject);
+    procedure edtTouchWeightsTargetNrChange(Sender: TObject);
+    procedure edtTouchWeightsPrepNrChange(Sender: TObject);
+    procedure edtTouchWeightsMAMSKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure btnTouchWeightsPrepSaveClick(Sender: TObject);
+    procedure DBedtTouchWeightsBeforePrepClick(Sender: TObject);
+    procedure DBedtTouchWeightsAfterPrepClick(Sender: TObject);
+    procedure DBedtTouchWeightsCombustionClick(Sender: TObject);
+    procedure edtTouchWeightsMAMSClick(Sender: TObject);
+    procedure edtTouchWeightsPrepNrClick(Sender: TObject);
+    procedure edtTouchWeightsTargetNrClick(Sender: TObject);
+    procedure DBedtTouchWeightsBeforePrepKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure DBedtTouchWeightsAfterPrepKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure DBedtTouchWeightsCombustionKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure DBchkTouchWeightsSampleNoLeftoverClick(Sender: TObject);
+    procedure DBchkTouchWeightsPrepNoLeftoverClick(Sender: TObject);
+    procedure btnTouchWeightsBatchNameMagClick(Sender: TObject);
+    procedure btnTouchWeightsBatchNameAge1Click(Sender: TObject);
+    procedure btnTouchWeightsBatchNameAge2Click(Sender: TObject);
+    procedure btnTouchWeightsGraphSaveClick(Sender: TObject);
+    procedure btnTouchWeightsAddToGraphBatchClick(Sender: TObject);
+    procedure btnTouchWeightsClearGraphBatchListClick(Sender: TObject);
+    procedure btnTouchWeightsSaveBatchClick(Sender: TObject);
+    procedure DBMemoTouchWeightsTargetCommentChange(Sender: TObject);
+    procedure DBMemoTouchWeightsPrepCommentKeyDown(Sender: TObject;
+      var Key: Word; Shift: TShiftState);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1067,7 +1190,7 @@ type
     procedure ClearInsertSampleGrids;
     procedure CreateCds(German: boolean);
     procedure CreateWordExport;
-    procedure DoSampleInfo;
+    procedure DoSampleInfo(SampleNr: Integer; PrepNr: Integer; TargetNr: Integer);
     procedure ShowSampleInfoPage(Grid: TObject);
     procedure ExportReport(Ext: string);
     procedure FillCds;
@@ -1120,6 +1243,10 @@ type
     procedure CalculateYield;
     /// <summary>keeps the button of the toolbar pressed</summary>
     procedure ToolBarButtonsState(Sender: TObject);
+    procedure DBGridAutoSizeColumn(Grid: TDBGrid; Column: integer);
+    procedure DBGridAutoSizeAllColumns(Grid: TDBGrid);
+    procedure FixDBGridColumnsWidth(const DBGrid: TDBGrid);
+    procedure JumpToEmptyWeightField;
 
   public
     SampleModified: boolean;
@@ -1300,6 +1427,7 @@ begin
 //  end;
 
   if rgpTask.ItemIndex = 0 then
+  // preparation batch
   begin
     material := cmbFilterSampleMaterial.ListSource.DataSet.FieldByName('material').AsString;
     if length(material) > 0 then
@@ -1309,6 +1437,7 @@ begin
     end;
   end
   else
+  // graphitisation batch
   begin // get all samples which are pretreated, but with graph date is NULL
     dm.GetTargetsAvailable;
     SetupLabPlanPage; // colwidth
@@ -1414,6 +1543,7 @@ begin
     FValues.Add('Address1=' + s);
     FValues.Add('ZIP=' + dm.dsQryDb.DataSet.FieldByName('postcode').AsString);
     FValues.Add('City=' + dm.dsQryDb.DataSet.FieldByName('town').AsString);
+    FValues.Add('email=' + dm.dsQryDb.DataSet.FieldByName('email').AsString);  // added 2020.02.13
     FValues.Add('ProjectName=' + ProjectNameReport);    // values come from another subroutine that pulls put the samples for each project
     FValues.Add('ProjectInDate=' + ProjectInDate);
     FValues.Add('OrderNr=' + IntToStr(OrderNr));
@@ -1748,7 +1878,7 @@ begin
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(graphitized) GROUP BY sample_t.project_nr) help6_t ON project_t.project_nr=help6_t.project_nr ' +
       // only list projects within a certain time frame and without out_date
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
-      ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY desired_date;';
+      ' AND (out_date IS NULL or out_date < "2010-01-01") AND NOT (last_name="intern" AND first_name="intern") ORDER BY desired_date;';
 
     //LogWindow.addLogEntry(SQL.Text);
     LogWindow.addLogEntry(SQL.Text);
@@ -1785,10 +1915,14 @@ begin
       Columns[9].Width := 70;  // prepDone
       Columns[10].Width := 70;  // discraded target
       Columns[11].Width := 70;  // graphDone
-      Columns[11].Width := 70;  // measured
+      Columns[12].Width := 70;  // measured
     end;
+    LogWindow.addLogEntry('DBGrid Column Width set');
+    FixDBGridColumnsWidth(grdPendingReports);
+    LogWindow.addLogEntry('DBGrid Column Width fixed');
 
-  grdPendingReportsTitleClick(grdPendingReports.Columns[4])
+  grdPendingReportsTitleClick(grdPendingReports.Columns[4]);
+  LogWindow.addLogEntry('DBGrid  TitleClick set');
   end;
 
 end;
@@ -1857,7 +1991,7 @@ begin
       DBChart.Series[0].AddXY(xvalue,yvalue,inttostr(DBGridDBPlot.DataSource.DataSet.RecNo),clTeeColor);  //add xy to plot, recordNo as label
       DBGridDBPlot.DataSource.DataSet.Next;  // move to the next datapoint in the dataset
     end;
-
+     FixDBGridColumnsWidth(DBGridDBPlot);
 
     //DBChart.Series[0].Marks.Visible:=true;   //display the Text on the data points (marks)
     //DBChart.Series[0].OnGetMarkText:=DBChartSeriesGetMarkText;  // generate the text on the datapoints (marks)
@@ -2367,12 +2501,25 @@ begin
     btNext:
     begin
       edtSampleNr.Value:= round(edtSampleNr.Value)+1;
-      DoSampleInfo;
+      // also update TouchWeightsPanel
+      edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+
+      DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+
+      edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+      edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
+
     end;
     btPrev:
     Begin
       edtSampleNr.Value:= round(edtSampleNr.Value)-1;
-      DoSampleInfo;
+      // also update TouchWeightsPanel
+      edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+
+      DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+
+      edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+      edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
     End;
   end;
 end;
@@ -2407,15 +2554,15 @@ begin
 //      ClipBoard.SetTextBuf(PChar(s));
       dm.adoCmd.CommandText := s;
       LogWindow.addLogEntry(s);
-              IF dm.adoConnKTL.Connected THEN
-      Begin
-        Try
-          dm.adoCmd.Execute;
-          LogWindow.addLogEntry('executed');
-        Except
-          ShowMessage('problem opening the database');
+      IF dm.adoConnKTL.Connected THEN
+        Begin
+          Try
+            dm.adoCmd.Execute;
+            LogWindow.addLogEntry('executed');
+          Except
+            ShowMessage('problem opening the database');
+          End;
         End;
-      End;
     end;
   end
   else     // for graph batches
@@ -2451,15 +2598,20 @@ procedure TfrmMAMS.btnSaveChangesAdminClick(Sender: TObject);
 //saves all data in the ProjectInfo pane
 var
   sample_nr, project_nr: integer;
-  s, in_date_str, desired_date_str, Out_Date_str, freeofcharge: string;
+  s, in_date_str, desired_date_str, Out_Date_str, freeofcharge, returnToSender, returnedToSender: string;
 begin
   sample_nr := round(edtSampleNr.Value);
   project_nr := dm.GetProjectNrBySampleNr(sample_nr);
   desired_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoDesiredDate.Date);
   in_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoInDate.Date);
   Out_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date);
+
   if dbchkFreeOfCharge2.Checked then freeofcharge:='1'
   else freeofcharge:='0';
+  if dbchkreturnToSender.Checked then returnToSender:='1'
+  else returnToSender:='0';
+  if DBCheckBoxReturnedToSender.Checked then returnedToSender:='1'
+  else returnedToSender:='0';
 
   // update the project dates and status
   s := 'UPDATE project_t SET ' +
@@ -2467,6 +2619,8 @@ begin
     'in_date=' + #34 + in_date_str + #34 + ',' +
     'out_date=' + #34 + out_date_str + #34 + ',' +
     'FreeOfCharge=' + #34 +freeofcharge + #34 + ',' +
+    'return_to_sender=' + #34 +returnToSender + #34 + ',' +
+    'returned_to_sender=' + #34 +returnedToSender + #34 + ',' +
     'project_comment=' + #34 +DBMemo_ProjComment.Text + #34 + ',' +
     'status=' + #34 + cmbProjectStatus.Text + #34 +
     ' WHERE project_nr=' + IntToStr(project_nr) + ';';
@@ -2654,7 +2808,7 @@ begin
   dm.adoCmd.CommandText := s;
   LogWindow.addLogEntry(s);
   IF dm.adoConnKTL.Connected THEN
-      Begin
+    Begin
         Try
           dm.adoCmd.Execute;
           LogWindow.addLogEntry('executed');
@@ -2723,10 +2877,15 @@ end;
 procedure TfrmMAMS.btnSaveChangesUserSuppliedInfoClick(Sender: TObject);
 var
   sample_nr,b: integer;
-  s: string;
+  s, CNIsotopA, CNIsotopAMoved: string;
 begin
   sample_nr := round(edtSampleNr.Value);
   // update sample_t name,label,desc1, desc2, material, fraction, type, user prep, comment, old info
+  if dbchkCNIsotopA.Checked then CNIsotopA := '1'
+  else CNIsotopA := '0';
+  if dbchkCNIsotopAMoved.Checked then CNIsotopAMoved := '1'
+  else CNIsotopAMoved := '0';
+
   s := 'UPDATE sample_t SET ' +
     'user_label=' + #34 + edtSampleName.Text + #34 + ',' +
     'user_label_nr=' + #34 + edtSampleLabelNr.Text + #34 + ',' +
@@ -2739,26 +2898,29 @@ begin
     'lab_comment=' + #34 + DBMemo_LabComment.Text + #34 + ',' +
     's_storage_loc=' + #34 + edtSampleStorageLoc.Text + #34 + ',' +
     'prep_storage_loc=' + #34 + edtPrepSampleStorageLoc.Text + #34 + ',' +
+    'CNIsotopA=' + #34 + CNIsotopA + #34 + ',' +
+    'CNIsotopAMoved=' + #34 + CNIsotopAMoved + #34 + ',' +
     'sampling_date=' + #34 + FormatDateTime('YYYY-MM-DD', edtSamplingDate.Date) + #34 +
     '  WHERE sample_nr=' + IntTostr(sample_nr) + ';';
   //   ClibBoard.SetTextBuf(PChar(s));
   dm.adoCmd.CommandText := s;
   LogWindow.addLogEntry(s);
   IF dm.adoConnKTL.Connected THEN
-      Begin
+    Begin
         Try
           dm.adoCmd.Execute;
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
         End;
-      End;
+    End;
 
   //update not to be dated flag
   if chkNotToBeDated.Checked then
     b := 1
   else
     b := 0;
+
   s := 'UPDATE sample_t SET ' +
     'not_tobedated= ' + IntToStr(b) +
     ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
@@ -2784,7 +2946,6 @@ begin
     's_no_leftover= ' + IntToStr(b) +
     ' WHERE sample_nr=' + IntToStr(sample_nr) + ';';
   //ClipBoard.SetTextBuf(PChar(s));
-
   dm.adoCmd.CommandText := s;
   LogWindow.addLogEntry(s);
   IF dm.adoConnKTL.Connected THEN
@@ -2891,7 +3052,7 @@ procedure TfrmMAMS.actSampleInfoExecute(Sender: TObject);
 begin
   FillPrepList;
   pgtMain.ActivePage := tbsSampleInfo;
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 //  btnDoSampleQuery.SetFocus;
   edtSampleNr.SetFocus;
 end;
@@ -2943,7 +3104,7 @@ begin
   pgtMain.ActivePage := tbsUserReport;
 //  cmbProjectOfReport.Enabled := false;
   cmbSubmNameReport.SetFocus;
-  btnReport.Enabled := false;
+  btnReport.Enabled := true;
   btnSendMailEnglish.Enabled := false;
   btnSendMailGerman.Enabled := false;
 //  btnQuerySubmitter.Enabled := false;
@@ -3223,7 +3384,7 @@ begin
                 ShowMessage('problem opening the database');
               End;
             End;
-            DoSampleInfo; // read sample data again
+            DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text)); // read sample data again
           end;
         mrCancel:
           begin
@@ -3254,7 +3415,8 @@ begin
 {
  create sample in sample_t, user intern, typ nach rgp, create prep_t, create n entries in target_t
 }
-  with dm.qryDB do begin
+  with dm.qryDB do
+    begin
     SQL.Text := 'SELECT user_nr from user_t WHERE last_name=' + #34 + 'intern' + #34;
     LogWindow.addLogEntry(SQL.Text);
     IF dm.adoConnKTL.Connected THEN
@@ -3267,30 +3429,37 @@ begin
         End;
       End;
     InternNr := Fields.Fields[0].AsInteger;
-  end;
+    end;
+
+    // generate ProjectName
   case rgpSampleType.ItemIndex of
-    0: ProjectName := 'Oxa2 ';
-    1: ProjectName := 'Oxa1 ';
-    2: ProjectName := 'Blank CO2gas ';
-    3: ProjectName := 'Rosenöl ';
-    4: ProjectName := 'Pthalic acid';
-    5: ProjectName := 'Blank marble ';
-    6: ProjectName := 'Blank bone ';
-    7: ProjectName := 'Wilhelm ';
+    0: ProjectName := 'Oxa2 AGE ';
+    1: ProjectName := 'Oxa2 MAG ';
+    2: ProjectName := 'Oxa1 ';
+    3: ProjectName := 'Blank CO2gas ';
+    4: ProjectName := 'Phthalic acid AGE ';
+    5: ProjectName := 'Phthalic acid MAG ';
+    6: ProjectName := 'Blank marble ';
+    7: ProjectName := 'Blank bone ';
   end;
+
+   // generate SampleType
   case rgpSampleType.ItemIndex of
     0: SampleType := 'oxa2';
-    1: SampleType := 'oxa1';
-    2: SampleType := 'blank_CO2 ';
-    3: SampleType := 'blank';
+    1: SampleType := 'oxa2';
+    2: SampleType := 'oxa1';
+    3: SampleType := 'blank_CO2';
     4: SampleType := 'blank';
-    5: SampleType := 'blank_carb';
-    6: SampleType := 'blank_bone';
-    7: SampleType := 'wilh';
+    5: SampleType := 'blank';
+    6: SampleType := 'blank_carb';
+    7: SampleType := 'blank_bone';
   end;
+
+   // generate Strings that hold the ProjectName and Daten etc
   ProjectName := ProjectName + FormatDateTime('DDMMYY', Date);
   desired_date_str := FormatDateTime('YYYY-MM-DD', Date);
   in_date_str := FormatDateTime('YYYY-MM-DD', Date);
+   // insert new project into database
   dm.adoCmd.CommandText := 'INSERT INTO project_t (user_nr,project,desired_date,'
     + 'in_date,status)'
     + ' VALUES(' + IntToStr(InternNr) + ',' + #34 + ProjectName + #34 + ','
@@ -3299,7 +3468,7 @@ begin
     + #34 + 'closed' + #34
     + ');';
   s := dm.adoCmd.CommandText;
-  //   ClibBoard.SetTextBuf(PChar(s));
+   //  ClibBoard.SetTextBuf(PChar(s));
   LogWindow.addLogEntry(s);
   IF dm.adoConnKTL.Connected THEN
       Begin
@@ -3313,6 +3482,8 @@ begin
   dm.tblProjects.Close;
   dm.tblProjects.Open;
   dm.qryDB.Close; // get project_nr des gerade eingefügten Samples
+
+   // return project number for the project that was just created
   dm.qryDb.SQL.Text := 'SELECT project_nr FROM project_t WHERE project = ' + #34 + ProjectName + #34 + ';';
   LogWindow.addLogEntry(dm.qryDb.SQL.Text);
       IF dm.adoConnKTL.Connected THEN
@@ -3325,7 +3496,9 @@ begin
         End;
       End;
   if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
-  // insert sample
+
+  // insert the new sample into the database to the project
+  // project name and sample name are the same
   s := 'INSERT INTO sample_t (project_nr,user_label,type)' +
     '  VALUES(' +
     IntToStr(project_nr) + ',' +
@@ -3345,6 +3518,9 @@ begin
         End;
       End;
   dm.qryDB.Close;
+
+   // get the maximum/latest sample nummer
+   // this would be the sample number that was just created
   dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
   LogWindow.addLogEntry(dm.qryDB.SQL.Text);
       IF dm.adoConnKTL.Connected THEN
@@ -3358,6 +3534,8 @@ begin
       End;
   sample_nr := 0;
   if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
+
+  // insert a new prep for the sample that was just created
   s := 'INSERT INTO preparation_t (prep_nr, sample_nr, prep_end) VALUES(1,' +
     IntToStr(sample_nr) + ',' +
     #34 + in_date_str + #34 +
@@ -3374,6 +3552,8 @@ begin
           ShowMessage('problem opening the database');
         End;
       End;
+
+   // insert new targets for the sample and prep that was just created
   for i := 1 to trunc(edtNumberOfTargets.Value) do
   begin
     dm.adoCmd.CommandText := 'INSERT INTO target_t  (target_nr, prep_nr, sample_nr)'
@@ -3435,7 +3615,11 @@ end;
 
 procedure TfrmMAMS.btnDoSampleQueryClick(Sender: TObject);
 begin
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  // also update TouchWeightsPanel
+  edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+  edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+  edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
 end;
 
 procedure TfrmMAMS.btnEndTaskClick(Sender: TObject);
@@ -3496,7 +3680,7 @@ procedure TfrmMAMS.btnIncSampleNrDownClick(Sender: TObject);
 begin
   if edtSampleNr.Value > 1 then begin
     edtSampleNr.Value := edtSampleNr.Value - 1;
-    DoSampleInfo;
+    DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   end;
 end;
 
@@ -3507,7 +3691,7 @@ begin
   MaxSampleNr := dm.GetMaxSampleNr;
   if edtSampleNr.Value <= MaxSampleNr then begin
     edtSampleNr.Value := edtSampleNr.Value + 1;
-    DoSampleInfo;
+    DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   end;
 end;
 
@@ -3636,6 +3820,441 @@ begin
   end;
 end;
 
+procedure TfrmMAMS.btnTouchWeightsAddToGraphBatchClick(Sender: TObject);
+Var s, SampleNr,PrepNr,TargetNr,UserLabel,UserLabelNr: string;
+        SampleNrPresent,PrepNrPresent,TargetNrPresent: string;
+        i, presentFlag: integer;
+begin
+  // create new entry in the ListBox
+  // get info from currebtly selected sample out of the fields
+  SampleNr := edtTouchWeightsMAMS.Text;
+  PrepNr := edtTouchWeightsPrepNr.Text;
+  TargetNr := edtTouchWeightsTargetNr.Text;
+  UserLabel := DBedtTouchWeightsUserLabel.Text;
+  UserLabelNr := DBedtTouchWeightsUserLabelNumber.Text;
+
+  // check that sample has no batch name yet assigned
+  presentFlag := 0;
+  if edtGraphBatch.Text <> '' then
+    Begin
+     presentFlag := 1;
+     showmessage('Sample has a Graph Batch already assigned!');
+    End;
+
+  //check that this sample is not in the list already
+  // go through list and check
+  if presentFlag = 0 then
+    Begin
+      for i := 0 to ListBoxTouchWeightsBatch.Count - 1 do
+        Begin
+          SampleNrPresent := Trim(ExtractWord(1, ListBoxTouchWeightsBatch.Items[i], ['|']));
+          PrepNrPresent := Trim(ExtractWord(4, ListBoxTouchWeightsBatch.Items[i], ['|']));
+          TargetNrPresent := trim(ExtractWord(5, ListBoxTouchWeightsBatch.Items[i], ['|']));
+
+          if (SampleNr = SampleNrPresent) AND (TargetNr = TargetNrPresent) AND (PrepNr = PrepNrPresent) then
+          Begin
+            presentFlag := 1;
+            showmessage('Sample ' + SampleNr+'.'+PrepNr+'.'+TargetNr+ ' is already listed!');
+          End;
+
+        End;
+    End;
+
+  // add sample when flag is fine
+  if presentFlag = 0 then
+    Begin
+      // create string for the list
+      s := SampleNr + ' | ' +
+            UserLabel + ' | ' +
+            UserLabelNr  + ' | ' +
+            PrepNr + ' | ' +
+            TargetNr;
+      // add sample to the list
+      ListBoxTouchWeightsBatch.Items.Add(s);
+      btnTouchWeightsGraphBatchNeedsSaving.Visible := True;
+    End;
+
+end;
+
+procedure TfrmMAMS.btnTouchWeightsBatchNameAge1Click(Sender: TObject);
+begin
+  edtTouchWeightsBatchName.Text := 'graph_' + FormatDateTime('ddmmyy',today) + '_age1';
+end;
+
+procedure TfrmMAMS.btnTouchWeightsBatchNameAge2Click(Sender: TObject);
+begin
+  edtTouchWeightsBatchName.Text := 'graph_' + FormatDateTime('ddmmyy',today) + '_age2';
+end;
+
+procedure TfrmMAMS.btnTouchWeightsBatchNameMagClick(Sender: TObject);
+begin
+  // create a batch name
+  edtTouchWeightsBatchName.Text := 'graph_' + FormatDateTime('ddmmyy',today) + '_mag';
+end;
+
+procedure TfrmMAMS.btnTouchWeightsClearGraphBatchListClick(Sender: TObject);
+begin
+  ListBoxTouchWeightsBatch.Clear;
+  btnTouchWeightsGraphBatchNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.btnTouchWeightsGraphSaveClick(Sender: TObject);
+VAR weightCombustion, SampleNr, PrepNr, TargetNr, cmd: string;
+  flag: integer;
+begin
+  // get data from Textedits
+  //IDs
+  SampleNr := edtTouchWeightsMAMS.Text;
+  PrepNr := edtTouchWeightsPrepNr.Text;
+  TargetNr := edtTouchWeightsTargetNr.Text;
+  //weights
+  weightCombustion := DBedtTouchWeightsCombustion.Text;
+  weightCombustion := ReplaceStr(weightCombustion, ',', '.');
+
+  // save target weight
+    with dm.adoCmd do
+    begin
+      if Length(weightCombustion) = 0 then
+        begin
+        weightCombustion := 'NULL';
+        end;
+      CommandText := 'UPDATE target_t SET weight_combustion=' + weightCombustion +
+                ' WHERE sample_nr=' + SampleNr +
+                ' AND prep_nr=' + PrepNr +
+                ' AND target_nr=' + TargetNr + ';';
+      LogWindow.addLogEntry('saving combustion weight with query:');
+      LogWindow.addLogEntry(CommandText);
+      IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          Execute;
+          LogWindow.addLogEntry('executed');
+          btnTouchWeightsPrepNeedsSaving.Visible := False;
+        Except
+          btnTouchWeightsPrepNeedsSaving.Visible := True;
+          ShowMessage('problem opening the database');
+        End;
+      End;
+    end;
+
+  // save no leftover flag of prep
+    with dm.adoCmd do
+    Begin
+      if DBchkTouchWeightsPrepNoLeftover.Checked then
+        flag := 1
+        else
+        flag := 0;
+
+    CommandText := 'UPDATE preparation_t SET' +
+                ' p_no_leftover=' + inttostr(flag) +
+                ' WHERE sample_nr=' + SampleNr +
+                ' AND prep_nr=' + PrepNr + ';';
+    LogWindow.addLogEntry('saving NoLeftover of Prep flag with query:');
+    LogWindow.addLogEntry(CommandText);
+    IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          Execute;
+          LogWindow.addLogEntry('executed');
+          btnTouchWeightsPrepNeedsSaving.Visible := False;
+        Except
+          btnTouchWeightsPrepNeedsSaving.Visible := True;
+          ShowMessage('problem opening the database');
+        End;
+      End;
+    End;
+
+      // save target comment
+    with dm.adoCmd do
+      Begin
+          CommandText := 'UPDATE target_t SET target_comment=:TargetMemo' +
+            ' WHERE sample_nr=' + SampleNr +
+            ' AND prep_nr=' + PrepNr +
+            ' AND target_nr=' + TargetNr + ';';
+          if Trim(DBMemoTouchWeightsTargetComment.Lines.Text) = '' then
+            begin
+              Parameters.ParamByName('TargetMemo').DataType:=ftString;
+              Parameters.ParamByName('TargetMemo').Value := NULL;
+            end
+            else
+            begin
+              Parameters.ParamByName('TargetMemo').Value := DBMemoTouchWeightsTargetComment.Lines.Text;
+            end;
+
+      LogWindow.addLogEntry('saving TargetComment with query:');
+      LogWindow.addLogEntry(CommandText);
+      IF dm.adoConnKTL.Connected THEN
+        Begin
+          Try
+            Execute;
+            LogWindow.addLogEntry('executed');
+            btnTouchWeightsPrepNeedsSaving.Visible := False;
+          Except
+            btnTouchWeightsPrepNeedsSaving.Visible := True;
+            ShowMessage('problem opening the database');
+          End;
+      End;
+    End;
+
+end;
+
+procedure TfrmMAMS.btnTouchWeightsMAMSDownClick(Sender: TObject);
+Var SampleNr, NPreps, NTargets: Integer;
+begin
+  SampleNr := (edtTouchWeightsMAMS.Value-1);
+  edtTouchWeightsMAMS.Value := SampleNr;
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  edtTouchWeightsPrepNr.MaxValue := NPreps;
+  edtTouchWeightsPrepNr.Value := NPreps;
+  lblTouchWeightsNPrep.Caption := '1...' + IntToStr(NPreps);
+  edtTouchWeightsTargetNr.MaxValue := NTargets;
+  edtTouchWeightsTargetNr.Value := NTargets;
+  lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+  // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value := edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+  // get all sample info from DB
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+end;
+
+procedure TfrmMAMS.btnTouchWeightsMAMSUpClick(Sender: TObject);
+Var SampleNr, NPreps, NTargets: Integer;
+begin
+  SampleNr := (edtTouchWeightsMAMS.Value+1);
+  edtTouchWeightsMAMS.Value := SampleNr;
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  edtTouchWeightsPrepNr.MaxValue := NPreps;
+  edtTouchWeightsPrepNr.Value := NPreps;
+  lblTouchWeightsNPrep.Caption := '1...' + IntToStr(NPreps);
+  edtTouchWeightsTargetNr.MaxValue := NTargets;
+  edtTouchWeightsTargetNr.Value := NTargets;
+  lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+  // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value := edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+  // get all sample info from DB
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+
+end;
+
+procedure TfrmMAMS.btnTouchWeightsPrepNrDownClick(Sender: TObject);
+Var SampleNr, PrepNr, NTargets: Integer;
+begin
+  edtTouchWeightsPrepNr.Value :=  edtTouchWeightsPrepNr.Value - 1;
+  SampleNr := edtTouchWeightsMAMS.Value;
+  PrepNr := edtTouchWeightsPrepNr.Value;
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, PrepNr);
+  edtTouchWeightsTargetNr.MaxValue := NTargets;
+  edtTouchWeightsTargetNr.Value := NTargets;
+  lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  DoSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+    // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.btnTouchWeightsPrepNrUpClick(Sender: TObject);
+Var SampleNr, PrepNr, NTargets: Integer;
+begin
+  edtTouchWeightsPrepNr.Value :=  edtTouchWeightsPrepNr.Value + 1;
+  SampleNr := edtTouchWeightsMAMS.Value;
+  PrepNr := edtTouchWeightsPrepNr.Value;
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, PrepNr);
+  edtTouchWeightsTargetNr.MaxValue := NTargets;
+  edtTouchWeightsTargetNr.Value := NTargets;
+  lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  DoSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+    // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.btnTouchWeightsPrepSaveClick(Sender: TObject);
+Var
+  weightStart, weightEnd, SampleNr, PrepNr, TargetNr, cmd: string;
+  flag: integer;
+begin
+  // get data from Textedits
+  //IDs
+  SampleNr := edtTouchWeightsMAMS.Text;
+  PrepNr := edtTouchWeightsPrepNr.Text;
+  TargetNr := edtTouchWeightsTargetNr.Text;
+  //weights
+  weightStart := DBedtTouchWeightsBeforePrep.Text;
+  weightStart := ReplaceStr(weightStart, ',', '.');
+  weightEnd := DBedtTouchWeightsAfterPrep.Text;
+  weightEnd := ReplaceStr(weightEnd, ',', '.');
+
+  // save prep weights
+    with dm.adoCmd do
+    begin
+      if Length(weightStart) = 0 then
+        begin
+        weightStart := 'NULL';
+        end;
+      if Length(weightEnd) = 0 then
+        begin
+        weightEnd := 'NULL';
+        end;
+      CommandText :=  'UPDATE preparation_t SET weight_start=' + weightStart + ',' +
+                      ' weight_end=' + weightEnd +
+                      ' WHERE sample_nr=' + SampleNr + ' AND prep_nr=' + PrepNr + ';';
+      LogWindow.addLogEntry('saving prep weights with query:');
+      LogWindow.addLogEntry(CommandText);
+      IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          Execute;
+          LogWindow.addLogEntry('executed');
+          btnTouchWeightsPrepNeedsSaving.Visible := False;
+        Except
+          btnTouchWeightsPrepNeedsSaving.Visible := True;
+          ShowMessage('problem opening the database');
+        End;
+      End;
+    end;
+
+ // save no leftover flag of sample
+    with dm.adoCmd do
+    Begin
+      if DBchkTouchWeightsSampleNoLeftover.Checked then
+        flag := 1
+        else
+        flag := 0;
+    CommandText :=  'UPDATE sample_t SET ' +
+                    's_no_leftover= ' + IntToStr(flag) +
+                    ' WHERE sample_nr=' + SampleNr + ';';
+    LogWindow.addLogEntry('saving NoLeftover of sample flag with query:');
+    LogWindow.addLogEntry(CommandText);
+    IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          Execute;
+          LogWindow.addLogEntry('executed');
+          btnTouchWeightsPrepNeedsSaving.Visible := False;
+        Except
+          btnTouchWeightsPrepNeedsSaving.Visible := True;
+          ShowMessage('problem opening the database');
+        End;
+      End;
+    End;
+
+    // save prep comment
+    with dm.adoCmd do
+      Begin
+          CommandText := 'UPDATE preparation_t SET prep_comment=:PrepMemo ' +
+        ' WHERE sample_nr=' + SampleNr +
+        ' AND prep_nr=' + PrepNr + ';';
+          if Trim(DBMemoTouchWeightsPrepComment.Lines.Text) = '' then
+            begin
+              Parameters.ParamByName('PrepMemo').DataType:=ftString;
+              Parameters.ParamByName('PrepMemo').Value := NULL;
+            end
+            else
+            begin
+              Parameters.ParamByName('PrepMemo').Value := DBMemoTouchWeightsPrepComment.Lines.Text;
+            end;
+
+      LogWindow.addLogEntry('saving PrepComment with query:');
+      LogWindow.addLogEntry(CommandText);
+      IF dm.adoConnKTL.Connected THEN
+        Begin
+          Try
+            Execute;
+            LogWindow.addLogEntry('executed');
+            btnTouchWeightsPrepNeedsSaving.Visible := False;
+          Except
+            btnTouchWeightsPrepNeedsSaving.Visible := True;
+            ShowMessage('problem opening the database');
+          End;
+      End;
+    End;
+end;
+
+procedure TfrmMAMS.btnTouchWeightsSaveBatchClick(Sender: TObject);
+VAR
+  SampleNr, PrepNr, TargetNr, s: string;
+  i: integer;
+begin
+  // extract numbers out of strings in the BatchList
+  for i := 0 to ListBoxTouchWeightsBatch.Count - 1 do
+    Begin
+      SampleNr := Trim(ExtractWord(1, ListBoxTouchWeightsBatch.Items[i], ['|']));
+      PrepNr := Trim(ExtractWord(4, ListBoxTouchWeightsBatch.Items[i], ['|']));
+      TargetNr := trim(ExtractWord(5, ListBoxTouchWeightsBatch.Items[i], ['|']));
+      // save batch name to DB
+    s := 'UPDATE target_t SET graph_batch=' + #34 + edtTouchWeightsBatchName.Text + #34 +
+        ' WHERE target_t.sample_nr = ' + SampleNr +
+        ' AND target_t.prep_nr=' + PrepNr +
+        ' AND target_t.target_nr=' + TargetNr +
+        ';';
+    dm.adoCmd.CommandText := s;
+    LogWindow.addLogEntry('### write graph batch to DB using query:');
+    LogWindow.addLogEntry(s);
+      IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          dm.adoCmd.Execute;
+          LogWindow.addLogEntry('executed');
+          btnTouchWeightsGraphBatchNeedsSaving.Visible := False;
+        Except
+          ShowMessage('problem opening the database');
+        End;
+      End;
+    End;
+
+
+
+end;
+
+procedure TfrmMAMS.btnTouchWeightsTargetNrDownClick(Sender: TObject);
+begin
+  edtTouchWeightsTargetNr.Value := edtTouchWeightsTargetNr.Value - 1;
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  DoSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+    // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.btnTouchWeightsTargetNrUpClick(Sender: TObject);
+begin
+  edtTouchWeightsTargetNr.Value := edtTouchWeightsTargetNr.Value + 1;
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  DoSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+    // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
 procedure TfrmMAMS.btnMonthStatClick(Sender: TObject);
 var
   i, n_graph, n_meas, sum_graph, sum_meas, n_recvd, sum_recvd: integer;
@@ -3699,7 +4318,7 @@ begin
     dm.CreateBlankPrepRecord(round(edtSampleNr.Value), succ(MaxPrepNr));
     dm.CreateBlankTargetRecord(round(edtSampleNr.Value), succ(MaxPrepNr), 1);
   end;
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 end;
 
 procedure TfrmMAMS.btnNewTargetClick(Sender: TObject);
@@ -3712,7 +4331,7 @@ begin
     MaxTargetNr := dm.GetMaxTargetNrBySampleNr(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text));
     dm.CreateBlankTargetRecord(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), succ(MaxTargetNr));
   end;
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 end;
 
 procedure TfrmMAMS.btnNewUserClick(Sender: TObject);
@@ -3810,32 +4429,61 @@ begin
 btnReport.Enabled:=true;
 end;
 
+procedure TfrmMAMS.edtSampleNrChange(Sender: TObject);
+begin
+  // also update the editButton in TouchWeights to reflect the same value
+  //edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+  //edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+  //edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
+end;
+
 procedure TfrmMAMS.edtSampleNrKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if Key = VK_RETURN then DoSampleInfo;
-
+  if Key = VK_RETURN then
+  Begin
+    DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    // also update the editButton in TouchWeights to reflect the same value
+    edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+    edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+    edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
+  End;
   if Key = VK_UP then
   Begin
     edtSampleNr.Value:= round(edtSampleNr.Value)+1;
-    DoSampleInfo;
+    DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    // also update the editButton in TouchWeights to reflect the same value
+    edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+    edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+    edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
   End;
-
   if Key = VK_DOWN then
   begin
     edtSampleNr.Value:= round(edtSampleNr.Value)-1;
-    DoSampleInfo;
+    DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    // also update the editButton in TouchWeights to reflect the same value
+    edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+    edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+    edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
   end;
 end;
 
 procedure TfrmMAMS.edtSamplePrepNrChange(Sender: TObject);
 begin
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    // also update the editButton in TouchWeights to reflect the same value
+  edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+  edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+  edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
 end;
 
 procedure TfrmMAMS.edtSampleTargetNrChange(Sender: TObject);
 begin
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    // also update the editButton in TouchWeights to reflect the same value
+  //edtTouchWeightsMAMS.Value := edtSampleNr.Value;
+  //edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+  //edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
 end;
 
 procedure TfrmMAMS.edtSampPrep1DragDrop(Sender, Source: TObject; X, Y: Integer);
@@ -3894,6 +4542,127 @@ end;
 procedure TfrmMAMS.edtTargetPressedChange(Sender: TObject);
 begin
   TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsMAMSChange(Sender: TObject);
+begin
+  // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value:= edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsMAMSClick(Sender: TObject);
+begin
+  (Sender AS TJvValidateEdit).SelectAll;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsMAMSKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+Var SampleNr, NPreps, NTargets: Integer;
+  begin
+  if Key = VK_RETURN then
+    Begin
+      SampleNr := edtTouchWeightsMAMS.Value;
+      // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+      NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+      NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+      edtTouchWeightsPrepNr.MaxValue := NPreps;
+      edtTouchWeightsPrepNr.Value := NPreps;
+      lblTouchWeightsNPrep.Caption := '1...' + IntToStr(NPreps);
+      edtTouchWeightsTargetNr.MaxValue := NTargets;
+      edtTouchWeightsTargetNr.Value := NTargets;
+      lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+      DoSampleInfo(SampleNr, StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+      // jump to the first weight that is empty
+      JumpToEmptyWeightField;
+      // hide some buttons
+      btnTouchWeightsPrepNeedsSaving.Visible := False;
+      btnTouchWeightsGraphNeedsSaving.Visible := False;
+    End;
+  if Key = VK_UP then
+    Begin
+      SampleNr := (edtTouchWeightsMAMS.Value+1);
+      edtTouchWeightsMAMS.Value := SampleNr;
+      // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+      NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+      NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+      edtTouchWeightsPrepNr.MaxValue := NPreps;
+      edtTouchWeightsPrepNr.Value := NPreps;
+      lblTouchWeightsNPrep.Caption := '1...' + IntToStr(NPreps);
+      edtTouchWeightsTargetNr.MaxValue := NTargets;
+      edtTouchWeightsTargetNr.Value := NTargets;
+      lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+      DoSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+      // jump to the first weight that is empty
+      JumpToEmptyWeightField;
+      // hide some buttons
+      btnTouchWeightsPrepNeedsSaving.Visible := False;
+      btnTouchWeightsGraphNeedsSaving.Visible := False;
+    End;
+  if Key = VK_DOWN then
+    begin
+      SampleNr := (edtTouchWeightsMAMS.Value-1);
+      edtTouchWeightsMAMS.Value := SampleNr;
+      // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+      NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+      NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+      edtTouchWeightsPrepNr.MaxValue := NPreps;
+      edtTouchWeightsPrepNr.Value := NPreps;
+      lblTouchWeightsNPrep.Caption := '1...' + IntToStr(NPreps);
+      edtTouchWeightsTargetNr.MaxValue := NTargets;
+      edtTouchWeightsTargetNr.Value := NTargets;
+      lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+      DoSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
+      // jump to the first weight that is empty
+      JumpToEmptyWeightField;
+      // hide some buttons
+      btnTouchWeightsPrepNeedsSaving.Visible := False;
+      btnTouchWeightsGraphNeedsSaving.Visible := False;
+    end;
+      // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value := edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsPrepNrChange(Sender: TObject);
+begin
+  // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value:= edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsPrepNrClick(Sender: TObject);
+begin
+  (Sender AS TJvValidateEdit).SelectAll;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsTargetNrChange(Sender: TObject);
+begin
+  // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value:= edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+end;
+
+procedure TfrmMAMS.edtTouchWeightsTargetNrClick(Sender: TObject);
+begin
+  (Sender AS TJvValidateEdit).SelectAll;
 end;
 
 procedure TfrmMAMS.edtWeightEndChange(Sender: TObject);
@@ -3979,6 +4748,7 @@ procedure TfrmMAMS.InsertNewSamplesInDb;
 // Insert SAmples into Database
 var
   Sample_nr, user_nr, Acol, Arow, PrepCol, FreeOfCharge, i: integer;
+  InsertReturnToSender, InsertAllCNIsotopA: integer;
   project_nr: integer;
   s, desired_date_str, in_date_str, strWeight: string;
   w: double;
@@ -4146,13 +4916,15 @@ begin
     in_date_str := FormatDateTime('YYYY-MM-DD', edtInDate.Date);
     if chkFreeOfCharge.Checked = true then FreeOfCharge:=1
     else FreeOfCharge:=0;
+    if chkInsertReturnToSender.Checked = true then InsertReturnToSender:=1
+    else InsertReturnToSender:=0;
 
     if glbInvoiceNr > 0 then
       s := IntTostr(glbInvoiceNr)
     else
       s := 'NULL';
     dm.adoCmd.CommandText := 'INSERT INTO project_t (user_nr,invoice_nr,project,desired_date,'
-      + 'in_date,priority,report_type,letter,status,price,project_type,research, project_comment, invoice, FreeOfCharge)'
+      + 'in_date,priority,report_type,letter,status,price,project_type,research, project_comment, invoice, FreeOfCharge,return_to_sender)'
       + ' VALUES(' + IntToStr(user_nr) + ',' + s + ','
       + #34 + ProjectName + #34 + ','
       + #34 + desired_date_str + #34 + ','
@@ -4166,7 +4938,8 @@ begin
       + #34 + cmbResearchType.Text + #34 + ','
       + #34 + edtProjectComment.Text + #34 + ','
       + IntToStr(MANummer) + ','
-      + IntToStr(FreeOfCharge) +  ')'
+      + IntToStr(FreeOfCharge) + ','
+      + IntToStr(InsertReturnToSender) + ')'
       + ';';
     s := dm.adoCmd.CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
@@ -4174,6 +4947,7 @@ begin
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
+          //showmessage(s);
           dm.adoCmd.Execute;
           LogWindow.addLogEntry('executed');
         Except
@@ -4215,76 +4989,88 @@ begin
   end;
 
 // insert samples into database
+  // generate flag from the checkbox whether or not all samples should be set to CNIsotopA
+  if checkInsertAllCNIsotopA.Checked = true then InsertAllCNIsotopA:=1
+  else InsertAllCNIsotopA:=0;
+
+  // go through the sample grid and generate sqlquery string from the grid entries for each sample
   with grdPreviewSamples do
   begin // insert samples one by one at each loop
     for Arow := 1 to RowCount - 1 do
     begin
       s := 'INSERT INTO sample_t (project_nr,user_label,user_label_nr,user_desc1, user_desc2,' +
-        'sample_t.weight,user_comment,material,fraction, type, sampling_date) VALUES(' +
+        'sample_t.weight,user_comment,material,fraction, type, sampling_date, CNIsotopA) VALUES(' +
         IntToStr(project_nr);
       for Acol := 1 to 4 do  //add user_lable, user_label_nr, user_desc1, user_desc2 to the query
         if length(cells[ACol, Arow]) > 0 then s := s + ',' + #34 + ReplaceStr(cells[ACol, Arow],'?','') + #34 //remove '?' from string
         else s := s + ',' + 'NULL';
       if length(cells[5, ARow]) > 0 then
-      begin // add weight to the query
-        strWeight := cells[5, Arow];
-        if FormatSettings.DecimalSeparator = ',' then // deutsches Windows
-          if Pos('.', strWeight) > 0 then strWeight := ReplaceStr(strWeight, '.', ',');
-        w := StrToFloat(strWeight);
-        SaveDecimalSep := FormatSettings.DecimalSeparator;
-        FormatSettings.DecimalSeparator := '.';
-        s := s + ',' + FloatToStr(w);
-        FormatSettings.DecimalSeparator := SaveDecimalSep;
-      end
+          begin // add weight to the query
+            strWeight := cells[5, Arow];
+            if FormatSettings.DecimalSeparator = ',' then // deutsches Windows
+              if Pos('.', strWeight) > 0 then strWeight := ReplaceStr(strWeight, '.', ',');
+            w := StrToFloat(strWeight);
+            SaveDecimalSep := FormatSettings.DecimalSeparator;
+            FormatSettings.DecimalSeparator := '.';
+            s := s + ',' + FloatToStr(w);
+            FormatSettings.DecimalSeparator := SaveDecimalSep;
+          end
       else
       // no weight given
-      begin
-        s := s + ',' + 'NULL';
-      end;
+          begin
+            s := s + ',' + 'NULL';
+          end;
       s := s + ',' + #34 + cells[7, Arow] + #34; //user_comment
       s := s + ',' + #34 + cells[MaterialCol, Arow] + #34;  //material
       s := s + ',' + #34 + cells[FractionCol, Arow] + #34;  //fraction
       s := s + ',' + #34 + cells[TypeCol, Arow] + #34;  //type
       //add sampling date to the query
       with grdPreviewSamples do
-      begin
-        if Pos('co2atm', cells[TypeCol, Arow]) > 0 then
-          s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', StartOfTheYear(Date)) + #34
-        else
-          s := s + ',' + 'NULL';
-      end;
-      s := s + ');'; //query ends here
+          begin
+            if Pos('co2atm', cells[TypeCol, Arow]) > 0 then
+              s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', StartOfTheYear(Date)) + #34
+            else
+              s := s + ',' + 'NULL';
+          end;
+      // add CNIsotopA flag to the query
+      s := s + ', ' + inttostr(InsertAllCNIsotopA);
+      s := s + ');'; //query ends here +++++++++++++++++++++++++++++
+      // copy query string to query object
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(s);
+      // excute query
       IF dm.adoConnKTL.Connected THEN
-      Begin
-        Try
-          dm.adoCmd.Execute;
-          LogWindow.addLogEntry('executed');
-        Except
-          ShowMessage('problem opening the database');
-        End;
-      End;
+          Begin
+            Try
+              //showmessage(s);
+              dm.adoCmd.Execute;
+              LogWindow.addLogEntry('executed');
+            Except
+              ShowMessage('problem opening the database');
+            End;
+          End;
       dm.qryDB.Close;
 
+      // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       //get the sample_nr of the just inserted sample = is max(sample_nr)
       dm.qryDb.SQL.Text := 'SELECT Max(sample_nr) FROM sample_t;';
       LogWindow.addLogEntry(dm.qryDB.SQL.Text);
-          IF dm.adoConnKTL.Connected THEN
-      Begin
-        Try
-          dm.qryDb.Open;
-          LogWindow.addLogEntry('executed');
-        Except
-          ShowMessage('problem opening the database');
-        End;
-      End;
+      IF dm.adoConnKTL.Connected THEN
+          Begin
+            Try
+              dm.qryDb.Open;
+              LogWindow.addLogEntry('executed');
+            Except
+              ShowMessage('problem opening the database');
+            End;
+          End;
       sample_nr := 0;
-      // insert new prep for this samples (qryDB stores the max(sample_nr)
-      //assign new sample_nr to the variable from the database
-      if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
 
+      // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      // insert new prep for this samples (qryDB stores the max(sample_nr)
+      // assign new sample_nr to the variable from the database
+      if dm.qryDB.RecordCount > 0 then sample_nr := dm.qryDb.Fields[0].AsInteger;
       with grdPreviewSamples do
       begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
@@ -4293,53 +5079,56 @@ begin
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method, prep_end) VALUES(1,' +
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
-        end
+          end
         else
-        begin // set prep_end date since sample type doesn't need any prep steps
-          s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
-            'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
-          for PrepCol := SamplePrep1Col to SamplePrep5Col do
-          begin
-            if Length(cells[PrepCol, aRow]) > 0 then
-              s := s + ',' + #34 + cells[PrepCol, aRow] + #34
-            else
-              s := s + ',NULL';
+          begin // set prep_end date since sample type doesn't need any prep steps
+            s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
+              'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
+            for PrepCol := SamplePrep1Col to SamplePrep5Col do
+                begin
+                  if Length(cells[PrepCol, aRow]) > 0 then
+                    s := s + ',' + #34 + cells[PrepCol, aRow] + #34
+                  else
+                    s := s + ',NULL';
+                end;
           end;
-        end;
         dm.adoCmd.CommandText := s + ');';
 //        ClipBoard.SetTextBuf(PChar(s));
         LogWindow.addLogEntry(dm.adoCmd.CommandText);
         IF dm.adoConnKTL.Connected THEN
-      Begin
-        Try
-          dm.adoCmd.Execute;
-          LogWindow.addLogEntry('executed');
-        Except
-          ShowMessage('problem opening the database');
-        End;
-      End;
+            Begin
+              Try
+                dm.adoCmd.Execute;
+                LogWindow.addLogEntry('executed');
+              Except
+                ShowMessage('problem opening the database');
+              End;
+            End;
+
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // insert new target for this sample
         s := 'INSERT INTO target_t  (target_nr, prep_nr, sample_nr, graphitized)'
           + ' VALUES (1,1,' + IntTostr(sample_nr);
         with grdPreviewSamples do
-        begin
-          if Pos('graphite', cells[MaterialCol, Arow]) > 0 then
-            s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date)) + #34
-          else
-            s := s + ',' + 'NULL';
-        end;
+            begin
+              if Pos('graphite', cells[MaterialCol, Arow]) > 0 then
+                s := s + ',' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date)) + #34
+              else
+                s := s + ',' + 'NULL';
+            end;
         dm.adoCmd.CommandText := s + ');';
         s := dm.adoCmd.CommandText;
         //   ClibBoard.SetTextBuf(PChar(s));
         LogWindow.addLogEntry(dm.adoCmd.CommandText);
-      IF dm.adoConnKTL.Connected THEN
-      Begin
-        Try
-          dm.adoCmd.Execute;
-          LogWindow.addLogEntry('executed');
-        Except
-          ShowMessage('problem opening the database');
-        End;
-      End;
+        IF dm.adoConnKTL.Connected THEN
+            Begin
+              Try
+                dm.adoCmd.Execute;
+                LogWindow.addLogEntry('executed');
+              Except
+                ShowMessage('problem opening the database');
+              End;
+            End;
       end;
       // display sample number in dialog for this sample
       lbWizFinalPage.lines.Add('new sample added to database - MAMS: ' + inttostr(sample_nr));
@@ -4387,7 +5176,7 @@ begin
       Add('We confirm to have received the samples listed below.');
       Add(' ');
       Add('Best regards');
-      Add('The Team of the Klaus-Tschira C14-Lab');
+      Add('The Team of the CEZA C14-Lab');
       Add('This is an auto-generated email.');
       Add(' ');
       Add(' ');
@@ -4412,8 +5201,9 @@ begin
       First;
       while not EOF do
         begin
-        s := 'MAMS ' + Fields.Fields[0].AsString; // sample_nr
-        for i := 1 to 4 do s := s + '  ' + Fields.Fields[i].AsString;
+        s := 'MAMS ' + Fields.Fields[0].AsString + sLineBreak; // sample_nr
+        for i := 1 to 4 do s := s + '  ' + Fields.Fields[i].AsString;  //add user_label etc etc
+        s := s + sLineBreak;  // add a line break after each sample
         MailMemo.Lines.Add(s);
         Next;
         end;
@@ -4699,7 +5489,7 @@ begin
     if Key = vk_ADD then
     begin
           edtSampleNr.Value:= round(edtSampleNr.Value)+1;
-          DoSampleInfo;
+          DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
     end;
   end;
 
@@ -4709,7 +5499,7 @@ begin
     if Key = vk_SUBTRACT then
     begin
           edtSampleNr.Value:= round(edtSampleNr.Value)-1;
-          DoSampleInfo;
+          DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
     end;
   end;
 
@@ -5182,7 +5972,7 @@ begin
       TDBGrid(Sender).Canvas.Brush.Color:=clRed;
       End;      //if a certain substring is in user_label then change row color
 
-  if dm.qryPlanned.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approcahes 2 weeks
+  if dm.qryPlanned.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approaches 2 weeks
      Begin
      TDBGrid(Sender).Canvas.Font.Color := clOlive;
      End;
@@ -5795,13 +6585,72 @@ begin
   // set MAMS in sample info page
   edtSampleNr.Text:=samplenr;
   // get sample info
-  DoSampleInfo;
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 end;
 
 procedure TfrmMAMS.DBGridHomeExpressSamplesDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
   AlternateRowColors(Sender, State);
+end;
+
+procedure TfrmMAMS.DBGridSampleExchangeCellClick(Column: TColumn);
+begin
+// toggle checkboxes
+  if (Column.FieldName='return_to_sender') OR
+  (Column.FieldName='returned_to_sender') OR
+  (Column.FieldName='CNIsotopA') OR
+  (Column.FieldName='CNIsotopAMoved') then
+      begin
+      // toggle True and False
+      //Column.Grid.DataSource.DataSet.Edit;
+      //if Column.Field.AsInteger=0 then Column.Field.Value:=1;
+      //if Column.Field.AsInteger=1 then Column.Field.Value:=0;
+        //immediate post - see for yourself whether you want this
+        //Column.Grid.DataSource.DataSet.Post;
+        //Column.Grid.DataSource.DataSet.Cancel;
+      end;
+
+end;
+
+procedure TfrmMAMS.DBGridSampleExchangeDblClick(Sender: TObject);
+var
+ Column: TColumn;
+begin
+  if RadioGroupSampleExchange.ItemIndex = 0 then
+    begin
+      pgtMain.ActivePage:=tbsProjectsOfUser; //change to project info page
+      cmbSubmitterNameProject.KeyValue:=DBGridSampleExchange.DataSource.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+      cmbSubmitterNameProjectCloseUp(self); //correct user is selected now show their projects
+      grdProjects.DataSource.DataSet.Locate('project_nr',DBGridSampleExchange.DataSource.DataSet.FieldByName('project_nr').AsInteger,[loPartialKey]);//now the projects are being displayed, select the correct project
+      grdProjectsCellClick(Column); //now display the samples that belong to the project
+    end
+  else if RadioGroupSampleExchange.ItemIndex = 1 then
+    begin
+      ShowSampleInfoPage(Sender);
+    end;
+
+end;
+
+procedure TfrmMAMS.DBGridSampleExchangeDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+CONST
+  CtrlState: array[0..1] of integer = (DFCS_BUTTONCHECK, DFCS_BUTTONCHECK or DFCS_CHECKED) ;
+begin
+  //AlternateRowColors(Sender, State);
+  //TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+  if (Column.FieldName='return_to_sender') OR
+  (Column.FieldName='returned_to_sender') OR
+  (Column.FieldName='CNIsotopA') OR
+  (Column.FieldName='CNIsotopAMoved') then
+  begin
+    TDBGrid(Sender).Canvas.FillRect(Rect) ;
+    if VarIsNull(Column.Field.Value) then
+      DrawFrameControl(TDBGrid(Sender).Canvas.Handle,Rect, DFC_BUTTON, DFCS_BUTTONCHECK or DFCS_INACTIVE) {grayed}
+    else
+      DrawFrameControl(TDBGrid(Sender).Canvas.Handle,Rect, DFC_BUTTON, CtrlState[Column.Field.AsInteger]) ; {checked or unchecked}
+  end;
 end;
 
 procedure TfrmMAMS.DBLookupComboBox2Enter(Sender: TObject);
@@ -5814,11 +6663,21 @@ begin
   dm.tblUser.IndexFieldNames := 'user_nr';
 end;
 
-procedure TfrmMAMS.DoSampleInfo;
-var
-  NPreps, NTargets, SampleNr: integer;
+procedure TfrmMAMS.DBMemoTouchWeightsPrepCommentKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
 begin
-  SampleNr := round(edtSampleNr.Value);
+    btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBMemoTouchWeightsTargetCommentChange(Sender: TObject);
+begin
+    btnTouchWeightsGraphNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DoSampleInfo(SampleNr: Integer; PrepNr: Integer; TargetNr: Integer);
+var
+  NPreps, NTargets: integer;
+begin
   // get the pretreatment steps from the database and populate list
   SetupPretreatmentStepsGrid;
   //display preparation steps
@@ -5858,7 +6717,8 @@ begin
 
     // ########################
     // query the database and get all sample info
-    dm.GetSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    // dm.GetSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+    dm.GetSampleInfo(SampleNr, PrepNr, TargetNr);
 
     TFloatField(FieldByName('c14_age')).DisplayFormat := '0';
     TFloatField(FieldByName('c14_age_sig')).DisplayFormat := '0';
@@ -6147,18 +7007,22 @@ begin
     repeat // skip header
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
+      s1 := dm.ReplaceBadCharacters(s1);
     until (Pos('Project name', s1) > 0) or EOF(InF);
     if EOF(InF) then ShowMessage('Text Project name in cell A1 is missing!');
     ProjectName := ExtractWord(2, s, [';']);
     ProjectName := copy(ProjectName, 1, 30);
+    ProjectName := dm.ReplaceBadCharacters(ProjectName);
     Readln(InF, s); // skip 'required'
     Readln(InF, s);
     s1 := ExtractWord(1, s, [';']);
+    s1 := dm.ReplaceBadCharacters(s1);
     if Length(s1) > 0 then
       MANummer := StrToInt(copy(s1, 1, Length(s1))); //MA-113333
     repeat // now parse user, skip header
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
+      s1 := dm.ReplaceBadCharacters(s1);
     until Pos('first name', s1) > 0;
     while not EOF(InF) and not end_found do
     begin
@@ -6166,6 +7030,7 @@ begin
       repeat // read user data
         while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
         s1 := ExtractWord(1, s, [';']); // read 1st col
+        s1 := dm.ReplaceBadCharacters(s1);
         if pos('accounting', s1) > 0 then
         begin
           end_found := true;
@@ -6183,6 +7048,7 @@ begin
         grdPreviewUser.ColWidths[0] := 80;
         dm.tblUser.IndexFieldNames := 'last_name';
         s2 := trim(ExtractWord(2, s, [';'])); // get user data
+        s2 := dm.ReplaceBadCharacters(s2);
         s2 := copy(s2, 1, 40);
         if Length(s2) > 0 then
         begin  //write info into cells
@@ -6231,6 +7097,7 @@ begin
       repeat //skip header
         Readln(InF, s);
         s1 := ExtractWord(1, s, [';']);
+        s1 := dm.ReplaceBadCharacters(s1);
       until Pos('institution', s1) > 0;
       end_found := false;
       // read all invoice data from file
@@ -6240,11 +7107,13 @@ begin
         repeat // read user data
           while Pos(';', s) = 0 do Readln(InF, s); // skip german headers (CR seperated from English header)
           s1 := ExtractWord(1, s, [';']); // read 1st col
+          s1 := dm.ReplaceBadCharacters(s1);
           if pos('www', s1) > 0 then  //www is the last line of the invoice data
           begin
             end_found := true;
           end;
           s2 := trim(ExtractWord(2, s, [';'])); // get invoice data
+          s2 := dm.ReplaceBadCharacters(s2);
           if Length(s2) > 0 then
           begin
             if Pos('first name', s1) > 0 then grdInvoiceAddress.Cells[1, 1] := s2;
@@ -6290,6 +7159,7 @@ begin
     repeat // skip header
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
+      s1 := dm.ReplaceBadCharacters(s1);
     until Pos('required', s1) > 0;
     while not EOF(InF) do
     begin // now parse samples
@@ -6311,11 +7181,13 @@ begin
             s2 := copy(s2, 1, 100);
           if s2 <> ' ' then
           begin
+            s2 := dm.ReplaceBadCharacters(s2);
             grdPreviewSamples.Cells[i, Row] := s2;
           end;
         end;
         if not Entry_Empty then
         begin
+          s1 := dm.ReplaceBadCharacters(s1);
           grdPreviewSamples.Cells[0, Row] := IntToStr(Row);
           grdPreviewSamples.Cells[1, Row] := s1;
           inc(Row);
@@ -6490,10 +7362,12 @@ end;
 procedure TfrmMAMS.rgpTaskClick(Sender: TObject);
 begin
   if rgpTask.ItemIndex = 0 then
+  // preparation batch
   begin
     pnlPrepChoice.Visible := true;
   end
   else
+  // graphitisation batch
   begin
     pnlPrepChoice.Visible := false;
     edtBatchName.Text := '';
@@ -6765,6 +7639,214 @@ begin
 
 end;
 
+procedure TfrmMAMS.SpeedButton2Click(Sender: TObject);
+Var
+  ADOQueryListing: TADOQuery;
+  DataSrcListing: TDataSource;
+  s: string;
+begin
+  if RadioGroupSampleExchange.ItemIndex = 0 then // return to sender
+    begin
+//      s := 'SELECT sample_nr, sample_t.project_nr, project_t. project, project_t.in_date, project_t.out_date, last_name, user_label, MA_nr, AuftragsNr, return_to_sender, returned_to_sender ' +
+//           'FROM sample_t ' +
+//           'INNER JOIN project_t on sample_t.project_nr = project_t.project_nr ' +
+//           'INNER JOIN user_t ON project_t.user_nr = user_t.user_nr ' +
+//           'WHERE return_to_sender = "1" ' +
+//           'AND NOT returned_to_sender = "1" ' +
+//           'Order by sample_nr';
+        s := 'SELECT project, project_nr, last_name, user_t.user_nr, in_date, out_date, AuftragsNr, return_to_sender, returned_to_sender ' +
+             'FROM project_t ' +
+             'INNER JOIN user_t ON project_t.user_nr = user_t.user_nr ' +
+             'WHERE return_to_sender = "1" ' +
+             'AND NOT returned_to_sender = "1" ' +
+             'Order by project_nr';
+    end
+  else if RadioGroupSampleExchange.ItemIndex = 1 then //samples to CN
+    begin
+      s := 'SELECT sample_t.sample_nr, sample_t.project_nr, project_t. project, project_t.in_date, preparation_t.prep_end, project_t.out_date, last_name, user_label, MA_nr, ' +
+           'AuftragsNr, CNIsotopA, CNIsotopAMoved ' +
+           'FROM sample_t ' +
+           'INNER JOIN project_t on sample_t.project_nr = project_t.project_nr ' +
+           'INNER JOIN user_t ON project_t.user_nr = user_t.user_nr ' +
+           'INNER JOIN preparation_t ON sample_t.sample_nr = preparation_t.sample_nr ' +
+           'WHERE CNIsotopA = "1" ' +
+           'AND NOT CNIsotopAMoved = "1" ' +
+           'Order by sample_nr';;
+    end;
+
+
+  // create a query object
+  ADOQueryListing := TADOQuery.Create(Self);
+  ADOQueryListing.Connection := dm.ADOConnKTL;
+  ADOQueryListing.SQL.Add(s);
+  ADOQueryListing.Open;
+  // Create the data source.
+  DataSrcListing := TDataSource.Create(Self);
+  DataSrcListing.DataSet := ADOQueryListing;
+  DataSrcListing.Enabled := true;
+  //Finally, initialize the grid.
+  DBGridSAmpleExchange.DataSource := DataSrcListing;
+  // auto scale the column width's
+  // DBGridAutoSizeAllColumns(DBGridSAmpleExchange);
+  FixDBGridColumnsWidth(DBGridSAmpleExchange);
+
+end;
+
+procedure TfrmMAMS.DBGridAutoSizeColumn(Grid: TDBGrid; Column: integer);
+// determines the longest string in Column of the DBGrid
+// and adjusts the Column Width accordingly
+var
+  W, WMax, WTitle: integer;
+begin
+  WMax := 0;
+  // set datasource to teh first record
+  Grid.DataSource.DataSet.First;
+  // loop through all records and get longest string of all records of this column
+  while not Grid.DataSource.DataSet.EOF do
+  begin
+    W := Grid.Canvas.TextWidth(Grid.Columns[Column].Field.AsString);
+    if W > WMax then WMax := W;
+    Grid.DataSource.DataSet.Next;
+  end;
+  // Column width has to be at least the width of the title
+  WTitle := Grid.Canvas.TextWidth(Grid.Columns[Column].Title.Caption);
+  //ShowMessage(Grid.Columns[Column].Title.Caption);
+  if (WMax + 10) < WTitle then WMax := WTitle;
+  Grid.Columns[Column].Width:= WMax + 10;
+end;
+
+procedure TfrmMAMS.FixDBGridColumnsWidth(const DBGrid: TDBGrid);
+var
+i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount : integer;
+AColumn : TColumn;
+percentChange: Single;
+begin
+ DBGrid.DataSource.DataSet.DisableControls;
+ //total width of all columns before resize
+ TotWidth := 0;
+ //how to divide any extra space in the grid
+ VarWidth := 0;
+ //how many columns need to be auto-resized
+ ResizableColumnCount := 0;
+ for i := 0 to -1 + DBGrid.Columns.Count do
+   begin
+       // find max text-width of this column
+        WMax := 0;
+        DBGrid.DataSource.DataSet.First;
+        while not DBGrid.DataSource.DataSet.EOF do
+          begin
+            W := DBGrid.Canvas.TextWidth(DBGrid.Columns[i].Field.AsString);
+            if W > WMax then WMax := W;
+            DBGrid.DataSource.DataSet.Next;
+          end;
+       // find with of the column title
+          WTitle := DBGrid.Canvas.TextWidth(DBGrid.Columns[i].Title.Caption);
+       // if column title is larger than column content then use width of the column title
+          if WMax < WTitle then WMax := WTitle;
+       // set with of the column to max width of the text or title caption
+          DBGrid.Columns[i].Width:= WMax;
+      // count total with of all columns
+      TotWidth := TotWidth + DBGrid.Columns[i].Width;
+     if DBGrid.Columns[i].Field.Tag=0 then // tag could be used to define a minimu width
+     Inc(ResizableColumnCount);
+   end;
+ //add 1px for the column separator lineif dgColLines in DBGrid.Options then
+ TotWidth := TotWidth + DBGrid.Columns.Count;
+ //add indicator column width if dgIndicator in DBGrid.Options then
+ TotWidth := TotWidth + IndicatorWidth;
+ //width value "left"
+ VarWidth := DBGrid.ClientWidth - TotWidth;
+ //Equally distribute percentChange
+ //to all auto-resizable columnsif ResizableColumnCount > 0 then
+ percentChange := (TotWidth/DBGrid.ClientWidth);
+ // showmessage('percentChange = '+ floattostr(percentChange));
+ VarWidth := varWidth div ResizableColumnCount;
+ for i := 0 to -1 + DBGrid.Columns.Count do
+   begin
+   AColumn := DBGrid.Columns[i];
+   if AColumn.Field.Tag=0 then
+     begin
+     AColumn.Width := Round(AColumn.Width/percentChange);
+     //AColumn.Width := AColumn.Width + VarWidth;
+     if AColumn.Width=0 then
+     AColumn.Width := AColumn.Field.Tag;
+     end;
+   end;
+   DBGrid.DataSource.DataSet.EnableControls;
+end;
+
+procedure TfrmMAMS.JumpToEmptyWeightField;
+begin
+  // jump to the first weight that is empty
+  // check the weights in revers so that eventually the first one is in focus if all of them are empty
+  if DBedtTouchWeightsCombustion.Text = '' then
+    DBedtTouchWeightsCombustion.SetFocus;
+  if DBedtTouchWeightsAfterPrep.Text = '' then
+    DBedtTouchWeightsAfterPrep.SetFocus;
+  if DBedtTouchWeightsBeforePrep.Text = '' then
+    DBedtTouchWeightsBeforePrep.SetFocus;
+end;
+
+procedure TfrmMAMS.DBchkTouchWeightsPrepNoLeftoverClick(Sender: TObject);
+begin
+    btnTouchWeightsGraphNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBchkTouchWeightsSampleNoLeftoverClick(Sender: TObject);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsAfterPrepClick(Sender: TObject);
+begin
+  DBedtTouchWeightsAfterPrep.SelectAll;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsAfterPrepKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsBeforePrepClick(Sender: TObject);
+begin
+  DBedtTouchWeightsBeforePrep.SelectAll;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsBeforePrepKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsCombustionClick(Sender: TObject);
+begin
+  DBedtTouchWeightsCombustion.SelectAll;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsCombustionKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  btnTouchWeightsGraphNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBGridAutoSizeAllColumns(Grid: TDBGrid);
+// autosizes all columns of the DBGrid
+var
+  Column, W, WMax: integer;
+begin
+  if Grid.Columns.Count = 0 then Exit;
+  // disable controls in order to speed up screen update
+  Grid.DataSource.DataSet.DisableControls;
+  // loop through all colums and adkust width
+  for Column:=0 to (Grid.Columns.Count-1) do
+    begin
+      DBGridAutoSizeColumn(Grid, Column);
+    end;
+  // enable controls again
+  Grid.DataSource.DataSet.EnableControls;
+end;
+
 procedure TfrmMAMS.Status(const AMsg: string);
 begin
   lboxStatus.ItemIndex := lboxStatus.Items.Add(AMsg);
@@ -6897,6 +7979,43 @@ begin
   pgtMain.ActivePage := tbsAccounting;
 end;
 
+procedure TfrmMAMS.ToolButtonSampleExchangeClick(Sender: TObject);
+begin
+  pgtMain.ActivePage := SampleExchange;
+  RadioGroupSampleExchange.ItemIndex := 0;
+end;
+
+procedure TfrmMAMS.ToolButtonTouchClick(Sender: TObject);
+Var SampleNr, NPreps, NTargets: Integer;
+begin
+  pgtMain.ActivePage := tbsTouch;
+
+  edtTouchWeightsMAMS.SetFocus;
+  SampleNr := edtTouchWeightsMAMS.Value;
+  // Retrieve all SampleInfo from the DB (same function as in tab:SampleInfo)
+  NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  edtTouchWeightsPrepNr.MaxValue := NPreps;
+  //edtTouchWeightsPrepNr.Value := NPreps;
+  lblTouchWeightsNPrep.Caption := '1...' + IntToStr(NPreps);
+  edtTouchWeightsTargetNr.MaxValue := NTargets;
+  //edtTouchWeightsTargetNr.Value := NTargets;
+  lblTouchWeightsNTargets.Caption := '1...' + IntToStr(NTargets);
+  // also update the editButtons in tab:SampleInfo to reflect the same values
+  // so that DoSampleInfo can be called
+  edtSampleNr.Value := edtTouchWeightsMAMS.Value;
+  edtSamplePrepNr.Value := edtTouchWeightsPrepNr.Value;
+  edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
+  // get all sample info from DB
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  // hide some buttons
+  btnTouchWeightsPrepNeedsSaving.Visible := False;
+  btnTouchWeightsGraphNeedsSaving.Visible := False;
+  // btnTouchWeightsGraphBatchNeedsSaving.Visible := False;
+  // jump to the first weight that is empty
+  JumpToEmptyWeightField;
+end;
+
 procedure TfrmMAMS.UpdateUser(const LastName: string);
 var
   i: integer;
@@ -6966,12 +8085,14 @@ begin
   n := n + dm.GetAllWaitingForGraph;            // get all samples that are prep'd but not graphitized
   with grdWaitingForGraph do
     begin
-      Columns[0].Width := 40; // sample_nr
-      Columns[1].Width := 90; // project
-      Columns[2].Width := 90; // user_label
-      Columns[3].Width := 90;
+      Columns[0].Width := 50; // sample_nr
+      Columns[1].Width := 110; // user_label
+      Columns[2].Width := 110; // project
+      Columns[3].Width := 90; // last_name
+      Columns[4].Width := 70; // first_name
+      Columns[5].Width := 70; // date
     end;
-  lblTotal.Caption := 'Total = ' + IntToStr(n) + ' samples (' + IntToStr((n div 50) + 1) + ' weeks)'; //calculate total time in weeks till all is finished, 50 samples per week?
+  lblTotal.Caption := 'Total = ' + IntToStr(n) + ' samples (' + IntToStr((n div 80) + 1) + ' weeks)'; //calculate total time in weeks till all is finished, 80 samples per week?
 end;
 
 procedure TfrmMAMS.CheckBox1Click(Sender: TObject);
@@ -7101,7 +8222,7 @@ begin
         s := 'SELECT DISTINCT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
           'user_desc2, target_t.C14_age, target_t.C14_age_sig, target_t.dc13*1000 as dc13, ' +
           ' target_t.Cal1sMin, target_t.Cal1sMax, target_t.Cal2sMin, target_t.Cal2sMax,' +
-          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig, conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc, target_t.magazine, sample_t.material ';
+          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig, conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc, target_t.magazine, sample_t.material, sample_t.fraction ';
         if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then s := s + ',ANA';
         s := s +
           ' FROM sample_t  ' +
@@ -7212,6 +8333,7 @@ begin
       if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then Columns[19].Width := 40;
     end;
   end;
+  // FixDBGridColumnsWidth(grdSamplesOfSubmitter);
 end;
 
 procedure TfrmMAMS.AlternateRowColors(Sender: TObject; State: TGridDrawState);
@@ -7541,6 +8663,10 @@ begin
   //clear the list of samples
   ClearInsertSampleGrids;
   //pgtMain.ActivePage := tbsInsertSamples;
+  chkFreeOfCharge.Checked := false;
+  chkInsertReturnToSender.Checked := false;
+  checkInsertAllCNIsotopA.Checked := false;
+
 end;
 
 procedure TfrmMAMS.wizInputProjectEnterPage(Sender: TObject;
@@ -7981,7 +9107,7 @@ begin
    pgtMain.ActivePage:=tbsSampleInfo; //display sample info page and fill in information
    GetSampleOfUserProject;
    FillPrepList;
-   DoSampleInfo;
+   DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
    edtSampleNr.SetFocus;
 end;
 
@@ -8027,7 +9153,7 @@ begin
   edtSampleNr.Value:=(Grid as TDBGrid).DataSource.DataSet.FieldByName('sample_nr').AsInteger; // enter sample_nr into editfield of sampleInfo tab
   pgtMain.ActivePage:=tbsSampleInfo; //display sample info page and fill in information
   FillPrepList; // fill list with possible prep steps
-  DoSampleInfo; //get sample info
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text)); //get sample info
   edtSampleNr.SetFocus;
 end;
 

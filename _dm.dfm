@@ -99,6 +99,9 @@ object dm: Tdm
     TableName = 'user_t'
     Left = 389
     Top = 126
+    object tblUsersalutation: TStringField
+      FieldName = 'salutation'
+    end
     object tblUseruser_nr: TAutoIncField
       FieldName = 'user_nr'
       ReadOnly = True
@@ -174,6 +177,10 @@ object dm: Tdm
     object tblUseruser_comment: TMemoField
       FieldName = 'user_comment'
       BlobType = ftMemo
+    end
+    object tblUserlanguage: TStringField
+      FieldName = 'language'
+      Size = 2
     end
   end
   object tblProjects: TADOTable
