@@ -42,7 +42,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.Touch.Keyboard;
 
 const
-  myVersion = '1.9.7 March-10-2020';
+  myVersion = '1.9.9 July-29-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -818,6 +818,14 @@ type
     btnTouchWeightsGraphBatchNeedsSaving: TSpeedButton;
     DBMemoTouchWeightsPrepComment: TDBMemo;
     Label130: TLabel;
+    DBDateTimeTouchPrepStart: TJvDBDateTimePicker;
+    DBDateTimeTouchPrepEnd: TJvDBDateTimePicker;
+    Label131: TLabel;
+    btnTouchPrepDateStartToday: TButton;
+    btnTouchPrepDateEndToday: TButton;
+    edtPrepStart: TJvDBDateTimePicker;
+    Label132: TLabel;
+    Label133: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1154,6 +1162,12 @@ type
     procedure DBMemoTouchWeightsTargetCommentChange(Sender: TObject);
     procedure DBMemoTouchWeightsPrepCommentKeyDown(Sender: TObject;
       var Key: Word; Shift: TShiftState);
+    procedure btnTouchPrepDateStartTodayClick(Sender: TObject);
+    procedure btnTouchPrepDateEndTodayClick(Sender: TObject);
+    procedure DBDateTimeTouchPrepStartKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
 
   private
     AcceptCol: integer; //for drag drop
@@ -2745,16 +2759,17 @@ end;
 procedure TfrmMAMS.btnSaveChangesPrepClick(Sender: TObject);
 var
   sample_nr: integer;
-  s, prep_end_str, PrepStop, swstart, swend, scnRatio: string;
+  s, prep_end_str, prep_start_str, PrepStop, swstart, swend, scnRatio: string;
   s1, s2, s3, s4, s5: string;
-  dt: TDate;
+  dt, dt2: TDate;
   CN_Ratio: double;
   leftover: integer;
 begin
   sample_nr := round(edtSampleNr.Value);
+
   //dt := edtPrepEnd.DataSource.DataSet.FieldByName('prep_end').AsDateTime;  //this was done before, don't know why
+  // format prep_end Date
   dt := edtPrepEnd.Date;
-          //ShowMessage('first' +  dt );
   if dt > 1 then
   begin
     prep_end_str := #34 + FormatDateTime('YYYY-MM-DD', dt) + #34;
@@ -2765,6 +2780,18 @@ begin
     prep_end_str := 'NULL';
           //ShowMessage('else' + prep_end_str);
   end;
+
+  // format prep_start Date
+  dt2 := edtPrepStart.Date;
+  if dt2 > 1 then
+  begin
+    prep_start_str := #34 + FormatDateTime('YYYY-MM-DD', dt2) + #34;
+  end
+  else
+  begin
+    prep_start_str := 'NULL';
+  end;
+
   if chkPrepDiscarded.Checked then
     PrepStop := '1'
   else
@@ -2799,6 +2826,7 @@ begin
     'step3_method=' + s3 + ',' +
     'step4_method=' + s4 + ',' +
     'step5_method=' + s5 + ',' +
+    'prep_start=' + prep_start_str + ',' +
     'prep_end=' + prep_end_str + ',' +
     'p_no_leftover=' + inttostr(leftover) + ',' +
     'stop=' + PrepStop +
@@ -3820,6 +3848,18 @@ begin
   end;
 end;
 
+procedure TfrmMAMS.btnTouchPrepDateEndTodayClick(Sender: TObject);
+begin
+  DBDateTimeTouchPrepEnd.Date := Now;
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.btnTouchPrepDateStartTodayClick(Sender: TObject);
+begin
+  DBDateTimeTouchPrepStart.Date := Now;
+    btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
 procedure TfrmMAMS.btnTouchWeightsAddToGraphBatchClick(Sender: TObject);
 Var s, SampleNr,PrepNr,TargetNr,UserLabel,UserLabelNr: string;
         SampleNrPresent,PrepNrPresent,TargetNrPresent: string;
@@ -4095,10 +4135,11 @@ end;
 
 procedure TfrmMAMS.btnTouchWeightsPrepSaveClick(Sender: TObject);
 Var
-  weightStart, weightEnd, SampleNr, PrepNr, TargetNr, cmd: string;
+  weightStart, weightEnd, SampleNr, PrepNr, TargetNr, cmd, prep_start_str, prep_end_str: string;
+  prep_start_date, prep_end_date : TDate;
   flag: integer;
 begin
-  // get data from Textedits
+  // get data from Textedits and reformat
   //IDs
   SampleNr := edtTouchWeightsMAMS.Text;
   PrepNr := edtTouchWeightsPrepNr.Text;
@@ -4108,7 +4149,27 @@ begin
   weightStart := ReplaceStr(weightStart, ',', '.');
   weightEnd := DBedtTouchWeightsAfterPrep.Text;
   weightEnd := ReplaceStr(weightEnd, ',', '.');
+  // dates
+  prep_start_date := DBDateTimeTouchPrepStart.Date;
+  prep_end_date := DBDateTimeTouchPrepEnd.Date;
+  if prep_start_date > 1 then
+  begin
+    prep_start_str := #34 + FormatDateTime('YYYY-MM-DD', prep_start_date) + #34;
+  end
+  else
+  begin
+    prep_start_str := 'NULL';
+  end;
+  if prep_end_date > 1 then
+  begin
+    prep_end_str := #34 + FormatDateTime('YYYY-MM-DD', prep_end_date) + #34;
+  end
+  else
+  begin
+    prep_end_str := 'NULL';
+  end;
 
+  // save into the Database
   // save prep weights
     with dm.adoCmd do
     begin
@@ -4193,6 +4254,35 @@ begin
           End;
       End;
     End;
+
+      // save prep_start and prep_end dates
+    with dm.adoCmd do
+    begin
+      CommandText :=  'UPDATE preparation_t SET prep_start= :PrepStart,' +
+                      ' prep_end= :PrepEnd' +
+                      ' WHERE sample_nr=' + SampleNr +
+                      ' AND prep_nr=' + PrepNr + ';';
+
+      Parameters.ParamByName('PrepStart').DataType:=ftString;
+      Parameters.ParamByName('PrepStart').Value := prep_start_str;
+      Parameters.ParamByName('PrepEnd').DataType:=ftString;
+      Parameters.ParamByName('PrepEnd').Value := prep_end_str;
+
+      LogWindow.addLogEntry('saving prep_start and prep_end dates with query:');
+      LogWindow.addLogEntry(CommandText);
+      IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          Execute;
+          LogWindow.addLogEntry('executed');
+          btnTouchWeightsPrepNeedsSaving.Visible := False;
+        Except
+          btnTouchWeightsPrepNeedsSaving.Visible := True;
+          ShowMessage('problem opening the database');
+        End;
+      End;
+    end;
+
 end;
 
 procedure TfrmMAMS.btnTouchWeightsSaveBatchClick(Sender: TObject);
@@ -7797,6 +7887,18 @@ begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
 end;
 
+procedure TfrmMAMS.DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBDateTimeTouchPrepStartKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
 procedure TfrmMAMS.DBedtTouchWeightsAfterPrepClick(Sender: TObject);
 begin
   DBedtTouchWeightsAfterPrep.SelectAll;
@@ -7808,7 +7910,7 @@ begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
 end;
 
-procedure TfrmMAMS.DBedtTouchWeightsBeforePrepClick(Sender: TObject);
+  procedure TfrmMAMS.DBedtTouchWeightsBeforePrepClick(Sender: TObject);
 begin
   DBedtTouchWeightsBeforePrep.SelectAll;
 end;

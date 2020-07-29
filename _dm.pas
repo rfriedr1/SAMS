@@ -761,7 +761,7 @@ begin
                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
+                    ' WHERE preparation_t.prep_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
        s := SQL.Text;
   //     ClipBoard.SetTextBuf(PChar(s));
        LogWindow.addLogEntry(SQL.Text);
@@ -1727,7 +1727,7 @@ begin
         ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, MA_Nr, in_date, desired_date, out_date, priority, status,' +
         ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
         ' prep_comment, weight_start, weight_medium, weight_end,' +
-        ' prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
+        ' prep_start, prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
     s := s + ', target_t.target_nr,' +
         ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
         ' magazine, position, precis, cycle_min, cycle_max, catalyst, cathode_nr, reactor_nr,' +

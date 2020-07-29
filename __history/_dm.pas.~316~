@@ -1333,7 +1333,7 @@ begin
   end
   else begin
     s :=  '"blank%"';
-    s2:=  '"Pthalic%"';
+    s2:=  '"Phthalic%"';
   end;
 
   with qryDB do begin
