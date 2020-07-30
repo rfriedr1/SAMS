@@ -6636,7 +6636,7 @@ object frmMAMS: TfrmMAMS
             Top = 19
             Width = 286
             Height = 17
-            Caption = 'Colors: Olive = 2 weeks till deadline, red = deadline missed'
+            Caption = 'Colors: Olive = 3 weeks till deadline, red = deadline missed'
             TabOrder = 1
           end
         end
@@ -7598,6 +7598,9 @@ object frmMAMS: TfrmMAMS
           Height = 57
           Align = alTop
           TabOrder = 1
+          DesignSize = (
+            1170
+            57)
           object JvDBStatusLabel10: TJvDBStatusLabel
             Left = 109
             Top = 21
@@ -7608,11 +7611,21 @@ object frmMAMS: TfrmMAMS
             Transparent = True
           end
           object StaticText2: TStaticText
-            Left = 217
-            Top = 34
-            Width = 286
+            Left = 877
+            Top = 26
+            Width = 244
             Height = 17
-            Caption = 'Colors: Olive = 2 weeks till deadline, red = deadline missed'
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            Caption = 'Pink = 3 weeks till deadline, red = deadline missed'
+            Color = clFuchsia
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
             TabOrder = 1
           end
           object btnPendingReports: TBitBtn
@@ -8113,8 +8126,11 @@ object frmMAMS: TfrmMAMS
       end
     end
     object tbsTouch: TTabSheet
+      Hint = 'automatically multiplies the weights by factor 1000'
       Caption = 'tbsTouch'
       ImageIndex = 18
+      ParentShowHint = False
+      ShowHint = True
       object GroupBoxTouchWeightsPrep: TGroupBox
         Left = 47
         Top = 251
@@ -8124,21 +8140,21 @@ object frmMAMS: TfrmMAMS
         TabOrder = 0
         object Label124: TLabel
           Left = 17
-          Top = 170
+          Top = 203
           Width = 59
           Height = 13
           Caption = 'weight after'
         end
         object Label123: TLabel
           Left = 9
-          Top = 67
+          Top = 59
           Width = 67
           Height = 13
           Caption = 'weight before'
         end
         object btnTouchWeightsPrepNeedsSaving: TSpeedButton
           Left = 35
-          Top = 320
+          Top = 353
           Width = 41
           Height = 38
           Hint = 'value has changed, save before leaving'
@@ -8192,28 +8208,28 @@ object frmMAMS: TfrmMAMS
         end
         object Label130: TLabel
           Left = 33
-          Top = 265
+          Top = 298
           Width = 43
           Height = 13
           Caption = 'comment'
         end
         object Label131: TLabel
           Left = 26
-          Top = 27
+          Top = 104
           Width = 48
           Height = 13
           Caption = 'date start'
         end
         object Label133: TLabel
           Left = 33
-          Top = 214
+          Top = 247
           Width = 43
           Height = 13
           Caption = 'date end'
         end
         object DBchkTouchWeightsSampleNoLeftover: TDBCheckBox
           Left = 136
-          Top = 116
+          Top = 149
           Width = 129
           Height = 17
           Hint = 'no sample material left'
@@ -8234,7 +8250,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBedtTouchWeightsAfterPrep: TDBEdit
           Left = 82
-          Top = 157
+          Top = 190
           Width = 183
           Height = 38
           Hint = 'weight after prep'
@@ -8257,7 +8273,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBedtTouchWeightsBeforePrep: TDBEdit
           Left = 82
-          Top = 58
+          Top = 50
           Width = 183
           Height = 38
           Hint = 'weight before prep'
@@ -8280,7 +8296,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnTouchWeightsPrepSave: TBitBtn
           Left = 82
-          Top = 312
+          Top = 345
           Width = 183
           Height = 50
           Glyph.Data = {
@@ -8328,7 +8344,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBMemoTouchWeightsPrepComment: TDBMemo
           Left = 82
-          Top = 262
+          Top = 295
           Width = 183
           Height = 44
           CustomHint = BalloonHint1
@@ -8342,7 +8358,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBDateTimeTouchPrepStart: TJvDBDateTimePicker
           Left = 82
-          Top = 17
+          Top = 94
           Width = 183
           Height = 38
           Date = 44041.408523819440000000
@@ -8362,7 +8378,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBDateTimeTouchPrepEnd: TJvDBDateTimePicker
           Left = 82
-          Top = 201
+          Top = 234
           Width = 183
           Height = 38
           Date = 44041.409087916670000000
@@ -8382,7 +8398,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnTouchPrepDateStartToday: TButton
           Left = 267
-          Top = 16
+          Top = 93
           Width = 60
           Height = 38
           Caption = 'Today'
@@ -8391,31 +8407,40 @@ object frmMAMS: TfrmMAMS
         end
         object btnTouchPrepDateEndToday: TButton
           Left = 267
-          Top = 201
+          Top = 234
           Width = 60
           Height = 38
           Caption = 'Today'
           TabOrder = 8
           OnClick = btnTouchPrepDateEndTodayClick
         end
+        object CheckBoxTouchPrepWeightsAutoConversion: TCheckBox
+          Left = 216
+          Top = 517
+          Width = 97
+          Height = 17
+          Alignment = taLeftJustify
+          Caption = 'auto g -> mg'
+          TabOrder = 9
+        end
       end
       object GroupBoxTouchWeightsGraph: TGroupBox
         Left = 396
         Top = 251
         Width = 313
-        Height = 225
+        Height = 542
         Caption = 'Graphitization'
         TabOrder = 1
         object Label125: TLabel
           Left = 37
-          Top = 26
+          Top = 59
           Width = 32
           Height = 13
           Caption = 'weight'
         end
         object btnTouchWeightsGraphNeedsSaving: TSpeedButton
           Left = 27
-          Top = 163
+          Top = 196
           Width = 41
           Height = 38
           Hint = 'value has changed, save before leaving'
@@ -8469,14 +8494,14 @@ object frmMAMS: TfrmMAMS
         end
         object Label129: TLabel
           Left = 26
-          Top = 112
+          Top = 145
           Width = 43
           Height = 13
           Caption = 'comment'
         end
         object DBedtTouchWeightsCombustion: TDBEdit
           Left = 75
-          Top = 17
+          Top = 50
           Width = 182
           Height = 38
           Hint = 'weight of sample used for combustion'
@@ -8499,7 +8524,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBchkTouchWeightsPrepNoLeftover: TDBCheckBox
           Left = 99
-          Top = 74
+          Top = 107
           Width = 158
           Height = 20
           Hint = 'no prepared material left'
@@ -8520,7 +8545,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnTouchWeightsGraphSave: TBitBtn
           Left = 74
-          Top = 159
+          Top = 192
           Width = 183
           Height = 50
           Glyph.Data = {
@@ -8568,7 +8593,7 @@ object frmMAMS: TfrmMAMS
         end
         object DBMemoTouchWeightsTargetComment: TDBMemo
           Left = 75
-          Top = 108
+          Top = 141
           Width = 182
           Height = 45
           CustomHint = BalloonHint1
@@ -9487,7 +9512,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300EC0610001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300F40610001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10262,7 +10287,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806A80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806B00818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16512,7 +16537,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00EC0620002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00F40620002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

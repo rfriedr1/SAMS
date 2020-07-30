@@ -826,6 +826,9 @@ type
     edtPrepStart: TJvDBDateTimePicker;
     Label132: TLabel;
     Label133: TLabel;
+    CheckBoxTouchPrepWeightsAutoConversion: TCheckBox;
+    Label134: TLabel;
+    Label135: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -4036,6 +4039,9 @@ begin
       End;
     End;
 
+    // set focus to MAMS Nr
+    edtTouchWeightsMAMS.SetFocus;
+    edtTouchWeightsMAMS.SelectAll;
 end;
 
 procedure TfrmMAMS.btnTouchWeightsMAMSDownClick(Sender: TObject);
@@ -4283,6 +4289,9 @@ begin
       End;
     end;
 
+    // set focus to MAMS Nr
+    edtTouchWeightsMAMS.SetFocus;
+    edtTouchWeightsMAMS.SelectAll;
 end;
 
 procedure TfrmMAMS.btnTouchWeightsSaveBatchClick(Sender: TObject);
@@ -7908,6 +7917,22 @@ procedure TfrmMAMS.DBedtTouchWeightsAfterPrepKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
+
+  // if date_end is not set yet, set the current date as soon
+  // as the weight_end is entered
+  // if desired (bollean switch) convert the entered number from g to mg
+  if Key = vk_Return then
+    begin
+      if DBDateTimeTouchPrepEnd.IsNull then
+        begin
+          DBDateTimeTouchPrepEnd.Date := Now;
+        end;
+      // convert from g to mg
+      if CheckBoxTouchPrepWeightsAutoConversion.Checked then
+        Begin
+          (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
+        End;
+    end;
 end;
 
   procedure TfrmMAMS.DBedtTouchWeightsBeforePrepClick(Sender: TObject);
@@ -7919,6 +7944,23 @@ procedure TfrmMAMS.DBedtTouchWeightsBeforePrepKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
+
+  // if date_start is not set yet, set the current date as soon
+  // as the weight_start is entered
+  // if desired (bollean switch) convert the entered number from g to mg
+  if Key = vk_Return then
+    begin
+      if DBDateTimeTouchPrepStart.IsNull then
+        begin
+          DBDateTimeTouchPrepStart.Date := Now;
+        end;
+      // convert from g to mg
+      if CheckBoxTouchPrepWeightsAutoConversion.Checked then
+        Begin
+          (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
+        End;
+    end;
+
 end;
 
 procedure TfrmMAMS.DBedtTouchWeightsCombustionClick(Sender: TObject);
@@ -8114,8 +8156,13 @@ begin
   btnTouchWeightsPrepNeedsSaving.Visible := False;
   btnTouchWeightsGraphNeedsSaving.Visible := False;
   // btnTouchWeightsGraphBatchNeedsSaving.Visible := False;
+
   // jump to the first weight that is empty
-  JumpToEmptyWeightField;
+  //JumpToEmptyWeightField;
+
+  // set focus on MAMS number in order to be ready to scan barcode
+    edtTouchWeightsMAMS.SetFocus;
+    edtTouchWeightsMAMS.SelectAll;
 end;
 
 procedure TfrmMAMS.UpdateUser(const LastName: string);
