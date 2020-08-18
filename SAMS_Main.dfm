@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsTouch
+    ActivePage = tbsLabStats
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1281,7 +1281,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 865
           Height = 805
-          ActivePage = tbsProject
+          ActivePage = tbsCalibration
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2023,14 +2023,18 @@ object frmMAMS: TfrmMAMS
               end
             end
           end
-          object TabSheet5: TTabSheet
+          object tbsCalibration: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
-            object JvImage1: TJvImage
-              Left = 116
+            object btnOpenOxcal: TButton
+              Left = 35
               Top = 29
-              Width = 525
-              Height = 444
+              Width = 118
+              Height = 34
+              Hint = 'opens OxCal inside of the default webbrowser'
+              Caption = 'OxCal'
+              TabOrder = 0
+              OnClick = btnOpenOxcalClick
             end
           end
           object tbsProjectDocs: TTabSheet
@@ -9538,7 +9542,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300FC0610001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300080710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10304,8 +10308,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'c:\temp\report.xls'
     Visible = True
     AutoFit = False
-    Left = 776
-    Top = 32
+    Left = 752
+    Top = 40
   end
   object ImageList2: TImageList
     DrawingStyle = dsTransparent
@@ -10314,7 +10318,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806B80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806C40818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16564,7 +16568,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00FC0620002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00080720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26679,5 +26683,9 @@ object frmMAMS: TfrmMAMS
   object SavePictureDialog: TSavePictureDialog
     Left = 1125
     Top = 422
+  end
+  object DSRESTWebDispatcher1: TDSRESTWebDispatcher
+    Left = 128
+    Top = 64
   end
 end

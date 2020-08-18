@@ -1194,9 +1194,6 @@ Coordinates=2031,756,88,58
 [grdInvoiceAddress]
 Coordinates=967,212,121,58
 
-[TabSheet5]
-Coordinates=1190,1120,77,36
-
 [GroupBox34]
 Coordinates=1361,756,86,58
 
@@ -1569,9 +1566,6 @@ Coordinates=232,1814,97,36
 [grdPreviewUser]
 Coordinates=744,212,106,58
 
-[JvImage1]
-Coordinates=439,212,70,58
-
 [lbxBatch]
 Coordinates=814,10,101,124
 
@@ -1810,7 +1804,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=716,484,116,58
+Coordinates=439,212,70,58
 Visible=True
 
 [btnPrintBatch]
@@ -2151,4 +2145,7 @@ Coordinates=2118,892,86,58
 
 [gpbUserInfo]
 Coordinates=1216,688,86,58
+
+[tbsCalibration]
+Coordinates=1190,1120,77,36
 

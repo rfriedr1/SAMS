@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1281,7 +1281,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 865
           Height = 805
-          ActivePage = tbsProject
+          ActivePage = tbsCalibration
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2023,14 +2023,18 @@ object frmMAMS: TfrmMAMS
               end
             end
           end
-          object TabSheet5: TTabSheet
+          object tbsCalibration: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
-            object JvImage1: TJvImage
-              Left = 116
+            object btnOpenOxcal: TButton
+              Left = 35
               Top = 29
-              Width = 525
-              Height = 444
+              Width = 118
+              Height = 34
+              Hint = 'opens OxCal inside of the default webbrowser'
+              Caption = 'OxCal'
+              TabOrder = 0
+              OnClick = btnOpenOxcalClick
             end
           end
           object tbsProjectDocs: TTabSheet
@@ -3782,7 +3786,7 @@ object frmMAMS: TfrmMAMS
         end
         object btnSaveChangesGraph: TBitBtn
           Left = 3
-          Top = 604
+          Top = 684
           Width = 219
           Height = 40
           Hint = 'Save changes'
@@ -4312,8 +4316,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 10
         end
         object btnSaveChangesAdmin: TBitBtn
-          Left = 1
-          Top = 604
+          Left = 3
+          Top = 684
           Width = 213
           Height = 40
           Hint = 
@@ -5045,8 +5049,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 14
         end
         object btnSaveChangesUserSuppliedInfo: TBitBtn
-          Left = 4
-          Top = 604
+          Left = 3
+          Top = 684
           Width = 224
           Height = 40
           Hint = 'Save changes'
@@ -5243,8 +5247,8 @@ object frmMAMS: TfrmMAMS
           Caption = 'Prep start'
         end
         object btnSaveChangesPrep: TBitBtn
-          Left = -2
-          Top = 604
+          Left = 3
+          Top = 684
           Width = 311
           Height = 40
           Hint = 'Save changes'
@@ -8131,13 +8135,20 @@ object frmMAMS: TfrmMAMS
       ImageIndex = 18
       ParentShowHint = False
       ShowHint = True
+      DesignSize = (
+        1463
+        807)
       object GroupBoxTouchWeightsPrep: TGroupBox
         Left = 47
         Top = 251
         Width = 334
         Height = 542
+        Anchors = [akLeft, akTop, akBottom]
         Caption = 'Preparation'
         TabOrder = 0
+        DesignSize = (
+          334
+          542)
         object Label124: TLabel
           Left = 17
           Top = 203
@@ -8226,6 +8237,20 @@ object frmMAMS: TfrmMAMS
           Width = 43
           Height = 13
           Caption = 'date end'
+        end
+        object Label134: TLabel
+          Left = 271
+          Top = 59
+          Width = 14
+          Height = 13
+          Caption = 'mg'
+        end
+        object Label135: TLabel
+          Left = 271
+          Top = 203
+          Width = 14
+          Height = 13
+          Caption = 'mg'
         end
         object DBchkTouchWeightsSampleNoLeftover: TDBCheckBox
           Left = 136
@@ -8420,15 +8445,17 @@ object frmMAMS: TfrmMAMS
           Width = 97
           Height = 17
           Alignment = taLeftJustify
+          Anchors = [akLeft, akBottom]
           Caption = 'auto g -> mg'
           TabOrder = 9
         end
       end
       object GroupBoxTouchWeightsGraph: TGroupBox
-        Left = 396
+        Left = 413
         Top = 251
         Width = 313
         Height = 542
+        Anchors = [akLeft, akTop, akBottom]
         Caption = 'Graphitization'
         TabOrder = 1
         object Label125: TLabel
@@ -8608,10 +8635,11 @@ object frmMAMS: TfrmMAMS
         end
       end
       object gbxTouchWeightsGraphBatch: TGroupBox
-        Left = 716
+        Left = 732
         Top = 251
         Width = 320
         Height = 542
+        Anchors = [akLeft, akTop, akBottom]
         Caption = 'Graphitization Batch'
         TabOrder = 2
         object Label127: TLabel
@@ -9263,14 +9291,16 @@ object frmMAMS: TfrmMAMS
           OnClick = edtTouchWeightsTargetNrClick
         end
         object TouchKeyboardWeights: TTouchKeyboard
-          Left = 1039
+          Left = 1096
           Top = 1
-          Width = 423
+          Width = 366
           Height = 231
           Align = alRight
           GradientEnd = clSilver
           GradientStart = clGray
           Layout = 'NumPad'
+          ParentShowHint = False
+          ShowHint = False
         end
         object DBedtTouchWeightsUserLabelNumber: TDBEdit
           Left = 468
@@ -9512,7 +9542,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300FC0610001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300040710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10288,7 +10318,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806B80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806C00818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16538,7 +16568,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00FC0620002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00040720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26653,5 +26683,9 @@ object frmMAMS: TfrmMAMS
   object SavePictureDialog: TSavePictureDialog
     Left = 1125
     Top = 422
+  end
+  object DSRESTWebDispatcher1: TDSRESTWebDispatcher
+    Left = 128
+    Top = 64
   end
 end

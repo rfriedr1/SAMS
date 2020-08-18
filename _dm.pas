@@ -755,9 +755,9 @@ begin
 //                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
 //                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
 //                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
-     SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name,' +
-                  ' project_t.desired_date ' +
-                  ' FROM sample_t ' +
+     SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name, ' +
+                  'project_t.desired_date, (DATEDIFF(curdate(),preparation_t.prep_start)) AS Days ' +
+                  'FROM sample_t ' +
                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
@@ -1030,7 +1030,7 @@ begin
   s1 := FormatDateTime('YYYY-MM-DD', DateOf(MoStart));
   s2 := FormatDateTime('YYYY-MM-DD', DateOf(MoEnd));
 
-  // return number of received  samples
+  // return number of received samples
   if flag = 0 then
   begin
   LogWindow.addLogEntry('getting number of received samples');

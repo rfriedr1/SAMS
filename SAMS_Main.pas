@@ -39,10 +39,11 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   IdSSLOpenSSL, IdUserPassProvider, IdSASL, IdSASLUserPass, IdSASLLogin, StrUtils, frmStartScreen,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs,
-  Vcl.Touch.Keyboard;
+  Vcl.Touch.Keyboard, IPPeerServer, Vcl.OleCtrls, SHDocVw,
+  Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 July-29-2020';
+  myVersion = '1.9.9 August-18-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -173,7 +174,7 @@ type
     tbsFoto: TTabSheet;
     SampleFoto: TImage;
     Panel27: TPanel;
-    TabSheet5: TTabSheet;
+    tbsCalibration: TTabSheet;
     tbsLabPlan: TTabSheet;
     tbsLabTasks: TTabSheet;
     tbsUserReport: TTabSheet;
@@ -296,7 +297,6 @@ type
     Label53: TLabel;
     cmbProjectStatus: TDBLookupComboBox;
     memPrepComments: TDBMemo;
-    JvImage1: TJvImage;
     gbxLabStatPlanned: TGroupBox;
     btnSaveChangesAdmin: TBitBtn;
     btnSaveChangesUserSuppliedInfo: TBitBtn;
@@ -829,6 +829,8 @@ type
     CheckBoxTouchPrepWeightsAutoConversion: TCheckBox;
     Label134: TLabel;
     Label135: TLabel;
+    DSRESTWebDispatcher1: TDSRESTWebDispatcher;
+    btnOpenOxcal: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1171,6 +1173,7 @@ type
       Shift: TShiftState);
     procedure DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure btnOpenOxcalClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1859,6 +1862,14 @@ begin
   dtStartTaskDate.Date := Date;
   dtStartTaskTime.Time := TimeOf(Now);
   SetTaskStartDate;
+end;
+
+procedure TfrmMAMS.btnOpenOxcalClick(Sender: TObject);
+Var
+  url: string;
+begin
+ url := 'http://192.168.123.30:1950';
+ ShellExecute(HInstance, 'open', PChar(url), nil, nil, SW_NORMAL);
 end;
 
 procedure TfrmMAMS.btnPendingReportsClick(Sender: TObject);
@@ -7443,6 +7454,16 @@ begin
       end;
   end;
 
+    // display Calibration Graph
+  if pgtSample.ActivePage = tbsCalibration then
+  begin
+    LogWindow.addLogEntry('creating calibration graph using OxCal at: '+ServerRoot);
+    Statusbar.Panels[2].Text := 'looking for OxCalServer:' + ServerRoot;
+
+    // looking for OxCal Server
+
+  end;
+
 
 
 end;
@@ -8226,10 +8247,13 @@ begin
   n := n + dm.GetAllInPrep;                      // get all samples that are in prep
   with grdInPrep do
     begin
-      Columns[0].Width := 40; // sample_nr
-      Columns[1].Width := 90; // project
-      Columns[2].Width := 90; // user_label
-      Columns[3].Width := 90;
+      Columns[0].Width := 45; // sample_nr
+      Columns[1].Width := 100; // user_label
+      Columns[2].Width := 100; // project
+      Columns[3].Width := 90; // material
+      Columns[4].Width := 80; // lastname
+      Columns[5].Width := 90; // desired date
+      Columns[6].Width := 30; // desired date
     end;
   n := n + dm.GetAllWaitingForGraph;            // get all samples that are prep'd but not graphitized
   with grdWaitingForGraph do
