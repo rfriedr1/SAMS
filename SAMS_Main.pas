@@ -831,6 +831,10 @@ type
     Label135: TLabel;
     DSRESTWebDispatcher1: TDSRESTWebDispatcher;
     btnOpenOxcal: TButton;
+    CheckBoxTouchGraphWeightsAutoConversion: TCheckBox;
+    Panel14: TPanel;
+    Panel17: TPanel;
+    WebBrowserCalibration: TWebBrowser;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -7461,7 +7465,7 @@ begin
     Statusbar.Panels[2].Text := 'looking for OxCalServer:' + ServerRoot;
 
     // looking for OxCal Server
-
+    WebBrowserCalibration.Navigate('http://192.168.123.30:1950');
   end;
 
 
@@ -7993,6 +7997,16 @@ procedure TfrmMAMS.DBedtTouchWeightsCombustionKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsGraphNeedsSaving.Visible := True;
+
+  // if desired (bollean switch) convert the entered number from g to mg
+  if Key = vk_Return then
+    begin
+      // convert from g to mg
+      if CheckBoxTouchGraphWeightsAutoConversion.Checked then
+        Begin
+          (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
+        End;
+    end;
 end;
 
 procedure TfrmMAMS.DBGridAutoSizeAllColumns(Grid: TDBGrid);

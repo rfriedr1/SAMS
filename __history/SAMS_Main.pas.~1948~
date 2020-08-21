@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 July-29-2020';
+  myVersion = '1.9.9 August-18-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -7461,7 +7461,6 @@ begin
     Statusbar.Panels[2].Text := 'looking for OxCalServer:' + ServerRoot;
 
     // looking for OxCal Server
-    WebBrowserCalibration.Navigate('http://192.168.123.30:1950');
 
   end;
 
@@ -8248,10 +8247,13 @@ begin
   n := n + dm.GetAllInPrep;                      // get all samples that are in prep
   with grdInPrep do
     begin
-      Columns[0].Width := 40; // sample_nr
-      Columns[1].Width := 90; // project
-      Columns[2].Width := 90; // user_label
-      Columns[3].Width := 90;
+      Columns[0].Width := 45; // sample_nr
+      Columns[1].Width := 100; // user_label
+      Columns[2].Width := 100; // project
+      Columns[3].Width := 90; // material
+      Columns[4].Width := 80; // lastname
+      Columns[5].Width := 90; // desired date
+      Columns[6].Width := 30; // desired date
     end;
   n := n + dm.GetAllWaitingForGraph;            // get all samples that are prep'd but not graphitized
   with grdWaitingForGraph do
