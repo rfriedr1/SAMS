@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 August-18-2020';
+  myVersion = '1.9.9 Built: Sept-1-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -835,6 +835,7 @@ type
     Panel14: TPanel;
     Panel17: TPanel;
     WebBrowserCalibration: TWebBrowser;
+    btnSampleInfoShowAllSamplesOfProject: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1178,6 +1179,7 @@ type
     procedure DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnOpenOxcalClick(Sender: TObject);
+    procedure btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -2525,6 +2527,23 @@ begin
         DBEdit20.Text + #13+#10 +
         DBEdit21.Text + ' ' + DBEdit22.Text + #13+#10;
   Clipboard.AsText := s;
+end;
+
+procedure TfrmMAMS.btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
+Var
+    Column: TColumn; //this is used because the 'OnClick' method needs this parameter
+begin
+// switch to tab "User Projects" and display all samples that belong that Project
+
+  // switch tab to user projects
+  pgtMain.ActivePage:=tbsProjectsOfUser;
+  // get project number and select the correct project
+  cmbSubmitterNameProject.KeyValue:=dm.dsSampleInfo.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+  cmbSubmitterNameProjectCloseUp(self); //correct user is selected, now show their projects
+  grdProjects.DataSource.DataSet.Locate('project_nr',dm.dsSampleInfo.DataSet.FieldByName('project_nr').AsInteger,[loPartialKey]);//now the projects are being displayed, select the correct project
+  grdProjectsCellClick(Column); //now display the samples that belong to the project
+
+
 end;
 
 procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
@@ -6792,15 +6811,11 @@ procedure TfrmMAMS.DoSampleInfo(SampleNr: Integer; PrepNr: Integer; TargetNr: In
 var
   NPreps, NTargets: integer;
 begin
-  // get the pretreatment steps from the database and populate list
-  SetupPretreatmentStepsGrid;
-  //display preparation steps
-  dm.QueryPrepStepsBySampleNr(SampleNr);
-  //get and display number of sample preps
+  //get and display number of available sample preps
   NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
   edtSamplePrepNr.MaxValue := NPreps;
   if NPreps > 1 then
-  begin     // display number of preps
+  begin     // display number of preps in a static label
     lbPrepNr.Caption := '1...' + IntToStr(NPreps);
     edtSamplePrepNr.Enabled := true;
     edtSamplePrepNr.MaxValue := NPreps;
@@ -6808,6 +6823,10 @@ begin
   else
   begin
     lbPrepNr.Caption := '';
+    // if there is only one prep, set the prep number to one.
+    // This sometimes necessary when swithcing from a sample with many preps
+    // to a sample with one prep
+    PrepNr := NPreps;
   end;
   // diplay number of available targets for the selected sampleNr and PrepNr.
   NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, round(edtSamplePrepNr.Value));
@@ -6820,7 +6839,16 @@ begin
   else
   begin
     lbTargetNr.Caption := '';
+    // if there is only one target, set the target number to one.
+    // This sometimes necessary when switching from a sample with many taregts
+    // to a sample with one target
+    TargetNr := Ntargets;
   end;
+
+  // get the pretreatment steps from the database and populate list
+  SetupPretreatmentStepsGrid;
+  //display preparation steps
+  dm.QueryPrepStepsBySampleNr(SampleNr, PrepNr);
 
   // display the sample info
   with dm.qrySampleInfo do
@@ -7440,9 +7468,9 @@ begin
           End;
 
         // load first image
-        ImageFilesListBox.Selected[1]:= True;
         if FileExists(fname) then
           begin
+            ImageFilesListBox.ItemIndex:= 0; //select first image in the list
             SampleFoto.Picture.LoadFromFile(fname);
             LogWindow.addLogEntry('Image found: '+fname);
           end
@@ -9232,7 +9260,7 @@ begin
   dm.QuerySampleBySampleNr(sample_nr);
   SetupPretreatmentStepsGrid;
   //Query the Prep Information by SampleNr
-  dm.QueryPrepStepsBySampleNr(sample_nr);
+  dm.QueryPrepStepsBySampleNr(sample_nr, 1); // use prep_nr = 1
   with grdShowPrepSteps do
   begin
     RowHeights[8] := 3;

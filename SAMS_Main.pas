@@ -835,6 +835,7 @@ type
     Panel14: TPanel;
     Panel17: TPanel;
     WebBrowserCalibration: TWebBrowser;
+    btnSampleInfoShowAllSamplesOfProject: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1178,6 +1179,7 @@ type
     procedure DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnOpenOxcalClick(Sender: TObject);
+    procedure btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -2525,6 +2527,24 @@ begin
         DBEdit20.Text + #13+#10 +
         DBEdit21.Text + ' ' + DBEdit22.Text + #13+#10;
   Clipboard.AsText := s;
+end;
+
+procedure TfrmMAMS.btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
+Var
+    Column: TColumn; //this is used because the 'OnClick' method needs this parameter
+begin
+// switch to tab "User Projects" and display all samples that belong that Project
+
+  // switch tab to user projects
+  pgtMain.ActivePage:=tbsProjectsOfUser;
+  // get project number and select the correct project
+  cmbSubmitterNameProject.KeyValue:=dm.dsSampleInfo.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+  cmbSubmitterNameProjectCloseUp(self); //correct user is selected, now show their projects
+  grdProjects.DataSource.DataSet.Locate('project_nr',dm.dsSampleInfo.DataSet.FieldByName('project_nr').AsInteger,[loPartialKey]);//now the projects are being displayed, select the correct project
+  grdProjectsCellClick(Column); //now display the samples that belong to the project
+  grdSamplesOfProject.DataSource.DataSet.Locate('sample_nr',dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsInteger, [loPartialKey]); // select the correct sample_nr
+  grdSamplesOfProject.OnCellClick(Column);
+
 end;
 
 procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);

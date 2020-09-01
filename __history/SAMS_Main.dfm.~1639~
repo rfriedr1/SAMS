@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsTouch
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1281,7 +1281,7 @@ object frmMAMS: TfrmMAMS
           Top = 1
           Width = 865
           Height = 805
-          ActivePage = tbsCalibration
+          ActivePage = tbsFoto
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2035,6 +2035,19 @@ object frmMAMS: TfrmMAMS
               Caption = 'OxCal'
               TabOrder = 0
               OnClick = btnOpenOxcalClick
+            end
+            object WebBrowserCalibration: TWebBrowser
+              Left = 35
+              Top = 176
+              Width = 582
+              Height = 385
+              TabOrder = 1
+              ControlData = {
+                4C000000273C0000CA2700000000000000000000000000000000000000000000
+                000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                2B2E126208000000000000004C0000000114020000000000C000000000000046
+                8000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000100000000000000000000000000000000000000}
             end
           end
           object tbsProjectDocs: TTabSheet
@@ -4449,6 +4462,20 @@ object frmMAMS: TfrmMAMS
           ValueChecked = '1'
           ValueUnchecked = '0'
           OnClick = dbchkFreeOfCharge2Click
+        end
+        object btnSampleInfoShowAllSamplesOfProject: TButton
+          Left = 3
+          Top = 577
+          Width = 208
+          Height = 25
+          Hint = 'go to tab "user projects" and show all samples of the project'
+          BiDiMode = bdLeftToRight
+          Caption = 'show all samples'
+          ParentBiDiMode = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 16
+          OnClick = btnSampleInfoShowAllSamplesOfProjectClick
         end
       end
       object gbxAnaResults: TGroupBox
@@ -8974,11 +9001,10 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 538
+          Height = 510
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
-          ExplicitHeight = 542
           object Label127: TLabel
             Left = 40
             Top = 25
@@ -9161,14 +9187,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 538
+          Height = 510
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
-          ExplicitHeight = 542
           DesignSize = (
             313
-            538)
+            510)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9346,14 +9371,13 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 513
+            Top = 485
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
-            ExplicitTop = 517
           end
         end
       end
@@ -9582,7 +9606,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C0101100013000C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300280710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10359,7 +10383,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806C80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806E40818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16609,7 +16633,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F000C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00280720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

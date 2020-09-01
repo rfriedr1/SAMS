@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 August-18-2020';
+  myVersion = '1.9.9 Built: Sept-1-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -6792,11 +6792,6 @@ procedure TfrmMAMS.DoSampleInfo(SampleNr: Integer; PrepNr: Integer; TargetNr: In
 var
   NPreps, NTargets: integer;
 begin
-  // get the pretreatment steps from the database and populate list
-  SetupPretreatmentStepsGrid;
-  //display preparation steps
-  dm.QueryPrepStepsBySampleNr(SampleNr);
-
   //get and display number of available sample preps
   NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
   edtSamplePrepNr.MaxValue := NPreps;
@@ -6830,6 +6825,11 @@ begin
     // to a sample with one target
     TargetNr := Ntargets;
   end;
+
+  // get the pretreatment steps from the database and populate list
+  SetupPretreatmentStepsGrid;
+  //display preparation steps
+  dm.QueryPrepStepsBySampleNr(SampleNr, PrepNr);
 
   // display the sample info
   with dm.qrySampleInfo do
@@ -9241,7 +9241,7 @@ begin
   dm.QuerySampleBySampleNr(sample_nr);
   SetupPretreatmentStepsGrid;
   //Query the Prep Information by SampleNr
-  dm.QueryPrepStepsBySampleNr(sample_nr);
+  dm.QueryPrepStepsBySampleNr(sample_nr, 1); // use prep_nr = 1
   with grdShowPrepSteps do
   begin
     RowHeights[8] := 3;
