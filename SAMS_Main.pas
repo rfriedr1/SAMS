@@ -7439,9 +7439,10 @@ begin
              ImageFilesListBox.Items.Add(FilesList[i]);
           End;
 
-        // load main image
+        // load first image
         if FileExists(fname) then
           begin
+            ImageFilesListBox.ItemIndex:= 0; //select first image in the list
             SampleFoto.Picture.LoadFromFile(fname);
             LogWindow.addLogEntry('Image found: '+fname);
           end

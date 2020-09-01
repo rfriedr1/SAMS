@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 July-29-2020';
+  myVersion = '1.9.9 August-18-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -831,6 +831,10 @@ type
     Label135: TLabel;
     DSRESTWebDispatcher1: TDSRESTWebDispatcher;
     btnOpenOxcal: TButton;
+    CheckBoxTouchGraphWeightsAutoConversion: TCheckBox;
+    Panel14: TPanel;
+    Panel17: TPanel;
+    WebBrowserCalibration: TWebBrowser;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -7435,7 +7439,8 @@ begin
              ImageFilesListBox.Items.Add(FilesList[i]);
           End;
 
-        // load main image
+        // load first image
+        ImageFilesListBox.Selected[0];
         if FileExists(fname) then
           begin
             SampleFoto.Picture.LoadFromFile(fname);
@@ -7461,7 +7466,7 @@ begin
     Statusbar.Panels[2].Text := 'looking for OxCalServer:' + ServerRoot;
 
     // looking for OxCal Server
-
+    WebBrowserCalibration.Navigate('http://192.168.123.30:1950');
   end;
 
 
@@ -7993,6 +7998,16 @@ procedure TfrmMAMS.DBedtTouchWeightsCombustionKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsGraphNeedsSaving.Visible := True;
+
+  // if desired (bollean switch) convert the entered number from g to mg
+  if Key = vk_Return then
+    begin
+      // convert from g to mg
+      if CheckBoxTouchGraphWeightsAutoConversion.Checked then
+        Begin
+          (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
+        End;
+    end;
 end;
 
 procedure TfrmMAMS.DBGridAutoSizeAllColumns(Grid: TDBGrid);
@@ -8251,7 +8266,7 @@ begin
       Columns[1].Width := 100; // user_label
       Columns[2].Width := 100; // project
       Columns[3].Width := 90; // material
-      Columns[4].Width := 90; // lastname
+      Columns[4].Width := 80; // lastname
       Columns[5].Width := 90; // desired date
       Columns[6].Width := 30; // desired date
     end;
