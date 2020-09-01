@@ -834,6 +834,7 @@ type
     CheckBoxTouchGraphWeightsAutoConversion: TCheckBox;
     Panel14: TPanel;
     Panel17: TPanel;
+    WebBrowserCalibration: TWebBrowser;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -7438,9 +7439,10 @@ begin
              ImageFilesListBox.Items.Add(FilesList[i]);
           End;
 
-        // load main image
+        // load first image
         if FileExists(fname) then
           begin
+            ImageFilesListBox.ItemIndex:= 0; //select first image in the list
             SampleFoto.Picture.LoadFromFile(fname);
             LogWindow.addLogEntry('Image found: '+fname);
           end
@@ -7464,7 +7466,7 @@ begin
     Statusbar.Panels[2].Text := 'looking for OxCalServer:' + ServerRoot;
 
     // looking for OxCal Server
-
+    WebBrowserCalibration.Navigate('http://192.168.123.30:1950');
   end;
 
 

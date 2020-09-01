@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -828,9 +828,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select material'
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 601
             Top = 70
@@ -940,9 +937,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object pnlSetType: TPanel
             Left = 1189
             Top = 70
@@ -985,9 +979,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select pretreatment'
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
-          ExplicitLeft = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object lbxDefinePrepSteps: TListBox
             Left = 1125
             Top = 70
@@ -1988,10 +1979,6 @@ object frmMAMS: TfrmMAMS
           object tbsFoto: TTabSheet
             Caption = 'Sample foto'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object SampleFoto: TImage
               Left = 0
               Top = 108
@@ -2038,13 +2025,14 @@ object frmMAMS: TfrmMAMS
               object StaticText4: TStaticText
                 Left = 1
                 Top = 1
-                Width = 564
+                Width = 855
                 Height = 23
                 Align = alTop
                 Caption = 
                   'connect to the network drive (\\Riesling\KTA) if the foto is not' +
                   ' being displayed '
                 TabOrder = 0
+                ExplicitWidth = 564
               end
               object ImageFilesListBox: TListBox
                 Left = 1
@@ -9115,11 +9103,10 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 518
+          Height = 510
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
-          ExplicitHeight = 526
           object Label127: TLabel
             Left = 40
             Top = 25
@@ -9302,14 +9289,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 518
+          Height = 510
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
-          ExplicitHeight = 526
           DesignSize = (
             313
-            518)
+            510)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9487,14 +9473,14 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 493
+            Top = 485
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
-            ExplicitTop = 501
+            ExplicitTop = 489
           end
         end
       end
@@ -9723,7 +9709,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300200710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300280710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10500,7 +10486,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806DC0818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806E40818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16750,7 +16736,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00200720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00280720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

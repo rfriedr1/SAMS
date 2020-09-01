@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 August-18-2020';
+  myVersion = '1.9.9 Built: Sept-1-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -6792,15 +6792,11 @@ procedure TfrmMAMS.DoSampleInfo(SampleNr: Integer; PrepNr: Integer; TargetNr: In
 var
   NPreps, NTargets: integer;
 begin
-  // get the pretreatment steps from the database and populate list
-  SetupPretreatmentStepsGrid;
-  //display preparation steps
-  dm.QueryPrepStepsBySampleNr(SampleNr);
-  //get and display number of sample preps
+  //get and display number of available sample preps
   NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
   edtSamplePrepNr.MaxValue := NPreps;
   if NPreps > 1 then
-  begin     // display number of preps
+  begin     // display number of preps in a static label
     lbPrepNr.Caption := '1...' + IntToStr(NPreps);
     edtSamplePrepNr.Enabled := true;
     edtSamplePrepNr.MaxValue := NPreps;
@@ -6808,6 +6804,10 @@ begin
   else
   begin
     lbPrepNr.Caption := '';
+    // if there is only one prep, set the prep number to one.
+    // This sometimes necessary when swithcing from a sample with many preps
+    // to a sample with one prep
+    PrepNr := NPreps;
   end;
   // diplay number of available targets for the selected sampleNr and PrepNr.
   NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, round(edtSamplePrepNr.Value));
@@ -6820,7 +6820,16 @@ begin
   else
   begin
     lbTargetNr.Caption := '';
+    // if there is only one target, set the target number to one.
+    // This sometimes necessary when switching from a sample with many taregts
+    // to a sample with one target
+    TargetNr := Ntargets;
   end;
+
+  // get the pretreatment steps from the database and populate list
+  SetupPretreatmentStepsGrid;
+  //display preparation steps
+  dm.QueryPrepStepsBySampleNr(SampleNr, PrepNr);
 
   // display the sample info
   with dm.qrySampleInfo do
@@ -9232,7 +9241,7 @@ begin
   dm.QuerySampleBySampleNr(sample_nr);
   SetupPretreatmentStepsGrid;
   //Query the Prep Information by SampleNr
-  dm.QueryPrepStepsBySampleNr(sample_nr);
+  dm.QueryPrepStepsBySampleNr(sample_nr, 1); // use prep_nr = 1
   with grdShowPrepSteps do
   begin
     RowHeights[8] := 3;

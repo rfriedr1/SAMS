@@ -209,7 +209,7 @@ type
     procedure GetWeights(SampleNr, PrepNr : integer);
     procedure GetGraphWeight(SampleNr, PrepNr, TargetNr : integer);
     function QueryInvoiceUser(const LastName, Institute, Organisation : string) : integer;
-    procedure QueryPrepStepsBySampleNr(sample_nr : integer);
+    procedure QueryPrepStepsBySampleNr(sample_nr, prep_nr : integer);
     procedure QueryTargetInfoBySampleNr(sample_nr: Integer);
     procedure QueryProject(const ProjectName : string);
     procedure QuerySampleBySampleNr(sample_nr : integer);
@@ -2070,12 +2070,13 @@ begin
   end;
 end;
 
-procedure Tdm.QueryPrepStepsBySampleNr(sample_nr: integer);
+procedure Tdm.QueryPrepStepsBySampleNr(sample_nr, prep_nr: integer);
 begin
   with qryPrepSteps do begin
     Close;
-    SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method, ' +
-      'step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) + ';';
+    SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method,' +
+      ' step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) +
+      ' AND prep_nr=' + IntToStr(prep_nr) + ';';
     LogWindow.addLogEntry(SQL.Text);
     IF dm.adoConnKTL.Connected THEN
                 Begin
