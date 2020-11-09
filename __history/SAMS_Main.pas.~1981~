@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 August-18-2020';
+  myVersion = '1.9.9 Built: Sept-1-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -835,6 +835,9 @@ type
     Panel14: TPanel;
     Panel17: TPanel;
     WebBrowserCalibration: TWebBrowser;
+    btnSampleInfoShowAllSamplesOfProject: TButton;
+    lblYTouchYieldLabel: TLabel;
+    lblTouchYieldValue: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1178,6 +1181,7 @@ type
     procedure DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnOpenOxcalClick(Sender: TObject);
+    procedure btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -2525,6 +2529,24 @@ begin
         DBEdit20.Text + #13+#10 +
         DBEdit21.Text + ' ' + DBEdit22.Text + #13+#10;
   Clipboard.AsText := s;
+end;
+
+procedure TfrmMAMS.btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
+Var
+    Column: TColumn; //this is used because the 'OnClick' method needs this parameter
+begin
+// switch to tab "User Projects" and display all samples that belong that Project
+
+  // switch tab to user projects
+  pgtMain.ActivePage:=tbsProjectsOfUser;
+  // get project number and select the correct project
+  cmbSubmitterNameProject.KeyValue:=dm.dsSampleInfo.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+  cmbSubmitterNameProjectCloseUp(self); //correct user is selected, now show their projects
+  grdProjects.DataSource.DataSet.Locate('project_nr',dm.dsSampleInfo.DataSet.FieldByName('project_nr').AsInteger,[loPartialKey]);//now the projects are being displayed, select the correct project
+  grdProjectsCellClick(Column); //now display the samples that belong to the project
+  grdSamplesOfProject.DataSource.DataSet.Locate('sample_nr',dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsInteger, [loPartialKey]); // select the correct sample_nr
+  grdSamplesOfProject.OnCellClick(Column);
+
 end;
 
 procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
@@ -8419,7 +8441,9 @@ begin
         s := 'SELECT DISTINCT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
           'user_desc2, target_t.C14_age, target_t.C14_age_sig, target_t.dc13*1000 as dc13, ' +
           ' target_t.Cal1sMin, target_t.Cal1sMax, target_t.Cal2sMin, target_t.Cal2sMax,' +
-          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig, conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc, target_t.magazine, sample_t.material, sample_t.fraction ';
+          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig,' +
+          ' conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc,' +
+          ' target_t.magazine, sample_t.material, sample_t.fraction, preparation_t.prep_nr, target_t.target_nr ';
         if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then s := s + ',ANA';
         s := s +
           ' FROM sample_t  ' +
@@ -8526,6 +8550,10 @@ begin
         Columns[16].Width := 40;
         Columns[17].Width := 40;
         Columns[18].Width := 80;
+        Columns[19].Width := 60; // material
+        Columns[20].Width := 60; // fraction
+        Columns[21].Width := 40; // prep_nr
+        Columns[22].Width := 50; // target_nr
       end;
       if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then Columns[19].Width := 40;
     end;

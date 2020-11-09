@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 Built: Sept-1-2020';
+  myVersion = '1.9.9 Built: Nov-09-2020';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -836,6 +836,8 @@ type
     Panel17: TPanel;
     WebBrowserCalibration: TWebBrowser;
     btnSampleInfoShowAllSamplesOfProject: TButton;
+    lblYTouchYieldLabel: TLabel;
+    lblTouchYieldValue: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1180,6 +1182,8 @@ type
       Shift: TShiftState);
     procedure btnOpenOxcalClick(Sender: TObject);
     procedure btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
+    procedure DBedtTouchWeightsBeforePrepChange(Sender: TObject);
+    procedure DBedtTouchWeightsAfterPrepChange(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1265,8 +1269,10 @@ type
     /// <summary>Alternates the row colors in Listboxes</summary>
     /// <comments></comments>
     procedure AlternateRowColors(Sender: TObject; State: TGridDrawState);
-    /// <summary>Calculates the yield from mass before and after prep</summary>
+    /// <summary>Calculates the yield from mass before and after prep out of the SampleInfo tab</summary>
     procedure CalculateYield;
+    /// <summary>Calculates the yield from mass before and after prep out of the touch tab</summary>
+    procedure CalculateYieldTouch;
     /// <summary>keeps the button of the toolbar pressed</summary>
     procedure ToolBarButtonsState(Sender: TObject);
     procedure DBGridAutoSizeColumn(Grid: TDBGrid; Column: integer);
@@ -7963,6 +7969,11 @@ begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
 end;
 
+procedure TfrmMAMS.DBedtTouchWeightsAfterPrepChange(Sender: TObject);
+begin
+  CalculateYieldTouch; // calculate the yield from the weights
+end;
+
 procedure TfrmMAMS.DBedtTouchWeightsAfterPrepClick(Sender: TObject);
 begin
   DBedtTouchWeightsAfterPrep.SelectAll;
@@ -7990,7 +8001,12 @@ begin
     end;
 end;
 
-  procedure TfrmMAMS.DBedtTouchWeightsBeforePrepClick(Sender: TObject);
+  procedure TfrmMAMS.DBedtTouchWeightsBeforePrepChange(Sender: TObject);
+begin
+  CalculateYieldTouch; // calculate the yield from the weights
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsBeforePrepClick(Sender: TObject);
 begin
   DBedtTouchWeightsBeforePrep.SelectAll;
 end;
@@ -8228,6 +8244,9 @@ begin
   // set focus on MAMS number in order to be ready to scan barcode
     edtTouchWeightsMAMS.SetFocus;
     edtTouchWeightsMAMS.SelectAll;
+
+  // calculate the yield from the weights
+    CalculateYieldTouch;
 end;
 
 procedure TfrmMAMS.UpdateUser(const LastName: string);
@@ -8439,7 +8458,9 @@ begin
         s := 'SELECT DISTINCT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
           'user_desc2, target_t.C14_age, target_t.C14_age_sig, target_t.dc13*1000 as dc13, ' +
           ' target_t.Cal1sMin, target_t.Cal1sMax, target_t.Cal2sMin, target_t.Cal2sMax,' +
-          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig, conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc, target_t.magazine, sample_t.material, sample_t.fraction ';
+          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig,' +
+          ' conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc,' +
+          ' target_t.magazine, sample_t.material, sample_t.fraction, preparation_t.prep_nr, target_t.target_nr ';
         if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then s := s + ',ANA';
         s := s +
           ' FROM sample_t  ' +
@@ -8546,6 +8567,10 @@ begin
         Columns[16].Width := 40;
         Columns[17].Width := 40;
         Columns[18].Width := 80;
+        Columns[19].Width := 60; // material
+        Columns[20].Width := 60; // fraction
+        Columns[21].Width := 40; // prep_nr
+        Columns[22].Width := 50; // target_nr
       end;
       if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then Columns[19].Width := 40;
     end;
@@ -8585,6 +8610,7 @@ begin
 end;
 
 procedure TfrmMAMS.CalculateYield;
+// calulcates the yield from the values used in the SampleInfo Tab
 VAR yield: double;
 begin
   if not (edtWeightEnd.Text = '') AND not (edtweightstart.Text = '') then
@@ -8596,6 +8622,22 @@ begin
   //display yield in percent from weights and round
   begin
     YieldLabel.Caption := '';
+  end;
+end;
+
+procedure TfrmMAMS.CalculateYieldTouch;
+// calulcates the yield from the values used in the touch tab
+VAR yield: double;
+begin
+  if not (DBedtTouchWeightsAfterPrep.Text = '') AND not (DBedtTouchWeightsBeforePrep.Text = '') then
+  begin
+    yield := SimpleRoundTo(100 * (strtofloat(DBedtTouchWeightsAfterPrep.Text) / strtofloat(DBedtTouchWeightsBeforePrep.text)),-2);
+    lblTouchYieldValue.Caption := floattostr(yield) + ' %';
+  end
+  else
+  //display yield in percent from weights and round
+  begin
+    YieldLabel.Caption := 'no value';
   end;
 end;
 

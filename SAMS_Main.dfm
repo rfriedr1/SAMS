@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsTouch
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -8700,7 +8700,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnTouchWeightsPrepNeedsSaving: TSpeedButton
             Left = 35
-            Top = 353
+            Top = 401
             Width = 41
             Height = 38
             Hint = 'value has changed, save before leaving'
@@ -8754,7 +8754,7 @@ object frmMAMS: TfrmMAMS
           end
           object Label130: TLabel
             Left = 33
-            Top = 298
+            Top = 346
             Width = 43
             Height = 13
             Caption = 'comment'
@@ -8786,6 +8786,27 @@ object frmMAMS: TfrmMAMS
             Width = 14
             Height = 13
             Caption = 'mg'
+          end
+          object lblYTouchYieldLabel: TLabel
+            Left = 170
+            Top = 282
+            Width = 26
+            Height = 13
+            Caption = 'Yield:'
+          end
+          object lblTouchYieldValue: TLabel
+            Left = 202
+            Top = 278
+            Width = 59
+            Height = 18
+            Alignment = taRightJustify
+            Caption = 'Yield'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = 18
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
           end
           object DBchkTouchWeightsSampleNoLeftover: TDBCheckBox
             Left = 136
@@ -8828,6 +8849,7 @@ object frmMAMS: TfrmMAMS
             ParentShowHint = False
             ShowHint = False
             TabOrder = 1
+            OnChange = DBedtTouchWeightsAfterPrepChange
             OnClick = DBedtTouchWeightsAfterPrepClick
             OnKeyDown = DBedtTouchWeightsAfterPrepKeyDown
           end
@@ -8851,12 +8873,13 @@ object frmMAMS: TfrmMAMS
             ParentShowHint = False
             ShowHint = False
             TabOrder = 2
+            OnChange = DBedtTouchWeightsBeforePrepChange
             OnClick = DBedtTouchWeightsBeforePrepClick
             OnKeyDown = DBedtTouchWeightsBeforePrepKeyDown
           end
           object btnTouchWeightsPrepSave: TBitBtn
             Left = 82
-            Top = 345
+            Top = 393
             Width = 183
             Height = 50
             Glyph.Data = {
@@ -8904,7 +8927,7 @@ object frmMAMS: TfrmMAMS
           end
           object DBMemoTouchWeightsPrepComment: TDBMemo
             Left = 82
-            Top = 295
+            Top = 343
             Width = 183
             Height = 44
             CustomHint = BalloonHint1
@@ -9001,7 +9024,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 510
+          Height = 506
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9187,13 +9210,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 510
+          Height = 506
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            510)
+            506)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9371,7 +9394,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 485
+            Top = 481
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9606,7 +9629,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300280710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013002C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10383,7 +10406,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806E40818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806E80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16633,7 +16656,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00280720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F002C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -2530,9 +2530,20 @@ begin
 end;
 
 procedure TfrmMAMS.btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
+Var
+    Column: TColumn; //this is used because the 'OnClick' method needs this parameter
 begin
-
 // switch to tab "User Projects" and display all samples that belong that Project
+
+  // switch tab to user projects
+  pgtMain.ActivePage:=tbsProjectsOfUser;
+  // get project number and select the correct project
+  cmbSubmitterNameProject.KeyValue:=dm.dsSampleInfo.DataSet.FieldByName('user_nr').AsInteger; // get user_nr from dataset and set dropdown list to correct user_nr
+  cmbSubmitterNameProjectCloseUp(self); //correct user is selected, now show their projects
+  grdProjects.DataSource.DataSet.Locate('project_nr',dm.dsSampleInfo.DataSet.FieldByName('project_nr').AsInteger,[loPartialKey]);//now the projects are being displayed, select the correct project
+  grdProjectsCellClick(Column); //now display the samples that belong to the project
+  grdSamplesOfProject.DataSource.DataSet.Locate('sample_nr',dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsInteger, [loPartialKey]); // select the correct sample_nr
+  grdSamplesOfProject.OnCellClick(Column);
 
 end;
 
@@ -8428,7 +8439,9 @@ begin
         s := 'SELECT DISTINCT sample_t.sample_nr, user_label,user_label_nr,user_desc1,' +
           'user_desc2, target_t.C14_age, target_t.C14_age_sig, target_t.dc13*1000 as dc13, ' +
           ' target_t.Cal1sMin, target_t.Cal1sMax, target_t.Cal2sMin, target_t.Cal2sMax,' +
-          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig, conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc, target_t.magazine, sample_t.material, sample_t.fraction ';
+          ' project_t.project,target_t.fm AS av_fm, target_t.fm_sig AS av_fm_sig,' +
+          ' conc_c/conc_n*14/12 as cn_ratio, conc_c, weight_end/weight_start*100 AS collpc,' +
+          ' target_t.magazine, sample_t.material, sample_t.fraction, preparation_t.prep_nr, target_t.target_nr ';
         if (radgrpStatus.ItemIndex = 0) and chkLECurrent.Checked then s := s + ',ANA';
         s := s +
           ' FROM sample_t  ' +
