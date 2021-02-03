@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsTouch
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -1975,6 +1975,13 @@ object frmMAMS: TfrmMAMS
               Align = alTop
               ExplicitTop = 161
               ExplicitWidth = 528
+            end
+            object lblLoadingFoto: TLabel
+              Left = 368
+              Top = 408
+              Width = 71
+              Height = 19
+              Caption = 'Loading...'
             end
             object Panel27: TPanel
               Left = 0
@@ -8180,14 +8187,14 @@ object frmMAMS: TfrmMAMS
           Caption = 'MAMS'
         end
         object Label121: TLabel
-          Left = 256
+          Left = 238
           Top = 9
           Width = 22
           Height = 13
           Caption = 'Prep'
         end
         object Label122: TLabel
-          Left = 328
+          Left = 310
           Top = 9
           Width = 32
           Height = 13
@@ -8795,9 +8802,9 @@ object frmMAMS: TfrmMAMS
             Caption = 'Yield:'
           end
           object lblTouchYieldValue: TLabel
-            Left = 202
+            Left = 231
             Top = 278
-            Width = 59
+            Width = 30
             Height = 18
             Alignment = taRightJustify
             Caption = 'Yield'
@@ -9024,7 +9031,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 506
+          Height = 536
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9037,7 +9044,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnTouchWeightsGraphBatchNeedsSaving: TSpeedButton
             Left = 276
-            Top = 436
+            Top = 364
             Width = 41
             Height = 38
             Hint = 'value has changed, save before leaving'
@@ -9090,15 +9097,6 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             Visible = False
           end
-          object btnTouchWeightsAddToGraphBatch: TButton
-            Left = 40
-            Top = 159
-            Width = 233
-            Height = 49
-            Caption = 'Add To Batch >>'
-            TabOrder = 0
-            OnClick = btnTouchWeightsAddToGraphBatchClick
-          end
           object edtTouchWeightsBatchName: TEdit
             Left = 40
             Top = 100
@@ -9110,7 +9108,7 @@ object frmMAMS: TfrmMAMS
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
-            TabOrder = 1
+            TabOrder = 0
             Text = 'graph_'
           end
           object btnTouchWeightsBatchNameMag: TButton
@@ -9119,7 +9117,7 @@ object frmMAMS: TfrmMAMS
             Width = 75
             Height = 50
             Caption = 'MAG'
-            TabOrder = 2
+            TabOrder = 1
             OnClick = btnTouchWeightsBatchNameMagClick
           end
           object btnTouchWeightsBatchNameAge1: TButton
@@ -9128,7 +9126,7 @@ object frmMAMS: TfrmMAMS
             Width = 75
             Height = 50
             Caption = 'AGE1'
-            TabOrder = 3
+            TabOrder = 2
             OnClick = btnTouchWeightsBatchNameAge1Click
           end
           object btnTouchWeightsBatchNameAge2: TButton
@@ -9137,20 +9135,20 @@ object frmMAMS: TfrmMAMS
             Width = 75
             Height = 50
             Caption = 'AGE2'
-            TabOrder = 4
+            TabOrder = 3
             OnClick = btnTouchWeightsBatchNameAge2Click
           end
           object ListBoxTouchWeightsBatch: TListBox
             Left = 40
-            Top = 214
+            Top = 139
             Width = 233
             Height = 203
             ItemHeight = 13
-            TabOrder = 5
+            TabOrder = 4
           end
           object btnTouchWeightsSaveBatch: TBitBtn
             Left = 96
-            Top = 428
+            Top = 356
             Width = 177
             Height = 50
             Glyph.Data = {
@@ -9193,16 +9191,16 @@ object frmMAMS: TfrmMAMS
               E71CE71CFF7FFF7FE71CE71CE71CE71CE71CFF7FFF7FE71CE71CE71CE71CE71C
               E71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71CE71C
               FF7FFF7FFF7F}
-            TabOrder = 6
+            TabOrder = 5
             OnClick = btnTouchWeightsSaveBatchClick
           end
           object btnTouchWeightsClearGraphBatchList: TBitBtn
             Left = 40
-            Top = 428
+            Top = 356
             Width = 50
             Height = 50
             Caption = 'Clear'
-            TabOrder = 7
+            TabOrder = 6
             OnClick = btnTouchWeightsClearGraphBatchListClick
           end
         end
@@ -9210,13 +9208,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 506
+          Height = 536
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            506)
+            536)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9226,7 +9224,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnTouchWeightsGraphNeedsSaving: TSpeedButton
             Left = 27
-            Top = 196
+            Top = 204
             Width = 41
             Height = 38
             Hint = 'value has changed, save before leaving'
@@ -9331,7 +9329,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnTouchWeightsGraphSave: TBitBtn
             Left = 74
-            Top = 192
+            Top = 198
             Width = 183
             Height = 50
             Glyph.Data = {
@@ -9394,13 +9392,22 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 481
+            Top = 511
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
+          end
+          object btnTouchWeightsAddToGraphBatch: TButton
+            Left = 74
+            Top = 254
+            Width = 183
+            Height = 49
+            Caption = 'Add To Batch >>'
+            TabOrder = 5
+            OnClick = btnTouchWeightsAddToGraphBatchClick
           end
         end
       end
@@ -9629,7 +9636,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C0101100013002C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300340710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10406,7 +10413,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806E80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806F00818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16656,7 +16663,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F002C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00340720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26769,8 +26776,8 @@ object frmMAMS: TfrmMAMS
     Top = 41
   end
   object SavePictureDialog: TSavePictureDialog
-    Left = 1125
-    Top = 422
+    Left = 1149
+    Top = 406
   end
   object DSRESTWebDispatcher1: TDSRESTWebDispatcher
     Left = 120

@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 Built: Nov-09-2020';
+  myVersion = '1.9.9 Built: Feb-03-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -838,6 +838,7 @@ type
     btnSampleInfoShowAllSamplesOfProject: TButton;
     lblYTouchYieldLabel: TLabel;
     lblTouchYieldValue: TLabel;
+    lblLoadingFoto: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -4870,6 +4871,7 @@ begin
 // load image according to the path that is selected in the ListBox
    ListBox := Sender as TListBox;
    fname := ListBox.Items[ListBox.ItemIndex];
+   SampleFoto.Visible:=True;
    LogWindow.addLogEntry('selected image: ' + fname);
    if FileExists(fname) then
      begin
@@ -7445,8 +7447,11 @@ begin
   end;
   Statusbar.Panels[2].Text := fname;
 
+  // =======================================================================
   // display Images, Fotos
   if pgtSample.ActivePage = tbsFoto then
+  lblLoadingFoto.Visible:=True;
+  SampleFoto.Visible:=False;
   begin
     ImageFilesListBox.Clear;
     fotoDir := ServerRoot + 'SAMS Images\';    // this is the folder where the images are stored
@@ -7465,6 +7470,7 @@ begin
         LogWindow.addLogEntry('Directory exists :'+fotoDir);
         // look for all images that fit the pattern, multiple images are xxb.jpg, xxc.jpg
         // save found files in FilesList
+        // search will also be performed in SubDirectories
         LogWindow.addLogEntry('looking for multiple files matching:'+fnamePattern);
         FilesList := TDirectory.GetFiles(fotoDir, fnamePattern, TSearchOption.soAllDirectories);
         LogWindow.addLogEntry('number of matching files found:' + inttostr(Length(FilesList)));
@@ -7475,11 +7481,13 @@ begin
           End;
 
         // load first image
-        if FileExists(fname) then
+        if FileExists(FilesList[0]) then
           begin
             ImageFilesListBox.ItemIndex:= 0; //select first image in the list
-            SampleFoto.Picture.LoadFromFile(fname);
-            LogWindow.addLogEntry('Image found: '+fname);
+            SampleFoto.Picture.LoadFromFile(FilesList[0]);
+            LogWindow.addLogEntry('Image found: '+FilesList[0]);
+            lblLoadingFoto.Visible:=False;
+            SampleFoto.Visible:=True;
           end
           else
           begin
@@ -7494,7 +7502,8 @@ begin
       end;
   end;
 
-    // display Calibration Graph
+  // =======================================================================
+  // display Calibration Graph
   if pgtSample.ActivePage = tbsCalibration then
   begin
     LogWindow.addLogEntry('creating calibration graph using OxCal at: '+ServerRoot);
