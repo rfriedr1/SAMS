@@ -300,6 +300,10 @@ object frmMAMS: TfrmMAMS
     object tbsInsertSamples: TTabSheet
       Caption = 'Insert samples'
       ImageIndex = 8
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object wizInputSamples: TJvWizard
         Left = 0
         Top = 0
@@ -489,6 +493,9 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Invoice address'
           OnEnterPage = wizInputInvoiceAddressEnterPage
+          ExplicitLeft = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Panel29: TPanel
             Left = 0
             Top = 70
@@ -598,6 +605,9 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Project Info'
           OnEnterPage = wizInputProjectEnterPage
+          ExplicitLeft = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox4: TGroupBox
             Left = 0
             Top = 70
@@ -818,6 +828,9 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select material'
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
+          ExplicitLeft = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 601
             Top = 70
@@ -927,6 +940,9 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
+          ExplicitLeft = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object pnlSetType: TPanel
             Left = 1189
             Top = 70
@@ -969,6 +985,9 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select pretreatment'
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
+          ExplicitLeft = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object lbxDefinePrepSteps: TListBox
             Left = 1125
             Top = 70
@@ -1004,6 +1023,9 @@ object frmMAMS: TfrmMAMS
           Caption = 'Insert all data'
           OnEnterPage = wizFinalPageEnterPage
           OnFinishButtonClick = wizFinalPageFinishButtonClick
+          ExplicitLeft = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
@@ -1051,6 +1073,10 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 9
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gbxProjectsOfUser: TGroupBox
         Left = 0
         Top = 0
@@ -1295,6 +1321,10 @@ object frmMAMS: TfrmMAMS
           object tbsProject: TTabSheet
             Caption = 'Project data'
             ImageIndex = 3
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object GroupBox3: TGroupBox
               Left = 0
               Top = 0
@@ -1691,6 +1721,10 @@ object frmMAMS: TfrmMAMS
           end
           object tbsSampleOfProject: TTabSheet
             Caption = 'Sample data'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object gbxSampleRight: TGroupBox
               Left = 353
               Top = 0
@@ -1954,6 +1988,10 @@ object frmMAMS: TfrmMAMS
           object tbsFoto: TTabSheet
             Caption = 'Sample foto'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object SampleFoto: TImage
               Left = 0
               Top = 108
@@ -2007,7 +2045,7 @@ object frmMAMS: TfrmMAMS
               object StaticText4: TStaticText
                 Left = 1
                 Top = 1
-                Width = 855
+                Width = 564
                 Height = 23
                 Align = alTop
                 Caption = 
@@ -2033,6 +2071,10 @@ object frmMAMS: TfrmMAMS
           object tbsCalibration: TTabSheet
             Caption = 'Calibration graph'
             ImageIndex = 2
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object btnOpenOxcal: TButton
               Left = 35
               Top = 29
@@ -2060,6 +2102,10 @@ object frmMAMS: TfrmMAMS
           object tbsProjectDocs: TTabSheet
             Caption = 'Project docs'
             ImageIndex = 4
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object btnProjectLetters: TButton
               Left = 31
               Top = 96
@@ -2107,6 +2153,10 @@ object frmMAMS: TfrmMAMS
     object tbsLabPlan: TTabSheet
       Caption = 'Lab plan'
       ImageIndex = 8
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gbxBatch: TGroupBox
         Left = 1161
         Top = 0
@@ -2543,7 +2593,7 @@ object frmMAMS: TfrmMAMS
           object StaticText1: TStaticText
             Left = 2
             Top = 15
-            Width = 984
+            Width = 220
             Height = 17
             Align = alTop
             Caption = 'Double Click on a sample to add it to a batch.'
@@ -2561,6 +2611,10 @@ object frmMAMS: TfrmMAMS
       Font.Style = []
       ImageIndex = 7
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox13: TGroupBox
         Left = 0
         Top = 0
@@ -2659,6 +2713,10 @@ object frmMAMS: TfrmMAMS
         TabOrder = 1
         object tbsPrepTask: TTabSheet
           Caption = 'tbsPrepTask'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox14: TGroupBox
             Left = 0
             Top = 0
@@ -2837,12 +2895,20 @@ object frmMAMS: TfrmMAMS
         object tbsGraphTask: TTabSheet
           Caption = 'tbsGraphTask'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
       end
     end
     object tbsUserReport: TTabSheet
       Caption = 'User report'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel13: TPanel
         Left = 0
         Top = 0
@@ -3306,6 +3372,10 @@ object frmMAMS: TfrmMAMS
     object tbsSampleInfo: TTabSheet
       Caption = 'Sample info'
       ImageIndex = 9
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gbxSampleIdetification: TGroupBox
         Left = 0
         Top = 0
@@ -5575,6 +5645,10 @@ object frmMAMS: TfrmMAMS
     object tbsUserInfo: TTabSheet
       Caption = 'User info'
       ImageIndex = 11
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gpbUserInfo: TGroupBox
         Left = 0
         Top = 0
@@ -5991,6 +6065,10 @@ object frmMAMS: TfrmMAMS
     object tbsOptions: TTabSheet
       Caption = 'Options'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox28: TGroupBox
         Left = 1204
         Top = 0
@@ -6208,6 +6286,10 @@ object frmMAMS: TfrmMAMS
           TabOrder = 1
           object TabGeneral: TTabSheet
             Caption = 'TabGeneral'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object c: TStaticText
               Left = 34
               Top = 37
@@ -6220,6 +6302,10 @@ object frmMAMS: TfrmMAMS
           object TabDatabase: TTabSheet
             Caption = 'TabDatabase'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object StaticText6: TStaticText
               Left = 16
               Top = 42
@@ -6289,6 +6375,10 @@ object frmMAMS: TfrmMAMS
           object TabEmail: TTabSheet
             Caption = 'TabEmail'
             ImageIndex = 3
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object StaticText9: TStaticText
               Left = 42
               Top = 45
@@ -6315,6 +6405,10 @@ object frmMAMS: TfrmMAMS
       Caption = 'Types, materials, pretr. steps'
       ImageIndex = 2
       OnExit = tbsTypesMatExit
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox7: TGroupBox
         Left = 700
         Top = 0
@@ -6463,6 +6557,10 @@ object frmMAMS: TfrmMAMS
     object tbsLabStats: TTabSheet
       Caption = 'Lab stats'
       ImageIndex = 9
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object JvNetscapeSplitter1: TJvNetscapeSplitter
         Left = 723
         Top = 0
@@ -6714,6 +6812,10 @@ object frmMAMS: TfrmMAMS
     object tbsAccounting: TTabSheet
       Caption = 'Accounting'
       ImageIndex = 10
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
@@ -6939,6 +7041,10 @@ object frmMAMS: TfrmMAMS
     object tbsTransferAge: TTabSheet
       Caption = 'Transfer Age'
       ImageIndex = 12
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox25: TGroupBox
         Left = 790
         Top = 0
@@ -7149,6 +7255,10 @@ object frmMAMS: TfrmMAMS
     object tbsSendMail: TTabSheet
       Caption = 'SendMail'
       ImageIndex = 13
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel31: TPanel
         Left = 0
         Top = 0
@@ -7277,6 +7387,10 @@ object frmMAMS: TfrmMAMS
       Hint = 'Full SQL-Query to get data from the database'
       Caption = 'tbsDBPlot'
       ImageIndex = 14
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object SplitterDBPlot: TSplitter
         Left = 304
         Top = 113
@@ -7411,11 +7525,10 @@ object frmMAMS: TfrmMAMS
         object lblSelectedPlotRow: TLabel
           Left = 2
           Top = 679
-          Width = 300
+          Width = 47
           Height = 13
           Align = alBottom
           Caption = 'selected: '
-          ExplicitWidth = 47
         end
         object DBGridDBPlot: TDBGrid
           Left = 2
@@ -7498,6 +7611,10 @@ object frmMAMS: TfrmMAMS
     object tbsDBInfo: TTabSheet
       Caption = 'tbsDBInfo'
       ImageIndex = 15
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBoxMeasuredSamples: TGroupBox
         Left = 0
         Top = 0
@@ -7741,11 +7858,15 @@ object frmMAMS: TfrmMAMS
       Margins.Bottom = 2
       Caption = 'Home'
       ImageIndex = 16
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label111: TLabel
         AlignWithMargins = True
         Left = 2
         Top = 16
-        Width = 1459
+        Width = 260
         Height = 29
         Margins.Left = 2
         Margins.Top = 16
@@ -7760,7 +7881,6 @@ object frmMAMS: TfrmMAMS
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 260
       end
       object HomeGridPanel: TGridPanel
         Left = 0
@@ -8086,6 +8206,10 @@ object frmMAMS: TfrmMAMS
     object SampleExchange: TTabSheet
       Caption = 'SampleExchange'
       ImageIndex = 17
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGridSampleExchange: TDBGrid
         Left = 0
         Top = 94
@@ -8181,6 +8305,10 @@ object frmMAMS: TfrmMAMS
       ImageIndex = 18
       ParentShowHint = False
       ShowHint = True
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       DesignSize = (
         1463
         807)
@@ -9043,10 +9171,11 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 532
+          Height = 524
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
+          ExplicitHeight = 528
           object Label127: TLabel
             Left = 40
             Top = 25
@@ -9220,13 +9349,14 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 532
+          Height = 524
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
+          ExplicitHeight = 528
           DesignSize = (
             313
-            532)
+            524)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9404,13 +9534,14 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 507
+            Top = 499
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
+            ExplicitTop = 503
           end
           object btnTouchWeightsAddToGraphBatch: TButton
             Left = 74
@@ -9648,7 +9779,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300380710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300400710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10425,7 +10556,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806F40818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806FC0818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16675,7 +16806,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00380720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00400720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

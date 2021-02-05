@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsOptions
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -6083,6 +6083,18 @@ object frmMAMS: TfrmMAMS
           TabOrder = 7
           OnClick = btn_initestClick
         end
+        object btnPrepCard: TButton
+          Left = 40
+          Top = 216
+          Width = 105
+          Height = 25
+          Hint = 'create a PrepCard og the selected sample'
+          Caption = 'Create PrepCard'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 8
+          OnClick = btnPrepCardClick
+        end
       end
       object grpbox_TableHeadings: TGroupBox
         Left = 705
@@ -8187,14 +8199,14 @@ object frmMAMS: TfrmMAMS
           Caption = 'MAMS'
         end
         object Label121: TLabel
-          Left = 256
+          Left = 238
           Top = 9
           Width = 22
           Height = 13
           Caption = 'Prep'
         end
         object Label122: TLabel
-          Left = 328
+          Left = 310
           Top = 9
           Width = 32
           Height = 13
@@ -9031,7 +9043,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 540
+          Height = 532
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9208,13 +9220,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 540
+          Height = 532
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            540)
+            532)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9392,14 +9404,13 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 515
+            Top = 507
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
-            ExplicitTop = 477
           end
           object btnTouchWeightsAddToGraphBatch: TButton
             Left = 74
@@ -9637,7 +9648,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300300710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300380710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10414,7 +10425,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806EC0818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806F40818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16664,7 +16675,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00300720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00380720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

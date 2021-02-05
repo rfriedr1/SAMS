@@ -1485,6 +1485,7 @@ var
   s: string;
 
   // SubRoutine that sets the database flag out_date to the current date
+  // ####################################################################
   procedure InsertReport;
   var
     f: string;
@@ -1510,13 +1511,14 @@ var
     end;
     end;
   end;
+  // End of SubRoutine that sets the database flag out_date to the current date
+  // ####################################################################
 
 
 begin
-
 // old way of doing it using worddriver
-  CreateCds(true); //create in-memory-DB with the table headers from the current ReportGrid
-  FillCds;  // enter the data óf the ReportGrid into the in-memory-DB, do caluclations etc etc
+  CreateCds(true); //create in-memory-DB (Datasource: cdsExport) with the table headers from the current ReportGrid
+  FillCds;  // enter the data óf the ReportGrid into the in-memory-DB (Datasource: cdsExport), do calculations etc etc
 
 // ###### part 1 get and fill in user info
 // query database for information such as last name etc etc
@@ -1540,8 +1542,8 @@ begin
     end;
 
 
-  // main routine for export to word
-  CreateWordExport;
+  // main routine for export to word from here on
+  CreateWordExport;  // instantiate an FWord Object using Worddriver
 
   // fill in the information such as last name etc into the word file
   with FWord do
@@ -2046,42 +2048,63 @@ begin
 end;
 
 procedure TfrmMAMS.btnPrepCardClick(Sender: TObject);
+VAR
+  Mams, LastName, UserLabel, InDate, PrepStart: string;
 begin
   // create a PrepCard for the selected sample (sample in sampleInfo)
   //===============================================================
-  // substantiate a new FWord object
+  // substantiate a new FWord object using Worddriver AddOn
     if Assigned(FWord) then FWord.Free;
     if assigned(FValues) then FValues.Free;
     FWord := TWordDriver.Create(Self);
     FUseWordVersion := wvDetect;
+    //LogWindow.addLogEntry('PrepCard WordVersion Detected = ' + wvDetect);
     FValues := TStringList.Create;
 
    // fill in the information into the word template such as MAMS, last name, sample name...
   with FWord do
   begin
     FileName := 'PrepCardBone.doc'; //filename of word file to use as template
+    LogWindow.addLogEntry('PrepCard -- WordTemplate= ' + FileName);
     //SaveFileName := TPath.Combine(edtSaveReporttoFolder.Text,edtReportFileName.Text);
     SaveFileName := 'temp.doc';  //use a temporary file only
-    LogWindow.addLogEntry('File name for PrepCard = ' + SaveFileName);
+    LogWindow.addLogEntry('PrepCard -- FileName for saving = ' + SaveFileName);
     Save := true;  //save the filen when done
     OutPutDir := edtSaveReporttoFolder.Text;
-    LogWindow.addLogEntry('output folder for PrepCard = ' + OutPutDir);
+    LogWindow.addLogEntry('PrepCard -- output folder = ' + OutPutDir);
     KeepWordOpen := true; //keep word open after everything is finished
     DataSource := dm.dsSampleInfo;
     WordVersion := wvDetect;
     DocumentMode := dmSerialLetter; //dmFillTable
+
     //create the string list with the values to be replaced
-    FValues.Add('MAMS=' + dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsString);
-        LogWindow.addLogEntry('setting replacement values = ' + dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsString);
-    //FValues.Add('FirstName=' + dm.dsSampleInfo.DataSet.FieldByName('first_name').AsString);
-    FValues.Add('LastName=' + dm.dsSampleInfo.DataSet.FieldByName('last_name').AsString);
-    FValues.Add('UserLabel=' + dm.dsSampleInfo.DataSet.FieldByName('user_label').AsString);
-    //FValues.Add('ProjectName=' + ProjectNameReport);    // values come from another subroutine that pulls put the samples for each project
-    FValues.Add('InDate=' + ProjectInDate);
-    //FValues.Add('OrderNr=' + IntToStr(OrderNr));
+    Mams:=dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsString;
+    LastName:= dm.dsSampleInfo.DataSet.FieldByName('last_name').AsString;
+    UserLabel:= dm.dsSampleInfo.DataSet.FieldByName('user_label').AsString;
+    InDate:=ProjectInDate;
+
+    FValues.Add('MAMS=' + mams);
+        LogWindow.addLogEntry('setting replacement value MAMS = ' + Mams);
+    FValues.Add('LastName=' + LastName);
+        LogWindow.addLogEntry('setting replacement values LastName = ' + LastName);
+    FValues.Add('UserLabel=' + UserLabel);
+        LogWindow.addLogEntry('setting replacement values UserLabel = ' + UserLabel);
+    FValues.Add('InDate=' + InDate);
+        LogWindow.addLogEntry('setting replacement values InDate = ' + InDate);
     Values := FValues;
     //Values.SaveToFile('c:\temp\list.txt');
+
     KeepDocumentsOpen := true;
+
+    IF dm.adoConnKTL.Connected THEN
+      Begin
+        Try
+          Execute;
+          LogWindow.addLogEntry('PrepCard Database Query executed');
+        Except
+          ShowMessage('problem opening the database');
+        End;
+      End;
   end;
 
 

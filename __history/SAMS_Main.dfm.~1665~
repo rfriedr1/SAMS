@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsTouch
+    ActivePage = tbsOptions
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -6083,6 +6083,18 @@ object frmMAMS: TfrmMAMS
           TabOrder = 7
           OnClick = btn_initestClick
         end
+        object btnPrepCard: TButton
+          Left = 40
+          Top = 216
+          Width = 105
+          Height = 25
+          Hint = 'create a PrepCard og the selected sample'
+          Caption = 'Create PrepCard'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 8
+          OnClick = btnPrepCardClick
+        end
       end
       object grpbox_TableHeadings: TGroupBox
         Left = 705
@@ -9031,7 +9043,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 540
+          Height = 528
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9208,13 +9220,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 540
+          Height = 528
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            540)
+            528)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9392,14 +9404,13 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 515
+            Top = 503
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
-            ExplicitTop = 477
           end
           object btnTouchWeightsAddToGraphBatch: TButton
             Left = 74
@@ -9637,7 +9648,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300300710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013003C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10414,7 +10425,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806EC0818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806F80818001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16664,7 +16675,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00300720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F003C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26783,107 +26794,5 @@ object frmMAMS: TfrmMAMS
   object DSRESTWebDispatcher1: TDSRESTWebDispatcher
     Left = 120
     Top = 40
-  end
-  object frxReport1: TfrxReport
-    Version = '5.3.14'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Default'
-    PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 44230.702587743100000000
-    ReportOptions.LastChange = 44230.715798125000000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      ''
-      'end.')
-    Left = 964
-    Top = 159
-    Datasets = <>
-    Variables = <>
-    Style = <>
-    object Data: TfrxDataPage
-      Height = 1000.000000000000000000
-      Width = 1000.000000000000000000
-    end
-    object Page1: TfrxReportPage
-      PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
-      PaperSize = 9
-      LeftMargin = 10.000000000000000000
-      RightMargin = 10.000000000000000000
-      TopMargin = 10.000000000000000000
-      BottomMargin = 10.000000000000000000
-      object BarCodeMAMS: TfrxBarCodeView
-        Width = 90.000000000000000000
-        Height = 60.472480000000000000
-        BarType = bcCodeEAN128
-        Rotation = 0
-        Text = '12345678'
-        WideBarRatio = 2.000000000000000000
-        Zoom = 1.000000000000000000
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-      end
-      object LastName: TfrxMemoView
-        Left = 94.488250000000000000
-        Width = 117.165430000000000000
-        Height = 18.897650000000000000
-        Memo.UTF8W = (
-          'LastName')
-      end
-      object UserLabel: TfrxMemoView
-        Left = 94.488250000000000000
-        Top = 18.897650000000000000
-        Width = 162.519790000000000000
-        Height = 18.897650000000000000
-        Memo.UTF8W = (
-          'UserLabel')
-      end
-      object Line1: TfrxLineView
-        Left = 264.567100000000000000
-        Top = 3.779530000000000000
-        Height = 52.913420000000000000
-        Color = clBlack
-        Diagonal = True
-      end
-      object PrepStartDate: TfrxMemoView
-        Left = 94.488250000000000000
-        Top = 37.795300000000000000
-        Width = 94.488250000000000000
-        Height = 18.897650000000000000
-        Memo.UTF8W = (
-          'PrepStartDate')
-      end
-      object Memo4: TfrxMemoView
-        Left = 271.095379090000000000
-        Top = 3.092342730000000000
-        Width = 118.539804550000000000
-        Height = 58.410918180000000000
-        Memo.UTF8W = (
-          'HCL Replacement')
-      end
-      object Memo5: TfrxMemoView
-        Left = 400.630180000000000000
-        Top = 3.779530000000000000
-        Width = 118.539804550000000000
-        Height = 58.410918180000000000
-        Memo.UTF8W = (
-          'HCL NaOH Step')
-      end
-      object Memo6: TfrxMemoView
-        Left = 521.575140000000100000
-        Top = 3.779530000000000000
-        Width = 118.539804550000000000
-        Height = 58.410918180000000000
-        Memo.UTF8W = (
-          'Final HCL')
-      end
-    end
   end
 end
