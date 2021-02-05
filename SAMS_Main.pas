@@ -839,6 +839,7 @@ type
     lblYTouchYieldLabel: TLabel;
     lblTouchYieldValue: TLabel;
     lblLoadingFoto: TLabel;
+    btnPrepCard: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1185,6 +1186,7 @@ type
     procedure btnSampleInfoShowAllSamplesOfProjectClick(Sender: TObject);
     procedure DBedtTouchWeightsBeforePrepChange(Sender: TObject);
     procedure DBedtTouchWeightsAfterPrepChange(Sender: TObject);
+    procedure btnPrepCardClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1489,7 +1491,7 @@ var
   begin
   // this is the old way of doing it using worddriver
     if not chkPreliminaryReport.Checked and not chkAllProjects.Checked then
-    begin // insert repaort name in project_t
+    begin // insert report name in project_t
     if dm.adoConnKTL.Connected then
     Begin
       with dm.adoCmd do
@@ -2041,6 +2043,48 @@ begin
     //s.YValues := dm.qryDBPlot.FieldByName('fm').Text;
     //s.XValues.ValueSource := dm.qryDBPlot.FieldByName('magazine').Text;
     //s.YValues.ValueSource := dm.qryDBPlot.FieldByName('fm').Text;
+end;
+
+procedure TfrmMAMS.btnPrepCardClick(Sender: TObject);
+begin
+  // create a PrepCard for the selected sample (sample in sampleInfo)
+  //===============================================================
+  // substantiate a new FWord object
+    if Assigned(FWord) then FWord.Free;
+    if assigned(FValues) then FValues.Free;
+    FWord := TWordDriver.Create(Self);
+    FUseWordVersion := wvDetect;
+    FValues := TStringList.Create;
+
+   // fill in the information into the word template such as MAMS, last name, sample name...
+  with FWord do
+  begin
+    FileName := 'PrepCardBone.doc'; //filename of word file to use as template
+    //SaveFileName := TPath.Combine(edtSaveReporttoFolder.Text,edtReportFileName.Text);
+    SaveFileName := 'temp.doc';  //use a temporary file only
+    LogWindow.addLogEntry('File name for PrepCard = ' + SaveFileName);
+    Save := true;  //save the filen when done
+    OutPutDir := edtSaveReporttoFolder.Text;
+    LogWindow.addLogEntry('output folder for PrepCard = ' + OutPutDir);
+    KeepWordOpen := true; //keep word open after everything is finished
+    DataSource := dm.dsSampleInfo;
+    WordVersion := wvDetect;
+    DocumentMode := dmSerialLetter; //dmFillTable
+    //create the string list with the values to be replaced
+    FValues.Add('MAMS=' + dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsString);
+        LogWindow.addLogEntry('setting replacement values = ' + dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsString);
+    //FValues.Add('FirstName=' + dm.dsSampleInfo.DataSet.FieldByName('first_name').AsString);
+    FValues.Add('LastName=' + dm.dsSampleInfo.DataSet.FieldByName('last_name').AsString);
+    FValues.Add('UserLabel=' + dm.dsSampleInfo.DataSet.FieldByName('user_label').AsString);
+    //FValues.Add('ProjectName=' + ProjectNameReport);    // values come from another subroutine that pulls put the samples for each project
+    FValues.Add('InDate=' + ProjectInDate);
+    //FValues.Add('OrderNr=' + IntToStr(OrderNr));
+    Values := FValues;
+    //Values.SaveToFile('c:\temp\list.txt');
+    KeepDocumentsOpen := true;
+  end;
+
+
 end;
 
 procedure TfrmMAMS.btnPrintBatchClick(Sender: TObject);
