@@ -840,6 +840,8 @@ type
     lblTouchYieldValue: TLabel;
     lblLoadingFoto: TLabel;
     btnPrepCard: TButton;
+    JvDirEdt_PrepCards_Path: TJvDirectoryEdit;
+    Label136: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1589,30 +1591,20 @@ begin
 //    Values.SaveToFile('c:\temp\list.txt');
 //    i := Values.Count;
     KeepDocumentsOpen := true;
+
+    // now that all the parameters are set EXECUTE the word export
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
-          Execute;
-          LogWindow.addLogEntry('executed');
+          Execute;  //this executes the word export
+          LogWindow.addLogEntry('report created');
         Except
-          ShowMessage('problem opening the database');
+          ShowMessage('problem creating report');
+          LogWindow.addLogEntry('problem creating report');
         End;
       End;
     InsertReport; //set database flag out_date to current date
   end;
-
-(*// ###### part 2 get get and fill in info about project (re-use datasources from above)
-// query database for information such as project name etc etc
-  with dm.qryDb do begin
-    Close;
-    SQL.Text := 'SELECT project, in_date, organisation, institute, address_1, address_2,' +
-      ' town, postcode, country, email FROM user_t ' +
-      'WHERE user_nr=' + IntToStr(cmbSubmNameReport.KeyValue) + ';';
-    s := SQL.Text;
-//    ClipBoard.SetTextBuf(PChar(s));
-    LogWindow.addLogEntry(SQL.Text);
-    Open;
-  end;    *)
 
   btnSendMailEnglish.Enabled := true;
   btnSendMailGerman.Enabled := true;
@@ -2064,21 +2056,31 @@ begin
    // fill in the information into the word template such as MAMS, last name, sample name...
   with FWord do
   begin
-    FileName := 'PrepCardBone.doc'; //filename of word file to use as template
-    LogWindow.addLogEntry('PrepCard -- WordTemplate= ' + FileName);
+    // set filename of template file
+    if Trim(JvDirEdt_PrepCards_Path.Text) <> '' then
+      begin
+        FileName := JvDirEdt_PrepCards_Path.Text + '\PrepCardBone.docx'; //filename of word file to use as template
+        LogWindow.addLogEntry('PrepCard -- WordTemplate= ' + FileName);
+      end
+      else
+      begin
+        LogWindow.addLogEntry('PrepCard -- Path to WordTemplate not set');
+        Exit;
+      end;
+
     //SaveFileName := TPath.Combine(edtSaveReporttoFolder.Text,edtReportFileName.Text);
-    SaveFileName := 'temp.doc';  //use a temporary file only
-    LogWindow.addLogEntry('PrepCard -- FileName for saving = ' + SaveFileName);
-    Save := true;  //save the filen when done
-    OutPutDir := edtSaveReporttoFolder.Text;
+    OutPutDir := JvDirEdt_PrepCards_Path.Text;
     LogWindow.addLogEntry('PrepCard -- output folder = ' + OutPutDir);
+    SaveFileName := 'temp_PrepCard.doc';  //use a temporary file only
+    LogWindow.addLogEntry('PrepCard -- FileName for saving = ' + SaveFileName);
+    Save := true;  //save the file when done
     KeepWordOpen := true; //keep word open after everything is finished
     DataSource := dm.dsSampleInfo;
     WordVersion := wvDetect;
     DocumentMode := dmSerialLetter; //dmFillTable
 
     //create the string list with the values to be replaced
-    Mams:=dm.dsSampleInfo.DataSet.FieldByName('sample_nr').AsString;
+    Mams:=edtSampleNr.Text;
     LastName:= dm.dsSampleInfo.DataSet.FieldByName('last_name').AsString;
     UserLabel:= dm.dsSampleInfo.DataSet.FieldByName('user_label').AsString;
     InDate:=ProjectInDate;
@@ -2093,18 +2095,20 @@ begin
         LogWindow.addLogEntry('setting replacement values InDate = ' + InDate);
     Values := FValues;
     //Values.SaveToFile('c:\temp\list.txt');
-
     KeepDocumentsOpen := true;
 
-    IF dm.adoConnKTL.Connected THEN
-      Begin
-        Try
-          Execute;
-          LogWindow.addLogEntry('PrepCard Database Query executed');
-        Except
-          ShowMessage('problem opening the database');
-        End;
-      End;
+    // now that all the parameters are set EXECUTE the word export
+    Try
+      Execute;  // this executes the export
+      LogWindow.addLogEntry('PrepCard generated sucessfully');
+    Except
+      on E: Exception do
+      begin
+        ShowMessage(E.Message);
+        ShowMessage('problem creating ReportCard');
+        LogWindow.addLogEntry('problem creating report card');
+      end;
+    End;
   end;
 
 
