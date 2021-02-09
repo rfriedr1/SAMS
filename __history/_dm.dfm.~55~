@@ -87,7 +87,6 @@ object dm: Tdm
     Top = 364
   end
   object adoConnKTL: TADOConnection
-    KeepConnection = False
     LoginPrompt = False
     Provider = 'MSDASQL.1'
     OnExecuteComplete = adoConnKTLExecuteComplete
@@ -100,6 +99,9 @@ object dm: Tdm
     TableName = 'user_t'
     Left = 389
     Top = 126
+    object tblUsersalutation: TStringField
+      FieldName = 'salutation'
+    end
     object tblUseruser_nr: TAutoIncField
       FieldName = 'user_nr'
       ReadOnly = True
@@ -175,6 +177,10 @@ object dm: Tdm
     object tblUseruser_comment: TMemoField
       FieldName = 'user_comment'
       BlobType = ftMemo
+    end
+    object tblUserlanguage: TStringField
+      FieldName = 'language'
+      Size = 2
     end
   end
   object tblProjects: TADOTable
@@ -812,9 +818,9 @@ object dm: Tdm
   end
   object adoConnectionCEZA: TADOConnection
     ConnectionString = 
-      'Provider=MSDASQL.1;Password=kromerbernd;Persist Security Info=Tr' +
-      'ue;User ID=Kromer;Data Source=db_ma_proben;Initial Catalog=db_ma' +
-      '_proben'
+      'Provider=MSDASQL.1;Password=Pe02_Du01?;Persist Security Info=Tru' +
+      'e;User ID=C14_MAMS;Data Source=db_ma_proben;Initial Catalog=db_m' +
+      'a_proben'
     LoginPrompt = False
     Provider = 'MSDASQL.1'
     Left = 960
@@ -919,5 +925,16 @@ object dm: Tdm
     DataSet = qryWaitingForMeas
     Left = 728
     Top = 592
+  end
+  object qryWaitingExpress: TADOQuery
+    Connection = adoConnKTL
+    Parameters = <>
+    Left = 632
+    Top = 800
+  end
+  object dsWaitingExpress: TDataSource
+    DataSet = qryWaitingExpress
+    Left = 728
+    Top = 800
   end
 end

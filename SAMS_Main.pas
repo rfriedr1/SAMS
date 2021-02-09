@@ -844,6 +844,8 @@ type
     Label136: TLabel;
     cdsPrepBatch: TClientDataSet;
     dsPrepBatch: TDataSource;
+    JvDirEdt_PrepBatch_Path: TJvDirectoryEdit;
+    Label137: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1465,21 +1467,30 @@ begin
 ////      JvDBStatusLabel3.DataSource := dm.dsTargetsAvailable;
 //  end;
 
+  //clear list first
+  //dm.dsSamplesAvailable.DataSet.close;
+
   if rgpTask.ItemIndex = 0 then
   // preparation batch
   begin
     material := cmbFilterSampleMaterial.ListSource.DataSet.FieldByName('material').AsString;
-    if length(material) > 0 then
+    method := cmbPretreatMethod.ListSource.DataSet.FieldByName('method').AsString;
+    //if length(material) > 0 then
+    //begin
+    //  dm.GetSamplesAvailableForPrepByMaterial(material);
+    //  SetupLabPlanPage; // adjust colwidth
+    //end;
+    if length(method) > 0 then
     begin
-      dm.GetSamplesAvailableForPrepByMaterial(material);
-      SetupLabPlanPage; // colwidth
+      dm.GetSamplesAvailableForPrepByMethod(method);
+      SetupLabPlanPage; // adjust colwidth
     end;
   end
   else
   // graphitisation batch
   begin // get all samples which are pretreated, but with graph date is NULL
     dm.GetTargetsAvailable;
-    SetupLabPlanPage; // colwidth
+    SetupLabPlanPage; // adjust colwidth
   end;
 
 end;
@@ -2160,6 +2171,12 @@ begin
       DataType := ftString;
       Size := 40;
     end;
+    with AddFieldDef do
+    begin
+      Name := 'weight_start';
+      DataType := ftString;
+      Size := 10;
+    end;
   end;
   cdsPrepBatch.CreateDataSet;  // now make an actual dataset out of it
   cdsPrepBatch.Close;
@@ -2177,8 +2194,12 @@ begin
       cdsPrepBatch.Edit;
       cdsPrepBatch.Append;
       sample_nr := Trim(ExtractWord(1, lbxBatch.Items[i], ['|']));
-      s := 'SELECT sample_nr, user_label, last_name FROM sample_v ' +
-           'WHERE sample_nr = ' + sample_nr + ';';
+      s := 'SELECT sample_t.sample_nr, user_label, last_name, weight_start' +
+           ' FROM sample_t ' +
+           ' INNER JOIN project_t ON sample_t.project_nr=project_t.project_nr' +
+           ' INNER JOIN user_t ON project_t.user_nr=user_t.user_nr' +
+           ' INNER JOIN preparation_t ON sample_t.sample_nr=preparation_t.sample_nr' +
+           ' WHERE sample_t.sample_nr = ' + sample_nr + ';';
       dm.qryDB.SQL.Text := s;
       LogWindow.addLogEntry('PrepBatch Wordfile -- query: ' + s);
           IF dm.adoConnKTL.Connected THEN
@@ -2193,6 +2214,7 @@ begin
       cdsPrepBatch.Fields.Fields[0].Value := dm.qryDB.FieldByName('sample_nr').AsString;  //Sample_nr
       cdsPrepBatch.Fields.Fields[1].Value := dm.qryDB.FieldByName('last_name').AsString;  //last_name
       cdsPrepBatch.Fields.Fields[2].Value := dm.qryDB.FieldByName('user_label').AsString;  //user_label
+      cdsPrepBatch.Fields.Fields[3].Value := dm.qryDB.FieldByName('weight_start').AsString;  //weight_start
       dm.qryDB.Close;
     end;
     cdsPrepBatch.Post;
@@ -2207,13 +2229,12 @@ begin
   begin
     if Trim(edtFilenamePrepDocTemplate.Text) <> '' then
       begin
-        OutPutDir:= edtFilenamePrepDocTemplate.InitialDir;
+        OutPutDir:= JvDirEdt_PrepBatch_Path.Text;
         LogWindow.addLogEntry('PrepBatch Wordfile -- OutputDir = ' + OutPutDir);
         FileName := edtFilenamePrepDocTemplate.Filename;  //template
         LogWindow.addLogEntry('PrepBatch Wordfile -- Template Filename = ' + FileName);
-        //OutPutDir := edtSaveReporttoFolder.Text;
         SaveFileName := TPath.Combine(OutPutDir,edtBatchName.Text+'.doc');
-        LogWindow.addLogEntry('PrepBatch Wordfile -- Document Name = ' + SaveFileName);
+        LogWindow.addLogEntry('PrepBatch Wordfile -- target filename = ' + SaveFileName);
       end
       else
       begin
@@ -8861,21 +8882,24 @@ procedure TfrmMAMS.SetupLabPlanPage;
 var
   i, w: integer;
 begin
-  with grdSamplesAvailable do begin
-    Visible := true;
-    Columns[0].Width := 55;   //sample_nr
-    Columns[1].Width := 170;  //project
-    Columns[2].Width := 170;  //user_label
-    Columns[3].Width := 150;  //user_label_nr
-    Columns[4].Width := 40;   //weight
-    Columns[5].Width := 50;   //prep_nr
-    Columns[6].Width := 60;  //target_nr
-    w := 0;
-    for i := 0 to Columns.Count - 1 do w := w + Columns[i].Width;
-  end;
-  gbxSamplesAvailable.Width := w + 50; // scroll
-  lbxBatch.Clear;
-  JvDBStatusLabel3.Visible := true;
+   if dm.dsSamplesAvailable.DataSet.RecordCount > 0 then
+     begin
+      with grdSamplesAvailable do begin
+        Visible := true;
+        Columns[0].Width := 55;   //sample_nr
+        Columns[1].Width := 170;  //project
+        Columns[2].Width := 170;  //user_label
+        Columns[3].Width := 150;  //user_label_nr
+        Columns[4].Width := 40;   //weight
+        Columns[5].Width := 50;   //prep_nr
+        Columns[6].Width := 60;  //target_nr
+        w := 0;
+        for i := 0 to Columns.Count - 1 do w := w + Columns[i].Width;
+      end;
+      gbxSamplesAvailable.Width := w + 50; // scroll
+      lbxBatch.Clear;
+      JvDBStatusLabel3.Visible := true;
+     end;
 end;
 
 procedure TfrmMAMS.SetupLabTaskPage;

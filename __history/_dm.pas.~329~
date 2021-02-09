@@ -209,7 +209,7 @@ type
     procedure GetWeights(SampleNr, PrepNr : integer);
     procedure GetGraphWeight(SampleNr, PrepNr, TargetNr : integer);
     function QueryInvoiceUser(const LastName, Institute, Organisation : string) : integer;
-    procedure QueryPrepStepsBySampleNr(sample_nr : integer);
+    procedure QueryPrepStepsBySampleNr(sample_nr, prep_nr : integer);
     procedure QueryTargetInfoBySampleNr(sample_nr: Integer);
     procedure QueryProject(const ProjectName : string);
     procedure QuerySampleBySampleNr(sample_nr : integer);
@@ -756,7 +756,7 @@ begin
 //                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
 //                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
      SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name, ' +
-                  'project_t.desired_date, (curdate()-preparation_t.prep_start) AS Days ' +
+                  'project_t.desired_date, (DATEDIFF(curdate(),preparation_t.prep_start)) AS Days ' +
                   'FROM sample_t ' +
                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
@@ -1920,7 +1920,8 @@ begin
       with qrySamplesAvailable do
       begin
         s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
-             ' preparation_t.prep_nr, user_t.last_name, sample_t.material ' +
+             ' preparation_t.prep_nr, user_t.last_name, sample_t.material, ' +
+             'preparation_t.step1_method, preparation_t.step2_method, preparation_t.step3_method, preparation_t.step4_method ' +
           'FROM sample_t ' +
           'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
           'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
@@ -2070,12 +2071,13 @@ begin
   end;
 end;
 
-procedure Tdm.QueryPrepStepsBySampleNr(sample_nr: integer);
+procedure Tdm.QueryPrepStepsBySampleNr(sample_nr, prep_nr: integer);
 begin
   with qryPrepSteps do begin
     Close;
-    SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method, ' +
-      'step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) + ';';
+    SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method,' +
+      ' step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) +
+      ' AND prep_nr=' + IntToStr(prep_nr) + ';';
     LogWindow.addLogEntry(SQL.Text);
     IF dm.adoConnKTL.Connected THEN
                 Begin

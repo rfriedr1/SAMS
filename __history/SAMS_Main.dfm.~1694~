@@ -10380,7 +10380,8 @@ object frmMAMS: TfrmMAMS
       'edtTouchWeightsMAMS.Value'
       'CheckBoxTouchPrepWeightsAutoConversion.Checked'
       'CheckBoxTouchGraphWeightsAutoConversion.Checked'
-      'JvDirEdt_PrepCards_Path.Text')
+      'JvDirEdt_PrepCards_Path.Text'
+      'edtFilenamePrepDocTemplate.Text')
     StoredValues = <>
     Left = 504
     Top = 40

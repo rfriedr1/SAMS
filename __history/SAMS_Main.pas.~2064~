@@ -1465,21 +1465,30 @@ begin
 ////      JvDBStatusLabel3.DataSource := dm.dsTargetsAvailable;
 //  end;
 
+  //clear list first
+  //dm.dsSamplesAvailable.DataSet.close;
+
   if rgpTask.ItemIndex = 0 then
   // preparation batch
   begin
     material := cmbFilterSampleMaterial.ListSource.DataSet.FieldByName('material').AsString;
-    if length(material) > 0 then
+    method := cmbPretreatMethod.ListSource.DataSet.FieldByName('method').AsString;
+    //if length(material) > 0 then
+    //begin
+    //  dm.GetSamplesAvailableForPrepByMaterial(material);
+    //  SetupLabPlanPage; // adjust colwidth
+    //end;
+    if length(method) > 0 then
     begin
-      dm.GetSamplesAvailableForPrepByMaterial(material);
-      SetupLabPlanPage; // colwidth
+      dm.GetSamplesAvailableForPrepByMethod(method);
+      SetupLabPlanPage; // adjust colwidth
     end;
   end
   else
   // graphitisation batch
   begin // get all samples which are pretreated, but with graph date is NULL
     dm.GetTargetsAvailable;
-    SetupLabPlanPage; // colwidth
+    SetupLabPlanPage; // adjust colwidth
   end;
 
 end;
@@ -2079,6 +2088,7 @@ begin
     SaveFileName := 'temp_PrepCard.doc';  //use a temporary file only
     LogWindow.addLogEntry('PrepCard -- FileName for saving = ' + SaveFileName);
     WordVersion := wvDetect;
+    LogWindow.addLogEntry('PrepCard -- WordVersion found = ' + GetWordVersion);
     Save := true;  //save the file when done
     KeepWordOpen := true; //keep word open after everything is finished
     DataSource := dm.dsSampleInfo;
@@ -8860,21 +8870,24 @@ procedure TfrmMAMS.SetupLabPlanPage;
 var
   i, w: integer;
 begin
-  with grdSamplesAvailable do begin
-    Visible := true;
-    Columns[0].Width := 55;   //sample_nr
-    Columns[1].Width := 170;  //project
-    Columns[2].Width := 170;  //user_label
-    Columns[3].Width := 150;  //user_label_nr
-    Columns[4].Width := 40;   //weight
-    Columns[5].Width := 50;   //prep_nr
-    Columns[6].Width := 60;  //target_nr
-    w := 0;
-    for i := 0 to Columns.Count - 1 do w := w + Columns[i].Width;
-  end;
-  gbxSamplesAvailable.Width := w + 50; // scroll
-  lbxBatch.Clear;
-  JvDBStatusLabel3.Visible := true;
+   if dm.dsSamplesAvailable.DataSet.RecordCount > 0 then
+     begin
+      with grdSamplesAvailable do begin
+        Visible := true;
+        Columns[0].Width := 55;   //sample_nr
+        Columns[1].Width := 170;  //project
+        Columns[2].Width := 170;  //user_label
+        Columns[3].Width := 150;  //user_label_nr
+        Columns[4].Width := 40;   //weight
+        Columns[5].Width := 50;   //prep_nr
+        Columns[6].Width := 60;  //target_nr
+        w := 0;
+        for i := 0 to Columns.Count - 1 do w := w + Columns[i].Width;
+      end;
+      gbxSamplesAvailable.Width := w + 50; // scroll
+      lbxBatch.Clear;
+      JvDBStatusLabel3.Visible := true;
+     end;
 end;
 
 procedure TfrmMAMS.SetupLabTaskPage;

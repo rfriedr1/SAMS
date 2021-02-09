@@ -204,12 +204,13 @@ type
     function GetUserNrByLastName(last_name: string): String;
     procedure GetSamplesAvailableForPrep(const method : string);
     procedure GetSamplesAvailableForPrepByMaterial(const material : string);
+    procedure GetSamplesAvailableForPrepByMethod(const method : string);
     procedure GetSampleInfo(SampleNr, PrepNr, TargetNr : integer);
     procedure GetTargetsAvailable;
     procedure GetWeights(SampleNr, PrepNr : integer);
     procedure GetGraphWeight(SampleNr, PrepNr, TargetNr : integer);
     function QueryInvoiceUser(const LastName, Institute, Organisation : string) : integer;
-    procedure QueryPrepStepsBySampleNr(sample_nr : integer);
+    procedure QueryPrepStepsBySampleNr(sample_nr, prep_nr : integer);
     procedure QueryTargetInfoBySampleNr(sample_nr: Integer);
     procedure QueryProject(const ProjectName : string);
     procedure QuerySampleBySampleNr(sample_nr : integer);
@@ -755,13 +756,13 @@ begin
 //                    'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
 //                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
 //                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
-     SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name,' +
-                  ' project_t.desired_date ' +
-                  ' FROM sample_t ' +
+     SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name, ' +
+                  'project_t.desired_date, (DATEDIFF(curdate(),preparation_t.prep_start)) AS Days ' +
+                  'FROM sample_t ' +
                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
+                    ' WHERE preparation_t.prep_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
        s := SQL.Text;
   //     ClipBoard.SetTextBuf(PChar(s));
        LogWindow.addLogEntry(SQL.Text);
@@ -1030,7 +1031,7 @@ begin
   s1 := FormatDateTime('YYYY-MM-DD', DateOf(MoStart));
   s2 := FormatDateTime('YYYY-MM-DD', DateOf(MoEnd));
 
-  // return number of received  samples
+  // return number of received samples
   if flag = 0 then
   begin
   LogWindow.addLogEntry('getting number of received samples');
@@ -1727,7 +1728,7 @@ begin
         ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, MA_Nr, in_date, desired_date, out_date, priority, status,' +
         ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
         ' prep_comment, weight_start, weight_medium, weight_end,' +
-        ' prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
+        ' prep_start, prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
     s := s + ', target_t.target_nr,' +
         ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
         ' magazine, position, precis, cycle_min, cycle_max, catalyst, cathode_nr, reactor_nr,' +
@@ -1920,7 +1921,100 @@ begin
       with qrySamplesAvailable do
       begin
         s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
-             ' preparation_t.prep_nr, user_t.last_name, sample_t.material ' +
+             ' preparation_t.prep_nr, user_t.last_name, sample_t.material, ' +
+             'preparation_t.step1_method, preparation_t.step2_method, preparation_t.step3_method, preparation_t.step4_method ' +
+          'FROM sample_t ' +
+          'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+          'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
+          'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+          'WHERE sample_t.sample_nr IN ' + SampleNrList +
+          ' AND preparation_t.batch IS NULL AND sample_t.not_tobedated=0 ' +
+          ';';
+//        ClipBoard.SetTextBuf(PChar(s));
+        SQL.Text := s;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('DB -- query executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+      end;
+    end;
+end;
+
+procedure Tdm.GetSamplesAvailableForPrepByMethod(const method: string);
+// get all samples that are not prep'd yet
+var
+  s, SampleNrList: string;
+begin
+      // get all sample_nr that have the correct sample_type
+      with qryDB do
+      begin
+        Close;
+        s := 'SELECT sample_t.sample_nr FROM sample_t' +
+          ' INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr' +
+          ' INNER JOIN project_t ON sample_t.project_nr=sample_t.project_t' +
+          ' WHERE step1_method =' + #34 + method + #34 +
+          ' AND batch IS NULL' +
+          ' AND prep_end IS NULL' +
+          ' AND av_fm IS NULL' +
+          ' AND project_t.out_date IS NULL;';
+//        ClipBoard.SetTextBuf(PChar(s));
+        SQL.Text := s;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('DB -- query executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+      end;
+
+    if qryDb.RecordCount > 0 then
+    begin
+      with qryDb do // using the query above create a list with sample numbers
+      begin
+        SampleNrList := '(';
+        First;
+        while not EOF do
+        begin
+          SampleNrList := SampleNrList + qryDb.Fields.Fields[0].AsString + ',';
+          Next;
+        end;
+        SampleNrList := copy(SampleNrList, 1, length(SampleNrList) - 1); // trim final comma
+        SampleNrList := SampleNrList + ')';
+      end;
+      // get all sample information from all the samples in the list
+      with qrySamplesAvailable do
+      begin
+        s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
+             ' preparation_t.prep_nr, user_t.last_name, sample_t.material, ' +
+             'preparation_t.step1_method, preparation_t.step2_method, preparation_t.step3_method, preparation_t.step4_method ' +
           'FROM sample_t ' +
           'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
           'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
@@ -1973,7 +2067,7 @@ begin
           ' target_t.graphitized IS NULL AND target_t.graph_date IS NULL AND target_t.target_pressed IS NULL AND target_t.graph_batch IS NULL' +
 //        ' AND preparation_t.prep_nr=1 AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
           ' AND preparation_t.prep_end IS NOT NULL AND target_t.c14_age IS NULL' +
-          AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
+          ' AND sample_t.not_tobedated=0 AND target_t.stop=0 and preparation_t.stop=0 order by sample_nr;';
         //ClipBoard.SetTextBuf(PChar(s));
         SQL.Text := s;
         LogWindow.addLogEntry(SQL.Text);
@@ -2070,12 +2164,13 @@ begin
   end;
 end;
 
-procedure Tdm.QueryPrepStepsBySampleNr(sample_nr: integer);
+procedure Tdm.QueryPrepStepsBySampleNr(sample_nr, prep_nr: integer);
 begin
   with qryPrepSteps do begin
     Close;
-    SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method, ' +
-      'step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) + ';';
+    SQL.Text := 'SELECT prep_nr, step1_method, step2_method, step3_method, step4_method,' +
+      ' step5_method, prep_end, old_info, prep_comment FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr) +
+      ' AND prep_nr=' + IntToStr(prep_nr) + ';';
     LogWindow.addLogEntry(SQL.Text);
     IF dm.adoConnKTL.Connected THEN
                 Begin

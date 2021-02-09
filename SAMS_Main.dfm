@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsOptions
+    ActivePage = tbsLabPlan
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -2456,7 +2456,6 @@ object frmMAMS: TfrmMAMS
               Width = 287
               Height = 24
               DropDownRows = 20
-              Enabled = False
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13
@@ -2474,6 +2473,7 @@ object frmMAMS: TfrmMAMS
               Top = 9
               Width = 286
               Height = 21
+              Enabled = False
               KeyField = 'indexnr'
               ListField = 'material'
               ListSource = dm.dsMaterial
@@ -2533,6 +2533,7 @@ object frmMAMS: TfrmMAMS
             OnDrawColumnCell = grdSamplesAvailableDrawColumnCell
             OnDblClick = grdSamplesAvailableDblClick
             OnMouseDown = grdSamplesAvailableMouseDown
+            SelectColumn = scGrid
             SelectColumnsDialogStrings.Caption = 'Select columns'
             SelectColumnsDialogStrings.OK = '&OK'
             SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
@@ -6260,6 +6261,13 @@ object frmMAMS: TfrmMAMS
               Height = 13
               Caption = 'Path to PrepCard templates'
             end
+            object Label137: TLabel
+              Left = 28
+              Top = 229
+              Width = 157
+              Height = 13
+              Caption = 'Path for saving PrepBatch pages'
+            end
             object JvDirEdt_Server_Image_Path: TJvDirectoryEdit
               Left = 24
               Top = 72
@@ -6299,6 +6307,15 @@ object frmMAMS: TfrmMAMS
               Height = 21
               DialogKind = dkWin32
               TabOrder = 3
+              Text = ''
+            end
+            object JvDirEdt_PrepBatch_Path: TJvDirectoryEdit
+              Left = 24
+              Top = 248
+              Width = 481
+              Height = 21
+              DialogKind = dkWin32
+              TabOrder = 4
               Text = ''
             end
           end
@@ -9059,7 +9076,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 508
+          Height = 496
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9236,13 +9253,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 508
+          Height = 496
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            508)
+            496)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9420,7 +9437,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 483
+            Top = 471
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9664,7 +9681,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300500710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013005C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10362,9 +10379,6 @@ object frmMAMS: TfrmMAMS
     AppStorage = JvAppIniFileStorage1
     AppStoragePath = 'Win2kAppForm\'
     StoredProps.Strings = (
-      'grdPreviewSamples.Width'
-      'edtNewSamplesFilename.InitialDir'
-      'edtWordTemplate.Text'
       'gbxLabStatPlanned.Width'
       'edtUserDocuments.Text'
       'edtSampleNr.Value'
@@ -10381,7 +10395,8 @@ object frmMAMS: TfrmMAMS
       'CheckBoxTouchPrepWeightsAutoConversion.Checked'
       'CheckBoxTouchGraphWeightsAutoConversion.Checked'
       'JvDirEdt_PrepCards_Path.Text'
-      'edtFilenamePrepDocTemplate.Text')
+      'edtFilenamePrepDocTemplate.Text'
+      'JvDirEdt_PrepBatch_Path.Text')
     StoredValues = <>
     Left = 504
     Top = 40
@@ -10443,7 +10458,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F8060C0918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806180918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16693,7 +16708,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00500720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F005C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

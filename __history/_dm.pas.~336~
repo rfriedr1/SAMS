@@ -204,12 +204,13 @@ type
     function GetUserNrByLastName(last_name: string): String;
     procedure GetSamplesAvailableForPrep(const method : string);
     procedure GetSamplesAvailableForPrepByMaterial(const material : string);
+    procedure GetSamplesAvailableForPrepByMethod(const method : string);
     procedure GetSampleInfo(SampleNr, PrepNr, TargetNr : integer);
     procedure GetTargetsAvailable;
     procedure GetWeights(SampleNr, PrepNr : integer);
     procedure GetGraphWeight(SampleNr, PrepNr, TargetNr : integer);
     function QueryInvoiceUser(const LastName, Institute, Organisation : string) : integer;
-    procedure QueryPrepStepsBySampleNr(sample_nr : integer);
+    procedure QueryPrepStepsBySampleNr(sample_nr, prep_nr : integer);
     procedure QueryTargetInfoBySampleNr(sample_nr: Integer);
     procedure QueryProject(const ProjectName : string);
     procedure QuerySampleBySampleNr(sample_nr : integer);
@@ -1888,15 +1889,19 @@ begin
                     Open;
                     LogWindow.addLogEntry('DB -- query executed');
                   Except
-                    // connections is closed, reconnect by setting connected to true and test again
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    Try
-                      dm.DBreconnect;
-                      LogWindow.addLogEntry('DB -- execute query again');
-                      Open;
-                    Except
-                       LogWindow.addLogEntry('DB -- can not reconnect');
-                    End;
+                   on E: Exception do
+                      begin
+                       LogWindow.addLogEntry('DB -- problems with DB: ' + E.Message);
+                       showmessage('Problem with DB: '+E.Message);
+                      // connections is closed, reconnect by setting connected to true and test again
+                      Try
+                        dm.DBreconnect;
+                        LogWindow.addLogEntry('DB -- execute query again');
+                        Open;
+                      Except
+                         LogWindow.addLogEntry('DB -- can not reconnect');
+                      End;
+                    end;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
@@ -1917,10 +1922,12 @@ begin
         SampleNrList := SampleNrList + ')';
       end;
       // get all sample information from all the samples in the list
+      LogWindow.addLogEntry('DB -- generated SampleNrList: ' + SampleNrList);
       with qrySamplesAvailable do
       begin
         s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
-             ' preparation_t.prep_nr, user_t.last_name, sample_t.material ' +
+             ' preparation_t.prep_nr, user_t.last_name, sample_t.material, ' +
+             'preparation_t.step1_method, preparation_t.step2_method, preparation_t.step3_method, preparation_t.step4_method ' +
           'FROM sample_t ' +
           'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
           'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
@@ -1937,15 +1944,120 @@ begin
                     Open;
                     LogWindow.addLogEntry('DB -- query executed');
                   Except
-                    // connections is closed, reconnect by setting connected to true and test again
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    Try
-                      dm.DBreconnect;
-                      LogWindow.addLogEntry('DB -- execute query again');
-                      Open;
-                    Except
-                       LogWindow.addLogEntry('DB -- can not reconnect');
-                    End;
+                   on E: Exception do
+                   begin
+                       LogWindow.addLogEntry('DB -- problems with DB: ' + E.Message);
+                       showmessage('Problem with DB: '+E.Message);
+                      // connections is closed, reconnect by setting connected to true and test again
+                      Try
+                        dm.DBreconnect;
+                        LogWindow.addLogEntry('DB -- execute query again');
+                        Open;
+                      Except
+                         LogWindow.addLogEntry('DB -- can not reconnect');
+                      End;
+                    end;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+      end;
+    end;
+end;
+
+procedure Tdm.GetSamplesAvailableForPrepByMethod(const method: string);
+// get all samples that are not prep'd yet
+var
+  s, SampleNrList: string;
+begin
+      // get all sample_nr that have the correct sample_type
+      with qryDB do
+      begin
+        Close;
+        s := 'SELECT sample_t.sample_nr FROM sample_t' +
+          ' INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr' +
+          ' INNER JOIN project_t ON sample_t.project_nr=sample_t.project_nr' +
+          ' WHERE step1_method =' + #34 + method + #34 +
+          ' AND batch IS NULL' +
+          ' AND prep_end IS NULL' +
+          ' AND av_fm IS NULL' +
+          ' AND project_t.out_date IS NULL;';
+//        ClipBoard.SetTextBuf(PChar(s));
+        SQL.Text := s;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('DB -- query executed');
+                  Except
+                    on E: Exception do
+                    begin
+                       LogWindow.addLogEntry('DB -- problems with DB: ' + E.Message);
+                       showmessage('Problem with DB: '+E.Message);
+                      // connections is closed, reconnect by setting connected to true and test again
+                      Try
+                        dm.DBreconnect;
+                        LogWindow.addLogEntry('DB -- execute query again');
+                        Open;
+                      Except
+                         LogWindow.addLogEntry('DB -- can not reconnect');
+                      End;
+                    end;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+      end;
+
+    if qryDb.RecordCount > 0 then
+    begin
+      with qryDb do // using the query above create a list with sample numbers
+      begin
+        SampleNrList := '(';
+        First;
+        while not EOF do
+        begin
+          SampleNrList := SampleNrList + qryDb.Fields.Fields[0].AsString + ',';
+          Next;
+        end;
+        SampleNrList := copy(SampleNrList, 1, length(SampleNrList) - 1); // trim final comma
+        SampleNrList := SampleNrList + ')';
+      end;
+      // get all sample information from all the samples in the list
+      LogWindow.addLogEntry('DB -- generated SampleNrList: ' + SampleNrList);
+      with qrySamplesAvailable do
+      begin
+        s := 'SELECT sample_t.sample_nr, project_t.project, user_label, user_label_nr, sample_t.weight,' +
+             ' preparation_t.prep_nr, user_t.last_name, sample_t.material, ' +
+             'preparation_t.step1_method, preparation_t.step2_method, preparation_t.step3_method, preparation_t.step4_method ' +
+          'FROM sample_t ' +
+          'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+          'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' + // to get prep_nr
+          'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+          'WHERE sample_t.sample_nr IN ' + SampleNrList +
+          ' AND preparation_t.batch IS NULL AND sample_t.not_tobedated=0 ' +
+          ';';
+//        ClipBoard.SetTextBuf(PChar(s));
+        SQL.Text := s;
+        LogWindow.addLogEntry(SQL.Text);
+        IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('DB -- query executed');
+                  Except
+                    on E: Exception do
+                    begin
+                       LogWindow.addLogEntry('DB -- problems with DB: ' + E.Message);
+                       showmessage('Problem with DB: '+E.Message);
+                      // connections is closed, reconnect by setting connected to true and test again
+                      Try
+                        dm.DBreconnect;
+                        LogWindow.addLogEntry('DB -- execute query again');
+                        Open;
+                      Except
+                         LogWindow.addLogEntry('DB -- can not reconnect');
+                      End;
+                    end;
                     //ShowMessage('Database connection is closed.');
                   End;
                 End;
