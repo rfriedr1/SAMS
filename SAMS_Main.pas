@@ -842,6 +842,8 @@ type
     btnPrepCard: TButton;
     JvDirEdt_PrepCards_Path: TJvDirectoryEdit;
     Label136: TLabel;
+    cdsPrepBatch: TClientDataSet;
+    dsPrepBatch: TDataSource;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1597,11 +1599,14 @@ begin
       Begin
         Try
           Execute;  //this executes the word export
-          LogWindow.addLogEntry('report created');
+          LogWindow.addLogEntry('Report generation -- report created');
         Except
-          ShowMessage('problem creating report');
-          LogWindow.addLogEntry('problem creating report');
-        End;
+          on E: Exception do
+          begin
+            ShowMessage('Problem creating report: ' + E.Message);
+            LogWindow.addLogEntry('Report generation -- problem creating word file');
+          End;
+        End
       End;
     InsertReport; //set database flag out_date to current date
   end;
@@ -2074,6 +2079,7 @@ begin
     SaveFileName := 'temp_PrepCard.doc';  //use a temporary file only
     LogWindow.addLogEntry('PrepCard -- FileName for saving = ' + SaveFileName);
     WordVersion := wvDetect;
+    LogWindow.addLogEntry('PrepCard -- WordVersion found = ' + GetWordVersion);
     Save := true;  //save the file when done
     KeepWordOpen := true; //keep word open after everything is finished
     DataSource := dm.dsSampleInfo;
@@ -2092,17 +2098,17 @@ begin
     WeightStart:=dm.dsWeights.DataSet.FieldByName('weight_start').AsString;
 
     FValues.Add('MAMS=' + mams);
-        LogWindow.addLogEntry('setting replacement value MAMS = ' + Mams);
+        LogWindow.addLogEntry('PrepCard -- setting replacement value MAMS = ' + Mams);
     FValues.Add('LastName=' + LastName);
-        LogWindow.addLogEntry('setting replacement values LastName = ' + LastName);
+        LogWindow.addLogEntry('PrepCard -- setting replacement values LastName = ' + LastName);
     FValues.Add('UserLabel=' + UserLabel);
-        LogWindow.addLogEntry('setting replacement values UserLabel = ' + UserLabel);
+        LogWindow.addLogEntry('PrepCard -- setting replacement values UserLabel = ' + UserLabel);
     FValues.Add('InDate=' + InDate);
-        LogWindow.addLogEntry('setting replacement values InDate = ' + InDate);
+        LogWindow.addLogEntry('PrepCard -- setting replacement values InDate = ' + InDate);
     FValues.Add('PrepStart=' + PrepStart);
-        LogWindow.addLogEntry('setting replacement values PrepStart = ' + PrepStart);
+        LogWindow.addLogEntry('PrepCard -- setting replacement values PrepStart = ' + PrepStart);
     FValues.Add('WeightStart=' + WeightStart);
-        LogWindow.addLogEntry('setting replacement values WeightStart = ' + WeightStart);
+        LogWindow.addLogEntry('PrepCard -- setting replacement values WeightStart = ' + WeightStart);
     Values := FValues;  // "Values" is a list of identifiers/value pairs that will be replaced
     //Values.SaveToFile('c:\temp\list.txt');
     KeepDocumentsOpen := true;
@@ -2110,13 +2116,12 @@ begin
     // now that all the parameters are set, EXECUTE the word export
     Try
       Execute;  // this executes the export
-      LogWindow.addLogEntry('PrepCard generated sucessfully');
+      LogWindow.addLogEntry('PrepCard -- PrepCard generated sucessfully');
     Except
       on E: Exception do
       begin
-        ShowMessage(E.Message);
-        ShowMessage('problem creating ReportCard');
-        LogWindow.addLogEntry('problem creating report card');
+        ShowMessage('Problem creating Wordfile: ' + E.Message);
+        LogWindow.addLogEntry('PrepCard -- problem creating report card');
       end;
     End;
   end;
@@ -2133,8 +2138,9 @@ begin
  // first create the table
 
  //create in-memory-dataset
-    cdsExport.Close;  //cdsExport is a ClientDataSet that is being build in-memory and can be used like a database
-  with cdsExport.FieldDefs do    // create FieldDefinitions  aka Tcolumn names
+ LogWindow.addLogEntry('PrepBatch Wordfile -- generate in memory DB');
+    cdsPrepBatch.Close;  //cdsPrepBatches is a ClientDataSet that is being build in-memory and can be used like a database
+  with cdsPrepBatch.FieldDefs do    // create FieldDefinitions  aka Tcolumn names
   begin
     Clear;
     with AddFieldDef do  //add new field to the dataset
@@ -2144,7 +2150,7 @@ begin
     end;
     with AddFieldDef do
     begin
-      Name := 'user_Last_name';
+      Name := 'user_last_name';
       DataType := ftString;
       Size := 40;
     end;
@@ -2155,70 +2161,89 @@ begin
       Size := 40;
     end;
   end;
-  cdsExport.CreateDataSet;  // now make an actual dataset out of it
-  cdsExport.Close;
-  // the corresponding datasource is called dsExport
+  cdsPrepBatch.CreateDataSet;  // now make an actual dataset out of it
+  cdsPrepBatch.Close;
+  LogWindow.addLogEntry('PrepBatch Wordfile -- generate in memory DB done!');
 
-  //fill cdsExport with data from the batch
-  //take infor from PrepGrid and extract MAMS
-  cdsExport.Open;
+  // the corresponding datasource is called dsPrepBatches
+  dsPrepBatch.DataSet := cdsPrepBatch;
+
+   LogWindow.addLogEntry('PrepBatch Wordfile -- query sample DB');
+  //fill cdsPrepBatch with data from the currently created prep batch
+  //take info from lbxBatch listbox and extract MAMS
+  cdsPrepBatch.Open;
   for i := 0 to lbxBatch.Count - 1 do
     begin
-      cdsExport.Edit;
-      cdsExport.Append;
+      cdsPrepBatch.Edit;
+      cdsPrepBatch.Append;
       sample_nr := Trim(ExtractWord(1, lbxBatch.Items[i], ['|']));
       s := 'SELECT sample_nr, user_label, last_name FROM sample_v ' +
-           'WHERE sample_nr = ' + sample_nr +
-           ';';
-      //dm.qryDB.Close;
+           'WHERE sample_nr = ' + sample_nr + ';';
       dm.qryDB.SQL.Text := s;
-      LogWindow.addLogEntry(s);
+      LogWindow.addLogEntry('PrepBatch Wordfile -- query: ' + s);
           IF dm.adoConnKTL.Connected THEN
       Begin
         Try
           dm.qryDB.Open;
-          LogWindow.addLogEntry('executed');
+          LogWindow.addLogEntry('PrepBatch Wordfile -- query executed');
         Except
           ShowMessage('problem opening the database');
         End;
       End;
-      cdsExport.Fields.Fields[0].Value := dm.qryDB.FieldByName('sample_nr').AsString;  //Sample_nr
-      cdsExport.Fields.Fields[1].Value := dm.qryDB.FieldByName('last_name').AsString;  //Sample_nr
-      cdsExport.Fields.Fields[2].Value := dm.qryDB.FieldByName('user_label').AsString;  //Sample_nr
+      cdsPrepBatch.Fields.Fields[0].Value := dm.qryDB.FieldByName('sample_nr').AsString;  //Sample_nr
+      cdsPrepBatch.Fields.Fields[1].Value := dm.qryDB.FieldByName('last_name').AsString;  //last_name
+      cdsPrepBatch.Fields.Fields[2].Value := dm.qryDB.FieldByName('user_label').AsString;  //user_label
       dm.qryDB.Close;
     end;
-    cdsExport.Post;
-    cdsExport.Close;
+    cdsPrepBatch.Post;
+    cdsPrepBatch.Close;
 
- // connect to WordApplication
- CreateWordExport;
+    // connect to WordApplication
+    CreateWordExport;
 
  // fill in the information into the word file
-  cdsExport.Open;
+  cdsPrepBatch.Open;
   with FWord do
   begin
-    //SaveFileName := edtSaveReportAs.FileName;
-    FileName := edtFilenamePrepDocTemplate.Filename;  //template
-    LogWindow.addLogEntry('PrepBatch Document: Template = ' + FileName);
-    OutPutDir:= edtFilenamePrepDocTemplate.InitialDir;
-    //OutPutDir := edtSaveReporttoFolder.Text;
-    SaveFileName := TPath.Combine(OutPutDir,'prep_test');
-    LogWindow.addLogEntry('PrepBatch Document: Document Name = ' + SaveFileName);
-//    FileName := 'C:\Temp\SAMS\C14AgeTableTemplate.doc';
+    if Trim(edtFilenamePrepDocTemplate.Text) <> '' then
+      begin
+        OutPutDir:= edtFilenamePrepDocTemplate.InitialDir;
+        LogWindow.addLogEntry('PrepBatch Wordfile -- OutputDir = ' + OutPutDir);
+        FileName := edtFilenamePrepDocTemplate.Filename;  //template
+        LogWindow.addLogEntry('PrepBatch Wordfile -- Template Filename = ' + FileName);
+        //OutPutDir := edtSaveReporttoFolder.Text;
+        SaveFileName := TPath.Combine(OutPutDir,edtBatchName.Text+'.doc');
+        LogWindow.addLogEntry('PrepBatch Wordfile -- Document Name = ' + SaveFileName);
+      end
+      else
+      begin
+        LogWindow.addLogEntry('PrepBatch Wordfile -- no template selected');
+        Exit;    // no template file is selected exit here
+      end;
     Save := true;
     KeepWordOpen := true;
-    DataSource := dsExport;
+    DataSource := dsPrepBatch;
 //    DataSource := dm.dsSampleOfSubmitter;
     WordVersion := wvDetect;
-    LogWindow.addLogEntry('PrepBatch Document: WordVersion found = ' + GetWordVersion);
-//    DocumentMode := dmNewTable;
+    LogWindow.addLogEntry('PrepBatch Wordfile -- WordVersion found = ' + GetWordVersion);
     DocumentMode := dmFillTable;
     TableTag := 'Table';
     //replace Text in template (this is not for the table)
     FValues.Add('batch_name=' + edtBatchName.Text);
     Values := FValues;
     KeepDocumentsOpen := true;
-    Execute;
+
+    // now that all the parameters are set, EXECUTE the word export
+    Try
+      Execute;  //this executes the export
+      LogWindow.addLogEntry('PrepBatch Wordfile -- Wordfile sucessfully');
+    Except
+      on E: Exception do
+      begin
+        ShowMessage('Problem creating Wordfile: ' + E.Message);
+        LogWindow.addLogEntry('PrepBatch Wordfile --  problem creating word file');
+      end;
+    End;
   end;
 
 

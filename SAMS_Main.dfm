@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsOptions
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -2654,7 +2654,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1166
         Height = 807
-        ActivePage = tbsGraphTask
+        ActivePage = tbsPrepTask
         Align = alClient
         TabOrder = 1
         object tbsPrepTask: TTabSheet
@@ -10380,7 +10380,8 @@ object frmMAMS: TfrmMAMS
       'edtTouchWeightsMAMS.Value'
       'CheckBoxTouchPrepWeightsAutoConversion.Checked'
       'CheckBoxTouchGraphWeightsAutoConversion.Checked'
-      'JvDirEdt_PrepCards_Path.Text')
+      'JvDirEdt_PrepCards_Path.Text'
+      'edtFilenamePrepDocTemplate.Text')
     StoredValues = <>
     Left = 504
     Top = 40
@@ -26739,7 +26740,7 @@ object frmMAMS: TfrmMAMS
   end
   object dsExport: TDataSource
     DataSet = cdsExport
-    Left = 896
+    Left = 1000
     Top = 48
   end
   object smtpSendMail: TIdSMTP
@@ -26811,5 +26812,16 @@ object frmMAMS: TfrmMAMS
   object DSRESTWebDispatcher1: TDSRESTWebDispatcher
     Left = 120
     Top = 40
+  end
+  object cdsPrepBatch: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 951
+    Top = 102
+  end
+  object dsPrepBatch: TDataSource
+    DataSet = cdsPrepBatch
+    Left = 1023
+    Top = 103
   end
 end
