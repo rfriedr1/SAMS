@@ -751,7 +751,7 @@ type
     DBGridSampleExchange: TDBGrid;
     RadioGroupSampleExchange: TRadioGroup;
     Panel12: TPanel;
-    SpeedButton2: TSpeedButton;
+    btnExchange: TSpeedButton;
     DBCheckBoxReturnedToSender: TDBCheckBox;
     DBCheckBoxReturnedToSender2: TDBCheckBox;
     dbchkCNIsotopAMoved: TDBCheckBox;
@@ -844,6 +844,8 @@ type
     Label136: TLabel;
     cdsPrepBatch: TClientDataSet;
     dsPrepBatch: TDataSource;
+    JvDirEdt_PrepBatch_Path: TJvDirectoryEdit;
+    Label137: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1135,7 +1137,7 @@ type
     procedure btn_initestClick(Sender: TObject);
     procedure ImageFilesListBoxClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure btnExchangeClick(Sender: TObject);
     procedure ToolButtonSampleExchangeClick(Sender: TObject);
     procedure DBGridSampleExchangeDblClick(Sender: TObject);
     procedure DBGridSampleExchangeDrawColumnCell(Sender: TObject;
@@ -2193,7 +2195,9 @@ begin
       cdsPrepBatch.Append;
       sample_nr := Trim(ExtractWord(1, lbxBatch.Items[i], ['|']));
       s := 'SELECT sample_t.sample_nr, user_label, last_name, weight_start' +
-           ' FROM sample_v ' +
+           ' FROM sample_t ' +
+           ' INNER JOIN project_t ON sample_t.project_nr=project_t.project_nr' +
+           ' INNER JOIN user_t ON project_t.user_nr=user_t.user_nr' +
            ' INNER JOIN preparation_t ON sample_t.sample_nr=preparation_t.sample_nr' +
            ' WHERE sample_t.sample_nr = ' + sample_nr + ';';
       dm.qryDB.SQL.Text := s;
@@ -2225,13 +2229,12 @@ begin
   begin
     if Trim(edtFilenamePrepDocTemplate.Text) <> '' then
       begin
-        OutPutDir:= edtFilenamePrepDocTemplate.InitialDir;
+        OutPutDir:= JvDirEdt_PrepBatch_Path.Text;
         LogWindow.addLogEntry('PrepBatch Wordfile -- OutputDir = ' + OutPutDir);
         FileName := edtFilenamePrepDocTemplate.Filename;  //template
         LogWindow.addLogEntry('PrepBatch Wordfile -- Template Filename = ' + FileName);
-        //OutPutDir := edtSaveReporttoFolder.Text;
         SaveFileName := TPath.Combine(OutPutDir,edtBatchName.Text+'.doc');
-        LogWindow.addLogEntry('PrepBatch Wordfile -- Document Name = ' + SaveFileName);
+        LogWindow.addLogEntry('PrepBatch Wordfile -- target filename = ' + SaveFileName);
       end
       else
       begin
@@ -7932,7 +7935,7 @@ begin
 
 end;
 
-procedure TfrmMAMS.SpeedButton2Click(Sender: TObject);
+procedure TfrmMAMS.btnExchangeClick(Sender: TObject);
 Var
   ADOQueryListing: TADOQuery;
   DataSrcListing: TDataSource;
@@ -8340,7 +8343,8 @@ end;
 procedure TfrmMAMS.ToolButtonSampleExchangeClick(Sender: TObject);
 begin
   pgtMain.ActivePage := SampleExchange;
-  RadioGroupSampleExchange.ItemIndex := 0;
+  if RadioGroupSampleExchange.ItemIndex = 1 then RadioGroupSampleExchange.ItemIndex := 1;
+  btnExchangeClick(self);
 end;
 
 procedure TfrmMAMS.ToolButtonTouchClick(Sender: TObject);

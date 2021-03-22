@@ -751,7 +751,7 @@ type
     DBGridSampleExchange: TDBGrid;
     RadioGroupSampleExchange: TRadioGroup;
     Panel12: TPanel;
-    SpeedButton2: TSpeedButton;
+    btnExchange: TSpeedButton;
     DBCheckBoxReturnedToSender: TDBCheckBox;
     DBCheckBoxReturnedToSender2: TDBCheckBox;
     dbchkCNIsotopAMoved: TDBCheckBox;
@@ -1137,7 +1137,7 @@ type
     procedure btn_initestClick(Sender: TObject);
     procedure ImageFilesListBoxClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure btnExchangeClick(Sender: TObject);
     procedure ToolButtonSampleExchangeClick(Sender: TObject);
     procedure DBGridSampleExchangeDblClick(Sender: TObject);
     procedure DBGridSampleExchangeDrawColumnCell(Sender: TObject;
@@ -2229,13 +2229,12 @@ begin
   begin
     if Trim(edtFilenamePrepDocTemplate.Text) <> '' then
       begin
-        OutPutDir:= edtFilenamePrepDocTemplate.InitialDir;
+        OutPutDir:= JvDirEdt_PrepBatch_Path.Text;
         LogWindow.addLogEntry('PrepBatch Wordfile -- OutputDir = ' + OutPutDir);
         FileName := edtFilenamePrepDocTemplate.Filename;  //template
         LogWindow.addLogEntry('PrepBatch Wordfile -- Template Filename = ' + FileName);
-        //OutPutDir := edtSaveReporttoFolder.Text;
         SaveFileName := TPath.Combine(OutPutDir,edtBatchName.Text+'.doc');
-        LogWindow.addLogEntry('PrepBatch Wordfile -- Document Name = ' + SaveFileName);
+        LogWindow.addLogEntry('PrepBatch Wordfile -- target filename = ' + SaveFileName);
       end
       else
       begin
@@ -7936,7 +7935,7 @@ begin
 
 end;
 
-procedure TfrmMAMS.SpeedButton2Click(Sender: TObject);
+procedure TfrmMAMS.btnExchangeClick(Sender: TObject);
 Var
   ADOQueryListing: TADOQuery;
   DataSrcListing: TDataSource;
@@ -8344,7 +8343,8 @@ end;
 procedure TfrmMAMS.ToolButtonSampleExchangeClick(Sender: TObject);
 begin
   pgtMain.ActivePage := SampleExchange;
-  RadioGroupSampleExchange.ItemIndex := 0;
+  RadioGroupSampleExchange.ItemIndex := 1;
+  btnExchangeClick;
 end;
 
 procedure TfrmMAMS.ToolButtonTouchClick(Sender: TObject);

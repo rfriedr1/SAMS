@@ -751,7 +751,7 @@ type
     DBGridSampleExchange: TDBGrid;
     RadioGroupSampleExchange: TRadioGroup;
     Panel12: TPanel;
-    SpeedButton2: TSpeedButton;
+    btnExchange: TSpeedButton;
     DBCheckBoxReturnedToSender: TDBCheckBox;
     DBCheckBoxReturnedToSender2: TDBCheckBox;
     dbchkCNIsotopAMoved: TDBCheckBox;
@@ -1137,7 +1137,7 @@ type
     procedure btn_initestClick(Sender: TObject);
     procedure ImageFilesListBoxClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure btnExchangeClick(Sender: TObject);
     procedure ToolButtonSampleExchangeClick(Sender: TObject);
     procedure DBGridSampleExchangeDblClick(Sender: TObject);
     procedure DBGridSampleExchangeDrawColumnCell(Sender: TObject;
@@ -6906,9 +6906,10 @@ procedure TfrmMAMS.DBGridSampleExchangeDrawColumnCell(Sender: TObject;
 CONST
   CtrlState: array[0..1] of integer = (DFCS_BUTTONCHECK, DFCS_BUTTONCHECK or DFCS_CHECKED) ;
 begin
-  //AlternateRowColors(Sender, State);
-  //TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  // AlternateRowColors(Sender, State);
+  // TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
+  // display boolean fileds as checkboxes
   if (Column.FieldName='return_to_sender') OR
   (Column.FieldName='returned_to_sender') OR
   (Column.FieldName='CNIsotopA') OR
@@ -7935,7 +7936,7 @@ begin
 
 end;
 
-procedure TfrmMAMS.SpeedButton2Click(Sender: TObject);
+procedure TfrmMAMS.btnExchangeClick(Sender: TObject);
 Var
   ADOQueryListing: TADOQuery;
   DataSrcListing: TDataSource;
@@ -8343,7 +8344,9 @@ end;
 procedure TfrmMAMS.ToolButtonSampleExchangeClick(Sender: TObject);
 begin
   pgtMain.ActivePage := SampleExchange;
-  RadioGroupSampleExchange.ItemIndex := 0;
+  //ShowMessage(inttostr(RadioGroupSampleExchange.ItemIndex));
+  if RadioGroupSampleExchange.ItemIndex = -1 then RadioGroupSampleExchange.ItemIndex := 1;
+  btnExchangeClick(self);
 end;
 
 procedure TfrmMAMS.ToolButtonTouchClick(Sender: TObject);

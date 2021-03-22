@@ -2233,7 +2233,6 @@ begin
         LogWindow.addLogEntry('PrepBatch Wordfile -- OutputDir = ' + OutPutDir);
         FileName := edtFilenamePrepDocTemplate.Filename;  //template
         LogWindow.addLogEntry('PrepBatch Wordfile -- Template Filename = ' + FileName);
-        //OutPutDir := edtSaveReporttoFolder.Text;
         SaveFileName := TPath.Combine(OutPutDir,edtBatchName.Text+'.doc');
         LogWindow.addLogEntry('PrepBatch Wordfile -- target filename = ' + SaveFileName);
       end
@@ -8344,7 +8343,8 @@ end;
 procedure TfrmMAMS.ToolButtonSampleExchangeClick(Sender: TObject);
 begin
   pgtMain.ActivePage := SampleExchange;
-  RadioGroupSampleExchange.ItemIndex := 0;
+  RadioGroupSampleExchange.ItemIndex := 1;
+  DBGridSampleExchange.DataSource.DataSet.Close;
 end;
 
 procedure TfrmMAMS.ToolButtonTouchClick(Sender: TObject);

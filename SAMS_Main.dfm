@@ -293,7 +293,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsLabPlan
+    ActivePage = SampleExchange
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -3375,11 +3375,12 @@ object frmMAMS: TfrmMAMS
           object edtSamplePrepNr: TJvSpinEdit
             Left = 119
             Top = 11
-            Width = 46
+            Width = 58
             Height = 21
             Hint = 'preparation number of the selected sample'
             CustomHint = BalloonHint1
             TabStop = False
+            CheckOptions = [coCheckOnExit, coCropBeyondLimit]
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
             Value = 1.000000000000000000
@@ -3434,11 +3435,12 @@ object frmMAMS: TfrmMAMS
           object edtSampleTargetNr: TJvSpinEdit
             Left = 75
             Top = 11
-            Width = 38
+            Width = 59
             Height = 21
             Hint = 'target number of the selected sample'
             CustomHint = BalloonHint1
             TabStop = False
+            CheckOptions = [coCheckOnExit, coCropBeyondLimit]
             MaxValue = 99999.000000000000000000
             MinValue = 1.000000000000000000
             Value = 1.000000000000000000
@@ -8126,7 +8128,7 @@ object frmMAMS: TfrmMAMS
         Height = 713
         Align = alClient
         Ctl3D = False
-        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
         ParentCtl3D = False
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -8145,7 +8147,7 @@ object frmMAMS: TfrmMAMS
         Height = 94
         Align = alTop
         TabOrder = 1
-        object SpeedButton2: TSpeedButton
+        object btnExchange: TSpeedButton
           Left = 183
           Top = 7
           Width = 98
@@ -8190,7 +8192,7 @@ object frmMAMS: TfrmMAMS
             CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
             FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
             FF7FFF7FFF7F}
-          OnClick = SpeedButton2Click
+          OnClick = btnExchangeClick
         end
         object RadioGroupSampleExchange: TRadioGroup
           Left = 1
@@ -9076,7 +9078,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 496
+          Height = 480
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9253,13 +9255,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 496
+          Height = 480
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            496)
+            480)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9437,7 +9439,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 471
+            Top = 455
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9681,7 +9683,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C0101100013005C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013006C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10458,7 +10460,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806180918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806280918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16708,7 +16710,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F005C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F006C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
