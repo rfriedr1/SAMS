@@ -1253,6 +1253,7 @@ begin
                   End;
                 End;
      Result := Fields.Fields[0].AsInteger;
+     Close;
    end;
 end;
 
@@ -1319,6 +1320,7 @@ begin
                   End;
                 End;
      Result := Fields.Fields[0].AsInteger;
+     Close;
    end;
 end;
 

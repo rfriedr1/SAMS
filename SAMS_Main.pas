@@ -9087,7 +9087,7 @@ begin
   edtDesiredDate.Date := Date + 90;
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
-  if ProjectExists then ShowMessage('Project already exists! Samples will be added to theFieldByName('last_insert_id()').AsInteger project! ');
+  if ProjectExists then ShowMessage('Project already exists! Samples will be added to the project! ');
 end;
 
 procedure TfrmMAMS.wizInputSamplesBackButtonClick(Sender: TObject);
