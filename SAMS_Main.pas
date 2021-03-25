@@ -846,6 +846,12 @@ type
     dsPrepBatch: TDataSource;
     JvDirEdt_PrepBatch_Path: TJvDirectoryEdit;
     Label137: TLabel;
+    DBedtTouchWeightsEmptyContPrep: TDBEdit;
+    DBedtTouchWeightsFullContPrep: TDBEdit;
+    Label138: TLabel;
+    Label139: TLabel;
+    Label140: TLabel;
+    Label141: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
