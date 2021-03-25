@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 Built: Feb-03-2021';
+  myVersion = '1.9.9 Built: March-03-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -5078,12 +5078,13 @@ begin
     dm.tblUser.Close;
     dm.tblUser.Open;
 
-    // retunr user_nr of the new user
+    // return user_nr of the newly created user
     with dm.qryDb do
     begin // get user_nr from user_t
       Close;
-      SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
-        ' AND first_name=' + #34 + User.FirstName + #34;
+      SQL.Text := 'SELECT last_insert_id()';
+      //SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
+      //  ' AND first_name=' + #34 + User.FirstName + #34;
       LogWindow.addLogEntry(SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
@@ -5094,17 +5095,24 @@ begin
           ShowMessage('problem opening the database');
         End;
       End;
-      user_nr := 1;
-      if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
+      user_nr := 2;  // currently there is no user with user_nr=2 in the database
+      //if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
+      if RecordCount > 0 then
+        begin
+          if FieldByName('last_insert_id()').AsInteger > 0 then
+            user_nr := FieldByName('last_insert_id()').AsInteger;
+        end;
+      lbWizFinalPage.lines.add('New User Nr = ' + inttostr(user_nr));
     end;
   end
   else
+
   // user already exists
   begin
     lbWizFinalPage.Lines.Add('User already known');
     user_nr := glbUserNr;
   end;
-  lbWizFinalPage.Lines.Add('User Nr: ' + inttostr(user_nr));
+  lbWizFinalPage.Lines.Add('User Nr used for import: ' + inttostr(user_nr));
 
   //insert Invoice Information
   if not SameAddressForInvoice then
@@ -9079,7 +9087,7 @@ begin
   edtDesiredDate.Date := Date + 90;
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
-  if ProjectExists then ShowMessage('Project already exists! Samples will be added to this project! ');
+  if ProjectExists then ShowMessage('Project already exists! Samples will be added to theFieldByName('last_insert_id()').AsInteger project! ');
 end;
 
 procedure TfrmMAMS.wizInputSamplesBackButtonClick(Sender: TObject);

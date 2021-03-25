@@ -1,6 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
+  ActiveControl = edtProjectName
   Caption = 'SAMS '
   ClientHeight = 906
   ClientWidth = 1471
@@ -293,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = SampleExchange
+    ActivePage = tbsInsertSamples
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -305,7 +306,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1463
         Height = 807
-        ActivePage = wizStartPage
+        ActivePage = wizInputProject
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -608,7 +609,7 @@ object frmMAMS: TfrmMAMS
             TabOrder = 0
             object Label15: TLabel
               Left = 112
-              Top = 111
+              Top = 115
               Width = 41
               Height = 13
               Caption = 'Date in :'
@@ -9078,7 +9079,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 480
+          Height = 476
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9255,13 +9256,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 480
+          Height = 476
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            480)
+            476)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9439,7 +9440,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 455
+            Top = 451
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9683,7 +9684,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C0101100013006C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300700710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10460,7 +10461,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806280918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F8062C0918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16710,7 +16711,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F006C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00700720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

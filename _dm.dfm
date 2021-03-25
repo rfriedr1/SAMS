@@ -87,6 +87,7 @@ object dm: Tdm
     Top = 364
   end
   object adoConnKTL: TADOConnection
+    ConnectionTimeout = 25
     LoginPrompt = False
     Provider = 'MSDASQL.1'
     OnExecuteComplete = adoConnKTLExecuteComplete
@@ -854,7 +855,7 @@ object dm: Tdm
   object dsCEZA: TDataSource
     DataSet = qryCEZA
     Left = 1025
-    Top = 68
+    Top = 60
   end
   object qryTargetData: TADOQuery
     Connection = adoConnKTL
