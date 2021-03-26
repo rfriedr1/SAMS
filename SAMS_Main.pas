@@ -1917,12 +1917,12 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.SAMPLES, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help_t.MEASURED FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.Samples, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help_t.Measured FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       //create and join to a table to count the measured samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS MEASURED FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS Measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
       //create and join to a table to count the number of received samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS SAMPLES FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS Samples FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
       'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE preparation_t.stop = "1" GROUP BY sample_t.project_nr) help3_t ON project_t.project_nr=help3_t.project_nr ' +
@@ -1962,26 +1962,25 @@ begin
       End;
     with grdPendingReports do
     begin
-      Columns[0].Width := 180; // project
-      Columns[1].Width := 120; // last name
-      Columns[2].Width := 100; // first name
-      Columns[3].Width := 80;  // in date
+      Columns[0].Width := 150; // project
+      Columns[1].Width := 100; // last name
+      Columns[2].Width := 90; // first name
+      Columns[3].Width := 70;  // in date
       Columns[4].Width := 80;  // desired date
       Columns[5].Width := 60;  // project nr
       Columns[6].Width := 60;  // user nr
-      Columns[7].Width := 70;  // samples
-      Columns[8].Width := 70;  // discarded prep
-      Columns[9].Width := 70;  // prepDone
-      Columns[10].Width := 70;  // discraded target
-      Columns[11].Width := 70;  // graphDone
-      Columns[12].Width := 70;  // measured
+      Columns[7].Width := 60;  // samples
+      Columns[8].Width := 60;  // discarded prep
+      Columns[9].Width := 60;  // prepDone
+      Columns[10].Width := 60;  // discraded target
+      Columns[11].Width := 60;  // graphDone
+      Columns[12].Width := 60;  // measured
     end;
-    LogWindow.addLogEntry('DBGrid Column Width set');
+    LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically');
     FixDBGridColumnsWidth(grdPendingReports);
-    LogWindow.addLogEntry('DBGrid Column Width fixed');
 
   grdPendingReportsTitleClick(grdPendingReports.Columns[4]);
-  LogWindow.addLogEntry('DBGrid  TitleClick set');
+  //LogWindow.addLogEntry('btnPendingReportsClick: DBGrid TitleClick set');
   end;
 
 end;
@@ -8028,18 +8027,21 @@ end;
 
 procedure TfrmMAMS.FixDBGridColumnsWidth(const DBGrid: TDBGrid);
 var
-i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount : integer;
+i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount, colCount : integer;
 AColumn : TColumn;
 percentChange: Single;
 begin
+ i := 0;
  DBGrid.DataSource.DataSet.DisableControls;
  //total width of all columns before resize
- TotWidth := 0;
+ TotWidth := 1;
  //how to divide any extra space in the grid
- VarWidth := 0;
+ VarWidth := 1;
  //how many columns need to be auto-resized
+ colCount := DBGrid.Columns.Count;
+ //calculate total with of all colums according to the text width within the columns
  ResizableColumnCount := 0;
- for i := 0 to -1 + DBGrid.Columns.Count do
+ for i := 0 to colCount -1 do
    begin
        // find max text-width of this column
         WMax := 0;
@@ -8061,18 +8063,24 @@ begin
      if DBGrid.Columns[i].Field.Tag=0 then // tag could be used to define a minimu width
      Inc(ResizableColumnCount);
    end;
+   LogWindow.addLogEntry('FixDBGridColumnsWidth: Colums to Resize = ' + inttostr(ResizableColumnCount));
  //add 1px for the column separator lineif dgColLines in DBGrid.Options then
- TotWidth := TotWidth + DBGrid.Columns.Count;
+ TotWidth := TotWidth + colCount;
+ LogWindow.addLogEntry('FixDBGridColumnsWidth: TotalWidth = ' + inttostr(TotWidth));
  //add indicator column width if dgIndicator in DBGrid.Options then
  TotWidth := TotWidth + IndicatorWidth;
+  LogWindow.addLogEntry('FixDBGridColumnsWidth: TotalWidth with Indicators = ' + inttostr(TotWidth));
  //width value "left"
  VarWidth := DBGrid.ClientWidth - TotWidth;
  //Equally distribute percentChange
  //to all auto-resizable columnsif ResizableColumnCount > 0 then
  percentChange := (TotWidth/DBGrid.ClientWidth);
+ LogWindow.addLogEntry('FixDBGridColumnsWidth: Percentage change of column widths = ' + floattostr(percentChange));
  // showmessage('percentChange = '+ floattostr(percentChange));
  VarWidth := varWidth div ResizableColumnCount;
- for i := 0 to -1 + DBGrid.Columns.Count do
+ // resize all colums according to its percentage change
+ LogWindow.addLogEntry('FixDBGridColumnsWidth: start resizing columns');
+ for i := 0 to colCount -1 do
    begin
    AColumn := DBGrid.Columns[i];
    if AColumn.Field.Tag=0 then

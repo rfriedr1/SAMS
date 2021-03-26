@@ -8869,6 +8869,7 @@ object frmMAMS: TfrmMAMS
             Width = 67
             Height = 13
             Caption = 'Weight Empty'
+            Visible = False
           end
           object Label139: TLabel
             Left = 220
@@ -8876,6 +8877,7 @@ object frmMAMS: TfrmMAMS
             Width = 53
             Height = 13
             Caption = 'Weight Full'
+            Visible = False
           end
           object Label140: TLabel
             Left = 21
@@ -8883,6 +8885,7 @@ object frmMAMS: TfrmMAMS
             Width = 80
             Height = 13
             Caption = 'weight container'
+            Visible = False
           end
           object Label141: TLabel
             Left = 296
@@ -8890,6 +8893,7 @@ object frmMAMS: TfrmMAMS
             Width = 14
             Height = 13
             Caption = 'mg'
+            Visible = False
           end
           object DBchkTouchWeightsSampleNoLeftover: TDBCheckBox
             Left = 162
@@ -9081,7 +9085,7 @@ object frmMAMS: TfrmMAMS
             OnClick = btnTouchPrepDateEndTodayClick
           end
           object CheckBoxTouchPrepWeightsAutoConversion: TCheckBox
-            Left = 216
+            Left = 256
             Top = 513
             Width = 97
             Height = 17
@@ -9103,6 +9107,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 10
+            Visible = False
           end
           object DBedtTouchWeightsFullContPrep: TDBEdit
             Left = 202
@@ -9117,6 +9122,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 11
+            Visible = False
           end
         end
       end
@@ -9135,7 +9141,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 472
+          Height = 464
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9312,13 +9318,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 472
+          Height = 464
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            472)
+            464)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9496,7 +9502,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 447
+            Top = 439
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9740,7 +9746,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300740710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100013007C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10517,7 +10523,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806300918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806380918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16767,7 +16773,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00740720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F007C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

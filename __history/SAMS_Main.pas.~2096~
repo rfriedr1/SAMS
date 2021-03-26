@@ -43,7 +43,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
 
 const
-  myVersion = '1.9.9 Built: Feb-03-2021';
+  myVersion = '1.9.9 Built: March-03-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -846,6 +846,12 @@ type
     dsPrepBatch: TDataSource;
     JvDirEdt_PrepBatch_Path: TJvDirectoryEdit;
     Label137: TLabel;
+    DBedtTouchWeightsEmptyContPrep: TDBEdit;
+    DBedtTouchWeightsFullContPrep: TDBEdit;
+    Label138: TLabel;
+    Label139: TLabel;
+    Label140: TLabel;
+    Label141: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1956,10 +1962,10 @@ begin
       End;
     with grdPendingReports do
     begin
-      Columns[0].Width := 180; // project
-      Columns[1].Width := 120; // last name
-      Columns[2].Width := 100; // first name
-      Columns[3].Width := 80;  // in date
+      Columns[0].Width := 150; // project
+      Columns[1].Width := 100; // last name
+      Columns[2].Width := 90; // first name
+      Columns[3].Width := 70;  // in date
       Columns[4].Width := 80;  // desired date
       Columns[5].Width := 60;  // project nr
       Columns[6].Width := 60;  // user nr
@@ -1970,12 +1976,11 @@ begin
       Columns[11].Width := 70;  // graphDone
       Columns[12].Width := 70;  // measured
     end;
-    LogWindow.addLogEntry('DBGrid Column Width set');
+    LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically');
     FixDBGridColumnsWidth(grdPendingReports);
-    LogWindow.addLogEntry('DBGrid Column Width fixed');
 
   grdPendingReportsTitleClick(grdPendingReports.Columns[4]);
-  LogWindow.addLogEntry('DBGrid  TitleClick set');
+  //LogWindow.addLogEntry('btnPendingReportsClick: DBGrid TitleClick set');
   end;
 
 end;
@@ -5078,12 +5083,13 @@ begin
     dm.tblUser.Close;
     dm.tblUser.Open;
 
-    // retunr user_nr of the new user
+    // return user_nr of the newly created user
     with dm.qryDb do
     begin // get user_nr from user_t
       Close;
-      SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
-        ' AND first_name=' + #34 + User.FirstName + #34;
+      SQL.Text := 'SELECT last_insert_id()';
+      //SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
+      //  ' AND first_name=' + #34 + User.FirstName + #34;
       LogWindow.addLogEntry(SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
@@ -5094,17 +5100,24 @@ begin
           ShowMessage('problem opening the database');
         End;
       End;
-      user_nr := 1;
-      if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
+      user_nr := 2;  // currently there is no user with user_nr=2 in the database
+      //if RecordCount > 0 then user_nr := FieldByName('user_nr').AsInteger;
+      if RecordCount > 0 then
+        begin
+          if FieldByName('last_insert_id()').AsInteger > 0 then
+            user_nr := FieldByName('last_insert_id()').AsInteger;
+        end;
+      lbWizFinalPage.lines.add('New User Nr = ' + inttostr(user_nr));
     end;
   end
   else
+
   // user already exists
   begin
     lbWizFinalPage.Lines.Add('User already known');
     user_nr := glbUserNr;
   end;
-  lbWizFinalPage.Lines.Add('User Nr: ' + inttostr(user_nr));
+  lbWizFinalPage.Lines.Add('User Nr used for import: ' + inttostr(user_nr));
 
   //insert Invoice Information
   if not SameAddressForInvoice then
@@ -6906,9 +6919,10 @@ procedure TfrmMAMS.DBGridSampleExchangeDrawColumnCell(Sender: TObject;
 CONST
   CtrlState: array[0..1] of integer = (DFCS_BUTTONCHECK, DFCS_BUTTONCHECK or DFCS_CHECKED) ;
 begin
-  //AlternateRowColors(Sender, State);
-  //TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  // AlternateRowColors(Sender, State);
+  // TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
+  // display boolean fileds as checkboxes
   if (Column.FieldName='return_to_sender') OR
   (Column.FieldName='returned_to_sender') OR
   (Column.FieldName='CNIsotopA') OR
@@ -8013,18 +8027,21 @@ end;
 
 procedure TfrmMAMS.FixDBGridColumnsWidth(const DBGrid: TDBGrid);
 var
-i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount : integer;
+i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount, colCount : integer;
 AColumn : TColumn;
 percentChange: Single;
 begin
+ i := 0;
  DBGrid.DataSource.DataSet.DisableControls;
  //total width of all columns before resize
- TotWidth := 0;
+ TotWidth := 1;
  //how to divide any extra space in the grid
- VarWidth := 0;
+ VarWidth := 1;
  //how many columns need to be auto-resized
+ colCount := DBGrid.Columns.Count;
+ //calculate total with of all colums according to the text width within the columns
  ResizableColumnCount := 0;
- for i := 0 to -1 + DBGrid.Columns.Count do
+ for i := 0 to colCount -1 do
    begin
        // find max text-width of this column
         WMax := 0;
@@ -8046,18 +8063,24 @@ begin
      if DBGrid.Columns[i].Field.Tag=0 then // tag could be used to define a minimu width
      Inc(ResizableColumnCount);
    end;
+   LogWindow.addLogEntry('FixDBGridColumnsWidth: Colums to Resize = ' + inttostr(ResizableColumnCount));
  //add 1px for the column separator lineif dgColLines in DBGrid.Options then
- TotWidth := TotWidth + DBGrid.Columns.Count;
+ TotWidth := TotWidth + colCount;
+ LogWindow.addLogEntry('FixDBGridColumnsWidth: TotalWidth = ' + inttostr(TotWidth));
  //add indicator column width if dgIndicator in DBGrid.Options then
  TotWidth := TotWidth + IndicatorWidth;
+  LogWindow.addLogEntry('FixDBGridColumnsWidth: TotalWidth with Indicators = ' + inttostr(TotWidth));
  //width value "left"
  VarWidth := DBGrid.ClientWidth - TotWidth;
  //Equally distribute percentChange
  //to all auto-resizable columnsif ResizableColumnCount > 0 then
  percentChange := (TotWidth/DBGrid.ClientWidth);
+ LogWindow.addLogEntry('FixDBGridColumnsWidth: Percentage change of column widths = ' + floattostr(percentChange));
  // showmessage('percentChange = '+ floattostr(percentChange));
  VarWidth := varWidth div ResizableColumnCount;
- for i := 0 to -1 + DBGrid.Columns.Count do
+ // resize all colums according to its percentage change
+ LogWindow.addLogEntry('FixDBGridColumnsWidth: start resizing columns');
+ for i := 0 to colCount -1 do
    begin
    AColumn := DBGrid.Columns[i];
    if AColumn.Field.Tag=0 then
@@ -8343,8 +8366,8 @@ end;
 procedure TfrmMAMS.ToolButtonSampleExchangeClick(Sender: TObject);
 begin
   pgtMain.ActivePage := SampleExchange;
-  ShowMessage(inttostr(RadioGroupSampleExchange.ItemIndex));
-  //if RadioGroupSampleExchange.ItemIndex = 1 then RadioGroupSampleExchange.ItemIndex := 1;
+  //ShowMessage(inttostr(RadioGroupSampleExchange.ItemIndex));
+  if RadioGroupSampleExchange.ItemIndex = -1 then RadioGroupSampleExchange.ItemIndex := 1;
   btnExchangeClick(self);
 end;
 
@@ -9078,7 +9101,7 @@ begin
   edtDesiredDate.Date := Date + 90;
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
-  if ProjectExists then ShowMessage('Project already exists! Samples will be added to this project! ');
+  if ProjectExists then ShowMessage('Project already exists! Samples will be added to the project! ');
 end;
 
 procedure TfrmMAMS.wizInputSamplesBackButtonClick(Sender: TObject);

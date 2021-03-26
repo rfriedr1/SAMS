@@ -1,6 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
+  ActiveControl = edtMonthStat
   Caption = 'SAMS '
   ClientHeight = 906
   ClientWidth = 1471
@@ -293,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = SampleExchange
+    ActivePage = tbsDBInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -608,7 +609,7 @@ object frmMAMS: TfrmMAMS
             TabOrder = 0
             object Label15: TLabel
               Left = 112
-              Top = 111
+              Top = 115
               Width = 41
               Height = 13
               Caption = 'Date in :'
@@ -8128,7 +8129,7 @@ object frmMAMS: TfrmMAMS
         Height = 713
         Align = alClient
         Ctl3D = False
-        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
         ParentCtl3D = False
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -8147,7 +8148,7 @@ object frmMAMS: TfrmMAMS
         Height = 94
         Align = alTop
         TabOrder = 1
-        object SpeedButton2: TSpeedButton
+        object btnExchange: TSpeedButton
           Left = 183
           Top = 7
           Width = 98
@@ -8192,7 +8193,7 @@ object frmMAMS: TfrmMAMS
             CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
             FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
             FF7FFF7FFF7F}
-          OnClick = SpeedButton2Click
+          OnClick = btnExchangeClick
         end
         object RadioGroupSampleExchange: TRadioGroup
           Left = 1
@@ -8728,33 +8729,33 @@ object frmMAMS: TfrmMAMS
           400
           562)
         object GroupBoxTouchWeightsPrep: TGroupBox
-          Left = 44
-          Top = 13
-          Width = 334
+          Left = 8
+          Top = 19
+          Width = 377
           Height = 538
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Preparation'
           TabOrder = 0
           DesignSize = (
-            334
+            377
             538)
           object Label124: TLabel
-            Left = 17
-            Top = 203
+            Left = 43
+            Top = 274
             Width = 59
             Height = 13
             Caption = 'weight after'
           end
           object Label123: TLabel
-            Left = 9
-            Top = 59
+            Left = 35
+            Top = 53
             Width = 67
             Height = 13
             Caption = 'weight before'
           end
           object btnTouchWeightsPrepNeedsSaving: TSpeedButton
-            Left = 35
-            Top = 401
+            Left = 61
+            Top = 449
             Width = 41
             Height = 38
             Hint = 'value has changed, save before leaving'
@@ -8807,50 +8808,50 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
           end
           object Label130: TLabel
-            Left = 33
-            Top = 346
+            Left = 58
+            Top = 404
             Width = 43
             Height = 13
             Caption = 'comment'
           end
           object Label131: TLabel
-            Left = 26
-            Top = 104
+            Left = 53
+            Top = 100
             Width = 48
             Height = 13
             Caption = 'date start'
           end
           object Label133: TLabel
-            Left = 33
-            Top = 247
+            Left = 58
+            Top = 318
             Width = 43
             Height = 13
             Caption = 'date end'
           end
           object Label134: TLabel
-            Left = 271
-            Top = 59
+            Left = 297
+            Top = 53
             Width = 14
             Height = 13
             Caption = 'mg'
           end
           object Label135: TLabel
-            Left = 271
-            Top = 203
+            Left = 297
+            Top = 274
             Width = 14
             Height = 13
             Caption = 'mg'
           end
           object lblYTouchYieldLabel: TLabel
-            Left = 170
-            Top = 282
+            Left = 196
+            Top = 353
             Width = 26
             Height = 13
             Caption = 'Yield:'
           end
           object lblTouchYieldValue: TLabel
-            Left = 231
-            Top = 278
+            Left = 257
+            Top = 349
             Width = 30
             Height = 18
             Alignment = taRightJustify
@@ -8862,9 +8863,37 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
           end
+          object Label138: TLabel
+            Left = 119
+            Top = 210
+            Width = 67
+            Height = 13
+            Caption = 'Weight Empty'
+          end
+          object Label139: TLabel
+            Left = 220
+            Top = 210
+            Width = 53
+            Height = 13
+            Caption = 'Weight Full'
+          end
+          object Label140: TLabel
+            Left = 21
+            Top = 232
+            Width = 80
+            Height = 13
+            Caption = 'weight container'
+          end
+          object Label141: TLabel
+            Left = 296
+            Top = 234
+            Width = 14
+            Height = 13
+            Caption = 'mg'
+          end
           object DBchkTouchWeightsSampleNoLeftover: TDBCheckBox
-            Left = 136
-            Top = 149
+            Left = 162
+            Top = 143
             Width = 129
             Height = 17
             Hint = 'no sample material left'
@@ -8884,8 +8913,8 @@ object frmMAMS: TfrmMAMS
             OnClick = DBchkTouchWeightsSampleNoLeftoverClick
           end
           object DBedtTouchWeightsAfterPrep: TDBEdit
-            Left = 82
-            Top = 190
+            Left = 108
+            Top = 261
             Width = 183
             Height = 38
             Hint = 'weight after prep'
@@ -8908,8 +8937,8 @@ object frmMAMS: TfrmMAMS
             OnKeyDown = DBedtTouchWeightsAfterPrepKeyDown
           end
           object DBedtTouchWeightsBeforePrep: TDBEdit
-            Left = 82
-            Top = 50
+            Left = 108
+            Top = 44
             Width = 183
             Height = 38
             Hint = 'weight before prep'
@@ -8932,8 +8961,8 @@ object frmMAMS: TfrmMAMS
             OnKeyDown = DBedtTouchWeightsBeforePrepKeyDown
           end
           object btnTouchWeightsPrepSave: TBitBtn
-            Left = 82
-            Top = 393
+            Left = 108
+            Top = 443
             Width = 183
             Height = 50
             Glyph.Data = {
@@ -8980,8 +9009,8 @@ object frmMAMS: TfrmMAMS
             OnClick = btnTouchWeightsPrepSaveClick
           end
           object DBMemoTouchWeightsPrepComment: TDBMemo
-            Left = 82
-            Top = 343
+            Left = 108
+            Top = 393
             Width = 183
             Height = 44
             CustomHint = BalloonHint1
@@ -8994,8 +9023,8 @@ object frmMAMS: TfrmMAMS
             OnKeyDown = DBMemoTouchWeightsPrepCommentKeyDown
           end
           object DBDateTimeTouchPrepStart: TJvDBDateTimePicker
-            Left = 82
-            Top = 94
+            Left = 108
+            Top = 88
             Width = 183
             Height = 38
             Date = 44041.408523819440000000
@@ -9014,8 +9043,8 @@ object frmMAMS: TfrmMAMS
             DataSource = dm.dsSampleInfo
           end
           object DBDateTimeTouchPrepEnd: TJvDBDateTimePicker
-            Left = 82
-            Top = 234
+            Left = 108
+            Top = 305
             Width = 183
             Height = 38
             Date = 44041.409087916670000000
@@ -9034,8 +9063,8 @@ object frmMAMS: TfrmMAMS
             DataSource = dm.dsSampleInfo
           end
           object btnTouchPrepDateStartToday: TButton
-            Left = 267
-            Top = 93
+            Left = 293
+            Top = 87
             Width = 60
             Height = 38
             Caption = 'Today'
@@ -9043,8 +9072,8 @@ object frmMAMS: TfrmMAMS
             OnClick = btnTouchPrepDateStartTodayClick
           end
           object btnTouchPrepDateEndToday: TButton
-            Left = 267
-            Top = 234
+            Left = 293
+            Top = 305
             Width = 60
             Height = 38
             Caption = 'Today'
@@ -9060,6 +9089,34 @@ object frmMAMS: TfrmMAMS
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 9
+          end
+          object DBedtTouchWeightsEmptyContPrep: TDBEdit
+            Left = 107
+            Top = 229
+            Width = 89
+            Height = 26
+            Hint = 'weight of empty container'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = 18
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 10
+          end
+          object DBedtTouchWeightsFullContPrep: TDBEdit
+            Left = 202
+            Top = 229
+            Width = 88
+            Height = 26
+            Hint = 'weight of full container'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = 18
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 11
           end
         end
       end
@@ -9078,7 +9135,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 484
+          Height = 468
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9255,13 +9312,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 484
+          Height = 468
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            484)
+            468)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9439,7 +9496,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 459
+            Top = 443
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9683,7 +9740,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300680710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300780710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10460,7 +10517,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806240918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806340918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16710,7 +16767,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00680720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00780720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
