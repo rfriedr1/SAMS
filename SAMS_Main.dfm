@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = btnTouchWeightsMAMSDown
+  ActiveControl = btnReport
   Caption = 'SAMS '
   ClientHeight = 906
   ClientWidth = 1471
@@ -294,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsTouch
+    ActivePage = tbsUserReport
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -9141,7 +9141,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 464
+          Height = 460
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9318,13 +9318,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 464
+          Height = 460
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            464)
+            460)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9502,7 +9502,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 439
+            Top = 435
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9746,7 +9746,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C0101100013007C0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300800710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10461,7 +10461,9 @@ object frmMAMS: TfrmMAMS
       'CheckBoxTouchGraphWeightsAutoConversion.Checked'
       'JvDirEdt_PrepCards_Path.Text'
       'edtFilenamePrepDocTemplate.Text'
-      'JvDirEdt_PrepBatch_Path.Text')
+      'JvDirEdt_PrepBatch_Path.Text'
+      'edtNewSamplesFilename.Text'
+      'edtWordTemplate.Text')
     StoredValues = <>
     Left = 504
     Top = 40
@@ -10523,7 +10525,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806380918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F8063C0918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16773,7 +16775,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F007C0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00800720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
