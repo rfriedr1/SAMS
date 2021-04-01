@@ -1,0 +1,19 @@
+[01.04.2021 14:59:06]Information>Startup>starting Application
+[01.04.2021 14:59:06]Information>Startup>DB - DataSource= db_dmams_KTL
+[01.04.2021 14:59:06]Information>Startup>DB - UserID= rfriedrich
+[01.04.2021 14:59:06]Information>Startup>connecting to DB at startup
+[01.04.2021 14:59:20]Error>Startup>Not able to connect to DB
+[01.04.2021 14:59:38]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
+[01.04.2021 15:00:27]Information>Startup>starting Application
+[01.04.2021 15:00:27]Information>Startup>DB - DataSource= db_dmams_KTL
+[01.04.2021 15:00:27]Information>Startup>DB - UserID= rfriedrich
+[01.04.2021 15:00:27]Information>Startup>connecting to DB at startup
+[01.04.2021 15:00:40]Error>Startup>Not able to connect to DB
+[01.04.2021 15:00:59]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
+[01.04.2021 15:05:05]Information>Startup>starting Application
+[01.04.2021 15:05:05]Information>Startup>DB - DataSource= db_dmams_KTL
+[01.04.2021 15:05:05]Information>Startup>DB - UserID= rfriedrich
+[01.04.2021 15:05:05]Information>Startup>connecting to DB at startup
+[01.04.2021 15:05:18]Error>Startup>Not able to connect to DB
+[01.04.2021 15:05:42]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
+[01.04.2021 15:05:47]Information>Closeup>SAMS closed by user.

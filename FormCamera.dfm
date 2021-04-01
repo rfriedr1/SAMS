@@ -90,11 +90,13 @@ object CameraWindow: TCameraWindow
           end
           inherited Label_VideoSize: TLabel
             Width = 50
+            Height = 23
             ExplicitWidth = 50
           end
           inherited Label2: TLabel
             Left = 322
             Width = 49
+            Height = 23
             ExplicitLeft = 322
             ExplicitWidth = 49
           end

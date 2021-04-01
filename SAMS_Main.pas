@@ -40,7 +40,8 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   frmLogWindow, FormNewUser, Vcl.FileCtrl(*, frxDesgn*), System.IOUtils, System.Types,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs,
   Vcl.Touch.Keyboard, IPPeerServer, Vcl.OleCtrls, SHDocVw,
-  Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker;
+  Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker, JvLogFile, JvLogClasses,
+  Vcl.AppEvnts, SysUtils;
 
 const
   myVersion = '1.9.9 Built: March-03-2021';
@@ -852,6 +853,8 @@ type
     Label139: TLabel;
     Label140: TLabel;
     Label141: TLabel;
+    JvLogFile: TJvLogFile;
+    ApplicationEvents: TApplicationEvents;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1199,6 +1202,7 @@ type
     procedure DBedtTouchWeightsBeforePrepChange(Sender: TObject);
     procedure DBedtTouchWeightsAfterPrepChange(Sender: TObject);
     procedure btnPrepCardClick(Sender: TObject);
+    procedure ApplicationEventsException(Sender: TObject; E: Exception);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1310,7 +1314,7 @@ var
 implementation
 
 uses
-  SysUtils, about, SHFolder, Clipbrd, CommCtrl, DateUtils, JvJCLUtils,
+  about, SHFolder, Clipbrd, CommCtrl, DateUtils, JvJCLUtils,
   _dm, ShlObj, ActiveX, ShellApi, _LogSQL, ComObj, Variants,
   StorageLocations, FormDBSearch;
 
@@ -1380,6 +1384,7 @@ begin
 //    ClipBoard.SetTextBuf(PChar(s));
     try
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       Open;
     finally
       EnableControls;
@@ -1552,12 +1557,14 @@ begin
       s := SQL.Text;
   //    ClipBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
     Begin
       Try
         Open;
       Except
         ShowMessage('problem opening the database');
+        JvLogFile.Add('DB',lesError,'Problem opening DB');
       End;
     End;
     end;
@@ -1803,12 +1810,14 @@ begin
       ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
       ' WHERE sample_t.c14_age IS NULL AND target_t.c14_age IS NOT NULL;';
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
     Begin
       Try
         Open;
       Except
         ShowMessage('problem opening the database');
+        JvLogFile.Add('DB',lesError,'Problem opening DB');
       End;
     End;
     if RecordCount > 0 then
@@ -1842,13 +1851,15 @@ begin
   begin
     SQL.Text := 'SELECT user_label_nr, sample_nr FROM sample_t WHERE user_label_nr LIKE ' + #34 + 'MA-%' + #34 + ';';
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
     Begin
       Try
         Open;
       Except
         ShowMessage('problem opening the database');
-        LogWindow.addLogEntry('opened');
+        LogWindow.addLogEntry('not opened');
+        JvLogFile.Add('DB',lesError,'Problem opening DB');
       End;
     End;
     First;
@@ -1872,6 +1883,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       end;
@@ -1941,6 +1953,7 @@ begin
 
     //LogWindow.addLogEntry(SQL.Text);
     LogWindow.addLogEntry(SQL.Text);
+    // JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -1956,6 +1969,7 @@ begin
                       Open;
                     Except
                        LogWindow.addLogEntry('DB -- can not reconnect');
+                       JvLogFile.Add('DB',lesError,'can not reconnect to DB');
                     End;
             Open;
         End;
@@ -1997,6 +2011,7 @@ begin
   //'SELECT magazine, fm from target_t WHERE magazine like "%HD%" order by magazine';
     SQL.Text := MemoDBPlotQuery.Lines.Text;
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
         IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -2004,6 +2019,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 (*
@@ -2214,6 +2230,7 @@ begin
           LogWindow.addLogEntry('PrepBatch Wordfile -- query executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       cdsPrepBatch.Fields.Fields[0].Value := dm.qryDB.FieldByName('sample_nr').AsString;  //Sample_nr
@@ -2387,6 +2404,7 @@ begin
     begin
       SQL.Text := ' SELECT * FROM sample_t';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
           IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -2394,6 +2412,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       First;
@@ -2411,6 +2430,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
         Next;
@@ -2421,6 +2441,7 @@ begin
     begin
       SQL.Text := ' SELECT * FROM project_t';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
           IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -2428,6 +2449,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       Last;
@@ -2445,6 +2467,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
         Prior;
@@ -2471,6 +2494,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     if dm.qryDb.RecordCount = 0 then
@@ -2484,6 +2508,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       ShowMessage('Current year inserted in sample_t');
@@ -2502,6 +2527,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       if dm.qryDb.RecordCount = 0 then begin
@@ -2520,6 +2546,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       if dm.qryDb.RecordCount = 0 then
@@ -2533,6 +2560,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
         s := s + IntToStr(Month) + ',';
@@ -2639,6 +2667,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       if OneDateInMean then
@@ -2752,6 +2781,7 @@ begin
             LogWindow.addLogEntry('executed');
           Except
             ShowMessage('problem opening the database');
+            JvLogFile.Add('DB',lesError,'Problem opening DB');
           End;
         End;
     end;
@@ -2778,6 +2808,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -2826,6 +2857,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 
@@ -2907,6 +2939,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 
@@ -2927,6 +2960,7 @@ begin
           Parameters.ParamByName('TargetMemo').Value := memTargetComments.Lines.Text;
         end;
           LogWindow.addLogEntry(SQL.Text);
+          JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
           //ClipBoard.SetTextBuf(PChar(SQL.Text));
         ExecSQL;
       end;
@@ -3019,6 +3053,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 
@@ -3051,6 +3086,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -3066,6 +3102,7 @@ begin
       Parameters.ParamByName('PrepMemo').DataType:=ftString;
       Parameters.ParamByName('PrepMemo').Value := memPrepComments.Lines.Text;
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       ExecSQL;
     end
     else
@@ -3074,6 +3111,7 @@ begin
         ' WHERE sample_nr=' + IntToStr(sample_nr) +
         ' AND prep_nr=' + IntToStr(round(edtSamplePrepNr.Value)) + ';';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       ExecSQL;
     End;
   end;
@@ -3117,6 +3155,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
     End;
 
@@ -3139,6 +3178,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 
@@ -3160,6 +3200,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 
@@ -3192,6 +3233,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   end;
@@ -3239,6 +3281,8 @@ end;
 procedure TfrmMAMS.actLogWindowExecute(Sender: TObject);
 begin
   LogWindow.Show;
+  // also show the JvLogFile log
+  JvLogFile.ShowLog('logfile.log');
 end;
 
 procedure TfrmMAMS.actMagListExecute(Sender: TObject);
@@ -3587,6 +3631,7 @@ begin
                 LogWindow.addLogEntry('executed');
               Except
                 ShowMessage('problem opening the database');
+                JvLogFile.Add('DB',lesError,'Problem opening DB');
               End;
             End;
             DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text)); // read sample data again
@@ -3624,6 +3669,7 @@ begin
     begin
     SQL.Text := 'SELECT user_nr from user_t WHERE last_name=' + #34 + 'intern' + #34;
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -3631,6 +3677,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     InternNr := Fields.Fields[0].AsInteger;
@@ -3682,6 +3729,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   dm.tblProjects.Close;
@@ -3698,6 +3746,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   if dm.qryDB.RecordCount > 0 then project_nr := dm.qryDb.Fields[0].AsInteger;
@@ -3720,6 +3769,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   dm.qryDB.Close;
@@ -3735,6 +3785,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   sample_nr := 0;
@@ -3755,6 +3806,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 
@@ -3787,6 +3839,7 @@ begin
           dm.tblUser.FieldbyName('user_nr').AsString + ' OR invoice_nr=' +
           dm.tblUser.FieldbyName('user_nr').AsString;
         LogWindow.addLogEntry(SQL.Text);
+        JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -3794,6 +3847,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
         if RecordCount = 0 then begin
@@ -3807,6 +3861,7 @@ begin
             LogWindow.addLogEntry('executed');
           Except
             ShowMessage('problem opening the database');
+            JvLogFile.Add('DB',lesError,'Problem opening DB');
           End;
         End;
           inc(i);
@@ -3974,6 +4029,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   end;
@@ -3989,6 +4045,7 @@ begin
       SQL.Text := 'SELECT DISTINCT batch FROM preparation_t WHERE batch IS NOT NULL AND ' +
         'prep_end IS NULL ORDER BY batch;';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -3996,6 +4053,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -4011,6 +4069,7 @@ begin
       SQL.Text := 'SELECT DISTINCT graph_batch FROM target_t WHERE graph_batch IS NOT NULL ' +
         'ORDER BY graph_date desc;';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -4018,6 +4077,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       grdActiveBatches.Visible := true;
@@ -4150,6 +4210,7 @@ begin
         Except
           btnTouchWeightsPrepNeedsSaving.Visible := True;
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -4177,6 +4238,7 @@ begin
         Except
           btnTouchWeightsPrepNeedsSaving.Visible := True;
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     End;
@@ -4209,6 +4271,7 @@ begin
           Except
             btnTouchWeightsPrepNeedsSaving.Visible := True;
             ShowMessage('problem opening the database');
+            JvLogFile.Add('DB',lesError,'Problem opening DB');
           End;
       End;
     End;
@@ -4375,6 +4438,7 @@ begin
         Except
           btnTouchWeightsPrepNeedsSaving.Visible := True;
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -4400,6 +4464,7 @@ begin
         Except
           btnTouchWeightsPrepNeedsSaving.Visible := True;
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     End;
@@ -4431,6 +4496,7 @@ begin
           Except
             btnTouchWeightsPrepNeedsSaving.Visible := True;
             ShowMessage('problem opening the database');
+            JvLogFile.Add('DB',lesError,'Problem opening DB');
           End;
       End;
     End;
@@ -4459,6 +4525,7 @@ begin
         Except
           btnTouchWeightsPrepNeedsSaving.Visible := True;
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -4496,6 +4563,7 @@ begin
           btnTouchWeightsGraphBatchNeedsSaving.Visible := False;
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     End;
@@ -5076,6 +5144,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     lbWizFinalPage.lines.add('New user created');
@@ -5091,6 +5160,7 @@ begin
       //SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + User.LastName + #34 +
       //  ' AND first_name=' + #34 + User.FirstName + #34;
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5098,6 +5168,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       user_nr := 2;  // currently there is no user with user_nr=2 in the database
@@ -5159,6 +5230,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       lbWizFinalPage.lines.add('New invoice user created');
@@ -5168,6 +5240,7 @@ begin
         SQL.Text := 'SELECT user_nr FROM user_t WHERE last_name=' + #34 + Invoice.LastName + #34 +
           ' AND organisation=' + #34 + Invoice.Organisation + #34;
         LogWindow.addLogEntry(SQL.Text);
+        JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
         IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5175,6 +5248,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
         glbInvoiceNr := 1;
@@ -5234,6 +5308,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     lbWizFinalPage.lines.add('New project created');
@@ -5262,6 +5337,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
   if dm.qryDB.RecordCount > 0 then
@@ -5330,6 +5406,7 @@ begin
               LogWindow.addLogEntry('executed');
             Except
               ShowMessage('problem opening the database');
+              JvLogFile.Add('DB',lesError,'Problem opening DB');
             End;
           End;
       dm.qryDB.Close;
@@ -5345,6 +5422,7 @@ begin
               LogWindow.addLogEntry('executed');
             Except
               ShowMessage('problem opening the database');
+              JvLogFile.Add('DB',lesError,'Problem opening DB');
             End;
           End;
       sample_nr := 0;
@@ -5384,6 +5462,7 @@ begin
                 LogWindow.addLogEntry('executed');
               Except
                 ShowMessage('problem opening the database');
+                JvLogFile.Add('DB',lesError,'Problem opening DB');
               End;
             End;
 
@@ -5409,6 +5488,7 @@ begin
                 LogWindow.addLogEntry('executed');
               Except
                 ShowMessage('problem opening the database');
+                JvLogFile.Add('DB',lesError,'Problem opening DB');
               End;
             End;
       end;
@@ -5424,6 +5504,7 @@ begin
       begin
       SQL.Text := 'SELECT last_name, first_name, email FROM user_t where user_nr=' + IntTostr(user_nr);
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5431,6 +5512,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       end;
@@ -5469,6 +5551,7 @@ begin
     SQL.Text := 'SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2 from sample_t ' +
       ' WHERE project_nr=' + IntToStr(project_nr);
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5476,6 +5559,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     if RecordCount > 0 then
@@ -5746,6 +5830,7 @@ end;
 
 procedure TfrmMAMS.FormDestroy(Sender: TObject);
 begin
+   JvLogFile.Add('Closeup',lesInformation,'SAMS closed by user.');
   FNoCheck.Free;
   FCheck.Free;
 end;
@@ -5807,6 +5892,7 @@ begin
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5814,6 +5900,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -5825,6 +5912,7 @@ begin
       SQL.Text := 'SELECT step1_method, step2_method, step3_method,step4_method,' +
         'step5_method FROM preparation_t WHERE sample_nr=' + IntToStr(sample_nr);
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5832,6 +5920,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End; // muss noch um mehrere preps erweitert werden
       for steps := 0 to 4 do
@@ -5863,6 +5952,7 @@ begin
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5870,6 +5960,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -5983,6 +6074,7 @@ begin
       s := SQL.Text;
 //      ClipBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -5990,6 +6082,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       if RecordCount > 0 then
@@ -6118,6 +6211,7 @@ begin
       ' INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr ' +
       ' WHERE target_t.magazine = ' + #34 + Mag + #34;
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -6125,6 +6219,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     dm.GetMagazineData(Mag);
@@ -6442,6 +6537,7 @@ begin
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -6449,6 +6545,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     grdSamplesOfProject.Columns[0].Width := 60;
@@ -6619,6 +6716,7 @@ begin
       SQL.Text := 'SELECT project_nr, project, in_date FROM project_t WHERE user_nr='
         + IntToStr(cmbSubmNameReport.KeyValue) + ' ORDER BY in_date DESC;';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -6626,6 +6724,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       cmbProjectOfReport.DropDown;
@@ -7842,6 +7941,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       end;
@@ -7879,6 +7979,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
         dm.SetProjectStatusRunning(sample_nr);
@@ -8444,6 +8545,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
 end;
@@ -8510,6 +8612,7 @@ begin
     s := SQL.Text;
     //   ClibBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -8517,6 +8620,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     ProjectExists := false;
@@ -8550,6 +8654,7 @@ begin
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -8557,6 +8662,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
       if RecordCount > 0 then
@@ -8767,6 +8873,18 @@ begin
           end;
        end;
   End;
+
+end;
+
+procedure TfrmMAMS.ApplicationEventsException(Sender: TObject; E: Exception);
+begin
+ // use this to automatically catch excrptions and log them away
+ //
+ // write Exception into logfile as Errors (lesError)
+ JvLogFile.Add('Exception',lesError,'Unit: '+ E.UnitName + ' -- Context: ' + inttostr(E.HelpContext) + ' -- Message: ' + E.Message);
+ // since Exceptions are now caught atomatically they are not shown anymore by the app
+ // tell App to show excption
+ Application.ShowException(E);
 
 end;
 
@@ -9044,6 +9162,7 @@ begin
       'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
       'WHERE sample_t.sample_nr=1' + ';';
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -9051,6 +9170,7 @@ begin
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     for i := 1 to RowCount - 1 do // label row number
@@ -9138,6 +9258,7 @@ var
       s := SQL.Text;
       //   ClibBoard.SetTextBuf(PChar(s));
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -9145,6 +9266,7 @@ var
           LogWindow.addLogEntry('executed');
         Except
           ShowMessage('problem opening the database');
+          JvLogFile.Add('DB',lesError,'Problem opening DB');
         End;
       End;
     end;
@@ -9278,7 +9400,7 @@ begin
   edtEndAna.Value := 1000000;
 
   //LogWindow:=LogWindow.Create(self);
-
+  JvLogFile.Add('Startup',lesInformation,'starting Application');
   frmStart.MemoStartScreenMessages.Lines.Clear;
   StatusBar.Panels[2].Text:='creating Database objects...';      //display a status in the status bar
 // define MySQL connection to main database from the parameters
@@ -9299,10 +9421,12 @@ begin
      //Provider=MSDASQL.1;Password=Micadas;Persist Security Info=True;User ID=root;Data Source=DMYSQL_KTL
         s := s + ';Data Source =' + ParamStr(1);     // one parameter given, this must be the name of the ODBC connection
         frmStart.MemoStartScreenMessages.Lines.Add('DB - Data Source= ' + ParamStr(1));
+        JvLogFile.Add('Startup',lesInformation,'DB - DataSource= ' + ParamStr(1));
         if ParamCount > 1 then
           begin
             s := s + ';User ID=' + ParamStr(2);    // two parameters given, must be the ODBC connection and user name
             frmStart.MemoStartScreenMessages.Lines.Add('DB - User ID= ' + ParamStr(2));
+            JvLogFile.Add('Startup',lesInformation,'DB - UserID= ' + ParamStr(2));
           end;
         if ParamCount > 2 then                       // three parameters give, must be ODBC connection, user name and password
         begin
@@ -9317,6 +9441,7 @@ begin
           begin
             btnTransfer.Visible := true;
             KTLsupervisor := true;
+            JvLogFile.Add('Startup',lesInformation,'starting Application as KTLSupervisor');
           end;
         end;
         dm.adoConnKTL.ConnectionString := s; // send the connection string to the ADO connection
@@ -9326,6 +9451,7 @@ begin
       begin
       // no ODBC parameters are give in order to connect to the database
       StatusBar.Panels[2].Text:='DB - not enough parameters to connect to DB using ODBC';
+      JvLogFile.Add('Startup',lesError,'Not enough parameters to connect to DB using ODBC');
       //    adoConnKTL.
       end;
     end;
@@ -9333,11 +9459,13 @@ begin
     // try to connect to the database
     Try
       frmStart.MemoStartScreenMessages.Lines.Add('DB - try connecting to database');
+      JvLogFile.Add('Startup',lesInformation,'connecting to DB at startup');
       Open;   // open ADOConnection
       StatusBar.Panels[2].Text:='Open Database connection...';
       frmStart.MemoStartScreenMessages.Lines.Add('DB - connected');
     Except
         frmStart.MemoStartScreenMessages.Lines.Add('DB - ERROR: not able to connect!');
+        JvLogFile.Add('Startup',lesError,'Not able to connect to DB');
         showmessage('Unable to connect to the database. Make sure an ODBC driver is selected and you are connected to the network.');
     End;
       end;
@@ -9349,6 +9477,7 @@ begin
   Begin
     with dm do
     begin
+    JvLogFile.Add('Startup',lesInformation,'Connected to DB.');
       frmStart.MemoStartScreenMessages.Lines.Add('DB - loading user data...');
       tblUser.Open;
         StatusBar.Panels[2].Text:='user data loaded';
@@ -9438,6 +9567,7 @@ begin
         ' WHERE magazine not like "set%" order by magazine desc;';
   //      '  order by magazine desc;';
       LogWindow.addLogEntry(SQL.Text);
+      JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       Open;
     end;
   End;

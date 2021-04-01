@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = btnReport
+  ActiveControl = btnTouchWeightsMAMSDown
   Caption = 'SAMS '
   ClientHeight = 906
   ClientWidth = 1471
@@ -294,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 835
-    ActivePage = tbsUserReport
+    ActivePage = tbsTouch
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -9141,7 +9141,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 460
+          Height = 436
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9318,13 +9318,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 460
+          Height = 436
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            460)
+            436)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9502,7 +9502,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 435
+            Top = 411
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9746,7 +9746,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300800710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300980710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10525,7 +10525,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F8063C0918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806540918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16775,7 +16775,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00800720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00980720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26876,8 +26876,8 @@ object frmMAMS: TfrmMAMS
     Top = 242
   end
   object BalloonHint1: TBalloonHint
-    Left = 825
-    Top = 117
+    Left = 841
+    Top = 101
   end
   object JvAppIniFileStoragePrep: TJvAppIniFileStorage
     StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
@@ -26905,5 +26905,17 @@ object frmMAMS: TfrmMAMS
     DataSet = cdsPrepBatch
     Left = 1023
     Top = 103
+  end
+  object JvLogFile: TJvLogFile
+    FileName = 'logfile.log'
+    AutoSave = True
+    SizeLimit = 100000
+    Left = 283
+    Top = 207
+  end
+  object ApplicationEvents: TApplicationEvents
+    OnException = ApplicationEventsException
+    Left = 157
+    Top = 207
   end
 end

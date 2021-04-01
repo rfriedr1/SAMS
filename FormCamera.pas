@@ -10,7 +10,7 @@ interface
 uses
   Windows, Classes, Controls, Forms, ExtCtrls, Frame_Video, Menus,
   StdCtrls, Vcl.Mask, JvExMask, JvToolEdit, JvComponentBase, IniFiles, SysUtils,
-  Dialogs, jpeg, Graphics;
+  Dialogs, jpeg, Graphics, WCamera;
 
 
 type
