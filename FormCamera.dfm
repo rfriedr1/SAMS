@@ -36,17 +36,6 @@ object CameraWindow: TCameraWindow
     Height = 541
     Align = alLeft
     TabOrder = 0
-    object PaintBoxCameraStream: TPaintBox
-      Left = 1
-      Top = 142
-      Width = 375
-      Height = 398
-      Align = alClient
-      ExplicitLeft = 128
-      ExplicitTop = 248
-      ExplicitWidth = 105
-      ExplicitHeight = 105
-    end
     object GroupBoxCameraSettings: TGroupBox
       Left = 1
       Top = 1
@@ -55,13 +44,50 @@ object CameraWindow: TCameraWindow
       Align = alTop
       Caption = 'Camera Setting'
       TabOrder = 0
+      ExplicitLeft = -15
+      ExplicitTop = 33
       object ComboBoxCamera: TComboBox
         Left = 17
         Top = 29
-        Width = 193
+        Width = 217
         Height = 21
         TabOrder = 0
-        Text = 'No cameras found'
+        Text = 'select camera...'
+        OnChange = ComboBoxCameraChange
+        OnDropDown = ComboBoxCameraDropDown
+      end
+      object ComboBoxFormat: TComboBox
+        Left = 240
+        Top = 29
+        Width = 121
+        Height = 21
+        TabOrder = 1
+        OnChange = ComboBoxFormatChange
+      end
+    end
+    object PanelPaintBox: TPanel
+      Left = 1
+      Top = 142
+      Width = 375
+      Height = 398
+      Align = alClient
+      TabOrder = 1
+      OnResize = PanelPaintBoxResize
+      ExplicitLeft = 2
+      ExplicitTop = 160
+      ExplicitWidth = 369
+      ExplicitHeight = 381
+      object PaintBox: TPaintBox
+        Left = 1
+        Top = 1
+        Width = 373
+        Height = 396
+        Align = alClient
+        OnPaint = PaintBoxPaint
+        ExplicitLeft = -47
+        ExplicitTop = 105
+        ExplicitWidth = 311
+        ExplicitHeight = 255
       end
     end
   end
@@ -78,6 +104,7 @@ object CameraWindow: TCameraWindow
       Width = 374
       Height = 398
       Align = alClient
+      OnPaint = PaintBoxImagePaint
       ExplicitLeft = 6
       ExplicitTop = 137
       ExplicitWidth = 363
@@ -156,8 +183,8 @@ object CameraWindow: TCameraWindow
     end
   end
   object MainMenu1: TMainMenu
-    Left = 320
-    Top = 16
+    Left = 16
+    Top = 104
     object File1: TMenuItem
       Caption = '&File'
       object Quit1: TMenuItem
@@ -167,7 +194,11 @@ object CameraWindow: TCameraWindow
     end
   end
   object WCamera: TWCamera
-    Left = 248
-    Top = 16
+    AspectRatio = True
+    BorderColor = clWhite
+    PreviewControl = PanelPaintBox
+    OnImageAvailable = WCameraImageAvailable
+    Left = 16
+    Top = 56
   end
 end

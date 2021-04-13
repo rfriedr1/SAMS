@@ -261,3 +261,133 @@
 [13.04.2021 14:37:21]Information>Startup>connecting to DB at startup
 [13.04.2021 14:37:21]Information>Startup>Connected to DB.
 [13.04.2021 14:37:27]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:55:48]Information>Startup>starting Application
+[13.04.2021 14:55:48]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:55:48]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:55:48]Information>Startup>connecting to DB at startup
+[13.04.2021 14:55:48]Information>Startup>Connected to DB.
+[13.04.2021 14:56:01]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:59:48]Information>Startup>starting Application
+[13.04.2021 14:59:48]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:59:48]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:59:48]Information>Startup>connecting to DB at startup
+[13.04.2021 14:59:48]Information>Startup>Connected to DB.
+[13.04.2021 15:00:01]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:07:41]Information>Startup>starting Application
+[13.04.2021 15:07:41]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:07:41]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:07:41]Information>Startup>connecting to DB at startup
+[13.04.2021 15:07:41]Information>Startup>Connected to DB.
+[13.04.2021 15:11:19]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:12:46]Information>Startup>starting Application
+[13.04.2021 15:12:46]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:12:46]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:12:46]Information>Startup>connecting to DB at startup
+[13.04.2021 15:12:46]Information>Startup>Connected to DB.
+[13.04.2021 15:13:47]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:13:51]Information>Startup>starting Application
+[13.04.2021 15:13:51]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:13:51]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:13:51]Information>Startup>connecting to DB at startup
+[13.04.2021 15:13:51]Information>Startup>Connected to DB.
+[13.04.2021 15:14:05]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:15:15]Information>Startup>starting Application
+[13.04.2021 15:15:15]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:15:15]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:15:16]Information>Startup>connecting to DB at startup
+[13.04.2021 15:15:16]Information>Startup>Connected to DB.
+[13.04.2021 15:15:32]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:27:18]Information>Startup>starting Application
+[13.04.2021 15:27:18]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:27:18]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:27:18]Information>Startup>connecting to DB at startup
+[13.04.2021 15:27:18]Information>Startup>Connected to DB.
+[13.04.2021 15:27:45]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:33:26]Information>Startup>starting Application
+[13.04.2021 15:33:26]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:33:26]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:33:26]Information>Startup>connecting to DB at startup
+[13.04.2021 15:33:26]Information>Startup>Connected to DB.
+[13.04.2021 15:33:33]Error>Exception>UnitName: WCamera -- ClassName: EWCameraError -- StackTrace:  -- Message: Cannot retrieve 'IAMVideoProcAmp' interface
+[13.04.2021 15:33:42]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:34:41]Information>Startup>starting Application
+[13.04.2021 15:34:41]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:34:41]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:34:41]Information>Startup>connecting to DB at startup
+[13.04.2021 15:34:41]Information>Startup>Connected to DB.
+[13.04.2021 15:35:14]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:37:09]Information>Startup>starting Application
+[13.04.2021 15:37:09]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:37:09]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:37:09]Information>Startup>connecting to DB at startup
+[13.04.2021 15:37:09]Information>Startup>Connected to DB.
+[13.04.2021 15:37:27]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:38:06]Information>Startup>starting Application
+[13.04.2021 15:38:06]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:38:06]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:38:06]Information>Startup>connecting to DB at startup
+[13.04.2021 15:38:06]Information>Startup>Connected to DB.
+[13.04.2021 15:38:21]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:46:12]Information>Startup>starting Application
+[13.04.2021 15:46:12]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:46:12]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:46:12]Information>Startup>connecting to DB at startup
+[13.04.2021 15:46:12]Information>Startup>Connected to DB.
+[13.04.2021 15:46:50]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:53:23]Information>Startup>starting Application
+[13.04.2021 15:53:23]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:53:23]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:53:23]Information>Startup>connecting to DB at startup
+[13.04.2021 15:53:23]Information>Startup>Connected to DB.
+[13.04.2021 15:55:37]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:55:45]Information>Startup>starting Application
+[13.04.2021 15:55:45]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:55:45]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:55:45]Information>Startup>connecting to DB at startup
+[13.04.2021 15:55:45]Information>Startup>Connected to DB.
+[13.04.2021 15:56:05]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:58:36]Information>Startup>starting Application
+[13.04.2021 15:58:36]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:58:36]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:58:36]Information>Startup>connecting to DB at startup
+[13.04.2021 15:58:36]Information>Startup>Connected to DB.
+[13.04.2021 15:58:53]Information>Closeup>SAMS closed by user.
+[13.04.2021 15:59:35]Information>Startup>starting Application
+[13.04.2021 15:59:35]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 15:59:35]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 15:59:35]Information>Startup>connecting to DB at startup
+[13.04.2021 15:59:35]Information>Startup>Connected to DB.
+[13.04.2021 16:00:12]Information>Closeup>SAMS closed by user.
+[13.04.2021 16:09:25]Information>Startup>starting Application
+[13.04.2021 16:09:25]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 16:09:25]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 16:09:25]Information>Startup>connecting to DB at startup
+[13.04.2021 16:09:25]Information>Startup>Connected to DB.
+[13.04.2021 16:09:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00ACCACE in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 16:09:52]Information>Closeup>SAMS closed by user.
+[13.04.2021 16:12:17]Information>Startup>starting Application
+[13.04.2021 16:12:17]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 16:12:17]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 16:12:17]Information>Startup>connecting to DB at startup
+[13.04.2021 16:12:17]Information>Startup>Connected to DB.
+[13.04.2021 16:12:20]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00ACCAD6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 16:12:37]Information>Closeup>SAMS closed by user.
+[13.04.2021 16:15:45]Information>Startup>starting Application
+[13.04.2021 16:15:45]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 16:15:45]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 16:15:45]Information>Startup>connecting to DB at startup
+[13.04.2021 16:15:45]Information>Startup>Connected to DB.
+[13.04.2021 16:15:50]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00ACCBE6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 16:16:12]Information>Closeup>SAMS closed by user.
+[13.04.2021 16:17:01]Information>Startup>starting Application
+[13.04.2021 16:17:01]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 16:17:01]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 16:17:01]Information>Startup>connecting to DB at startup
+[13.04.2021 16:17:01]Information>Startup>Connected to DB.
+[13.04.2021 16:17:50]Information>Closeup>SAMS closed by user.
+[13.04.2021 16:19:50]Information>Startup>starting Application
+[13.04.2021 16:19:50]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 16:19:50]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 16:19:50]Information>Startup>connecting to DB at startup
+[13.04.2021 16:19:50]Information>Startup>Connected to DB.
+[13.04.2021 16:21:46]Information>Closeup>SAMS closed by user.
