@@ -3317,6 +3317,7 @@ object frmMAMS: TfrmMAMS
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
+        ExplicitTop = -6
         object btnIncSampleNr: TSpinButton
           Left = 190
           Top = 18
@@ -5226,14 +5227,14 @@ object frmMAMS: TfrmMAMS
         end
         object Label50: TLabel
           Left = 65
-          Top = 417
+          Top = 427
           Width = 47
           Height = 13
           Caption = 'Prep. end'
         end
         object Label69: TLabel
           Left = 22
-          Top = 374
+          Top = 395
           Width = 90
           Height = 13
           Caption = 'Weight after prep.'
@@ -5246,8 +5247,8 @@ object frmMAMS: TfrmMAMS
           Caption = 'Weight before prep.'
         end
         object YieldLabel: TLabel
-          Left = 263
-          Top = 374
+          Left = 271
+          Top = 395
           Width = 22
           Height = 13
           Hint = 'Yield = weight after/weigt before'
@@ -5257,22 +5258,22 @@ object frmMAMS: TfrmMAMS
           ShowHint = True
         end
         object Label107: TLabel
-          Left = 231
-          Top = 374
+          Left = 239
+          Top = 395
           Width = 26
           Height = 13
           Caption = 'Yield:'
         end
         object Label112: TLabel
-          Left = 188
+          Left = 211
           Top = 87
           Width = 14
           Height = 13
           Caption = 'mg'
         end
         object Label114: TLabel
-          Left = 193
-          Top = 374
+          Left = 211
+          Top = 395
           Width = 14
           Height = 13
           Caption = 'mg'
@@ -5283,6 +5284,34 @@ object frmMAMS: TfrmMAMS
           Width = 48
           Height = 13
           Caption = 'Prep start'
+        end
+        object Label142: TLabel
+          Left = 211
+          Top = 321
+          Width = 14
+          Height = 13
+          Caption = 'mg'
+        end
+        object Label143: TLabel
+          Left = 211
+          Top = 344
+          Width = 14
+          Height = 13
+          Caption = 'mg'
+        end
+        object Label144: TLabel
+          Left = 22
+          Top = 321
+          Width = 86
+          Height = 13
+          Caption = 'Weight empty vial'
+        end
+        object Label145: TLabel
+          Left = 38
+          Top = 344
+          Width = 70
+          Height = 13
+          Caption = 'Weight full vial'
         end
         object btnSaveChangesPrep: TBitBtn
           Left = 3
@@ -5341,7 +5370,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkPrepDiscarded: TDBCheckBox
           Left = 80
-          Top = 458
+          Top = 469
           Width = 65
           Height = 17
           Hint = 'preparation discarded'
@@ -5358,7 +5387,7 @@ object frmMAMS: TfrmMAMS
         end
         object chkPrepNoLeftover: TDBCheckBox
           Left = 190
-          Top = 458
+          Top = 469
           Width = 97
           Height = 17
           Hint = 'no prepared material left'
@@ -5375,7 +5404,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtPrepEnd: TJvDBDateTimePicker
           Left = 118
-          Top = 414
+          Top = 424
           Width = 87
           Height = 21
           CustomHint = BalloonHint1
@@ -5390,8 +5419,8 @@ object frmMAMS: TfrmMAMS
         end
         object edtWeightEnd: TDBEdit
           Left = 118
-          Top = 371
-          Width = 69
+          Top = 392
+          Width = 87
           Height = 21
           Hint = 'weight after prep'
           CustomHint = BalloonHint1
@@ -5408,7 +5437,7 @@ object frmMAMS: TfrmMAMS
         object edtWeightStart: TDBEdit
           Left = 116
           Top = 84
-          Width = 66
+          Width = 89
           Height = 21
           Hint = 'weight before prep'
           CustomHint = BalloonHint1
@@ -5425,7 +5454,7 @@ object frmMAMS: TfrmMAMS
           Left = 7
           Top = 119
           Width = 184
-          Height = 239
+          Height = 192
           Caption = 'Prep Steps'
           TabOrder = 6
           object Label54: TLabel
@@ -5538,7 +5567,7 @@ object frmMAMS: TfrmMAMS
           Left = 188
           Top = 122
           Width = 118
-          Height = 236
+          Height = 189
           CustomHint = BalloonHint1
           TabStop = False
           Ctl3D = True
@@ -5573,6 +5602,36 @@ object frmMAMS: TfrmMAMS
           NullText = 'not set'
           DataField = 'prep_start'
           DataSource = dm.dsSampleInfo
+        end
+        object DBEditWeightMedium: TDBEdit
+          Left = 118
+          Top = 317
+          Width = 87
+          Height = 21
+          Hint = 'weight of the full vial'
+          Ctl3D = True
+          DataField = 'weight_medium'
+          DataSource = dm.dsWeights
+          ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 10
+          OnChange = DBEditWeightMediumChange
+        end
+        object DBEditWeightMedium2: TDBEdit
+          Left = 118
+          Top = 342
+          Width = 87
+          Height = 21
+          Hint = 'weight of the empty vial'
+          Ctl3D = True
+          DataField = 'weight_medium_2'
+          DataSource = dm.dsWeights
+          ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 11
+          OnChange = DBEditWeightMedium2Change
         end
       end
     end
@@ -8263,14 +8322,14 @@ object frmMAMS: TfrmMAMS
           Caption = 'Last Name'
         end
         object lblTouchWeightsNPrep: TLabel
-          Left = 238
+          Left = 239
           Top = 170
           Width = 18
           Height = 13
           Caption = '1...'
         end
         object lblTouchWeightsNTargets: TLabel
-          Left = 310
+          Left = 314
           Top = 170
           Width = 18
           Height = 13
@@ -8869,7 +8928,6 @@ object frmMAMS: TfrmMAMS
             Width = 67
             Height = 13
             Caption = 'Weight Empty'
-            Visible = False
           end
           object Label139: TLabel
             Left = 220
@@ -8877,7 +8935,6 @@ object frmMAMS: TfrmMAMS
             Width = 53
             Height = 13
             Caption = 'Weight Full'
-            Visible = False
           end
           object Label140: TLabel
             Left = 21
@@ -8885,7 +8942,6 @@ object frmMAMS: TfrmMAMS
             Width = 80
             Height = 13
             Caption = 'weight container'
-            Visible = False
           end
           object Label141: TLabel
             Left = 296
@@ -8893,7 +8949,6 @@ object frmMAMS: TfrmMAMS
             Width = 14
             Height = 13
             Caption = 'mg'
-            Visible = False
           end
           object DBchkTouchWeightsSampleNoLeftover: TDBCheckBox
             Left = 162
@@ -9094,12 +9149,14 @@ object frmMAMS: TfrmMAMS
             Caption = 'auto g -> mg'
             TabOrder = 9
           end
-          object DBedtTouchWeightsEmptyContPrep: TDBEdit
+          object DBedtTouchWeightsMediumPrep: TDBEdit
             Left = 107
             Top = 229
             Width = 89
             Height = 26
             Hint = 'weight of empty container'
+            DataField = 'weight_medium'
+            DataSource = dm.dsWeights
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = 18
@@ -9107,14 +9164,17 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 10
-            Visible = False
+            OnChange = DBedtTouchWeightsMediumPrepChange
+            OnKeyDown = DBedtTouchWeightsMediumPrepKeyDown
           end
-          object DBedtTouchWeightsFullContPrep: TDBEdit
+          object DBedtTouchWeightsMedium2Prep: TDBEdit
             Left = 202
             Top = 229
             Width = 88
             Height = 26
             Hint = 'weight of full container'
+            DataField = 'weight_medium_2'
+            DataSource = dm.dsWeights
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = 18
@@ -9122,7 +9182,8 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 11
-            Visible = False
+            OnChange = DBedtTouchWeightsMedium2PrepChange
+            OnKeyDown = DBedtTouchWeightsMedium2PrepKeyDown
           end
         end
       end
@@ -9141,7 +9202,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 436
+          Height = 420
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9318,13 +9379,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 436
+          Height = 420
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            436)
+            420)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9502,7 +9563,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 411
+            Top = 395
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9746,7 +9807,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300980710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300A80710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10525,7 +10586,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806540918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806640918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16775,7 +16836,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00980720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00A80720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26910,8 +26971,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'logfile.log'
     AutoSave = True
     SizeLimit = 100000
-    Left = 283
-    Top = 207
+    Left = 259
+    Top = 191
   end
   object ApplicationEvents: TApplicationEvents
     OnException = ApplicationEventsException

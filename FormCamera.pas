@@ -15,10 +15,9 @@ uses
 
 type
   TCameraWindow = class(TForm)
-    Panel_Left: TPanel;
-    Frame_Video1: TVideoFrame;
+    PanelLeft: TPanel;
     Splitter1: TSplitter;
-    Panel_Right: TPanel;
+    PanelRight: TPanel;
     MainMenu1: TMainMenu;
     File1: TMenuItem;
     Quit1: TMenuItem;
@@ -31,6 +30,10 @@ type
     btnSave: TButton;
     GroupBox1: TGroupBox;
     lbl_SaveSuccessfull: TLabel;
+    WCamera: TWCamera;
+    ComboBoxCamera: TComboBox;
+    PaintBoxCameraStream: TPaintBox;
+    GroupBoxCameraSettings: TGroupBox;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -41,10 +44,11 @@ type
     procedure btnSnapImageClick(Sender: TObject);
     procedure edtMAMSChange(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure Frame_Video1SpeedButton_VidSizeClick(Sender: TObject);
   private
     { Private declarations }
     SplitterRatio : double;
+    MemoryStream: TMemoryStream;
+    Bitmap: TBitmap;
   public
     { Public declarations }
   end;
@@ -66,7 +70,7 @@ procedure TCameraWindow.FormCloseQuery(Sender: TObject;
 begin
   Screen.Cursor := crHourGlass;
   Application.ProcessMessages;
-  Frame_Video1.Stop;
+  //Frame_Video1.Stop;
   Screen.Cursor := crdefault;
 end;
 
@@ -113,9 +117,9 @@ Var
   GraphicSource: TBitmap;
 begin
   // tell Frame_Video1 to get an image from the camera
-  RectSource := Rect(0, 0, Frame_Video1.PaintBox_Video.Width, Frame_Video1.PaintBox_Video.Height);
-  RectDestination := Rect(0, 0, PaintBoxImage.Width, PaintBoxImage.Height);
-  CanvasSource := Frame_Video1.PaintBox_Video.Canvas;
+  //RectSource := Rect(0, 0, Frame_Video1.PaintBox_Video.Width, Frame_Video1.PaintBox_Video.Height);
+  //RectDestination := Rect(0, 0, PaintBoxImage.Width, PaintBoxImage.Height);
+  //CanvasSource := Frame_Video1.PaintBox_Video.Canvas;
   // copy image into PaintBoxImage Canvas
   PaintBoxImage.Canvas.CopyRect(RectDestination, CanvasSource, RectSource);
 
@@ -135,7 +139,7 @@ end;
 
 procedure TCameraWindow.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Frame_Video1.Close;
+  //Frame_Video1.Close;
 end;
 
 procedure TCameraWindow.FormShow(Sender: TObject);
@@ -143,7 +147,7 @@ Var
 pathToIni : string;
 begin
   // initialize the video frame
-  Frame_Video1.InitFrame;
+  //Frame_Video1.InitFrame;
 
   // some settings
   lbl_SaveSuccessfull.Visible := False;
@@ -163,12 +167,6 @@ begin
 
 end;
 
-procedure TCameraWindow.Frame_Video1SpeedButton_VidSizeClick(Sender: TObject);
-begin
-  Frame_Video1.SpeedButton_VidSizeClick(Sender);
-
-end;
-
 procedure TCameraWindow.Quit1Click(Sender: TObject);
 begin
   close;
@@ -176,17 +174,21 @@ end;
 
 procedure TCameraWindow.Splitter1Moved(Sender: TObject);
 begin
-  SplitterRatio := (Panel_Left.Width+Splitter1.Width div 2) / Width;
+  SplitterRatio := (PanelLeft.Width+Splitter1.Width div 2) / Width;
 end;
 
 procedure TCameraWindow.FormCreate(Sender: TObject);
 begin
+  PanelLeft.DoubleBuffered := True;
+  MemoryStream := TMemoryStream.Create;
+  Bitmap := TBitmap.Create;
+
   SplitterRatio := 0.5;
 end;
 
 procedure TCameraWindow.FormResize(Sender: TObject);
 begin
-  Panel_Left.Width := round(SplitterRatio * (Width-Splitter1.Width div 2));
+  PanelLeft.Width := round(SplitterRatio * (Width-Splitter1.Width div 2));
 end;
 
 end.

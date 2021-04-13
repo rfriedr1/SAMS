@@ -1729,7 +1729,7 @@ begin
         ' editable, not_tobedated, user_label, sample_t.user_label_nr, user_desc1, user_desc2, residue,' +
         ' sample_t.user_comment,sample_t.old_info, project_t.project, project_t.project_nr, report, invoice_nr, MA_Nr, in_date, desired_date, out_date, priority, status,' +
         ' price, user_t.last_name, user_t.user_nr, preparation_t.prep_nr, preparation_t.batch, p_no_leftover,' +
-        ' prep_comment, weight_start, weight_medium, weight_end,' +
+        ' prep_comment, weight_start, weight_medium, weight_end, weight_medium_2, ' +
         ' prep_start, prep_end, step1_method, step2_method,step3_method,step4_method,step5_method, preparation_t.old_info ';
     s := s + ', target_t.target_nr,' +
         ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
@@ -2117,8 +2117,9 @@ procedure Tdm.GetWeights(SampleNr, PrepNr: integer);
 var
   s : string;
 begin
+   LogWindow.addLogEntry('Query prep weights');
    with qryWeights do begin
-     SQL.Text :=  'SELECT weight_start, weight_end FROM preparation_t WHERE sample_nr=' +
+     SQL.Text :=  'SELECT weight_start, weight_end, weight_medium, weight_medium_2 FROM preparation_t WHERE sample_nr=' +
                   IntToStr(SampleNr) + ' AND prep_nr=' + IntToStr(PrepNr) +';';
     s := SQL.Text;
 //    ClipBoard.SetTextBuf(PChar(s));

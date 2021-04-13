@@ -29,86 +29,43 @@ object CameraWindow: TCameraWindow
     OnMoved = Splitter1Moved
     ExplicitHeight = 544
   end
-  object Panel_Left: TPanel
+  object PanelLeft: TPanel
     Left = 0
     Top = 0
     Width = 377
     Height = 541
     Align = alLeft
     TabOrder = 0
-    inline Frame_Video1: TVideoFrame
+    object PaintBoxCameraStream: TPaintBox
+      Left = 1
+      Top = 142
+      Width = 375
+      Height = 398
+      Align = alClient
+      ExplicitLeft = 128
+      ExplicitTop = 248
+      ExplicitWidth = 105
+      ExplicitHeight = 105
+    end
+    object GroupBoxCameraSettings: TGroupBox
       Left = 1
       Top = 1
       Width = 375
-      Height = 539
-      Align = alClient
+      Height = 141
+      Align = alTop
+      Caption = 'Camera Setting'
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 375
-      ExplicitHeight = 539
-      inherited Panel_Top: TPanel
-        Width = 375
-        ExplicitWidth = 375
-        DesignSize = (
-          375
-          104)
-        inherited Label_Cameras: TLabel
-          Width = 39
-          Caption = 'Camera '
-          ExplicitWidth = 39
-        end
-        inherited SpeedButton_VidSize: TSpeedButton
-          OnClick = Frame_Video1SpeedButton_VidSizeClick
-        end
-        inherited Label3: TLabel
-          Width = 51
-          ExplicitWidth = 51
-        end
-        inherited Label4: TLabel
-          Width = 44
-          ExplicitWidth = 44
-        end
-      end
-      inherited Panel_Bottom: TPanel
-        Width = 375
-        Height = 435
-        ExplicitWidth = 375
-        ExplicitHeight = 435
-        inherited PaintBox_Video: TPaintBox
-          Width = 373
-          Height = 393
-          ExplicitWidth = 373
-          ExplicitHeight = 393
-        end
-        inherited GroupBox1: TGroupBox
-          Width = 373
-          ExplicitWidth = 373
-          inherited Label_fps: TLabel
-            Width = 90
-            ExplicitWidth = 90
-          end
-          inherited Label_VideoSize: TLabel
-            Width = 50
-            Height = 23
-            ExplicitWidth = 50
-          end
-          inherited Label2: TLabel
-            Left = 322
-            Width = 49
-            Height = 23
-            ExplicitLeft = 322
-            ExplicitWidth = 49
-          end
-        end
-      end
-      inherited PopupMenu1: TPopupMenu
-        Left = 128
-        Top = 65528
+      object ComboBoxCamera: TComboBox
+        Left = 17
+        Top = 29
+        Width = 193
+        Height = 21
+        TabOrder = 0
+        Text = 'No cameras found'
       end
     end
   end
-  object Panel_Right: TPanel
+  object PanelRight: TPanel
     Left = 384
     Top = 0
     Width = 376
@@ -199,8 +156,8 @@ object CameraWindow: TCameraWindow
     end
   end
   object MainMenu1: TMainMenu
-    Left = 168
-    Top = 65528
+    Left = 320
+    Top = 16
     object File1: TMenuItem
       Caption = '&File'
       object Quit1: TMenuItem
@@ -208,5 +165,9 @@ object CameraWindow: TCameraWindow
         OnClick = Quit1Click
       end
     end
+  end
+  object WCamera: TWCamera
+    Left = 248
+    Top = 16
   end
 end

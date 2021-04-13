@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: March-03-2021';
+  myVersion = '1.9.9 Built: April-13-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -847,14 +847,20 @@ type
     dsPrepBatch: TDataSource;
     JvDirEdt_PrepBatch_Path: TJvDirectoryEdit;
     Label137: TLabel;
-    DBedtTouchWeightsEmptyContPrep: TDBEdit;
-    DBedtTouchWeightsFullContPrep: TDBEdit;
+    DBedtTouchWeightsMediumPrep: TDBEdit;
+    DBedtTouchWeightsMedium2Prep: TDBEdit;
     Label138: TLabel;
     Label139: TLabel;
     Label140: TLabel;
     Label141: TLabel;
     JvLogFile: TJvLogFile;
     ApplicationEvents: TApplicationEvents;
+    DBEditWeightMedium: TDBEdit;
+    DBEditWeightMedium2: TDBEdit;
+    Label142: TLabel;
+    Label143: TLabel;
+    Label144: TLabel;
+    Label145: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1203,6 +1209,14 @@ type
     procedure DBedtTouchWeightsAfterPrepChange(Sender: TObject);
     procedure btnPrepCardClick(Sender: TObject);
     procedure ApplicationEventsException(Sender: TObject; E: Exception);
+    procedure DBedtTouchWeightsMediumPrepKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure DBedtTouchWeightsMedium2PrepKeyDown(Sender: TObject;
+      var Key: Word; Shift: TShiftState);
+    procedure DBedtTouchWeightsMediumPrepChange(Sender: TObject);
+    procedure DBedtTouchWeightsMedium2PrepChange(Sender: TObject);
+    procedure DBEditWeightMediumChange(Sender: TObject);
+    procedure DBEditWeightMedium2Change(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1292,6 +1306,10 @@ type
     procedure CalculateYield;
     /// <summary>Calculates the yield from mass before and after prep out of the touch tab</summary>
     procedure CalculateYieldTouch;
+    /// <summary>Calculates the net weight of weight_end of the pre table using weight_medium and weight_medium_2. Used in SampleInfoTab</summary>
+    procedure CalculateNetWeightEnd;
+        /// <summary>Calculates the net weight of weight_end of the pre table using weight_medium and weight_medium_2. used in TouchTab</summary>
+    procedure CalculateNetWeightEndTouch;
     /// <summary>keeps the button of the toolbar pressed</summary>
     procedure ToolBarButtonsState(Sender: TObject);
     procedure DBGridAutoSizeColumn(Grid: TDBGrid; Column: integer);
@@ -1953,6 +1971,7 @@ begin
 
     //LogWindow.addLogEntry(SQL.Text);
     LogWindow.addLogEntry(SQL.Text);
+    JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports...');
     // JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
     IF dm.adoConnKTL.Connected THEN
       Begin
@@ -1974,6 +1993,9 @@ begin
             Open;
         End;
       End;
+    JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... finished');
+    JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... ' + grdPendingReports.Columns.Count.ToString + ' columns to display in grid');
+    JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths manually');
     with grdPendingReports do
     begin
       Columns[0].Width := 150; // project
@@ -1990,9 +2012,12 @@ begin
       Columns[11].Width := 60;  // graphDone
       Columns[12].Width := 60;  // measured
     end;
+
     LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically');
+    JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths automatically');
     FixDBGridColumnsWidth(grdPendingReports);
 
+  // set the column that is neing used to order the grid by
   grdPendingReportsTitleClick(grdPendingReports.Columns[4]);
   //LogWindow.addLogEntry('btnPendingReportsClick: DBGrid TitleClick set');
   end;
@@ -2716,32 +2741,35 @@ begin
 end;
 
 procedure TfrmMAMS.btnSampleNrUpDownClick(Sender: TObject; Button: TUDBtnType);
+Var SampleNr, NPreps, NTargets: Integer;
 begin
+  // change sample nr according to the action either one up or one down
   case Button of
     btNext:
     begin
-      edtSampleNr.Value:= round(edtSampleNr.Value)+1;
-      // also update TouchWeightsPanel
-      edtTouchWeightsMAMS.Value := edtSampleNr.Value;
-
-      DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
-
-      edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
-      edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
-
+      SampleNr := round(edtSampleNr.Value) + 1;
+      edtSampleNr.Value := SampleNr;
     end;
     btPrev:
     Begin
-      edtSampleNr.Value:= round(edtSampleNr.Value)-1;
-      // also update TouchWeightsPanel
-      edtTouchWeightsMAMS.Value := edtSampleNr.Value;
-
-      DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
-
-      edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
-      edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
+      SampleNr := round(edtSampleNr.Value) - 1;
+      edtSampleNr.Value := SampleNr;
     End;
   end;
+  // also update TouchWeightsPanel
+  edtTouchWeightsMAMS.Value := SampleNr;
+
+  NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  edtSamplePrepNr.MaxValue := NPreps;
+  edtSamplePrepNr.Value := NPreps;
+  edtSampleTargetNr.MaxValue := NTargets;
+  edtSampleTargetNr.Value := NTargets;
+  DoSampleInfo(SampleNr, NPreps, NTargets);
+  //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+
+  edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
+  edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
 end;
 
 procedure TfrmMAMS.btnSaveBatchClick(Sender: TObject);
@@ -2976,6 +3004,7 @@ var
   CN_Ratio: double;
   leftover: integer;
 begin
+  LogWindow.addLogEntry('SaveChangesPrepClick');
   sample_nr := round(edtSampleNr.Value);
 
   //dt := edtPrepEnd.DataSource.DataSet.FieldByName('prep_end').AsDateTime;  //this was done before, don't know why
@@ -3298,10 +3327,20 @@ begin
 end;
 
 procedure TfrmMAMS.actSampleInfoExecute(Sender: TObject);
+Var SampleNr, NPreps, NTargets: Integer;
 begin
   FillPrepList;
   pgtMain.ActivePage := tbsSampleInfo;
-  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+
+  SampleNr := edtSampleNr.Value;
+  NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  edtSamplePrepNr.MaxValue := NPreps;
+  edtSamplePrepNr.Value := NPreps;
+  edtSampleTargetNr.MaxValue := NTargets;
+  edtSampleTargetNr.Value := NTargets;
+  //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  DoSampleInfo(SampleNr, NPreps, NTargets);
 //  btnDoSampleQuery.SetFocus;
   edtSampleNr.SetFocus;
 end;
@@ -3874,7 +3913,18 @@ begin
 end;
 
 procedure TfrmMAMS.btnDoSampleQueryClick(Sender: TObject);
+Var SampleNr, NPreps, NTargets: Integer;
 begin
+  SampleNr := edtSampleNr.Value;
+  NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+  NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+  edtSamplePrepNr.MaxValue := NPreps;
+  edtSamplePrepNr.Value := NPreps;
+  edtSampleTargetNr.MaxValue := NTargets;
+  edtSampleTargetNr.Value := NTargets;
+  //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  DoSampleInfo(SampleNr, NPreps, NTargets);
+
   DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   // also update TouchWeightsPanel
   edtTouchWeightsMAMS.Value := edtSampleNr.Value;
@@ -4378,7 +4428,7 @@ end;
 
 procedure TfrmMAMS.btnTouchWeightsPrepSaveClick(Sender: TObject);
 Var
-  weightStart, weightEnd, SampleNr, PrepNr, TargetNr, cmd, prep_start_str, prep_end_str: string;
+  weightStart, weightEnd, weightMedium, weightMedium2, SampleNr, PrepNr, TargetNr, cmd, prep_start_str, prep_end_str: string;
   prep_start_date, prep_end_date : TDate;
   flag: integer;
 begin
@@ -4392,6 +4442,10 @@ begin
   weightStart := ReplaceStr(weightStart, ',', '.');
   weightEnd := DBedtTouchWeightsAfterPrep.Text;
   weightEnd := ReplaceStr(weightEnd, ',', '.');
+  weightMedium := DBedtTouchWeightsMediumPrep.Text;
+  weightMedium := ReplaceStr(weightMedium, ',', '.');
+  weightMedium2 := DBedtTouchWeightsMedium2Prep.Text;
+  weightMedium2 := ReplaceStr(weightMedium2, ',', '.');
   // dates
   prep_start_date := DBDateTimeTouchPrepStart.Date;
   prep_end_date := DBDateTimeTouchPrepEnd.Date;
@@ -4424,8 +4478,18 @@ begin
         begin
         weightEnd := 'NULL';
         end;
+      if Length(weightMedium) = 0 then
+        begin
+        weightMedium := 'NULL';
+        end;
+      if Length(weightMedium2) = 0 then
+        begin
+        weightMedium2 := 'NULL';
+        end;
       CommandText :=  'UPDATE preparation_t SET weight_start=' + weightStart + ',' +
-                      ' weight_end=' + weightEnd +
+                      ' weight_end=' + weightEnd + ',' +
+                      ' weight_medium=' + weightMedium + ',' +
+                      ' weight_medium_2=' + weightMedium2 +
                       ' WHERE sample_nr=' + SampleNr + ' AND prep_nr=' + PrepNr + ';';
       LogWindow.addLogEntry('saving prep weights with query:');
       LogWindow.addLogEntry(CommandText);
@@ -5008,6 +5072,7 @@ end;
 
 procedure TfrmMAMS.edtWeightEndChange(Sender: TObject);
 begin
+  LogWindow.addLogEntry('edtWeightEndChange');
   WeightsChanged := true;
   CalculateYield; // calculate the yield from the weights
 end;
@@ -8203,6 +8268,10 @@ begin
     DBedtTouchWeightsCombustion.SetFocus;
   if DBedtTouchWeightsAfterPrep.Text = '' then
     DBedtTouchWeightsAfterPrep.SetFocus;
+  if DBedtTouchWeightsMedium2Prep.Text = '' then
+    DBedtTouchWeightsMedium2Prep.SetFocus;
+  if DBedtTouchWeightsMediumPrep.Text = '' then
+    DBedtTouchWeightsMediumPrep.SetFocus;
   if DBedtTouchWeightsBeforePrep.Text = '' then
     DBedtTouchWeightsBeforePrep.SetFocus;
 end;
@@ -8227,6 +8296,18 @@ procedure TfrmMAMS.DBDateTimeTouchPrepStartKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBEditWeightMedium2Change(Sender: TObject);
+begin
+  WeightsChanged := true;
+  CalculateNetWeightEnd;
+end;
+
+procedure TfrmMAMS.DBEditWeightMediumChange(Sender: TObject);
+begin
+  WeightsChanged := true;
+  CalculateNetWeightEnd;
 end;
 
 procedure TfrmMAMS.DBedtTouchWeightsAfterPrepChange(Sender: TObject);
@@ -8313,6 +8394,30 @@ begin
           (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
         End;
     end;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsMedium2PrepChange(Sender: TObject);
+begin
+  // calulate net weight of weight_end
+  CalculateNetWeightEndTouch;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsMedium2PrepKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsMediumPrepChange(Sender: TObject);
+begin
+  // calulate net weight of weight_end
+  CalculateNetWeightEndTouch;
+end;
+
+procedure TfrmMAMS.DBedtTouchWeightsMediumPrepKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
 end;
 
 procedure TfrmMAMS.DBGridAutoSizeAllColumns(Grid: TDBGrid);
@@ -8881,7 +8986,7 @@ begin
  // use this to automatically catch excrptions and log them away
  //
  // write Exception into logfile as Errors (lesError)
- JvLogFile.Add('Exception',lesError,'Unit: '+ E.UnitName + ' -- Context: ' + inttostr(E.HelpContext) + ' -- Message: ' + E.Message);
+ JvLogFile.Add('Exception',lesError,'UnitName: '+ E.UnitName + ' -- ClassName: ' + E.ClassName + ' -- StackTrace: ' + E.StackTrace + ' -- Message: ' + E.Message);
  // since Exceptions are now caught atomatically they are not shown anymore by the app
  // tell App to show excption
  Application.ShowException(E);
@@ -8892,7 +8997,8 @@ procedure TfrmMAMS.CalculateYield;
 // calulcates the yield from the values used in the SampleInfo Tab
 VAR yield: double;
 begin
-  if not (edtWeightEnd.Text = '') AND not (edtweightstart.Text = '') then
+  LogWindow.addLogEntry('CalculateYield');
+  if not (edtWeightEnd.Text = '') AND not (edtWeightStart.Text = '') then
   begin
     yield := SimpleRoundTo(100 * (strtofloat(edtWeightEnd.Text) / strtofloat(edtWeightStart.text)),-2);
     YieldLabel.Caption := floattostr(yield) + ' %';
@@ -8908,6 +9014,7 @@ procedure TfrmMAMS.CalculateYieldTouch;
 // calulcates the yield from the values used in the touch tab
 VAR yield: double;
 begin
+  LogWindow.addLogEntry('CalculateYieldTouch');
   if not (DBedtTouchWeightsAfterPrep.Text = '') AND not (DBedtTouchWeightsBeforePrep.Text = '') then
   begin
     yield := SimpleRoundTo(100 * (strtofloat(DBedtTouchWeightsAfterPrep.Text) / strtofloat(DBedtTouchWeightsBeforePrep.text)),-2);
@@ -8918,6 +9025,34 @@ begin
   begin
     YieldLabel.Caption := 'no value';
   end;
+end;
+
+procedure TfrmMAMS.CalculateNetWeightEnd;
+// calulcates the net weight of weight_end of the prep table by
+// weight_medium_2 - weight_medium
+// this is used for weighing empty and full containers in order to calucate the weight of the sample therein
+VAR netweight: double;
+begin
+  if not (DBEditWeightMedium.Text = '') AND not (DBEditWeightMedium2.Text = '') then
+  begin
+    netweight := strtofloat(DBEditWeightMedium2.Text) - strtofloat(DBEditWeightMedium.text);
+    edtWeightEnd.Text := floattostr(netweight);
+    //edtWeightEnd.Field.AsString := floattostr(netweight);
+  end
+end;
+
+procedure TfrmMAMS.CalculateNetWeightEndTouch;
+// calulcates the net weight of weight_end of the prep table by
+// weight_medium_2 - weight_medium
+// this is used for weighing empty and full containers in order to calucate the weight of the sample therein
+VAR netweight: double;
+begin
+  if not (DBedtTouchWeightsMediumPrep.Text = '') AND not (DBedtTouchWeightsMedium2Prep.Text = '') then
+  begin
+    netweight := strtofloat(DBedtTouchWeightsMedium2Prep.Text) - strtofloat(DBedtTouchWeightsMediumPrep.Text);
+    DBedtTouchWeightsAfterPrep.Text := floattostr(netweight);
+    //DBedtTouchWeightsAfterPrep.Field.AsString := floattostr(netweight);
+  end
 end;
 
 procedure TfrmMAMS.ToolBar1Click(Sender: TObject);

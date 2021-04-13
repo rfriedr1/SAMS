@@ -17,3 +17,247 @@
 [01.04.2021 15:05:18]Error>Startup>Not able to connect to DB
 [01.04.2021 15:05:42]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
 [01.04.2021 15:05:47]Information>Closeup>SAMS closed by user.
+[06.04.2021 13:59:26]Information>Startup>starting Application
+[06.04.2021 13:59:26]Information>Startup>DB - DataSource= db_dmams_KTL
+[06.04.2021 13:59:26]Information>Startup>DB - UserID= rfriedrich
+[06.04.2021 13:59:26]Information>Startup>connecting to DB at startup
+[06.04.2021 13:59:26]Information>Startup>Connected to DB.
+[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports...
+[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports... finished
+[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports... 13 columns to display in grid
+[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports... setting column widths manually
+[06.04.2021 13:59:31]Information>Pending Reports:>Query DB for pending reports... setting column widths automatically
+[06.04.2021 14:00:06]Information>Closeup>SAMS closed by user.
+[06.04.2021 14:07:55]Information>Startup>starting Application
+[06.04.2021 14:07:55]Information>Startup>DB - DataSource= db_dmams_KTL
+[06.04.2021 14:07:55]Information>Startup>DB - UserID= rfriedrich
+[06.04.2021 14:07:55]Information>Startup>connecting to DB at startup
+[06.04.2021 14:07:55]Information>Startup>Connected to DB.
+[06.04.2021 14:08:04]Information>Pending Reports>Query DB for pending reports...
+[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... finished
+[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... 13 columns to display in grid
+[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports...
+[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports... finished
+[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports... 13 columns to display in grid
+[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[06.04.2021 14:08:13]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[06.04.2021 14:08:26]Information>Closeup>SAMS closed by user.
+[13.04.2021 12:34:00]Information>Startup>starting Application
+[13.04.2021 12:34:00]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 12:34:00]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 12:34:00]Information>Startup>connecting to DB at startup
+[13.04.2021 12:34:00]Information>Startup>Connected to DB.
+[13.04.2021 12:34:33]Information>Closeup>SAMS closed by user.
+[13.04.2021 12:34:57]Information>Startup>starting Application
+[13.04.2021 12:34:57]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 12:34:57]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 12:34:57]Information>Startup>connecting to DB at startup
+[13.04.2021 12:34:57]Information>Startup>Connected to DB.
+[13.04.2021 12:35:48]Information>Closeup>SAMS closed by user.
+[13.04.2021 12:37:52]Information>Startup>starting Application
+[13.04.2021 12:37:52]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 12:37:52]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 12:37:52]Information>Startup>connecting to DB at startup
+[13.04.2021 12:37:52]Information>Startup>Connected to DB.
+[13.04.2021 12:38:35]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:01:29]Information>Startup>starting Application
+[13.04.2021 13:01:29]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:01:29]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:01:29]Information>Startup>connecting to DB at startup
+[13.04.2021 13:01:29]Information>Startup>Connected to DB.
+[13.04.2021 13:02:06]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:02:33]Information>Startup>starting Application
+[13.04.2021 13:02:33]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:02:33]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:02:33]Information>Startup>connecting to DB at startup
+[13.04.2021 13:02:33]Information>Startup>Connected to DB.
+[13.04.2021 13:03:05]Error>DB>Problem opening DB
+[13.04.2021 13:03:24]Error>DB>Problem opening DB
+[13.04.2021 13:03:49]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:05:03]Information>Startup>starting Application
+[13.04.2021 13:05:03]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:05:03]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:05:03]Information>Startup>connecting to DB at startup
+[13.04.2021 13:05:03]Information>Startup>Connected to DB.
+[13.04.2021 13:05:17]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: Feld 'prep_start' kann nicht als Typ DateTime angesprochen werden
+[13.04.2021 13:05:32]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:06:54]Information>Startup>starting Application
+[13.04.2021 13:06:54]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:06:54]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:06:54]Information>Startup>connecting to DB at startup
+[13.04.2021 13:06:54]Information>Startup>Connected to DB.
+[13.04.2021 13:06:57]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: Feld 'prep_start' kann nicht als Typ DateTime angesprochen werden
+[13.04.2021 13:07:34]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:09:34]Information>Startup>starting Application
+[13.04.2021 13:09:34]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:09:34]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:09:34]Information>Startup>connecting to DB at startup
+[13.04.2021 13:09:34]Information>Startup>Connected to DB.
+[13.04.2021 13:09:45]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: Feld 'prep_start' kann nicht als Typ DateTime angesprochen werden
+[13.04.2021 13:10:20]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:10:51]Information>Startup>starting Application
+[13.04.2021 13:10:51]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:10:51]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:10:51]Information>Startup>connecting to DB at startup
+[13.04.2021 13:10:51]Information>Startup>Connected to DB.
+[13.04.2021 13:10:54]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D601B6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:11:04]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D601B6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:11:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D601B6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:12:11]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:13:54]Information>Startup>starting Application
+[13.04.2021 13:13:54]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:13:54]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:13:54]Information>Startup>connecting to DB at startup
+[13.04.2021 13:13:54]Information>Startup>Connected to DB.
+[13.04.2021 13:14:03]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D602CE in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:14:44]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:16:46]Information>Startup>starting Application
+[13.04.2021 13:16:46]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:16:46]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:16:46]Information>Startup>connecting to DB at startup
+[13.04.2021 13:16:46]Information>Startup>Connected to DB.
+[13.04.2021 13:16:53]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:17:50]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:18:15]Information>Startup>starting Application
+[13.04.2021 13:18:15]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:18:15]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:18:15]Information>Startup>connecting to DB at startup
+[13.04.2021 13:18:15]Information>Startup>Connected to DB.
+[13.04.2021 13:18:17]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:18:20]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:18:32]Information>Startup>starting Application
+[13.04.2021 13:18:32]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:18:32]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:18:32]Information>Startup>connecting to DB at startup
+[13.04.2021 13:18:32]Information>Startup>Connected to DB.
+[13.04.2021 13:18:34]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:18:44]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:18:51]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:22:12]Information>Startup>starting Application
+[13.04.2021 13:22:12]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:22:12]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:22:12]Information>Startup>connecting to DB at startup
+[13.04.2021 13:22:12]Information>Startup>Connected to DB.
+[13.04.2021 13:22:24]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:22:37]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:25:37]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:26:08]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:28:02]Information>Startup>starting Application
+[13.04.2021 13:28:02]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:28:02]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:28:02]Information>Startup>connecting to DB at startup
+[13.04.2021 13:28:02]Information>Startup>Connected to DB.
+[13.04.2021 13:28:11]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:28:23]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:28:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:28:41]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:28:48]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:28:58]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryWeights: Datenmenge weder im Editier- noch im Einfügemodus
+[13.04.2021 13:29:05]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:29:18]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:29:28]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:29:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:29:35]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:29:41]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:29:42]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:30:05]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:30:39]Information>Startup>starting Application
+[13.04.2021 13:30:39]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:30:39]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:30:39]Information>Startup>connecting to DB at startup
+[13.04.2021 13:30:39]Information>Startup>Connected to DB.
+[13.04.2021 13:30:58]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:34:43]Information>Startup>starting Application
+[13.04.2021 13:34:43]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:34:43]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:34:44]Information>Startup>connecting to DB at startup
+[13.04.2021 13:34:44]Information>Startup>Connected to DB.
+[13.04.2021 13:34:46]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D603F7 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
+[13.04.2021 13:34:51]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:35:02]Information>Startup>starting Application
+[13.04.2021 13:35:02]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:35:02]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:35:02]Information>Startup>connecting to DB at startup
+[13.04.2021 13:35:02]Information>Startup>Connected to DB.
+[13.04.2021 13:36:12]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:36:48]Information>Startup>starting Application
+[13.04.2021 13:36:48]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:36:48]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:36:48]Information>Startup>connecting to DB at startup
+[13.04.2021 13:36:48]Information>Startup>Connected to DB.
+[13.04.2021 13:37:14]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:38:51]Information>Startup>starting Application
+[13.04.2021 13:38:51]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:38:51]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:38:51]Information>Startup>connecting to DB at startup
+[13.04.2021 13:38:51]Information>Startup>Connected to DB.
+[13.04.2021 13:52:21]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:52:27]Information>Startup>starting Application
+[13.04.2021 13:52:27]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:52:27]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:52:27]Information>Startup>connecting to DB at startup
+[13.04.2021 13:52:27]Information>Startup>Connected to DB.
+[13.04.2021 13:54:07]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:54:43]Information>Startup>starting Application
+[13.04.2021 13:54:43]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:54:43]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:54:43]Information>Startup>connecting to DB at startup
+[13.04.2021 13:54:43]Information>Startup>Connected to DB.
+[13.04.2021 13:54:44]Information>Closeup>SAMS closed by user.
+[13.04.2021 13:55:40]Information>Startup>starting Application
+[13.04.2021 13:55:40]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 13:55:40]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 13:55:40]Information>Startup>connecting to DB at startup
+[13.04.2021 13:55:40]Information>Startup>Connected to DB.
+[13.04.2021 13:56:27]Information>SQLQuery>UPDATE preparation_t SET prep_comment=NULL WHERE sample_nr=25506 AND prep_nr=2;
+[13.04.2021 13:56:53]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:16:58]Information>Startup>starting Application
+[13.04.2021 14:16:58]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:16:58]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:16:58]Information>Startup>connecting to DB at startup
+[13.04.2021 14:16:58]Information>Startup>Connected to DB.
+[13.04.2021 14:17:14]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:22:50]Information>Startup>starting Application
+[13.04.2021 14:22:50]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:22:50]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:22:50]Information>Startup>connecting to DB at startup
+[13.04.2021 14:22:51]Information>Startup>Connected to DB.
+[13.04.2021 14:24:00]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:24:57]Information>Startup>starting Application
+[13.04.2021 14:24:57]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:24:57]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:24:57]Information>Startup>connecting to DB at startup
+[13.04.2021 14:24:57]Information>Startup>Connected to DB.
+[13.04.2021 14:25:21]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:28:55]Information>Startup>starting Application
+[13.04.2021 14:28:55]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:28:55]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:28:55]Information>Startup>connecting to DB at startup
+[13.04.2021 14:28:55]Information>Startup>Connected to DB.
+[13.04.2021 14:29:14]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:30:26]Information>Startup>starting Application
+[13.04.2021 14:30:26]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:30:26]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:30:26]Information>Startup>connecting to DB at startup
+[13.04.2021 14:30:26]Information>Startup>Connected to DB.
+[13.04.2021 14:31:00]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:33:59]Information>Startup>starting Application
+[13.04.2021 14:33:59]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:33:59]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:33:59]Information>Startup>connecting to DB at startup
+[13.04.2021 14:33:59]Information>Startup>Connected to DB.
+[13.04.2021 14:34:30]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:36:29]Information>Startup>starting Application
+[13.04.2021 14:36:29]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:36:29]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:36:29]Information>Startup>connecting to DB at startup
+[13.04.2021 14:36:30]Information>Startup>Connected to DB.
+[13.04.2021 14:36:48]Information>Closeup>SAMS closed by user.
+[13.04.2021 14:37:21]Information>Startup>starting Application
+[13.04.2021 14:37:21]Information>Startup>DB - DataSource= db_dmams_KTL
+[13.04.2021 14:37:21]Information>Startup>DB - UserID= rfriedrich
+[13.04.2021 14:37:21]Information>Startup>connecting to DB at startup
+[13.04.2021 14:37:21]Information>Startup>Connected to DB.
+[13.04.2021 14:37:27]Information>Closeup>SAMS closed by user.
