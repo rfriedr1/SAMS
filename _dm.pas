@@ -3,7 +3,8 @@ unit _dm;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs;
+  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs,
+  Datasnap.DBClient;
 
 {
 Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Data Source=DMYSQL_KTL;Extended Properties="DSN=DMYSQL_KTL;UID=root;"
@@ -162,6 +163,13 @@ type
     dsWaitingExpress: TDataSource;
     tblUsersalutation: TStringField;
     tblUserlanguage: TStringField;
+    dsLeHeCurrents: TDataSource;
+    cdsLeHeCurrents: TClientDataSet;
+    cdsLeHeCurrentsSample_nr: TStringField;
+    cdsLeHeCurrentsPrep_nr: TStringField;
+    cdsLeHeCurrentsTarget_nr: TStringField;
+    cdsLeHeCurrentsLECurrent: TStringField;
+    cdsLeHeCurrentsHECurrent: TStringField;
     procedure adoConnKTLExecuteComplete(Connection: TADOConnection;
       RecordsAffected: Integer; const Error: Error;
       var EventStatus: TEventStatus; const Command: _Command;
@@ -222,6 +230,7 @@ type
     function TargetRecordExistsForSample(SampleNr : integer) : boolean;
     procedure TransferAgeFromTarget(SampleNr, PrepNr, TargetNr : integer);
     procedure TransferMA_Nr_To_MAMS;
+    procedure TransferLeHeCurrentToTarget(SampleNr, PrepNr, TargetNr, le_current, he_current : string);
     //procedure SendToLog(s:string);
     function ReplaceUmlaute(s: string): string;
     function ReplaceBadCharacters(s: string): string;
@@ -1735,7 +1744,7 @@ begin
         ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
         ' magazine, position, precis, cycle_min, cycle_max, catalyst, cathode_nr, reactor_nr,' +
         ' co2_init, co2_final, hydro_init, hydro_final, react_time, target_pressed, target_t.stop,' +
-        ' fm, fm_sig, dc13, dc13_sig,calcset, editallowed, target_t.c14_age, target_t.c14_age_sig,' +
+        ' le_curr, he_curr, fm, fm_sig, dc13, dc13_sig,calcset, editallowed, target_t.c14_age, target_t.c14_age_sig,' +
         ' target_t.cal1sMin, target_t.cal1sMax, target_t.cal2sMin, target_t.cal2sMax, target_t.graph_date, ' +
         ' target_t.target_comment, target_t.graph_batch, target_t.graphitized, ' +
         ' return_to_sender, returned_to_sender, ' +
@@ -2825,6 +2834,47 @@ begin
   end;
 end;
 
+procedure Tdm.TransferLeHeCurrentToTarget(SampleNr, PrepNr, TargetNr, le_current, he_current: string);
+var
+  s : string;
+  c : char;
+begin
+  with adoCmd do
+  begin
+    c := FormatSettings.DecimalSeparator;
+    FormatSettings.DecimalSeparator := '.';
+    CommandText := 'UPDATE target_t ' +
+                   'SET le_curr=' + le_current + ', ' +
+                   'he_curr=' + he_current + ' ' +
+                   'WHERE target_t.sample_nr=' + SampleNr + ' ' +
+                   'AND prep_nr=' + PrepNr + ' ' +
+                   'AND target_nr=' + TargetNr +
+                   ';';
+    s := CommandText;
+    LogWindow.addLogEntry(s);
+    FormatSettings.DecimalSeparator := c;
+//    ClipBoard.SetTextBuf(PChar(s));
+    IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Execute;
+                    LogWindow.addLogEntry('DB -- query executed');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Execute;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+  end;
+
+end;
 
 function Tdm.ReplaceBadCharacters(s: string): string;
 Var

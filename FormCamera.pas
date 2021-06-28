@@ -10,7 +10,7 @@ interface
 uses
   Windows, Classes, Controls, Forms, ExtCtrls, Frame_Video, Menus,
   StdCtrls, Vcl.Mask, JvExMask, JvToolEdit, JvComponentBase, IniFiles, SysUtils,
-  Dialogs, jpeg, Graphics, WCamera;
+  Dialogs, jpeg, Graphics, WCamera, Vcl.Samples.Spin;
 
 
 type
@@ -36,6 +36,7 @@ type
     GroupBoxCameraSettings: TGroupBox;
     ComboBoxFormat: TComboBox;
     PanelPaintBox: TPanel;
+    SpinButton1: TSpinButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -53,6 +54,8 @@ type
     procedure WCameraImageAvailable(Sender: TObject; SampleTime: Double);
     procedure PanelPaintBoxResize(Sender: TObject);
     procedure PaintBoxImagePaint(Sender: TObject);
+    procedure SpinButton1DownClick(Sender: TObject);
+    procedure SpinButton1UpClick(Sender: TObject);
   private
     { Private declarations }
     SplitterRatio : double;
@@ -320,8 +323,10 @@ begin
         //showmessage(myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', 'test'));
         edtPathToImage.Text := myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', '');
       End;
-    End
+    End;
 
+  // alreaday set the path to a MAMS
+  edtPathToImage.Text := edtPathToImage.Text + edtMAMS.Text;
 end;
 
 procedure TCameraWindow.PaintBoxImagePaint(Sender: TObject);
@@ -423,6 +428,16 @@ end;
 procedure TCameraWindow.Quit1Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure TCameraWindow.SpinButton1DownClick(Sender: TObject);
+begin
+ edtMAMS.Text := inttostr(strtoint(edtMAMS.Text)-1);
+end;
+
+procedure TCameraWindow.SpinButton1UpClick(Sender: TObject);
+begin
+ edtMAMS.Text := inttostr(strtoint(edtMAMS.Text)+1);
 end;
 
 procedure TCameraWindow.Splitter1Moved(Sender: TObject);

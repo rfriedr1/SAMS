@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: April-13-2021';
+  myVersion = '1.9.9 Built: June-28-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -861,6 +861,11 @@ type
     Label143: TLabel;
     Label144: TLabel;
     Label145: TLabel;
+    dbgrdLeHeCurrents: TDBGrid;
+    DBedtLECurrent: TDBEdit;
+    DBedtHECurrent: TDBEdit;
+    Label146: TLabel;
+    Label147: TLabel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1412,11 +1417,15 @@ begin
 end;
 
 procedure TfrmMAMS.tnstoClick(Sender: TObject);
+// transfer analytical results from the target table to the sample table
+// also transfer LE and HE currents from the db_dc14 database to the target_table!!!!
 var
   i, j, m: integer;
+  sample_nr, prep_nr, target_nr, le_current, he_current: string;
 begin
   i := 0;
 
+  // count how many entrys have prep=1 and target=1
   with dm.qryMagazineData do
   begin
     First;
@@ -1426,6 +1435,7 @@ begin
       Next;
     until EOF;
   end;
+
   if MessageDlg(IntToStr(i) + ' sample ages are ready for transfer. Do you want to continue ?' + #13 + #10 + #13 + #10 + 'Click on the yellow colored rows to transfer those samples individually.', mtInformation, [mbOK, mbCancel], 0) = mrOk then begin
     StrGrdTargetData.Clear;
     edtMeanAge.Clear;
@@ -1447,6 +1457,7 @@ begin
       until EOF;
       grdMagazineData.Repaint;
     end;
+
 {  if MessageDlg(IntToStr(dm.qryMagazineData.RecordCount) + ' sample ages are ready for transfer. Do you want to continue ?', mtInformation, [mbOK, mbCancel], 0) = mrOk then begin
     with dm.qryMagazineData do begin
       First;
@@ -1459,7 +1470,30 @@ begin
       ShowMessage('C14 results transfered for ' + IntToStr(RecordCount) + ' samples');
     end;
   end;  }
-  end;
+
+  // transfer LE and HE Currents to target table
+    dm.cdsLeHeCurrents.First;
+    repeat
+      sample_nr := dm.cdsLeHeCurrents.FieldByName('sample_nr').AsString;
+      prep_nr := dm.cdsLeHeCurrents.FieldByName('prep_nr').AsString;
+      target_nr := dm.cdsLeHeCurrents.FieldByName('target_nr').AsString;
+      le_current := dm.cdsLeHeCurrents.FieldByName('LECurrent').AsString;
+      le_current := ReplaceStr(le_current, ',', '.');
+      he_current := dm.cdsLeHeCurrents.FieldByName('HECurrent').AsString;
+      he_current := ReplaceStr(he_current, ',', '.');
+
+      LogWindow.addLogEntry('DB -- transfer LE and HE Currents to target_t: ' + sample_nr+'.'+prep_nr+'.'+target_nr);
+      JvLogFile.Add('DB',lesInformation,'transfer LE and HE Currents to target_t: ' + sample_nr+'.'+prep_nr+'.'+target_nr);
+
+      if le_current.IsEmpty then le_current := 'NULL';
+      if he_current.IsEmpty then he_current := 'NULL';
+
+      dm.TransferLeHeCurrentToTarget(sample_nr, prep_nr, target_nr, le_current, he_current);
+      dm.cdsLeHeCurrents.Next;
+
+    until dm.cdsLeHeCurrents.Eof;
+    grdMagazineData.Repaint;
+    end;
 end;
 
 procedure TfrmMAMS.btnTransferAgeToSampleClick(Sender: TObject);
@@ -3925,7 +3959,7 @@ begin
   //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   DoSampleInfo(SampleNr, NPreps, NTargets);
 
-  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   // also update TouchWeightsPanel
   edtTouchWeightsMAMS.Value := edtSampleNr.Value;
   edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
@@ -6260,8 +6294,11 @@ end;
 
 procedure TfrmMAMS.grdMagazinesCellClick(Column: TColumn);
 var
-  Mag: string;
+  Mag, sample_nr, prep_nr, target_nr, le_current, he_current: string;
   i, w, j: integer;
+  DataSrcLeHeCurrent: TDataSource;
+  ADOQueryLeHeCurrent: TADOQuery;
+
 begin
   edtMeanAge.Clear;
   edtSigmaAge.Clear;
@@ -6269,6 +6306,10 @@ begin
   btnTransferTargetData.Enabled := false;
   Mag := dm.qryMagazines.FieldByName('magazine').AsString;
   lbMagazine.Caption := Mag;
+  dm.cdsLeHeCurrents.Close;
+
+  // query db_dmams for target data of the selected magazine
+  JvLogFile.Add('DB',lesInformation,'Get data of all targets of selected magazine');
   with dm.qryDB do
   begin
     Close;
@@ -6301,11 +6342,86 @@ begin
       Columns[5].Width := 55;
       Columns[6].Width := 60;
       // compute the size of the groupbox by adding up the coulmns and otehr stuff
-      w := 0;
-      for I := 0 to 6 do w := w + Columns[i].Width + 1; // 1 = gridline
-      gbxMagazines.Width := grdMagazines.Width + 6 + w + 6 + 20 + 20; // adjust size of the groupbox, 20=scrollbar
+      // w := 0;
+      // for i := 0 to 6 do w := w + Columns[i].Width + 1; // 1 = gridline
+      // gbxMagazines.Width := grdMagazines.Width + 6 + w + 6 + 20 + 20; // adjust size of the groupbox, 20=scrollbar
     end;
   end;
+
+  // query db_dc14 for LE and HE Currents of the samples of the selected magazine
+  // use qryDB for list of sample, prep and target numbers of the selected magazin since db_dc14 doesn't seem to store the magazine names
+  if dm.qryMagazineData.RecordCount>0 then
+  begin
+      LogWindow.addLogEntry('query db_dc14 Database for Le and He Currents');
+      JvLogFile.Add('DB',lesInformation,'query db_dc14 Database for Le and He Currents');
+
+       // create a query object for querying the db_dc14 Database
+      ADOQueryLeHeCurrent := TADOQuery.Create(Self);
+      ADOQueryLeHeCurrent.Connection := dm.ADOConnKTL;
+      LogWindow.addLogEntry('QueryObject created');
+      //ADOQueryLeHeCurrent.SQL.Add(s);
+      //ADOQueryLeHeCurrent.Open;
+      // Create the data source.
+      DataSrcLeHeCurrent := TDataSource.Create(Self);
+      DataSrcLeHeCurrent.DataSet := ADOQueryLeHeCurrent;
+      DataSrcLeHeCurrent.Enabled := true;
+      LogWindow.addLogEntry('DataSource created');
+
+      //dm.cdsLeHeCurrents.Open;
+      dm.cdsLeHeCurrents.CreateDataSet;
+      LogWindow.addLogEntry('ClientDataSet created');
+      dm.qryMagazineData.First;  // set pointer to first entry
+      i := 0;
+      repeat           // go through qryDB and retrieve sample, prep and target numbers
+          LogWindow.addLogEntry('reading data from magazine');
+          sample_nr := dm.qryMagazineData.FieldByName('sample_nr').AsString;
+          prep_nr := dm.qryMagazineData.FieldByName('prep_nr').AsString;
+          target_nr := dm.qryMagazineData.FieldByName('target_nr').AsString;
+          LogWindow.addLogEntry('sample_nr = ' + sample_nr);
+
+          // query db_dc14 for a single sample
+          ADOQueryLeHeCurrent.SQL.Text := 'select sample_nr, prep_nr, target_nr, round(ANA,2) AS ANA, round(A,2) AS A from db_dc14.workfinal ' +
+               'where sample_nr = ' + sample_nr + ' ' +
+               'AND prep_nr = ' + prep_nr + ' ' +
+               'AND target_nr = ' + target_nr + ';';
+          LogWindow.addLogEntry(ADOQueryLeHeCurrent.SQL.Text);
+
+          // query
+          Try
+            ADOQueryLeHeCurrent.Open;
+          Except
+            LogWindow.addLogEntry('Problem querying db_dc14');
+            JvLogFile.Add('DB',lesError,'Problem querying db_dc14');
+          End;
+
+          //read LE and HE currents from query
+          le_current := ADOQueryLeHeCurrent.FieldByName('ANA').AsString;
+          LogWindow.addLogEntry('LECurrent= ' + le_current);
+          he_current := ADOQueryLeHeCurrent.FieldByName('A').AsString;
+          ADOQueryLeHeCurrent.Close;
+
+          // write data into clientdataset, clientdataset is connected to a grid in the UI
+          LogWindow.addLogEntry('fill string grid with data from query');
+          JvLogFile.Add('DB',lesInformation,'fill string grid with data from query');
+
+          dm.cdsLeHeCurrents.Append;
+          dm.cdsLeHeCurrents.FieldByName('sample_nr').AsString := sample_nr;
+          dm.cdsLeHeCurrents.FieldByName('prep_nr').AsString := prep_nr;
+          dm.cdsLeHeCurrents.FieldByName('target_nr').AsString := target_nr;
+          dm.cdsLeHeCurrents.FieldByName('LECurrent').AsString := le_current;
+          dm.cdsLeHeCurrents.FieldByName('HECurrent').AsString := he_current;
+          dm.cdsLeHeCurrents.Post;
+
+          dm.qryMagazineData.Next;
+      until dm.qryMagazineData.Eof;
+
+      dbgrdLeHeCurrents.Columns[0].Width := 60;
+      dbgrdLeHeCurrents.Columns[1].Width := 40;
+      dbgrdLeHeCurrents.Columns[2].Width := 40;
+      dbgrdLeHeCurrents.Columns[3].Width := 50;
+      dbgrdLeHeCurrents.Columns[4].Width := 50;
+  end;
+
 end;
 
 procedure TfrmMAMS.grdMaterialTitleClick(Column: TColumn);
@@ -7612,11 +7728,13 @@ begin
       ShowMessage('Project name cannot be empty; you may add a project name later on in the project page of this wizard');
     end;
     Row := 1;
+
     repeat // skip header
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
       s1 := dm.ReplaceBadCharacters(s1);
     until Pos('required', s1) > 0;
+
     while not EOF(InF) do
     begin // now parse samples
       ReadLn(InF, s);
@@ -7628,6 +7746,7 @@ begin
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]); // once does not do all
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
         k := WordCount(s, [';']);
+
         for i := 2 to k do
         begin
           s2 := ExtractWord(i, s, [';']);

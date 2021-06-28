@@ -1,393 +1,1226 @@
-[01.04.2021 14:59:06]Information>Startup>starting Application
-[01.04.2021 14:59:06]Information>Startup>DB - DataSource= db_dmams_KTL
-[01.04.2021 14:59:06]Information>Startup>DB - UserID= rfriedrich
-[01.04.2021 14:59:06]Information>Startup>connecting to DB at startup
-[01.04.2021 14:59:20]Error>Startup>Not able to connect to DB
-[01.04.2021 14:59:38]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
-[01.04.2021 15:00:27]Information>Startup>starting Application
-[01.04.2021 15:00:27]Information>Startup>DB - DataSource= db_dmams_KTL
-[01.04.2021 15:00:27]Information>Startup>DB - UserID= rfriedrich
-[01.04.2021 15:00:27]Information>Startup>connecting to DB at startup
-[01.04.2021 15:00:40]Error>Startup>Not able to connect to DB
-[01.04.2021 15:00:59]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
-[01.04.2021 15:05:05]Information>Startup>starting Application
-[01.04.2021 15:05:05]Information>Startup>DB - DataSource= db_dmams_KTL
-[01.04.2021 15:05:05]Information>Startup>DB - UserID= rfriedrich
-[01.04.2021 15:05:05]Information>Startup>connecting to DB at startup
-[01.04.2021 15:05:18]Error>Startup>Not able to connect to DB
-[01.04.2021 15:05:42]Error>Exception>Unit: Data.DB -- Context: 0 -- Message: qryDB: Operation bei geschlossener Datenmenge nicht ausführbar
-[01.04.2021 15:05:47]Information>Closeup>SAMS closed by user.
-[06.04.2021 13:59:26]Information>Startup>starting Application
-[06.04.2021 13:59:26]Information>Startup>DB - DataSource= db_dmams_KTL
-[06.04.2021 13:59:26]Information>Startup>DB - UserID= rfriedrich
-[06.04.2021 13:59:26]Information>Startup>connecting to DB at startup
-[06.04.2021 13:59:26]Information>Startup>Connected to DB.
-[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports...
-[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports... finished
-[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports... 13 columns to display in grid
-[06.04.2021 13:59:30]Information>Pending Reports:>Query DB for pending reports... setting column widths manually
-[06.04.2021 13:59:31]Information>Pending Reports:>Query DB for pending reports... setting column widths automatically
-[06.04.2021 14:00:06]Information>Closeup>SAMS closed by user.
-[06.04.2021 14:07:55]Information>Startup>starting Application
-[06.04.2021 14:07:55]Information>Startup>DB - DataSource= db_dmams_KTL
-[06.04.2021 14:07:55]Information>Startup>DB - UserID= rfriedrich
-[06.04.2021 14:07:55]Information>Startup>connecting to DB at startup
-[06.04.2021 14:07:55]Information>Startup>Connected to DB.
-[06.04.2021 14:08:04]Information>Pending Reports>Query DB for pending reports...
-[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... finished
-[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... 13 columns to display in grid
-[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[06.04.2021 14:08:05]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports...
-[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports... finished
-[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports... 13 columns to display in grid
-[06.04.2021 14:08:12]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[06.04.2021 14:08:13]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[06.04.2021 14:08:26]Information>Closeup>SAMS closed by user.
-[13.04.2021 12:34:00]Information>Startup>starting Application
-[13.04.2021 12:34:00]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 12:34:00]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 12:34:00]Information>Startup>connecting to DB at startup
-[13.04.2021 12:34:00]Information>Startup>Connected to DB.
-[13.04.2021 12:34:33]Information>Closeup>SAMS closed by user.
-[13.04.2021 12:34:57]Information>Startup>starting Application
-[13.04.2021 12:34:57]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 12:34:57]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 12:34:57]Information>Startup>connecting to DB at startup
-[13.04.2021 12:34:57]Information>Startup>Connected to DB.
-[13.04.2021 12:35:48]Information>Closeup>SAMS closed by user.
-[13.04.2021 12:37:52]Information>Startup>starting Application
-[13.04.2021 12:37:52]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 12:37:52]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 12:37:52]Information>Startup>connecting to DB at startup
-[13.04.2021 12:37:52]Information>Startup>Connected to DB.
-[13.04.2021 12:38:35]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:01:29]Information>Startup>starting Application
-[13.04.2021 13:01:29]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:01:29]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:01:29]Information>Startup>connecting to DB at startup
-[13.04.2021 13:01:29]Information>Startup>Connected to DB.
-[13.04.2021 13:02:06]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:02:33]Information>Startup>starting Application
-[13.04.2021 13:02:33]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:02:33]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:02:33]Information>Startup>connecting to DB at startup
-[13.04.2021 13:02:33]Information>Startup>Connected to DB.
-[13.04.2021 13:03:05]Error>DB>Problem opening DB
-[13.04.2021 13:03:24]Error>DB>Problem opening DB
-[13.04.2021 13:03:49]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:05:03]Information>Startup>starting Application
-[13.04.2021 13:05:03]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:05:03]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:05:03]Information>Startup>connecting to DB at startup
-[13.04.2021 13:05:03]Information>Startup>Connected to DB.
-[13.04.2021 13:05:17]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: Feld 'prep_start' kann nicht als Typ DateTime angesprochen werden
-[13.04.2021 13:05:32]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:06:54]Information>Startup>starting Application
-[13.04.2021 13:06:54]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:06:54]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:06:54]Information>Startup>connecting to DB at startup
-[13.04.2021 13:06:54]Information>Startup>Connected to DB.
-[13.04.2021 13:06:57]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: Feld 'prep_start' kann nicht als Typ DateTime angesprochen werden
-[13.04.2021 13:07:34]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:09:34]Information>Startup>starting Application
-[13.04.2021 13:09:34]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:09:34]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:09:34]Information>Startup>connecting to DB at startup
-[13.04.2021 13:09:34]Information>Startup>Connected to DB.
-[13.04.2021 13:09:45]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: Feld 'prep_start' kann nicht als Typ DateTime angesprochen werden
-[13.04.2021 13:10:20]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:10:51]Information>Startup>starting Application
-[13.04.2021 13:10:51]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:10:51]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:10:51]Information>Startup>connecting to DB at startup
-[13.04.2021 13:10:51]Information>Startup>Connected to DB.
-[13.04.2021 13:10:54]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D601B6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:11:04]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D601B6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:11:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D601B6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:12:11]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:13:54]Information>Startup>starting Application
-[13.04.2021 13:13:54]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:13:54]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:13:54]Information>Startup>connecting to DB at startup
-[13.04.2021 13:13:54]Information>Startup>Connected to DB.
-[13.04.2021 13:14:03]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D602CE in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:14:44]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:16:46]Information>Startup>starting Application
-[13.04.2021 13:16:46]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:16:46]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:16:46]Information>Startup>connecting to DB at startup
-[13.04.2021 13:16:46]Information>Startup>Connected to DB.
-[13.04.2021 13:16:53]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:17:50]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:18:15]Information>Startup>starting Application
-[13.04.2021 13:18:15]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:18:15]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:18:15]Information>Startup>connecting to DB at startup
-[13.04.2021 13:18:15]Information>Startup>Connected to DB.
-[13.04.2021 13:18:17]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:18:20]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:18:32]Information>Startup>starting Application
-[13.04.2021 13:18:32]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:18:32]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:18:32]Information>Startup>connecting to DB at startup
-[13.04.2021 13:18:32]Information>Startup>Connected to DB.
-[13.04.2021 13:18:34]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:18:44]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60312 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:18:51]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:22:12]Information>Startup>starting Application
-[13.04.2021 13:22:12]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:22:12]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:22:12]Information>Startup>connecting to DB at startup
-[13.04.2021 13:22:12]Information>Startup>Connected to DB.
-[13.04.2021 13:22:24]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:22:37]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:25:37]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:26:08]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:28:02]Information>Startup>starting Application
-[13.04.2021 13:28:02]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:28:02]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:28:02]Information>Startup>connecting to DB at startup
-[13.04.2021 13:28:02]Information>Startup>Connected to DB.
-[13.04.2021 13:28:11]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:28:23]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:28:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:28:41]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:28:48]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:28:58]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryWeights: Datenmenge weder im Editier- noch im Einfügemodus
-[13.04.2021 13:29:05]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:29:18]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:29:28]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:29:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:29:35]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:29:41]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:29:42]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D60422 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:30:05]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:30:39]Information>Startup>starting Application
-[13.04.2021 13:30:39]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:30:39]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:30:39]Information>Startup>connecting to DB at startup
-[13.04.2021 13:30:39]Information>Startup>Connected to DB.
-[13.04.2021 13:30:58]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:34:43]Information>Startup>starting Application
-[13.04.2021 13:34:43]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:34:43]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:34:44]Information>Startup>connecting to DB at startup
-[13.04.2021 13:34:44]Information>Startup>Connected to DB.
-[13.04.2021 13:34:46]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00D603F7 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 13:34:51]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:35:02]Information>Startup>starting Application
-[13.04.2021 13:35:02]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:35:02]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:35:02]Information>Startup>connecting to DB at startup
-[13.04.2021 13:35:02]Information>Startup>Connected to DB.
-[13.04.2021 13:36:12]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:36:48]Information>Startup>starting Application
-[13.04.2021 13:36:48]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:36:48]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:36:48]Information>Startup>connecting to DB at startup
-[13.04.2021 13:36:48]Information>Startup>Connected to DB.
-[13.04.2021 13:37:14]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:38:51]Information>Startup>starting Application
-[13.04.2021 13:38:51]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:38:51]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:38:51]Information>Startup>connecting to DB at startup
-[13.04.2021 13:38:51]Information>Startup>Connected to DB.
-[13.04.2021 13:52:21]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:52:27]Information>Startup>starting Application
-[13.04.2021 13:52:27]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:52:27]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:52:27]Information>Startup>connecting to DB at startup
-[13.04.2021 13:52:27]Information>Startup>Connected to DB.
-[13.04.2021 13:54:07]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:54:43]Information>Startup>starting Application
-[13.04.2021 13:54:43]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:54:43]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:54:43]Information>Startup>connecting to DB at startup
-[13.04.2021 13:54:43]Information>Startup>Connected to DB.
-[13.04.2021 13:54:44]Information>Closeup>SAMS closed by user.
-[13.04.2021 13:55:40]Information>Startup>starting Application
-[13.04.2021 13:55:40]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 13:55:40]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 13:55:40]Information>Startup>connecting to DB at startup
-[13.04.2021 13:55:40]Information>Startup>Connected to DB.
-[13.04.2021 13:56:27]Information>SQLQuery>UPDATE preparation_t SET prep_comment=NULL WHERE sample_nr=25506 AND prep_nr=2;
-[13.04.2021 13:56:53]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:16:58]Information>Startup>starting Application
-[13.04.2021 14:16:58]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:16:58]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:16:58]Information>Startup>connecting to DB at startup
-[13.04.2021 14:16:58]Information>Startup>Connected to DB.
-[13.04.2021 14:17:14]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:22:50]Information>Startup>starting Application
-[13.04.2021 14:22:50]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:22:50]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:22:50]Information>Startup>connecting to DB at startup
-[13.04.2021 14:22:51]Information>Startup>Connected to DB.
-[13.04.2021 14:24:00]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:24:57]Information>Startup>starting Application
-[13.04.2021 14:24:57]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:24:57]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:24:57]Information>Startup>connecting to DB at startup
-[13.04.2021 14:24:57]Information>Startup>Connected to DB.
-[13.04.2021 14:25:21]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:28:55]Information>Startup>starting Application
-[13.04.2021 14:28:55]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:28:55]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:28:55]Information>Startup>connecting to DB at startup
-[13.04.2021 14:28:55]Information>Startup>Connected to DB.
-[13.04.2021 14:29:14]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:30:26]Information>Startup>starting Application
-[13.04.2021 14:30:26]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:30:26]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:30:26]Information>Startup>connecting to DB at startup
-[13.04.2021 14:30:26]Information>Startup>Connected to DB.
-[13.04.2021 14:31:00]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:33:59]Information>Startup>starting Application
-[13.04.2021 14:33:59]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:33:59]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:33:59]Information>Startup>connecting to DB at startup
-[13.04.2021 14:33:59]Information>Startup>Connected to DB.
-[13.04.2021 14:34:30]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:36:29]Information>Startup>starting Application
-[13.04.2021 14:36:29]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:36:29]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:36:29]Information>Startup>connecting to DB at startup
-[13.04.2021 14:36:30]Information>Startup>Connected to DB.
-[13.04.2021 14:36:48]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:37:21]Information>Startup>starting Application
-[13.04.2021 14:37:21]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:37:21]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:37:21]Information>Startup>connecting to DB at startup
-[13.04.2021 14:37:21]Information>Startup>Connected to DB.
-[13.04.2021 14:37:27]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:55:48]Information>Startup>starting Application
-[13.04.2021 14:55:48]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:55:48]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:55:48]Information>Startup>connecting to DB at startup
-[13.04.2021 14:55:48]Information>Startup>Connected to DB.
-[13.04.2021 14:56:01]Information>Closeup>SAMS closed by user.
-[13.04.2021 14:59:48]Information>Startup>starting Application
-[13.04.2021 14:59:48]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 14:59:48]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 14:59:48]Information>Startup>connecting to DB at startup
-[13.04.2021 14:59:48]Information>Startup>Connected to DB.
-[13.04.2021 15:00:01]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:07:41]Information>Startup>starting Application
-[13.04.2021 15:07:41]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:07:41]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:07:41]Information>Startup>connecting to DB at startup
-[13.04.2021 15:07:41]Information>Startup>Connected to DB.
-[13.04.2021 15:11:19]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:12:46]Information>Startup>starting Application
-[13.04.2021 15:12:46]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:12:46]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:12:46]Information>Startup>connecting to DB at startup
-[13.04.2021 15:12:46]Information>Startup>Connected to DB.
-[13.04.2021 15:13:47]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:13:51]Information>Startup>starting Application
-[13.04.2021 15:13:51]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:13:51]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:13:51]Information>Startup>connecting to DB at startup
-[13.04.2021 15:13:51]Information>Startup>Connected to DB.
-[13.04.2021 15:14:05]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:15:15]Information>Startup>starting Application
-[13.04.2021 15:15:15]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:15:15]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:15:16]Information>Startup>connecting to DB at startup
-[13.04.2021 15:15:16]Information>Startup>Connected to DB.
-[13.04.2021 15:15:32]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:27:18]Information>Startup>starting Application
-[13.04.2021 15:27:18]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:27:18]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:27:18]Information>Startup>connecting to DB at startup
-[13.04.2021 15:27:18]Information>Startup>Connected to DB.
-[13.04.2021 15:27:45]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:33:26]Information>Startup>starting Application
-[13.04.2021 15:33:26]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:33:26]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:33:26]Information>Startup>connecting to DB at startup
-[13.04.2021 15:33:26]Information>Startup>Connected to DB.
-[13.04.2021 15:33:33]Error>Exception>UnitName: WCamera -- ClassName: EWCameraError -- StackTrace:  -- Message: Cannot retrieve 'IAMVideoProcAmp' interface
-[13.04.2021 15:33:42]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:34:41]Information>Startup>starting Application
-[13.04.2021 15:34:41]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:34:41]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:34:41]Information>Startup>connecting to DB at startup
-[13.04.2021 15:34:41]Information>Startup>Connected to DB.
-[13.04.2021 15:35:14]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:37:09]Information>Startup>starting Application
-[13.04.2021 15:37:09]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:37:09]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:37:09]Information>Startup>connecting to DB at startup
-[13.04.2021 15:37:09]Information>Startup>Connected to DB.
-[13.04.2021 15:37:27]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:38:06]Information>Startup>starting Application
-[13.04.2021 15:38:06]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:38:06]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:38:06]Information>Startup>connecting to DB at startup
-[13.04.2021 15:38:06]Information>Startup>Connected to DB.
-[13.04.2021 15:38:21]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:46:12]Information>Startup>starting Application
-[13.04.2021 15:46:12]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:46:12]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:46:12]Information>Startup>connecting to DB at startup
-[13.04.2021 15:46:12]Information>Startup>Connected to DB.
-[13.04.2021 15:46:50]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:53:23]Information>Startup>starting Application
-[13.04.2021 15:53:23]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:53:23]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:53:23]Information>Startup>connecting to DB at startup
-[13.04.2021 15:53:23]Information>Startup>Connected to DB.
-[13.04.2021 15:55:37]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:55:45]Information>Startup>starting Application
-[13.04.2021 15:55:45]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:55:45]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:55:45]Information>Startup>connecting to DB at startup
-[13.04.2021 15:55:45]Information>Startup>Connected to DB.
-[13.04.2021 15:56:05]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:58:36]Information>Startup>starting Application
-[13.04.2021 15:58:36]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:58:36]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:58:36]Information>Startup>connecting to DB at startup
-[13.04.2021 15:58:36]Information>Startup>Connected to DB.
-[13.04.2021 15:58:53]Information>Closeup>SAMS closed by user.
-[13.04.2021 15:59:35]Information>Startup>starting Application
-[13.04.2021 15:59:35]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 15:59:35]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 15:59:35]Information>Startup>connecting to DB at startup
-[13.04.2021 15:59:35]Information>Startup>Connected to DB.
-[13.04.2021 16:00:12]Information>Closeup>SAMS closed by user.
-[13.04.2021 16:09:25]Information>Startup>starting Application
-[13.04.2021 16:09:25]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 16:09:25]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 16:09:25]Information>Startup>connecting to DB at startup
-[13.04.2021 16:09:25]Information>Startup>Connected to DB.
-[13.04.2021 16:09:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00ACCACE in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 16:09:52]Information>Closeup>SAMS closed by user.
-[13.04.2021 16:12:17]Information>Startup>starting Application
-[13.04.2021 16:12:17]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 16:12:17]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 16:12:17]Information>Startup>connecting to DB at startup
-[13.04.2021 16:12:17]Information>Startup>Connected to DB.
-[13.04.2021 16:12:20]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00ACCAD6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 16:12:37]Information>Closeup>SAMS closed by user.
-[13.04.2021 16:15:45]Information>Startup>starting Application
-[13.04.2021 16:15:45]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 16:15:45]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 16:15:45]Information>Startup>connecting to DB at startup
-[13.04.2021 16:15:45]Information>Startup>Connected to DB.
-[13.04.2021 16:15:50]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Zugriffsverletzung bei Adresse 00ACCBE6 in Modul 'SAMS_v1.exe'. Lesen von Adresse 00000000
-[13.04.2021 16:16:12]Information>Closeup>SAMS closed by user.
-[13.04.2021 16:17:01]Information>Startup>starting Application
-[13.04.2021 16:17:01]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 16:17:01]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 16:17:01]Information>Startup>connecting to DB at startup
-[13.04.2021 16:17:01]Information>Startup>Connected to DB.
-[13.04.2021 16:17:50]Information>Closeup>SAMS closed by user.
-[13.04.2021 16:19:50]Information>Startup>starting Application
-[13.04.2021 16:19:50]Information>Startup>DB - DataSource= db_dmams_KTL
-[13.04.2021 16:19:50]Information>Startup>DB - UserID= rfriedrich
-[13.04.2021 16:19:50]Information>Startup>connecting to DB at startup
-[13.04.2021 16:19:50]Information>Startup>Connected to DB.
-[13.04.2021 16:21:46]Information>Closeup>SAMS closed by user.
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:05]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:06]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:07]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 14:45:08]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210625"
+[28.06.2021 14:45:08]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:08]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:09]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:10]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:11]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:11]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:11]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:11]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:11]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:11]Information>DB>fill string grid with data from query
+[28.06.2021 14:45:16]Information>Closeup>SAMS closed by user.
+[28.06.2021 14:49:29]Information>Startup>starting Application
+[28.06.2021 14:49:29]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 14:49:29]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 14:49:29]Information>Startup>connecting to DB at startup
+[28.06.2021 14:49:29]Information>Startup>Connected to DB.
+[28.06.2021 14:49:33]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 14:49:35]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 14:49:35]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210618ICOS"
+[28.06.2021 14:49:35]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:35]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:36]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:37]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:38]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:38]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:38]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:38]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:38]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:38]Information>DB>fill string grid with data from query
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51377.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51378.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51379.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51380.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51446.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51447.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51449.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51450.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51451.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51452.1.1
+[28.06.2021 14:49:44]Information>DB>transfer LE and HE Currents to target_t: 51453.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51454.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51521.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51522.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51528.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51529.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51530.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51531.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51540.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51541.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51545.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51549.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51550.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51551.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51567.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51570.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51575.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51576.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51577.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51624.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51625.1.1
+[28.06.2021 14:49:45]Information>DB>transfer LE and HE Currents to target_t: 51626.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51627.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51628.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51629.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51630.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51631.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51632.1.1
+[28.06.2021 14:49:46]Information>DB>transfer LE and HE Currents to target_t: 51633.1.1
+[28.06.2021 14:49:57]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 14:50:00]Information>Closeup>SAMS closed by user.
+[28.06.2021 14:57:41]Information>Startup>starting Application
+[28.06.2021 14:57:41]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 14:57:41]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 14:57:41]Information>Startup>connecting to DB at startup
+[28.06.2021 14:57:42]Information>Startup>Connected to DB.
+[28.06.2021 14:57:44]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 14:57:45]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 14:57:46]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210618ICOS"
+[28.06.2021 14:57:46]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:46]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:47]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:48]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:57:49]Information>DB>fill string grid with data from query
+[28.06.2021 14:58:52]Information>Closeup>SAMS closed by user.
+[28.06.2021 15:00:43]Information>Startup>starting Application
+[28.06.2021 15:00:43]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 15:00:43]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 15:00:43]Information>Startup>connecting to DB at startup
+[28.06.2021 15:00:43]Information>Startup>Connected to DB.
+[28.06.2021 15:00:52]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 15:01:25]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:01:25]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210618ICOS"
+[28.06.2021 15:01:25]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:27]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:01:55]Information>Closeup>SAMS closed by user.
+[28.06.2021 15:04:15]Information>Startup>starting Application
+[28.06.2021 15:04:15]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 15:04:15]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 15:04:15]Information>Startup>connecting to DB at startup
+[28.06.2021 15:04:15]Information>Startup>Connected to DB.
+[28.06.2021 15:04:17]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 15:04:23]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:04:23]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210625"
+[28.06.2021 15:04:23]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:04:23]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:23]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:23]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:23]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:24]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:25]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:26]Information>DB>fill string grid with data from query
+[28.06.2021 15:04:46]Information>Closeup>SAMS closed by user.
+[28.06.2021 15:06:23]Information>Startup>starting Application
+[28.06.2021 15:06:23]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 15:06:23]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 15:06:23]Information>Startup>connecting to DB at startup
+[28.06.2021 15:06:23]Information>Startup>Connected to DB.
+[28.06.2021 15:06:30]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 15:06:32]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:06:32]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210618ICOS"
+[28.06.2021 15:06:32]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:06:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:06:38]Information>DB>transfer LE and HE Currents to target_t: 51377.1.1
+[28.06.2021 15:06:38]Information>DB>transfer LE and HE Currents to target_t: 51378.1.1
+[28.06.2021 15:06:38]Information>DB>transfer LE and HE Currents to target_t: 51379.1.1
+[28.06.2021 15:06:38]Information>DB>transfer LE and HE Currents to target_t: 51380.1.1
+[28.06.2021 15:06:38]Information>DB>transfer LE and HE Currents to target_t: 51446.1.1
+[28.06.2021 15:06:38]Information>DB>transfer LE and HE Currents to target_t: 51447.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51449.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51450.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51451.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51452.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51453.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51454.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51521.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51522.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51528.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51529.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51530.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51531.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51540.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51541.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51545.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51549.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51550.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51551.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51567.1.1
+[28.06.2021 15:06:39]Information>DB>transfer LE and HE Currents to target_t: 51570.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51575.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51576.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51577.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51624.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51625.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51626.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51627.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51628.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51629.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51630.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51631.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51632.1.1
+[28.06.2021 15:06:40]Information>DB>transfer LE and HE Currents to target_t: 51633.1.1
+[28.06.2021 15:06:45]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMethod: Operation bei geschlossener Datenmenge nicht ausführbar
+[28.06.2021 15:06:49]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMethod: Operation bei geschlossener Datenmenge nicht ausführbar
+[28.06.2021 15:06:51]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMethod: Operation bei geschlossener Datenmenge nicht ausführbar
+[28.06.2021 15:06:52]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMethod: Operation bei geschlossener Datenmenge nicht ausführbar
+[28.06.2021 15:06:55]Information>Closeup>SAMS closed by user.
+[28.06.2021 15:07:01]Information>Startup>starting Application
+[28.06.2021 15:07:01]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 15:07:01]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 15:07:01]Information>Startup>connecting to DB at startup
+[28.06.2021 15:07:01]Information>Startup>Connected to DB.
+[28.06.2021 15:07:30]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+[28.06.2021 15:07:32]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:07:32]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210625"
+[28.06.2021 15:07:32]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:07:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:32]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:33]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:34]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:35]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:36]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:36]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:07:36]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210618ICOS"
+[28.06.2021 15:07:36]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:07:36]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:37]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51377.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51378.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51379.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51380.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51446.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51447.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51449.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51450.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51451.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51452.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51453.1.1
+[28.06.2021 15:07:48]Information>DB>transfer LE and HE Currents to target_t: 51454.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51521.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51522.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51528.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51529.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51530.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51531.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51540.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51541.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51545.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51549.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51550.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51551.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51567.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51570.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51575.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51576.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51577.1.1
+[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51624.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51625.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51626.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51627.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51628.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51629.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51630.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51631.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51632.1.1
+[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51633.1.1
+[28.06.2021 15:08:18]Information>Closeup>SAMS closed by user.
+[28.06.2021 15:08:53]Information>Startup>starting Application
+[28.06.2021 15:08:53]Information>Startup>DB - DataSource= db_dmams_KTL
+[28.06.2021 15:08:53]Information>Startup>DB - UserID= rfriedrich
+[28.06.2021 15:08:53]Information>Startup>connecting to DB at startup
+[28.06.2021 15:08:53]Information>Startup>Connected to DB.
+[28.06.2021 15:08:55]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
+
+[28.06.2021 15:08:58]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:08:58]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210625"
+
+[28.06.2021 15:08:58]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:08:58]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:58]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:58]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:58]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:58]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:08:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:05]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:09:05]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210618ICOS"
+
+[28.06.2021 15:09:05]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:09:05]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:06]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:07]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:08]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51377.1.1
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51378.1.1
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51379.1.1
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51380.1.1
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51446.1.1
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51447.1.1
+[28.06.2021 15:09:18]Information>DB>transfer LE and HE Currents to target_t: 51449.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51450.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51451.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51452.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51453.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51454.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51521.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51522.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51528.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51529.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51530.1.1
+[28.06.2021 15:09:19]Information>DB>transfer LE and HE Currents to target_t: 51531.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51540.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51541.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51545.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51549.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51550.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51551.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51567.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51570.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51575.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51576.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51577.1.1
+[28.06.2021 15:09:20]Information>DB>transfer LE and HE Currents to target_t: 51624.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51625.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51626.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51627.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51628.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51629.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51630.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51631.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51632.1.1
+[28.06.2021 15:09:21]Information>DB>transfer LE and HE Currents to target_t: 51633.1.1
+[28.06.2021 15:09:39]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:09:39]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210611ICOS"
+
+[28.06.2021 15:09:39]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:42]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:42]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:42]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:42]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:42]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:42]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 50108.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51294.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51295.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51296.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51297.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51298.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51299.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51309.1.1
+[28.06.2021 15:09:45]Information>DB>transfer LE and HE Currents to target_t: 51310.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51311.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51381.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51382.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51429.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51430.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51438.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51439.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51448.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51455.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51456.1.1
+[28.06.2021 15:09:46]Information>DB>transfer LE and HE Currents to target_t: 51457.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51523.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51524.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51525.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51526.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51527.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51532.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51542.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51544.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51546.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51547.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51548.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51566.1.1
+[28.06.2021 15:09:47]Information>DB>transfer LE and HE Currents to target_t: 51568.1.1
+[28.06.2021 15:09:48]Information>DB>transfer LE and HE Currents to target_t: 51569.1.1
+[28.06.2021 15:09:48]Information>DB>transfer LE and HE Currents to target_t: 51571.1.1
+[28.06.2021 15:09:48]Information>DB>transfer LE and HE Currents to target_t: 51572.1.1
+[28.06.2021 15:09:48]Information>DB>transfer LE and HE Currents to target_t: 51573.1.1
+[28.06.2021 15:09:48]Information>DB>transfer LE and HE Currents to target_t: 51574.1.1
+[28.06.2021 15:09:49]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:09:49]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210602ICOS"
+
+[28.06.2021 15:09:49]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:09:49]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:49]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:50]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:51]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:52]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:55]Information>DB>transfer LE and HE Currents to target_t: 51199.1.1
+[28.06.2021 15:09:55]Information>DB>transfer LE and HE Currents to target_t: 51200.1.1
+[28.06.2021 15:09:55]Information>DB>transfer LE and HE Currents to target_t: 51201.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51202.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51203.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51204.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51205.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51213.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51214.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51215.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51216.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51238.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51239.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51241.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51242.1.1
+[28.06.2021 15:09:56]Information>DB>transfer LE and HE Currents to target_t: 51300.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51301.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51312.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51313.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51314.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51315.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51316.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51317.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51318.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51319.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51320.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51383.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51384.1.1
+[28.06.2021 15:09:57]Information>DB>transfer LE and HE Currents to target_t: 51385.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51386.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51387.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51388.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51431.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51434.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51435.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51436.1.1
+[28.06.2021 15:09:58]Information>DB>transfer LE and HE Currents to target_t: 51437.1.1
+[28.06.2021 15:09:59]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:09:59]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210521ICOS"
+
+[28.06.2021 15:09:59]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:09:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:09:59]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:00]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:01]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:02]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 50878.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 50879.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51032.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51033.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51034.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51035.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51043.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51079.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51080.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51081.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51082.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51083.1.1
+[28.06.2021 15:10:05]Information>DB>transfer LE and HE Currents to target_t: 51084.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51089.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51198.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51206.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51207.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51208.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51209.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51217.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51218.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51219.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51220.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51221.1.1
+[28.06.2021 15:10:06]Information>DB>transfer LE and HE Currents to target_t: 51222.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51223.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51224.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51240.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51243.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51244.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51245.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51246.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51247.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51248.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51249.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51302.1.1
+[28.06.2021 15:10:07]Information>DB>transfer LE and HE Currents to target_t: 51303.1.1
+[28.06.2021 15:10:08]Information>DB>transfer LE and HE Currents to target_t: 51304.1.1
+[28.06.2021 15:10:08]Information>DB>transfer LE and HE Currents to target_t: 51305.1.1
+[28.06.2021 15:10:08]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:10:08]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210507ICOS"
+
+[28.06.2021 15:10:09]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:09]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:10]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:11]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:12]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:12]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:12]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:12]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:12]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:12]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:14]Information>DB>transfer LE and HE Currents to target_t: 50856.1.1
+[28.06.2021 15:10:14]Information>DB>transfer LE and HE Currents to target_t: 50857.1.1
+[28.06.2021 15:10:14]Information>DB>transfer LE and HE Currents to target_t: 50874.1.1
+[28.06.2021 15:10:14]Information>DB>transfer LE and HE Currents to target_t: 50875.1.1
+[28.06.2021 15:10:14]Information>DB>transfer LE and HE Currents to target_t: 50876.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50877.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50907.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50937.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50938.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50941.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50942.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50943.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50944.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50945.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50946.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50947.1.1
+[28.06.2021 15:10:15]Information>DB>transfer LE and HE Currents to target_t: 50948.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50961.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50962.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50963.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50964.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50965.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50966.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50967.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50968.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50969.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50970.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50971.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 50972.1.1
+[28.06.2021 15:10:16]Information>DB>transfer LE and HE Currents to target_t: 51036.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51037.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51038.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51039.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51040.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51041.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51085.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51086.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51087.1.1
+[28.06.2021 15:10:17]Information>DB>transfer LE and HE Currents to target_t: 51088.1.1
+[28.06.2021 15:10:18]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:10:18]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210503ICOS"
+
+[28.06.2021 15:10:18]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:10:18]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:18]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:18]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:18]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:18]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:19]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:20]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:21]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:23]Information>DB>transfer LE and HE Currents to target_t: 50791.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50792.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50801.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50833.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50834.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50835.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50836.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50837.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50838.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50842.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50843.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50844.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50852.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50853.1.1
+[28.06.2021 15:10:24]Information>DB>transfer LE and HE Currents to target_t: 50854.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50855.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50858.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50859.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50860.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50861.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50880.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50881.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50882.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50883.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50884.1.1
+[28.06.2021 15:10:25]Information>DB>transfer LE and HE Currents to target_t: 50885.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50908.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50909.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50910.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50911.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50912.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50913.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50914.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50915.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50916.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50917.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50918.1.1
+[28.06.2021 15:10:26]Information>DB>transfer LE and HE Currents to target_t: 50939.1.1
+[28.06.2021 15:10:27]Information>DB>transfer LE and HE Currents to target_t: 50940.1.1
+[28.06.2021 15:10:27]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:10:27]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210416ICOS"
+
+[28.06.2021 15:10:28]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:28]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:29]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:30]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:31]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:31]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:31]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50535.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50536.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50537.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50538.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50630.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50631.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50644.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50731.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50735.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50741.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50742.1.1
+[28.06.2021 15:10:34]Information>DB>transfer LE and HE Currents to target_t: 50743.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50744.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50745.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50746.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50752.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50753.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50754.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50755.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50756.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50757.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50758.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50759.1.1
+[28.06.2021 15:10:35]Information>DB>transfer LE and HE Currents to target_t: 50760.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50761.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50762.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50763.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50793.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50794.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50795.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50796.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50797.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50798.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50799.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50800.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50802.1.1
+[28.06.2021 15:10:36]Information>DB>transfer LE and HE Currents to target_t: 50839.1.1
+[28.06.2021 15:10:37]Information>DB>transfer LE and HE Currents to target_t: 50840.1.1
+[28.06.2021 15:10:37]Information>DB>transfer LE and HE Currents to target_t: 50841.1.1
+[28.06.2021 15:10:37]Information>DB>Get data of all targets of selected magazine
+[28.06.2021 15:10:37]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210407ICOS"
+
+[28.06.2021 15:10:38]Information>DB>query db_dc14 Database for Le and He Currents
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:38]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:39]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:40]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:41]Information>DB>fill string grid with data from query
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50529.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50530.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50531.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50532.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50533.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50534.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50608.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50609.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50632.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50633.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50655.1.1
+[28.06.2021 15:10:44]Information>DB>transfer LE and HE Currents to target_t: 50677.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50678.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50679.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50680.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50681.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50682.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50683.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50684.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50685.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50686.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50687.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50688.1.1
+[28.06.2021 15:10:45]Information>DB>transfer LE and HE Currents to target_t: 50722.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50723.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50724.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50725.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50726.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50727.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50728.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50729.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50730.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50732.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50733.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50736.1.1
+[28.06.2021 15:10:46]Information>DB>transfer LE and HE Currents to target_t: 50737.1.1
+[28.06.2021 15:10:47]Information>DB>transfer LE and HE Currents to target_t: 50738.1.1
+[28.06.2021 15:10:47]Information>DB>transfer LE and HE Currents to target_t: 50739.1.1
+[28.06.2021 15:10:47]Information>DB>transfer LE and HE Currents to target_t: 50740.1.1
+[28.06.2021 15:10:50]Information>Closeup>SAMS closed by user.
