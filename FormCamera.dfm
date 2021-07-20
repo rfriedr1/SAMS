@@ -17,6 +17,7 @@ object CameraWindow: TCameraWindow
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
@@ -138,6 +139,7 @@ object CameraWindow: TCameraWindow
         Top = 17
         Width = 233
         Height = 21
+        NumbersOnly = True
         TabOrder = 0
         OnChange = edtMAMSChange
       end
@@ -174,7 +176,7 @@ object CameraWindow: TCameraWindow
         TabOrder = 3
         OnClick = btnSaveClick
       end
-      object SpinButton1: TSpinButton
+      object SpinButton: TSpinButton
         Left = 315
         Top = 15
         Width = 20
@@ -200,8 +202,8 @@ object CameraWindow: TCameraWindow
           8000008080000080800000808000008080000080800000808000000000000080
           8000008080000080800000808000008080000080800000808000008080000080
           800000808000008080000080800000808000}
-        OnDownClick = SpinButton1DownClick
-        OnUpClick = SpinButton1UpClick
+        OnDownClick = SpinButtonDownClick
+        OnUpClick = SpinButtonUpClick
       end
     end
   end
@@ -223,5 +225,10 @@ object CameraWindow: TCameraWindow
     OnImageAvailable = WCameraImageAvailable
     Left = 16
     Top = 56
+  end
+  object SaveDialog: TSaveDialog
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofPathMustExist, ofEnableSizing]
+    Left = 73
+    Top = 105
   end
 end

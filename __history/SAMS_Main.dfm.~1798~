@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = tnsto
+  ActiveControl = btnSendInPrepToExcel
   Caption = 'SAMS '
   ClientHeight = 796
   ClientWidth = 1471
@@ -294,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 725
-    ActivePage = tbsTransferAge
+    ActivePage = tbsLabStats
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -4494,36 +4494,36 @@ object frmMAMS: TfrmMAMS
         ParentCtl3D = False
         TabOrder = 5
         object Label2: TLabel
-          Left = 48
-          Top = 95
+          Left = 45
+          Top = 206
           Width = 14
           Height = 13
           Caption = 'Fm'
         end
         object Label4: TLabel
-          Left = 120
-          Top = 94
+          Left = 117
+          Top = 205
           Width = 12
           Height = 13
           Caption = '+-'
         end
         object Label5: TLabel
-          Left = 37
-          Top = 153
+          Left = 34
+          Top = 264
           Width = 25
           Height = 13
           Caption = 'd13C'
         end
         object Label6: TLabel
-          Left = 120
-          Top = 153
+          Left = 117
+          Top = 264
           Width = 12
           Height = 13
           Caption = '+-'
         end
         object Label7: TLabel
-          Left = 16
-          Top = 114
+          Left = 13
+          Top = 225
           Width = 46
           Height = 13
           Caption = 'C14 Age'
@@ -4535,8 +4535,8 @@ object frmMAMS: TfrmMAMS
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 120
-          Top = 114
+          Left = 117
+          Top = 225
           Width = 14
           Height = 13
           Caption = '+-'
@@ -4548,22 +4548,22 @@ object frmMAMS: TfrmMAMS
           ParentFont = False
         end
         object Label9: TLabel
-          Left = 35
-          Top = 194
+          Left = 32
+          Top = 305
           Width = 27
           Height = 13
           Caption = 'cal 1s'
         end
         object Label11: TLabel
-          Left = 35
-          Top = 213
+          Left = 32
+          Top = 324
           Width = 27
           Height = 13
           Caption = 'cal 2s'
         end
         object Label10: TLabel
-          Left = 31
-          Top = 253
+          Left = 28
+          Top = 364
           Width = 35
           Height = 13
           Caption = 'Calcset'
@@ -4575,9 +4575,23 @@ object frmMAMS: TfrmMAMS
           Height = 13
           Caption = 'Magazine'
         end
+        object Label146: TLabel
+          Left = 6
+          Top = 85
+          Width = 51
+          Height = 13
+          Caption = 'LE Current'
+        end
+        object Label147: TLabel
+          Left = 5
+          Top = 111
+          Width = 53
+          Height = 13
+          Caption = 'HE Current'
+        end
         object DBEdit1: TDBEdit
-          Left = 68
-          Top = 91
+          Left = 65
+          Top = 202
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4587,8 +4601,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 0
         end
         object DBEdit2: TDBEdit
-          Left = 140
-          Top = 91
+          Left = 137
+          Top = 202
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4598,8 +4612,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 1
         end
         object edtC13: TDBEdit
-          Left = 68
-          Top = 150
+          Left = 65
+          Top = 261
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4609,8 +4623,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 2
         end
         object DBEdit4: TDBEdit
-          Left = 140
-          Top = 150
+          Left = 137
+          Top = 261
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4620,8 +4634,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 3
         end
         object DBEdit5: TDBEdit
-          Left = 68
-          Top = 111
+          Left = 65
+          Top = 222
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4637,8 +4651,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 4
         end
         object DBEdit6: TDBEdit
-          Left = 140
-          Top = 111
+          Left = 137
+          Top = 222
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4654,8 +4668,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 5
         end
         object DBEdit7: TDBEdit
-          Left = 68
-          Top = 191
+          Left = 65
+          Top = 302
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4665,8 +4679,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 6
         end
         object DBEdit8: TDBEdit
-          Left = 140
-          Top = 191
+          Left = 137
+          Top = 302
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4676,8 +4690,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 7
         end
         object DBEdit9: TDBEdit
-          Left = 68
-          Top = 211
+          Left = 65
+          Top = 322
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4687,8 +4701,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 8
         end
         object DBEdit10: TDBEdit
-          Left = 140
-          Top = 211
+          Left = 137
+          Top = 322
           Width = 48
           Height = 21
           CustomHint = BalloonHint1
@@ -4698,8 +4712,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 9
         end
         object DBEdit11: TDBEdit
-          Left = 68
-          Top = 250
+          Left = 65
+          Top = 361
           Width = 121
           Height = 21
           CustomHint = BalloonHint1
@@ -4709,8 +4723,8 @@ object frmMAMS: TfrmMAMS
           TabOrder = 10
         end
         object btnTransferAgeToSample: TButton
-          Left = 1
-          Top = 297
+          Left = -2
+          Top = 408
           Width = 226
           Height = 40
           Hint = 'transfers age from target table to sample table'
@@ -4731,6 +4745,24 @@ object frmMAMS: TfrmMAMS
           DataField = 'magazine'
           DataSource = dm.dsSampleInfo
           TabOrder = 12
+        end
+        object DBedtLECurrent: TDBEdit
+          Left = 64
+          Top = 82
+          Width = 49
+          Height = 21
+          DataField = 'le_curr'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 13
+        end
+        object DBedtHECurrent: TDBEdit
+          Left = 64
+          Top = 109
+          Width = 49
+          Height = 21
+          DataField = 'he_curr'
+          DataSource = dm.dsSampleInfo
+          TabOrder = 14
         end
       end
       object gbxSampleInfo: TGroupBox
@@ -6571,7 +6603,7 @@ object frmMAMS: TfrmMAMS
         Width = 344
         Height = 697
         Align = alLeft
-        Caption = 'In  prep.'
+        Caption = 'Samples currently in  prep.'
         TabOrder = 0
         object Panel21: TPanel
           Left = 2
@@ -6634,7 +6666,7 @@ object frmMAMS: TfrmMAMS
         Width = 369
         Height = 697
         Align = alLeft
-        Caption = 'Planned'
+        Caption = 'Sample waiting for prep'
         TabOrder = 1
         object Panel3: TPanel
           Left = 2
@@ -6714,7 +6746,7 @@ object frmMAMS: TfrmMAMS
         Width = 730
         Height = 697
         Align = alClient
-        Caption = 'waiting for graphitisation'
+        Caption = 'samples waiting for graphitisation'
         TabOrder = 2
         object Panel22: TPanel
           Left = 2
@@ -7022,9 +7054,9 @@ object frmMAMS: TfrmMAMS
       Caption = 'Transfer Age'
       ImageIndex = 12
       object GroupBox25: TGroupBox
-        Left = 790
+        Left = 945
         Top = 0
-        Width = 673
+        Width = 518
         Height = 697
         Align = alClient
         Caption = 'Click on the targets you wish to take into account'
@@ -7032,7 +7064,7 @@ object frmMAMS: TfrmMAMS
         object StrGrdTargetData: TJvStringGrid
           Left = 2
           Top = 15
-          Width = 669
+          Width = 514
           Height = 202
           CustomHint = BalloonHint1
           Align = alTop
@@ -7123,7 +7155,7 @@ object frmMAMS: TfrmMAMS
       object gbxMagazines: TGroupBox
         Left = 0
         Top = 0
-        Width = 790
+        Width = 945
         Height = 697
         Align = alLeft
         Caption = 'Click on magazine to transfer ages'
@@ -7131,7 +7163,7 @@ object frmMAMS: TfrmMAMS
         object Panel16: TPanel
           Left = 2
           Top = 15
-          Width = 786
+          Width = 941
           Height = 41
           Align = alTop
           TabOrder = 0
@@ -7150,7 +7182,7 @@ object frmMAMS: TfrmMAMS
             Caption = 'month'
           end
           object lbMagazine: TLabel
-            Left = 194
+            Left = 610
             Top = 17
             Width = 45
             Height = 13
@@ -7203,7 +7235,7 @@ object frmMAMS: TfrmMAMS
         object Panel26: TPanel
           Left = 136
           Top = 56
-          Width = 652
+          Width = 807
           Height = 639
           Align = alClient
           Caption = 'Panel26'
@@ -7211,7 +7243,7 @@ object frmMAMS: TfrmMAMS
           object grdMagazineData: TDBGrid
             Left = 1
             Top = 1
-            Width = 464
+            Width = 504
             Height = 637
             CustomHint = BalloonHint1
             Align = alLeft
@@ -7226,9 +7258,9 @@ object frmMAMS: TfrmMAMS
             OnDrawColumnCell = grdMagazineDataDrawColumnCell
           end
           object dbgrdLeHeCurrents: TDBGrid
-            Left = 465
+            Left = 505
             Top = 1
-            Width = 186
+            Width = 301
             Height = 637
             Align = alClient
             DataSource = dm.dsLeHeCurrents
@@ -7896,7 +7928,7 @@ object frmMAMS: TfrmMAMS
             Column = 1
             Control = gbxHomeProjectsDue
             Row = 0
-            RowSpan = 3
+            RowSpan = 4
           end
           item
             Column = 2
@@ -8012,7 +8044,7 @@ object frmMAMS: TfrmMAMS
           Left = 306
           Top = 16
           Width = 273
-          Height = 254
+          Height = 343
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
@@ -8059,9 +8091,9 @@ object frmMAMS: TfrmMAMS
           object pnlHomeNumberofReadyForGraph: TPanel
             AlignWithMargins = True
             Left = 10
-            Top = 105
+            Top = 183
             Width = 253
-            Height = 61
+            Height = 72
             Hint = 'number of prep'#39'd samples ready for graphitization'
             CustomHint = BalloonHint1
             Align = alClient
@@ -8085,7 +8117,7 @@ object frmMAMS: TfrmMAMS
           object pnlNumberofSamplesReadyForMeas: TPanel
             AlignWithMargins = True
             Left = 10
-            Top = 172
+            Top = 261
             Width = 253
             Height = 72
             Hint = 'number of prep'#39'd samples ready measurement'
@@ -8106,6 +8138,32 @@ object frmMAMS: TfrmMAMS
             ParentShowHint = False
             ShowHint = True
             TabOrder = 2
+            StyleElements = [seFont, seBorder]
+          end
+          object pnlHomeNumberOfSamplesInPrep: TPanel
+            AlignWithMargins = True
+            Left = 10
+            Top = 105
+            Width = 253
+            Height = 72
+            Hint = 'number ofsamples in prep'
+            CustomHint = BalloonHint1
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'in prep'
+            Color = clSkyBlue
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentCtl3D = False
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 3
             StyleElements = [seFont, seBorder]
           end
         end
@@ -9203,7 +9261,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 290
+          Height = 282
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9380,13 +9438,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 290
+          Height = 282
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            290)
+            282)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9564,7 +9622,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 265
+            Top = 257
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9808,7 +9866,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300BC0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300C40710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10587,7 +10645,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806780918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806800918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16837,7 +16895,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00BC0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00C40720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

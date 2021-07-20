@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: June-28-2021';
+  myVersion = '1.9.9 Built: July-20-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -866,6 +866,7 @@ type
     DBedtHECurrent: TDBEdit;
     Label146: TLabel;
     Label147: TLabel;
+    pnlHomeNumberOfSamplesInPrep: TPanel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -9238,6 +9239,8 @@ begin
   // ### update number of unprep'd samples and samples ready for graph and express
   // unpre'd samples
   pnlHomeNumberofUnprepdSamples.Caption := '# to prep: ' + IntToStr(dm.GetAllPlanned(False));
+  // samples inPrep
+  pnlHomeNumberofSamplesInPrep.Caption := '# in prep: ' + IntToStr(dm.GetAllInPrep);
   // ready for graph
   pnlHomeNumberofReadyForGraph.Caption := '# to graph: ' + IntToStr(dm.GetAllWaitingForGraph);
   // ready for meas

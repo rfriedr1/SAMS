@@ -10,7 +10,7 @@ interface
 uses
   Windows, Classes, Controls, Forms, ExtCtrls, Frame_Video, Menus,
   StdCtrls, Vcl.Mask, JvExMask, JvToolEdit, JvComponentBase, IniFiles, SysUtils,
-  Dialogs, jpeg, Graphics, WCamera;
+  Dialogs, jpeg, Graphics, WCamera, Vcl.Samples.Spin;
 
 
 type
@@ -36,6 +36,7 @@ type
     GroupBoxCameraSettings: TGroupBox;
     ComboBoxFormat: TComboBox;
     PanelPaintBox: TPanel;
+    SpinButton1: TSpinButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -53,6 +54,8 @@ type
     procedure WCameraImageAvailable(Sender: TObject; SampleTime: Double);
     procedure PanelPaintBoxResize(Sender: TObject);
     procedure PaintBoxImagePaint(Sender: TObject);
+    procedure SpinButton1DownClick(Sender: TObject);
+    procedure SpinButton1UpClick(Sender: TObject);
   private
     { Private declarations }
     SplitterRatio : double;
@@ -84,10 +87,16 @@ implementation
 procedure TCameraWindow.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  //Screen.Cursor := crHourGlass;
-  //Application.ProcessMessages;
-  //Frame_Video1.Stop;
-  //Screen.Cursor := crdefault;
+  Screen.Cursor := crHourGlass;
+  //ComboBoxCamera.Clear;
+  //ComboBoxFormat.Clear;
+  //WCamera.Stop;
+  //WCamera.Active := False;
+  //WCamera.Free;
+  //Bitmap.Free;
+  //BitmapSnappedImage.Free;
+  //MemoryStream.Free;
+  Screen.Cursor := crdefault;
 end;
 
 
@@ -98,21 +107,22 @@ Var
   jpgImage: TJPEGImage;
 begin
  // create bmp from PaintBox
- Bmp := TBitmap.Create();
- Bmp.SetSize(PaintBoxImage.Canvas.ClipRect.Right, PaintBoxImage.Canvas.ClipRect.Bottom);
- BitBlt(Bmp.Canvas.Handle, 0, 0, PaintBoxImage.Width, PaintBoxImage.Height, PaintBoxImage.Canvas.Handle, 0, 0, SRCCOPY);
+ //Bmp := TBitmap.Create();
+ //Bmp.SetSize(PaintBoxImage.Canvas.ClipRect.Right, PaintBoxImage.Canvas.ClipRect.Bottom);
+ //BitBlt(Bmp.Canvas.Handle, 0, 0, PaintBoxImage.Width, PaintBoxImage.Height, PaintBoxImage.Canvas.Handle, 0, 0, SRCCOPY);
  //BitBlt(Bmp.Canvas.Handle, 0, 0, Width, Height, Canvas.Handle, 0, 0, SRCCOPY);
 
  // create IMage first
  jpgImage := TJPEGImage.Create();
- jpgImage.Assign(Bmp);
+ jpgImage.Assign(BitmapSnappedImage);
 
  // save jpeg
  // showmessage(extractfilepath(edtPathToImage.Text));
  // check that directory really exists
  if directoryexists(extractfilepath(edtPathToImage.Text)) then
   begin
-   jpgImage.SaveToFile(edtPathToImage.Text);
+   ShowMessage('Directory =' + extractfilepath(edtPathToImage.Text));
+   //jpgImage.SaveToFile(edtPathToImage.Text);
    lbl_SaveSuccessfull.Caption := 'Saved';
    lbl_SaveSuccessfull.Visible := True;
   end
@@ -120,7 +130,7 @@ begin
    begin
    lbl_SaveSuccessfull.Caption := 'Not Saved';
    lbl_SaveSuccessfull.Visible := True;
-   //showmessage('error saving file.');
+   showmessage('error saving file. NetworkDrive connected?');
    end;
 
 
@@ -128,43 +138,37 @@ end;
 
 procedure TCameraWindow.btnSnapImageClick(Sender: TObject);
 Var
-  RectSource, RectDestination: TRect;
-  CanvasSource: TCanvas;
-  GraphicSource: TBitmap;
   AspectRatio: Double;
   Height, Width: Integer;
   Rect: TRect;
 begin
-  // get an image from the camera
-  RectSource := Rect(0, 0, PaintBox.Width, PaintBox.Height);
-  RectDestination := Rect(0, 0, PaintBoxImage.Width, PaintBoxImage.Height);
-  CanvasSource := PaintBox.Canvas;
-  // copy image into PaintBoxImage Canvas
-  //PaintBoxImage.Canvas.CopyRect(RectDestination, CanvasSource, RectSource);
-
   // save image from camera to Bitmap in Memory
-  BitmapSnappedImage:=WCamera.CurrentImageToBitmap();
-  if BitmapSnappedImage.Width / BitmapSnappedImage.Height >= PaintBoxImage.Width / PaintBoxImage.Height then
-  begin
-    AspectRatio := PaintBoxImage.Width / BitmapSnappedImage.Width;
-    Height := Round(AspectRatio * BitmapSnappedImage.Height);
-    Rect.Left := 0;
-    Rect.Top := (PaintBoxImage.Height - Height) div 2;
-    Rect.Right := PaintBoxImage.Width;
-    Rect.Bottom := Rect.Top + Height;
-  end
-  else
-  begin
-    AspectRatio := PaintBoxImage.Height / BitmapSnappedImage.Height;
-    Width := Round(AspectRatio * BitmapSnappedImage.Width);
-    Rect.Left := (PaintBoxImage.Width - Width) div 2;
-    Rect.Top := 0;
-    Rect.Right := Rect.Left + Width;
-    Rect.Bottom := PaintBoxImage.Height;
-  end;
-  PaintBoxImage.Canvas.StretchDraw(Rect,BitmapSnappedImage);
-  //PaintBoxImage.Canvas.Draw(0,0,BitmapSnappedImage);
-
+  Try
+    BitmapSnappedImage:=WCamera.CurrentImageToBitmap();
+    if BitmapSnappedImage.Width / BitmapSnappedImage.Height >= PaintBoxImage.Width / PaintBoxImage.Height then
+      begin
+        AspectRatio := PaintBoxImage.Width / BitmapSnappedImage.Width;
+        Height := Round(AspectRatio * BitmapSnappedImage.Height);
+        Rect.Left := 0;
+        Rect.Top := (PaintBoxImage.Height - Height) div 2;
+        Rect.Right := PaintBoxImage.Width;
+        Rect.Bottom := Rect.Top + Height;
+    end
+    else
+      begin
+        AspectRatio := PaintBoxImage.Height / BitmapSnappedImage.Height;
+        Width := Round(AspectRatio * BitmapSnappedImage.Width);
+        Rect.Left := (PaintBoxImage.Width - Width) div 2;
+        Rect.Top := 0;
+        Rect.Right := Rect.Left + Width;
+        Rect.Bottom := PaintBoxImage.Height;
+      end;
+    PaintBoxImage.Canvas.StretchDraw(Rect,BitmapSnappedImage);
+    btnSave.Enabled := True;
+  Except
+      btnSave.Enabled := False;
+      ShowMessage('Error occured capturing the image from camera.');
+  End;
 
   lbl_SaveSuccessfull.Caption := 'Not Saved';
   lbl_SaveSuccessfull.Visible := True;
@@ -186,6 +190,7 @@ begin
     btnSnapImage.Enabled := False;
     WCamera.Active := False;
     WCamera.DeviceName := ComboBoxCamera.Text;
+    //ShowMessage('SelectedDevice = ' + ComboBoxCamera.Text);
     ComboBoxFormat.Items.Clear;
     ComboBoxFormat.Enabled := WCamera.DeviceName <> '';
     if ComboBoxFormat.Enabled then
@@ -245,7 +250,8 @@ begin
     WCamera.Run;
     PaintBox.Visible := WCamera.CaptureType = ctGrabber;
     btnSnapImage.Enabled := True;
-  end
+    btnSnapImage.SetFocus;
+  end;
 end;
 
 procedure TCameraWindow.UpdateVideoPosition;
@@ -305,22 +311,26 @@ end;
 
 procedure TCameraWindow.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  //ComboBoxCamera.Clear;
+  //ComboBoxFormat.Clear;
+  if WCamera.State = csRunning then WCamera.Stop;
   WCamera.Active := False;
-  Bitmap.Free;
-  MemoryStream.Free;
+  //WCamera.Free;
+  //Bitmap.Free;
+  //BitmapSnappedImage.Free;
+  //MemoryStream.Free;
+  //CameraWindow.Release;
 end;
 
 procedure TCameraWindow.FormShow(Sender: TObject);
 Var
 pathToIni : string;
 begin
-  // initialize the video frame
-  //Frame_Video1.InitFrame;
-
   // some settings
   lbl_SaveSuccessfull.Visible := False;
 
   // create iniFile Object and connect to the ini file that SAMS uses
+  // in order to read the path settings to the Server where images are stored
   pathToIni := extractFilePath(paramstr(0)) + 'Persistent.ini';
   myIni := TiniFile.Create(pathToIni);
   if fileexists(pathToIni) then
@@ -330,8 +340,25 @@ begin
         //showmessage(pathToIni);
         //showmessage(myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', 'test'));
         edtPathToImage.Text := myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', '');
+        // alreaday set the path to a MAMS
+        edtPathToImage.Text := edtPathToImage.Text + '\' + edtMAMS.Text;
+      End
+      Else
+      Begin
+       edtPathToImage.Text := 'path not set in SAMS!!';
+       btnSave.Enabled := False;
       End;
-    End
+    End;
+
+  //check if camera has already been selected.
+  if not (WCamera.DeviceName = '')  then
+  begin
+    if WCamera.Format.Width <>0 then
+    begin
+    StartDevice;
+    end;
+  end;
+
 
 end;
 
@@ -436,6 +463,16 @@ begin
   close;
 end;
 
+procedure TCameraWindow.SpinButton1DownClick(Sender: TObject);
+begin
+ edtMAMS.Text := inttostr(strtoint(edtMAMS.Text)-1);
+end;
+
+procedure TCameraWindow.SpinButton1UpClick(Sender: TObject);
+begin
+ edtMAMS.Text := inttostr(strtoint(edtMAMS.Text)+1);
+end;
+
 procedure TCameraWindow.Splitter1Moved(Sender: TObject);
 begin
   SplitterRatio := (PanelLeft.Width+Splitter1.Width div 2) / Width;
@@ -446,6 +483,7 @@ begin
   PanelLeft.DoubleBuffered := True;
   MemoryStream := TMemoryStream.Create;
   Bitmap := TBitmap.Create;
+  BitmapSnappedImage := TBitmap.Create;
 
   SplitterRatio := 0.5;
 end;

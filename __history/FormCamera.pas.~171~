@@ -87,10 +87,16 @@ implementation
 procedure TCameraWindow.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  //Screen.Cursor := crHourGlass;
-  //Application.ProcessMessages;
-  //Frame_Video1.Stop;
-  //Screen.Cursor := crdefault;
+  Screen.Cursor := crHourGlass;
+  //ComboBoxCamera.Clear;
+  //ComboBoxFormat.Clear;
+  //WCamera.Stop;
+  //WCamera.Active := False;
+  //WCamera.Free;
+  //Bitmap.Free;
+  //BitmapSnappedImage.Free;
+  //MemoryStream.Free;
+  Screen.Cursor := crdefault;
 end;
 
 
@@ -115,7 +121,8 @@ begin
  // check that directory really exists
  if directoryexists(extractfilepath(edtPathToImage.Text)) then
   begin
-   jpgImage.SaveToFile(edtPathToImage.Text);
+   ShowMessage('Directory =' + extractfilepath(edtPathToImage.Text));
+   //jpgImage.SaveToFile(edtPathToImage.Text);
    lbl_SaveSuccessfull.Caption := 'Saved';
    lbl_SaveSuccessfull.Visible := True;
   end
@@ -123,7 +130,7 @@ begin
    begin
    lbl_SaveSuccessfull.Caption := 'Not Saved';
    lbl_SaveSuccessfull.Visible := True;
-   showmessage('error saving file.');
+   showmessage('error saving file. NetworkDrive connected?');
    end;
 
 
@@ -136,26 +143,32 @@ Var
   Rect: TRect;
 begin
   // save image from camera to Bitmap in Memory
-  BitmapSnappedImage:=WCamera.CurrentImageToBitmap();
-  if BitmapSnappedImage.Width / BitmapSnappedImage.Height >= PaintBoxImage.Width / PaintBoxImage.Height then
-  begin
-    AspectRatio := PaintBoxImage.Width / BitmapSnappedImage.Width;
-    Height := Round(AspectRatio * BitmapSnappedImage.Height);
-    Rect.Left := 0;
-    Rect.Top := (PaintBoxImage.Height - Height) div 2;
-    Rect.Right := PaintBoxImage.Width;
-    Rect.Bottom := Rect.Top + Height;
-  end
-  else
-  begin
-    AspectRatio := PaintBoxImage.Height / BitmapSnappedImage.Height;
-    Width := Round(AspectRatio * BitmapSnappedImage.Width);
-    Rect.Left := (PaintBoxImage.Width - Width) div 2;
-    Rect.Top := 0;
-    Rect.Right := Rect.Left + Width;
-    Rect.Bottom := PaintBoxImage.Height;
-  end;
-  PaintBoxImage.Canvas.StretchDraw(Rect,BitmapSnappedImage);
+  Try
+    BitmapSnappedImage:=WCamera.CurrentImageToBitmap();
+    if BitmapSnappedImage.Width / BitmapSnappedImage.Height >= PaintBoxImage.Width / PaintBoxImage.Height then
+      begin
+        AspectRatio := PaintBoxImage.Width / BitmapSnappedImage.Width;
+        Height := Round(AspectRatio * BitmapSnappedImage.Height);
+        Rect.Left := 0;
+        Rect.Top := (PaintBoxImage.Height - Height) div 2;
+        Rect.Right := PaintBoxImage.Width;
+        Rect.Bottom := Rect.Top + Height;
+    end
+    else
+      begin
+        AspectRatio := PaintBoxImage.Height / BitmapSnappedImage.Height;
+        Width := Round(AspectRatio * BitmapSnappedImage.Width);
+        Rect.Left := (PaintBoxImage.Width - Width) div 2;
+        Rect.Top := 0;
+        Rect.Right := Rect.Left + Width;
+        Rect.Bottom := PaintBoxImage.Height;
+      end;
+    PaintBoxImage.Canvas.StretchDraw(Rect,BitmapSnappedImage);
+    btnSave.Enabled := True;
+  Except
+      btnSave.Enabled := False;
+      ShowMessage('Error occured capturing the image from camera.');
+  End;
 
   lbl_SaveSuccessfull.Caption := 'Not Saved';
   lbl_SaveSuccessfull.Visible := True;
@@ -177,6 +190,7 @@ begin
     btnSnapImage.Enabled := False;
     WCamera.Active := False;
     WCamera.DeviceName := ComboBoxCamera.Text;
+    //ShowMessage('SelectedDevice = ' + ComboBoxCamera.Text);
     ComboBoxFormat.Items.Clear;
     ComboBoxFormat.Enabled := WCamera.DeviceName <> '';
     if ComboBoxFormat.Enabled then
@@ -236,7 +250,8 @@ begin
     WCamera.Run;
     PaintBox.Visible := WCamera.CaptureType = ctGrabber;
     btnSnapImage.Enabled := True;
-  end
+    btnSnapImage.SetFocus;
+  end;
 end;
 
 procedure TCameraWindow.UpdateVideoPosition;
@@ -296,23 +311,28 @@ end;
 
 procedure TCameraWindow.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  //ComboBoxCamera.Clear;
+  //ComboBoxFormat.Clear;
+  if WCamera.State = csRunning then WCamera.Stop;
   WCamera.Active := False;
-  Bitmap.Free;
-  BitmapSnappedImage.Free;
-  MemoryStream.Free;
+  //WCamera.Free;
+  //Bitmap.Free;
+  //BitmapSnappedImage.Free;
+  //MemoryStream.Free;
+  //CameraWindow.Release;
 end;
 
 procedure TCameraWindow.FormShow(Sender: TObject);
 Var
 pathToIni : string;
 begin
-  // initialize the video frame
-  //Frame_Video1.InitFrame;
-
   // some settings
   lbl_SaveSuccessfull.Visible := False;
+  btnSnapImage.Enabled := False;
+  btnSave.Enabled := False;
 
   // create iniFile Object and connect to the ini file that SAMS uses
+  // in order to read the path settings to the Server where images are stored
   pathToIni := extractFilePath(paramstr(0)) + 'Persistent.ini';
   myIni := TiniFile.Create(pathToIni);
   if fileexists(pathToIni) then
@@ -322,8 +342,25 @@ begin
         //showmessage(pathToIni);
         //showmessage(myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', 'test'));
         edtPathToImage.Text := myIni.ReadString('Win2kAppForm', 'JvDirEdt_Server_Image_Path_Text', '');
+        // alreaday set the path to a MAMS
+        edtPathToImage.Text := edtPathToImage.Text + '\' + edtMAMS.Text;
+      End
+      Else
+      Begin
+       edtPathToImage.Text := 'path not set in SAMS!!';
+       btnSave.Enabled := False;
       End;
-    End
+    End;
+
+  //check if camera has already been selected.
+  if not (WCamera.DeviceName = '')  then
+  begin
+    if WCamera.Format.Width <>0 then
+    begin
+    StartDevice;
+    end;
+  end;
+
 
 end;
 
