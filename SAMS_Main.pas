@@ -8526,6 +8526,16 @@ procedure TfrmMAMS.DBedtTouchWeightsMedium2PrepKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
+
+  if Key = vk_Return then
+    begin
+      // convert from g to mg
+      if CheckBoxTouchPrepWeightsAutoConversion.Checked then
+        Begin
+          (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
+        End;
+    end;
+
 end;
 
 procedure TfrmMAMS.DBedtTouchWeightsMediumPrepChange(Sender: TObject);
@@ -8538,6 +8548,16 @@ procedure TfrmMAMS.DBedtTouchWeightsMediumPrepKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
+
+    if Key = vk_Return then
+    begin
+      // convert from g to mg
+      if CheckBoxTouchPrepWeightsAutoConversion.Checked then
+        Begin
+          (Sender AS TDBEdit).Field.Text := floattostr( strtofloat((Sender AS TDBEdit).Text) * 1000 );
+        End;
+    end;
+
 end;
 
 procedure TfrmMAMS.DBGridAutoSizeAllColumns(Grid: TDBGrid);

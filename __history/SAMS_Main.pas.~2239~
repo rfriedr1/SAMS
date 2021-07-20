@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: April-13-2021';
+  myVersion = '1.9.9 Built: July-20-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -862,6 +862,11 @@ type
     Label144: TLabel;
     Label145: TLabel;
     dbgrdLeHeCurrents: TDBGrid;
+    DBedtLECurrent: TDBEdit;
+    DBedtHECurrent: TDBEdit;
+    Label146: TLabel;
+    Label147: TLabel;
+    pnlHomeNumberOfSamplesInPrep: TPanel;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1474,7 +1479,9 @@ begin
       prep_nr := dm.cdsLeHeCurrents.FieldByName('prep_nr').AsString;
       target_nr := dm.cdsLeHeCurrents.FieldByName('target_nr').AsString;
       le_current := dm.cdsLeHeCurrents.FieldByName('LECurrent').AsString;
+      le_current := ReplaceStr(le_current, ',', '.');
       he_current := dm.cdsLeHeCurrents.FieldByName('HECurrent').AsString;
+      he_current := ReplaceStr(he_current, ',', '.');
 
       LogWindow.addLogEntry('DB -- transfer LE and HE Currents to target_t: ' + sample_nr+'.'+prep_nr+'.'+target_nr);
       JvLogFile.Add('DB',lesInformation,'transfer LE and HE Currents to target_t: ' + sample_nr+'.'+prep_nr+'.'+target_nr);
@@ -1486,6 +1493,7 @@ begin
       dm.cdsLeHeCurrents.Next;
 
     until dm.cdsLeHeCurrents.Eof;
+    grdMagazineData.Repaint;
     end;
 end;
 
@@ -3952,7 +3960,7 @@ begin
   //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   DoSampleInfo(SampleNr, NPreps, NTargets);
 
-  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  //DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
   // also update TouchWeightsPanel
   edtTouchWeightsMAMS.Value := edtSampleNr.Value;
   edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
@@ -6393,7 +6401,7 @@ begin
           he_current := ADOQueryLeHeCurrent.FieldByName('A').AsString;
           ADOQueryLeHeCurrent.Close;
 
-          // write data into clientdataset
+          // write data into clientdataset, clientdataset is connected to a grid in the UI
           LogWindow.addLogEntry('fill string grid with data from query');
           JvLogFile.Add('DB',lesInformation,'fill string grid with data from query');
 
@@ -9231,6 +9239,8 @@ begin
   // ### update number of unprep'd samples and samples ready for graph and express
   // unpre'd samples
   pnlHomeNumberofUnprepdSamples.Caption := '# to prep: ' + IntToStr(dm.GetAllPlanned(False));
+  // samples inPrep
+  pnlHomeNumberofSamplesInPrep.Caption := '# in prep: ' + IntToStr(dm.GetAllInPrep);
   // ready for graph
   pnlHomeNumberofReadyForGraph.Caption := '# to graph: ' + IntToStr(dm.GetAllWaitingForGraph);
   // ready for meas

@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = DBMemo_LabComment
+  ActiveControl = btnTouchWeightsMAMSDown
   Caption = 'SAMS '
   ClientHeight = 796
   ClientWidth = 1471
@@ -294,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 725
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsTouch
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -9276,7 +9276,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 278
+          Height = 274
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9453,13 +9453,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 278
+          Height = 274
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            278)
+            274)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9637,7 +9637,7 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 253
+            Top = 249
             Width = 97
             Height = 17
             Alignment = taLeftJustify
@@ -9881,7 +9881,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300C80710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300CC0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10660,7 +10660,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806840918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806880918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16910,7 +16910,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00C80720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00CC0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
