@@ -10,6 +10,7 @@ object CameraWindow: TCameraWindow
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
@@ -51,6 +52,7 @@ object CameraWindow: TCameraWindow
         Width = 217
         Height = 21
         TabOrder = 0
+        TabStop = False
         Text = 'select camera...'
         OnChange = ComboBoxCameraChange
         OnDropDown = ComboBoxCameraDropDown
@@ -61,6 +63,7 @@ object CameraWindow: TCameraWindow
         Width = 121
         Height = 21
         TabOrder = 1
+        TabStop = False
         OnChange = ComboBoxFormatChange
       end
     end
@@ -139,8 +142,9 @@ object CameraWindow: TCameraWindow
         Top = 17
         Width = 233
         Height = 21
+        TabStop = False
         NumbersOnly = True
-        TabOrder = 0
+        TabOrder = 2
         OnChange = edtMAMSChange
       end
       object edtPathToImage: TJvDirectoryEdit
@@ -148,8 +152,9 @@ object CameraWindow: TCameraWindow
         Top = 44
         Width = 233
         Height = 21
+        TabStop = False
         DialogKind = dkWin32
-        TabOrder = 1
+        TabOrder = 0
         Text = 'PathToImage'
       end
       object btnSnapImage: TButton
@@ -161,7 +166,7 @@ object CameraWindow: TCameraWindow
         Caption = 'Snap'
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 2
+        TabOrder = 1
         OnClick = btnSnapImageClick
       end
       object btnSave: TButton
@@ -174,6 +179,7 @@ object CameraWindow: TCameraWindow
         ParentShowHint = False
         ShowHint = True
         TabOrder = 3
+        TabStop = False
         OnClick = btnSaveClick
       end
       object SpinButton: TSpinButton

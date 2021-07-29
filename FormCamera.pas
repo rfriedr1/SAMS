@@ -516,8 +516,23 @@ end;
 procedure TCameraWindow.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
- if Key = vk_SUBTRACT then edtMams.Text := intToStr(StrToInt(edtMams.Text)-1);
- if Key = vk_ADD then edtMams.Text := intToStr(StrToInt(edtMams.Text)+1);
+
+// wathc up down key to change mams number
+// make sure that KeyPreview = true
+
+ if Key = vk_DOWN then
+  begin
+    // showmessage('down');
+    edtMams.Text := intToStr(StrToInt(edtMams.Text)-1);
+    btnSnapImage.SetFocus;
+  end;
+ if Key = vk_UP then
+  begin
+    //showmessage('up');
+    edtMams.Text := intToStr(StrToInt(edtMams.Text)+1);
+    btnSnapImage.SetFocus;
+  end;
+
 end;
 
 procedure TCameraWindow.FormResize(Sender: TObject);

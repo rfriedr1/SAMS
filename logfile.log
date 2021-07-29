@@ -1,38 +1,3 @@
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51522.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51528.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51529.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51530.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51531.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51540.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51541.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51545.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51549.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51550.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51551.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51567.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51570.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51575.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51576.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51577.1.1
-[28.06.2021 15:07:49]Information>DB>transfer LE and HE Currents to target_t: 51624.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51625.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51626.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51627.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51628.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51629.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51630.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51631.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51632.1.1
-[28.06.2021 15:07:50]Information>DB>transfer LE and HE Currents to target_t: 51633.1.1
-[28.06.2021 15:08:18]Information>Closeup>SAMS closed by user.
-[28.06.2021 15:08:53]Information>Startup>starting Application
-[28.06.2021 15:08:53]Information>Startup>DB - DataSource= db_dmams_KTL
-[28.06.2021 15:08:53]Information>Startup>DB - UserID= rfriedrich
-[28.06.2021 15:08:53]Information>Startup>connecting to DB at startup
-[28.06.2021 15:08:53]Information>Startup>Connected to DB.
-[28.06.2021 15:08:55]Information>SQLQuery>SELECT DISTINCT magazine from target_t   WHERE magazine not like "set%" order by magazine desc;
-[28.06.2021 15:08:58]Information>DB>Get data of all targets of selected magazine
-[28.06.2021 15:08:58]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA210625"
 [28.06.2021 15:08:58]Information>DB>query db_dc14 Database for Le and He Currents
 [28.06.2021 15:08:58]Information>DB>fill string grid with data from query
 [28.06.2021 15:08:58]Information>DB>fill string grid with data from query
@@ -1144,3 +1109,51 @@
 [20.07.2021 14:58:00]Information>Startup>connecting to DB at startup
 [20.07.2021 14:58:00]Information>Startup>Connected to DB.
 [20.07.2021 14:58:25]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:30:39]Information>Startup>starting Application
+[23.07.2021 13:30:39]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:30:39]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:30:39]Information>Startup>connecting to DB at startup
+[23.07.2021 13:30:40]Information>Startup>Connected to DB.
+[23.07.2021 13:31:24]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:32:21]Information>Startup>starting Application
+[23.07.2021 13:32:21]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:32:21]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:32:21]Information>Startup>connecting to DB at startup
+[23.07.2021 13:32:21]Information>Startup>Connected to DB.
+[23.07.2021 13:32:50]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:34:21]Information>Startup>starting Application
+[23.07.2021 13:34:21]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:34:21]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:34:21]Information>Startup>connecting to DB at startup
+[23.07.2021 13:34:21]Information>Startup>Connected to DB.
+[23.07.2021 13:34:45]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:36:35]Information>Startup>starting Application
+[23.07.2021 13:36:35]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:36:35]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:36:36]Information>Startup>connecting to DB at startup
+[23.07.2021 13:36:36]Information>Startup>Connected to DB.
+[23.07.2021 13:36:59]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:37:43]Information>Startup>starting Application
+[23.07.2021 13:37:43]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:37:43]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:37:43]Information>Startup>connecting to DB at startup
+[23.07.2021 13:37:43]Information>Startup>Connected to DB.
+[23.07.2021 13:38:09]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:40:41]Information>Startup>starting Application
+[23.07.2021 13:40:41]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:40:41]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:40:41]Information>Startup>connecting to DB at startup
+[23.07.2021 13:40:41]Information>Startup>Connected to DB.
+[23.07.2021 13:41:17]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:42:44]Information>Startup>starting Application
+[23.07.2021 13:42:44]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:42:44]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:42:44]Information>Startup>connecting to DB at startup
+[23.07.2021 13:42:44]Information>Startup>Connected to DB.
+[23.07.2021 13:43:14]Information>Closeup>SAMS closed by user.
+[23.07.2021 13:45:22]Information>Startup>starting Application
+[23.07.2021 13:45:22]Information>Startup>DB - DataSource= db_dmams_KTL
+[23.07.2021 13:45:22]Information>Startup>DB - UserID= rfriedrich
+[23.07.2021 13:45:22]Information>Startup>connecting to DB at startup
+[23.07.2021 13:45:22]Information>Startup>Connected to DB.
+[23.07.2021 13:45:47]Information>Closeup>SAMS closed by user.
