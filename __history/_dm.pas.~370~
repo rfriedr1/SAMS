@@ -3,7 +3,7 @@ unit _dm;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs,
+  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs, Controls,
   Datasnap.DBClient;
 
 {
@@ -230,7 +230,7 @@ type
     function TargetRecordExistsForSample(SampleNr : integer) : boolean;
     procedure TransferAgeFromTarget(SampleNr, PrepNr, TargetNr : integer);
     procedure TransferMA_Nr_To_MAMS;
-    procedure TransferLeHeCurrentToTarget(SampleNr, PrepNr, TargetNr, le_urrent, he_urrent : string);
+    procedure TransferLeHeCurrentToTarget(SampleNr, PrepNr, TargetNr, le_current, he_current : string);
     //procedure SendToLog(s:string);
     function ReplaceUmlaute(s: string): string;
     function ReplaceBadCharacters(s: string): string;
@@ -354,30 +354,48 @@ function Tdm.AddNewUser: String;
 // or 'none' if no user was created
 Var
   last_name: string;
+  choice: integer;
 begin
  last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
   // check if a valid string was given
  IF last_name <> '' THEN
- BEGIN
+  BEGIN
     //check if the name already exists
-    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN BEGIN
-      ShowMessage('Last Name already exists! Use a new last name. '); // last_name already exists
-    END
-    ELSE
-    BEGIN
-      IF InsertIntoDB('user_t', 'last_name', last_name) THEN BEGIN
-        // some error orrured while inserting new data
-        ShowMessage('Error inserting new user.'); // last_name does not exist -> insert new user into db
-        Result:='none'
+    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN
+      BEGIN
+        choice := MessageDlg('Last Name already exists! Create new user anyway?', mtWarning, [mbNo, mbYes],0); // last_name already exists
+        IF choice = mrYes THEN   // if new user should be created any even if exists already
+          BEGIN
+          IF InsertIntoDB('user_t', 'last_name', last_name) THEN
+            BEGIN
+              // some error orrured while inserting new data
+              ShowMessage('Error inserting new user.');
+              Result:='none'
+            END
+            ELSE
+            BEGIN
+              // data inserted without any error
+              ShowMessage('New user created.');  // show message
+              Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+            END;
+        END;
       END
-      ELSE
-      begin
-        // data inserted without any error
-        ShowMessage('New user created.');  // show message
-        Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
-      end;
-    END;
- end;
+      ELSE  // user doesn't exists yet -> insert into DB
+      BEGIN
+        IF InsertIntoDB('user_t', 'last_name', last_name) THEN
+          BEGIN
+            // some error orrured while inserting new data
+            ShowMessage('Error inserting new user.');
+            Result:='none'
+          END
+          ELSE
+          BEGIN
+            // data inserted without any error
+            ShowMessage('New user created.');  // show message
+            Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+          END;
+      END;
+   END;
 end;
 
 
@@ -528,7 +546,8 @@ begin            // only perform command if connection is established (use ADOCo
       ADOCmd.Free;                            // cleanup command object
       result:= false;
     end
-else begin
+else
+      begin
         ShowMessage('Database not connected.');   //Database is not connected
         result:= true;
       end;
@@ -798,7 +817,7 @@ begin
 end;
 
 function Tdm.GetAllPlanned(ShowOnHold : boolean) : integer;
-// get all samples that are not prep'd yet
+// get all samples where prep has not started yet
 var
   s : string;
 begin
@@ -814,7 +833,8 @@ begin
                   ' WHERE sample_t.sample_nr>9999 AND preparation_t.step1_start IS NULL AND preparation_t.prep_end IS NULL ' +
                   ' AND c14_age IS NULL ' +
                   ' AND material <> "graphite" ' +
-                  ' AND  preparation_t.stop=0';
+                  ' AND  preparation_t.stop=0' +
+                  ' AND prep_start IS NULL';
       if ShowOnHold then
         SQL.Text := SQL.Text +  ' AND sample_t.not_tobedated=1;'
       else
@@ -1744,7 +1764,7 @@ begin
         ' conc_c/conc_n*14/12 as cn_ratio, conc_c, conc_n, preparation_t.stop,' +
         ' magazine, position, precis, cycle_min, cycle_max, catalyst, cathode_nr, reactor_nr,' +
         ' co2_init, co2_final, hydro_init, hydro_final, react_time, target_pressed, target_t.stop,' +
-        ' fm, fm_sig, dc13, dc13_sig,calcset, editallowed, target_t.c14_age, target_t.c14_age_sig,' +
+        ' le_curr, he_curr, fm, fm_sig, dc13, dc13_sig,calcset, editallowed, target_t.c14_age, target_t.c14_age_sig,' +
         ' target_t.cal1sMin, target_t.cal1sMax, target_t.cal2sMin, target_t.cal2sMax, target_t.graph_date, ' +
         ' target_t.target_comment, target_t.graph_batch, target_t.graphitized, ' +
         ' return_to_sender, returned_to_sender, ' +
@@ -2844,8 +2864,8 @@ begin
     c := FormatSettings.DecimalSeparator;
     FormatSettings.DecimalSeparator := '.';
     CommandText := 'UPDATE target_t ' +
-                   'SET target_t.le_curr=' + le_current + ', ' +
-                   'target_t.he_curr=' + he_current + ', ' +
+                   'SET le_curr=' + le_current + ', ' +
+                   'he_curr=' + he_current + ' ' +
                    'WHERE target_t.sample_nr=' + SampleNr + ' ' +
                    'AND prep_nr=' + PrepNr + ' ' +
                    'AND target_nr=' + TargetNr +
@@ -2857,7 +2877,7 @@ begin
     IF dm.adoConnKTL.Connected THEN
                 Begin
                   Try
-                    //Execute;
+                    Execute;
                     LogWindow.addLogEntry('DB -- query executed');
                   Except
                     // connections is closed, reconnect by setting connected to true and test again
@@ -2865,7 +2885,7 @@ begin
                     Try
                       dm.DBreconnect;
                       LogWindow.addLogEntry('DB -- execute query again');
-                      //Execute;
+                      Execute;
                     Except
                        LogWindow.addLogEntry('DB -- can not reconnect');
                     End;

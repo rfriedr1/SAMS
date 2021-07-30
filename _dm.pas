@@ -3,7 +3,7 @@ unit _dm;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs,
+  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs, Controls,
   Datasnap.DBClient;
 
 {
@@ -354,30 +354,48 @@ function Tdm.AddNewUser: String;
 // or 'none' if no user was created
 Var
   last_name: string;
+  choice: integer;
 begin
  last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
   // check if a valid string was given
  IF last_name <> '' THEN
- BEGIN
+  BEGIN
     //check if the name already exists
-    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN BEGIN
-      ShowMessage('Last Name already exists! Use a new last name. '); // last_name already exists
-    END
-    ELSE
-    BEGIN
-      IF InsertIntoDB('user_t', 'last_name', last_name) THEN BEGIN
-        // some error orrured while inserting new data
-        ShowMessage('Error inserting new user.'); // last_name does not exist -> insert new user into db
-        Result:='none'
+    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN
+      BEGIN
+        choice := MessageDlg('Last Name already exists! Create new user anyway?', mtWarning, [mbNo, mbYes],0); // last_name already exists
+        IF choice = mrYes THEN   // if new user should be created any even if exists already
+          BEGIN
+          IF InsertIntoDB('user_t', 'last_name', last_name) THEN
+            BEGIN
+              // some error orrured while inserting new data
+              ShowMessage('Error inserting new user.');
+              Result:='none'
+            END
+            ELSE
+            BEGIN
+              // data inserted without any error
+              ShowMessage('New user created.');  // show message
+              Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+            END;
+        END;
       END
-      ELSE
-      begin
-        // data inserted without any error
-        ShowMessage('New user created.');  // show message
-        Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
-      end;
-    END;
- end;
+      ELSE  // user doesn't exists yet -> insert into DB
+      BEGIN
+        IF InsertIntoDB('user_t', 'last_name', last_name) THEN
+          BEGIN
+            // some error orrured while inserting new data
+            ShowMessage('Error inserting new user.');
+            Result:='none'
+          END
+          ELSE
+          BEGIN
+            // data inserted without any error
+            ShowMessage('New user created.');  // show message
+            Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+          END;
+      END;
+   END;
 end;
 
 
@@ -528,7 +546,8 @@ begin            // only perform command if connection is established (use ADOCo
       ADOCmd.Free;                            // cleanup command object
       result:= false;
     end
-else begin
+else
+      begin
         ShowMessage('Database not connected.');   //Database is not connected
         result:= true;
       end;

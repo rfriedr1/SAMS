@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: July-20-2021';
+  myVersion = '1.9.9 Built: July-30-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -4854,7 +4854,7 @@ end;
 procedure TfrmMAMS.edtProjectNameChange(Sender: TObject);
 begin
   ProjectName := edtProjectName.Text;
-  ProjectName := copy(ProjectName, 1, 30);
+  ProjectName := copy(ProjectName, 1, 99);
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
 end;
 
@@ -7584,7 +7584,7 @@ begin
     until (Pos('Project name', s1) > 0) or EOF(InF);
     if EOF(InF) then ShowMessage('Text Project name in cell A1 is missing!');
     ProjectName := ExtractWord(2, s, [';']);
-    ProjectName := copy(ProjectName, 1, 30);
+    ProjectName := copy(ProjectName, 1, 99);
     ProjectName := dm.ReplaceBadCharacters(ProjectName);
     Readln(InF, s); // skip 'required'
     Readln(InF, s);
@@ -7622,7 +7622,7 @@ begin
         dm.tblUser.IndexFieldNames := 'last_name';
         s2 := trim(ExtractWord(2, s, [';'])); // get user data
         s2 := dm.ReplaceBadCharacters(s2);
-        s2 := copy(s2, 1, 40);
+        s2 := copy(s2, 1, 59);
         if Length(s2) > 0 then
         begin  //write info into cells
           if Pos('first name', s1) > 0 then grdPreviewUser.Cells[1, 1] := s2;

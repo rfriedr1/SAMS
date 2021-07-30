@@ -938,4 +938,33 @@ object dm: Tdm
     Left = 728
     Top = 800
   end
+  object dsLeHeCurrents: TDataSource
+    DataSet = cdsLeHeCurrents
+    Left = 1008
+    Top = 376
+  end
+  object cdsLeHeCurrents: TClientDataSet
+    Aggregates = <>
+    FieldDefs = <>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 888
+    Top = 376
+    object cdsLeHeCurrentsSample_nr: TStringField
+      FieldName = 'Sample_nr'
+    end
+    object cdsLeHeCurrentsPrep_nr: TStringField
+      FieldName = 'Prep_nr'
+    end
+    object cdsLeHeCurrentsTarget_nr: TStringField
+      FieldName = 'Target_nr'
+    end
+    object cdsLeHeCurrentsLECurrent: TStringField
+      FieldName = 'LECurrent'
+    end
+    object cdsLeHeCurrentsHECurrent: TStringField
+      FieldName = 'HECurrent'
+    end
+  end
 end

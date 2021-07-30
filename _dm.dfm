@@ -119,11 +119,11 @@ object dm: Tdm
     end
     object tblUserorganisation: TStringField
       FieldName = 'organisation'
-      Size = 40
+      Size = 99
     end
     object tblUserinstitute: TStringField
       FieldName = 'institute'
-      Size = 40
+      Size = 99
     end
     object tblUseraddress_1: TStringField
       FieldName = 'address_1'

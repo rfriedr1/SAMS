@@ -3,7 +3,7 @@ unit _dm;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs,
+  SysUtils, Classes, DB, ADODB, TypInfo(*, frxClass, frxDBSet*), Dialogs, Controls,
   Datasnap.DBClient;
 
 {
@@ -191,7 +191,6 @@ type
     function GetAllInPrep : integer;
     function GetAllPlanned(ShowOnHold : boolean) : integer;
     function GetAllWaitingForGraph : integer;
-    function GetAllSampleInPrep : integer;
     function GetAllWaitingForMeas : integer;
     function GetWaitingExpress : integer;
     function GetArchSamplesOfMonth(Year, Month : word) : integer;
@@ -355,30 +354,48 @@ function Tdm.AddNewUser: String;
 // or 'none' if no user was created
 Var
   last_name: string;
+  choice: integer;
 begin
  last_name := InputBox('Add New User', 'Users Last Name (Case Sensitive)', '');  // display InputBox (Case sensitive!!)
   // check if a valid string was given
  IF last_name <> '' THEN
- BEGIN
+  BEGIN
     //check if the name already exists
-    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN BEGIN
-      ShowMessage('Last Name already exists! Use a new last name. '); // last_name already exists
-    END
-    ELSE
-    BEGIN
-      IF InsertIntoDB('user_t', 'last_name', last_name) THEN BEGIN
-        // some error orrured while inserting new data
-        ShowMessage('Error inserting new user.'); // last_name does not exist -> insert new user into db
-        Result:='none'
+    IF CheckExistingDBValue('user_t', 'last_name', last_name) THEN
+      BEGIN
+        choice := MessageDlg('Last Name already exists! Create new user anyway?', mtWarning, [mbNo, mbYes],0); // last_name already exists
+        IF choice = mrYes THEN   // if new user should be created any even if exists already
+          BEGIN
+          IF InsertIntoDB('user_t', 'last_name', last_name) THEN
+            BEGIN
+              // some error orrured while inserting new data
+              ShowMessage('Error inserting new user.');
+              Result:='none'
+            END
+            ELSE
+            BEGIN
+              // data inserted without any error
+              ShowMessage('New user created.');  // show message
+              Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+            END;
+        END;
       END
-      ELSE
-      begin
-        // data inserted without any error
-        ShowMessage('New user created.');  // show message
-        Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
-      end;
-    END;
- end;
+      ELSE  // user doesn't exists yet -> insert into DB
+      BEGIN
+        IF InsertIntoDB('user_t', 'last_name', last_name) THEN
+          BEGIN
+            // some error orrured while inserting new data
+            ShowMessage('Error inserting new user.');
+            Result:='none'
+          END
+          ELSE
+          BEGIN
+            // data inserted without any error
+            ShowMessage('New user created.');  // show message
+            Result:= dm.GetUserNrByLastName(last_name);// return userID of the newly created user
+          END;
+      END;
+   END;
 end;
 
 
@@ -529,7 +546,8 @@ begin            // only perform command if connection is established (use ADOCo
       ADOCmd.Free;                            // cleanup command object
       result:= false;
     end
-else begin
+else
+      begin
         ShowMessage('Database not connected.');   //Database is not connected
         result:= true;
       end;
@@ -799,7 +817,7 @@ begin
 end;
 
 function Tdm.GetAllPlanned(ShowOnHold : boolean) : integer;
-// get all samples that are not prep'd yet
+// get all samples where prep has not started yet
 var
   s : string;
 begin
@@ -815,7 +833,8 @@ begin
                   ' WHERE sample_t.sample_nr>9999 AND preparation_t.step1_start IS NULL AND preparation_t.prep_end IS NULL ' +
                   ' AND c14_age IS NULL ' +
                   ' AND material <> "graphite" ' +
-                  ' AND  preparation_t.stop=0';
+                  ' AND  preparation_t.stop=0' +
+                  ' AND prep_start IS NULL';
       if ShowOnHold then
         SQL.Text := SQL.Text +  ' AND sample_t.not_tobedated=1;'
       else
@@ -848,53 +867,6 @@ end;
 
 function Tdm.GetAllWaitingForGraph : integer;
 // get all samples that are not graphitized yet but prep'd
-var
-  s : string;
-begin
-  with qryWaitingForGraph do
-  begin
-     Close;
-     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, user_t.first_name, project_t.desired_date ' +
-                   ' FROM sample_t ' +
-                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
-                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
-                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-                   'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
-                   ' WHERE preparation_t.prep_end IS NOT NULL and target_t.graphitized IS NULL ' +
-                   ' and target_t.target_pressed IS NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
-                   ' and preparation_t.stop=0 and  target_t.stop=0 ' +
-                   ' and project_t.out_date IS NULL ' +
-    //               ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
-                   ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
-                   ' and NOT (user_t.last_name = "intern" AND user_t.first_name ="intern")' +
-                   ' ORDER BY sample_t.sample_nr;' ;
-     s := SQL.Text;
-     // ClipBoard.SetTextBuf(PChar(s));
-     IF dm.adoConnKTL.Connected THEN
-                Begin
-                  Try
-                    Open;
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                  Except
-                    // connections is closed, reconnect by setting connected to true and test again
-                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
-                    Try
-                      dm.DBreconnect;
-                      LogWindow.addLogEntry('DB -- execute query again');
-                      Open;
-                    Except
-                       LogWindow.addLogEntry('DB -- can not reconnect');
-                    End;
-                    Open;
-                    //ShowMessage('Database connection is closed.');
-                  End;
-                End;
-  end;
-  Result := qryWaitingForGraph.RecordCount;
-end;
-
-function Tdm.GetAllSampleInPrep : integer;
-// get all samples that are currently in prep (have a prep start date but no prep end
 var
   s : string;
 begin
