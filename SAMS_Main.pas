@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: July-30-2021';
+  myVersion = '1.9.9 Built: Aug-03-2021';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
