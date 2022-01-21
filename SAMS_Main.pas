@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Aug-03-2021';
+  myVersion = '1.9.9 Built: Jan-21-2022';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -513,10 +513,9 @@ type
     gbxMagazines: TGroupBox;
     Panel16: TPanel;
     Label88: TLabel;
-    Label89: TLabel;
     lbMagazine: TLabel;
     tnsto: TButton;
-    edtMagazineMonths: TJvSpinEdit;
+    edtMagazineLimit: TJvSpinEdit;
     Panel25: TPanel;
     grdMagazines: TDBGrid;
     Panel26: TPanel;
@@ -867,6 +866,8 @@ type
     Label146: TLabel;
     Label147: TLabel;
     pnlHomeNumberOfSamplesInPrep: TPanel;
+    CSVExportClipBoard: TJvDBGridCSVExport;
+    btnReloadTransferMagazines: TBitBtn;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1223,6 +1224,8 @@ type
     procedure DBedtTouchWeightsMedium2PrepChange(Sender: TObject);
     procedure DBEditWeightMediumChange(Sender: TObject);
     procedure DBEditWeightMedium2Change(Sender: TObject);
+    procedure DBDateTimeTouchPrepStartChange(Sender: TObject);
+    procedure btnReloadTransferMagazinesClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1557,6 +1560,11 @@ begin
     SetupLabPlanPage; // adjust colwidth
   end;
 
+end;
+
+procedure TfrmMAMS.btnReloadTransferMagazinesClick(Sender: TObject);
+begin
+GetListOfRecentMagazines(1);
 end;
 
 procedure TfrmMAMS.btnReportClick(Sender: TObject);
@@ -2031,6 +2039,7 @@ begin
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... finished');
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... ' + grdPendingReports.Columns.Count.ToString + ' columns to display in grid');
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths manually');
+    LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths manually');
     with grdPendingReports do
     begin
       Columns[0].Width := 150; // project
@@ -2051,6 +2060,8 @@ begin
     LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically');
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths automatically');
     FixDBGridColumnsWidth(grdPendingReports);
+    LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically done!');
+    JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths automatically done!');
 
   // set the column that is neing used to order the grid by
   grdPendingReportsTitleClick(grdPendingReports.Columns[4]);
@@ -3982,11 +3993,15 @@ begin
         LogWindow.addLogEntry('Filename for export = ' + Filename);
         ExportGrid;
       end;
-    3: with HTMLExport do begin
+    3: with CSVExportClipBoard do begin
         Grid := grdSamplesOfSubmitter;
         ExportGrid;
       end;
-    4: with XMLExport do begin
+    4: with HTMLExport do begin
+        Grid := grdSamplesOfSubmitter;
+        ExportGrid;
+      end;
+    5: with XMLExport do begin
         Grid := grdSamplesOfSubmitter;
         ExportGrid;
       end;
@@ -4179,7 +4194,13 @@ end;
 procedure TfrmMAMS.btnTouchPrepDateStartTodayClick(Sender: TObject);
 begin
   DBDateTimeTouchPrepStart.Date := Now;
-    btnTouchWeightsPrepNeedsSaving.Visible := True;
+  DBDateTimeTouchPrepStart.Update;
+
+  DBchkTouchWeightsSampleNoLeftover.SetFocus;
+
+  //showmessage(FormatDateTime('YYYY-MM-DD',DBDateTimeTouchPrepStart.Date));
+  btnTouchWeightsPrepNeedsSaving.Visible := True;
+
 end;
 
 procedure TfrmMAMS.btnTouchWeightsAddToGraphBatchClick(Sender: TObject);
@@ -6111,6 +6132,8 @@ end;
 
 procedure TfrmMAMS.grdInPrepDrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
+
+  CONST CtrlState: array[0..1] of integer = (DFCS_BUTTONCHECK, DFCS_BUTTONCHECK or DFCS_CHECKED) ;
 begin
   AlternateRowColors(Sender, State);
 
@@ -6124,6 +6147,17 @@ begin
      End;
 
   TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+    // display boolean fileds as checkboxes in the infreeze column
+  if (Column.FieldName='InFreeze') then
+  begin
+  //LogWindow.addLogEntry('inside if');
+    TDBGrid(Sender).Canvas.FillRect(Rect) ;
+    if VarIsNull(Column.Field.Value) then
+      DrawFrameControl(TDBGrid(Sender).Canvas.Handle,Rect, DFC_BUTTON, DFCS_BUTTONCHECK or DFCS_INACTIVE) {grayed}
+    else
+      DrawFrameControl(TDBGrid(Sender).Canvas.Handle,Rect, DFC_BUTTON, CtrlState[Column.Field.AsInteger]) ; {checked or unchecked}
+  end;
 end;
 
 procedure TfrmMAMS.grdInPrepTitleClick(Column: TColumn);
@@ -8320,24 +8354,30 @@ begin
  i := 0;
  DBGrid.DataSource.DataSet.DisableControls;
  //total width of all columns before resize
- TotWidth := 1;
+ TotWidth := 10;
  //how to divide any extra space in the grid
  VarWidth := 1;
  //how many columns need to be auto-resized
  colCount := DBGrid.Columns.Count;
  //calculate total with of all colums according to the text width within the columns
  ResizableColumnCount := 0;
- for i := 0 to colCount -1 do
+
+ for i := 0 to colCount-1 do
    begin
        // find max text-width of this column
+        LogWindow.addLogEntry('FixDBGridColumnsWidth: find total width, operate on column: ' + inttostr(i));
+        JvLogFile.Add('FixDBGridColumnsWidth',lesInformation,'FixDBGridColumnsWidth: find total width, operate on column: ' + inttostr(i));
         WMax := 0;
         DBGrid.DataSource.DataSet.First;
         while not DBGrid.DataSource.DataSet.EOF do
           begin
+
             W := DBGrid.Canvas.TextWidth(DBGrid.Columns[i].Field.AsString);
             if W > WMax then WMax := W;
             DBGrid.DataSource.DataSet.Next;
           end;
+          LogWindow.addLogEntry('found wmax');
+          DBGrid.DataSource.DataSet.First;
        // find with of the column title
           WTitle := DBGrid.Canvas.TextWidth(DBGrid.Columns[i].Title.Caption);
        // if column title is larger than column content then use width of the column title
@@ -8346,8 +8386,7 @@ begin
           DBGrid.Columns[i].Width:= WMax;
       // count total with of all columns
       TotWidth := TotWidth + DBGrid.Columns[i].Width;
-     if DBGrid.Columns[i].Field.Tag=0 then // tag could be used to define a minimu width
-     Inc(ResizableColumnCount);
+     if DBGrid.Columns[i].Field.Tag=0 then Inc(ResizableColumnCount);// tag could be used to define a minimum width
    end;
    LogWindow.addLogEntry('FixDBGridColumnsWidth: Colums to Resize = ' + inttostr(ResizableColumnCount));
  //add 1px for the column separator lineif dgColLines in DBGrid.Options then
@@ -8364,10 +8403,13 @@ begin
  LogWindow.addLogEntry('FixDBGridColumnsWidth: Percentage change of column widths = ' + floattostr(percentChange));
  // showmessage('percentChange = '+ floattostr(percentChange));
  VarWidth := varWidth div ResizableColumnCount;
+
  // resize all colums according to its percentage change
  LogWindow.addLogEntry('FixDBGridColumnsWidth: start resizing columns');
  for i := 0 to colCount -1 do
    begin
+   LogWindow.addLogEntry('FixDBGridColumnsWidth: resize, operate on column: ' + inttostr(i));
+   JvLogFile.Add('FixDBGridColumnsWidth',lesInformation,'FixDBGridColumnsWidth: resize, operate on column: ' + inttostr(i));
    AColumn := DBGrid.Columns[i];
    if AColumn.Field.Tag=0 then
      begin
@@ -8377,7 +8419,8 @@ begin
      AColumn.Width := AColumn.Field.Tag;
      end;
    end;
-   DBGrid.DataSource.DataSet.EnableControls;
+
+ DBGrid.DataSource.DataSet.EnableControls;
 end;
 
 procedure TfrmMAMS.JumpToEmptyWeightField;
@@ -8410,6 +8453,11 @@ procedure TfrmMAMS.DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   btnTouchWeightsPrepNeedsSaving.Visible := True;
+end;
+
+procedure TfrmMAMS.DBDateTimeTouchPrepStartChange(Sender: TObject);
+begin
+  DBDateTimeTouchPrepStart.Update;
 end;
 
 procedure TfrmMAMS.DBDateTimeTouchPrepStartKeyDown(Sender: TObject;
@@ -8821,10 +8869,11 @@ begin
       Columns[0].Width := 45; // sample_nr
       Columns[1].Width := 100; // user_label
       Columns[2].Width := 100; // project
-      Columns[3].Width := 90; // material
+      Columns[3].Width := 50; // material
       Columns[4].Width := 80; // lastname
       Columns[5].Width := 90; // desired date
-      Columns[6].Width := 30; // desired date
+      Columns[6].Width := 30; // days in prep
+      Columns[7].Width := 50; // sample in freezer?
     end;
   n := n + dm.GetAllWaitingForGraph;            // get all samples that are prep'd but not graphitized
   with grdWaitingForGraph do
@@ -9841,8 +9890,9 @@ begin
     begin
       Close;
       SQL.Text := 'SELECT DISTINCT magazine from target_t  ' +
-        ' WHERE magazine not like "set%" order by magazine desc;';
-  //      '  order by magazine desc;';
+        ' WHERE magazine not like "set%" ' +
+        ' order by magazine desc ' +
+        ' LIMIT ' + FloatToStr(edtMagazineLimit.Value) +';';
       LogWindow.addLogEntry(SQL.Text);
       JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
       Open;

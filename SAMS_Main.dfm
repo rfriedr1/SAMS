@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 0
-  ActiveControl = DBEdit12
+  ActiveControl = btnTouchWeightsMAMSDown
   Caption = 'SAMS '
   ClientHeight = 878
   ClientWidth = 1471
@@ -294,7 +294,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1471
     Height = 807
-    ActivePage = tbsUserInfo
+    ActivePage = tbsTouch
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -2849,15 +2849,19 @@ object frmMAMS: TfrmMAMS
         Left = 0
         Top = 0
         Width = 1463
-        Height = 209
+        Height = 233
         Align = alTop
         TabOrder = 0
+        DesignSize = (
+          1463
+          233)
         object GroupBox15: TGroupBox
           Left = 615
           Top = 0
           Width = 538
-          Height = 215
+          Height = 227
           CustomHint = BalloonHint1
+          Anchors = [akLeft, akTop, akBottom]
           Caption = 'Create report in Word'
           TabOrder = 0
           object Label18: TLabel
@@ -2978,7 +2982,7 @@ object frmMAMS: TfrmMAMS
           Left = 1
           Top = 1
           Width = 608
-          Height = 207
+          Height = 231
           Align = alLeft
           Caption = 'Data Selection'
           TabOrder = 1
@@ -3080,7 +3084,8 @@ object frmMAMS: TfrmMAMS
             Items.Strings = (
               'OxCal'
               'Excel'
-              'LDA Halle')
+              'LDA Halle'
+              'Clipboard')
             TabOrder = 1
           end
           object btnExport: TButton
@@ -3286,9 +3291,9 @@ object frmMAMS: TfrmMAMS
       end
       object grdSamplesOfSubmitter: TDBGrid
         Left = 0
-        Top = 209
+        Top = 233
         Width = 1463
-        Height = 570
+        Height = 546
         CustomHint = BalloonHint1
         Align = alClient
         DataSource = dm.dsSampleOfSubmitter
@@ -6652,8 +6657,10 @@ object frmMAMS: TfrmMAMS
           Height = 720
           CustomHint = BalloonHint1
           Align = alClient
+          Ctl3D = False
           DataSource = dm.dsInPrep
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
+          ParentCtl3D = False
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -7179,22 +7186,15 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 15
           Width = 941
-          Height = 41
+          Height = 60
           Align = alTop
           TabOrder = 0
           object Label88: TLabel
             Left = 9
-            Top = 16
-            Width = 21
+            Top = 24
+            Width = 32
             Height = 13
-            Caption = 'Past'
-          end
-          object Label89: TLabel
-            Left = 93
-            Top = 16
-            Width = 30
-            Height = 13
-            Caption = 'month'
+            Caption = 'Limit #'
           end
           object lbMagazine: TLabel
             Left = 610
@@ -7206,27 +7206,82 @@ object frmMAMS: TfrmMAMS
           object tnsto: TButton
             Left = 245
             Top = 10
-            Width = 340
-            Height = 25
+            Width = 636
+            Height = 39
             CustomHint = BalloonHint1
             Caption = 'Transfer Data'
             TabOrder = 0
             OnClick = tnstoClick
           end
-          object edtMagazineMonths: TJvSpinEdit
-            Left = 42
-            Top = 11
-            Width = 45
+          object edtMagazineLimit: TJvSpinEdit
+            Left = 47
+            Top = 19
+            Width = 58
             Height = 21
+            Hint = 'Number of Magazines to dispaly'
             CustomHint = BalloonHint1
+            Value = 200.000000000000000000
             TabOrder = 1
+          end
+          object btnReloadTransferMagazines: TBitBtn
+            Left = 111
+            Top = 9
+            Width = 81
+            Height = 39
+            Hint = 'reload'
+            CustomHint = BalloonHint1
+            Glyph.Data = {
+              C2040000424DC204000000000000420000002800000018000000180000000100
+              10000300000080040000120B0000120B00000000000000000000007C0000E003
+              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+              FF7FFF7FFF7F}
+            ParentDoubleBuffered = True
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            OnClick = btnReloadTransferMagazinesClick
           end
         end
         object Panel25: TPanel
           Left = 2
-          Top = 56
+          Top = 75
           Width = 134
-          Height = 721
+          Height = 702
           Align = alLeft
           Caption = 'Panel25'
           TabOrder = 1
@@ -7234,7 +7289,7 @@ object frmMAMS: TfrmMAMS
             Left = 1
             Top = 1
             Width = 132
-            Height = 719
+            Height = 700
             CustomHint = BalloonHint1
             Align = alClient
             DataSource = dm.dsMagazines
@@ -7249,9 +7304,9 @@ object frmMAMS: TfrmMAMS
         end
         object Panel26: TPanel
           Left = 136
-          Top = 56
+          Top = 75
           Width = 807
-          Height = 721
+          Height = 702
           Align = alClient
           Caption = 'Panel26'
           TabOrder = 2
@@ -7259,7 +7314,7 @@ object frmMAMS: TfrmMAMS
             Left = 1
             Top = 1
             Width = 504
-            Height = 719
+            Height = 700
             CustomHint = BalloonHint1
             Align = alLeft
             DataSource = dm.dsMagazineData
@@ -7276,7 +7331,7 @@ object frmMAMS: TfrmMAMS
             Left = 505
             Top = 1
             Width = 301
-            Height = 719
+            Height = 700
             Align = alClient
             DataSource = dm.dsLeHeCurrents
             TabOrder = 1
@@ -7918,19 +7973,13 @@ object frmMAMS: TfrmMAMS
         BevelOuter = bvNone
         ColumnCollection = <
           item
-            Value = 20.046336322913170000
+            Value = 33.355765482818430000
           end
           item
-            Value = 20.022659337733690000
+            Value = 33.331629830047800000
           end
           item
-            Value = 19.999688022028130000
-          end
-          item
-            Value = 19.976999499969260000
-          end
-          item
-            Value = 19.954316817355750000
+            Value = 33.312604687133770000
           end>
         ControlCollection = <
           item
@@ -7949,7 +7998,7 @@ object frmMAMS: TfrmMAMS
             Column = 2
             Control = gpxHomeExpress
             Row = 0
-            RowSpan = 3
+            RowSpan = 4
           end>
         Padding.Left = 8
         Padding.Top = 8
@@ -7981,14 +8030,14 @@ object frmMAMS: TfrmMAMS
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
-          Width = 274
+          Width = 466
           Height = 187
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
           Align = alClient
-          Caption = 'Available Oxas and Blanks'
+          Caption = 'Available Oxas and Blanks (intern only)'
           Ctl3D = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -8002,15 +8051,16 @@ object frmMAMS: TfrmMAMS
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
+          ExplicitWidth = 274
           object pnlHomeNumberOfOxas: TPanel
             AlignWithMargins = True
             Left = 9
-            Top = 40
-            Width = 256
+            Top = 26
+            Width = 448
             Height = 70
             Hint = '<5 Red, 6..10 Yellow, >10 Green'
             CustomHint = BalloonHint1
-            Align = alBottom
+            Align = alTop
             BevelOuter = bvNone
             Caption = 'Oxas'
             Color = clYellow
@@ -8027,16 +8077,18 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+            ExplicitTop = 40
+            ExplicitWidth = 256
           end
           object pnlHomeNumberOfBlanks: TPanel
             AlignWithMargins = True
             Left = 9
-            Top = 116
-            Width = 256
+            Top = 102
+            Width = 448
             Height = 62
             Hint = '<3 Red, 3..6 Yellow, >6 Green'
             CustomHint = BalloonHint1
-            Align = alBottom
+            Align = alTop
             BevelOuter = bvNone
             Caption = 'Blanks'
             Color = clYellow
@@ -8053,12 +8105,14 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
+            ExplicitTop = 116
+            ExplicitWidth = 256
           end
         end
         object gbxHomeProjectsDue: TGroupBox
-          Left = 306
+          Left = 498
           Top = 16
-          Width = 273
+          Width = 466
           Height = 389
           Margins.Left = 2
           Margins.Top = 2
@@ -8077,11 +8131,13 @@ object frmMAMS: TfrmMAMS
           Padding.Bottom = 5
           ParentFont = False
           TabOrder = 1
+          ExplicitLeft = 306
+          ExplicitWidth = 273
           object pnlHomeNumberofUnprepdSamples: TPanel
             AlignWithMargins = True
             Left = 10
             Top = 27
-            Width = 253
+            Width = 446
             Height = 72
             Hint = 'number of unprep'#39'd samples waiting'
             CustomHint = BalloonHint1
@@ -8102,16 +8158,17 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 253
           end
           object pnlHomeNumberofReadyForGraph: TPanel
             AlignWithMargins = True
             Left = 10
-            Top = 183
-            Width = 253
-            Height = 118
+            Top = 261
+            Width = 446
+            Height = 72
             Hint = 'number of prep'#39'd samples ready for graphitization'
             CustomHint = BalloonHint1
-            Align = alClient
+            Align = alTop
             BevelOuter = bvNone
             Caption = 'ready for graph'
             Color = clSkyBlue
@@ -8128,16 +8185,17 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 253
           end
           object pnlNumberofSamplesReadyForMeas: TPanel
             AlignWithMargins = True
             Left = 10
-            Top = 307
-            Width = 253
+            Top = 183
+            Width = 446
             Height = 72
             Hint = 'number of prep'#39'd samples ready measurement'
             CustomHint = BalloonHint1
-            Align = alBottom
+            Align = alTop
             BevelOuter = bvNone
             Caption = 'ready for meas'
             Color = clSkyBlue
@@ -8154,12 +8212,14 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 2
             StyleElements = [seFont, seBorder]
+            ExplicitTop = 307
+            ExplicitWidth = 253
           end
           object pnlHomeNumberOfSamplesInPrep: TPanel
             AlignWithMargins = True
             Left = 10
             Top = 105
-            Width = 253
+            Width = 446
             Height = 72
             Hint = 'number ofsamples in prep'
             CustomHint = BalloonHint1
@@ -8180,13 +8240,15 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 3
             StyleElements = [seFont, seBorder]
+            ExplicitLeft = 12
+            ExplicitWidth = 253
           end
         end
         object gpxHomeExpress: TGroupBox
-          Left = 595
+          Left = 980
           Top = 16
-          Width = 273
-          Height = 288
+          Width = 467
+          Height = 389
           Align = alClient
           Caption = 'Number of Express Samples'
           Font.Charset = DEFAULT_CHARSET
@@ -8200,11 +8262,14 @@ object frmMAMS: TfrmMAMS
           Padding.Bottom = 5
           ParentFont = False
           TabOrder = 2
+          ExplicitLeft = 595
+          ExplicitWidth = 273
+          ExplicitHeight = 288
           object pnlHomeNumberofExpress: TPanel
             AlignWithMargins = True
             Left = 10
             Top = 27
-            Width = 253
+            Width = 447
             Height = 52
             Hint = 'number of express samples to be measured'
             CustomHint = BalloonHint1
@@ -8225,12 +8290,13 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 253
           end
           object DBGridHomeExpressSamples: TDBGrid
             Left = 7
             Top = 82
-            Width = 259
-            Height = 199
+            Width = 453
+            Height = 300
             CustomHint = BalloonHint1
             Align = alClient
             BorderStyle = bsNone
@@ -8874,17 +8940,17 @@ object frmMAMS: TfrmMAMS
             510)
           object Label124: TLabel
             Left = 43
-            Top = 274
-            Width = 59
+            Top = 258
+            Width = 53
             Height = 13
-            Caption = 'weight after'
+            Caption = 'weight end'
           end
           object Label123: TLabel
             Left = 35
             Top = 53
-            Width = 67
+            Width = 58
             Height = 13
-            Caption = 'weight before'
+            Caption = 'weight start'
           end
           object btnTouchWeightsPrepNeedsSaving: TSpeedButton
             Left = 61
@@ -8956,7 +9022,7 @@ object frmMAMS: TfrmMAMS
           end
           object Label133: TLabel
             Left = 58
-            Top = 318
+            Top = 302
             Width = 43
             Height = 13
             Caption = 'date end'
@@ -8970,21 +9036,21 @@ object frmMAMS: TfrmMAMS
           end
           object Label135: TLabel
             Left = 297
-            Top = 274
+            Top = 258
             Width = 14
             Height = 13
             Caption = 'mg'
           end
           object lblYTouchYieldLabel: TLabel
             Left = 196
-            Top = 353
+            Top = 337
             Width = 26
             Height = 13
             Caption = 'Yield:'
           end
           object lblTouchYieldValue: TLabel
             Left = 257
-            Top = 349
+            Top = 333
             Width = 30
             Height = 18
             Alignment = taRightJustify
@@ -8998,28 +9064,28 @@ object frmMAMS: TfrmMAMS
           end
           object Label138: TLabel
             Left = 119
-            Top = 210
+            Top = 194
             Width = 67
             Height = 13
             Caption = 'Weight Empty'
           end
           object Label139: TLabel
             Left = 220
-            Top = 210
+            Top = 194
             Width = 53
             Height = 13
             Caption = 'Weight Full'
           end
           object Label140: TLabel
             Left = 21
-            Top = 232
+            Top = 216
             Width = 80
             Height = 13
             Caption = 'weight container'
           end
           object Label141: TLabel
             Left = 296
-            Top = 234
+            Top = 218
             Width = 14
             Height = 13
             Caption = 'mg'
@@ -9047,7 +9113,7 @@ object frmMAMS: TfrmMAMS
           end
           object DBedtTouchWeightsAfterPrep: TDBEdit
             Left = 108
-            Top = 261
+            Top = 245
             Width = 183
             Height = 38
             Hint = 'weight after prep'
@@ -9169,6 +9235,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 5
+            OnChange = DBDateTimeTouchPrepStartChange
             OnKeyDown = DBDateTimeTouchPrepStartKeyDown
             DropDownDate = 44041.000000000000000000
             NullText = 'not set'
@@ -9177,7 +9244,7 @@ object frmMAMS: TfrmMAMS
           end
           object DBDateTimeTouchPrepEnd: TJvDBDateTimePicker
             Left = 108
-            Top = 305
+            Top = 289
             Width = 183
             Height = 38
             Date = 44041.409087916670000000
@@ -9206,7 +9273,7 @@ object frmMAMS: TfrmMAMS
           end
           object btnTouchPrepDateEndToday: TButton
             Left = 293
-            Top = 305
+            Top = 289
             Width = 60
             Height = 38
             Caption = 'Today'
@@ -9225,7 +9292,7 @@ object frmMAMS: TfrmMAMS
           end
           object DBedtTouchWeightsMediumPrep: TDBEdit
             Left = 107
-            Top = 229
+            Top = 213
             Width = 89
             Height = 26
             Hint = 'weight of empty container'
@@ -9243,7 +9310,7 @@ object frmMAMS: TfrmMAMS
           end
           object DBedtTouchWeightsMedium2Prep: TDBEdit
             Left = 202
-            Top = 229
+            Top = 213
             Width = 88
             Height = 26
             Hint = 'weight of full container'
@@ -9276,7 +9343,7 @@ object frmMAMS: TfrmMAMS
           Left = 343
           Top = 13
           Width = 320
-          Height = 344
+          Height = 516
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
@@ -9453,13 +9520,13 @@ object frmMAMS: TfrmMAMS
           Left = 24
           Top = 13
           Width = 313
-          Height = 344
+          Height = 516
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
           DesignSize = (
             313
-            344)
+            516)
           object Label125: TLabel
             Left = 37
             Top = 59
@@ -9637,20 +9704,21 @@ object frmMAMS: TfrmMAMS
           end
           object CheckBoxTouchGraphWeightsAutoConversion: TCheckBox
             Left = 200
-            Top = 319
+            Top = 491
             Width = 97
             Height = 17
             Alignment = taLeftJustify
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
+            ExplicitTop = 283
           end
           object btnTouchWeightsAddToGraphBatch: TButton
             Left = 74
-            Top = 254
+            Top = 286
             Width = 183
             Height = 49
-            Caption = 'Add To Batch >>'
+            Caption = 'Add To Batch >>>>>'
             TabOrder = 5
             OnClick = btnTouchWeightsAddToGraphBatchClick
           end
@@ -9881,7 +9949,7 @@ object frmMAMS: TfrmMAMS
     Left = 1216
     Top = 88
     Bitmap = {
-      494C010110001300D80710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001300FC0710001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10660,7 +10728,7 @@ object frmMAMS: TfrmMAMS
     Left = 1272
     Top = 88
     Bitmap = {
-      494C01015300F806940918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01015300F806B80918001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000F8010000010020000000000000F4
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -16910,7 +16978,7 @@ object frmMAMS: TfrmMAMS
     Left = 1328
     Top = 88
     Bitmap = {
-      494C01014B004F00D80720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014B004F00FC0720002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060020000010020000000000000C0
       0400000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -27052,5 +27120,13 @@ object frmMAMS: TfrmMAMS
     OnException = ApplicationEventsException
     Left = 157
     Top = 207
+  end
+  object CSVExportClipBoard: TJvDBGridCSVExport
+    Caption = 'Exporting to Clipboard...'
+    Silent = False
+    Destination = edClipboard
+    QuoteEveryTime = False
+    Left = 549
+    Top = 112
   end
 end

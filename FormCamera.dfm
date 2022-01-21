@@ -87,7 +87,6 @@ object CameraWindow: TCameraWindow
     Height = 541
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 616
     object PaintBoxImage: TPaintBox
       Left = 1
       Top = 142
@@ -108,7 +107,6 @@ object CameraWindow: TCameraWindow
       Align = alTop
       Caption = 'Save Image'
       TabOrder = 0
-      ExplicitWidth = 391
       object Label1: TLabel
         Left = 32
         Top = 20
@@ -224,7 +222,6 @@ object CameraWindow: TCameraWindow
     Height = 541
     Align = alLeft
     TabOrder = 3
-    ExplicitWidth = 218
     object GroupBoxImageSettings: TGroupBox
       Left = 1
       Top = 1
@@ -234,7 +231,6 @@ object CameraWindow: TCameraWindow
       Anchors = [akLeft, akTop, akBottom]
       Caption = 'Image Settings'
       TabOrder = 0
-      ExplicitWidth = 216
       object LabelWhiteBalance: TLabel
         Left = 10
         Top = 270

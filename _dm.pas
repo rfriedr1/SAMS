@@ -785,14 +785,14 @@ begin
 //                    'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
 //                    ' WHERE preparation_t.step1_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
      SQL.Text :=  'SELECT sample_t.sample_nr, user_label, project_t.project, sample_t.material, user_t.last_name, ' +
-                  'project_t.desired_date, (DATEDIFF(curdate(),preparation_t.prep_start)) AS Days ' +
+                  'project_t.desired_date, (DATEDIFF(curdate(),preparation_t.prep_start)) AS Days, NOT ISNULL(weight_medium) AS InFreeze ' +
                   'FROM sample_t ' +
                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
                     ' WHERE preparation_t.prep_start IS NOT NULL AND preparation_t.prep_end IS NULL;';
        s := SQL.Text;
-  //     ClipBoard.SetTextBuf(PChar(s));
+       //ClipBoard.SetTextBuf(PChar(s));
        LogWindow.addLogEntry(SQL.Text);
        IF dm.adoConnKTL.Connected THEN
                 Begin
@@ -1371,8 +1371,11 @@ begin
   with qryDB do begin
     SQL.Text := ' SELECT target_t.sample_nr, sample_t.user_label FROM target_t ' +
                 ' INNER JOIN sample_t ON sample_t.sample_nr=target_t.sample_nr ' +
+                ' INNER JOIN project_t ON sample_t.project_nr=project_t.project_nr ' +
+                ' INNER JOIN user_t ON project_t.user_nr=user_t.user_nr ' +
                 ' WHERE magazine IS NULL AND graphitized IS NOT NULL and stop=0 ' +
-                ' and sample_t.type like ' + s +'and sample_t.user_label like' + s2 + ';';
+                ' and sample_t.type like ' + s +' and sample_t.user_label like ' + s2 +
+                ' AND user_t.user_nr = "129"' + ';';
     LogWindow.addLogEntry(SQL.Text);
     IF dm.adoConnKTL.Connected THEN
                 Begin

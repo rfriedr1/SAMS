@@ -192,6 +192,7 @@ Var
 begin
   // save image from camera to Bitmap in Memory
   Try
+    BitmapSnappedImage.FreeImage;
     BitmapSnappedImage:=WCamera.CurrentImageToBitmap();
     if BitmapSnappedImage.Width / BitmapSnappedImage.Height >= PaintBoxImage.Width / PaintBoxImage.Height then
       begin
@@ -425,6 +426,8 @@ begin
   //Bitmap.Free;
   //BitmapSnappedImage.Free;
   //MemoryStream.Free;
+  //PaintBox.Free;
+  //PaintBoxImage.Free;
   //CameraWindow.Release;
 end;
 
@@ -498,7 +501,6 @@ begin
     Rect.Right := Rect.Left + Width;
     Rect.Bottom := PaintBoxImage.Height;
   end;
-
   PaintBoxImage.Canvas.StretchDraw(Rect, BitmapSnappedImage);
 
 end;

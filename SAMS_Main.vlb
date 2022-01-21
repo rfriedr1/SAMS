@@ -357,9 +357,6 @@ Coordinates=714,1350,117,36
 [edtCO2init]
 Coordinates=628,1350,76,36
 
-[edtMagazineMonths]
-Coordinates=488,1350,130,36
-
 [Panel3]
 Coordinates=1408,212,55,58
 
@@ -776,9 +773,6 @@ Coordinates=1593,1637,84,36
 
 [DBEdit19]
 Coordinates=1871,1212,69,36
-
-[Label89]
-Coordinates=923,824,60,58
 
 [Label7]
 Coordinates=1653,892,53,58
@@ -1804,7 +1798,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=439,212,70,58
+Coordinates=923,824,60,58
 Visible=True
 
 [btnPrintBatch]
@@ -2148,4 +2142,7 @@ Coordinates=1216,688,86,58
 
 [tbsCalibration]
 Coordinates=1190,1120,77,36
+
+[edtMagazineLimit]
+Coordinates=488,1350,130,36
 
