@@ -1,0 +1,50 @@
+package woffdrv;
+
+{$R *.res}
+{$R 'Word2007\Word2007.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS OFF}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $410000}
+{$DESCRIPTION 'Word driver and Word XP TLB'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  Vcldb,
+  rtl;
+
+contains
+  WordDriver in 'WordDriver.pas',
+  WordXP in 'wordxp\WordXP.pas',
+  VBIDEXP in 'wordxp\VBIDEXP.pas',
+  OfficeXP in 'wordxp\OfficeXP.pas',
+  Office97 in 'Word97\Office97.pas',
+  VBIDE97 in 'Word97\VBIDE97.pas',
+  Word97 in 'Word97\Word97.pas',
+  Office2003 in 'Word2003\Office2003.pas',
+  VBIDE2003 in 'Word2003\VBIDE2003.pas',
+  Office2007 in 'Word2007\Office2007.pas',
+  VBIDE2007 in 'Word2007\VBIDE2007.pas',
+  Word2003 in 'Word2003\Word2003.pas',
+  Word2007 in 'Word2007\Word2007.pas';
+
+end.

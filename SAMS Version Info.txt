@@ -1,0 +1,16 @@
+SAMS history
+
+v 0.7 20-12-09   Insert new samples : added selection of material & sample type
+
+ 	         Projects of user   : all fields are read-only, any changes are to be done in Sample Info page
+ 	       
+	         Lab tasks          : added store target parameters (still based on prep task batch *.pbt, instead of graph task [next version])
+	       
+	         version and mysql connection parameters shown in form caption
+	       
+v 0.76 21-12-09  Insert new samples : invoice user added
+
+		 IMPORTANT : The Excel template had to be modified for better (printing) layout. The currently active template is Submit_Samples_Template_v2.xls
+		 
+	       
+	       

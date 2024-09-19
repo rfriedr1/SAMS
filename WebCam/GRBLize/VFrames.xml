@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="VFrames" platform="Win32">
+  <const name="CBufferCnt" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="VP_Brightness" type="TVideoProperty">
+    <value>
+      VP_Brightness
+    </value>
+  </const>
+  <const name="VP_Contrast" type="TVideoProperty">
+    <value>
+      VP_Contrast
+    </value>
+  </const>
+  <const name="VP_Hue" type="TVideoProperty">
+    <value>
+      VP_Hue
+    </value>
+  </const>
+  <const name="VP_Saturation" type="TVideoProperty">
+    <value>
+      VP_Saturation
+    </value>
+  </const>
+  <const name="VP_Sharpness" type="TVideoProperty">
+    <value>
+      VP_Sharpness
+    </value>
+  </const>
+  <const name="VP_Gamma" type="TVideoProperty">
+    <value>
+      VP_Gamma
+    </value>
+  </const>
+  <const name="VP_ColorEnable" type="TVideoProperty">
+    <value>
+      VP_ColorEnable
+    </value>
+  </const>
+  <const name="VP_WhiteBalance" type="TVideoProperty">
+    <value>
+      VP_WhiteBalance
+    </value>
+  </const>
+  <const name="VP_BacklightCompensation" type="TVideoProperty">
+    <value>
+      VP_BacklightCompensation
+    </value>
+  </const>
+  <const name="VP_Gain" type="TVideoProperty">
+    <value>
+      VP_Gain
+    </value>
+  </const>
+  <type name="TNewVideoFrameEvent" procflags="closure">
+  </type>
+  <enum name="TVideoProperty">
+    <element value="0" name="VP_Brightness" />
+    <element value="1" name="VP_Contrast" />
+    <element value="2" name="VP_Hue" />
+    <element value="3" name="VP_Saturation" />
+    <element value="4" name="VP_Sharpness" />
+    <element value="5" name="VP_Gamma" />
+    <element value="6" name="VP_ColorEnable" />
+    <element value="7" name="VP_WhiteBalance" />
+    <element value="8" name="VP_BacklightCompensation" />
+    <element value="9" name="VP_Gain" />
+  </enum>
+  <class name="TVideoImage">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <field name="VideoSample" type="TVideoSample" visibility="private" size="4" offset="4" />
+      <field name="OnNewFrameBusy" type="Boolean" visibility="private" size="1" offset="8" />
+      <field name="fVideoRunning" type="Boolean" visibility="private" size="1" offset="9" />
+      <field name="fBusy" type="Boolean" visibility="private" size="1" offset="10" />
+      <field name="fGray8Bit" type="Boolean" visibility="private" size="1" offset="11" />
+      <field name="fSkipCnt" type="Integer" visibility="private" size="4" offset="12" />
+      <field name="fFrameCnt" type="Integer" visibility="private" size="4" offset="16" />
+      <field name="f30FrameTick" type="Cardinal" visibility="private" size="4" offset="20" />
+      <field name="fFPS" type="Double" visibility="private" size="8" offset="24" />
+      <field name="fWidth" type="Integer" visibility="private" size="4" offset="32" />
+      <field name="fHeight" type="Integer" visibility="private" size="4" offset="36" />
+      <field name="fFourCC" type="Cardinal" visibility="private" size="4" offset="40" />
+      <field name="fBitmap" type="TBitmap" visibility="private" size="4" offset="44" />
+      <field name="fBitmapGray" type="TBitmap" visibility="private" size="4" offset="48" />
+      <field name="fDisplayCanvas" type="TCanvas" visibility="private" size="4" offset="52" />
+      <field name="fImagePtr" visibility="private" size="16" offset="56">
+        <array name="fImagePtr" visibility="private" low="0" high="3">
+          <element type="Pointer" />
+        </array>
+      </field>
+      <field name="fImagePtrSize" visibility="private" size="16" offset="72">
+        <array name="fImagePtrSize" visibility="private" low="0" high="3">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="fImagePtrIndex" type="Integer" visibility="private" size="4" offset="88" />
+      <field name="fMessageHWND" type="HWND" visibility="private" size="4" offset="92" />
+      <field name="fMsgNewFrame" type="Cardinal" visibility="private" size="4" offset="96" />
+      <field name="fOnNewFrame" type="TNewVideoFrameEvent" visibility="private" size="8" offset="104" />
+      <field name="AppEvent" type="TApplicationEvents" visibility="private" size="4" offset="112" />
+      <field name="IdleEventTick" type="Cardinal" visibility="private" size="4" offset="116" />
+      <field name="ValueY_298" visibility="private" size="1024" offset="120">
+        <array name="ValueY_298" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="ValueU_100" visibility="private" size="1024" offset="1144">
+        <array name="ValueU_100" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="ValueU_516" visibility="private" size="1024" offset="2168">
+        <array name="ValueU_516" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="ValueV_409" visibility="private" size="1024" offset="3192">
+        <array name="ValueV_409" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="ValueV_208" visibility="private" size="1024" offset="4216">
+        <array name="ValueV_208" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="ValueL_255" visibility="private" size="256" offset="5240">
+        <array name="ValueL_255" visibility="private" low="0" high="255">
+          <element type="Byte" />
+        </array>
+      </field>
+      <field name="ValueClip" visibility="private" size="2047" offset="5496">
+        <array name="ValueClip" visibility="private" low="-1023" high="1023">
+          <element type="Byte" />
+        </array>
+      </field>
+      <field name="GrayConvR" visibility="private" size="1024" offset="7544">
+        <array name="GrayConvR" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="GrayConvG" visibility="private" size="1024" offset="8568">
+        <array name="GrayConvG" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="GrayConvB" visibility="private" size="1024" offset="9592">
+        <array name="GrayConvB" visibility="private" low="0" high="255">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="fYUY2TablesPrepared" type="Boolean" visibility="private" size="1" offset="10616" />
+      <field name="JPG" type="TJPEGImage" visibility="private" size="4" offset="10620" />
+      <field name="MemStream" type="TMemoryStream" visibility="private" size="4" offset="10624" />
+      <field name="fImageUnpacked" type="Boolean" visibility="private" size="1" offset="10628" />
+      <procedure name="PaintFrame" visibility="private">
+      </procedure>
+      <procedure name="UnpackFrame" visibility="private">
+        <parameters>
+          <parameter name="Size" type="Integer" />
+          <parameter name="pData" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="WndProc" visibility="private">
+        <parameters>
+          <parameter name="Msg" type="TMessage" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="VideoSampleIsPaused" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="AppEventsIdle" visibility="private">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+          <parameter name="Done" type="Boolean" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="CallBack" visibility="private">
+        <parameters>
+          <parameter name="pb" type="PByteArray" />
+          <parameter name="Size" type="Integer" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="TranslateProperty" visibility="private">
+        <parameters>
+          <parameter name="VP" type="TVideoProperty" paramflags="const" />
+          <parameter name="VPAP" type="tagVideoProcAmpProperty" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="PrepareGrayBMP" visibility="private">
+        <parameters>
+          <parameter name="BM" type="TBitmap" paramflags="var" />
+          <parameter name="W" type="Integer" />
+          <parameter name="H" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="PrepareTables" visibility="private">
+      </procedure>
+      <procedure name="YUY2_to_RGB" visibility="private">
+        <parameters>
+          <parameter name="pData" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="YUY2_to_Gray8Bit" visibility="private">
+        <parameters>
+          <parameter name="pData" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="I420_to_RGB" visibility="private">
+        <parameters>
+          <parameter name="pData" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="I420_to_Gray8Bit" visibility="private">
+        <parameters>
+          <parameter name="pData" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="RGB_to_Gray8Bit" visibility="private">
+        <parameters>
+          <parameter name="pData" type="Pointer" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="Free" visibility="public">
+      </procedure>
+      <property name="IsPaused" visibility="public" read="VideoSampleIsPaused" type="Boolean" />
+      <property name="VideoRunning" visibility="public" read="fVideoRunning" type="Boolean" />
+      <property name="VideoWidth" visibility="public" read="fWidth" type="Integer" />
+      <property name="VideoHeight" visibility="public" read="fHeight" type="Integer" />
+      <property name="Gray8Bit" visibility="public" read="fGray8Bit" write="fGray8Bit" type="Boolean" />
+      <event name="OnNewVideoFrame" visibility="public" read="fOnNewFrame" write="fOnNewFrame" type="TNewVideoFrameEvent" />
+      <property name="FramesPerSecond" visibility="public" read="fFPS" type="Double" default="0" />
+      <property name="FramesSkipped" visibility="public" read="fSkipCnt" type="Integer" />
+      <procedure name="GetListOfDevices" visibility="public">
+        <parameters>
+          <parameter name="DeviceList" type="TStringList" />
+        </parameters>
+      </procedure>
+      <procedure name="VideoStop" visibility="public">
+      </procedure>
+      <procedure name="VideoPause" visibility="public">
+      </procedure>
+      <procedure name="VideoResume" visibility="public">
+      </procedure>
+      <function name="VideoStart" visibility="public">
+        <parameters>
+          <parameter name="DeviceName" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="GetBitmap" visibility="public">
+        <parameters>
+          <parameter name="BMP" type="TBitmap" />
+        </parameters>
+      </procedure>
+      <procedure name="SetDisplayCanvas" visibility="public">
+        <parameters>
+          <parameter name="Canvas" type="TCanvas" />
+        </parameters>
+      </procedure>
+      <procedure name="ShowProperty" visibility="public">
+      </procedure>
+      <procedure name="ShowProperty_Stream" visibility="public">
+      </procedure>
+      <function name="ShowVfWCaptureDlg" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="GetBrightnessSettings" visibility="public">
+        <parameters>
+          <parameter name="Actual" type="Integer" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="SetBrightnessSettings" visibility="public">
+        <parameters>
+          <parameter name="Actual" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="GetListOfSupportedVideoSizes" visibility="public">
+        <parameters>
+          <parameter name="VidSize" type="TStringList" />
+        </parameters>
+      </procedure>
+      <procedure name="SetResolutionByIndex" visibility="public">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="GetVideoPropertySettings" visibility="public">
+        <parameters>
+          <parameter name="VP" type="TVideoProperty" />
+          <parameter name="MinVal" type="Integer" paramflags="var" />
+          <parameter name="MaxVal" type="Integer" paramflags="var" />
+          <parameter name="StepSize" type="Integer" paramflags="var" />
+          <parameter name="Default" type="Integer" paramflags="var" />
+          <parameter name="Actual" type="Integer" paramflags="var" />
+          <parameter name="AutoMode" type="Boolean" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="SetVideoPropertySettings" visibility="public">
+        <parameters>
+          <parameter name="VP" type="TVideoProperty" />
+          <parameter name="Actual" type="Integer" />
+          <parameter name="AutoMode" type="Boolean" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="Convert24ToGray" visibility="public">
+        <parameters>
+          <parameter name="BM24" type="TBitmap" />
+          <parameter name="BMGray" type="TBitmap" />
+        </parameters>
+      </procedure>
+    </members>
+  </class>
+  <const name="FourCC_YUY2" type="Integer">
+    <value>
+      $32595559
+    </value>
+  </const>
+  <const name="FourCC_YUYV" type="Integer">
+    <value>
+      $56595559
+    </value>
+  </const>
+  <const name="FourCC_YUNV" type="Integer">
+    <value>
+      $564E5559
+    </value>
+  </const>
+  <const name="FourCC_MJPG" type="Integer">
+    <value>
+      $47504A4D
+    </value>
+  </const>
+  <const name="FourCC_I420" type="Integer">
+    <value>
+      $30323449
+    </value>
+  </const>
+  <const name="FourCC_YV12" type="Integer">
+    <value>
+      $32315659
+    </value>
+  </const>
+  <const name="FourCC_IYUV" type="Integer">
+    <value>
+      $56555949
+    </value>
+  </const>
+  <function name="GetVideoPropertyName" visibility="public">
+    <parameters>
+      <parameter name="VP" type="TVideoProperty" />
+      <retval type="string" />
+    </parameters>
+  </function>
+</namespace>

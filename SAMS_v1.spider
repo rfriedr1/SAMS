@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spider version="1.0">
+	<application_name>Y:\my data\KTL\Software\GitHub\SAMS\SAMS_v1.exe</application_name>
+	<project_storage>Y:\my data\KTL\Software\GitHub\SAMS\_spider_storage</project_storage>
+	<project_source>Y:\my data\KTL\Software\GitHub\SAMS</project_source>
+	<delphi_source>C:\Program Files (x86)\Embarcadero\Studio\20.0\source</delphi_source>
+	<run_parameters></run_parameters>
+	<working_directory>Y:\my data\KTL\Software\GitHub\SAMS</working_directory>
+</spider>

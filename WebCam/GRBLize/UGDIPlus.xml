@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="UGDIPlus" platform="Win32">
+  <function name="GDIPlus_LoadBMPStream" visibility="public">
+    <parameters>
+      <parameter name="OleStream" type="IStream" />
+      <parameter name="BMP" type="TBitmap" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="GDIPlus_LoadBMPStream2" visibility="public">
+    <parameters>
+      <parameter name="Stream" type="TStream" />
+      <parameter name="BMP" type="TBitmap" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="GDIPlusAvailable" visibility="public">
+    <parameters>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

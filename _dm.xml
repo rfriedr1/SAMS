@@ -1,0 +1,875 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="_dm" platform="Win32">
+  <class name="Tdm">
+    <ancestor name="TDataModule" namespace="System.Classes">
+      <methodref name="ReadHeight" visibility="private">
+      </methodref>
+      <methodref name="ReadPixelsPerInch" visibility="private">
+      </methodref>
+      <methodref name="ReadHorizontalOffset" visibility="private">
+      </methodref>
+      <methodref name="ReadVerticalOffset" visibility="private">
+      </methodref>
+      <methodref name="ReadWidth" visibility="private">
+      </methodref>
+      <methodref name="WriteWidth" visibility="private">
+      </methodref>
+      <methodref name="WritePixelsPerInch" visibility="private">
+      </methodref>
+      <methodref name="WriteHorizontalOffset" visibility="private">
+      </methodref>
+      <methodref name="WriteVerticalOffset" visibility="private">
+      </methodref>
+      <methodref name="WriteHeight" visibility="private">
+      </methodref>
+      <methodref name="IgnoreIdent" visibility="private">
+      </methodref>
+      <methodref name="DoCreate" visibility="protected" procflags="virtual">
+      </methodref>
+      <methodref name="DoDestroy" visibility="protected" procflags="virtual">
+      </methodref>
+      <methodref name="DefineProperties" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="GetChildren" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="HandleCreateException" visibility="protected" procflags="dynamic">
+      </methodref>
+      <methodref name="Create" visibility="public" procflags="constructor override">
+      </methodref>
+      <methodref name="CreateNew" visibility="public" procflags="constructor virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="override">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="override">
+      </methodref>
+      <propertyref name="DesignOffset" visibility="public">
+      </propertyref>
+      <propertyref name="DesignSize" visibility="public">
+      </propertyref>
+      <propertyref name="PixelsPerInch" visibility="public">
+      </propertyref>
+      <eventref name="OnCreate" visibility="published">
+      </eventref>
+      <eventref name="OnDestroy" visibility="published">
+      </eventref>
+      <ancestor name="TComponent" namespace="System.Classes">
+        <interfaces>
+          <implements name="IInterfaceComponentReference" />
+          <implements name="IInterface" />
+        </interfaces>
+        <methodref name="GetComObject" visibility="private">
+        </methodref>
+        <methodref name="GetComponent" visibility="private">
+        </methodref>
+        <methodref name="GetComponentCount" visibility="private">
+        </methodref>
+        <methodref name="GetComponentIndex" visibility="private">
+        </methodref>
+        <methodref name="Insert" visibility="private">
+        </methodref>
+        <methodref name="ReadLeft" visibility="private">
+        </methodref>
+        <methodref name="ReadTop" visibility="private">
+        </methodref>
+        <methodref name="Remove" visibility="private">
+        </methodref>
+        <methodref name="RemoveNotification" visibility="private">
+        </methodref>
+        <methodref name="SetComponentIndex" visibility="private">
+        </methodref>
+        <methodref name="SetReference" visibility="private">
+        </methodref>
+        <methodref name="WriteLeft" visibility="private">
+        </methodref>
+        <methodref name="WriteTop" visibility="private">
+        </methodref>
+        <methodref name="IntfGetComponent" visibility="private">
+        </methodref>
+        <methodref name="DoGetDeltaStreams" visibility="private">
+        </methodref>
+        <methodref name="ReadDeltaStream" visibility="private">
+        </methodref>
+        <methodref name="ReadDeltaState" visibility="private">
+        </methodref>
+        <methodref name="FindSortedComponent" visibility="private">
+        </methodref>
+        <methodref name="AddSortedComponent" visibility="private">
+        </methodref>
+        <methodref name="RemoveSortedComponent" visibility="private" procflags="inline">
+        </methodref>
+        <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+        </methodref>
+        <methodref name="AsyncSchedule" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="ChangeName" visibility="protected">
+        </methodref>
+        <methodref name="DefineProperties" visibility="protected" procflags="override">
+        </methodref>
+        <methodref name="GetChildren" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="GetChildOwner" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="GetChildParent" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="GetOwner" visibility="protected" procflags="override">
+        </methodref>
+        <methodref name="Loaded" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="Notification" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="GetDeltaStreams" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="ReadState" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="CanObserve" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="ObserverAdded" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="GetObservers" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="SetAncestor" visibility="protected">
+        </methodref>
+        <methodref name="SetDesigning" visibility="protected">
+        </methodref>
+        <methodref name="SetInline" visibility="protected">
+        </methodref>
+        <methodref name="SetDesignInstance" visibility="protected">
+        </methodref>
+        <methodref name="SetName" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="SetChildOrder" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="SetParentComponent" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="Updating" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="Updated" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="UpdateRegistry" visibility="protected" procflags="class virtual">
+        </methodref>
+        <methodref name="ValidateRename" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="ValidateContainer" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="ValidateInsert" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="WriteState" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="RemoveFreeNotifications" visibility="protected">
+        </methodref>
+        <methodref name="QueryInterface" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="_AddRef" visibility="protected">
+        </methodref>
+        <methodref name="_Release" visibility="protected">
+        </methodref>
+        <methodref name="GetTypeInfoCount" visibility="protected">
+        </methodref>
+        <methodref name="GetTypeInfo" visibility="protected">
+        </methodref>
+        <methodref name="GetIDsOfNames" visibility="protected">
+        </methodref>
+        <methodref name="Invoke" visibility="protected">
+        </methodref>
+        <eventref name="OnGetDeltaStreams" visibility="protected">
+        </eventref>
+        <methodref name="Create" visibility="public" procflags="constructor virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor override">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="BeginInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="EndInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="EndInvoke" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="EndFunctionInvoke" visibility="public">
+        </methodref>
+        <methodref name="DestroyComponents" visibility="public">
+        </methodref>
+        <methodref name="Destroying" visibility="public">
+        </methodref>
+        <methodref name="ExecuteAction" visibility="public" procflags="dynamic">
+        </methodref>
+        <methodref name="FindComponent" visibility="public">
+        </methodref>
+        <methodref name="FreeNotification" visibility="public">
+        </methodref>
+        <methodref name="RemoveFreeNotification" visibility="public">
+        </methodref>
+        <methodref name="FreeOnRelease" visibility="public">
+        </methodref>
+        <methodref name="GetEnumerator" visibility="public" procflags="inline">
+        </methodref>
+        <methodref name="GetParentComponent" visibility="public" procflags="dynamic">
+        </methodref>
+        <methodref name="GetNamePath" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="HasParent" visibility="public" procflags="dynamic">
+        </methodref>
+        <methodref name="InsertComponent" visibility="public">
+        </methodref>
+        <methodref name="RemoveComponent" visibility="public">
+        </methodref>
+        <methodref name="SetSubComponent" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="UpdateAction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="IsImplementorOf" visibility="public">
+        </methodref>
+        <methodref name="ReferenceInterface" visibility="public">
+        </methodref>
+        <propertyref name="ComObject" visibility="public">
+        </propertyref>
+        <propertyref name="Components" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentCount" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentIndex" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentState" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentStyle" visibility="public">
+        </propertyref>
+        <propertyref name="DesignInfo" visibility="public">
+        </propertyref>
+        <propertyref name="Owner" visibility="public">
+        </propertyref>
+        <propertyref name="VCLComObject" visibility="public">
+        </propertyref>
+        <propertyref name="Observers" visibility="public">
+        </propertyref>
+        <propertyref name="Name" visibility="published">
+        </propertyref>
+        <propertyref name="Tag" visibility="published">
+        </propertyref>
+        <ancestor name="TPersistent" namespace="System.Classes">
+          <methodref name="AssignError" visibility="private">
+          </methodref>
+          <methodref name="AssignTo" visibility="protected" procflags="virtual">
+          </methodref>
+          <methodref name="DefineProperties" visibility="protected" procflags="virtual">
+          </methodref>
+          <methodref name="GetOwner" visibility="protected" procflags="dynamic">
+          </methodref>
+          <methodref name="Destroy" visibility="public" procflags="destructor override">
+          </methodref>
+          <methodref name="Assign" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="GetNamePath" visibility="public" procflags="dynamic">
+          </methodref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public" procflags="constructor">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+            </methodref>
+            <methodref name="InitInstance" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="ClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassParent" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="QualifiedClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="UnitName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="UnitScope" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="Equals" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetHashCode" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ToString" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Dispatch" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class virtual">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+            </methodref>
+            <methodref name="GetDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <propertyref name="Disposed" visibility="protected">
+            </propertyref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="qrySubmit" type="TADOQuery" visibility="published" size="4" offset="104" />
+      <field name="qryDB" type="TADOQuery" visibility="published" size="4" offset="108" />
+      <field name="qrySampleOfSubmitter" type="TADOQuery" visibility="published" size="4" offset="112" />
+      <field name="dsSampleOfSubmitter" type="TDataSource" visibility="published" size="4" offset="116" />
+      <field name="dsQryDb" type="TDataSource" visibility="published" size="4" offset="120" />
+      <field name="qryProjectsOfUser" type="TADOQuery" visibility="published" size="4" offset="124" />
+      <field name="dsProjectsOfUser" type="TDataSource" visibility="published" size="4" offset="128" />
+      <field name="qrySamplesOfProject" type="TADOQuery" visibility="published" size="4" offset="132" />
+      <field name="dsSamplesOfProject" type="TDataSource" visibility="published" size="4" offset="136" />
+      <field name="qrySample" type="TADOQuery" visibility="published" size="4" offset="140" />
+      <field name="qryTarget" type="TADOQuery" visibility="published" size="4" offset="144" />
+      <field name="dsTarget" type="TDataSource" visibility="published" size="4" offset="148" />
+      <field name="dsSample" type="TDataSource" visibility="published" size="4" offset="152" />
+      <field name="adoConnKTL" type="TADOConnection" visibility="published" size="4" offset="156" />
+      <field name="tblUser" type="TADOTable" visibility="published" size="4" offset="160" />
+      <field name="tblUseruser_nr" type="TAutoIncField" visibility="published" size="4" offset="164" />
+      <field name="tblUserfirst_name" type="TStringField" visibility="published" size="4" offset="168" />
+      <field name="tblUserlast_name" type="TStringField" visibility="published" size="4" offset="172" />
+      <field name="tblUserorganisation" type="TStringField" visibility="published" size="4" offset="176" />
+      <field name="tblUserinstitute" type="TStringField" visibility="published" size="4" offset="180" />
+      <field name="tblUseraddress_1" type="TStringField" visibility="published" size="4" offset="184" />
+      <field name="tblUseraddress_2" type="TStringField" visibility="published" size="4" offset="188" />
+      <field name="tblUsertown" type="TStringField" visibility="published" size="4" offset="192" />
+      <field name="tblUserpostcode" type="TStringField" visibility="published" size="4" offset="196" />
+      <field name="tblUsercountry" type="TStringField" visibility="published" size="4" offset="200" />
+      <field name="tblUserphone_1" type="TStringField" visibility="published" size="4" offset="204" />
+      <field name="tblUserphone_2" type="TStringField" visibility="published" size="4" offset="208" />
+      <field name="tblUserfax" type="TStringField" visibility="published" size="4" offset="212" />
+      <field name="tblUseremail" type="TStringField" visibility="published" size="4" offset="216" />
+      <field name="tblUserwww" type="TStringField" visibility="published" size="4" offset="220" />
+      <field name="tblUseraccount" type="TStringField" visibility="published" size="4" offset="224" />
+      <field name="tblUserinvoice" type="TSmallintField" visibility="published" size="4" offset="228" />
+      <field name="tblUsercorrespondance" type="TSmallintField" visibility="published" size="4" offset="232" />
+      <field name="tblUseruser_comment" type="TMemoField" visibility="published" size="4" offset="236" />
+      <field name="tblProjects" type="TADOTable" visibility="published" size="4" offset="240" />
+      <field name="dsProjects" type="TDataSource" visibility="published" size="4" offset="244" />
+      <field name="tblTypes" type="TADOTable" visibility="published" size="4" offset="248" />
+      <field name="dsTypes" type="TDataSource" visibility="published" size="4" offset="252" />
+      <field name="tblMaterial" type="TADOTable" visibility="published" size="4" offset="256" />
+      <field name="dsMaterial" type="TDataSource" visibility="published" size="4" offset="260" />
+      <field name="tblProjectTypes" type="TADOTable" visibility="published" size="4" offset="264" />
+      <field name="dsProjectTypes" type="TDataSource" visibility="published" size="4" offset="268" />
+      <field name="tblMethod" type="TADOTable" visibility="published" size="4" offset="272" />
+      <field name="dsMethod" type="TDataSource" visibility="published" size="4" offset="276" />
+      <field name="tblResearchType" type="TADOTable" visibility="published" size="4" offset="280" />
+      <field name="dsResearchType" type="TDataSource" visibility="published" size="4" offset="284" />
+      <field name="tblReportType" type="TADOTable" visibility="published" size="4" offset="288" />
+      <field name="dsReportType" type="TDataSource" visibility="published" size="4" offset="292" />
+      <field name="qrySamplesAvailable" type="TADOQuery" visibility="published" size="4" offset="296" />
+      <field name="dsSamplesAvailable" type="TDataSource" visibility="published" size="4" offset="300" />
+      <field name="adoCmd" type="TADOCommand" visibility="published" size="4" offset="304" />
+      <field name="qryPrepSteps" type="TADOQuery" visibility="published" size="4" offset="308" />
+      <field name="dsPrepSteps" type="TDataSource" visibility="published" size="4" offset="312" />
+      <field name="qryTargetsAvailable" type="TADOQuery" visibility="published" size="4" offset="316" />
+      <field name="dsTargetsAvailable" type="TDataSource" visibility="published" size="4" offset="320" />
+      <field name="tblFraction" type="TADOTable" visibility="published" size="4" offset="324" />
+      <field name="dsFraction" type="TDataSource" visibility="published" size="4" offset="328" />
+      <field name="qryTest" type="TADOQuery" visibility="published" size="4" offset="332" />
+      <field name="dsTest" type="TDataSource" visibility="published" size="4" offset="336" />
+      <field name="qrySampleInfo" type="TADOQuery" visibility="published" size="4" offset="340" />
+      <field name="dsSampleInfo" type="TDataSource" visibility="published" size="4" offset="344" />
+      <field name="tblProjectStatus" type="TADOTable" visibility="published" size="4" offset="348" />
+      <field name="dsProjectStatus" type="TDataSource" visibility="published" size="4" offset="352" />
+      <field name="qryPlanned" type="TADOQuery" visibility="published" size="4" offset="356" />
+      <field name="dsPlanned" type="TDataSource" visibility="published" size="4" offset="360" />
+      <field name="qryInPrep" type="TADOQuery" visibility="published" size="4" offset="364" />
+      <field name="dsInPrep" type="TDataSource" visibility="published" size="4" offset="368" />
+      <field name="qrySamplesOfLabTask" type="TADOQuery" visibility="published" size="4" offset="372" />
+      <field name="dsSamplesOfLabtask" type="TDataSource" visibility="published" size="4" offset="376" />
+      <field name="qryDb1" type="TADOQuery" visibility="published" size="4" offset="380" />
+      <field name="dsQryDb1" type="TDataSource" visibility="published" size="4" offset="384" />
+      <field name="qryActiveBatches" type="TADOQuery" visibility="published" size="4" offset="388" />
+      <field name="dsActiveBatches" type="TDataSource" visibility="published" size="4" offset="392" />
+      <field name="qryProject" type="TADOQuery" visibility="published" size="4" offset="396" />
+      <field name="dsProject" type="TDataSource" visibility="published" size="4" offset="400" />
+      <field name="qryProjectsSinceYear" type="TADOQuery" visibility="published" size="4" offset="404" />
+      <field name="dsProjectsSinceYear" type="TDataSource" visibility="published" size="4" offset="408" />
+      <field name="qryWeights" type="TADOQuery" visibility="published" size="4" offset="412" />
+      <field name="dsWeights" type="TDataSource" visibility="published" size="4" offset="416" />
+      <field name="qryGraphWeight" type="TADOQuery" visibility="published" size="4" offset="420" />
+      <field name="dsGraphWeight" type="TDataSource" visibility="published" size="4" offset="424" />
+      <field name="dsUserInfo" type="TDataSource" visibility="published" size="4" offset="428" />
+      <field name="dsMagazines" type="TDataSource" visibility="published" size="4" offset="432" />
+      <field name="qryMagazines" type="TADOQuery" visibility="published" size="4" offset="436" />
+      <field name="qryMagazineData" type="TADOQuery" visibility="published" size="4" offset="440" />
+      <field name="dsMagazineData" type="TDataSource" visibility="published" size="4" offset="444" />
+      <field name="qryWaitingForGraph" type="TADOQuery" visibility="published" size="4" offset="448" />
+      <field name="dsWaitingForGraph" type="TDataSource" visibility="published" size="4" offset="452" />
+      <field name="tblInvoice" type="TADOTable" visibility="published" size="4" offset="456" />
+      <field name="AutoIncField1" type="TAutoIncField" visibility="published" size="4" offset="460" />
+      <field name="StringField1" type="TStringField" visibility="published" size="4" offset="464" />
+      <field name="StringField2" type="TStringField" visibility="published" size="4" offset="468" />
+      <field name="StringField3" type="TStringField" visibility="published" size="4" offset="472" />
+      <field name="StringField4" type="TStringField" visibility="published" size="4" offset="476" />
+      <field name="StringField5" type="TStringField" visibility="published" size="4" offset="480" />
+      <field name="StringField6" type="TStringField" visibility="published" size="4" offset="484" />
+      <field name="StringField7" type="TStringField" visibility="published" size="4" offset="488" />
+      <field name="StringField8" type="TStringField" visibility="published" size="4" offset="492" />
+      <field name="StringField9" type="TStringField" visibility="published" size="4" offset="496" />
+      <field name="StringField10" type="TStringField" visibility="published" size="4" offset="500" />
+      <field name="StringField11" type="TStringField" visibility="published" size="4" offset="504" />
+      <field name="StringField12" type="TStringField" visibility="published" size="4" offset="508" />
+      <field name="StringField13" type="TStringField" visibility="published" size="4" offset="512" />
+      <field name="StringField14" type="TStringField" visibility="published" size="4" offset="516" />
+      <field name="StringField15" type="TStringField" visibility="published" size="4" offset="520" />
+      <field name="SmallintField1" type="TSmallintField" visibility="published" size="4" offset="524" />
+      <field name="SmallintField2" type="TSmallintField" visibility="published" size="4" offset="528" />
+      <field name="MemoField1" type="TMemoField" visibility="published" size="4" offset="532" />
+      <field name="dsInvoice" type="TDataSource" visibility="published" size="4" offset="536" />
+      <field name="adoConnectionCEZA" type="TADOConnection" visibility="published" size="4" offset="540" />
+      <field name="adoCmdCEZA" type="TADOCommand" visibility="published" size="4" offset="544" />
+      <field name="qryCEZA" type="TADOQuery" visibility="published" size="4" offset="548" />
+      <field name="qryProjectsOfReport" type="TADOQuery" visibility="published" size="4" offset="552" />
+      <field name="dsProjectsOfReport" type="TDataSource" visibility="published" size="4" offset="556" />
+      <field name="dsCEZA" type="TDataSource" visibility="published" size="4" offset="560" />
+      <field name="qryTargetData" type="TADOQuery" visibility="published" size="4" offset="564" />
+      <field name="dsTargetData" type="TDataSource" visibility="published" size="4" offset="568" />
+      <field name="qryPendingReports" type="TADOQuery" visibility="published" size="4" offset="572" />
+      <field name="dsPendingReports" type="TDataSource" visibility="published" size="4" offset="576" />
+      <field name="qrySample1" type="TADOQuery" visibility="published" size="4" offset="580" />
+      <field name="qrySample2" type="TADOQuery" visibility="published" size="4" offset="584" />
+      <field name="ADOConnection1" type="TADOConnection" visibility="published" size="4" offset="588" />
+      <field name="qryProjectHasResults" type="TADOQuery" visibility="published" size="4" offset="592" />
+      <field name="qryDBPlot" type="TADOQuery" visibility="published" size="4" offset="596" />
+      <field name="dsDBPlot" type="TDataSource" visibility="published" size="4" offset="600" />
+      <field name="qryWaitingForMeas" type="TADOQuery" visibility="published" size="4" offset="604" />
+      <field name="dsWaitingForMeas" type="TDataSource" visibility="published" size="4" offset="608" />
+      <field name="qryWaitingExpress" type="TADOQuery" visibility="published" size="4" offset="612" />
+      <field name="dsWaitingExpress" type="TDataSource" visibility="published" size="4" offset="616" />
+      <field name="tblUsersalutation" type="TStringField" visibility="published" size="4" offset="620" />
+      <field name="tblUserlanguage" type="TStringField" visibility="published" size="4" offset="624" />
+      <field name="dsLeHeCurrents" type="TDataSource" visibility="published" size="4" offset="628" />
+      <field name="cdsLeHeCurrents" type="TClientDataSet" visibility="published" size="4" offset="632" />
+      <field name="cdsLeHeCurrentsSample_nr" type="TStringField" visibility="published" size="4" offset="636" />
+      <field name="cdsLeHeCurrentsPrep_nr" type="TStringField" visibility="published" size="4" offset="640" />
+      <field name="cdsLeHeCurrentsTarget_nr" type="TStringField" visibility="published" size="4" offset="644" />
+      <field name="cdsLeHeCurrentsLECurrent" type="TStringField" visibility="published" size="4" offset="648" />
+      <field name="cdsLeHeCurrentsHECurrent" type="TStringField" visibility="published" size="4" offset="652" />
+      <field name="qryMagazinesUnpressed" type="TADOQuery" visibility="published" size="4" offset="656" />
+      <field name="dsMagazinesUnpressed" type="TDataSource" visibility="published" size="4" offset="660" />
+      <field name="qrySamplesOfUnpressedMagazine" type="TADOQuery" visibility="published" size="4" offset="664" />
+      <field name="dsSamplesOfUnpressedMagazine" type="TDataSource" visibility="published" size="4" offset="668" />
+      <field name="tblMethodmethod" type="TStringField" visibility="published" size="4" offset="672" />
+      <field name="tblMethoddescr" type="TMemoField" visibility="published" size="4" offset="676" />
+      <field name="tblMethodindexnr" type="TIntegerField" visibility="published" size="4" offset="680" />
+      <procedure name="adoConnKTLExecuteComplete" visibility="published">
+        <devnotes>
+          /sends the string to the log window if the window is open
+        </devnotes>
+        <parameters>
+          <parameter name="Connection" type="TADOConnection" />
+          <parameter name="RecordsAffected" type="Integer" />
+          <parameter name="Error" type="Error" paramflags="const" />
+          <parameter name="EventStatus" type="TEventStatus" paramflags="var" />
+          <parameter name="Command" type="_Command" paramflags="const" />
+          <parameter name="Recordset" type="_Recordset" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="tblMethoddescrGetText" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TField" />
+          <parameter name="Text" type="string" paramflags="var" />
+          <parameter name="DisplayText" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="AddNewProjectByUserNr" visibility="public">
+        <parameters>
+          <parameter name="user_nr" type="string" />
+          <parameter name="project_name" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="AddNewSampleByProjectNr" visibility="public">
+        <parameters>
+          <parameter name="project_nr" type="string" />
+          <parameter name="sample_name" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="AddNewUser" visibility="public">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="CheckExistingDBValue" visibility="public">
+        <parameters>
+          <parameter name="table" type="string" />
+          <parameter name="column" type="string" />
+          <parameter name="value" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="CheckProjectOfUser_nr" visibility="public">
+        <parameters>
+          <parameter name="project_name" type="string" />
+          <parameter name="user_nr" type="Integer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="CheckSampleOfProjectNr" visibility="public">
+        <parameters>
+          <parameter name="sample_name" type="string" />
+          <parameter name="project_nr" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="InsertIntoDB" visibility="public">
+        <parameters>
+          <parameter name="table" type="string" />
+          <parameter name="column" type="string" />
+          <parameter name="value" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CheckProjectStatus" visibility="public">
+      </procedure>
+      <procedure name="CreateBlankPrepRecord" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <parameter name="PrepNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="CreateBlankTargetRecord" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <parameter name="PrepNr" type="Integer" />
+          <parameter name="TargetNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="DeleteFromDb" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="GetAllInPrep" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetAllPlanned" visibility="public">
+        <parameters>
+          <parameter name="ShowOnHold" type="Boolean" />
+          <parameter name="material" type="string">
+            <value>
+              none
+            </value>
+          </parameter>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetAllWaitingForGraph" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetAllWaitingForMeas" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetWaitingExpress" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetArchSamplesOfMonth" visibility="public">
+        <parameters>
+          <parameter name="Year" type="Word" />
+          <parameter name="Month" type="Word" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetAllSamplesOfMonth" visibility="public">
+        <parameters>
+          <parameter name="Year" type="Word" />
+          <parameter name="Month" type="Word" />
+          <parameter name="flag" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="GetMagazineData" visibility="public">
+        <parameters>
+          <parameter name="Magazine" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="GetMagazineDataUnpressed" visibility="public">
+        <parameters>
+          <parameter name="Magazine" type="string" />
+        </parameters>
+      </procedure>
+      <function name="GetMaxPrepNrBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetMaxSampleNr" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetMaxTargetNrBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+          <parameter name="prep_nr" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="GetNOxaBlank" visibility="public">
+        <parameters>
+          <parameter name="Oxa" type="Boolean" />
+        </parameters>
+      </procedure>
+      <procedure name="GetNIAEA" visibility="public">
+        <parameters>
+          <parameter name="stdname" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="GetNPferde" visibility="public">
+      </procedure>
+      <function name="GetPretreatStepNrBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+          <parameter name="prep_nr" type="Integer" />
+          <parameter name="method" type="string" paramflags="const" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetProjectNrBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetProjectNrByProjectAndUserNr" visibility="public">
+        <parameters>
+          <parameter name="project_name" type="string" />
+          <parameter name="user_nr" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetProjectByProjectNr" visibility="public">
+        <parameters>
+          <parameter name="project_nr" type="Integer" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="GetProjectsSinceYear" visibility="public">
+        <parameters>
+          <parameter name="StartYear" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="GetSampleNrBySampleNameAndProjectNr" visibility="public">
+        <parameters>
+          <parameter name="sample_name" type="string" />
+          <parameter name="project_nr" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetSamplesByProjectNr" visibility="public">
+        <parameters>
+          <parameter name="project_nr" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="RemoveProjectByProjectNr" visibility="public">
+        <parameters>
+          <parameter name="project_nr" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetUserByProjectNr" visibility="public">
+        <parameters>
+          <parameter name="project_nr" type="Integer" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetUserNrByLastName" visibility="public">
+        <parameters>
+          <parameter name="last_name" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="GetSamplesAvailableForPrep" visibility="public">
+        <parameters>
+          <parameter name="method" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="GetSamplesAvailableForPrepByMaterial" visibility="public">
+        <parameters>
+          <parameter name="material" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="GetSamplesAvailableForPrepByMethod" visibility="public">
+        <parameters>
+          <parameter name="method" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="GetSampleInfo" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <parameter name="PrepNr" type="Integer" />
+          <parameter name="TargetNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="GetTargetsAvailable" visibility="public">
+      </procedure>
+      <procedure name="GetWeights" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <parameter name="PrepNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="GetGraphWeight" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <parameter name="PrepNr" type="Integer" />
+          <parameter name="TargetNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="QueryInvoiceUser" visibility="public">
+        <parameters>
+          <parameter name="LastName" type="string" paramflags="const" />
+          <parameter name="Institute" type="string" paramflags="const" />
+          <parameter name="Organisation" type="string" paramflags="const" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="QueryPrepStepsBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+          <parameter name="prep_nr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="QueryTargetInfoBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="QueryProject" visibility="public">
+        <parameters>
+          <parameter name="ProjectName" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="QuerySampleBySampleNr" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="SetGraphDate" visibility="public">
+      </procedure>
+      <procedure name="SetGraphitized" visibility="public">
+      </procedure>
+      <procedure name="SetProjectStatusRunning" visibility="public">
+        <parameters>
+          <parameter name="sample_nr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="StrToClipBoard" visibility="public">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <parameter name="msDelay" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="SwapResults" visibility="public">
+        <parameters>
+          <parameter name="Nr1" type="Integer" />
+          <parameter name="Nr2" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="TargetRecordExistsForSample" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="TransferAgeFromTarget" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="Integer" />
+          <parameter name="PrepNr" type="Integer" />
+          <parameter name="TargetNr" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="TransferMA_Nr_To_MAMS" visibility="public">
+        <parameters>
+          <parameter name="limit" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="TransferLeHeCurrentToTarget" visibility="public">
+        <parameters>
+          <parameter name="SampleNr" type="string" />
+          <parameter name="PrepNr" type="string" />
+          <parameter name="TargetNr" type="string" />
+          <parameter name="le_current" type="string" />
+          <parameter name="he_current" type="string" />
+        </parameters>
+      </procedure>
+      <function name="ReplaceUmlaute" visibility="public">
+        <parameters>
+          <parameter name="s" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="ReplaceBadCharacters" visibility="public">
+        <parameters>
+          <parameter name="s" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="DBreconnect" visibility="public">
+      </procedure>
+    </members>
+  </class>
+  <variable name="dm" type="Tdm" />
+</namespace>

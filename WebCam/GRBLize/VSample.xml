@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="VSample" platform="Win32">
+  <const name="WM_GRAPHNOTIFY" type="Integer">
+    <value>
+      $8001
+    </value>
+  </const>
+  <const name="WM_NewFrame" type="Integer">
+    <value>
+      $402
+    </value>
+  </const>
+  <const name="IID_IUnknown" type="TGUID" visibility="public" />
+  <const name="PS_Stopped" type="TPLAYSTATE">
+    <value>
+      PS_Stopped
+    </value>
+  </const>
+  <const name="PS_Paused" type="TPLAYSTATE">
+    <value>
+      PS_Paused
+    </value>
+  </const>
+  <const name="PS_Running" type="TPLAYSTATE">
+    <value>
+      PS_Running
+    </value>
+  </const>
+  <enum name="TPLAYSTATE">
+    <element value="0" name="PS_Stopped" />
+    <element value="1" name="PS_Paused" />
+    <element value="2" name="PS_Running" />
+  </enum>
+  <type name="TVideoSampleCallBack" procflags="closure">
+  </type>
+  <interface name="TSampleGrabberCBInt" ancestor="ISampleGrabberCB">
+    <function name="SampleCB" visibility="public" procflags="abstract virtual" callconv="stdcall">
+      <parameters>
+        <parameter name="SampleTime" type="Double" />
+        <parameter name="pSample" type="IMediaSample" />
+        <retval type="HRESULT" />
+      </parameters>
+    </function>
+    <function name="BufferCB" visibility="public" procflags="abstract virtual" callconv="stdcall">
+      <parameters>
+        <parameter name="SampleTime" type="Double" />
+        <parameter name="pBuffer" type="PByte" />
+        <parameter name="BufferLen" type="Integer" />
+        <retval type="HRESULT" />
+      </parameters>
+    </function>
+  </interface>
+  <class name="TSampleGrabberCBImpl">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <field name="CallBack" type="TVideoSampleCallBack" visibility="public" size="8" offset="8" />
+      <function name="SampleCB" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="SampleTime" type="Double" />
+          <parameter name="pSample" type="IMediaSample" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="BufferCB" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="SampleTime" type="Double" />
+          <parameter name="pBuffer" type="PByte" />
+          <parameter name="BufferLen" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="TSampleGrabberCB">
+    <ancestor name="TInterfacedObject" namespace="System">
+      <interfaces>
+        <implements name="IInterface" />
+      </interfaces>
+      <methodref name="GetRefCount" visibility="private" procflags="inline">
+      </methodref>
+      <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+      </methodref>
+      <methodref name="QueryInterface" visibility="protected">
+      </methodref>
+      <methodref name="_AddRef" visibility="protected">
+      </methodref>
+      <methodref name="_Release" visibility="protected">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="override">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="override">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class override">
+      </methodref>
+      <propertyref name="RefCount" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+        </methodref>
+        <methodref name="InitInstance" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public" procflags="inline">
+        </methodref>
+        <methodref name="ClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="ClassParent" visibility="public" procflags="class inline">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public" procflags="class inline">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public" procflags="class inline">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public" procflags="class overload">
+        </methodref>
+        <methodref name="MethodName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="QualifiedClassName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public" procflags="overload">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+        </methodref>
+        <methodref name="UnitName" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="UnitScope" visibility="public" procflags="class">
+        </methodref>
+        <methodref name="Equals" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetHashCode" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="ToString" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Dispatch" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="NewInstance" visibility="public" procflags="class virtual">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+        </methodref>
+        <methodref name="GetDisposed" visibility="protected" procflags="inline">
+        </methodref>
+        <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+        </methodref>
+        <propertyref name="Disposed" visibility="protected">
+        </propertyref>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="TSampleGrabberCBInt" />
+    </interfaces>
+    <members>
+      <field name="FSampleGrabberCB" type="TSampleGrabberCBImpl" visibility="public" size="4" offset="12" />
+      <field name="CallBack" type="TVideoSampleCallBack" visibility="public" size="8" offset="16" />
+      <property name="SampleGrabberCB" visibility="public" read="FSampleGrabberCB" type="TSampleGrabberCBImpl" />
+    </members>
+  </class>
+  <struct name="TFormatInfo" size="92">
+    <field name="Width" type="Integer" visibility="public" size="4" offset="0" />
+    <field name="Height" type="Integer" visibility="public" size="4" offset="4" />
+    <field name="SSize" type="Cardinal" visibility="public" size="4" offset="8" />
+    <field name="OIndex" type="Integer" visibility="public" size="4" offset="12" />
+    <field name="mt" type="_AMMediaType" visibility="public" size="72" offset="16" />
+    <field name="FourCC" visibility="public" size="4" offset="88">
+      <array name="FourCC" visibility="public" low="0" high="3">
+        <element type="AnsiChar" />
+      </array>
+    </field>
+  </struct>
+  <class name="TVideoSample">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <field name="ghApp" type="HWND" visibility="private" size="4" offset="4" />
+      <field name="pIVideoWindow" type="IVideoWindow" visibility="private" size="4" offset="8" />
+      <field name="pIMediaControl" type="IMediaControl" visibility="private" size="4" offset="12" />
+      <field name="pIMediaEventEx" type="IMediaEventEx" visibility="private" size="4" offset="16" />
+      <field name="pIGraphBuilder" type="IGraphBuilder" visibility="private" size="4" offset="20" />
+      <field name="pICapGraphBuild2" type="ICaptureGraphBuilder2" visibility="private" size="4" offset="24" />
+      <field name="g_psCurrent" type="TPLAYSTATE" visibility="private" size="1" offset="28" />
+      <field name="pIAMStreamConfig" type="IAMStreamConfig" visibility="private" size="4" offset="32" />
+      <field name="piBFSampleGrabber" type="IBaseFilter" visibility="private" size="4" offset="36" />
+      <field name="pIAMVideoProcAmp" type="IAMVideoProcAmp" visibility="private" size="4" offset="40" />
+      <field name="pIBFNullRenderer" type="IBaseFilter" visibility="private" size="4" offset="44" />
+      <field name="pIKsPropertySet" type="IKsPropertySet" visibility="private" size="4" offset="48" />
+      <field name="pISampleGrabber" type="ISampleGrabber" visibility="private" size="4" offset="52" />
+      <field name="pIBFVideoSource" type="IBaseFilter" visibility="private" size="4" offset="56" />
+      <field name="SGrabberCB" type="TSampleGrabberCB" visibility="private" size="4" offset="60" />
+      <field name="_SGrabberCB" type="TSampleGrabberCBInt" visibility="private" size="4" offset="64" />
+      <field name="fVisible" type="Boolean" visibility="private" size="1" offset="68" />
+      <field name="CallBack" type="TVideoSampleCallBack" visibility="private" size="8" offset="72" />
+      <field name="FormatArr" type=":TVideoSample.:1" visibility="private" size="4" offset="80" />
+      <function name="GetInterfaces" visibility="private">
+        <parameters>
+          <parameter name="ForceRGB" type="Boolean" />
+          <parameter name="WhichMethodToCallback" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="SetupVideoWindow" visibility="private">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="ConnectToCaptureDevice" visibility="private">
+        <parameters>
+          <parameter name="DeviceName" type="string" />
+          <parameter name="DeviceSelected" type="string" paramflags="var" />
+          <parameter name="ppIBFVideoSource" type="IBaseFilter" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="RestartVideoEx" visibility="private">
+        <parameters>
+          <parameter name="Visible" type="Boolean" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="ShowPropertyDialogEx" visibility="private">
+        <parameters>
+          <parameter name="IBF" type="IInterface" paramflags="const" />
+          <parameter name="FilterName" type="PWideChar" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="LoadListOfResolution" visibility="private">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="DeleteBelow" visibility="private">
+        <parameters>
+          <parameter name="IBF" type="IBaseFilter" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="CloseInterfaces" visibility="private">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="VideoCanvasHandle" type="Cardinal" />
+          <parameter name="ForceRGB" type="Boolean" />
+          <parameter name="WhichMethodToCallback" type="Integer" />
+          <parameter name="HR" type="HRESULT" paramflags="var" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <property name="PlayState" visibility="public" read="g_psCurrent" type="TPLAYSTATE" />
+      <procedure name="ResizeVideoWindow" visibility="public">
+      </procedure>
+      <function name="RestartVideo" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="StartVideo" visibility="public">
+        <parameters>
+          <parameter name="CaptureDeviceName" type="string" />
+          <parameter name="Visible" type="Boolean" />
+          <parameter name="DeviceSelected" type="string" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="PauseVideo" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="ResumeVideo" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="StopVideo" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetImageBuffer" visibility="public">
+        <parameters>
+          <parameter name="pb" type="PByteArray" paramflags="var" />
+          <parameter name="Size" type="Integer" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="SetPreviewState" visibility="public">
+        <parameters>
+          <parameter name="nShow" type="Boolean" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="ShowPropertyDialog" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="ShowPropertyDialog_CaptureStream" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetVideoPropAmpEx" visibility="public">
+        <parameters>
+          <parameter name="Prop" type="tagVideoProcAmpProperty" />
+          <parameter name="pMin" type="Integer" paramflags="var" />
+          <parameter name="pMax" type="Integer" paramflags="var" />
+          <parameter name="pSteppingDelta" type="Integer" paramflags="var" />
+          <parameter name="pDefault" type="Integer" paramflags="var" />
+          <parameter name="pCapsFlags" type="tagVideoProcAmpFlags" paramflags="var" />
+          <parameter name="pActual" type="Integer" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="SetVideoPropAmpEx" visibility="public">
+        <parameters>
+          <parameter name="Prop" type="tagVideoProcAmpProperty" />
+          <parameter name="pCapsFlags" type="tagVideoProcAmpFlags" />
+          <parameter name="pActual" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="GetVideoPropAmpPercent" visibility="public">
+        <parameters>
+          <parameter name="Prop" type="tagVideoProcAmpProperty" />
+          <parameter name="AcPerCent" type="Integer" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="SetVideoPropAmpPercent" visibility="public">
+        <parameters>
+          <parameter name="Prop" type="tagVideoProcAmpProperty" />
+          <parameter name="AcPerCent" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="GetVideoSize" visibility="public">
+        <parameters>
+          <parameter name="Width" type="Integer" paramflags="var" />
+          <parameter name="height" type="Integer" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="ShowVfWCaptureDlg" visibility="public">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetStreamInfo" visibility="public">
+        <parameters>
+          <parameter name="Width" type="Integer" paramflags="var" />
+          <parameter name="Height" type="Integer" paramflags="var" />
+          <parameter name="FourCC" type="Cardinal" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetExProp" visibility="public">
+        <parameters>
+          <parameter name="guidPropSet" type="TGUID" />
+          <parameter name="dwPropID" type="Cardinal" />
+          <parameter name="pInstanceData" type="Pointer" />
+          <parameter name="cbInstanceData" type="Cardinal" />
+          <parameter name="pPropData" paramflags="out" />
+          <parameter name="cbPropData" type="Cardinal" />
+          <parameter name="pcbReturned" type="Cardinal" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="SetExProp" visibility="public">
+        <parameters>
+          <parameter name="guidPropSet" type="TGUID" />
+          <parameter name="dwPropID" type="Cardinal" />
+          <parameter name="pInstanceData" type="Pointer" />
+          <parameter name="cbInstanceData" type="Cardinal" />
+          <parameter name="pPropData" type="Pointer" />
+          <parameter name="cbPropData" type="Cardinal" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetCaptureIAMStreamConfig" visibility="public">
+        <parameters>
+          <parameter name="pSC" type="IAMStreamConfig" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="DeleteCaptureGraph" visibility="public">
+      </procedure>
+      <procedure name="SetCallBack" visibility="public">
+        <parameters>
+          <parameter name="CB" type="TVideoSampleCallBack" />
+        </parameters>
+      </procedure>
+      <function name="GetPlayState" visibility="public">
+        <parameters>
+          <retval type="TPLAYSTATE" />
+        </parameters>
+      </function>
+      <procedure name="GetListOfVideoSizes" visibility="public">
+        <parameters>
+          <parameter name="VidSize" type="TStringList" />
+        </parameters>
+      </procedure>
+      <function name="SetVideoSizeByListIndex" visibility="public">
+        <parameters>
+          <parameter name="ListIndex" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <function name="TGUIDEqual" visibility="public">
+    <parameters>
+      <parameter name="TG1" type="TGUID" paramflags="const" />
+      <parameter name="TG2" type="TGUID" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetCaptureDeviceList" visibility="public">
+    <parameters>
+      <parameter name="SL" type="TStringList" paramflags="var" />
+      <retval type="HRESULT" />
+    </parameters>
+  </function>
+</namespace>

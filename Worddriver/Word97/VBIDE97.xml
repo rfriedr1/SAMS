@@ -1,0 +1,4164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="VBIDE97" platform="Win32">
+  <const name="VBIDEMajorVersion" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="VBIDEMinorVersion" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <variable name="LIBID_VBIDE" type="TGUID" visibility="public" />
+  <variable name="IID_Application" type="TGUID" visibility="public" />
+  <variable name="IID_VBE" type="TGUID" visibility="public" />
+  <variable name="IID_Window" type="TGUID" visibility="public" />
+  <variable name="IID__Windows" type="TGUID" visibility="public" />
+  <variable name="CLASS_Windows" type="TGUID" visibility="public" />
+  <variable name="IID__LinkedWindows" type="TGUID" visibility="public" />
+  <variable name="CLASS_LinkedWindows" type="TGUID" visibility="public" />
+  <variable name="IID_Events" type="TGUID" visibility="public" />
+  <variable name="IID__VBProjectsEvents" type="TGUID" visibility="public" />
+  <variable name="DIID__dispVBProjectsEvents" type="TGUID" visibility="public" />
+  <variable name="IID__VBComponentsEvents" type="TGUID" visibility="public" />
+  <variable name="DIID__dispVBComponentsEvents" type="TGUID" visibility="public" />
+  <variable name="IID__ReferencesEvents" type="TGUID" visibility="public" />
+  <variable name="DIID__dispReferencesEvents" type="TGUID" visibility="public" />
+  <variable name="CLASS_ReferencesEvents" type="TGUID" visibility="public" />
+  <variable name="IID__CommandBarControlEvents" type="TGUID" visibility="public" />
+  <variable name="DIID__dispCommandBarControlEvents" type="TGUID" visibility="public" />
+  <variable name="CLASS_CommandBarEvents" type="TGUID" visibility="public" />
+  <variable name="IID__ProjectTemplate" type="TGUID" visibility="public" />
+  <variable name="CLASS_ProjectTemplate" type="TGUID" visibility="public" />
+  <variable name="IID__VBProject" type="TGUID" visibility="public" />
+  <variable name="CLASS_VBProject" type="TGUID" visibility="public" />
+  <variable name="IID__VBProjects" type="TGUID" visibility="public" />
+  <variable name="CLASS_VBProjects" type="TGUID" visibility="public" />
+  <variable name="IID_SelectedComponents" type="TGUID" visibility="public" />
+  <variable name="IID__Components" type="TGUID" visibility="public" />
+  <variable name="CLASS_Components" type="TGUID" visibility="public" />
+  <variable name="IID__VBComponents" type="TGUID" visibility="public" />
+  <variable name="CLASS_VBComponents" type="TGUID" visibility="public" />
+  <variable name="IID__Component" type="TGUID" visibility="public" />
+  <variable name="CLASS_Component" type="TGUID" visibility="public" />
+  <variable name="IID__VBComponent" type="TGUID" visibility="public" />
+  <variable name="CLASS_VBComponent" type="TGUID" visibility="public" />
+  <variable name="IID_Property_" type="TGUID" visibility="public" />
+  <variable name="IID__Properties" type="TGUID" visibility="public" />
+  <variable name="CLASS_Properties" type="TGUID" visibility="public" />
+  <variable name="IID__CodeModule" type="TGUID" visibility="public" />
+  <variable name="CLASS_CodeModule" type="TGUID" visibility="public" />
+  <variable name="IID__CodePanes" type="TGUID" visibility="public" />
+  <variable name="CLASS_CodePanes" type="TGUID" visibility="public" />
+  <variable name="IID__CodePane" type="TGUID" visibility="public" />
+  <variable name="CLASS_CodePane" type="TGUID" visibility="public" />
+  <variable name="IID__References" type="TGUID" visibility="public" />
+  <variable name="IID_Reference" type="TGUID" visibility="public" />
+  <variable name="DIID__dispReferences_Events" type="TGUID" visibility="public" />
+  <variable name="CLASS_References" type="TGUID" visibility="public" />
+  <type name="vbextFileTypes" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbextFileTypeForm" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbextFileTypeModule" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="vbextFileTypeClass" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="vbextFileTypeProject" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="vbextFileTypeExe" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="vbextFileTypeFrx" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="vbextFileTypeRes" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="vbextFileTypeUserControl" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="vbextFileTypePropertyPage" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="vbextFileTypeDocObject" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="vbextFileTypeBinary" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="vbextFileTypeGroupProject" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="vbextFileTypeDesigners" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <type name="vbext_WindowType" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_wt_CodeWindow" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_wt_Designer" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="vbext_wt_Browser" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="vbext_wt_Watch" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="vbext_wt_Locals" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="vbext_wt_Immediate" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="vbext_wt_ProjectWindow" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="vbext_wt_PropertyWindow" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="vbext_wt_Find" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="vbext_wt_FindReplace" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="vbext_wt_LinkedWindowFrame" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="vbext_wt_MainWindow" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="vbext_wt_ToolWindow" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <type name="vbext_WindowState" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_ws_Normal" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_ws_Minimize" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="vbext_ws_Maximize" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <type name="vbext_ProjectProtection" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_pp_none" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_pp_locked" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <type name="vbext_VBAMode" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_vm_Run" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_vm_Break" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="vbext_vm_Design" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <type name="vbext_ComponentType" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_ct_StdModule" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="vbext_ct_ClassModule" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="vbext_ct_MSForm" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="vbext_ct_Document" type="Integer">
+    <value>
+      $64
+    </value>
+  </const>
+  <type name="vbext_ProcKind" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_pk_Proc" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_pk_Let" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="vbext_pk_Set" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="vbext_pk_Get" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <type name="vbext_CodePaneview" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_cv_ProcedureView" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_cv_FullModuleView" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <type name="vbext_RefKind" type="cardinal" loBound="0" hiBound="-1" file="Winapi.ActiveX.pas" line="1701" />
+  <const name="vbext_rk_TypeLib" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="vbext_rk_Project" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <interface name="Windows" alias="VBIDE97._Windows" GUID="{0002E16A-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="Application" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="LinkedWindows" alias="VBIDE97._LinkedWindows" GUID="{0002E16C-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Window" type="Window" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="Add" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Window" type="Window" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="Window" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="ReferencesEvents" alias="VBIDE97._ReferencesEvents" GUID="{0002E11A-0000-0000-C000-000000000046}" ancestor="IInterface">
+  </interface>
+  <interface name="CommandBarEvents" alias="VBIDE97._CommandBarControlEvents" GUID="{0002E130-0000-0000-C000-000000000046}" ancestor="IInterface">
+  </interface>
+  <interface name="ProjectTemplate" alias="VBIDE97._ProjectTemplate" GUID="{0002E159-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="Application" />
+  </interface>
+  <interface name="VBProject" alias="VBIDE97._VBProject" GUID="{0002E160-0000-0000-C000-000000000046}" ancestor="_ProjectTemplate">
+    <function name="Get_HelpFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_HelpFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpbstrHelpFile" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_HelpContextID" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_HelpContextID" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpdwContextID" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_Description" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Description" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpbstrDescription" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_Mode" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <function name="Get_References" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_References" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpbstrName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProjects" />
+      </parameters>
+    </function>
+    <function name="Get_Protection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <function name="Get_Saved" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_VBComponents" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponents" />
+      </parameters>
+    </function>
+    <property name="HelpFile" visibility="public" read="Get_HelpFile" write="Set_HelpFile" type="WideString" default="0" />
+    <property name="HelpContextID" visibility="public" read="Get_HelpContextID" write="Set_HelpContextID" type="Integer" />
+    <property name="Description" visibility="public" read="Get_Description" write="Set_Description" type="WideString" default="0" />
+    <property name="Mode" visibility="public" read="Get_Mode" type="TOleEnum" />
+    <property name="References" visibility="public" read="Get_References" type="_References" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Collection" visibility="public" read="Get_Collection" type="_VBProjects" />
+    <property name="Protection" visibility="public" read="Get_Protection" type="TOleEnum" />
+    <property name="Saved" visibility="public" read="Get_Saved" type="WordBool" />
+    <property name="VBComponents" visibility="public" read="Get_VBComponents" type="_VBComponents" />
+  </interface>
+  <interface name="VBProjects" alias="VBIDE97._VBProjects" GUID="{0002E165-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="VBE" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="Components" alias="VBIDE97._Components" GUID="{0002E161-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Component" type="_Component" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Add" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ComponentType" type="TOleEnum" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Import" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+  </interface>
+  <interface name="VBComponents" alias="VBIDE97._VBComponents" GUID="{0002E162-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Add" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ComponentType" type="TOleEnum" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Import" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+  </interface>
+  <interface name="Component" alias="VBIDE97._Component" GUID="{0002E163-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Components" />
+      </parameters>
+    </function>
+    <function name="Get_IsDirty" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <procedure name="Set_IsDirty" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpfReturn" type="WordBool" />
+      </parameters>
+    </procedure>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pbstrReturn" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="_Components" />
+    <property name="IsDirty" visibility="public" read="Get_IsDirty" write="Set_IsDirty" type="WordBool" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+  </interface>
+  <interface name="VBComponent" alias="VBIDE97._VBComponent" GUID="{0002E164-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Saved" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pbstrReturn" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_Designer" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IDispatch" />
+      </parameters>
+    </function>
+    <function name="Get_CodeModule" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodeModule" />
+      </parameters>
+    </function>
+    <function name="Get_type_" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <procedure name="Export" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponents" />
+      </parameters>
+    </function>
+    <function name="Get_HasOpenDesigner" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_Properties" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Properties" />
+      </parameters>
+    </function>
+    <function name="DesignerWindow" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <procedure name="Activate" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <property name="Saved" visibility="public" read="Get_Saved" type="WordBool" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+    <property name="Designer" visibility="public" read="Get_Designer" type="IDispatch" />
+    <property name="CodeModule" visibility="public" read="Get_CodeModule" type="_CodeModule" />
+    <property name="type_" visibility="public" read="Get_type_" type="TOleEnum" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Collection" visibility="public" read="Get_Collection" type="_VBComponents" />
+    <property name="HasOpenDesigner" visibility="public" read="Get_HasOpenDesigner" type="WordBool" />
+    <property name="Properties" visibility="public" read="Get_Properties" type="_Properties" />
+  </interface>
+  <interface name="Properties" alias="VBIDE97._Properties" GUID="{0002E188-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Property_" />
+      </parameters>
+    </function>
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IDispatch" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="IDispatch" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+  </interface>
+  <interface name="CodeModule" alias="VBIDE97._CodeModule" GUID="{0002E16E-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pbstrName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="AddFromString" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="AddFromFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_Lines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="Count" type="Integer" />
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_CountOfLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="InsertLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="DeleteLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="Count" type="Integer" />
+      </parameters>
+    </procedure>
+    <procedure name="ReplaceLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_ProcStartLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ProcName" type="WideString" paramflags="const" />
+        <parameter name="ProcKind" type="TOleEnum" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_ProcCountLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ProcName" type="WideString" paramflags="const" />
+        <parameter name="ProcKind" type="TOleEnum" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_ProcBodyLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ProcName" type="WideString" paramflags="const" />
+        <parameter name="ProcKind" type="TOleEnum" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_ProcOfLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="ProcKind" type="TOleEnum" paramflags="out" />
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_CountOfDeclarationLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="CreateEventProc" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="EventName" type="WideString" paramflags="const" />
+        <parameter name="ObjectName" type="WideString" paramflags="const" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Find" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Target" type="WideString" paramflags="const" />
+        <parameter name="StartLine" type="Integer" paramflags="var" />
+        <parameter name="StartColumn" type="Integer" paramflags="var" />
+        <parameter name="EndLine" type="Integer" paramflags="var" />
+        <parameter name="EndColumn" type="Integer" paramflags="var" />
+        <parameter name="WholeWord" type="WordBool" />
+        <parameter name="MatchCase" type="WordBool" />
+        <parameter name="PatternSearch" type="WordBool" />
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_CodePane" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBComponent" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+    <property name="Lines[StartLine][Count]" visibility="public" read="Get_Lines" type="WideString" />
+    <property name="CountOfLines" visibility="public" read="Get_CountOfLines" type="Integer" />
+    <property name="ProcStartLine[const ProcName][ProcKind]" visibility="public" read="Get_ProcStartLine" type="Integer" />
+    <property name="ProcCountLines[const ProcName][ProcKind]" visibility="public" read="Get_ProcCountLines" type="Integer" />
+    <property name="ProcBodyLine[const ProcName][ProcKind]" visibility="public" read="Get_ProcBodyLine" type="Integer" />
+    <property name="ProcOfLine[Line][ProcKind]" visibility="public" read="Get_ProcOfLine" type="WideString" />
+    <property name="CountOfDeclarationLines" visibility="public" read="Get_CountOfDeclarationLines" type="Integer" />
+    <property name="CodePane" visibility="public" read="Get_CodePane" type="_CodePane" />
+  </interface>
+  <interface name="CodePanes" alias="VBIDE97._CodePanes" GUID="{0002E172-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="Get_Current" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <procedure name="Set_Current" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="CodePane" type="_CodePane" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Parent" visibility="public" read="Get_Parent" type="VBE" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="Current" visibility="public" read="Get_Current" type="_CodePane" />
+  </interface>
+  <interface name="CodePane" alias="VBIDE97._CodePane" GUID="{0002E176-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePanes" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Window" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <procedure name="GetSelection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" paramflags="out" />
+        <parameter name="StartColumn" type="Integer" paramflags="out" />
+        <parameter name="EndLine" type="Integer" paramflags="out" />
+        <parameter name="EndColumn" type="Integer" paramflags="out" />
+      </parameters>
+    </procedure>
+    <procedure name="SetSelection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="StartColumn" type="Integer" />
+        <parameter name="EndLine" type="Integer" />
+        <parameter name="EndColumn" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_TopLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_TopLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="TopLine" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_CountOfVisibleLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_CodeModule" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodeModule" />
+      </parameters>
+    </function>
+    <procedure name="Show" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <function name="Get_CodePaneView" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <property name="Collection" visibility="public" read="Get_Collection" type="_CodePanes" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Window" visibility="public" read="Get_Window" type="Window" />
+    <property name="TopLine" visibility="public" read="Get_TopLine" type="Integer" />
+    <property name="CountOfVisibleLines" visibility="public" read="Get_CountOfVisibleLines" type="Integer" />
+    <property name="CodeModule" visibility="public" read="Get_CodeModule" type="_CodeModule" />
+    <property name="CodePaneView" visibility="public" read="Get_CodePaneView" type="TOleEnum" />
+  </interface>
+  <interface name="References" alias="VBIDE97._References" GUID="{0002E17A-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="AddFromGuid" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Guid" type="WideString" paramflags="const" />
+        <parameter name="Major" type="Integer" />
+        <parameter name="Minor" type="Integer" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <function name="AddFromFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <pointer name="PWordBool1" type="WordBool" indircnt="1" />
+  <interface name="Application" GUID="{0002E158-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Version" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <property name="Version" visibility="public" read="Get_Version" type="WideString" default="0" />
+  </interface>
+  <interface name="ApplicationDisp" GUID="{0002E158-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Version" visibility="automated" type="WideString" />
+  </interface>
+  <interface name="VBE" GUID="{0002E166-0000-0000-C000-000000000046}" ancestor="Application">
+    <function name="Get_VBProjects" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProjects" />
+      </parameters>
+    </function>
+    <function name="Get_CommandBars" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="CommandBars" />
+      </parameters>
+    </function>
+    <function name="Get_CodePanes" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePanes" />
+      </parameters>
+    </function>
+    <function name="Get_Windows" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Windows" />
+      </parameters>
+    </function>
+    <function name="Get_Events" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Events" />
+      </parameters>
+    </function>
+    <function name="Get_ActiveVBProject" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <procedure name="_Set_ActiveVBProject" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lppptReturn" type="_VBProject" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_SelectedVBComponent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_MainWindow" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Get_ActiveWindow" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Get_ActiveCodePane" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <procedure name="_Set_ActiveCodePane" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ppCodePane" type="_CodePane" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="VBProjects" visibility="public" read="Get_VBProjects" type="_VBProjects" />
+    <property name="CommandBars" visibility="public" read="Get_CommandBars" type="CommandBars" />
+    <property name="CodePanes" visibility="public" read="Get_CodePanes" type="_CodePanes" />
+    <property name="Windows" visibility="public" read="Get_Windows" type="_Windows" />
+    <property name="Events" visibility="public" read="Get_Events" type="Events" />
+    <property name="ActiveVBProject" visibility="public" read="Get_ActiveVBProject" write="_Set_ActiveVBProject" type="_VBProject" />
+    <property name="SelectedVBComponent" visibility="public" read="Get_SelectedVBComponent" type="_VBComponent" />
+    <property name="MainWindow" visibility="public" read="Get_MainWindow" type="Window" />
+    <property name="ActiveWindow" visibility="public" read="Get_ActiveWindow" type="Window" />
+    <property name="ActiveCodePane" visibility="public" read="Get_ActiveCodePane" write="_Set_ActiveCodePane" type="_CodePane" />
+  </interface>
+  <interface name="VBEDisp" GUID="{0002E166-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="VBProjects" visibility="automated" type="_VBProjects" />
+    <property name="CommandBars" visibility="automated" type="CommandBars" />
+    <property name="CodePanes" visibility="automated" type="_CodePanes" />
+    <property name="Windows" visibility="automated" type="_Windows" />
+    <property name="Events" visibility="automated" type="Events" />
+    <property name="ActiveVBProject" visibility="automated" type="_VBProject" />
+    <property name="SelectedVBComponent" visibility="automated" type="_VBComponent" />
+    <property name="MainWindow" visibility="automated" type="Window" />
+    <property name="ActiveWindow" visibility="automated" type="Window" />
+    <property name="ActiveCodePane" visibility="automated" type="_CodePane" />
+    <property name="Version" visibility="automated" type="WideString" />
+  </interface>
+  <interface name="Window" GUID="{0002E16B-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Windows" />
+      </parameters>
+    </function>
+    <procedure name="Close" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <function name="Get_Caption" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_Visible" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <procedure name="Set_Visible" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pfVisible" type="WordBool" />
+      </parameters>
+    </procedure>
+    <function name="Get_Left" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_Left" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="plLeft" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_Top" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_Top" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="plTop" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_Width" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_Width" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="plWidth" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_Height" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_Height" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="plHeight" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_WindowState" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <procedure name="Set_WindowState" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="plWindowState" type="TOleEnum" />
+      </parameters>
+    </procedure>
+    <procedure name="SetFocus" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <function name="Get_type_" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <procedure name="SetKind" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="eKind" type="TOleEnum" />
+      </parameters>
+    </procedure>
+    <function name="Get_LinkedWindows" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_LinkedWindows" />
+      </parameters>
+    </function>
+    <function name="Get_LinkedWindowFrame" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <procedure name="Detach" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <procedure name="Attach" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lWindowHandle" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_HWnd" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Collection" visibility="public" read="Get_Collection" type="_Windows" />
+    <property name="Caption" visibility="public" read="Get_Caption" type="WideString" default="0" />
+    <property name="Visible" visibility="public" read="Get_Visible" write="Set_Visible" type="WordBool" />
+    <property name="Left" visibility="public" read="Get_Left" write="Set_Left" type="Integer" />
+    <property name="Top" visibility="public" read="Get_Top" write="Set_Top" type="Integer" />
+    <property name="Width" visibility="public" read="Get_Width" write="Set_Width" type="Integer" />
+    <property name="Height" visibility="public" read="Get_Height" write="Set_Height" type="Integer" />
+    <property name="WindowState" visibility="public" read="Get_WindowState" write="Set_WindowState" type="TOleEnum" />
+    <property name="type_" visibility="public" read="Get_type_" type="TOleEnum" />
+    <property name="LinkedWindows" visibility="public" read="Get_LinkedWindows" type="_LinkedWindows" />
+    <property name="LinkedWindowFrame" visibility="public" read="Get_LinkedWindowFrame" type="Window" />
+    <property name="HWnd" visibility="public" read="Get_HWnd" type="Integer" />
+  </interface>
+  <interface name="WindowDisp" GUID="{0002E16B-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Collection" visibility="automated" type="_Windows" />
+    <procedure name="Close" visibility="automated" procflags="abstract automated virtual">
+    </procedure>
+    <property name="Caption" visibility="automated" type="WideString" />
+    <property name="Visible" visibility="automated" type="WordBool" />
+    <property name="Left" visibility="automated" type="Integer" />
+    <property name="Top" visibility="automated" type="Integer" />
+    <property name="Width" visibility="automated" type="Integer" />
+    <property name="Height" visibility="automated" type="Integer" />
+    <property name="WindowState" visibility="automated" type="TOleEnum" />
+    <procedure name="SetFocus" visibility="automated" procflags="abstract automated virtual">
+    </procedure>
+    <property name="type_" visibility="automated" type="TOleEnum" />
+    <procedure name="SetKind" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="eKind" type="TOleEnum" />
+      </parameters>
+    </procedure>
+    <property name="LinkedWindows" visibility="automated" type="_LinkedWindows" />
+    <property name="LinkedWindowFrame" visibility="automated" type="Window" />
+    <procedure name="Detach" visibility="automated" procflags="abstract automated virtual">
+    </procedure>
+    <procedure name="Attach" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="lWindowHandle" type="Integer" />
+      </parameters>
+    </procedure>
+    <property name="HWnd" visibility="automated" type="Integer" />
+  </interface>
+  <interface name="_Windows" GUID="{0002E16A-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="Application" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="_WindowsDisp" GUID="{0002E16A-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Parent" visibility="automated" type="Application" />
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+  </interface>
+  <interface name="_LinkedWindows" GUID="{0002E16C-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Window" type="Window" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="Add" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Window" type="Window" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="Window" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="_LinkedWindowsDisp" GUID="{0002E16C-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Parent" visibility="automated" type="Window" />
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Window" type="Window" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="Add" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Window" type="Window" paramflags="const" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="Events" GUID="{0002E167-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_ReferencesEvents" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="VBProject" type="_VBProject" paramflags="const" />
+        <retval type="_ReferencesEvents" />
+      </parameters>
+    </function>
+    <function name="Get_CommandBarEvents" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="CommandBarControl" type="IDispatch" paramflags="const" />
+        <retval type="_CommandBarControlEvents" />
+      </parameters>
+    </function>
+    <property name="ReferencesEvents[const VBProject]" visibility="public" read="Get_ReferencesEvents" type="_ReferencesEvents" />
+    <property name="CommandBarEvents[const CommandBarControl]" visibility="public" read="Get_CommandBarEvents" type="_CommandBarControlEvents" />
+  </interface>
+  <interface name="EventsDisp" GUID="{0002E167-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="ReferencesEvents[const VBProject]" visibility="automated" type="_ReferencesEvents" />
+    <property name="CommandBarEvents[const CommandBarControl]" visibility="automated" type="_CommandBarControlEvents" />
+  </interface>
+  <interface name="_VBProjectsEvents" GUID="{0002E113-0000-0000-C000-000000000046}" ancestor="IInterface">
+  </interface>
+  <interface name="_dispVBProjectsEvents" GUID="{0002E103-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <procedure name="ItemAdded" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBProject" type="_VBProject" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemRemoved" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBProject" type="_VBProject" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemRenamed" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBProject" type="_VBProject" paramflags="const" />
+        <parameter name="OldName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemActivated" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBProject" type="_VBProject" paramflags="const" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="_VBComponentsEvents" GUID="{0002E115-0000-0000-C000-000000000046}" ancestor="IInterface">
+  </interface>
+  <interface name="_dispVBComponentsEvents" GUID="{0002E116-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <procedure name="ItemAdded" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemRemoved" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemRenamed" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+        <parameter name="OldName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemSelected" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemActivated" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemReloaded" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="_ReferencesEvents" GUID="{0002E11A-0000-0000-C000-000000000046}" ancestor="IInterface">
+  </interface>
+  <interface name="_dispReferencesEvents" GUID="{0002E118-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <procedure name="ItemAdded" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemRemoved" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="_CommandBarControlEvents" GUID="{0002E130-0000-0000-C000-000000000046}" ancestor="IInterface">
+  </interface>
+  <interface name="_dispCommandBarControlEvents" GUID="{0002E131-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <procedure name="Click" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="CommandBarControl" type="IDispatch" paramflags="const" />
+        <parameter name="handled" type="WordBool" paramflags="var" />
+        <parameter name="CancelDefault" type="WordBool" paramflags="var" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="_ProjectTemplate" GUID="{0002E159-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="Application" />
+  </interface>
+  <interface name="_ProjectTemplateDisp" GUID="{0002E159-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="Application" />
+  </interface>
+  <interface name="_VBProject" GUID="{0002E160-0000-0000-C000-000000000046}" ancestor="_ProjectTemplate">
+    <function name="Get_HelpFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_HelpFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpbstrHelpFile" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_HelpContextID" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_HelpContextID" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpdwContextID" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_Description" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Description" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpbstrDescription" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_Mode" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <function name="Get_References" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_References" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpbstrName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProjects" />
+      </parameters>
+    </function>
+    <function name="Get_Protection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <function name="Get_Saved" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_VBComponents" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponents" />
+      </parameters>
+    </function>
+    <property name="HelpFile" visibility="public" read="Get_HelpFile" write="Set_HelpFile" type="WideString" default="0" />
+    <property name="HelpContextID" visibility="public" read="Get_HelpContextID" write="Set_HelpContextID" type="Integer" />
+    <property name="Description" visibility="public" read="Get_Description" write="Set_Description" type="WideString" default="0" />
+    <property name="Mode" visibility="public" read="Get_Mode" type="TOleEnum" />
+    <property name="References" visibility="public" read="Get_References" type="_References" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Collection" visibility="public" read="Get_Collection" type="_VBProjects" />
+    <property name="Protection" visibility="public" read="Get_Protection" type="TOleEnum" />
+    <property name="Saved" visibility="public" read="Get_Saved" type="WordBool" />
+    <property name="VBComponents" visibility="public" read="Get_VBComponents" type="_VBComponents" />
+  </interface>
+  <interface name="_VBProjectDisp" GUID="{0002E160-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="HelpFile" visibility="automated" type="WideString" />
+    <property name="HelpContextID" visibility="automated" type="Integer" />
+    <property name="Description" visibility="automated" type="WideString" />
+    <property name="Mode" visibility="automated" type="TOleEnum" />
+    <property name="References" visibility="automated" type="_References" />
+    <property name="Name" visibility="automated" type="WideString" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Collection" visibility="automated" type="_VBProjects" />
+    <property name="Protection" visibility="automated" type="TOleEnum" />
+    <property name="Saved" visibility="automated" type="WordBool" />
+    <property name="VBComponents" visibility="automated" type="_VBComponents" />
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="Application" />
+  </interface>
+  <interface name="_VBProjects" GUID="{0002E165-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="VBE" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="_VBProjectsDisp" GUID="{0002E165-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Parent" visibility="automated" type="VBE" />
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+  </interface>
+  <interface name="SelectedComponents" GUID="{BE39F3D4-1B13-11D0-887F-00A0C90F2744}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="Integer" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="SelectedComponentsDisp" GUID="{BE39F3D4-1B13-11D0-887F-00A0C90F2744}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="Integer" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="_VBProject" />
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+  </interface>
+  <interface name="_Components" GUID="{0002E161-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Component" type="_Component" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Add" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ComponentType" type="TOleEnum" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Import" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+  </interface>
+  <interface name="_ComponentsDisp" GUID="{0002E161-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="_VBProject" />
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Component" type="_Component" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Add" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="ComponentType" type="TOleEnum" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <function name="Import" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="_Component" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="automated" type="VBE" />
+  </interface>
+  <interface name="_VBComponents" GUID="{0002E162-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Add" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ComponentType" type="TOleEnum" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Import" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+  </interface>
+  <interface name="_VBComponentsDisp" GUID="{0002E162-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <property name="Parent" visibility="automated" type="_VBProject" />
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="VBComponent" type="_VBComponent" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Add" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="ComponentType" type="TOleEnum" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Import" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="automated" type="VBE" />
+  </interface>
+  <interface name="_Component" GUID="{0002E163-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Components" />
+      </parameters>
+    </function>
+    <function name="Get_IsDirty" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <procedure name="Set_IsDirty" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lpfReturn" type="WordBool" />
+      </parameters>
+    </procedure>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pbstrReturn" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="_Components" />
+    <property name="IsDirty" visibility="public" read="Get_IsDirty" write="Set_IsDirty" type="WordBool" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+  </interface>
+  <interface name="_ComponentDisp" GUID="{0002E163-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="_Components" />
+    <property name="IsDirty" visibility="automated" type="WordBool" />
+    <property name="Name" visibility="automated" type="WideString" />
+  </interface>
+  <interface name="_VBComponent" GUID="{0002E164-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Saved" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pbstrReturn" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_Designer" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IDispatch" />
+      </parameters>
+    </function>
+    <function name="Get_CodeModule" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodeModule" />
+      </parameters>
+    </function>
+    <function name="Get_type_" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <procedure name="Export" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponents" />
+      </parameters>
+    </function>
+    <function name="Get_HasOpenDesigner" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_Properties" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Properties" />
+      </parameters>
+    </function>
+    <function name="DesignerWindow" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <procedure name="Activate" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <property name="Saved" visibility="public" read="Get_Saved" type="WordBool" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+    <property name="Designer" visibility="public" read="Get_Designer" type="IDispatch" />
+    <property name="CodeModule" visibility="public" read="Get_CodeModule" type="_CodeModule" />
+    <property name="type_" visibility="public" read="Get_type_" type="TOleEnum" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Collection" visibility="public" read="Get_Collection" type="_VBComponents" />
+    <property name="HasOpenDesigner" visibility="public" read="Get_HasOpenDesigner" type="WordBool" />
+    <property name="Properties" visibility="public" read="Get_Properties" type="_Properties" />
+  </interface>
+  <interface name="_VBComponentDisp" GUID="{0002E164-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Saved" visibility="automated" type="WordBool" />
+    <property name="Name" visibility="automated" type="WideString" />
+    <property name="Designer" visibility="automated" type="IDispatch" />
+    <property name="CodeModule" visibility="automated" type="_CodeModule" />
+    <property name="type_" visibility="automated" type="TOleEnum" />
+    <procedure name="Export" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Collection" visibility="automated" type="_VBComponents" />
+    <property name="HasOpenDesigner" visibility="automated" type="WordBool" />
+    <property name="Properties" visibility="automated" type="_Properties" />
+    <function name="DesignerWindow" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <procedure name="Activate" visibility="automated" procflags="abstract automated virtual">
+    </procedure>
+  </interface>
+  <interface name="Property_" GUID="{0002E18C-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Value" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="OleVariant" />
+      </parameters>
+    </function>
+    <procedure name="Set_Value" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lppvReturn" type="OleVariant" />
+      </parameters>
+    </procedure>
+    <function name="Get_IndexedValue" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Index1" type="OleVariant" />
+        <parameter name="Index2" type="OleVariant" />
+        <parameter name="Index3" type="OleVariant" />
+        <parameter name="Index4" type="OleVariant" />
+        <retval type="OleVariant" />
+      </parameters>
+    </function>
+    <procedure name="Set_IndexedValue" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Index1" type="OleVariant" />
+        <parameter name="Index2" type="OleVariant" />
+        <parameter name="Index3" type="OleVariant" />
+        <parameter name="Index4" type="OleVariant" />
+        <parameter name="lppvReturn" type="OleVariant" />
+      </parameters>
+    </procedure>
+    <function name="Get_NumIndices" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="SmallInt" />
+      </parameters>
+    </function>
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Properties" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_Properties" />
+      </parameters>
+    </function>
+    <function name="Get_Object_" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <procedure name="_Set_Object_" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="lppunk" type="IInterface" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Value" visibility="public" read="Get_Value" write="Set_Value" type="OleVariant" default="0" />
+    <property name="IndexedValue[Index1][Index2][Index3][Index4]" visibility="public" read="Get_IndexedValue" write="Set_IndexedValue" type="OleVariant" />
+    <property name="NumIndices" visibility="public" read="Get_NumIndices" type="SmallInt" />
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="_Properties" />
+    <property name="Name" visibility="public" read="Get_Name" type="WideString" default="0" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Collection" visibility="public" read="Get_Collection" type="_Properties" />
+    <property name="Object_" visibility="public" read="Get_Object_" write="_Set_Object_" type="IInterface" />
+  </interface>
+  <interface name="Property_Disp" GUID="{0002E18C-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Value" visibility="automated" type="OleVariant" />
+    <property name="IndexedValue[Index1][Index2][Index3][Index4]" visibility="automated" type="OleVariant" />
+    <property name="NumIndices" visibility="automated" type="SmallInt" />
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="_Properties" />
+    <property name="Name" visibility="automated" type="WideString" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Collection" visibility="automated" type="_Properties" />
+    <property name="Object_" visibility="automated" type="IInterface" />
+  </interface>
+  <interface name="_Properties" GUID="{0002E188-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Property_" />
+      </parameters>
+    </function>
+    <function name="Get_Application" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Application" />
+      </parameters>
+    </function>
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IDispatch" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="public" read="Get_Application" type="Application" />
+    <property name="Parent" visibility="public" read="Get_Parent" type="IDispatch" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+  </interface>
+  <interface name="_PropertiesDisp" GUID="{0002E188-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Property_" />
+      </parameters>
+    </function>
+    <property name="Application" visibility="automated" type="Application" />
+    <property name="Parent" visibility="automated" type="IDispatch" />
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="VBE" visibility="automated" type="VBE" />
+  </interface>
+  <interface name="_CodeModule" GUID="{0002E16E-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBComponent" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <procedure name="Set_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="pbstrName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="AddFromString" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="AddFromFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_Lines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="Count" type="Integer" />
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_CountOfLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="InsertLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="DeleteLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="Count" type="Integer" />
+      </parameters>
+    </procedure>
+    <procedure name="ReplaceLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <function name="Get_ProcStartLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ProcName" type="WideString" paramflags="const" />
+        <parameter name="ProcKind" type="TOleEnum" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_ProcCountLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ProcName" type="WideString" paramflags="const" />
+        <parameter name="ProcKind" type="TOleEnum" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_ProcBodyLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="ProcName" type="WideString" paramflags="const" />
+        <parameter name="ProcKind" type="TOleEnum" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_ProcOfLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="ProcKind" type="TOleEnum" paramflags="out" />
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_CountOfDeclarationLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="CreateEventProc" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="EventName" type="WideString" paramflags="const" />
+        <parameter name="ObjectName" type="WideString" paramflags="const" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Find" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Target" type="WideString" paramflags="const" />
+        <parameter name="StartLine" type="Integer" paramflags="var" />
+        <parameter name="StartColumn" type="Integer" paramflags="var" />
+        <parameter name="EndLine" type="Integer" paramflags="var" />
+        <parameter name="EndColumn" type="Integer" paramflags="var" />
+        <parameter name="WholeWord" type="WordBool" />
+        <parameter name="MatchCase" type="WordBool" />
+        <parameter name="PatternSearch" type="WordBool" />
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_CodePane" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBComponent" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Name" visibility="public" read="Get_Name" write="Set_Name" type="WideString" default="0" />
+    <property name="Lines[StartLine][Count]" visibility="public" read="Get_Lines" type="WideString" />
+    <property name="CountOfLines" visibility="public" read="Get_CountOfLines" type="Integer" />
+    <property name="ProcStartLine[const ProcName][ProcKind]" visibility="public" read="Get_ProcStartLine" type="Integer" />
+    <property name="ProcCountLines[const ProcName][ProcKind]" visibility="public" read="Get_ProcCountLines" type="Integer" />
+    <property name="ProcBodyLine[const ProcName][ProcKind]" visibility="public" read="Get_ProcBodyLine" type="Integer" />
+    <property name="ProcOfLine[Line][ProcKind]" visibility="public" read="Get_ProcOfLine" type="WideString" />
+    <property name="CountOfDeclarationLines" visibility="public" read="Get_CountOfDeclarationLines" type="Integer" />
+    <property name="CodePane" visibility="public" read="Get_CodePane" type="_CodePane" />
+  </interface>
+  <interface name="_CodeModuleDisp" GUID="{0002E16E-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Parent" visibility="automated" type="_VBComponent" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Name" visibility="automated" type="WideString" />
+    <procedure name="AddFromString" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="AddFromFile" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Lines[StartLine][Count]" visibility="automated" type="WideString" />
+    <property name="CountOfLines" visibility="automated" type="Integer" />
+    <procedure name="InsertLines" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="DeleteLines" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="Count" type="Integer" />
+      </parameters>
+    </procedure>
+    <procedure name="ReplaceLine" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Line" type="Integer" />
+        <parameter name="String_" type="WideString" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="ProcStartLine[const ProcName][ProcKind]" visibility="automated" type="Integer" />
+    <property name="ProcCountLines[const ProcName][ProcKind]" visibility="automated" type="Integer" />
+    <property name="ProcBodyLine[const ProcName][ProcKind]" visibility="automated" type="Integer" />
+    <property name="ProcOfLine[Line][ProcKind]" visibility="automated" type="WideString" />
+    <property name="CountOfDeclarationLines" visibility="automated" type="Integer" />
+    <function name="CreateEventProc" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="EventName" type="WideString" paramflags="const" />
+        <parameter name="ObjectName" type="WideString" paramflags="const" />
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Find" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Target" type="WideString" paramflags="const" />
+        <parameter name="StartLine" type="Integer" paramflags="var" />
+        <parameter name="StartColumn" type="Integer" paramflags="var" />
+        <parameter name="EndLine" type="Integer" paramflags="var" />
+        <parameter name="EndColumn" type="Integer" paramflags="var" />
+        <parameter name="WholeWord" type="WordBool" />
+        <parameter name="MatchCase" type="WordBool" />
+        <parameter name="PatternSearch" type="WordBool" />
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <property name="CodePane" visibility="automated" type="_CodePane" />
+  </interface>
+  <interface name="_CodePanes" GUID="{0002E172-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="Get_Current" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <procedure name="Set_Current" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="CodePane" type="_CodePane" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Parent" visibility="public" read="Get_Parent" type="VBE" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+    <property name="Current" visibility="public" read="Get_Current" type="_CodePane" />
+  </interface>
+  <interface name="_CodePanesDisp" GUID="{0002E172-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Parent" visibility="automated" type="VBE" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="_CodePane" />
+      </parameters>
+    </function>
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <property name="Current" visibility="automated" type="_CodePane" />
+  </interface>
+  <interface name="_CodePane" GUID="{0002E176-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodePanes" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Window" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Window" />
+      </parameters>
+    </function>
+    <procedure name="GetSelection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" paramflags="out" />
+        <parameter name="StartColumn" type="Integer" paramflags="out" />
+        <parameter name="EndLine" type="Integer" paramflags="out" />
+        <parameter name="EndColumn" type="Integer" paramflags="out" />
+      </parameters>
+    </procedure>
+    <procedure name="SetSelection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="StartColumn" type="Integer" />
+        <parameter name="EndLine" type="Integer" />
+        <parameter name="EndColumn" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_TopLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <procedure name="Set_TopLine" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="TopLine" type="Integer" />
+      </parameters>
+    </procedure>
+    <function name="Get_CountOfVisibleLines" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_CodeModule" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_CodeModule" />
+      </parameters>
+    </function>
+    <procedure name="Show" visibility="public" procflags="abstract virtual" callconv="safecall">
+    </procedure>
+    <function name="Get_CodePaneView" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <property name="Collection" visibility="public" read="Get_Collection" type="_CodePanes" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Window" visibility="public" read="Get_Window" type="Window" />
+    <property name="TopLine" visibility="public" read="Get_TopLine" type="Integer" />
+    <property name="CountOfVisibleLines" visibility="public" read="Get_CountOfVisibleLines" type="Integer" />
+    <property name="CodeModule" visibility="public" read="Get_CodeModule" type="_CodeModule" />
+    <property name="CodePaneView" visibility="public" read="Get_CodePaneView" type="TOleEnum" />
+  </interface>
+  <interface name="_CodePaneDisp" GUID="{0002E176-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Collection" visibility="automated" type="_CodePanes" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Window" visibility="automated" type="Window" />
+    <procedure name="GetSelection" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="StartLine" type="Integer" paramflags="out" />
+        <parameter name="StartColumn" type="Integer" paramflags="out" />
+        <parameter name="EndLine" type="Integer" paramflags="out" />
+        <parameter name="EndColumn" type="Integer" paramflags="out" />
+      </parameters>
+    </procedure>
+    <procedure name="SetSelection" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="StartLine" type="Integer" />
+        <parameter name="StartColumn" type="Integer" />
+        <parameter name="EndLine" type="Integer" />
+        <parameter name="EndColumn" type="Integer" />
+      </parameters>
+    </procedure>
+    <property name="TopLine" visibility="automated" type="Integer" />
+    <property name="CountOfVisibleLines" visibility="automated" type="Integer" />
+    <property name="CodeModule" visibility="automated" type="_CodeModule" />
+    <procedure name="Show" visibility="automated" procflags="abstract automated virtual">
+    </procedure>
+    <property name="CodePaneView" visibility="automated" type="TOleEnum" />
+  </interface>
+  <interface name="_References" GUID="{0002E17A-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Parent" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_VBProject" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Item" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <function name="Get_Count" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="_NewEnum" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="AddFromGuid" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Guid" type="WideString" paramflags="const" />
+        <parameter name="Major" type="Integer" />
+        <parameter name="Minor" type="Integer" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <function name="AddFromFile" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+    <property name="Parent" visibility="public" read="Get_Parent" type="_VBProject" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Count" visibility="public" read="Get_Count" type="Integer" />
+  </interface>
+  <interface name="_ReferencesDisp" GUID="{0002E17A-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Parent" visibility="automated" type="_VBProject" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <function name="Item" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="index" type="OleVariant" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <property name="Count" visibility="automated" type="Integer" />
+    <function name="_NewEnum" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <retval type="IInterface" />
+      </parameters>
+    </function>
+    <function name="AddFromGuid" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Guid" type="WideString" paramflags="const" />
+        <parameter name="Major" type="Integer" />
+        <parameter name="Minor" type="Integer" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <function name="AddFromFile" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="FileName" type="WideString" paramflags="const" />
+        <retval type="Reference" />
+      </parameters>
+    </function>
+    <procedure name="Remove" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="Reference" GUID="{0002E17E-0000-0000-C000-000000000046}" ancestor="IDispatch">
+    <function name="Get_Collection" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="_References" />
+      </parameters>
+    </function>
+    <function name="Get_VBE" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="VBE" />
+      </parameters>
+    </function>
+    <function name="Get_Name" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_Guid" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_Major" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_Minor" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="Integer" />
+      </parameters>
+    </function>
+    <function name="Get_FullPath" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <function name="Get_BuiltIn" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_IsBroken" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WordBool" />
+      </parameters>
+    </function>
+    <function name="Get_type_" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="TOleEnum" />
+      </parameters>
+    </function>
+    <function name="Get_Description" visibility="public" procflags="abstract virtual" callconv="safecall">
+      <parameters>
+        <retval type="WideString" />
+      </parameters>
+    </function>
+    <property name="Collection" visibility="public" read="Get_Collection" type="_References" />
+    <property name="VBE" visibility="public" read="Get_VBE" type="VBE" />
+    <property name="Name" visibility="public" read="Get_Name" type="WideString" default="0" />
+    <property name="Guid" visibility="public" read="Get_Guid" type="WideString" default="0" />
+    <property name="Major" visibility="public" read="Get_Major" type="Integer" />
+    <property name="Minor" visibility="public" read="Get_Minor" type="Integer" />
+    <property name="FullPath" visibility="public" read="Get_FullPath" type="WideString" default="0" />
+    <property name="BuiltIn" visibility="public" read="Get_BuiltIn" type="WordBool" />
+    <property name="IsBroken" visibility="public" read="Get_IsBroken" type="WordBool" />
+    <property name="type_" visibility="public" read="Get_type_" type="TOleEnum" />
+    <property name="Description" visibility="public" read="Get_Description" type="WideString" default="0" />
+  </interface>
+  <interface name="ReferenceDisp" GUID="{0002E17E-0000-0000-C000-000000000046}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <property name="Collection" visibility="automated" type="_References" />
+    <property name="VBE" visibility="automated" type="VBE" />
+    <property name="Name" visibility="automated" type="WideString" />
+    <property name="Guid" visibility="automated" type="WideString" />
+    <property name="Major" visibility="automated" type="Integer" />
+    <property name="Minor" visibility="automated" type="Integer" />
+    <property name="FullPath" visibility="automated" type="WideString" />
+    <property name="BuiltIn" visibility="automated" type="WordBool" />
+    <property name="IsBroken" visibility="automated" type="WordBool" />
+    <property name="type_" visibility="automated" type="TOleEnum" />
+    <property name="Description" visibility="automated" type="WideString" />
+  </interface>
+  <interface name="_dispReferences_Events" GUID="{CDDE3804-2064-11CF-867F-00AA005FF34A}" ancestor="IDispatch" dispatch="true" symflags="platform">
+    <procedure name="ItemAdded" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+    <procedure name="ItemRemoved" visibility="automated" procflags="abstract automated virtual">
+      <parameters>
+        <parameter name="Reference" type="Reference" paramflags="const" />
+      </parameters>
+    </procedure>
+  </interface>
+  <class name="CoWindows">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_Windows" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_Windows" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoLinkedWindows">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_LinkedWindows" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_LinkedWindows" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoReferencesEvents">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_ReferencesEvents" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_ReferencesEvents" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoCommandBarEvents">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_CommandBarControlEvents" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_CommandBarControlEvents" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoProjectTemplate">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_ProjectTemplate" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_ProjectTemplate" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoVBProject">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_VBProject" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_VBProject" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoVBProjects">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_VBProjects" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_VBProjects" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoComponents">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_Components" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_Components" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoVBComponents">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_VBComponents" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_VBComponents" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoComponent">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_Component" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_Component" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoVBComponent">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_VBComponent" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_VBComponent" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoProperties">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_Properties" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_Properties" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoCodeModule">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_CodeModule" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_CodeModule" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoCodePanes">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_CodePanes" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_CodePanes" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoCodePane">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_CodePane" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_CodePane" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="CoReferences">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline" symflags="deprecated">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <function name="Create" visibility="public" procflags="class">
+        <parameters>
+          <retval type="_References" />
+        </parameters>
+      </function>
+      <function name="CreateRemote" visibility="public" procflags="class">
+        <parameters>
+          <parameter name="MachineName" type="string" paramflags="const" />
+          <retval type="_References" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+</namespace>

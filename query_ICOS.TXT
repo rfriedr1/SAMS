@@ -1,0 +1,4 @@
+SELECT magazine, fm, fm_sig, user_label
+from target_v
+WHERE user_label like "HEI_3%" AND fm IS NOT NULL
+order by magazine;
