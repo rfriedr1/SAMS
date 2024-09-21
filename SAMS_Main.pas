@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Sept-19-2024';
+  myVersion = '1.9.9 Built: Sept-21-2024';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -7981,6 +7981,8 @@ begin
   // display boolean fields as checkboxes
   if (Column.FieldName='return_to_sender') OR
   (Column.FieldName='returned_to_sender') OR
+  (Column.FieldName='prep_return_to_sender') OR
+  (Column.FieldName='prep_returned_to_sender') OR
   (Column.FieldName='CNIsotopA') OR
   (Column.FieldName='CNIsotopAMoved') then
   begin
@@ -9042,11 +9044,21 @@ begin
 //           'WHERE return_to_sender = "1" ' +
 //           'AND NOT returned_to_sender = "1" ' +
 //           'Order by sample_nr';
-        s := 'SELECT project, project_nr, last_name, user_t.user_nr, in_date, out_date, AuftragsNr, return_to_sender, returned_to_sender ' +
+
+//        s := 'SELECT project, project_nr, last_name, user_t.user_nr, in_date, out_date, AuftragsNr, return_to_sender, returned_to_sender, prep_return_to_sender, prep_returned_to_sender ' +
+//             'FROM project_t ' +
+//             'INNER JOIN user_t ON project_t.user_nr = user_t.user_nr ' +
+//             'WHERE return_to_sender = "1" ' +
+//             'AND NOT returned_to_sender = "1" ' +
+//             'Order by project_nr';
+
+        s := 'SELECT project, project_nr, last_name, user_t.user_nr, in_date, out_date, AuftragsNr, return_to_sender, returned_to_sender, prep_return_to_sender, prep_returned_to_sender ' +
              'FROM project_t ' +
              'INNER JOIN user_t ON project_t.user_nr = user_t.user_nr ' +
-             'WHERE return_to_sender = "1" ' +
-             'AND NOT returned_to_sender = "1" ' +
+             'WHERE ' +
+             '(return_to_sender = 1 AND returned_to_sender = 0) ' +
+             'OR ' +
+             '(prep_return_to_sender = 1 AND prep_returned_to_sender = 0) ' +
              'Order by project_nr';
     end
   else if RadioGroupSampleExchange.ItemIndex = 1 then //samples to CN
