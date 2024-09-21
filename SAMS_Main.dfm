@@ -311,7 +311,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1548
         Height = 858
-        ActivePage = wizInputProject
+        ActivePage = wizStartPage
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -709,6 +709,7 @@ object frmMAMS: TfrmMAMS
               Top = 111
               Width = 112
               Height = 24
+              Date = 45556.000000000000000000
               Time = 0.944212418980896500
               TabOrder = 4
               DropDownDate = 40191.000000000000000000
@@ -5568,6 +5569,7 @@ object frmMAMS: TfrmMAMS
           Width = 87
           Height = 21
           CustomHint = BalloonHint1
+          Date = 45556.000000000000000000
           Time = 0.397922083342564300
           TabOrder = 4
           TabStop = False
@@ -5753,6 +5755,7 @@ object frmMAMS: TfrmMAMS
           Top = 40
           Width = 87
           Height = 21
+          Date = 45556.000000000000000000
           Time = 0.417571122685330900
           TabOrder = 9
           TabStop = False
@@ -7774,7 +7777,6 @@ object frmMAMS: TfrmMAMS
           Height = 15
           Align = alBottom
           Caption = 'selected: '
-          ExplicitTop = 732
           ExplicitWidth = 49
         end
         object DBGridDBPlot: TDBGrid

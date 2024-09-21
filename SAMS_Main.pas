@@ -4764,7 +4764,7 @@ begin
   edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
 
   // get all sample info from DB
-  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  // DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
   // hide some buttons
   btnTouchWeightsPrepNeedsSaving.Visible := False;
@@ -4800,7 +4800,7 @@ begin
   edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
 
   // get all sample info from DB
-  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  // DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
   // hide some buttons
   btnTouchWeightsPrepNeedsSaving.Visible := False;
@@ -5491,7 +5491,7 @@ begin
   btnTouchWeightsGraphNeedsSaving.Visible := False;
 
   // get all sample info from DB
-  //dm.GetSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Value), StrToInt(edtTouchWeightsTargetNr.Value));
+  dm.GetSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Value), StrToInt(edtTouchWeightsTargetNr.Value));
 
   //showmessage('start start start' + edtTouchWeightsMAMS.Text);
 
@@ -9265,19 +9265,19 @@ end;
 
 procedure TfrmMAMS.DisplayArchiveWarning;
 VAR
-  i: integer;
+  CheckedCount: integer;
 begin
   // this meant to make sure that samples are archived if they are not returned or no leftover
   // check if at least one of the checkboxes "return to sender" or " s no leftover" or "s_storage_loc"/"SampleArchived" are checked
   // if not show a SpeedButton displaing a warning symbol
   LogWindow.addLogEntry('running: DisplayArchiveWarning');
   // only one checkmark MUST be present
-  i:=0;
-  if DBchkTouchWeightsSampleNoLeftover.Checked then i:= i + 1;
-  if chkTouchReturnToSender.Checked then i:= i + 1;
-  if chkTouchSampleArchived.Checked then i:= i + 1;
-  // showmessage('Sample Archived Flag = ' + i.ToString);
-  if i <> 1 then
+  CheckedCount:=0;
+  if DBchkTouchWeightsSampleNoLeftover.Checked then Inc(CheckedCount);
+  if chkTouchReturnToSender.Checked then Inc(CheckedCount);
+  if chkTouchSampleArchived.Checked then Inc(CheckedCount);
+  // ç
+  if (CheckedCount = 0) or (CheckedCount > 1) then
   begin
     btnTouchWarningStorageLoc.Visible := True;
   end
@@ -9289,27 +9289,30 @@ end;
 
 procedure TfrmMAMS.DisplayArchiveWarningPrep;
 VAR
-  i: integer;
+  CheckedCount: integer;
 begin
   // this meant to make sure that preped materials are archieved if they are not moved to CN or no leftover
   // check if at least one of the checkboxes "moved to CN" or " s no leftover" or "prep_storage_loc"/"SampleArchived" or "prep_return_to_sender" are checked
   // if not show a SpeedButton displaing a warning symbol
   LogWindow.addLogEntry('running: DisplayArchiveWarningPrep');
   // only one checkmark MUST be present
-  i:=0;
-  if DBchkTouchWeightsPrepNoLeftover.Checked then i:= i + 1;
-  if chkTouchprepReturnToSender.Checked then i:= i + 1;
-  if DBCheckBoxTouchMovedToCN.Checked then i:= i + 1;
-  if chkTouchPrepArchived.Checked then i:= i + 1;
-  //showmessage(i.ToString);
-  if i <> 1 then
-  begin
-    btnTouchWarningStorageLocPrep.Visible := True;
-  end
+
+    CheckedCount := 0;
+
+  // Check how many checkboxes are checked
+  if chkTouchprepReturnToSender.Checked then Inc(CheckedCount);
+  if DBCheckBoxTouchMovedToCN.Checked then Inc(CheckedCount);
+  if chkTouchPrepArchived.Checked then Inc(CheckedCount);
+  if DBchkTouchWeightsPrepNoLeftover.Checked then Inc(CheckedCount);
+
+  // showMessage(CheckedCount.ToString);
+
+    // Logic for the visibility of the speed button
+  if (CheckedCount = 0) or (CheckedCount > 1) then
+    btnTouchWarningStorageLocPrep.Visible := True
   else
-  begin
     btnTouchWarningStorageLocPrep.Visible := False;
-  end;
+
 end;
 
 procedure TfrmMAMS.DBchkTouchWeightsPrepNoLeftoverClick(Sender: TObject);
