@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Sept-21-2024';
+  myVersion = '1.9.9 Built: Oct-10-2024';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -914,6 +914,8 @@ type
     DBCheckBoxPrepReturnedToSender: TDBCheckBox;
     chkInsertprepReturnToSender: TCheckBox;
     chkTouchprepReturnToSender: TDBCheckBox;
+    ActivityIndicator1: TActivityIndicator;
+    ActivityIndicatorDBInfo: TActivityIndicator;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -2144,7 +2146,7 @@ begin
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 200)) + #34 + // 200 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND last_name<>"intern" ORDER BY in_date;';    *)
 
-    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.Samples, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help_t.Measured FROM project_t ' +
+    SQL.Text := 'SELECT project, last_name, first_name, in_date, desired_date, project_t.project_nr, user_t.user_nr, help2_t.Samples, help3_t.discPrep, help5_t.prepDone, help4_t.discTarget, help6_t.graphDone, help7_t.inMagazine, help_t.Measured FROM project_t ' +
       'INNER JOIN user_t on project_t.user_nr=user_t.user_nr ' +
       //create and join to a table to count the measured samples in all project
       'LEFT JOIN (select project_nr, count(sample_nr) AS Measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
@@ -2162,6 +2164,9 @@ begin
       //create and join a table to count all samples that already have a graphitized
       'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS graphDone FROM target_t INNER JOIN sample_t ON target_t.sample_nr = sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(graphitized) GROUP BY sample_t.project_nr) help6_t ON project_t.project_nr=help6_t.project_nr ' +
+      // create and join a table that counts all samples that have a magazine assigned
+      'LEFT JOIN (select sample_t.project_nr, count(target_t.sample_nr) AS inMagazine FROM target_t INNER JOIN sample_t ON target_t.sample_nr = sample_t.sample_nr ' +
+      'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE NOT ISNULL(magazine) GROUP BY sample_t.project_nr) help7_t ON project_t.project_nr=help7_t.project_nr ' +
       // only list projects within a certain time frame and without out_date
       'WHERE in_date > ' + #34 + FormatDateTime('YYYY-MM-DD', DateOf(Date - 300)) + #34 + // 300 Tage zurück
       ' AND (out_date IS NULL or out_date < "2010-01-01") AND NOT (last_name="intern" AND first_name="intern") ORDER BY desired_date;';
@@ -2170,6 +2175,7 @@ begin
     LogWindow.addLogEntry(SQL.Text);
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports...');
     // JvLogFile.Add('SQLQuery',lesInformation,SQL.Text);
+    Application.ProcessMessages;
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
@@ -2194,25 +2200,29 @@ begin
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... ' + grdPendingReports.Columns.Count.ToString + ' columns to display in grid');
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths manually');
     LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths manually');
+
+    // adjust column sizes of the data table
     with grdPendingReports do
-    begin
-      Columns[0].Width := 150; // project
-      Columns[1].Width := 100; // last name
-      Columns[2].Width := 90; // first name
-      Columns[3].Width := 70;  // in date
-      Columns[4].Width := 80;  // desired date
-      Columns[5].Width := 60;  // project nr
-      Columns[6].Width := 60;  // user nr
-      Columns[7].Width := 60;  // samples
-      Columns[8].Width := 60;  // discarded prep
-      Columns[9].Width := 60;  // prepDone
-      Columns[10].Width := 60;  // discraded target
-      Columns[11].Width := 60;  // graphDone
-      Columns[12].Width := 60;  // measured
-    end;
+      begin
+        Columns[0].Width := 130; // project
+        Columns[1].Width := 100; // last name
+        Columns[2].Width := 90; // first name
+        Columns[3].Width := 70;  // in date
+        Columns[4].Width := 80;  // desired date
+        Columns[5].Width := 60;  // project nr
+        Columns[6].Width := 60;  // user nr
+        Columns[7].Width := 60;  // samples
+        Columns[8].Width := 60;  // discarded prep
+        Columns[9].Width := 60;  // prepDone
+        Columns[10].Width := 60;  // discraded target
+        Columns[11].Width := 60;  // graphDone
+        Columns[12].Width := 60;  // inMgazine
+        Columns[13].Width := 70;  // measured
+      end;
 
     LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically');
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths automatically');
+
     FixDBGridColumnsWidth(grdPendingReports);
     LogWindow.addLogEntry('btnPendingReportsClick: DBGrid setting columns widths automatically done!');
     JvLogFile.Add('Pending Reports',lesInformation,'Query DB for pending reports... setting column widths automatically done!');
@@ -4764,7 +4774,7 @@ begin
   edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
 
   // get all sample info from DB
-  // DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
   // hide some buttons
   btnTouchWeightsPrepNeedsSaving.Visible := False;
@@ -4800,7 +4810,7 @@ begin
   edtSampleTargetNr.Value := edtTouchWeightsTargetNr.Value;
 
   // get all sample info from DB
-  // DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
+  DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
 
   // hide some buttons
   btnTouchWeightsPrepNeedsSaving.Visible := False;
@@ -5491,6 +5501,7 @@ begin
   btnTouchWeightsGraphNeedsSaving.Visible := False;
 
   // get all sample info from DB
+  //DoSampleInfo(StrToInt(edtTouchWeightsMAMS.Text), StrToInt(edtTouchWeightsPrepNr.Text), StrToInt(edtTouchWeightsTargetNr.Text));
   dm.GetSampleInfo(round(edtTouchWeightsMAMS.Value), StrToInt(edtTouchWeightsPrepNr.Value), StrToInt(edtTouchWeightsTargetNr.Value));
 
   //showmessage('start start start' + edtTouchWeightsMAMS.Text);
@@ -6451,8 +6462,10 @@ begin
       AssignFile(txtFile,pathToini);
       Rewrite(txtFile);
       CloseFile(txtFile);
-    End
+    End;
 
+ // display the program Version in the name of the main aplication window
+ frmMAMS.Caption:= 'SAMS' + myVersion;
 end;
 
 procedure TfrmMAMS.FormDestroy(Sender: TObject);
@@ -7063,7 +7076,7 @@ begin
      Begin
      TDBGrid(Sender).Canvas.Brush.Color:=clSkyBlue;
      End;
-  if dm.qryPendingReports.FieldByName('desired_date').AsDateTime<=Date()+21 Then     //if desired_date approcahes 2 weeks
+  if dm.qryPendingReports.FieldByName('desired_date').AsDateTime<=Date()+14 Then     //if desired_date approaches 2 weeks
      Begin
      TDBGrid(Sender).Canvas.Font.Color := clFuchsia;
      End;
@@ -8116,6 +8129,7 @@ end;
 
 procedure TfrmMAMS.HelpAbout1Execute(Sender: TObject);
 begin
+  AboutBox.Version.Caption := 'Version: ' + myVersion;
   AboutBox.ShowModal;
 end;
 
@@ -9118,7 +9132,7 @@ end;
 
 procedure TfrmMAMS.FixDBGridColumnsWidth(const DBGrid: TDBGrid);
 var
-i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount, colCount : integer;
+i,W,WMax, WTitle, TotWidth, VarWidth, ResizableColumnCount, colCount, MaxTextLength, TextLength : integer;
 AColumn : TColumn;
 percentChange: Single;
 begin
@@ -9127,11 +9141,13 @@ begin
  //total width of all columns before resize
  TotWidth := 10;
  //how to divide any extra space in the grid
- VarWidth := 1;
+ VarWidth := 5;
  //how many columns need to be auto-resized
  colCount := DBGrid.Columns.Count;
  //calculate total with of all colums according to the text width within the columns
- ResizableColumnCount := 0;
+ ResizableColumnCount := 1;
+ // maximum length of the text in a column as number of characters - avoid overly long text
+ MaxTextLength := 70;
 
  for i := 0 to colCount-1 do
    begin
@@ -9142,17 +9158,22 @@ begin
         DBGrid.DataSource.DataSet.First;
         while not DBGrid.DataSource.DataSet.EOF do
           begin
-
             W := DBGrid.Canvas.TextWidth(DBGrid.Columns[i].Field.AsString);
-            if W > WMax then WMax := W;
+            TextLength := length(DBGrid.Columns[i].Field.AsString);
+            if W > WMax then
+              if TextLength < MaxTextLength then
+                begin
+                  WMax := W;
+                end;
             DBGrid.DataSource.DataSet.Next;
           end;
-          LogWindow.addLogEntry('found wmax');
+          LogWindow.addLogEntry('found wmax = ' + inttostr(WMax));
           DBGrid.DataSource.DataSet.First;
        // find with of the column title
           WTitle := DBGrid.Canvas.TextWidth(DBGrid.Columns[i].Title.Caption);
+          LogWindow.addLogEntry('found WTitle = ' + inttostr(WTitle));
        // if column title is larger than column content then use width of the column title
-          if WMax < WTitle then WMax := WTitle;
+          if WMax < WTitle+10 then WMax := WTitle+10;
        // set with of the column to max width of the text or title caption
           DBGrid.Columns[i].Width:= WMax;
       // count total with of all columns
@@ -10760,17 +10781,21 @@ begin
   dm.adoConnKTL.LoginPrompt := true;
 
   // try building the connection string from the paramters give during startup
+  JvLogFile.Add('Startup',lesInformation,'DB - Param count = ' + ParamCount.ToString);
+  frmStart.MemoStartScreenMessages.Lines.Add('DB - Param count = ' + ParamCount.ToString);
   with dm.adoConnKTL do    //this specifies the ADOConnection to the database
   begin
-    if not Connected then
+    if Connected then
     begin
+    dm.adoConnKTL.Close;
+    JvLogFile.Add('Startup',lesInformation,'test');
       if ParamCount > 0 then   //some parameters are given
       begin
-        frmStart.MemoStartScreenMessages.Lines.Add('DB - found connection parameters');
+        JvLogFile.Add('Startup',lesInformation,'DB - ODBC-DataSource= ' + ParamStr(1));
+        frmStart.MemoStartScreenMessages.Lines.Add('DB - found connection parameters (' + ParamCount.ToString+ ')');
      //Provider=MSDASQL.1;Password=Micadas;Persist Security Info=True;User ID=root;Data Source=DMYSQL_KTL
         s := s + ';Data Source =' + ParamStr(1);     // one parameter given, this must be the name of the ODBC connection
         frmStart.MemoStartScreenMessages.Lines.Add('DB - Data Source= ' + ParamStr(1));
-        JvLogFile.Add('Startup',lesInformation,'DB - DataSource= ' + ParamStr(1));
         if ParamCount > 1 then
           begin
             s := s + ';User ID=' + ParamStr(2);    // two parameters given, must be the ODBC connection and user name
@@ -10781,6 +10806,7 @@ begin
         begin
           s := s + '; Password :=' + ParamStr(3);
           frmStart.MemoStartScreenMessages.Lines.Add('DB - found connection password');
+          JvLogFile.Add('Startup',lesInformation,'DB - Connection Password is given');
           dm.adoConnKTL.LoginPrompt := false;    //no logon prompt is needed since password and user name is supplied
         end;
         if ParamCount > 3 then      // if four parameters are give and the last one is "KTLsupervisor" some special settings are applied
@@ -10793,7 +10819,10 @@ begin
             JvLogFile.Add('Startup',lesInformation,'starting Application as KTLSupervisor');
           end;
         end;
+        //JvLogFile.Add('Startup',lesInformation,'DB - Connection String 1 = ' + s);
         dm.adoConnKTL.ConnectionString := s; // send the connection string to the ADO connection
+        dm.adoConnKTL.Open;
+        //JvLogFile.Add('Startup',lesInformation,'DB - Connection String 2 = ' + s);
         frmMAMS.Caption := ' SAMS v.' + myVersion + ' -- ODBC: ' + ParamStr(1) + ' -- User: ' + ParamStr(2); //display the connection info in the header of the form
       end
       else

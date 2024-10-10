@@ -12,9 +12,7 @@ object AboutBox: TAboutBox
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 8
@@ -33,9 +31,9 @@ object AboutBox: TAboutBox
     object ProductName: TLabel
       Left = 88
       Top = 16
-      Width = 68
+      Width = 30
       Height = 13
-      Caption = 'Product Name'
+      Caption = 'SAMS'
       IsControl = True
     end
     object Version: TLabel
@@ -49,9 +47,9 @@ object AboutBox: TAboutBox
     object Copyright: TLabel
       Left = 8
       Top = 80
-      Width = 44
+      Width = 174
       Height = 13
-      Caption = 'Copyright'
+      Caption = '2024, Bernd Kromer, Ronny Friedrich'
       IsControl = True
     end
     object Comments: TLabel

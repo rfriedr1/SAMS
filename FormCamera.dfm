@@ -2,7 +2,7 @@ object CameraWindow: TCameraWindow
   Left = 392
   Top = 223
   Caption = 'Camera'
-  ClientHeight = 541
+  ClientHeight = 536
   ClientWidth = 991
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,7 +12,6 @@ object CameraWindow: TCameraWindow
   Font.Style = []
   KeyPreview = True
   Menu = MainMenu1
-  OldCreateOrder = False
   Position = poScreenCenter
   Scaled = False
   OnClose = FormClose
@@ -21,12 +20,11 @@ object CameraWindow: TCameraWindow
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
     Left = 988
     Top = 0
-    Height = 541
+    Height = 536
     Align = alRight
     OnMoved = Splitter1Moved
     ExplicitLeft = 168
@@ -37,9 +35,10 @@ object CameraWindow: TCameraWindow
     Left = 0
     Top = 0
     Width = 377
-    Height = 541
+    Height = 536
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 541
     object GroupBoxCameraSettings: TGroupBox
       Left = 1
       Top = 1
@@ -62,15 +61,16 @@ object CameraWindow: TCameraWindow
       Left = 1
       Top = 142
       Width = 375
-      Height = 398
+      Height = 393
       Align = alClient
       TabOrder = 1
       OnResize = PanelPaintBoxResize
+      ExplicitHeight = 398
       object PaintBox: TPaintBox
         Left = 1
         Top = 1
         Width = 373
-        Height = 396
+        Height = 391
         Align = alClient
         OnPaint = PaintBoxPaint
         ExplicitLeft = -47
@@ -84,14 +84,15 @@ object CameraWindow: TCameraWindow
     Left = 613
     Top = 0
     Width = 375
-    Height = 541
+    Height = 536
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 541
     object PaintBoxImage: TPaintBox
       Left = 1
       Top = 142
       Width = 373
-      Height = 398
+      Height = 393
       Align = alClient
       OnPaint = PaintBoxImagePaint
       ExplicitLeft = 6
@@ -144,7 +145,6 @@ object CameraWindow: TCameraWindow
         Width = 233
         Height = 21
         TabStop = False
-        DialogKind = dkWin32
         TabOrder = 0
         Text = 'PathToImage'
         OnChange = edtPathToImageChange
@@ -220,18 +220,20 @@ object CameraWindow: TCameraWindow
     Left = 377
     Top = 0
     Width = 236
-    Height = 541
+    Height = 536
     Align = alLeft
     TabOrder = 3
+    ExplicitHeight = 541
     object GroupBoxImageSettings: TGroupBox
       Left = 1
       Top = 1
       Width = 234
-      Height = 539
+      Height = 534
       Align = alClient
       Anchors = [akLeft, akTop, akBottom]
       Caption = 'Image Settings'
       TabOrder = 0
+      ExplicitHeight = 539
       object LabelWhiteBalance: TLabel
         Left = 10
         Top = 270
@@ -428,11 +430,11 @@ object CameraWindow: TCameraWindow
       end
     end
   end
-  object WCamera: TWCamera
+  object wcamera: TWCamera
     AspectRatio = True
     BorderColor = clWhite
     PreviewControl = PanelPaintBox
-    OnImageAvailable = WCameraImageAvailable
+    OnImageAvailable = wcameraImageAvailable
     Left = 16
     Top = 56
   end

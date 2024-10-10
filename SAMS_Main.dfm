@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = btnTouchWeightsMAMSDown
+  ActiveControl = edtMonthStat
   Caption = 'SAMS '
   ClientHeight = 959
   ClientWidth = 1556
@@ -89,6 +89,8 @@ object frmMAMS: TfrmMAMS
       item
         Width = 50
       end>
+    ExplicitTop = 927
+    ExplicitWidth = 1554
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -111,6 +113,7 @@ object frmMAMS: TfrmMAMS
     StyleElements = [seFont, seBorder]
     Wrapable = False
     OnClick = ToolBar1Click
+    ExplicitWidth = 1554
     object ToolbtnHome: TToolButton
       Left = 0
       Top = 0
@@ -299,10 +302,12 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1556
     Height = 888
-    ActivePage = tbsTouch
+    ActivePage = tbsDBInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
+    ExplicitWidth = 1554
+    ExplicitHeight = 880
     object tbsInsertSamples: TTabSheet
       Caption = 'Insert samples'
       ImageIndex = 8
@@ -312,7 +317,7 @@ object frmMAMS: TfrmMAMS
         Width = 1548
         Height = 858
         ActivePage = wizStartPage
-        ButtonBarHeight = 42
+        ButtonBarHeight = 52
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
         ButtonStart.Width = 85
@@ -422,7 +427,7 @@ object frmMAMS: TfrmMAMS
             Left = 0
             Top = 176
             Width = 361
-            Height = 640
+            Height = 630
             Align = alLeft
             ColCount = 2
             DefaultRowHeight = 20
@@ -462,7 +467,7 @@ object frmMAMS: TfrmMAMS
             Left = 361
             Top = 176
             Width = 1042
-            Height = 640
+            Height = 630
             Align = alClient
             DataSource = dm.dsUserInfo
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -531,7 +536,7 @@ object frmMAMS: TfrmMAMS
             Left = 0
             Top = 142
             Width = 361
-            Height = 674
+            Height = 664
             Align = alLeft
             ColCount = 2
             DefaultRowHeight = 20
@@ -571,7 +576,7 @@ object frmMAMS: TfrmMAMS
             Left = 361
             Top = 142
             Width = 1042
-            Height = 674
+            Height = 664
             Align = alClient
             DataSource = dm.dsInvoice
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
@@ -608,7 +613,7 @@ object frmMAMS: TfrmMAMS
             Left = 0
             Top = 70
             Width = 449
-            Height = 746
+            Height = 736
             Align = alLeft
             Caption = 'Project data'
             TabOrder = 0
@@ -708,7 +713,7 @@ object frmMAMS: TfrmMAMS
               Left = 159
               Top = 111
               Width = 112
-              Height = 24
+              Height = 23
               Date = 45556.000000000000000000
               Time = 0.944212418980896500
               TabOrder = 4
@@ -718,7 +723,7 @@ object frmMAMS: TfrmMAMS
               Left = 159
               Top = 141
               Width = 112
-              Height = 24
+              Height = 23
               Date = 40139.000000000000000000
               Time = 0.944212418980896500
               TabOrder = 5
@@ -839,7 +844,7 @@ object frmMAMS: TfrmMAMS
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 601
             Top = 70
-            Height = 746
+            Height = 736
             Align = alLeft
             Maximized = False
             Minimized = False
@@ -851,7 +856,7 @@ object frmMAMS: TfrmMAMS
             Left = 0
             Top = 70
             Width = 601
-            Height = 746
+            Height = 736
             Align = alLeft
             ColCount = 10
             DefaultRowHeight = 20
@@ -886,7 +891,7 @@ object frmMAMS: TfrmMAMS
             Left = 611
             Top = 70
             Width = 792
-            Height = 746
+            Height = 736
             Align = alClient
             Caption = 'pnlSetMaterial'
             TabOrder = 1
@@ -894,7 +899,7 @@ object frmMAMS: TfrmMAMS
               Left = 1
               Top = 1
               Width = 790
-              Height = 744
+              Height = 734
               Align = alClient
               Caption = 'pnlSetMaterial'
               TabOrder = 0
@@ -902,7 +907,7 @@ object frmMAMS: TfrmMAMS
                 Left = 1
                 Top = 1
                 Width = 672
-                Height = 742
+                Height = 732
                 Align = alClient
                 ItemHeight = 15
                 TabOrder = 0
@@ -913,7 +918,7 @@ object frmMAMS: TfrmMAMS
                 Left = 673
                 Top = 1
                 Width = 116
-                Height = 742
+                Height = 732
                 Align = alRight
                 ItemHeight = 15
                 TabOrder = 1
@@ -949,7 +954,7 @@ object frmMAMS: TfrmMAMS
             Left = 1274
             Top = 70
             Width = 129
-            Height = 746
+            Height = 736
             Align = alRight
             Caption = 'pnlSetType'
             TabOrder = 0
@@ -957,7 +962,7 @@ object frmMAMS: TfrmMAMS
               Left = 1
               Top = 1
               Width = 127
-              Height = 744
+              Height = 734
               Align = alClient
               ItemHeight = 15
               TabOrder = 0
@@ -991,7 +996,7 @@ object frmMAMS: TfrmMAMS
             Left = 1210
             Top = 70
             Width = 193
-            Height = 746
+            Height = 736
             Align = alRight
             ItemHeight = 15
             TabOrder = 0
@@ -1026,7 +1031,7 @@ object frmMAMS: TfrmMAMS
             Left = 0
             Top = 70
             Width = 1403
-            Height = 746
+            Height = 736
             Align = alClient
             Color = clCream
             Font.Charset = DEFAULT_CHARSET
@@ -1045,17 +1050,17 @@ object frmMAMS: TfrmMAMS
           Left = 0
           Top = 0
           Width = 145
-          Height = 816
+          Height = 806
           Cursor = crHandPoint
           ActiveFont.Charset = DEFAULT_CHARSET
           ActiveFont.Color = clWindowText
-          ActiveFont.Height = -13
-          ActiveFont.Name = 'Tahoma'
+          ActiveFont.Height = -12
+          ActiveFont.Name = 'Segoe UI'
           ActiveFont.Style = [fsBold]
           HotTrackFont.Charset = DEFAULT_CHARSET
           HotTrackFont.Color = clNavy
-          HotTrackFont.Height = -13
-          HotTrackFont.Name = 'Tahoma'
+          HotTrackFont.Height = -12
+          HotTrackFont.Name = 'Segoe UI'
           HotTrackFont.Style = [fsUnderline]
         end
       end
@@ -1818,7 +1823,7 @@ object frmMAMS: TfrmMAMS
                     TabOrder = 0
                     ColWidths = (
                       64
-                      116)
+                      112)
                     RowHeights = (
                       18
                       18)
@@ -1921,7 +1926,7 @@ object frmMAMS: TfrmMAMS
                     TabOrder = 0
                     ColWidths = (
                       64
-                      118)
+                      114)
                     RowHeights = (
                       18
                       18)
@@ -1995,7 +2000,7 @@ object frmMAMS: TfrmMAMS
                     TabOrder = 0
                     ColWidths = (
                       64
-                      258)
+                      254)
                     RowHeights = (
                       18
                       18)
@@ -2122,11 +2127,11 @@ object frmMAMS: TfrmMAMS
             object WebBrowserCalibration: TWebBrowser
               Left = 35
               Top = 176
-              Width = 582
-              Height = 385
+              Width = 728
+              Height = 481
               TabOrder = 1
               ControlData = {
-                4C000000273C0000CA2700000000000000000000000000000000000000000000
+                4C000000313C0000C52700000000000000000000000000000000000000000000
                 000000004C000000000000000000000001000000E0D057007335CF11AE690800
                 2B2E126208000000000000004C0000000114020000000000C000000000000046
                 8000000000000000000000000000000000000000000000000000000000000000
@@ -4036,7 +4041,7 @@ object frmMAMS: TfrmMAMS
           Left = 80
           Top = 243
           Width = 97
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -4052,7 +4057,7 @@ object frmMAMS: TfrmMAMS
           Left = 80
           Top = 204
           Width = 97
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -4119,7 +4124,7 @@ object frmMAMS: TfrmMAMS
           Left = 80
           Top = 223
           Width = 97
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -4276,7 +4281,7 @@ object frmMAMS: TfrmMAMS
           Left = 98
           Top = 183
           Width = 95
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -4291,7 +4296,7 @@ object frmMAMS: TfrmMAMS
           Left = 98
           Top = 164
           Width = 95
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -4306,7 +4311,7 @@ object frmMAMS: TfrmMAMS
           Left = 98
           Top = 202
           Width = 95
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -5189,7 +5194,7 @@ object frmMAMS: TfrmMAMS
           Left = 16
           Top = 284
           Width = 87
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 40210.000000000000000000
           Time = 0.397922083342564300
@@ -5567,7 +5572,7 @@ object frmMAMS: TfrmMAMS
           Left = 118
           Top = 424
           Width = 87
-          Height = 21
+          Height = 23
           CustomHint = BalloonHint1
           Date = 45556.000000000000000000
           Time = 0.397922083342564300
@@ -5754,7 +5759,7 @@ object frmMAMS: TfrmMAMS
           Left = 116
           Top = 40
           Width = 87
-          Height = 21
+          Height = 23
           Date = 45556.000000000000000000
           Time = 0.417571122685330900
           TabOrder = 9
@@ -7659,7 +7664,7 @@ object frmMAMS: TfrmMAMS
         object Label99: TLabel
           Left = 881
           Top = 26
-          Width = 278
+          Width = 266
           Height = 75
           Caption = 
             'Use regular SQL syntax in query. First column will be plotted as' +
@@ -7869,6 +7874,7 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Number processed samples'
         TabOrder = 0
+        ExplicitHeight = 850
         object Panel28: TPanel
           Left = 2
           Top = 17
@@ -7955,6 +7961,7 @@ object frmMAMS: TfrmMAMS
           RowCount = 14
           FixedRows = 0
           TabOrder = 1
+          ExplicitHeight = 774
           ColWidths = (
             100
             100
@@ -7985,6 +7992,8 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Pending Reports'
         TabOrder = 1
+        ExplicitWidth = 1257
+        ExplicitHeight = 850
         object grdPendingReports: TDBGrid
           Left = 2
           Top = 74
@@ -8011,6 +8020,7 @@ object frmMAMS: TfrmMAMS
           Height = 57
           Align = alTop
           TabOrder = 1
+          ExplicitWidth = 1253
           DesignSize = (
             1255
             57)
@@ -8040,6 +8050,7 @@ object frmMAMS: TfrmMAMS
             ParentColor = False
             ParentFont = False
             TabOrder = 1
+            ExplicitLeft = 960
           end
           object btnPendingReports: TBitBtn
             Left = 21
@@ -8093,6 +8104,12 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             OnClick = btnPendingReportsClick
+          end
+          object ActivityIndicatorDBInfo: TActivityIndicator
+            Left = 287
+            Top = 3
+            IndicatorSize = aisLarge
+            IndicatorType = aitRotatingLines
           end
         end
       end
@@ -10497,6 +10514,10 @@ object frmMAMS: TfrmMAMS
         end
       end
     end
+  end
+  object ActivityIndicator1: TActivityIndicator
+    Left = 1400
+    Top = 56
   end
   object MainMenu1: TMainMenu
     Images = ImageList1

@@ -29,7 +29,7 @@ type
     btnSave: TButton;
     GroupBox1: TGroupBox;
     lbl_SaveSuccessfull: TLabel;
-    WCamera: TWCamera;
+    wcamera: TWCamera;
     ComboBoxCamera: TComboBox;
     PaintBox: TPaintBox;
     GroupBoxCameraSettings: TGroupBox;
@@ -73,7 +73,7 @@ type
     procedure ComboBoxCameraChange(Sender: TObject);
     procedure ComboBoxFormatChange(Sender: TObject);
     procedure PaintBoxPaint(Sender: TObject);
-    procedure WCameraImageAvailable(Sender: TObject; SampleTime: Double);
+    procedure wcameraImageAvailable(Sender: TObject; SampleTime: Double);
     procedure PanelPaintBoxResize(Sender: TObject);
     procedure PaintBoxImagePaint(Sender: TObject);
     procedure SpinButtonDownClick(Sender: TObject);
@@ -384,7 +384,7 @@ begin
   end;
 end;
 
-procedure TCameraWindow.WCameraImageAvailable(Sender: TObject; SampleTime: Double);
+procedure TCameraWindow.wcameraImageAvailable(Sender: TObject; SampleTime: Double);
 begin
   PaintBox.Invalidate;
 end;

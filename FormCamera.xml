@@ -2610,7 +2610,7 @@
       <field name="btnSave" type="TButton" visibility="published" size="4" offset="1124" />
       <field name="GroupBox1" type="TGroupBox" visibility="published" size="4" offset="1128" />
       <field name="lbl_SaveSuccessfull" type="TLabel" visibility="published" size="4" offset="1132" />
-      <field name="WCamera" type="TWCamera" visibility="published" size="4" offset="1136" />
+      <field name="wcamera" type="TWCamera" visibility="published" size="4" offset="1136" />
       <field name="ComboBoxCamera" type="TComboBox" visibility="published" size="4" offset="1140" />
       <field name="PaintBox" type="TPaintBox" visibility="published" size="4" offset="1144" />
       <field name="GroupBoxCameraSettings" type="TGroupBox" visibility="published" size="4" offset="1148" />
@@ -2712,7 +2712,7 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <procedure name="WCameraImageAvailable" visibility="published">
+      <procedure name="wcameraImageAvailable" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
           <parameter name="SampleTime" type="Double" />
