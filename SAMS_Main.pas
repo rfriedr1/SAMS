@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Oct-10-2024';
+  myVersion = '1.9.9 Built: Oct-16-2024';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -513,7 +513,6 @@ type
     gbxMagazines: TGroupBox;
     Panel16: TPanel;
     Label88: TLabel;
-    lbMagazine: TLabel;
     tnsto: TButton;
     edtMagazineLimit: TJvSpinEdit;
     Panel25: TPanel;
@@ -916,6 +915,8 @@ type
     chkTouchprepReturnToSender: TDBCheckBox;
     ActivityIndicator1: TActivityIndicator;
     ActivityIndicatorDBInfo: TActivityIndicator;
+    GroupBox_Transfer_Filter: TGroupBox;
+    edtTransferMagazinFilter: TLabeledEdit;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1655,7 +1656,7 @@ end;
 
 procedure TfrmMAMS.btnReloadTransferMagazinesClick(Sender: TObject);
 begin
-GetListOfRecentMagazines(1);
+GetListOfRecentMagazines(3);
 end;
 
 procedure TfrmMAMS.btnReportClick(Sender: TObject);
@@ -5767,7 +5768,7 @@ begin
     dm.adoCmd.CommandText := s;
     //ClipBoard.SetTextBuf(PChar(s));
     LogWindow.addLogEntry(s);
-        IF dm.adoConnKTL.Connected THEN
+    IF dm.adoConnKTL.Connected THEN
       Begin
         Try
           dm.adoCmd.Execute;
@@ -6857,10 +6858,12 @@ begin
   edtSigmaAge.Clear;
   edtC13Mean.Clear;
   btnTransferTargetData.Enabled := false;
-  // get magazine name
-  Mag := dm.qryMagazines.FieldByName('magazine').AsString;
-  lbMagazine.Caption := Mag;
 
+  // get magazine name and display the name in the transfer button
+  Mag := dm.qryMagazines.FieldByName('magazine').AsString;
+  tnsto.Caption := 'Transfer ' + Mag;
+
+  // close dataset
   dm.cdsLeHeCurrents.Close;
 
   // query db_dmams for target data of the selected magazine
@@ -10972,6 +10975,7 @@ begin
         // from two machines and just sorting by name wont work anymore since
         // the magazines have different names depending on the AMS
       SQL.Text := 'SELECT name as magazine from magazine_t  ' +
+        ' WHERE name LIKE '+ #34 + '%' + edtTransferMagazinFilter.Text + '%' + #34 +
         ' order by last_changed desc ' +
         ' LIMIT ' + FloatToStr(edtMagazineLimit.Value) +';';
 

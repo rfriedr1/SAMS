@@ -12,6 +12,7 @@
   <contains name="System.JSONConsts" />
   <contains name="IPPeerResStrs" />
   <contains name="Data.DBXClientResStrs" />
+  <contains name="System.NetConsts" />
   <contains name="Web.WebConst" />
   <contains name="Web.BrkrConst" />
   <contains name="IdResourceStringsSSPI" />
@@ -351,6 +352,7 @@
   <contains name="Vcl.ButtonGroup" />
   <contains name="Vcl.CategoryButtons" />
   <contains name="Datasnap.DSHTTP" />
+  <contains name="System.Net.Mime" />
   <contains name="Web.HTTPApp" />
   <contains name="Datasnap.DSCommonServer" />
   <contains name="Datasnap.DSPlatform" />

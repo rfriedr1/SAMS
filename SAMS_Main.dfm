@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = edtMonthStat
+  ActiveControl = tnsto
   Caption = 'SAMS '
   ClientHeight = 959
   ClientWidth = 1556
@@ -302,7 +302,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1556
     Height = 888
-    ActivePage = tbsDBInfo
+    ActivePage = tbsTransferAge
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -7350,110 +7350,127 @@ object frmMAMS: TfrmMAMS
           Left = 2
           Top = 17
           Width = 941
-          Height = 60
+          Height = 116
           Align = alTop
           TabOrder = 0
-          object Label88: TLabel
-            Left = 9
-            Top = 24
-            Width = 37
-            Height = 15
-            Caption = 'Limit #'
-          end
-          object lbMagazine: TLabel
-            Left = 610
-            Top = 17
-            Width = 51
-            Height = 15
-            Caption = 'Magazine'
-          end
           object tnsto: TButton
-            Left = 245
-            Top = 10
-            Width = 636
-            Height = 39
+            Left = 288
+            Top = 25
+            Width = 329
+            Height = 64
             CustomHint = BalloonHint1
             Caption = 'Transfer Data'
             TabOrder = 0
             OnClick = tnstoClick
           end
-          object edtMagazineLimit: TJvSpinEdit
-            Left = 47
-            Top = 19
-            Width = 58
-            Height = 23
-            Hint = 'Number of Magazines to dispaly'
-            CustomHint = BalloonHint1
-            Value = 200.000000000000000000
+          object GroupBox_Transfer_Filter: TGroupBox
+            Left = 14
+            Top = 10
+            Width = 243
+            Height = 87
+            Caption = 'Filter Magazines'
             TabOrder = 1
-          end
-          object btnReloadTransferMagazines: TBitBtn
-            Left = 111
-            Top = 9
-            Width = 81
-            Height = 39
-            Hint = 'reload'
-            CustomHint = BalloonHint1
-            Glyph.Data = {
-              C2040000424DC204000000000000420000002800000018000000180000000100
-              10000300000080040000120B0000120B00000000000000000000007C0000E003
-              00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
-              E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
-              E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
-              E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
-              E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
-              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
-              E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
-              E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
-              E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
-              E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
-              FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
-              FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
-              E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
-              FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
-              E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
-              CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-              FF7FFF7FFF7F}
-            ParentDoubleBuffered = True
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 2
-            OnClick = btnReloadTransferMagazinesClick
+            object Label88: TLabel
+              Left = 19
+              Top = 24
+              Width = 37
+              Height = 15
+              Caption = 'Limit #'
+            end
+            object btnReloadTransferMagazines: TBitBtn
+              Left = 167
+              Top = 15
+              Width = 59
+              Height = 58
+              Hint = 'reload'
+              CustomHint = BalloonHint1
+              Glyph.Data = {
+                C2040000424DC204000000000000420000002800000018000000180000000100
+                10000300000080040000120B0000120B00000000000000000000007C0000E003
+                00001F000000FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7F4A29E71CE71C0821CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71C
+                E71C08214A29524AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7F6B2DE71CE71CE71CE71CE71CE71CE71CE71CE71C29253146FF7FFF7FFF7F
+                E71CFF7FFF7FFF7FFF7FFF7FFF7F4A292925E71CE71C4A29CE398C310821E71C
+                E71CE71CE71CE71C0821AD3510424A29E71CFF7FFF7FFF7FFF7FFF7FE71CE71C
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7F8C31E71CE71CE71CE71CE71CE71CE71CE71C
+                E71CFF7FFF7FFF7FFF7FFF7F2925FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                31462925E71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FEF3DE71CE71CE71CE71CE71CE71C
+                E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71C
+                E71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FE71CE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+                E71CE71CE71C0821FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CE71CE71CE71C
+                E71CE71CE71CFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71C8C31FF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FE71CFF7FFF7FFF7FE71CE71CE71CE71C
+                E71CE71CE71C08211042FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F6B2D
+                FF7FFF7FFF7FFF7FE71CE71CE71CE71CE71CE71CE71CE71C0821CE39B556FF7F
+                FF7FFF7FFF7FFF7FFF7F4A296B2DFF7FFF7FFF7FFF7FFF7FE71C08216B2D4A29
+                E71CE71CE71CE71CE71CE71C29256B2DEF3D3146AD356B2D4A290821FF7FFF7F
+                FF7FFF7FFF7FFF7FE71CFF7FFF7FB5566B2DE71CE71CE71CE71CE71CE71CE71C
+                E71CE71CE71C08214A29FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                D65AAD350821E71CE71CE71CE71CE71CE71C08218C31FF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F734E2925E71CE71CE71C
+                CE39FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+                FF7FFF7FFF7F}
+              ParentDoubleBuffered = True
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              OnClick = btnReloadTransferMagazinesClick
+            end
+            object edtMagazineLimit: TJvSpinEdit
+              Left = 62
+              Top = 23
+              Width = 58
+              Height = 23
+              Hint = 'Number of Magazines to dispaly'
+              CustomHint = BalloonHint1
+              Value = 200.000000000000000000
+              TabOrder = 1
+            end
+            object edtTransferMagazinFilter: TLabeledEdit
+              Left = 62
+              Top = 52
+              Width = 99
+              Height = 23
+              BevelInner = bvNone
+              BevelOuter = bvNone
+              EditLabel.Width = 51
+              EditLabel.Height = 23
+              EditLabel.Caption = 'Magazine'
+              LabelPosition = lpLeft
+              TabOrder = 2
+              Text = ''
+            end
           end
         end
         object Panel25: TPanel
           Left = 2
-          Top = 77
-          Width = 134
-          Height = 779
+          Top = 133
+          Width = 158
+          Height = 723
           Align = alLeft
           Caption = 'Panel25'
           TabOrder = 1
+          ExplicitTop = 77
+          ExplicitHeight = 779
           object grdMagazines: TDBGrid
             Left = 1
             Top = 1
-            Width = 132
-            Height = 777
+            Width = 156
+            Height = 721
             CustomHint = BalloonHint1
             Align = alClient
             DataSource = dm.dsMagazines
@@ -7469,18 +7486,22 @@ object frmMAMS: TfrmMAMS
           end
         end
         object Panel26: TPanel
-          Left = 136
-          Top = 77
-          Width = 807
-          Height = 779
+          Left = 160
+          Top = 133
+          Width = 783
+          Height = 723
           Align = alClient
           Caption = 'Panel26'
           TabOrder = 2
+          ExplicitLeft = 136
+          ExplicitTop = 77
+          ExplicitWidth = 807
+          ExplicitHeight = 779
           object grdMagazineData: TDBGrid
             Left = 1
             Top = 1
             Width = 504
-            Height = 777
+            Height = 721
             CustomHint = BalloonHint1
             Align = alLeft
             DataSource = dm.dsMagazineData
@@ -7496,8 +7517,8 @@ object frmMAMS: TfrmMAMS
           object dbgrdLeHeCurrents: TDBGrid
             Left = 505
             Top = 1
-            Width = 301
-            Height = 777
+            Width = 277
+            Height = 721
             Align = alClient
             DataSource = dm.dsLeHeCurrents
             TabOrder = 1
@@ -7664,8 +7685,8 @@ object frmMAMS: TfrmMAMS
         object Label99: TLabel
           Left = 881
           Top = 26
-          Width = 266
-          Height = 75
+          Width = 241
+          Height = 90
           Caption = 
             'Use regular SQL syntax in query. First column will be plotted as' +
             ' X, second column as Y. All other columns are displayed in the t' +
@@ -11471,8 +11492,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'Persistent.ini'
     DefaultSection = 'NewSamplesInput'
     SubStorages = <>
-    Left = 200
-    Top = 80
+    Left = 248
+    Top = 65528
   end
   object WordExport: TJvDBGridWordExport
     Caption = 'Exporting to MS Word...'
@@ -27885,8 +27906,8 @@ object frmMAMS: TfrmMAMS
     StorageOptions.BooleanStringFalseValues = 'FALSE, NO, N'
     FileName = 'autoprep.ini'
     SubStorages = <>
-    Left = 316
-    Top = 81
+    Left = 332
+    Top = 1
   end
   object SavePictureDialog: TSavePictureDialog
     Left = 1165
@@ -27894,7 +27915,7 @@ object frmMAMS: TfrmMAMS
   end
   object DSRESTWebDispatcher1: TDSRESTWebDispatcher
     Left = 120
-    Top = 40
+    Top = 8
   end
   object cdsPrepBatch: TClientDataSet
     Aggregates = <>
@@ -27911,8 +27932,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'logfile.log'
     AutoSave = True
     SizeLimit = 100000
-    Left = 171
-    Top = 143
+    Left = 219
+    Top = 55
   end
   object ApplicationEvents: TApplicationEvents
     OnException = ApplicationEventsException

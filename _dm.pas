@@ -3062,16 +3062,25 @@ Var
   i: integer;
 begin
  // replaces 'bad' characters
-   result := '';
-  for i := 1 to length(s) do
-  begin
-    Case s[i] of
-    '"': result := result+'';
-    ';': result := result+',';
-    '?': result := result+'';
-    else result := result+s[i];
-    end;
-  end;
+   //result := '';
+  s := StringReplace(s, ';', ',', [rfReplaceAll, rfIgnoreCase]);
+  s := StringReplace(s, '&', '_', [rfReplaceAll, rfIgnoreCase]);
+  s := StringReplace(s, '%', '_', [rfReplaceAll, rfIgnoreCase]);
+  s := StringReplace(s, '$', '_', [rfReplaceAll, rfIgnoreCase]);
+  s := StringReplace(s, '?', '', [rfReplaceAll, rfIgnoreCase]);
+  s := StringReplace(s, '"', '', [rfReplaceAll, rfIgnoreCase]);
+
+  result := s;
+
+//  for i := 1 to length(s) do
+//  begin
+//    Case s[i] of
+//    '"': result := result + '';
+//    ';': result := result + ',';
+//    '?': result := result + '';
+//    else result := result+s[i];
+//    end;
+//  end;
 end;
 
 function Tdm.ReplaceUmlaute(s: string): string;

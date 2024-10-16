@@ -1,721 +1,3 @@
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:16:38]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:16:38]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:16:56]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:17:21]Information>Startup>starting Application
-[10.10.2024 10:17:21]Information>Startup>DB - Param count = 3
-[10.10.2024 10:17:21]Information>Startup>test
-[10.10.2024 10:17:21]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:17:21]Information>Startup>DB - UserID= mams
-[10.10.2024 10:17:21]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:17:21]Information>Startup>connecting to DB at startup
-[10.10.2024 10:17:21]Information>Startup>Connected to DB.
-[10.10.2024 10:17:33]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:17:34]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:17:34]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:17:34]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:17:35]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:17:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:17:35]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:17:51]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:20:18]Information>Startup>starting Application
-[10.10.2024 10:20:18]Information>Startup>DB - Param count = 3
-[10.10.2024 10:20:18]Information>Startup>test
-[10.10.2024 10:20:18]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:20:18]Information>Startup>DB - UserID= mams
-[10.10.2024 10:20:18]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:20:18]Information>Startup>connecting to DB at startup
-[10.10.2024 10:20:18]Information>Startup>Connected to DB.
-[10.10.2024 10:20:22]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:20:23]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:20:23]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:20:23]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:20:24]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:20:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:20:25]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:20:25]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:20:47]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:25:29]Information>Startup>starting Application
-[10.10.2024 10:25:29]Information>Startup>DB - Param count = 3
-[10.10.2024 10:25:29]Information>Startup>test
-[10.10.2024 10:25:29]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:25:29]Information>Startup>DB - UserID= mams
-[10.10.2024 10:25:29]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:25:29]Information>Startup>connecting to DB at startup
-[10.10.2024 10:25:29]Information>Startup>Connected to DB.
-[10.10.2024 10:25:39]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:25:39]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:25:39]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:25:39]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:25:40]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:25:40]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:25:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:25:41]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:26:59]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:27:40]Information>Startup>starting Application
-[10.10.2024 10:27:40]Information>Startup>DB - Param count = 3
-[10.10.2024 10:27:40]Information>Startup>test
-[10.10.2024 10:27:40]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:27:40]Information>Startup>DB - UserID= mams
-[10.10.2024 10:27:40]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:27:40]Information>Startup>connecting to DB at startup
-[10.10.2024 10:27:40]Information>Startup>Connected to DB.
-[10.10.2024 10:27:44]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:27:45]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:27:45]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:27:45]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:27:46]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:27:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:27:46]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:27:52]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:29:01]Information>Startup>starting Application
-[10.10.2024 10:29:01]Information>Startup>DB - Param count = 3
-[10.10.2024 10:29:01]Information>Startup>test
-[10.10.2024 10:29:01]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:29:01]Information>Startup>DB - UserID= mams
-[10.10.2024 10:29:01]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:29:01]Information>Startup>connecting to DB at startup
-[10.10.2024 10:29:01]Information>Startup>Connected to DB.
-[10.10.2024 10:29:06]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:29:07]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:29:07]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:29:07]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:29:08]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:29:08]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:29:09]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:29:09]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:29:09]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:29:09]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:29:09]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:29:21]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:29:39]Information>Startup>starting Application
-[10.10.2024 10:29:39]Information>Startup>DB - Param count = 3
-[10.10.2024 10:29:39]Information>Startup>test
-[10.10.2024 10:29:39]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:29:39]Information>Startup>DB - UserID= mams
-[10.10.2024 10:29:39]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:29:39]Information>Startup>connecting to DB at startup
-[10.10.2024 10:29:39]Information>Startup>Connected to DB.
-[10.10.2024 10:29:42]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:29:43]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:29:43]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:29:43]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:29:44]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:29:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:29:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:29:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:29:45]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:30:05]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:30:54]Information>Startup>starting Application
-[10.10.2024 10:30:54]Information>Startup>DB - Param count = 3
-[10.10.2024 10:30:54]Information>Startup>test
-[10.10.2024 10:30:54]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:30:54]Information>Startup>DB - UserID= mams
-[10.10.2024 10:30:54]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:30:54]Information>Startup>connecting to DB at startup
-[10.10.2024 10:30:54]Information>Startup>Connected to DB.
-[10.10.2024 10:30:57]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:30:58]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:30:58]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:30:58]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:30:59]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:30:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:30:59]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:31:03]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:42:36]Information>Startup>starting Application
-[10.10.2024 10:42:36]Information>Startup>DB - Param count = 3
-[10.10.2024 10:42:36]Information>Startup>test
-[10.10.2024 10:42:36]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:42:36]Information>Startup>DB - UserID= mams
-[10.10.2024 10:42:36]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:42:36]Information>Startup>connecting to DB at startup
-[10.10.2024 10:42:36]Information>Startup>Connected to DB.
-[10.10.2024 10:42:39]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:42:40]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:42:40]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:42:40]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:42:41]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:42:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:42:41]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:42:43]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:43:41]Information>Startup>starting Application
-[10.10.2024 10:43:41]Information>Startup>DB - Param count = 3
-[10.10.2024 10:43:41]Information>Startup>test
-[10.10.2024 10:43:41]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:43:41]Information>Startup>DB - UserID= mams
-[10.10.2024 10:43:41]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:43:41]Information>Startup>connecting to DB at startup
-[10.10.2024 10:43:41]Information>Startup>Connected to DB.
-[10.10.2024 10:43:44]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:43:45]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:43:45]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:43:45]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:43:46]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:43:46]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:43:46]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:44:01]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:44:02]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:44:02]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:44:02]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:44:03]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:44:03]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:44:04]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:44:04]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:44:09]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:44:10]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:44:10]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:44:10]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:44:11]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:44:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:44:11]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:44:16]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:44:29]Information>Startup>starting Application
-[10.10.2024 10:44:29]Information>Startup>DB - Param count = 3
-[10.10.2024 10:44:29]Information>Startup>test
-[10.10.2024 10:44:29]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:44:29]Information>Startup>DB - UserID= mams
-[10.10.2024 10:44:29]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:44:29]Information>Startup>connecting to DB at startup
-[10.10.2024 10:44:29]Information>Startup>Connected to DB.
-[10.10.2024 10:44:33]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:44:34]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:44:34]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:44:34]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:44:34]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:44:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:44:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:44:35]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:44:39]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:44:40]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:44:40]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:44:40]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:44:41]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:44:41]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:44:41]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:44:46]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:44:47]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:44:47]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:44:47]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:44:48]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:44:48]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:44:49]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:45:30]Information>Closeup>SAMS closed by user.
-[10.10.2024 10:45:39]Information>Startup>starting Application
-[10.10.2024 10:45:39]Information>Startup>DB - Param count = 3
-[10.10.2024 10:45:39]Information>Startup>test
-[10.10.2024 10:45:39]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 10:45:39]Information>Startup>DB - UserID= mams
-[10.10.2024 10:45:39]Information>Startup>DB - Connection Password is given
-[10.10.2024 10:45:39]Information>Startup>connecting to DB at startup
-[10.10.2024 10:45:39]Information>Startup>Connected to DB.
-[10.10.2024 10:45:42]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 10:45:43]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 10:45:43]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 10:45:43]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 10:45:44]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 10:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.10.2024 10:45:45]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.10.2024 10:45:45]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.10.2024 10:45:55]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:22:39]Information>Startup>starting Application
-[10.10.2024 22:22:39]Information>Startup>DB - Param count = 3
-[10.10.2024 22:22:39]Information>Startup>test
-[10.10.2024 22:22:39]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:22:39]Information>Startup>DB - UserID= mams
-[10.10.2024 22:22:39]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:22:39]Information>Startup>connecting to DB at startup
-[10.10.2024 22:22:39]Information>Startup>Connected to DB.
-[10.10.2024 22:22:56]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:30:41]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMaterial: Cannot perform this operation on a closed dataset
-[10.10.2024 22:30:47]Information>Startup>starting Application
-[10.10.2024 22:30:47]Information>Startup>DB - Param count = 3
-[10.10.2024 22:30:47]Information>Startup>test
-[10.10.2024 22:30:47]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:30:47]Information>Startup>DB - UserID= mams
-[10.10.2024 22:30:47]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:30:47]Information>Startup>connecting to DB at startup
-[10.10.2024 22:30:47]Information>Startup>Connected to DB.
-[10.10.2024 22:30:51]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:31:02]Information>Startup>starting Application
-[10.10.2024 22:31:02]Information>Startup>DB - Param count = 3
-[10.10.2024 22:31:02]Information>Startup>test
-[10.10.2024 22:31:02]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:31:02]Information>Startup>DB - UserID= mams
-[10.10.2024 22:31:02]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:31:02]Information>Startup>connecting to DB at startup
-[10.10.2024 22:31:02]Information>Startup>Connected to DB.
-[10.10.2024 22:31:27]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:31:38]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMaterial: Cannot perform this operation on a closed dataset
-[10.10.2024 22:31:43]Information>Startup>starting Application
-[10.10.2024 22:31:43]Information>Startup>DB - Param count = 3
-[10.10.2024 22:31:43]Information>Startup>test
-[10.10.2024 22:31:43]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:31:43]Information>Startup>DB - UserID= mams
-[10.10.2024 22:31:43]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:31:43]Information>Startup>connecting to DB at startup
-[10.10.2024 22:31:43]Information>Startup>Connected to DB.
-[10.10.2024 22:32:01]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:32:28]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: tblMaterial: Cannot perform this operation on a closed dataset
-[10.10.2024 22:32:35]Information>Startup>starting Application
-[10.10.2024 22:32:35]Information>Startup>DB - Param count = 3
-[10.10.2024 22:32:35]Information>Startup>test
-[10.10.2024 22:32:35]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:32:35]Information>Startup>DB - UserID= mams
-[10.10.2024 22:32:35]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:32:35]Information>Startup>connecting to DB at startup
-[10.10.2024 22:32:35]Information>Startup>Connected to DB.
-[10.10.2024 22:32:49]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:35:08]Information>Startup>starting Application
-[10.10.2024 22:35:08]Information>Startup>DB - Param count = 3
-[10.10.2024 22:35:08]Information>Startup>test
-[10.10.2024 22:35:08]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:35:08]Information>Startup>DB - UserID= mams
-[10.10.2024 22:35:08]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:35:08]Information>Startup>connecting to DB at startup
-[10.10.2024 22:35:08]Information>Startup>Connected to DB.
-[10.10.2024 22:35:22]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:38:52]Information>Startup>starting Application
-[10.10.2024 22:38:52]Information>Startup>DB - Param count = 3
-[10.10.2024 22:38:52]Information>Startup>test
-[10.10.2024 22:38:52]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:38:52]Information>Startup>DB - UserID= mams
-[10.10.2024 22:38:52]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:38:52]Information>Startup>connecting to DB at startup
-[10.10.2024 22:38:52]Information>Startup>Connected to DB.
-[10.10.2024 22:38:56]Information>Closeup>SAMS closed by user.
-[10.10.2024 22:54:20]Information>Startup>starting Application
-[10.10.2024 22:54:20]Information>Startup>DB - Param count = 3
-[10.10.2024 22:54:20]Information>Startup>test
-[10.10.2024 22:54:20]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.10.2024 22:54:20]Information>Startup>DB - UserID= mams
-[10.10.2024 22:54:20]Information>Startup>DB - Connection Password is given
-[10.10.2024 22:54:20]Information>Startup>connecting to DB at startup
-[10.10.2024 22:54:20]Information>Startup>Connected to DB.
-[10.10.2024 22:54:25]Information>Pending Reports>Query DB for pending reports...
-[10.10.2024 22:54:26]Information>Pending Reports>Query DB for pending reports... finished
-[10.10.2024 22:54:26]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.10.2024 22:54:26]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.10.2024 22:54:27]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.10.2024 22:54:27]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.10.2024 22:54:27]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.10.2024 22:54:27]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
 [10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
 [10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
 [10.10.2024 22:54:28]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
@@ -986,3 +268,882 @@
 [10.10.2024 23:06:27]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
 [10.10.2024 23:06:27]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
 [10.10.2024 23:06:33]Information>Closeup>SAMS closed by user.
+[11.10.2024 09:52:57]Information>Startup>starting Application
+[11.10.2024 09:52:57]Information>Startup>DB - Param count = 3
+[11.10.2024 09:52:57]Information>Startup>test
+[11.10.2024 09:52:57]Information>Startup>DB - ODBC-DataSource= db_dmams
+[11.10.2024 09:52:57]Information>Startup>DB - UserID= mams
+[11.10.2024 09:52:57]Information>Startup>DB - Connection Password is given
+[11.10.2024 09:52:57]Information>Startup>connecting to DB at startup
+[11.10.2024 09:52:57]Information>Startup>Connected to DB.
+[11.10.2024 09:53:04]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9823";
+[11.10.2024 09:53:36]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9823";
+[11.10.2024 09:55:17]Information>Closeup>SAMS closed by user.
+[11.10.2024 09:57:06]Information>Startup>starting Application
+[11.10.2024 09:57:06]Information>Startup>DB - Param count = 3
+[11.10.2024 09:57:06]Information>Startup>test
+[11.10.2024 09:57:06]Information>Startup>DB - ODBC-DataSource= db_dmams
+[11.10.2024 09:57:06]Information>Startup>DB - UserID= mams
+[11.10.2024 09:57:06]Information>Startup>DB - Connection Password is given
+[11.10.2024 09:57:06]Information>Startup>connecting to DB at startup
+[11.10.2024 09:57:06]Information>Startup>Connected to DB.
+[11.10.2024 09:57:08]Information>Closeup>SAMS closed by user.
+[11.10.2024 10:10:36]Information>Startup>starting Application
+[11.10.2024 10:10:36]Information>Startup>DB - Param count = 3
+[11.10.2024 10:10:36]Information>Startup>test
+[11.10.2024 10:10:36]Information>Startup>DB - ODBC-DataSource= db_dmams
+[11.10.2024 10:10:36]Information>Startup>DB - UserID= mams
+[11.10.2024 10:10:36]Information>Startup>DB - Connection Password is given
+[11.10.2024 10:10:36]Information>Startup>connecting to DB at startup
+[11.10.2024 10:10:36]Information>Startup>Connected to DB.
+[11.10.2024 10:22:22]Information>Closeup>SAMS closed by user.
+[12.10.2024 13:39:40]Information>Startup>starting Application
+[12.10.2024 13:39:40]Information>Startup>DB - Param count = 3
+[12.10.2024 13:39:40]Information>Startup>test
+[12.10.2024 13:39:40]Information>Startup>DB - ODBC-DataSource= db_dmams
+[12.10.2024 13:39:40]Information>Startup>DB - UserID= mams
+[12.10.2024 13:39:40]Information>Startup>DB - Connection Password is given
+[12.10.2024 13:39:40]Information>Startup>connecting to DB at startup
+[12.10.2024 13:39:40]Information>Startup>Connected to DB.
+[12.10.2024 13:39:53]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9349";
+[12.10.2024 13:39:56]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="5006";
+[12.10.2024 13:39:59]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="3880";
+[12.10.2024 13:40:23]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6527";
+[12.10.2024 13:40:44]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="8439";
+[12.10.2024 13:41:43]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6202";
+[12.10.2024 13:45:49]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="5547";
+[12.10.2024 13:45:52]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4910";
+[12.10.2024 13:46:01]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4707";
+[12.10.2024 13:49:36]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4910";
+[12.10.2024 13:49:40]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="5547";
+[12.10.2024 13:49:46]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6202";
+[12.10.2024 14:06:08]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="5547";
+[12.10.2024 14:06:10]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6202";
+[12.10.2024 14:06:19]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4707";
+[12.10.2024 14:06:26]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4910";
+[12.10.2024 14:06:28]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6202";
+[12.10.2024 14:06:30]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4910";
+[12.10.2024 14:06:45]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="5547";
+[12.10.2024 14:06:47]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4707";
+[12.10.2024 14:06:50]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6202";
+[12.10.2024 14:06:56]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4707";
+[12.10.2024 14:06:59]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="4910";
+[13.10.2024 19:26:44]Information>Closeup>SAMS closed by user.
+[14.10.2024 10:19:10]Information>Startup>starting Application
+[14.10.2024 10:19:10]Information>Startup>DB - Param count = 3
+[14.10.2024 10:19:10]Information>Startup>test
+[14.10.2024 10:19:10]Information>Startup>DB - ODBC-DataSource= db_dmams
+[14.10.2024 10:19:10]Information>Startup>DB - UserID= mams
+[14.10.2024 10:19:10]Information>Startup>DB - Connection Password is given
+[14.10.2024 10:19:10]Information>Startup>connecting to DB at startup
+[14.10.2024 10:19:10]Information>Startup>Connected to DB.
+[14.10.2024 10:21:17]Information>Closeup>SAMS closed by user.
+[14.10.2024 10:22:42]Information>Startup>starting Application
+[14.10.2024 10:22:42]Information>Startup>DB - Param count = 3
+[14.10.2024 10:22:42]Information>Startup>test
+[14.10.2024 10:22:42]Information>Startup>DB - ODBC-DataSource= db_dmams
+[14.10.2024 10:22:42]Information>Startup>DB - UserID= mams
+[14.10.2024 10:22:42]Information>Startup>DB - Connection Password is given
+[14.10.2024 10:22:42]Information>Startup>connecting to DB at startup
+[14.10.2024 10:22:42]Information>Startup>Connected to DB.
+[14.10.2024 10:23:31]Information>Closeup>SAMS closed by user.
+[14.10.2024 14:06:27]Information>Startup>starting Application
+[14.10.2024 14:06:27]Information>Startup>DB - Param count = 3
+[14.10.2024 14:06:27]Information>Startup>test
+[14.10.2024 14:06:27]Information>Startup>DB - ODBC-DataSource= db_dmams
+[14.10.2024 14:06:27]Information>Startup>DB - UserID= mams
+[14.10.2024 14:06:27]Information>Startup>DB - Connection Password is given
+[14.10.2024 14:06:27]Information>Startup>connecting to DB at startup
+[14.10.2024 14:06:27]Information>Startup>Connected to DB.
+[14.10.2024 14:06:49]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=71413 AND prep_nr=1 AND target_nr=1;
+[14.10.2024 14:07:01]Information>SQLQuery>SELECT name as magazine from magazine_t   order by last_changed desc  LIMIT 200;
+[14.10.2024 14:07:01]Information>DB>Get data of all targets of selected magazine
+[14.10.2024 14:07:01]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB240930"
+[14.10.2024 14:07:01]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:01]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:01]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:02]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:02]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:03]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:03]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:03]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:03]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:03]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:03]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:03]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:03]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:03]Information>DB>raw database to use = db_ac14
+[14.10.2024 14:07:03]Information>DB>fill string grid with data from query
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 14574.1.302
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 62284.1.129
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 15180.54.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71860.1.7
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71906.1.3
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71974.1.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71974.1.2
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71974.1.3
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71975.1.4
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71977.1.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 72035.1.4
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 72038.1.3
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71433.1.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71434.1.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71435.1.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71413.1.1
+[14.10.2024 14:07:05]Information>DB>transfer LE and HE Currents to target_t: 71415.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71417.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71418.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71420.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71423.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71424.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71460.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71461.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71464.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71474.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71478.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71487.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71500.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71501.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71502.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71503.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71504.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71506.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71510.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71512.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71583.1.1
+[14.10.2024 14:07:06]Information>DB>transfer LE and HE Currents to target_t: 71584.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 14574.1.302
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 62284.1.129
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 15180.54.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71860.1.7
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71906.1.3
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71974.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71974.1.2
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71974.1.3
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71975.1.4
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71977.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 72035.1.4
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 72038.1.3
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71433.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71434.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71435.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71413.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71415.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71417.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71418.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71420.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71423.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71424.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71460.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71461.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71464.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71474.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71478.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71487.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71500.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71501.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71502.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71503.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71504.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71506.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71510.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71512.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71583.1.1
+[14.10.2024 14:07:10]Information>DB>transfer LE and HE Currents to target_t: 71584.1.1
+[14.10.2024 14:07:11]Information>Closeup>SAMS closed by user.
+[14.10.2024 15:01:03]Information>Startup>starting Application
+[14.10.2024 15:01:03]Information>Startup>DB - Param count = 3
+[14.10.2024 15:01:04]Information>Startup>test
+[14.10.2024 15:01:04]Information>Startup>DB - ODBC-DataSource= db_dmams
+[14.10.2024 15:01:04]Information>Startup>DB - UserID= mams
+[14.10.2024 15:01:04]Information>Startup>DB - Connection Password is given
+[14.10.2024 15:01:04]Information>Startup>connecting to DB at startup
+[14.10.2024 15:01:04]Information>Startup>Connected to DB.
+[14.10.2024 15:02:28]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="7612";
+[14.10.2024 15:02:42]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="7612";
+[14.10.2024 15:02:44]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2016 ORDER BY in_date DESC;
+[14.10.2024 15:14:17]Information>Closeup>SAMS closed by user.
+[14.10.2024 15:51:37]Information>Startup>starting Application
+[14.10.2024 15:51:37]Information>Startup>DB - Param count = 3
+[14.10.2024 15:51:37]Information>Startup>test
+[14.10.2024 15:51:37]Information>Startup>DB - ODBC-DataSource= db_dmams
+[14.10.2024 15:51:37]Information>Startup>DB - UserID= mams
+[14.10.2024 15:51:37]Information>Startup>DB - Connection Password is given
+[14.10.2024 15:51:37]Information>Startup>connecting to DB at startup
+[14.10.2024 15:51:37]Information>Startup>Connected to DB.
+[14.10.2024 15:51:47]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9302";
+[14.10.2024 15:55:44]Information>Closeup>SAMS closed by user.
+[14.10.2024 18:54:00]Information>Startup>starting Application
+[14.10.2024 18:54:00]Information>Startup>DB - Param count = 3
+[14.10.2024 18:54:01]Information>Startup>test
+[14.10.2024 18:54:01]Information>Startup>DB - ODBC-DataSource= db_dmams
+[14.10.2024 18:54:01]Information>Startup>DB - UserID= mams
+[14.10.2024 18:54:01]Information>Startup>DB - Connection Password is given
+[14.10.2024 18:54:01]Information>Startup>connecting to DB at startup
+[14.10.2024 18:54:01]Information>Startup>Connected to DB.
+[14.10.2024 18:54:03]Information>SQLQuery>SELECT name as magazine from magazine_t   order by last_changed desc  LIMIT 200;
+[14.10.2024 18:54:03]Information>DB>Get data of all targets of selected magazine
+[14.10.2024 18:54:03]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241011ICOS"
+[14.10.2024 18:54:03]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[14.10.2024 18:54:03]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:04]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:04]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:05]Information>DB>raw database to use = db_ac14
+[14.10.2024 18:54:05]Information>DB>fill string grid with data from query
+[14.10.2024 18:54:08]Information>DB>transfer LE and HE Currents to target_t: 71339.1.1
+[14.10.2024 18:54:08]Information>DB>transfer LE and HE Currents to target_t: 71340.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71341.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71342.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71353.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71354.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71355.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71357.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71358.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71359.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 71360.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72434.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72471.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72481.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72482.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72541.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72542.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72543.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72544.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72545.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72546.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72547.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72548.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72549.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72550.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72551.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72565.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72566.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72567.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72568.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72569.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72570.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72571.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72572.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72573.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72574.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72575.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72583.1.1
+[14.10.2024 18:54:09]Information>DB>transfer LE and HE Currents to target_t: 72584.1.1
+[14.10.2024 18:56:39]Information>Closeup>SAMS closed by user.
+[15.10.2024 16:18:32]Information>Startup>starting Application
+[15.10.2024 16:18:32]Information>Startup>DB - Param count = 3
+[15.10.2024 16:18:32]Information>Startup>test
+[15.10.2024 16:18:32]Information>Startup>DB - ODBC-DataSource= db_dmams
+[15.10.2024 16:18:32]Information>Startup>DB - UserID= mams
+[15.10.2024 16:18:32]Information>Startup>DB - Connection Password is given
+[15.10.2024 16:18:32]Information>Startup>connecting to DB at startup
+[15.10.2024 16:18:32]Information>Startup>Connected to DB.
+[15.10.2024 16:32:15]Information>Closeup>SAMS closed by user.
+[15.10.2024 16:34:03]Information>Startup>starting Application
+[15.10.2024 16:34:03]Information>Startup>DB - Param count = 3
+[15.10.2024 16:34:04]Information>Startup>test
+[15.10.2024 16:34:04]Information>Startup>DB - ODBC-DataSource= db_dmams
+[15.10.2024 16:34:04]Information>Startup>DB - UserID= mams
+[15.10.2024 16:34:04]Information>Startup>DB - Connection Password is given
+[15.10.2024 16:34:04]Information>Startup>connecting to DB at startup
+[15.10.2024 16:34:04]Information>Startup>Connected to DB.
+[15.10.2024 18:16:07]Information>Closeup>SAMS closed by user.
+[16.10.2024 11:06:49]Information>Startup>starting Application
+[16.10.2024 11:06:49]Information>Startup>DB - Param count = 3
+[16.10.2024 11:06:49]Information>Startup>test
+[16.10.2024 11:06:49]Information>Startup>DB - ODBC-DataSource= db_dmams
+[16.10.2024 11:06:49]Information>Startup>DB - UserID= mams
+[16.10.2024 11:06:49]Information>Startup>DB - Connection Password is given
+[16.10.2024 11:06:49]Information>Startup>connecting to DB at startup
+[16.10.2024 11:06:49]Information>Startup>Connected to DB.
+[16.10.2024 11:06:52]Information>Closeup>SAMS closed by user.
+[16.10.2024 11:20:50]Information>Startup>starting Application
+[16.10.2024 11:20:50]Information>Startup>DB - Param count = 3
+[16.10.2024 11:20:50]Information>Startup>test
+[16.10.2024 11:20:50]Information>Startup>DB - ODBC-DataSource= db_dmams
+[16.10.2024 11:20:50]Information>Startup>DB - UserID= mams
+[16.10.2024 11:20:50]Information>Startup>DB - Connection Password is given
+[16.10.2024 11:20:50]Information>Startup>connecting to DB at startup
+[16.10.2024 11:20:50]Information>Startup>Connected to DB.
+[16.10.2024 11:20:55]Information>SQLQuery>SELECT name as magazine from magazine_t   order by last_changed desc  LIMIT 200;
+[16.10.2024 11:20:55]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:20:55]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241016ICOS"
+[16.10.2024 11:21:00]Information>Closeup>SAMS closed by user.
+[16.10.2024 11:28:03]Information>Startup>starting Application
+[16.10.2024 11:28:03]Information>Startup>DB - Param count = 3
+[16.10.2024 11:28:03]Information>Startup>test
+[16.10.2024 11:28:03]Information>Startup>DB - ODBC-DataSource= db_dmams
+[16.10.2024 11:28:03]Information>Startup>DB - UserID= mams
+[16.10.2024 11:28:03]Information>Startup>DB - Connection Password is given
+[16.10.2024 11:28:03]Information>Startup>connecting to DB at startup
+[16.10.2024 11:28:03]Information>Startup>Connected to DB.
+[16.10.2024 11:28:07]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+[16.10.2024 11:28:07]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:28:07]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241016ICOS"
+[16.10.2024 11:28:18]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%mb2410%" order by last_changed desc  LIMIT 200;
+[16.10.2024 11:28:20]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:28:20]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241016"
+[16.10.2024 11:28:20]Error>Exception>UnitName: System.SysUtils -- ClassName: ERangeError -- StackTrace:  -- Message: Range check error
+[16.10.2024 11:28:23]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:28:23]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241013"
+[16.10.2024 11:28:24]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:24]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:24]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:24]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:24]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:24]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:24]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:24]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:25]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:25]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:26]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:26]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:27]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:27]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:28]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:28]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:28]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:28]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:28]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:28]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:29]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:28:29]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241016ICOS"
+[16.10.2024 11:28:31]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:28:31]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241011ICOS"
+[16.10.2024 11:28:32]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:32]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:32]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:33]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:33]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:34]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:34]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:35]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:35]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:36]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:36]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:36]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:36]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:36]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:37]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:28:37]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241006"
+[16.10.2024 11:28:37]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.10.2024 11:28:37]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:37]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:37]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:38]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:38]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:39]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:39]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:40]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:40]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:41]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:28:41]Information>DB>fill string grid with data from query
+[16.10.2024 11:28:55]Information>Closeup>SAMS closed by user.
+[16.10.2024 11:34:56]Information>Startup>starting Application
+[16.10.2024 11:34:56]Information>Startup>DB - Param count = 3
+[16.10.2024 11:34:56]Information>Startup>test
+[16.10.2024 11:34:56]Information>Startup>DB - ODBC-DataSource= db_dmams
+[16.10.2024 11:34:56]Information>Startup>DB - UserID= mams
+[16.10.2024 11:34:56]Information>Startup>DB - Connection Password is given
+[16.10.2024 11:34:57]Information>Startup>connecting to DB at startup
+[16.10.2024 11:34:57]Information>Startup>Connected to DB.
+[16.10.2024 11:35:00]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+
+[16.10.2024 11:35:00]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:35:00]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241016ICOS"
+
+[16.10.2024 11:35:04]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:35:04]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241016"
+
+[16.10.2024 11:35:04]Error>Exception>UnitName: System.SysUtils -- ClassName: ERangeError -- StackTrace:  -- Message: Range check error
+[16.10.2024 11:35:07]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:35:07]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241013"
+
+[16.10.2024 11:35:08]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:08]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:08]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:08]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:08]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:08]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:08]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:08]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:09]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:09]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:10]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:10]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:11]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:11]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:12]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:12]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:12]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:12]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:12]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:12]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:14]Information>DB>Get data of all targets of selected magazine
+[16.10.2024 11:35:14]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB240214"
+
+[16.10.2024 11:35:15]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:15]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:15]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:16]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:16]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:17]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:17]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:18]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:18]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:19]Information>DB>raw database to use = db_ac14
+[16.10.2024 11:35:19]Information>DB>fill string grid with data from query
+[16.10.2024 11:35:21]Information>Closeup>SAMS closed by user.

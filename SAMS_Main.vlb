@@ -846,9 +846,6 @@ Coordinates=455,280,86,58
 [Panel10]
 Coordinates=119,620,62,58
 
-[lbMagazine]
-Coordinates=1037,552,80,58
-
 [Panel8]
 Coordinates=2314,144,55,58
 
@@ -1798,7 +1795,7 @@ Coordinates=993,824,59,58
 Coordinates=919,756,60,58
 
 []
-Coordinates=923,824,60,58
+Coordinates=1037,552,80,58
 Visible=True
 
 [btnPrintBatch]
