@@ -4241,22 +4241,26 @@ end;
 procedure TfrmMAMS.btnExportClick(Sender: TObject);
 begin
   case rgpExport.ItemIndex of
-    0: ExportReport('oxcal');
-    1,2: with ExcelExport do begin
+    0: ExportReport('oxcal');  // OxCal export
+    1: with ExcelExport do   // Excel Export
+      begin
         Grid := grdSamplesOfSubmitter; //Grid where the data come from
         FileName:= TPath.Combine(edtSaveReporttoFolder.Text, edtReportFileName.Text); //save in the same directory as the report
         LogWindow.addLogEntry('Filename for export = ' + Filename);
         ExportGrid;
       end;
-    3: with CSVExportClipBoard do begin
+    2: with CSVExportClipBoard do   // Clipboard export
+      begin
         Grid := grdSamplesOfSubmitter;
         ExportGrid;
       end;
-    4: with HTMLExport do begin
+    3: with HTMLExport do
+      begin
         Grid := grdSamplesOfSubmitter;
         ExportGrid;
       end;
-    5: with XMLExport do begin
+    4: with XMLExport do
+      begin
         Grid := grdSamplesOfSubmitter;
         ExportGrid;
       end;
