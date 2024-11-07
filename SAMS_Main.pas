@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Oct-16-2024';
+  myVersion = '1.9.9 Built: Nov-07-2024';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -3083,9 +3083,34 @@ var
 begin
   sample_nr := round(edtSampleNr.Value);
   project_nr := dm.GetProjectNrBySampleNr(sample_nr);
-  desired_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoDesiredDate.Date);
-  in_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoInDate.Date);
-  Out_date_str := FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date);
+
+  if edtSampleInfoDesiredDate.Date > 1 then
+    begin
+      desired_date_str := #34 + FormatDateTime('YYYY-MM-DD', edtSampleInfoDesiredDate.Date) + #34;
+    end
+    else
+    begin
+      desired_date_str := 'NULL';
+    end;
+
+  if edtSampleInfoInDate.Date > 1 then
+    begin
+      in_date_str := #34 + FormatDateTime('YYYY-MM-DD', edtSampleInfoInDate.Date) + #34;
+    end
+    else
+    begin
+      in_date_str := 'NULL';
+    end;
+
+  if edtSampleInfoOutDate.Date > 1 then
+    begin
+      Out_date_str := #34 + FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date) + #34;
+    end
+    else
+    begin
+      Out_date_str := 'NULL';
+    end;
+  showmessage('old = ' + FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date) + ', New= ' + Out_date_str);
 
   if dbchkFreeOfCharge2.Checked then freeofcharge:='1'
   else freeofcharge:='0';
@@ -3104,9 +3129,9 @@ begin
 
   // update the project dates and status
   s := 'UPDATE project_t SET ' +
-    'desired_date= ' + #34 + desired_date_str + #34 + ',' +
-    'in_date=' + #34 + in_date_str + #34 + ',' +
-    'out_date=' + #34 + out_date_str + #34 + ',' +
+    'desired_date= ' + desired_date_str + ',' +
+    'in_date=' + in_date_str + ',' +
+    'out_date=' + out_date_str + ',' +
     'FreeOfCharge=' + #34 +freeofcharge + #34 + ',' +
     'return_to_sender=' + #34 +returnToSender + #34 + ',' +
     'returned_to_sender=' + #34 +returnedToSender + #34 + ',' +
