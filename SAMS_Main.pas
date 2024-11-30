@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Nov-07-2024';
+  myVersion = '1.9.9 Built: Nov-30-2024';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -8365,6 +8365,7 @@ begin
     Reset(InF);
     Row := 1;
     SameAddressForInvoice := false;
+
     // build headers for table that holds the new user information
     with grdPreviewUser do
     begin
@@ -8389,6 +8390,7 @@ begin
       cells[0, 15] := 'invoice';
       ColCount := 2;
     end;
+
     with grdInvoiceAddress do
     begin
 //      Selection := NoSelection;
@@ -8412,11 +8414,15 @@ begin
       cells[0, 15] := 'invoice';
       ColCount := 2;
     end;
+
     SetupNewSamplesGrid;
     btnInsertNewUser.Visible := true;
     btnInsertExistingUser.Visible := true;
 
     // read data from import file
+
+    // Project Name ######################
+    // read lines until "Project Name" is discovered
     repeat // skip header
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
@@ -8424,19 +8430,24 @@ begin
     until (Pos('Project name', s1) > 0) or EOF(InF);
     if EOF(InF) then ShowMessage('Text Project name in cell A1 is missing!');
     ProjectName := ExtractWord(2, s, [';']);
-    ProjectName := copy(ProjectName, 1, 99);
+    ProjectName := copy(ProjectName, 1, 99);   // project name limited to 99 characters
     ProjectName := dm.ReplaceBadCharacters(ProjectName);
+
     Readln(InF, s); // skip 'required'
     Readln(InF, s);
     s1 := ExtractWord(1, s, [';']);
     s1 := dm.ReplaceBadCharacters(s1);
     if Length(s1) > 0 then
-      MANummer := StrToInt(copy(s1, 1, Length(s1))); //MA-113333
+    MANummer := StrToInt(copy(s1, 1, Length(s1))); //MA-113333
+
+    // First Name ######################
     repeat // now parse user, skip header
       Readln(InF, s);
       s1 := ExtractWord(1, s, [';']);
       s1 := dm.ReplaceBadCharacters(s1);
     until Pos('first name', s1) > 0;
+
+    // get all other user data ######################
     while not EOF(InF) and not end_found do
     begin
       end_found := false;
@@ -8484,6 +8495,7 @@ begin
         Readln(InF, s);
       until end_found;
     end;
+
     UserExists := false;
     with wizStartPage do
     begin
@@ -8498,12 +8510,14 @@ begin
     surname := grdPreviewUser.Cells[1, 2];
     first_name := grdPreviewUser.Cells[1, 1];
     //UserExists := dm.tblUser.Locate('last_name; first_name', VarArrayOf([surname, first_name]), [loPartialKey]); //locate user in database
-    UserExists := dm.tblUser.Locate('last_name',surname, [loPartialKey]); //locate user in database
+    UserExists := dm.tblUser.Locate('last_name',surname, [loPartialKey]); //locate users lastname in database
     if UserExists then
     begin
       btnInsertExistingUser.Enabled := true;
       glbUserNr := dm.tblUser.FieldByName('user_nr').AsInteger;
     end;
+
+    // Invoice Adress ######################
     if not SameAddressForInvoice then
     begin
       // now parse invoice data
@@ -8513,6 +8527,7 @@ begin
         s1 := dm.ReplaceBadCharacters(s1);
       until Pos('institution', s1) > 0;
       end_found := false;
+
       // read all invoice data from file
       while not EOF(InF) and not end_found do
       begin
@@ -8553,8 +8568,9 @@ begin
     begin
          for i := 0 to grdInvoiceAddress.RowCount - 1 do grdInvoiceAddress.Rows[i].Clear();
     end;
+
     surname := grdPreviewUser.Cells[1, 3];
-    if dm.tblInvoice.Locate('organisation', surname, [loPartialKey]) then
+    if dm.tblInvoice.Locate('last_name', surname, [loPartialKey]) then
     begin
       btnInsertSelectedInvoice.Enabled := true;
       glbInvoiceNr := dm.tblInvoice.FieldByName('user_nr').AsInteger;
@@ -8564,6 +8580,7 @@ begin
       btnInsertSelectedInvoice.Enabled := false;
       glbInvoiceNr := 0;
     end;
+
     if Length(ProjectName) = 0 then
     begin
       ShowMessage('Project name cannot be empty; you may add a project name later on in the project page of this wizard');
@@ -8576,31 +8593,54 @@ begin
       s1 := dm.ReplaceBadCharacters(s1);
     until Pos('required', s1) > 0;
 
+    // get all sample information #############################
     while not EOF(InF) do
     begin // now parse samples
       ReadLn(InF, s);
-      s1 := ExtractWord(1, s, [';']); // read sample name
-      s1 := copy(s1, 1, 40);
+      s1 := ExtractWord(1, s, [';']); // read sample name (first word in the delimted string)
+      s1 := copy(s1, 1, 100);   // limit sample name to 100 characters
       if Length(s1) > 0 then
       begin
+      //showmessage(s1);
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]); // once does not do all
         s := StringReplace(s, ';;', '; ;', [rfReplaceAll]);
-        k := WordCount(s, [';']);
+        k := WordCount(s, [';']);  // number of sample information (columns in file) given
+
+        // get the individual sample information of one specific sample here, e.g. descr, weight...
+        // starting with "sample_nr"
+        // i = 2: sample_nr
+        // i = 3: descr_1
+        // i = 4: desc_2
+        // i = 5: weight
+        // i = 6: material
+        // i = 7: comment
 
         for i := 2 to k do
         begin
           s2 := ExtractWord(i, s, [';']);
-          if i < 7 then
-            s2 := copy(s2, 1, 40)
-          else
-            s2 := copy(s2, 1, 100);
-          if s2 <> ' ' then
+          //showmessage('i=' + inttostr(i) + ', // s='+ s + ', // s2=' + s2);
+
+          // limit length of string according to the database field size
+          if i =2  then s2 := copy(s2, 1, 40); // sample_nr, 40 characters
+          if i =3  then s2 := copy(s2, 1, 100); // desc_1, 100 characters
+          if i =4  then s2 := copy(s2, 1, 40); // descr_2, 40 characters
+          if i =5  then s2 := dm.ExtractNumber(s2);  // weight, clean the string and allow only a number
+          if i =6  then s2 := copy(s2, 1, 20); // material, 20 characters
+          if i =7  then s2 := copy(s2, 1, 100); // comment, 100 characters
+
+//          if i < 7 then
+//            s2 := copy(s2, 1, 40)
+//          else
+//            s2 := copy(s2, 1, 100);
+
+          if s2 <> '' then
           begin
             s2 := dm.ReplaceBadCharacters(s2);
             grdPreviewSamples.Cells[i, Row] := s2;
           end;
         end;
+
         if not Entry_Empty then
         begin
           s1 := dm.ReplaceBadCharacters(s1);
@@ -8611,6 +8651,7 @@ begin
         end;
       end;
     end;
+
     CloseFile(InF);
   end;
 end;

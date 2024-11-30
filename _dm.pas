@@ -247,6 +247,7 @@ type
     function ReplaceUmlaute(s: string): string;
     function ReplaceBadCharacters(s: string): string;
     procedure DBreconnect;
+    function ExtractNumber(Input: string): string;
   end;
 
 var
@@ -3055,6 +3056,24 @@ begin
                 End;
   end;
 
+end;
+
+function Tdm.ExtractNumber(Input: string): string;
+// extract the fractional number from a string
+// remove als other characters other than numbers and decimal points
+var
+  i: Integer;
+  ResultBuilder: string;
+begin
+  ResultBuilder := '';
+  for i := 1 to Length(Input) do
+  begin
+    // Allow digits, the decimal point, and the comma
+    if CharInSet(Input[i], ['0'..'9', '.', ',']) then
+      ResultBuilder := ResultBuilder + Input[i];
+  end;
+  // Replace the comma with a decimal point if necessary
+  Result := StringReplace(ResultBuilder, ',', '.', [rfReplaceAll]);
 end;
 
 function Tdm.ReplaceBadCharacters(s: string): string;

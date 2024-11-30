@@ -1,166 +1,3 @@
-[21.10.2024 14:28:34]Information>Startup>DB - UserID= mams
-[21.10.2024 14:28:34]Information>Startup>DB - Connection Password is given
-[21.10.2024 14:28:34]Information>Startup>connecting to DB at startup
-[21.10.2024 14:28:34]Information>Startup>Connected to DB.
-[21.10.2024 14:29:28]Information>Pending Reports>Query DB for pending reports...
-[21.10.2024 14:29:29]Information>Pending Reports>Query DB for pending reports... finished
-[21.10.2024 14:29:29]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[21.10.2024 14:29:29]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[21.10.2024 14:29:31]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[21.10.2024 14:29:31]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[21.10.2024 14:29:32]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[21.10.2024 14:29:32]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[21.10.2024 14:29:50]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9261";
-[21.10.2024 14:30:14]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 00CED5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
-[21.10.2024 14:30:20]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9261";
-[21.10.2024 14:31:00]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: [MySQL][ODBC 8.0(w) Driver][mysqld-5.5.5-10.11.2-MariaDB]You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '..`project_t` SET `out_date`=? WHERE `project_nr`=? AND `out_date`=?' at line 1
-[21.10.2024 14:31:20]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 00CED5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
-[21.10.2024 14:31:26]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9743";
-[21.10.2024 14:31:29]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9261";
-[21.10.2024 14:31:32]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9463";
-[21.10.2024 14:31:35]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9261";
-[21.10.2024 14:32:04]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: [MySQL][ODBC 8.0(w) Driver][mysqld-5.5.5-10.11.2-MariaDB]You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '..`project_t` SET `out_date`=? WHERE `project_nr`=? AND `out_date`=?' at line 1
-[21.10.2024 14:32:36]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 00CED5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
-[21.10.2024 14:32:41]Information>Closeup>SAMS closed by user.
-[21.10.2024 14:43:57]Information>Startup>starting Application
-[21.10.2024 14:43:57]Information>Startup>DB - Param count = 3
-[21.10.2024 14:43:57]Information>Startup>test
-[21.10.2024 14:43:57]Information>Startup>DB - ODBC-DataSource= db_dmams
-[21.10.2024 14:43:57]Information>Startup>DB - UserID= mams
-[21.10.2024 14:43:57]Information>Startup>DB - Connection Password is given
-[21.10.2024 14:43:57]Information>Startup>connecting to DB at startup
-[21.10.2024 14:43:57]Information>Startup>Connected to DB.
-[21.10.2024 14:44:14]Information>Pending Reports>Query DB for pending reports...
-[21.10.2024 14:44:15]Information>Pending Reports>Query DB for pending reports... finished
-[21.10.2024 14:44:15]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[21.10.2024 14:44:15]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[21.10.2024 14:44:17]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[21.10.2024 14:44:17]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[21.10.2024 14:44:17]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[21.10.2024 14:44:17]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[21.10.2024 14:44:17]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[21.10.2024 14:44:17]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[21.10.2024 14:44:17]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[21.10.2024 14:44:18]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[21.10.2024 14:44:19]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[21.10.2024 14:44:19]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[21.10.2024 14:44:19]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[21.10.2024 14:44:19]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[21.10.2024 14:44:19]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[21.10.2024 14:44:19]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[21.10.2024 14:44:36]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9827";
-[21.10.2024 14:44:39]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=902 ORDER BY in_date DESC;
-[21.10.2024 14:44:49]Information>SQLQuery>SELECT first_name, last_name, organisation, institute, address_1, address_2, town, postcode, country, email FROM user_t WHERE user_nr=902;
-[21.10.2024 14:52:26]Information>Pending Reports>Query DB for pending reports...
-[21.10.2024 14:52:27]Information>Pending Reports>Query DB for pending reports... finished
-[21.10.2024 14:52:27]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[21.10.2024 14:52:27]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[21.10.2024 14:52:29]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[21.10.2024 14:52:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[21.10.2024 14:52:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[21.10.2024 14:52:30]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[21.10.2024 14:52:35]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9428";
-[21.10.2024 14:53:15]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2789 ORDER BY in_date DESC;
-[21.10.2024 15:30:59]Information>Startup>starting Application
-[21.10.2024 15:30:59]Information>Startup>DB - Param count = 3
-[21.10.2024 15:30:59]Information>Startup>test
-[21.10.2024 15:30:59]Information>Startup>DB - ODBC-DataSource= db_dmams
-[21.10.2024 15:30:59]Information>Startup>DB - UserID= mams
-[21.10.2024 15:30:59]Information>Startup>DB - Connection Password is given
-[21.10.2024 15:30:59]Information>Startup>connecting to DB at startup
-[21.10.2024 15:30:59]Information>Startup>Connected to DB.
-[21.10.2024 15:31:10]Information>Closeup>SAMS closed by user.
-[21.10.2024 15:57:31]Information>Startup>starting Application
-[21.10.2024 15:57:31]Information>Startup>DB - Param count = 3
-[21.10.2024 15:57:31]Information>Startup>test
-[21.10.2024 15:57:31]Information>Startup>DB - ODBC-DataSource= db_dmams
-[21.10.2024 15:57:31]Information>Startup>DB - UserID= mams
-[21.10.2024 15:57:31]Information>Startup>DB - Connection Password is given
-[21.10.2024 15:57:31]Information>Startup>connecting to DB at startup
-[21.10.2024 15:57:31]Information>Startup>Connected to DB.
-[22.10.2024 04:15:17]Information>Closeup>SAMS closed by user.
-[22.10.2024 05:33:26]Information>Startup>starting Application
-[22.10.2024 05:33:26]Information>Startup>DB - Param count = 3
-[22.10.2024 05:33:26]Information>Startup>test
-[22.10.2024 05:33:26]Information>Startup>DB - ODBC-DataSource= db_dmams
-[22.10.2024 05:33:26]Information>Startup>DB - UserID= mams
-[22.10.2024 05:33:26]Information>Startup>DB - Connection Password is given
-[22.10.2024 05:33:26]Information>Startup>connecting to DB at startup
-[22.10.2024 05:33:26]Information>Startup>Connected to DB.
-[22.10.2024 05:33:32]Information>Pending Reports>Query DB for pending reports...
-[22.10.2024 05:33:33]Information>Pending Reports>Query DB for pending reports... finished
-[22.10.2024 05:33:33]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[22.10.2024 05:33:33]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[22.10.2024 05:33:34]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[22.10.2024 05:33:34]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
 [22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
 [22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
 [22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
@@ -1015,3 +852,266 @@
 [27.11.2024 19:09:42]Information>Startup>connecting to DB at startup
 [27.11.2024 19:09:42]Information>Startup>Connected to DB.
 [27.11.2024 19:14:54]Information>Closeup>SAMS closed by user.
+[29.11.2024 15:02:31]Information>Startup>starting Application
+[29.11.2024 15:02:31]Information>Startup>DB - Param count = 3
+[29.11.2024 15:02:31]Information>Startup>test
+[29.11.2024 15:02:31]Information>Startup>DB - ODBC-DataSource= db_dmams
+[29.11.2024 15:02:31]Information>Startup>DB - UserID= mams
+[29.11.2024 15:02:31]Information>Startup>DB - Connection Password is given
+[29.11.2024 15:02:31]Information>Startup>connecting to DB at startup
+[29.11.2024 15:02:31]Information>Startup>Connected to DB.
+[29.11.2024 15:02:43]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+[29.11.2024 15:02:43]Information>DB>Get data of all targets of selected magazine
+[29.11.2024 15:02:43]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241129ICOS"
+[29.11.2024 15:02:51]Information>Closeup>SAMS closed by user.
+[29.11.2024 15:02:53]Information>Startup>starting Application
+[29.11.2024 15:02:53]Information>Startup>DB - Param count = 3
+[29.11.2024 15:02:53]Information>Startup>test
+[29.11.2024 15:02:53]Information>Startup>DB - ODBC-DataSource= db_dmams
+[29.11.2024 15:02:53]Information>Startup>DB - UserID= mams
+[29.11.2024 15:02:53]Information>Startup>DB - Connection Password is given
+[29.11.2024 15:02:53]Information>Startup>connecting to DB at startup
+[29.11.2024 15:02:53]Information>Startup>Connected to DB.
+[29.11.2024 15:02:56]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+[29.11.2024 15:02:56]Information>DB>Get data of all targets of selected magazine
+[29.11.2024 15:02:56]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241129ICOS"
+[29.11.2024 15:03:01]Information>DB>Get data of all targets of selected magazine
+[29.11.2024 15:03:01]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA241127"
+[29.11.2024 15:03:01]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
+[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 14574.1.330
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 62284.1.155
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 62285.1.142
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 15183.93.2
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 73658.1.2
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 73659.1.1
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 73881.1.1
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 74214.1.1
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 74222.1.1
+[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 74228.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74229.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74230.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74234.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72920.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72921.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72922.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72747.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72748.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72749.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72750.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72751.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72752.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72753.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72754.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72755.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72756.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72757.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72758.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72759.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72760.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72979.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72740.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72741.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72913.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74044.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 73588.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 73589.1.1
+[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 73590.1.1
+[29.11.2024 15:03:10]Information>Closeup>SAMS closed by user.
+[30.11.2024 20:43:44]Information>Startup>starting Application
+[30.11.2024 20:43:44]Information>Startup>DB - Param count = 3
+[30.11.2024 20:43:44]Information>Startup>test
+[30.11.2024 20:43:45]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 20:43:45]Information>Startup>DB - UserID= mams
+[30.11.2024 20:43:45]Information>Startup>DB - Connection Password is given
+[30.11.2024 20:43:45]Information>Startup>connecting to DB at startup
+[30.11.2024 20:43:45]Information>Startup>Connected to DB.
+[30.11.2024 20:46:18]Information>Startup>starting Application
+[30.11.2024 20:46:18]Information>Startup>DB - Param count = 3
+[30.11.2024 20:46:18]Information>Startup>test
+[30.11.2024 20:46:18]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 20:46:18]Information>Startup>DB - UserID= mams
+[30.11.2024 20:46:18]Information>Startup>DB - Connection Password is given
+[30.11.2024 20:46:18]Information>Startup>connecting to DB at startup
+[30.11.2024 20:46:18]Information>Startup>Connected to DB.
+[30.11.2024 20:48:52]Information>Startup>starting Application
+[30.11.2024 20:48:53]Information>Startup>DB - Param count = 3
+[30.11.2024 20:48:53]Information>Startup>test
+[30.11.2024 20:48:53]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 20:48:53]Information>Startup>DB - UserID= mams
+[30.11.2024 20:48:53]Information>Startup>DB - Connection Password is given
+[30.11.2024 20:48:53]Information>Startup>connecting to DB at startup
+[30.11.2024 20:48:53]Information>Startup>Connected to DB.
+[30.11.2024 20:49:57]Information>Startup>starting Application
+[30.11.2024 20:49:57]Information>Startup>DB - Param count = 3
+[30.11.2024 20:49:57]Information>Startup>test
+[30.11.2024 20:49:57]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 20:49:57]Information>Startup>DB - UserID= mams
+[30.11.2024 20:49:57]Information>Startup>DB - Connection Password is given
+[30.11.2024 20:49:57]Information>Startup>connecting to DB at startup
+[30.11.2024 20:49:57]Information>Startup>Connected to DB.
+[30.11.2024 20:52:40]Information>Startup>starting Application
+[30.11.2024 20:52:40]Information>Startup>DB - Param count = 3
+[30.11.2024 20:52:40]Information>Startup>test
+[30.11.2024 20:52:40]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 20:52:40]Information>Startup>DB - UserID= mams
+[30.11.2024 20:52:40]Information>Startup>DB - Connection Password is given
+[30.11.2024 20:52:40]Information>Startup>connecting to DB at startup
+[30.11.2024 20:52:40]Information>Startup>Connected to DB.
+[30.11.2024 23:08:03]Information>Startup>starting Application
+[30.11.2024 23:08:03]Information>Startup>DB - Param count = 3
+[30.11.2024 23:08:03]Information>Startup>test
+[30.11.2024 23:08:03]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:08:03]Information>Startup>DB - UserID= mams
+[30.11.2024 23:08:03]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:08:03]Information>Startup>connecting to DB at startup
+[30.11.2024 23:08:03]Information>Startup>Connected to DB.
+[30.11.2024 23:12:09]Information>Startup>starting Application
+[30.11.2024 23:12:09]Information>Startup>DB - Param count = 3
+[30.11.2024 23:12:09]Information>Startup>test
+[30.11.2024 23:12:09]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:12:09]Information>Startup>DB - UserID= mams
+[30.11.2024 23:12:09]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:12:09]Information>Startup>connecting to DB at startup
+[30.11.2024 23:12:09]Information>Startup>Connected to DB.
+[30.11.2024 23:15:39]Information>Startup>starting Application
+[30.11.2024 23:15:39]Information>Startup>DB - Param count = 3
+[30.11.2024 23:15:39]Information>Startup>test
+[30.11.2024 23:15:39]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:15:39]Information>Startup>DB - UserID= mams
+[30.11.2024 23:15:39]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:15:39]Information>Startup>connecting to DB at startup
+[30.11.2024 23:15:39]Information>Startup>Connected to DB.
+[30.11.2024 23:28:33]Information>Startup>starting Application
+[30.11.2024 23:28:33]Information>Startup>DB - Param count = 3
+[30.11.2024 23:28:33]Information>Startup>test
+[30.11.2024 23:28:33]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:28:33]Information>Startup>DB - UserID= mams
+[30.11.2024 23:28:33]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:28:33]Information>Startup>connecting to DB at startup
+[30.11.2024 23:28:33]Information>Startup>Connected to DB.
+[30.11.2024 23:28:58]Information>Startup>starting Application
+[30.11.2024 23:28:58]Information>Startup>DB - Param count = 3
+[30.11.2024 23:28:58]Information>Startup>test
+[30.11.2024 23:28:58]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:28:58]Information>Startup>DB - UserID= mams
+[30.11.2024 23:28:58]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:28:58]Information>Startup>connecting to DB at startup
+[30.11.2024 23:28:58]Information>Startup>Connected to DB.
+[30.11.2024 23:29:24]Information>Startup>starting Application
+[30.11.2024 23:29:24]Information>Startup>DB - Param count = 3
+[30.11.2024 23:29:24]Information>Startup>test
+[30.11.2024 23:29:24]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:29:24]Information>Startup>DB - UserID= mams
+[30.11.2024 23:29:24]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:29:24]Information>Startup>connecting to DB at startup
+[30.11.2024 23:29:24]Information>Startup>Connected to DB.
+[30.11.2024 23:41:01]Information>Startup>starting Application
+[30.11.2024 23:41:01]Information>Startup>DB - Param count = 3
+[30.11.2024 23:41:01]Information>Startup>test
+[30.11.2024 23:41:01]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:41:01]Information>Startup>DB - UserID= mams
+[30.11.2024 23:41:01]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:41:01]Information>Startup>connecting to DB at startup
+[30.11.2024 23:41:01]Information>Startup>Connected to DB.
+[30.11.2024 23:41:04]Information>Closeup>SAMS closed by user.
+[30.11.2024 23:44:31]Information>Startup>starting Application
+[30.11.2024 23:44:31]Information>Startup>DB - Param count = 3
+[30.11.2024 23:44:31]Information>Startup>test
+[30.11.2024 23:44:31]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:44:31]Information>Startup>DB - UserID= mams
+[30.11.2024 23:44:31]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:44:31]Information>Startup>connecting to DB at startup
+[30.11.2024 23:44:31]Information>Startup>Connected to DB.
+[30.11.2024 23:44:37]Information>Closeup>SAMS closed by user.
+[30.11.2024 23:45:52]Information>Startup>starting Application
+[30.11.2024 23:45:52]Information>Startup>DB - Param count = 3
+[30.11.2024 23:45:52]Information>Startup>test
+[30.11.2024 23:45:52]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:45:52]Information>Startup>DB - UserID= mams
+[30.11.2024 23:45:52]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:45:52]Information>Startup>connecting to DB at startup
+[30.11.2024 23:45:52]Information>Startup>Connected to DB.
+[30.11.2024 23:46:57]Information>Startup>starting Application
+[30.11.2024 23:46:57]Information>Startup>DB - Param count = 3
+[30.11.2024 23:46:57]Information>Startup>test
+[30.11.2024 23:46:57]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:46:57]Information>Startup>DB - UserID= mams
+[30.11.2024 23:46:57]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:46:57]Information>Startup>connecting to DB at startup
+[30.11.2024 23:46:57]Information>Startup>Connected to DB.

@@ -869,6 +869,12 @@
       </function>
       <procedure name="DBreconnect" visibility="public">
       </procedure>
+      <function name="ExtractNumber" visibility="public">
+        <parameters>
+          <parameter name="Input" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
     </members>
   </class>
   <variable name="dm" type="Tdm" />
