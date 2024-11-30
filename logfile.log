@@ -1,48 +1,3 @@
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[22.10.2024 05:33:35]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[22.10.2024 05:33:35]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[22.10.2024 05:33:47]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9707";
-[22.10.2024 05:34:27]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9712";
-[22.10.2024 05:34:31]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2648 ORDER BY in_date DESC;
-[22.10.2024 05:34:37]Information>SQLQuery>SELECT first_name, last_name, organisation, institute, address_1, address_2, town, postcode, country, email FROM user_t WHERE user_nr=2648;
-[22.10.2024 05:43:36]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9713";
-[22.10.2024 05:44:09]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9712";
-[22.10.2024 05:44:36]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2648 ORDER BY in_date DESC;
-[22.10.2024 05:44:40]Information>SQLQuery>SELECT first_name, last_name, organisation, institute, address_1, address_2, town, postcode, country, email FROM user_t WHERE user_nr=2648;
-[22.10.2024 05:45:21]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9713";
-[22.10.2024 05:45:23]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2648 ORDER BY in_date DESC;
-[22.10.2024 05:45:32]Information>SQLQuery>SELECT first_name, last_name, organisation, institute, address_1, address_2, town, postcode, country, email FROM user_t WHERE user_nr=2648;
-[22.10.2024 05:52:07]Information>Pending Reports>Query DB for pending reports...
-[22.10.2024 05:52:08]Information>Pending Reports>Query DB for pending reports... finished
-[22.10.2024 05:52:08]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[22.10.2024 05:52:08]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[22.10.2024 05:52:10]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[22.10.2024 05:52:10]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
 [22.10.2024 05:52:10]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
 [22.10.2024 05:52:10]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
 [22.10.2024 05:52:10]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
@@ -1115,3 +1070,82 @@
 [30.11.2024 23:46:57]Information>Startup>DB - Connection Password is given
 [30.11.2024 23:46:57]Information>Startup>connecting to DB at startup
 [30.11.2024 23:46:57]Information>Startup>Connected to DB.
+[30.11.2024 23:56:47]Information>Startup>starting Application
+[30.11.2024 23:56:47]Information>Startup>DB - Param count = 3
+[30.11.2024 23:56:47]Information>Startup>test
+[30.11.2024 23:56:47]Information>Startup>DB - ODBC-DataSource= db_dmams
+[30.11.2024 23:56:47]Information>Startup>DB - UserID= mams
+[30.11.2024 23:56:47]Information>Startup>DB - Connection Password is given
+[30.11.2024 23:56:47]Information>Startup>connecting to DB at startup
+[30.11.2024 23:56:47]Information>Startup>Connected to DB.
+[01.12.2024 00:09:01]Information>Startup>starting Application
+[01.12.2024 00:09:01]Information>Startup>DB - Param count = 3
+[01.12.2024 00:09:01]Information>Startup>test
+[01.12.2024 00:09:01]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:09:01]Information>Startup>DB - UserID= mams
+[01.12.2024 00:09:01]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:09:01]Information>Startup>connecting to DB at startup
+[01.12.2024 00:09:01]Information>Startup>Connected to DB.
+[01.12.2024 00:09:04]Information>Closeup>SAMS closed by user.
+[01.12.2024 00:10:46]Information>Startup>starting Application
+[01.12.2024 00:10:46]Information>Startup>DB - Param count = 3
+[01.12.2024 00:10:46]Information>Startup>test
+[01.12.2024 00:10:46]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:10:46]Information>Startup>DB - UserID= mams
+[01.12.2024 00:10:46]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:10:46]Information>Startup>connecting to DB at startup
+[01.12.2024 00:10:46]Information>Startup>Connected to DB.
+[01.12.2024 00:11:51]Information>Startup>starting Application
+[01.12.2024 00:11:51]Information>Startup>DB - Param count = 3
+[01.12.2024 00:11:51]Information>Startup>test
+[01.12.2024 00:11:51]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:11:51]Information>Startup>DB - UserID= mams
+[01.12.2024 00:11:51]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:11:51]Information>Startup>connecting to DB at startup
+[01.12.2024 00:11:51]Information>Startup>Connected to DB.
+[01.12.2024 00:18:53]Information>Startup>starting Application
+[01.12.2024 00:18:53]Information>Startup>DB - Param count = 3
+[01.12.2024 00:18:53]Information>Startup>test
+[01.12.2024 00:18:53]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:18:53]Information>Startup>DB - UserID= mams
+[01.12.2024 00:18:53]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:18:53]Information>Startup>connecting to DB at startup
+[01.12.2024 00:18:53]Information>Startup>Connected to DB.
+[01.12.2024 00:19:46]Information>Startup>starting Application
+[01.12.2024 00:19:46]Information>Startup>DB - Param count = 3
+[01.12.2024 00:19:46]Information>Startup>test
+[01.12.2024 00:19:46]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:19:46]Information>Startup>DB - UserID= mams
+[01.12.2024 00:19:46]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:19:46]Information>Startup>connecting to DB at startup
+[01.12.2024 00:19:46]Information>Startup>Connected to DB.
+[01.12.2024 00:20:53]Information>Startup>starting Application
+[01.12.2024 00:20:53]Information>Startup>DB - Param count = 3
+[01.12.2024 00:20:53]Information>Startup>test
+[01.12.2024 00:20:53]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:20:53]Information>Startup>DB - UserID= mams
+[01.12.2024 00:20:53]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:20:53]Information>Startup>connecting to DB at startup
+[01.12.2024 00:20:53]Information>Startup>Connected to DB.
+[01.12.2024 00:22:17]Information>Startup>starting Application
+[01.12.2024 00:22:17]Information>Startup>DB - Param count = 3
+[01.12.2024 00:22:18]Information>Startup>test
+[01.12.2024 00:22:18]Information>Startup>DB - ODBC-DataSource= db_dmams
+[01.12.2024 00:22:18]Information>Startup>DB - UserID= mams
+[01.12.2024 00:22:18]Information>Startup>DB - Connection Password is given
+[01.12.2024 00:22:18]Information>Startup>connecting to DB at startup
+[01.12.2024 00:22:18]Information>Startup>Connected to DB.
+[01.12.2024 00:22:28]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
+
+[01.12.2024 00:22:30]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10022";
+
+[01.12.2024 00:23:06]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
+
+[01.12.2024 00:23:07]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
+
+[01.12.2024 00:23:08]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
+
+[01.12.2024 00:23:10]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
+
+[01.12.2024 00:23:12]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10022";
+

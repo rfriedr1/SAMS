@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = edtNewSamplesFilename
+  ActiveControl = lbxDefinePrepSteps
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1556
@@ -89,6 +89,8 @@ object frmMAMS: TfrmMAMS
       item
         Width = 50
       end>
+    ExplicitTop = 912
+    ExplicitWidth = 1554
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -111,6 +113,7 @@ object frmMAMS: TfrmMAMS
     StyleElements = [seFont, seBorder]
     Wrapable = False
     OnClick = ToolBar1Click
+    ExplicitWidth = 1554
     object ToolbtnHome: TToolButton
       Left = 0
       Top = 0
@@ -304,7 +307,7 @@ object frmMAMS: TfrmMAMS
     TabOrder = 2
     OnChange = pgtMainChange
     ExplicitWidth = 1554
-    ExplicitHeight = 870
+    ExplicitHeight = 865
     object tbsInsertSamples: TTabSheet
       Caption = 'Insert samples'
       ImageIndex = 8
@@ -313,7 +316,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1548
         Height = 843
-        ActivePage = wizStartPage
+        ActivePage = wizSelectPretreatment
         ButtonBarHeight = 52
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -340,7 +343,8 @@ object frmMAMS: TfrmMAMS
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
-        ExplicitHeight = 848
+        ExplicitWidth = 1546
+        ExplicitHeight = 835
         DesignSize = (
           1548
           843)
@@ -367,7 +371,8 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select user'
           OnEnterPage = wizStartPageEnterPage
           OnBackButtonClick = wizStartPageBackButtonClick
-          ExplicitHeight = 796
+          ExplicitWidth = 1401
+          ExplicitHeight = 783
           object Panel4: TPanel
             Left = 0
             Top = 70
@@ -381,6 +386,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            ExplicitWidth = 1401
             object Label14: TLabel
               Left = 120
               Top = 18
@@ -441,7 +447,7 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
-            ExplicitHeight = 620
+            ExplicitHeight = 607
             ColWidths = (
               64
               64)
@@ -500,7 +506,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Invoice address'
           OnEnterPage = wizInputInvoiceAddressEnterPage
-          ExplicitHeight = 796
           object Panel29: TPanel
             Left = 0
             Top = 70
@@ -552,7 +557,6 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
-            ExplicitHeight = 654
             ColWidths = (
               64
               64)
@@ -611,7 +615,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Project Info'
           OnEnterPage = wizInputProjectEnterPage
-          ExplicitHeight = 796
           object GroupBox4: TGroupBox
             Left = 0
             Top = 70
@@ -620,7 +623,6 @@ object frmMAMS: TfrmMAMS
             Align = alLeft
             Caption = 'Project data'
             TabOrder = 0
-            ExplicitHeight = 726
             object Label15: TLabel
               Left = 112
               Top = 115
@@ -845,7 +847,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select material'
           OnEnterPage = wizSelectMaterialEnterPage
           OnNextButtonClick = wizSelectMaterialNextButtonClick
-          ExplicitHeight = 796
           object JvNetscapeSplitter2: TJvNetscapeSplitter
             Left = 601
             Top = 70
@@ -874,7 +875,6 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
-            ExplicitHeight = 726
             ColWidths = (
               64
               64
@@ -901,7 +901,6 @@ object frmMAMS: TfrmMAMS
             Align = alClient
             Caption = 'pnlSetMaterial'
             TabOrder = 1
-            ExplicitHeight = 726
             object Panel6: TPanel
               Left = 1
               Top = 1
@@ -910,7 +909,6 @@ object frmMAMS: TfrmMAMS
               Align = alClient
               Caption = 'pnlSetMaterial'
               TabOrder = 0
-              ExplicitHeight = 724
               object lbxMaterial: TListBox
                 Left = 1
                 Top = 1
@@ -921,7 +919,6 @@ object frmMAMS: TfrmMAMS
                 TabOrder = 0
                 OnDblClick = lbxMaterialDblClick
                 OnMouseDown = lbxMaterialMouseDown
-                ExplicitHeight = 722
               end
               object lbxFraction: TListBox
                 Left = 673
@@ -933,7 +930,6 @@ object frmMAMS: TfrmMAMS
                 TabOrder = 1
                 OnDblClick = lbxFractionDblClick
                 OnMouseDown = lbxFractionMouseDown
-                ExplicitHeight = 722
               end
             end
           end
@@ -960,7 +956,6 @@ object frmMAMS: TfrmMAMS
           Header.Subtitle.Font.Style = []
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
-          ExplicitHeight = 796
           object pnlSetType: TPanel
             Left = 1274
             Top = 70
@@ -969,7 +964,6 @@ object frmMAMS: TfrmMAMS
             Align = alRight
             Caption = 'pnlSetType'
             TabOrder = 0
-            ExplicitHeight = 726
             object lbxTypes: TListBox
               Left = 1
               Top = 1
@@ -980,7 +974,6 @@ object frmMAMS: TfrmMAMS
               TabOrder = 0
               OnDblClick = lbxTypesDblClick
               OnMouseDown = lbxTypesMouseDown
-              ExplicitHeight = 724
             end
           end
         end
@@ -1005,7 +998,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select pretreatment'
           OnEnterPage = wizSelectPretreatmentEnterPage
           OnBackButtonClick = wizSelectPretreatmentBackButtonClick
-          ExplicitHeight = 796
           object lbxDefinePrepSteps: TListBox
             Left = 1210
             Top = 70
@@ -1014,8 +1006,8 @@ object frmMAMS: TfrmMAMS
             Align = alRight
             ItemHeight = 15
             TabOrder = 0
+            OnDblClick = lbxDefinePrepStepsDblClick
             OnMouseDown = lbxDefinePrepStepsMouseDown
-            ExplicitHeight = 726
           end
         end
         object wizFinalPage: TJvWizardInteriorPage
@@ -1042,7 +1034,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Insert all data'
           OnEnterPage = wizFinalPageEnterPage
           OnFinishButtonClick = wizFinalPageFinishButtonClick
-          ExplicitHeight = 796
           object lbWizFinalPage: TMemo
             Left = 0
             Top = 70
@@ -1060,7 +1051,6 @@ object frmMAMS: TfrmMAMS
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitHeight = 726
           end
         end
         object JvWizardRouteMapList1: TJvWizardRouteMapList
@@ -1079,7 +1069,7 @@ object frmMAMS: TfrmMAMS
           HotTrackFont.Height = -12
           HotTrackFont.Name = 'Segoe UI'
           HotTrackFont.Style = [fsUnderline]
-          ExplicitHeight = 796
+          ExplicitHeight = 783
         end
       end
     end
@@ -1108,7 +1098,6 @@ object frmMAMS: TfrmMAMS
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 0
-        ExplicitHeight = 848
         object GroupBox30: TGroupBox
           Left = 1
           Top = 58
@@ -1117,7 +1106,6 @@ object frmMAMS: TfrmMAMS
           Align = alClient
           Padding.Top = 15
           TabOrder = 0
-          ExplicitHeight = 789
           DesignSize = (
             594
             784)
@@ -1170,7 +1158,6 @@ object frmMAMS: TfrmMAMS
             Align = alBottom
             BevelOuter = bvLowered
             TabOrder = 1
-            ExplicitTop = 736
             DesignSize = (
               592
               52)
@@ -1320,7 +1307,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 1
-        ExplicitHeight = 848
         object pgtSample: TPageControl
           Left = 1
           Top = 1
@@ -1337,7 +1323,6 @@ object frmMAMS: TfrmMAMS
           TabOrder = 0
           OnChange = pgtSampleChange
           OnExit = pgtSampleExit
-          ExplicitHeight = 846
           object tbsProject: TTabSheet
             Caption = 'Project data'
             ImageIndex = 3
@@ -1357,7 +1342,6 @@ object frmMAMS: TfrmMAMS
               ParentShowHint = False
               ShowHint = True
               TabOrder = 0
-              ExplicitHeight = 812
               object Label16: TLabel
                 Left = 120
                 Top = 123
@@ -1803,7 +1787,6 @@ object frmMAMS: TfrmMAMS
               Height = 807
               Align = alClient
               TabOrder = 0
-              ExplicitHeight = 812
               object GroupBox35: TGroupBox
                 Left = 2
                 Top = 21
@@ -1898,7 +1881,6 @@ object frmMAMS: TfrmMAMS
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 1
-                ExplicitHeight = 431
               end
             end
             object gbxSampleLeft: TGroupBox
@@ -1908,7 +1890,6 @@ object frmMAMS: TfrmMAMS
               Height = 807
               Align = alLeft
               TabOrder = 1
-              ExplicitHeight = 812
               object gbxSelectPretreatment: TGroupBox
                 Left = 2
                 Top = 379
@@ -1924,7 +1905,6 @@ object frmMAMS: TfrmMAMS
                 Padding.Top = 5
                 ParentFont = False
                 TabOrder = 0
-                ExplicitHeight = 431
                 object GroupBox29: TGroupBox
                   Left = 2
                   Top = 23
@@ -1939,7 +1919,6 @@ object frmMAMS: TfrmMAMS
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitHeight = 406
                   object grdShowPrepSteps: TMdRecordView
                     Left = 2
                     Top = 15
@@ -1953,7 +1932,6 @@ object frmMAMS: TfrmMAMS
                     ParentShowHint = False
                     ShowHint = True
                     TabOrder = 0
-                    ExplicitHeight = 389
                     ColWidths = (
                       64
                       114)
@@ -1976,7 +1954,6 @@ object frmMAMS: TfrmMAMS
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 1
-                  ExplicitHeight = 406
                   object DBMemo2: TDBMemo
                     Left = 2
                     Top = 15
@@ -1990,7 +1967,6 @@ object frmMAMS: TfrmMAMS
                     ParentShowHint = False
                     ShowHint = True
                     TabOrder = 0
-                    ExplicitHeight = 389
                   end
                 end
               end
@@ -2228,7 +2204,6 @@ object frmMAMS: TfrmMAMS
         Align = alRight
         Caption = 'Batch'
         TabOrder = 0
-        ExplicitHeight = 848
         object lbxBatch: TListBox
           Left = 2
           Top = 122
@@ -2239,7 +2214,6 @@ object frmMAMS: TfrmMAMS
           TabOrder = 0
           OnDragDrop = lbxBatchDragDrop
           OnDragOver = lbxBatchDragOver
-          ExplicitHeight = 572
         end
         object Panel8: TPanel
           Left = 2
@@ -2275,7 +2249,6 @@ object frmMAMS: TfrmMAMS
           Height = 152
           Align = alBottom
           TabOrder = 2
-          ExplicitTop = 694
           object btnSaveBatch: TButton
             Left = 16
             Top = 14
@@ -2321,7 +2294,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Create Targets'
         TabOrder = 1
-        ExplicitHeight = 848
         DesignSize = (
           169
           843)
@@ -2440,7 +2412,6 @@ object frmMAMS: TfrmMAMS
           ScrollBars = ssVertical
           ShowHint = True
           TabOrder = 3
-          ExplicitHeight = 432
         end
         object btnUpdateNoOxBlanks: TBitBtn
           Left = 100
@@ -2503,7 +2474,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Create Batches'
         TabOrder = 2
-        ExplicitHeight = 848
         object Panel7: TPanel
           Left = 2
           Top = 17
@@ -2636,7 +2606,6 @@ object frmMAMS: TfrmMAMS
           Align = alClient
           Caption = 'Samples available'
           TabOrder = 1
-          ExplicitHeight = 756
           object grdSamplesAvailable: TJvDBGrid
             Left = 2
             Top = 36
@@ -2693,7 +2662,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Batch Information'
         TabOrder = 0
-        ExplicitHeight = 848
         object Panel9: TPanel
           Left = 2
           Top = 68
@@ -2782,7 +2750,6 @@ object frmMAMS: TfrmMAMS
         ActivePage = tbsPrepTask
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 848
         object tbsPrepTask: TTabSheet
           Caption = 'tbsPrepTask'
           object GroupBox14: TGroupBox
@@ -2793,7 +2760,6 @@ object frmMAMS: TfrmMAMS
             Align = alLeft
             Caption = 'Predefined steps'
             TabOrder = 0
-            ExplicitHeight = 817
             object lbPrepTimesHelp: TJvMarkupLabel
               Left = 2
               Top = 18
@@ -2836,7 +2802,6 @@ object frmMAMS: TfrmMAMS
             Align = alClient
             Caption = 'Present task'
             TabOrder = 1
-            ExplicitHeight = 817
             object Panel10: TPanel
               Left = 2
               Top = 18
@@ -3445,7 +3410,6 @@ object frmMAMS: TfrmMAMS
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1546
         object btnIncSampleNr: TSpinButton
           Left = 190
           Top = 18
@@ -3725,7 +3689,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 3
-        ExplicitHeight = 761
         object Label103: TLabel
           Left = 11
           Top = 526
@@ -3996,7 +3959,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesGraphClick
-          ExplicitTop = 717
         end
         object btnFillDateToday: TButton
           Left = 179
@@ -4235,7 +4197,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 4
-        ExplicitHeight = 761
         object Label28: TLabel
           Left = 36
           Top = 206
@@ -4534,7 +4495,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesAdminClick
-          ExplicitTop = 717
         end
         object dbchkFreeOfCharge2: TDBCheckBox
           Left = 20
@@ -4689,7 +4649,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 5
-        ExplicitHeight = 761
         object Label2: TLabel
           Left = 50
           Top = 205
@@ -4991,7 +4950,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        ExplicitHeight = 761
         object Label30: TLabel
           Left = 16
           Top = 27
@@ -5381,7 +5339,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesUserSuppliedInfoClick
-          ExplicitTop = 717
         end
         object DBMemo_LabComment: TDBMemo
           Left = 0
@@ -5459,7 +5416,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 2
-        ExplicitHeight = 761
         object Label102: TLabel
           Left = 6
           Top = 526
@@ -5610,7 +5566,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesPrepClick
-          ExplicitTop = 717
         end
         object chkPrepDiscarded: TDBCheckBox
           Left = 118
@@ -5896,7 +5851,6 @@ object frmMAMS: TfrmMAMS
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitHeight = 848
         object Label73: TLabel
           Left = 61
           Top = 115
@@ -6307,7 +6261,6 @@ object frmMAMS: TfrmMAMS
         Align = alRight
         Caption = 'Test Only!!!'
         TabOrder = 0
-        ExplicitHeight = 848
         object DBGrid1: TDBGrid
           Left = 16
           Top = 323
@@ -6413,7 +6366,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Table headings for report'
         TabOrder = 1
-        ExplicitHeight = 848
         object lbExportHeader: TJvMarkupLabel
           Left = 2
           Top = 402
@@ -6490,7 +6442,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'App Options'
         TabOrder = 2
-        ExplicitHeight = 848
         object OptionsTree: TTreeView
           Left = 2
           Top = 17
@@ -6518,7 +6469,6 @@ object frmMAMS: TfrmMAMS
           ActivePage = TabPaths
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 797
           object TabGeneral: TTabSheet
             Caption = 'TabGeneral'
             object c: TStaticText
@@ -6649,7 +6599,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Save'
           TabOrder = 2
           OnClick = btnSaveOptionsClick
-          ExplicitTop = 814
         end
       end
     end
@@ -6665,7 +6614,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Pretreatment '
         TabOrder = 0
-        ExplicitHeight = 848
         object grdPretreatment: TDBGrid
           Left = 2
           Top = 42
@@ -6703,7 +6651,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Sample types'
         TabOrder = 1
-        ExplicitHeight = 848
         object grdTypes: TDBGrid
           Left = 2
           Top = 42
@@ -6740,7 +6687,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Sample material'
         TabOrder = 2
-        ExplicitHeight = 848
         object grdMaterial: TDBGrid
           Left = 2
           Top = 42
@@ -6777,7 +6723,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Fraction'
         TabOrder = 3
-        ExplicitHeight = 848
         object grdFraction: TDBGrid
           Left = 2
           Top = 42
@@ -6838,7 +6783,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Samples currently in  prep.'
         TabOrder = 0
-        ExplicitHeight = 848
         object Panel21: TPanel
           Left = 2
           Top = 17
@@ -6909,7 +6853,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Sample waiting for prep'
         TabOrder = 1
-        ExplicitHeight = 848
         object Panel3: TPanel
           Left = 2
           Top = 17
@@ -6995,7 +6938,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'samples waiting for graphitisation'
         TabOrder = 2
-        ExplicitHeight = 848
         object Panel22: TPanel
           Left = 2
           Top = 17
@@ -7090,7 +7032,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'All projects since ...'
         TabOrder = 0
-        ExplicitHeight = 848
         object Panel24: TPanel
           Left = 2
           Top = 17
@@ -7171,7 +7112,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'MA Database tasks'
         TabOrder = 0
-        ExplicitHeight = 848
         DesignSize = (
           225
           843)
@@ -7245,7 +7185,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Modify'
         TabOrder = 1
-        ExplicitHeight = 848
         object lblProject: TLabel
           Left = 91
           Top = 87
@@ -7338,7 +7277,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Click on the targets you wish to take into account'
         TabOrder = 1
-        ExplicitHeight = 848
         object StrGrdTargetData: TJvStringGrid
           Left = 2
           Top = 17
@@ -7441,7 +7379,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Click on magazine to transfer ages'
         TabOrder = 0
-        ExplicitHeight = 848
         object Panel16: TPanel
           Left = 2
           Top = 17
@@ -7562,7 +7499,6 @@ object frmMAMS: TfrmMAMS
           Align = alLeft
           Caption = 'Panel25'
           TabOrder = 1
-          ExplicitHeight = 713
           object grdMagazines: TDBGrid
             Left = 1
             Top = 1
@@ -7590,7 +7526,6 @@ object frmMAMS: TfrmMAMS
           Align = alClient
           Caption = 'Panel26'
           TabOrder = 2
-          ExplicitHeight = 713
           object grdMagazineData: TDBGrid
             Left = 1
             Top = 1
@@ -7636,7 +7571,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Panel31'
         TabOrder = 0
-        ExplicitHeight = 848
         object Panel30: TPanel
           Left = 1
           Top = 1
@@ -7743,7 +7677,6 @@ object frmMAMS: TfrmMAMS
           Anchors = [akLeft, akTop, akRight, akBottom]
           ScrollBars = ssBoth
           TabOrder = 1
-          ExplicitHeight = 535
         end
         object lboxStatus: TListBox
           Left = 1
@@ -7754,7 +7687,6 @@ object frmMAMS: TfrmMAMS
           ItemHeight = 15
           ScrollWidth = 10
           TabOrder = 2
-          ExplicitTop = 728
         end
       end
     end
@@ -7893,7 +7825,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Query Data'
         TabOrder = 1
-        ExplicitHeight = 735
         object lblSelectedPlotRow: TLabel
           Left = 2
           Top = 713
@@ -7901,7 +7832,6 @@ object frmMAMS: TfrmMAMS
           Height = 15
           Align = alBottom
           Caption = 'selected: '
-          ExplicitTop = 718
           ExplicitWidth = 49
         end
         object DBGridDBPlot: TDBGrid
@@ -7930,7 +7860,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'DB Plot'
         TabOrder = 2
-        ExplicitHeight = 735
         object DBChart: TChart
           Left = 2
           Top = 17
@@ -7963,7 +7892,6 @@ object frmMAMS: TfrmMAMS
           View3DOptions.Orthogonal = False
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 716
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -7996,7 +7924,6 @@ object frmMAMS: TfrmMAMS
         Align = alLeft
         Caption = 'Number processed samples'
         TabOrder = 0
-        ExplicitHeight = 848
         object Panel28: TPanel
           Left = 2
           Top = 17
@@ -8085,7 +8012,6 @@ object frmMAMS: TfrmMAMS
           RowCount = 14
           FixedRows = 0
           TabOrder = 1
-          ExplicitHeight = 772
           ColWidths = (
             100
             100
@@ -8116,7 +8042,6 @@ object frmMAMS: TfrmMAMS
         Align = alClient
         Caption = 'Pending Reports'
         TabOrder = 1
-        ExplicitHeight = 848
         object grdPendingReports: TDBGrid
           Left = 2
           Top = 74
@@ -8332,7 +8257,6 @@ object frmMAMS: TfrmMAMS
             Value = 13.995954369693560000
           end>
         TabOrder = 0
-        ExplicitHeight = 795
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
@@ -8357,7 +8281,6 @@ object frmMAMS: TfrmMAMS
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitHeight = 543
           object pnlHomeNumberOfOxas: TPanel
             AlignWithMargins = True
             Left = 9
@@ -8537,7 +8460,6 @@ object frmMAMS: TfrmMAMS
           Padding.Bottom = 5
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 543
           object pnlHomeNumberofUnprepdSamples: TPanel
             AlignWithMargins = True
             Left = 10
@@ -8713,7 +8635,6 @@ object frmMAMS: TfrmMAMS
           Padding.Bottom = 5
           ParentFont = False
           TabOrder = 2
-          ExplicitHeight = 431
           object pnlHomeNumberofExpress: TPanel
             AlignWithMargins = True
             Left = 10
@@ -9497,7 +9418,6 @@ object frmMAMS: TfrmMAMS
         Anchors = [akLeft, akTop, akBottom]
         BevelKind = bkSoft
         TabOrder = 1
-        ExplicitHeight = 632
         DesignSize = (
           400
           623)
@@ -9509,7 +9429,6 @@ object frmMAMS: TfrmMAMS
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Preparation'
           TabOrder = 0
-          ExplicitHeight = 604
           DesignSize = (
             377
             599)
@@ -9914,7 +9833,6 @@ object frmMAMS: TfrmMAMS
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 9
-            ExplicitTop = 579
           end
           object DBedtTouchWeightsMediumPrep: TDBEdit
             Left = 107
@@ -10025,7 +9943,6 @@ object frmMAMS: TfrmMAMS
         Anchors = [akLeft, akTop, akBottom]
         BevelKind = bkSoft
         TabOrder = 2
-        ExplicitHeight = 633
         DesignSize = (
           688
           624)
@@ -10037,7 +9954,6 @@ object frmMAMS: TfrmMAMS
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization Batch'
           TabOrder = 0
-          ExplicitHeight = 587
           object Label127: TLabel
             Left = 40
             Top = 25
@@ -10242,7 +10158,6 @@ object frmMAMS: TfrmMAMS
           Anchors = [akLeft, akTop, akBottom]
           Caption = 'Graphitization'
           TabOrder = 1
-          ExplicitHeight = 592
           DesignSize = (
             313
             587)
@@ -10480,7 +10395,6 @@ object frmMAMS: TfrmMAMS
             Anchors = [akLeft, akBottom]
             Caption = 'auto g -> mg'
             TabOrder = 4
-            ExplicitTop = 567
           end
           object btnTouchWeightsAddToGraphBatch: TButton
             Left = 82

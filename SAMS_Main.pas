@@ -1310,6 +1310,7 @@ type
     procedure dbedtprepStorLocMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure grdPretreatmentCellClick(Column: TColumn);
+    procedure lbxDefinePrepStepsDblClick(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -8220,6 +8221,16 @@ begin
   Accept := not found;
 end;
 
+procedure TfrmMAMS.lbxDefinePrepStepsDblClick(Sender: TObject);
+var i: integer;
+begin
+  for i := 0 to lbxDefinePrepSteps.Count - 1 do
+    if lbxDefinePrepSteps.Selected[i] then CurrentPrep := lbxDefinePrepSteps.Items[i];
+  with grdPreviewSamples do begin
+    for i := 1 to RowCount - 1 do Cells[SamplePrep1Col, i] := CurrentPrep;
+  end;
+end;
+
 procedure TfrmMAMS.lbxDefinePrepStepsMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 var
@@ -10787,8 +10798,8 @@ begin
   SetSampleGridForPrep;
   FillPrepBox;
   lbxDefinePrepSteps.Align := alClient;
-  wizSelectPretreatment.Subtitle.Text := 'Select pretreatment step  from the list and drag to the one of the prep.steps columns;' + #13 +
-    ' press Ctrl during drag to assign this step to all samples';
+  wizSelectPretreatment.Subtitle.Text := 'Select prep step from the list and drag to one of the the prep columns;' + #13 +
+    'press Ctrl during drag to assign this step to all samples. Double click on a prep-step to assign to all samples for prep_step_1.';
 end;
 
 procedure TfrmMAMS.wizSelectTypeEnterPage(Sender: TObject;
