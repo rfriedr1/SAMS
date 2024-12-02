@@ -87,13 +87,13 @@ object dm: Tdm
     Top = 455
   end
   object adoConnKTL: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=MSDASQL.1;Persist Security Info=False;Data Source=db_dm' +
       'ams;'
     ConnectionTimeout = 25
     DefaultDatabase = 'db_dmams'
     LoginPrompt = False
-    Provider = 'MSDASQL.1'
     OnExecuteComplete = adoConnKTLExecuteComplete
     Left = 69
     Top = 20

@@ -1311,6 +1311,19 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure grdPretreatmentCellClick(Column: TColumn);
     procedure lbxDefinePrepStepsDblClick(Sender: TObject);
+    procedure edtSampleInfoInDateClick(Sender: TObject);
+    procedure edtSampleInfoOutDateClick(Sender: TObject);
+    procedure edtSampleInfoDesiredDateClick(Sender: TObject);
+    procedure edtPrepStartClick(Sender: TObject);
+    procedure edtPrepEndClick(Sender: TObject);
+    procedure edtGraphitizedClick(Sender: TObject);
+    procedure edtTargetPressedClick(Sender: TObject);
+    procedure edtGraphDateClick(Sender: TObject);
+    procedure DBDateTimeTouchPrepStartClick(Sender: TObject);
+    procedure DBDateTimeTouchPrepEndClick(Sender: TObject);
+    procedure JvDBDateTimePicker2Click(Sender: TObject);
+    procedure JvDBDateTimePicker1Click(Sender: TObject);
+    procedure JvDBDateTimePicker3Click(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -3111,7 +3124,7 @@ begin
     begin
       Out_date_str := 'NULL';
     end;
-  showmessage('old = ' + FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date) + ', New= ' + Out_date_str);
+  //showmessage('old = ' + FormatDateTime('YYYY-MM-DD', edtSampleInfoOutDate.Date) + ', New= ' + Out_date_str);
 
   if dbchkFreeOfCharge2.Checked then freeofcharge:='1'
   else freeofcharge:='0';
@@ -5361,9 +5374,21 @@ begin
   TargetDataChanged := true;
 end;
 
+procedure TfrmMAMS.edtGraphDateClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
 procedure TfrmMAMS.edtGraphitizedChange(Sender: TObject);
 begin
   TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtGraphitizedClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
 end;
 
 procedure TfrmMAMS.edtH2finalChange(Sender: TObject);
@@ -5382,6 +5407,18 @@ begin
   ParseNewSampleFile(AName);
 end;
 
+procedure TfrmMAMS.edtPrepEndClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
+procedure TfrmMAMS.edtPrepStartClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
 procedure TfrmMAMS.edtProjectNameChange(Sender: TObject);
 begin
   ProjectName := edtProjectName.Text;
@@ -5398,6 +5435,26 @@ end;
 procedure TfrmMAMS.edtReportFileNameChange(Sender: TObject);
 begin
 btnReport.Enabled:=true;
+end;
+
+procedure TfrmMAMS.edtSampleInfoDesiredDateClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
+procedure TfrmMAMS.edtSampleInfoInDateClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+
+end;
+
+procedure TfrmMAMS.edtSampleInfoOutDateClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+
 end;
 
 procedure TfrmMAMS.edtSampleNrChange(Sender: TObject);
@@ -5516,6 +5573,12 @@ end;
 procedure TfrmMAMS.edtTargetPressedChange(Sender: TObject);
 begin
   TargetDataChanged := true;
+end;
+
+procedure TfrmMAMS.edtTargetPressedClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
 end;
 
 procedure TfrmMAMS.edtTouchWeightsMAMSChange(Sender: TObject);
@@ -9315,6 +9378,24 @@ begin
     DBedtTouchWeightsBeforePrep.SetFocus;
 end;
 
+procedure TfrmMAMS.JvDBDateTimePicker1Click(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
+procedure TfrmMAMS.JvDBDateTimePicker2Click(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
+procedure TfrmMAMS.JvDBDateTimePicker3Click(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
 procedure TfrmMAMS.SetCheckBoxTouchSampleArchived;
 Var
 test: string;
@@ -9449,6 +9530,12 @@ begin
   DisplayArchiveWarning;
 end;
 
+procedure TfrmMAMS.DBDateTimeTouchPrepEndClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
+end;
+
 procedure TfrmMAMS.DBDateTimeTouchPrepEndKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -9458,6 +9545,12 @@ end;
 procedure TfrmMAMS.DBDateTimeTouchPrepStartChange(Sender: TObject);
 begin
   DBDateTimeTouchPrepStart.Update;
+end;
+
+procedure TfrmMAMS.DBDateTimeTouchPrepStartClick(Sender: TObject);
+begin
+  // if no date is set, set it to today
+  if (Sender AS TJvDBDateTimePicker).Date = 0 then (Sender AS TJvDBDateTimePicker).Date := Now;
 end;
 
 procedure TfrmMAMS.DBDateTimeTouchPrepStartKeyDown(Sender: TObject;
@@ -10872,7 +10965,7 @@ begin
     if Connected then
     begin
     dm.adoConnKTL.Close;
-    JvLogFile.Add('Startup',lesInformation,'test');
+    //JvLogFile.Add('Startup',lesInformation,'test');
       if ParamCount > 0 then   //some parameters are given
       begin
         JvLogFile.Add('Startup',lesInformation,'DB - ODBC-DataSource= ' + ParamStr(1));

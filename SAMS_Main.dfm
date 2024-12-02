@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = lbxDefinePrepSteps
+  ActiveControl = grdSamplesOfProject
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1556
@@ -302,7 +302,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1556
     Height = 873
-    ActivePage = tbsInsertSamples
+    ActivePage = tbsProjectsOfUser
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -316,7 +316,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1548
         Height = 843
-        ActivePage = wizSelectPretreatment
+        ActivePage = wizStartPage
         ButtonBarHeight = 52
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -343,8 +343,6 @@ object frmMAMS: TfrmMAMS
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
-        ExplicitWidth = 1546
-        ExplicitHeight = 835
         DesignSize = (
           1548
           843)
@@ -371,8 +369,6 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select user'
           OnEnterPage = wizStartPageEnterPage
           OnBackButtonClick = wizStartPageBackButtonClick
-          ExplicitWidth = 1401
-          ExplicitHeight = 783
           object Panel4: TPanel
             Left = 0
             Top = 70
@@ -386,7 +382,6 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitWidth = 1401
             object Label14: TLabel
               Left = 120
               Top = 18
@@ -447,7 +442,6 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
-            ExplicitHeight = 607
             ColWidths = (
               64
               64)
@@ -1069,7 +1063,6 @@ object frmMAMS: TfrmMAMS
           HotTrackFont.Height = -12
           HotTrackFont.Name = 'Segoe UI'
           HotTrackFont.Style = [fsUnderline]
-          ExplicitHeight = 783
         end
       end
     end
@@ -1454,6 +1447,7 @@ object frmMAMS: TfrmMAMS
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 3
+                OnClick = JvDBDateTimePicker3Click
                 DropDownDate = 40209.000000000000000000
                 NullText = 'not set'
                 DataField = 'out_date'
@@ -1471,6 +1465,7 @@ object frmMAMS: TfrmMAMS
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 4
+                OnClick = JvDBDateTimePicker2Click
                 DropDownDate = 40209.000000000000000000
                 NullText = 'not set'
                 DataField = 'desired_date'
@@ -1488,6 +1483,7 @@ object frmMAMS: TfrmMAMS
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 5
+                OnClick = JvDBDateTimePicker1Click
                 DropDownDate = 45125.694352002310000000
                 NullText = 'not set'
                 DataField = 'in_date'
@@ -3410,6 +3406,7 @@ object frmMAMS: TfrmMAMS
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
+        ExplicitWidth = 1546
         object btnIncSampleNr: TSpinButton
           Left = 190
           Top = 18
@@ -3689,6 +3686,7 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 3
+        ExplicitHeight = 756
         object Label103: TLabel
           Left = 11
           Top = 526
@@ -3959,9 +3957,10 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesGraphClick
+          ExplicitTop = 712
         end
         object btnFillDateToday: TButton
-          Left = 179
+          Left = 183
           Top = 237
           Width = 27
           Height = 19
@@ -4061,6 +4060,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 9
           TabStop = False
+          OnClick = edtGraphDateClick
           OnChange = edtGraphDateChange
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -4077,6 +4077,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 10
           TabStop = False
+          OnClick = edtGraphitizedClick
           OnChange = edtGraphitizedChange
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -4144,6 +4145,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 14
           TabStop = False
+          OnClick = edtTargetPressedClick
           OnChange = edtTargetPressedChange
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
@@ -4197,6 +4199,7 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 4
+        ExplicitHeight = 756
         object Label28: TLabel
           Left = 36
           Top = 206
@@ -4305,6 +4308,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 1
           TabStop = False
+          OnClick = edtSampleInfoDesiredDateClick
           DropDownDate = 40209.000000000000000000
           NullText = 'not set'
           DataField = 'desired_date'
@@ -4312,7 +4316,7 @@ object frmMAMS: TfrmMAMS
         end
         object edtSampleInfoInDate: TJvDBDateTimePicker
           Left = 98
-          Top = 164
+          Top = 161
           Width = 95
           Height = 23
           CustomHint = BalloonHint1
@@ -4320,7 +4324,8 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 2
           TabStop = False
-          DropDownDate = 40209.000000000000000000
+          OnClick = edtSampleInfoInDateClick
+          DropDownDate = 45688.000000000000000000
           NullText = 'not set'
           DataField = 'in_date'
           DataSource = dm.dsSampleInfo
@@ -4335,6 +4340,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 3
           TabStop = False
+          OnClick = edtSampleInfoOutDateClick
           DropDownDate = 45322.000000000000000000
           NullText = 'not set'
           DataField = 'out_date'
@@ -4495,6 +4501,7 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesAdminClick
+          ExplicitTop = 712
         end
         object dbchkFreeOfCharge2: TDBCheckBox
           Left = 20
@@ -4649,6 +4656,7 @@ object frmMAMS: TfrmMAMS
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 5
+        ExplicitHeight = 756
         object Label2: TLabel
           Left = 50
           Top = 205
@@ -4950,6 +4958,7 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
+        ExplicitHeight = 756
         object Label30: TLabel
           Left = 16
           Top = 27
@@ -5339,6 +5348,7 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesUserSuppliedInfoClick
+          ExplicitTop = 712
         end
         object DBMemo_LabComment: TDBMemo
           Left = 0
@@ -5416,6 +5426,7 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 2
+        ExplicitHeight = 756
         object Label102: TLabel
           Left = 6
           Top = 526
@@ -5566,6 +5577,7 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesPrepClick
+          ExplicitTop = 712
         end
         object chkPrepDiscarded: TDBCheckBox
           Left = 118
@@ -5611,6 +5623,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.397922083342564300
           TabOrder = 4
           TabStop = False
+          OnClick = edtPrepEndClick
           DropDownDate = 42766.000000000000000000
           NullText = 'not set'
           DataField = 'prep_end'
@@ -5797,6 +5810,7 @@ object frmMAMS: TfrmMAMS
           Time = 0.417571122685330900
           TabOrder = 9
           TabStop = False
+          OnClick = edtPrepStartClick
           DropDownDate = 44041.419135451390000000
           NullText = 'not set'
           DataField = 'prep_start'
@@ -9778,6 +9792,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 5
+            OnClick = DBDateTimeTouchPrepStartClick
             OnChange = DBDateTimeTouchPrepStartChange
             OnKeyDown = DBDateTimeTouchPrepStartKeyDown
             DropDownDate = 44041.000000000000000000
@@ -9799,6 +9814,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 6
+            OnClick = DBDateTimeTouchPrepEndClick
             OnKeyDown = DBDateTimeTouchPrepEndKeyDown
             DropDownDate = 44041.000000000000000000
             NullText = 'not set'
