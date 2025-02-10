@@ -2,7 +2,7 @@
 <namespace name="SAMS_Main" platform="Win32">
   <const name="myVersion" type="string">
     <value>
-      1.9.9 Built: Nov-30-2024
+      1.9.9 Built: Feb-10-2025
     </value>
   </const>
   <const name="drgMaterial" type="TDragSource">

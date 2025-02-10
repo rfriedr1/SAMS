@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Nov-30-2024';
+  myVersion = '1.9.9 Built: Feb-10-2025';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -2166,7 +2166,7 @@ begin
       //create and join to a table to count the measured samples in all project
       'LEFT JOIN (select project_nr, count(sample_nr) AS Measured FROM sample_t WHERE NOT ISNULL(c14_age) GROUP BY project_nr) help_t ON project_t.project_nr=help_t.project_nr ' +
       //create and join to a table to count the number of received samples in all project
-      'LEFT JOIN (select project_nr, count(sample_nr) AS Samples FROM sample_t GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
+      'LEFT JOIN (select project_nr, count(sample_nr) AS Samples FROM sample_t WHERE not_tobedated=0 GROUP BY project_nr) help2_t ON project_t.project_nr=help2_t.project_nr ' +
       //create and join to a table to count the dicarded preps in all project
       'LEFT JOIN (select sample_t.project_nr, count(preparation_t.sample_nr) AS discPrep FROM preparation_t INNER JOIN sample_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
       'INNER JOIN project_t ON sample_t.project_nr = project_t.project_nr WHERE preparation_t.stop = "1" GROUP BY sample_t.project_nr) help3_t ON project_t.project_nr=help3_t.project_nr ' +
@@ -5468,14 +5468,21 @@ end;
 
 procedure TfrmMAMS.edtSampleNrKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+Var SampleNr, NPreps, NTargets: Integer;
 begin
   if Key = VK_RETURN then
   Begin
-    DoSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
-    // also update the editButton in TouchWeights to reflect the same value
-    edtTouchWeightsMAMS.Value := edtSampleNr.Value;
-    edtTouchWeightsPrepNr.Value := edtSamplePrepNr.Value;
-    edtTouchWeightsTargetNr.Value := edtSampleTargetNr.Value;
+    SampleNr := edtSampleNr.Value;
+    NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
+    NTargets := dm.GetMaxTargetNrBySampleNr(SampleNr, NPreps);
+
+    // btnDoSampleQueryClick(self);
+    DoSampleInfo(SampleNr, NPreps, NTargets);
+
+    // // also update the editButton in TouchWeights to reflect the same value
+    edtTouchWeightsMAMS.Value := SampleNr;
+    edtTouchWeightsPrepNr.Value := NPreps;
+    edtTouchWeightsTargetNr.Value := NTargets;
   End;
   if Key = VK_UP then
   Begin
@@ -5860,15 +5867,17 @@ begin
       s := s + '0,1);'; //query ends here
     dm.adoCmd.CommandText := s;
     //ClipBoard.SetTextBuf(PChar(s));
+    LogWindow.addLogEntry('### IMPORT: Import User...');
     LogWindow.addLogEntry(s);
     IF dm.adoConnKTL.Connected THEN
       Begin
         Try
           dm.adoCmd.Execute;
           LogWindow.addLogEntry('executed');
+              LogWindow.addLogEntry('### IMPORT: Import User...Done');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database during import: user');
+          JvLogFile.Add('DB',lesError,'Problem opening DB during import: user');
         End;
       End;
     lbWizFinalPage.lines.add('New user created');
@@ -5891,8 +5900,8 @@ begin
           Open;
           LogWindow.addLogEntry('executed');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database reading user number');
+          JvLogFile.Add('DB',lesError,'Problem opening DB reading user number');
         End;
       End;
       user_nr := 2;  // currently there is no user with user_nr=2 in the database
@@ -5946,15 +5955,17 @@ begin
       s := s + '1,0);';
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
+      LogWindow.addLogEntry('### IMPORT: Import Invoice...');
       LogWindow.addLogEntry(s);
           IF dm.adoConnKTL.Connected THEN
       Begin
         Try
           dm.adoCmd.Execute;
           LogWindow.addLogEntry('executed');
+          LogWindow.addLogEntry('### IMPORT: Import Invoice...Done');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database during import: invoice');
+          JvLogFile.Add('DB',lesError,'Problem opening DB during import: invoice');
         End;
       End;
       lbWizFinalPage.lines.add('New invoice user created');
@@ -5971,8 +5982,8 @@ begin
           Open;
           LogWindow.addLogEntry('executed');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database reading user number');
+          JvLogFile.Add('DB',lesError,'Problem opening DB user number');
         End;
       End;
         glbInvoiceNr := 1;
@@ -6026,6 +6037,7 @@ begin
       + ';';
     s := dm.adoCmd.CommandText;
     //   ClibBoard.SetTextBuf(PChar(s));
+    LogWindow.addLogEntry('### IMPORT: Import Project data...');
     LogWindow.addLogEntry(s);
     IF dm.adoConnKTL.Connected THEN
       Begin
@@ -6033,9 +6045,10 @@ begin
           //showmessage(s);
           dm.adoCmd.Execute;
           LogWindow.addLogEntry('executed');
+          LogWindow.addLogEntry('### IMPORT: Import Project data...Done');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database during import: project data');
+          JvLogFile.Add('DB',lesError,'Problem opening DB during import: project data');
         End;
       End;
     lbWizFinalPage.lines.add('New project created');
@@ -6063,8 +6076,8 @@ begin
           dm.qryDB.Open;
           LogWindow.addLogEntry('executed');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database reading project number');
+          JvLogFile.Add('DB',lesError,'Problem opening DB reading project number');
         End;
       End;
   if dm.qryDB.RecordCount > 0 then
@@ -6123,6 +6136,7 @@ begin
       // copy query string to query object
       dm.adoCmd.CommandText := s;
       //   ClibBoard.SetTextBuf(PChar(s));
+      LogWindow.addLogEntry('### IMPORT: Import Sample data...');
       LogWindow.addLogEntry(s);
       // excute query
       IF dm.adoConnKTL.Connected THEN
@@ -6131,9 +6145,10 @@ begin
               //showmessage(s);
               dm.adoCmd.Execute;
               LogWindow.addLogEntry('executed');
+              LogWindow.addLogEntry('### IMPORT: Import Sample data...Done');
             Except
-              ShowMessage('problem opening the database');
-              JvLogFile.Add('DB',lesError,'Problem opening DB');
+              ShowMessage('problem opening the database during import: sample data');
+              JvLogFile.Add('DB',lesError,'Problem opening DB during import: sample data');
             End;
           End;
       dm.qryDB.Close;
@@ -6148,8 +6163,8 @@ begin
               dm.qryDb.Open;
               LogWindow.addLogEntry('executed');
             Except
-              ShowMessage('problem opening the database');
-              JvLogFile.Add('DB',lesError,'Problem opening DB');
+              ShowMessage('problem opening the database reading max sample number');
+              JvLogFile.Add('DB',lesError,'Problem opening DB reading max sample number');
             End;
           End;
       sample_nr := 0;
@@ -6163,12 +6178,14 @@ begin
         if (cells[SamplePrep1Col, ARow] = 'none') or (Pos('collagen', cells[MaterialCol, Arow]) > 0) or
           (Pos('graphite', cells[MaterialCol, Arow]) > 0) then
           begin
+          LogWindow.addLogEntry('new prep for MAMS-' + IntToStr(sample_nr) + 'doesnt need prep_method');
           s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method, prep_end) VALUES(1,' +
             IntToStr(sample_nr) + ',' + #34 + 'none' + #34 + ',' +
             #34 + FormatDateTime('YYYY-MM-DD', DateOf(date)) + #34;
           end
         else
           begin // set prep_end date since sample type doesn't need any prep steps
+          LogWindow.addLogEntry('new prep for MAMS-' + IntToStr(sample_nr) + 'needs prep_methods');
             s := 'INSERT INTO preparation_t (prep_nr, sample_nr,step1_method,step2_method,' +
               'step3_method,step4_method,step5_method) VALUES(1,' + IntToStr(sample_nr);
             for PrepCol := SamplePrep1Col to SamplePrep5Col do
@@ -6181,15 +6198,17 @@ begin
           end;
         dm.adoCmd.CommandText := s + ');';
 //        ClipBoard.SetTextBuf(PChar(s));
+        LogWindow.addLogEntry('### IMPORT: create new prep for MAMS-' + IntToStr(sample_nr) + ' ...');
         LogWindow.addLogEntry(dm.adoCmd.CommandText);
         IF dm.adoConnKTL.Connected THEN
             Begin
               Try
                 dm.adoCmd.Execute;
                 LogWindow.addLogEntry('executed');
+                LogWindow.addLogEntry('### IMPORT: create new prep for MAMS-' + IntToStr(sample_nr) + ' ... Done');
               Except
-                ShowMessage('problem opening the database');
-                JvLogFile.Add('DB',lesError,'Problem opening DB');
+                ShowMessage('problem opening the database creating new prep for MAMS-' + IntToStr(sample_nr));
+                JvLogFile.Add('DB',lesError,'Problem opening DB creating new prep for MAMS-' + IntToStr(sample_nr));
               End;
             End;
 
@@ -6204,6 +6223,7 @@ begin
               else
                 s := s + ',' + 'NULL';
             end;
+        LogWindow.addLogEntry('### IMPORT: create new target for MAMS-' + IntToStr(sample_nr) + ' ...');
         dm.adoCmd.CommandText := s + ');';
         s := dm.adoCmd.CommandText;
         //   ClibBoard.SetTextBuf(PChar(s));
@@ -6213,9 +6233,10 @@ begin
               Try
                 dm.adoCmd.Execute;
                 LogWindow.addLogEntry('executed');
+                LogWindow.addLogEntry('### IMPORT: create new target for MAMS-' + IntToStr(sample_nr) + ' ... Done');
               Except
-                ShowMessage('problem opening the database');
-                JvLogFile.Add('DB',lesError,'Problem opening DB');
+                ShowMessage('problem opening the database creating new target for MAMS-' + IntToStr(sample_nr));
+                JvLogFile.Add('DB',lesError,'Problem opening DB creating new target for MAMS-' + IntToStr(sample_nr));
               End;
             End;
       end;
@@ -6238,8 +6259,8 @@ begin
           Open;
           LogWindow.addLogEntry('executed');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database reading user info');
+          JvLogFile.Add('DB',lesError,'Problem opening DB reading user info');
         End;
       End;
       end;
@@ -6285,8 +6306,8 @@ begin
           Open;
           LogWindow.addLogEntry('executed');
         Except
-          ShowMessage('problem opening the database');
-          JvLogFile.Add('DB',lesError,'Problem opening DB');
+          ShowMessage('problem opening the database reading sample info');
+          JvLogFile.Add('DB',lesError,'Problem opening DB reading sample info');
         End;
       End;
     if RecordCount > 0 then
@@ -8140,6 +8161,8 @@ procedure TfrmMAMS.DoSampleInfo(SampleNr: Integer; PrepNr: Integer; TargetNr: In
 var
   NPreps, NTargets: integer;
 begin
+  LogWindow.addLogEntry('Run DoSampleInfo');
+  JvLogFile.Add('DB',lesError,'Run DoSampleInfo');
   //get and display number of available sample preps
   NPreps := dm.GetMaxPrepNrBySampleNr(SampleNr);
   edtSamplePrepNr.MaxValue := NPreps;
@@ -8190,6 +8213,9 @@ begin
     // query the database and get all sample info
     // dm.GetSampleInfo(round(edtSampleNr.Value), StrToInt(edtSamplePrepNr.Text), StrToInt(edtSampleTargetNr.Text));
     dm.GetSampleInfo(SampleNr, PrepNr, TargetNr);
+
+    LogWindow.addLogEntry('reformat number of digits');
+    JvLogFile.Add('DB',lesError,'reformat number of digits');
 
     TFloatField(FieldByName('c14_age')).DisplayFormat := '0';
     TFloatField(FieldByName('c14_age_sig')).DisplayFormat := '0';
@@ -8410,10 +8436,8 @@ end;
 
 procedure TfrmMAMS.OptionsTreeClick(Sender: TObject);
 //open the correct Tab in TabOptionsPages
-
 begin
   //showmessage((Sender AS TTreeView).Selected.Text)
-
    // case structure does not allow strings, enter the strings into the IndexText function in order to get an integer value for CASE
    CASE IndexText( (Sender AS TTreeView).Selected.Text, ['General','Database','Paths','Email']) of
    0: TabOptionsPages.ActivePage := TabGeneral;  //General node selected

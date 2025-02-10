@@ -1,1228 +1,797 @@
-[07.11.2024 16:59:09]Information>Closeup>SAMS closed by user.
-[08.11.2024 15:05:32]Information>Startup>starting Application
-[08.11.2024 15:05:32]Information>Startup>DB - Param count = 3
-[08.11.2024 15:05:32]Information>Startup>test
-[08.11.2024 15:05:32]Information>Startup>DB - ODBC-DataSource= db_dmams
-[08.11.2024 15:05:32]Information>Startup>DB - UserID= mams
-[08.11.2024 15:05:32]Information>Startup>DB - Connection Password is given
-[08.11.2024 15:05:32]Information>Startup>connecting to DB at startup
-[08.11.2024 15:05:32]Information>Startup>Connected to DB.
-[08.11.2024 15:05:36]Information>Closeup>SAMS closed by user.
-[21.11.2024 17:14:42]Information>Startup>starting Application
-[21.11.2024 17:14:42]Information>Startup>DB - Param count = 3
-[21.11.2024 17:14:42]Information>Startup>test
-[21.11.2024 17:14:42]Information>Startup>DB - ODBC-DataSource= db_dmams
-[21.11.2024 17:14:42]Information>Startup>DB - UserID= mams
-[21.11.2024 17:14:42]Information>Startup>DB - Connection Password is given
-[21.11.2024 17:14:42]Information>Startup>connecting to DB at startup
-[21.11.2024 17:14:42]Information>Startup>Connected to DB.
-[21.11.2024 17:14:58]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9883";
-[21.11.2024 17:15:06]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9894";
-[21.11.2024 17:15:10]Information>Closeup>SAMS closed by user.
-[21.11.2024 17:28:01]Information>Startup>starting Application
-[21.11.2024 17:28:01]Information>Startup>DB - Param count = 3
-[21.11.2024 17:28:01]Information>Startup>test
-[21.11.2024 17:28:01]Information>Startup>DB - ODBC-DataSource= db_dmams
-[21.11.2024 17:28:02]Information>Startup>DB - UserID= mams
-[21.11.2024 17:28:02]Information>Startup>DB - Connection Password is given
-[21.11.2024 17:28:02]Information>Startup>connecting to DB at startup
-[21.11.2024 17:28:02]Information>Startup>Connected to DB.
-[21.11.2024 17:28:20]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10103";
-[21.11.2024 17:28:23]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=909 ORDER BY in_date DESC;
-[21.11.2024 17:38:40]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9820";
-[21.11.2024 17:41:20]Information>Closeup>SAMS closed by user.
-[27.11.2024 19:09:42]Information>Startup>starting Application
-[27.11.2024 19:09:42]Information>Startup>DB - Param count = 3
-[27.11.2024 19:09:42]Information>Startup>test
-[27.11.2024 19:09:42]Information>Startup>DB - ODBC-DataSource= db_dmams
-[27.11.2024 19:09:42]Information>Startup>DB - UserID= mams
-[27.11.2024 19:09:42]Information>Startup>DB - Connection Password is given
-[27.11.2024 19:09:42]Information>Startup>connecting to DB at startup
-[27.11.2024 19:09:42]Information>Startup>Connected to DB.
-[27.11.2024 19:14:54]Information>Closeup>SAMS closed by user.
-[29.11.2024 15:02:31]Information>Startup>starting Application
-[29.11.2024 15:02:31]Information>Startup>DB - Param count = 3
-[29.11.2024 15:02:31]Information>Startup>test
-[29.11.2024 15:02:31]Information>Startup>DB - ODBC-DataSource= db_dmams
-[29.11.2024 15:02:31]Information>Startup>DB - UserID= mams
-[29.11.2024 15:02:31]Information>Startup>DB - Connection Password is given
-[29.11.2024 15:02:31]Information>Startup>connecting to DB at startup
-[29.11.2024 15:02:31]Information>Startup>Connected to DB.
-[29.11.2024 15:02:43]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[29.11.2024 15:02:43]Information>DB>Get data of all targets of selected magazine
-[29.11.2024 15:02:43]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241129ICOS"
-[29.11.2024 15:02:51]Information>Closeup>SAMS closed by user.
-[29.11.2024 15:02:53]Information>Startup>starting Application
-[29.11.2024 15:02:53]Information>Startup>DB - Param count = 3
-[29.11.2024 15:02:53]Information>Startup>test
-[29.11.2024 15:02:53]Information>Startup>DB - ODBC-DataSource= db_dmams
-[29.11.2024 15:02:53]Information>Startup>DB - UserID= mams
-[29.11.2024 15:02:53]Information>Startup>DB - Connection Password is given
-[29.11.2024 15:02:53]Information>Startup>connecting to DB at startup
-[29.11.2024 15:02:53]Information>Startup>Connected to DB.
-[29.11.2024 15:02:56]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[29.11.2024 15:02:56]Information>DB>Get data of all targets of selected magazine
-[29.11.2024 15:02:56]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241129ICOS"
-[29.11.2024 15:03:01]Information>DB>Get data of all targets of selected magazine
-[29.11.2024 15:03:01]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA241127"
-[29.11.2024 15:03:01]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:01]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:01]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:02]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:02]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:03]Information>DB>raw database to use = db_dc14
-[29.11.2024 15:03:03]Information>DB>fill string grid with data from query
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 14574.1.330
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 62284.1.155
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 62285.1.142
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 15183.93.2
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 73658.1.2
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 73659.1.1
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 73881.1.1
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 74214.1.1
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 74222.1.1
-[29.11.2024 15:03:07]Information>DB>transfer LE and HE Currents to target_t: 74228.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74229.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74230.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74234.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72920.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72921.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72922.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72747.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72748.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72749.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72750.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72751.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72752.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72753.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72754.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72755.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72756.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72757.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72758.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72759.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72760.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72979.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72740.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72741.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 72913.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 74044.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 73588.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 73589.1.1
-[29.11.2024 15:03:08]Information>DB>transfer LE and HE Currents to target_t: 73590.1.1
-[29.11.2024 15:03:10]Information>Closeup>SAMS closed by user.
-[30.11.2024 20:43:44]Information>Startup>starting Application
-[30.11.2024 20:43:44]Information>Startup>DB - Param count = 3
-[30.11.2024 20:43:44]Information>Startup>test
-[30.11.2024 20:43:45]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 20:43:45]Information>Startup>DB - UserID= mams
-[30.11.2024 20:43:45]Information>Startup>DB - Connection Password is given
-[30.11.2024 20:43:45]Information>Startup>connecting to DB at startup
-[30.11.2024 20:43:45]Information>Startup>Connected to DB.
-[30.11.2024 20:46:18]Information>Startup>starting Application
-[30.11.2024 20:46:18]Information>Startup>DB - Param count = 3
-[30.11.2024 20:46:18]Information>Startup>test
-[30.11.2024 20:46:18]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 20:46:18]Information>Startup>DB - UserID= mams
-[30.11.2024 20:46:18]Information>Startup>DB - Connection Password is given
-[30.11.2024 20:46:18]Information>Startup>connecting to DB at startup
-[30.11.2024 20:46:18]Information>Startup>Connected to DB.
-[30.11.2024 20:48:52]Information>Startup>starting Application
-[30.11.2024 20:48:53]Information>Startup>DB - Param count = 3
-[30.11.2024 20:48:53]Information>Startup>test
-[30.11.2024 20:48:53]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 20:48:53]Information>Startup>DB - UserID= mams
-[30.11.2024 20:48:53]Information>Startup>DB - Connection Password is given
-[30.11.2024 20:48:53]Information>Startup>connecting to DB at startup
-[30.11.2024 20:48:53]Information>Startup>Connected to DB.
-[30.11.2024 20:49:57]Information>Startup>starting Application
-[30.11.2024 20:49:57]Information>Startup>DB - Param count = 3
-[30.11.2024 20:49:57]Information>Startup>test
-[30.11.2024 20:49:57]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 20:49:57]Information>Startup>DB - UserID= mams
-[30.11.2024 20:49:57]Information>Startup>DB - Connection Password is given
-[30.11.2024 20:49:57]Information>Startup>connecting to DB at startup
-[30.11.2024 20:49:57]Information>Startup>Connected to DB.
-[30.11.2024 20:52:40]Information>Startup>starting Application
-[30.11.2024 20:52:40]Information>Startup>DB - Param count = 3
-[30.11.2024 20:52:40]Information>Startup>test
-[30.11.2024 20:52:40]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 20:52:40]Information>Startup>DB - UserID= mams
-[30.11.2024 20:52:40]Information>Startup>DB - Connection Password is given
-[30.11.2024 20:52:40]Information>Startup>connecting to DB at startup
-[30.11.2024 20:52:40]Information>Startup>Connected to DB.
-[30.11.2024 23:08:03]Information>Startup>starting Application
-[30.11.2024 23:08:03]Information>Startup>DB - Param count = 3
-[30.11.2024 23:08:03]Information>Startup>test
-[30.11.2024 23:08:03]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:08:03]Information>Startup>DB - UserID= mams
-[30.11.2024 23:08:03]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:08:03]Information>Startup>connecting to DB at startup
-[30.11.2024 23:08:03]Information>Startup>Connected to DB.
-[30.11.2024 23:12:09]Information>Startup>starting Application
-[30.11.2024 23:12:09]Information>Startup>DB - Param count = 3
-[30.11.2024 23:12:09]Information>Startup>test
-[30.11.2024 23:12:09]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:12:09]Information>Startup>DB - UserID= mams
-[30.11.2024 23:12:09]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:12:09]Information>Startup>connecting to DB at startup
-[30.11.2024 23:12:09]Information>Startup>Connected to DB.
-[30.11.2024 23:15:39]Information>Startup>starting Application
-[30.11.2024 23:15:39]Information>Startup>DB - Param count = 3
-[30.11.2024 23:15:39]Information>Startup>test
-[30.11.2024 23:15:39]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:15:39]Information>Startup>DB - UserID= mams
-[30.11.2024 23:15:39]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:15:39]Information>Startup>connecting to DB at startup
-[30.11.2024 23:15:39]Information>Startup>Connected to DB.
-[30.11.2024 23:28:33]Information>Startup>starting Application
-[30.11.2024 23:28:33]Information>Startup>DB - Param count = 3
-[30.11.2024 23:28:33]Information>Startup>test
-[30.11.2024 23:28:33]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:28:33]Information>Startup>DB - UserID= mams
-[30.11.2024 23:28:33]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:28:33]Information>Startup>connecting to DB at startup
-[30.11.2024 23:28:33]Information>Startup>Connected to DB.
-[30.11.2024 23:28:58]Information>Startup>starting Application
-[30.11.2024 23:28:58]Information>Startup>DB - Param count = 3
-[30.11.2024 23:28:58]Information>Startup>test
-[30.11.2024 23:28:58]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:28:58]Information>Startup>DB - UserID= mams
-[30.11.2024 23:28:58]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:28:58]Information>Startup>connecting to DB at startup
-[30.11.2024 23:28:58]Information>Startup>Connected to DB.
-[30.11.2024 23:29:24]Information>Startup>starting Application
-[30.11.2024 23:29:24]Information>Startup>DB - Param count = 3
-[30.11.2024 23:29:24]Information>Startup>test
-[30.11.2024 23:29:24]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:29:24]Information>Startup>DB - UserID= mams
-[30.11.2024 23:29:24]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:29:24]Information>Startup>connecting to DB at startup
-[30.11.2024 23:29:24]Information>Startup>Connected to DB.
-[30.11.2024 23:41:01]Information>Startup>starting Application
-[30.11.2024 23:41:01]Information>Startup>DB - Param count = 3
-[30.11.2024 23:41:01]Information>Startup>test
-[30.11.2024 23:41:01]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:41:01]Information>Startup>DB - UserID= mams
-[30.11.2024 23:41:01]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:41:01]Information>Startup>connecting to DB at startup
-[30.11.2024 23:41:01]Information>Startup>Connected to DB.
-[30.11.2024 23:41:04]Information>Closeup>SAMS closed by user.
-[30.11.2024 23:44:31]Information>Startup>starting Application
-[30.11.2024 23:44:31]Information>Startup>DB - Param count = 3
-[30.11.2024 23:44:31]Information>Startup>test
-[30.11.2024 23:44:31]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:44:31]Information>Startup>DB - UserID= mams
-[30.11.2024 23:44:31]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:44:31]Information>Startup>connecting to DB at startup
-[30.11.2024 23:44:31]Information>Startup>Connected to DB.
-[30.11.2024 23:44:37]Information>Closeup>SAMS closed by user.
-[30.11.2024 23:45:52]Information>Startup>starting Application
-[30.11.2024 23:45:52]Information>Startup>DB - Param count = 3
-[30.11.2024 23:45:52]Information>Startup>test
-[30.11.2024 23:45:52]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:45:52]Information>Startup>DB - UserID= mams
-[30.11.2024 23:45:52]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:45:52]Information>Startup>connecting to DB at startup
-[30.11.2024 23:45:52]Information>Startup>Connected to DB.
-[30.11.2024 23:46:57]Information>Startup>starting Application
-[30.11.2024 23:46:57]Information>Startup>DB - Param count = 3
-[30.11.2024 23:46:57]Information>Startup>test
-[30.11.2024 23:46:57]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:46:57]Information>Startup>DB - UserID= mams
-[30.11.2024 23:46:57]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:46:57]Information>Startup>connecting to DB at startup
-[30.11.2024 23:46:57]Information>Startup>Connected to DB.
-[30.11.2024 23:56:47]Information>Startup>starting Application
-[30.11.2024 23:56:47]Information>Startup>DB - Param count = 3
-[30.11.2024 23:56:47]Information>Startup>test
-[30.11.2024 23:56:47]Information>Startup>DB - ODBC-DataSource= db_dmams
-[30.11.2024 23:56:47]Information>Startup>DB - UserID= mams
-[30.11.2024 23:56:47]Information>Startup>DB - Connection Password is given
-[30.11.2024 23:56:47]Information>Startup>connecting to DB at startup
-[30.11.2024 23:56:47]Information>Startup>Connected to DB.
-[01.12.2024 00:09:01]Information>Startup>starting Application
-[01.12.2024 00:09:01]Information>Startup>DB - Param count = 3
-[01.12.2024 00:09:01]Information>Startup>test
-[01.12.2024 00:09:01]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:09:01]Information>Startup>DB - UserID= mams
-[01.12.2024 00:09:01]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:09:01]Information>Startup>connecting to DB at startup
-[01.12.2024 00:09:01]Information>Startup>Connected to DB.
-[01.12.2024 00:09:04]Information>Closeup>SAMS closed by user.
-[01.12.2024 00:10:46]Information>Startup>starting Application
-[01.12.2024 00:10:46]Information>Startup>DB - Param count = 3
-[01.12.2024 00:10:46]Information>Startup>test
-[01.12.2024 00:10:46]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:10:46]Information>Startup>DB - UserID= mams
-[01.12.2024 00:10:46]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:10:46]Information>Startup>connecting to DB at startup
-[01.12.2024 00:10:46]Information>Startup>Connected to DB.
-[01.12.2024 00:11:51]Information>Startup>starting Application
-[01.12.2024 00:11:51]Information>Startup>DB - Param count = 3
-[01.12.2024 00:11:51]Information>Startup>test
-[01.12.2024 00:11:51]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:11:51]Information>Startup>DB - UserID= mams
-[01.12.2024 00:11:51]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:11:51]Information>Startup>connecting to DB at startup
-[01.12.2024 00:11:51]Information>Startup>Connected to DB.
-[01.12.2024 00:18:53]Information>Startup>starting Application
-[01.12.2024 00:18:53]Information>Startup>DB - Param count = 3
-[01.12.2024 00:18:53]Information>Startup>test
-[01.12.2024 00:18:53]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:18:53]Information>Startup>DB - UserID= mams
-[01.12.2024 00:18:53]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:18:53]Information>Startup>connecting to DB at startup
-[01.12.2024 00:18:53]Information>Startup>Connected to DB.
-[01.12.2024 00:19:46]Information>Startup>starting Application
-[01.12.2024 00:19:46]Information>Startup>DB - Param count = 3
-[01.12.2024 00:19:46]Information>Startup>test
-[01.12.2024 00:19:46]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:19:46]Information>Startup>DB - UserID= mams
-[01.12.2024 00:19:46]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:19:46]Information>Startup>connecting to DB at startup
-[01.12.2024 00:19:46]Information>Startup>Connected to DB.
-[01.12.2024 00:20:53]Information>Startup>starting Application
-[01.12.2024 00:20:53]Information>Startup>DB - Param count = 3
-[01.12.2024 00:20:53]Information>Startup>test
-[01.12.2024 00:20:53]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:20:53]Information>Startup>DB - UserID= mams
-[01.12.2024 00:20:53]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:20:53]Information>Startup>connecting to DB at startup
-[01.12.2024 00:20:53]Information>Startup>Connected to DB.
-[01.12.2024 00:22:17]Information>Startup>starting Application
-[01.12.2024 00:22:17]Information>Startup>DB - Param count = 3
-[01.12.2024 00:22:18]Information>Startup>test
-[01.12.2024 00:22:18]Information>Startup>DB - ODBC-DataSource= db_dmams
-[01.12.2024 00:22:18]Information>Startup>DB - UserID= mams
-[01.12.2024 00:22:18]Information>Startup>DB - Connection Password is given
-[01.12.2024 00:22:18]Information>Startup>connecting to DB at startup
-[01.12.2024 00:22:18]Information>Startup>Connected to DB.
-[01.12.2024 00:22:28]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
-[01.12.2024 00:22:30]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10022";
-[01.12.2024 00:23:06]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
-[01.12.2024 00:23:07]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
-[01.12.2024 00:23:08]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
-[01.12.2024 00:23:10]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9801";
-[01.12.2024 00:23:12]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10022";
-[02.12.2024 18:02:38]Information>Startup>starting Application
-[02.12.2024 18:02:38]Information>Startup>DB - Param count = 3
-[02.12.2024 18:02:38]Information>Startup>test
-[02.12.2024 18:02:38]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 18:02:38]Information>Startup>DB - UserID= mams
-[02.12.2024 18:02:38]Information>Startup>DB - Connection Password is given
-[02.12.2024 18:02:38]Information>Startup>connecting to DB at startup
-[02.12.2024 18:02:38]Information>Startup>Connected to DB.
-[02.12.2024 18:03:22]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[02.12.2024 18:03:22]Information>DB>Get data of all targets of selected magazine
-[02.12.2024 18:03:22]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241127ICOS"
-[02.12.2024 18:03:22]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[02.12.2024 18:03:22]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:22]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:22]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:22]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:22]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:22]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:22]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:22]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:23]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:23]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:03:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71885.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71886.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71887.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71891.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71892.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71893.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71894.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71895.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71896.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71897.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 71898.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 73757.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 73758.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 73759.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 73760.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 73794.1.1
-[02.12.2024 18:03:31]Information>DB>transfer LE and HE Currents to target_t: 73795.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73796.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73797.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73798.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73799.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73800.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73801.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73802.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73803.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73804.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73805.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73826.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73827.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73828.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73829.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73830.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73831.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73832.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73833.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73834.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73835.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73836.1.1
-[02.12.2024 18:03:32]Information>DB>transfer LE and HE Currents to target_t: 73837.1.1
-[02.12.2024 18:03:36]Information>DB>Get data of all targets of selected magazine
-[02.12.2024 18:03:36]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241203"
-[02.12.2024 18:03:37]Information>DB>Get data of all targets of selected magazine
-[02.12.2024 18:03:37]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA241127"
-[02.12.2024 18:03:37]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:37]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:37]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:38]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:38]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:03:39]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:03:39]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:23]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[02.12.2024 18:06:24]Information>DB>Get data of all targets of selected magazine
-[02.12.2024 18:06:24]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241129ICOS"
-[02.12.2024 18:06:24]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:24]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:24]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:25]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:25]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:26]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:26]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:26]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:26]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:26]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:26]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:06:26]Information>DB>fill string grid with data from query
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71899.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71900.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71901.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71902.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71934.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71935.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71936.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71937.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71938.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71939.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 71940.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73838.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73839.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73840.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73841.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73842.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73843.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73844.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73845.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73846.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73847.1.1
-[02.12.2024 18:06:29]Information>DB>transfer LE and HE Currents to target_t: 73848.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73849.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73914.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73915.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73916.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73917.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73918.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73919.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73920.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73921.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73922.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73923.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73924.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73925.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73926.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73927.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73928.1.1
-[02.12.2024 18:06:30]Information>DB>transfer LE and HE Currents to target_t: 73929.1.1
-[02.12.2024 18:08:53]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[02.12.2024 18:08:53]Information>DB>Get data of all targets of selected magazine
-[02.12.2024 18:08:53]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA241129"
-[02.12.2024 18:08:53]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[02.12.2024 18:08:53]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:53]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:53]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:53]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:53]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:53]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:53]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:53]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:53]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:53]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:53]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:53]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:54]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:54]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:55]Information>DB>raw database to use = db_dc14
-[02.12.2024 18:08:55]Information>DB>fill string grid with data from query
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 14574.1.331
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 62284.1.156
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 62285.1.143
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 15180.43.2
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 73720.1.1
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 73780.1.1
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 74226.1.1
-[02.12.2024 18:08:59]Information>DB>transfer LE and HE Currents to target_t: 74232.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 74318.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 74320.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 74323.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 74331.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 74335.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 74336.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72456.2.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72772.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72775.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72776.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72777.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72778.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72779.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72780.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72781.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72782.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72783.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72784.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72785.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72786.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72787.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72788.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72994.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72995.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72996.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72997.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72998.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 72999.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 73000.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 73001.1.1
-[02.12.2024 18:09:00]Information>DB>transfer LE and HE Currents to target_t: 73002.1.1
-[02.12.2024 18:09:02]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=72456;
-[02.12.2024 18:09:12]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:10:27]Information>Startup>starting Application
-[02.12.2024 18:10:27]Information>Startup>DB - Param count = 3
-[02.12.2024 18:10:27]Information>Startup>test
-[02.12.2024 18:10:27]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 18:10:27]Information>Startup>DB - UserID= mams
-[02.12.2024 18:10:27]Information>Startup>DB - Connection Password is given
-[02.12.2024 18:10:27]Information>Startup>connecting to DB at startup
-[02.12.2024 18:10:27]Information>Startup>Connected to DB.
-[02.12.2024 18:10:30]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[02.12.2024 18:10:30]Information>DB>Get data of all targets of selected magazine
-[02.12.2024 18:10:30]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB241129ICOS"
-[02.12.2024 18:10:31]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:31]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:31]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:32]Information>DB>raw database to use = db_ac14
-[02.12.2024 18:10:32]Information>DB>fill string grid with data from query
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71899.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71900.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71901.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71902.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71934.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71935.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71936.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71937.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71938.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71939.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 71940.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73838.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73839.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73840.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73841.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73842.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73843.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73844.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73845.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73846.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73847.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73848.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73849.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73914.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73915.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73916.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73917.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73918.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73919.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73920.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73921.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73922.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73923.1.1
-[02.12.2024 18:10:35]Information>DB>transfer LE and HE Currents to target_t: 73924.1.1
-[02.12.2024 18:10:36]Information>DB>transfer LE and HE Currents to target_t: 73925.1.1
-[02.12.2024 18:10:36]Information>DB>transfer LE and HE Currents to target_t: 73926.1.1
-[02.12.2024 18:10:36]Information>DB>transfer LE and HE Currents to target_t: 73927.1.1
-[02.12.2024 18:10:36]Information>DB>transfer LE and HE Currents to target_t: 73928.1.1
-[02.12.2024 18:10:36]Information>DB>transfer LE and HE Currents to target_t: 73929.1.1
-[02.12.2024 18:10:37]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:13:24]Information>Startup>starting Application
-[02.12.2024 18:13:24]Information>Startup>DB - Param count = 3
-[02.12.2024 18:13:24]Information>Startup>test
-[02.12.2024 18:13:24]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 18:13:24]Information>Startup>DB - UserID= mams
-[02.12.2024 18:13:24]Information>Startup>DB - Connection Password is given
-[02.12.2024 18:13:24]Information>Startup>connecting to DB at startup
-[02.12.2024 18:13:24]Information>Startup>Connected to DB.
-[02.12.2024 18:13:36]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9955";
-[02.12.2024 18:14:19]Information>Pending Reports>Query DB for pending reports...
-[02.12.2024 18:14:19]Information>Pending Reports>Query DB for pending reports... finished
-[02.12.2024 18:14:19]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[02.12.2024 18:14:20]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[02.12.2024 18:14:20]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[02.12.2024 18:14:20]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[02.12.2024 18:14:21]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[02.12.2024 18:14:21]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[02.12.2024 18:14:25]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9870";
-[02.12.2024 18:15:13]Information>Pending Reports>Query DB for pending reports...
-[02.12.2024 18:15:14]Information>Pending Reports>Query DB for pending reports... finished
-[02.12.2024 18:15:14]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[02.12.2024 18:15:14]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[02.12.2024 18:15:15]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[02.12.2024 18:15:15]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[02.12.2024 18:15:16]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[02.12.2024 18:15:16]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[02.12.2024 18:15:19]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10102";
-[02.12.2024 18:15:30]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10102";
-[02.12.2024 18:15:30]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10102";
-[02.12.2024 18:15:33]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9367";
-[02.12.2024 18:15:35]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10102";
-[02.12.2024 18:15:49]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: [MySQL][ODBC 8.0(w) Driver][mysqld-5.5.5-10.11.2-MariaDB]You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '..`project_t` SET `out_date`=? WHERE `project_nr`=? AND `out_date` IS NULL' at line 1
-[02.12.2024 18:15:56]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 00F2D5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
-[02.12.2024 18:15:59]Information>Pending Reports>Query DB for pending reports...
-[02.12.2024 18:16:00]Information>Pending Reports>Query DB for pending reports... finished
-[02.12.2024 18:16:00]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[02.12.2024 18:16:00]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[02.12.2024 18:16:00]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[02.12.2024 18:16:00]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[02.12.2024 18:16:00]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[02.12.2024 18:16:00]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[02.12.2024 18:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[02.12.2024 18:16:01]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[02.12.2024 18:16:19]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10378";
-[02.12.2024 18:16:38]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10077";
-[02.12.2024 18:17:44]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:18:05]Information>Startup>starting Application
-[02.12.2024 18:18:05]Information>Startup>DB - Param count = 3
-[02.12.2024 18:18:05]Information>Startup>connecting to DB at startup
-[02.12.2024 18:18:19]Error>Startup>Not able to connect to DB
-[02.12.2024 18:18:22]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:18:24]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:20:04]Information>Startup>starting Application
-[02.12.2024 18:20:04]Information>Startup>DB - Param count = 3
-[02.12.2024 18:20:05]Information>Startup>connecting to DB at startup
-[02.12.2024 18:20:18]Error>Startup>Not able to connect to DB
-[02.12.2024 18:20:21]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:20:23]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:21:27]Information>Startup>starting Application
-[02.12.2024 18:21:28]Information>Startup>DB - Param count = 3
-[02.12.2024 18:21:28]Information>Startup>connecting to DB at startup
-[02.12.2024 18:21:53]Error>Startup>Not able to connect to DB
-[02.12.2024 18:21:55]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:21:59]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:22:32]Information>Startup>starting Application
-[02.12.2024 18:22:32]Information>Startup>DB - Param count = 3
-[02.12.2024 18:22:32]Information>Startup>connecting to DB at startup
-[02.12.2024 18:22:35]Error>Startup>Not able to connect to DB
-[02.12.2024 18:22:38]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:23:08]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:25:51]Information>Startup>starting Application
-[02.12.2024 18:25:51]Information>Startup>DB - Param count = 3
-[02.12.2024 18:25:51]Information>Startup>connecting to DB at startup
-[02.12.2024 18:25:53]Error>Startup>Not able to connect to DB
-[02.12.2024 18:25:56]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:25:58]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:29:18]Information>Startup>starting Application
-[02.12.2024 18:29:18]Information>Startup>DB - Param count = 3
-[02.12.2024 18:29:18]Information>Startup>connecting to DB at startup
-[02.12.2024 18:29:24]Error>Startup>Not able to connect to DB
-[02.12.2024 18:29:26]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:29:29]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:30:01]Information>Startup>starting Application
-[02.12.2024 18:30:01]Information>Startup>DB - Param count = 3
-[02.12.2024 18:30:01]Information>Startup>connecting to DB at startup
-[02.12.2024 18:30:04]Error>Startup>Not able to connect to DB
-[02.12.2024 18:30:12]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:30:15]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:33:52]Information>Startup>starting Application
-[02.12.2024 18:33:52]Information>Startup>DB - Param count = 3
-[02.12.2024 18:33:52]Information>Startup>connecting to DB at startup
-[02.12.2024 18:34:05]Information>Startup>Connected to DB.
-[02.12.2024 18:36:13]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:36:42]Information>Startup>starting Application
-[02.12.2024 18:36:42]Information>Startup>DB - Param count = 3
-[02.12.2024 18:36:42]Information>Startup>connecting to DB at startup
-[02.12.2024 18:36:54]Information>Startup>Connected to DB.
-[02.12.2024 18:37:20]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:41:13]Information>Startup>starting Application
-[02.12.2024 18:41:13]Information>Startup>DB - Param count = 3
-[02.12.2024 18:41:13]Information>Startup>connecting to DB at startup
-[02.12.2024 18:41:31]Information>Startup>Connected to DB.
-[02.12.2024 18:43:50]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:44:09]Information>Startup>starting Application
-[02.12.2024 18:44:09]Information>Startup>DB - Param count = 3
-[02.12.2024 18:44:09]Information>Startup>connecting to DB at startup
-[02.12.2024 18:44:43]Information>Startup>Connected to DB.
-[02.12.2024 18:44:47]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:44:52]Information>Startup>starting Application
-[02.12.2024 18:44:52]Information>Startup>DB - Param count = 3
-[02.12.2024 18:44:52]Information>Startup>connecting to DB at startup
-[02.12.2024 18:45:05]Information>Startup>Connected to DB.
-[02.12.2024 18:45:23]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:46:38]Information>Startup>starting Application
-[02.12.2024 18:46:38]Information>Startup>DB - Param count = 3
-[02.12.2024 18:46:38]Information>Startup>connecting to DB at startup
-[02.12.2024 18:46:49]Error>Startup>Not able to connect to DB
-[02.12.2024 18:46:51]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryDB: Cannot perform this operation on a closed dataset
-[02.12.2024 18:46:54]Information>Closeup>SAMS closed by user.
-[02.12.2024 18:48:14]Information>Startup>starting Application
-[02.12.2024 18:48:14]Information>Startup>DB - Param count = 3
-[02.12.2024 18:48:14]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 18:48:14]Information>Startup>DB - UserID= mams
-[02.12.2024 18:48:14]Information>Startup>DB - Connection Password is given
-[02.12.2024 18:48:14]Information>Startup>connecting to DB at startup
-[02.12.2024 18:48:14]Information>Startup>Connected to DB.
-[02.12.2024 18:48:29]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:04:03]Information>Startup>starting Application
-[02.12.2024 19:04:03]Information>Startup>DB - Param count = 3
-[02.12.2024 19:04:03]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:04:03]Information>Startup>DB - UserID= mams
-[02.12.2024 19:04:04]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:04:04]Information>Startup>connecting to DB at startup
-[02.12.2024 19:04:04]Information>Startup>Connected to DB.
-[02.12.2024 19:04:15]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:04:43]Information>Startup>starting Application
-[02.12.2024 19:04:43]Information>Startup>DB - Param count = 3
-[02.12.2024 19:04:43]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:04:43]Information>Startup>DB - UserID= mams
-[02.12.2024 19:04:43]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:04:43]Information>Startup>connecting to DB at startup
-[02.12.2024 19:04:43]Information>Startup>Connected to DB.
-[02.12.2024 19:05:14]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:08:33]Information>Startup>starting Application
-[02.12.2024 19:08:33]Information>Startup>DB - Param count = 3
-[02.12.2024 19:08:33]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:08:33]Information>Startup>DB - UserID= mams
-[02.12.2024 19:08:33]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:08:33]Information>Startup>connecting to DB at startup
-[02.12.2024 19:08:33]Information>Startup>Connected to DB.
-[02.12.2024 19:08:45]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:09:44]Information>Startup>starting Application
-[02.12.2024 19:09:44]Information>Startup>DB - Param count = 3
-[02.12.2024 19:09:44]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:09:44]Information>Startup>DB - UserID= mams
-[02.12.2024 19:09:44]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:09:44]Information>Startup>connecting to DB at startup
-[02.12.2024 19:09:44]Information>Startup>Connected to DB.
-[02.12.2024 19:10:18]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:11:06]Information>Startup>starting Application
-[02.12.2024 19:11:06]Information>Startup>DB - Param count = 3
-[02.12.2024 19:11:06]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:11:06]Information>Startup>DB - UserID= mams
-[02.12.2024 19:11:06]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:11:06]Information>Startup>connecting to DB at startup
-[02.12.2024 19:11:06]Information>Startup>Connected to DB.
-[02.12.2024 19:11:21]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:12:33]Information>Startup>starting Application
-[02.12.2024 19:12:33]Information>Startup>DB - Param count = 3
-[02.12.2024 19:12:33]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:12:33]Information>Startup>DB - UserID= mams
-[02.12.2024 19:12:33]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:12:33]Information>Startup>connecting to DB at startup
-[02.12.2024 19:12:33]Information>Startup>Connected to DB.
-[02.12.2024 19:13:06]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:14:38]Information>Startup>starting Application
-[02.12.2024 19:14:38]Information>Startup>DB - Param count = 3
-[02.12.2024 19:14:39]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:14:39]Information>Startup>DB - UserID= mams
-[02.12.2024 19:14:39]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:14:39]Information>Startup>connecting to DB at startup
-[02.12.2024 19:14:39]Information>Startup>Connected to DB.
-[02.12.2024 19:14:41]Information>Closeup>SAMS closed by user.
-[02.12.2024 19:15:12]Information>Startup>starting Application
-[02.12.2024 19:15:12]Information>Startup>DB - Param count = 3
-[02.12.2024 19:15:12]Information>Startup>DB - ODBC-DataSource= db_dmams
-[02.12.2024 19:15:12]Information>Startup>DB - UserID= mams
-[02.12.2024 19:15:12]Information>Startup>DB - Connection Password is given
-[02.12.2024 19:15:12]Information>Startup>connecting to DB at startup
-[02.12.2024 19:15:12]Information>Startup>Connected to DB.
-[02.12.2024 19:15:25]Information>Closeup>SAMS closed by user.
+[07.01.2025 10:26:49]Information>Startup>starting Application
+[07.01.2025 10:26:49]Information>Startup>DB - Param count = 3
+[07.01.2025 10:26:49]Information>Startup>DB - ODBC-DataSource= db_dmams
+[07.01.2025 10:26:49]Information>Startup>DB - UserID= mams
+[07.01.2025 10:26:49]Information>Startup>DB - Connection Password is given
+[07.01.2025 10:26:49]Information>Startup>connecting to DB at startup
+[07.01.2025 10:26:49]Information>Startup>Connected to DB.
+[10.01.2025 16:43:38]Information>Startup>starting Application
+[10.01.2025 16:43:38]Information>Startup>DB - Param count = 3
+[10.01.2025 16:43:38]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.01.2025 16:43:38]Information>Startup>DB - UserID= mams
+[10.01.2025 16:43:38]Information>Startup>DB - Connection Password is given
+[10.01.2025 16:43:38]Information>Startup>connecting to DB at startup
+[10.01.2025 16:43:38]Information>Startup>Connected to DB.
+[10.01.2025 16:43:41]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+[10.01.2025 16:43:41]Information>DB>Get data of all targets of selected magazine
+[10.01.2025 16:43:41]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250109"
+[10.01.2025 16:43:41]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 14573.1.255
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 62284.1.167
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 62285.1.156
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 15181.46.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74710.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74711.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74806.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74809.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74817.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74818.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74819.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74823.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73819.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73820.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73821.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73822.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 75062.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 75062.1.3
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73852.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73853.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73854.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73855.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73689.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73690.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73691.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73692.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73693.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73694.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73695.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73696.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73697.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73698.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73699.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73700.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73701.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73702.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73823.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73824.1.1
+[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73825.1.1
+[10.01.2025 16:43:50]Information>DB>Get data of all targets of selected magazine
+[10.01.2025 16:43:50]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250115RF"
+[10.01.2025 16:43:54]Information>DB>Get data of all targets of selected magazine
+[10.01.2025 16:43:54]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250110ICOS"
+[10.01.2025 16:43:55]Information>DB>Get data of all targets of selected magazine
+[10.01.2025 16:43:55]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250115RF"
+[10.01.2025 16:44:03]Information>DB>Get data of all targets of selected magazine
+[10.01.2025 16:44:03]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250106RF"
+[10.01.2025 16:44:03]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[10.01.2025 16:44:03]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:03]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:03]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:03]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
+[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 14573.8.5
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 14574.1.345
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 62284.1.173
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 62285.1.160
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 74839.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75108.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75099.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75102.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75136.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75136.1.2
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75158.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75158.1.2
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 53941.83.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 53941.84.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 38350.100.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 48568.4.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 49870.32.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73517.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73518.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73519.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73520.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73521.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73522.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73523.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73524.1.1
+[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73525.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73526.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73527.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73528.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73529.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73530.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73531.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73532.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73533.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73534.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73535.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73542.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73544.1.1
+[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73563.1.1
+[10.01.2025 16:45:25]Information>Closeup>SAMS closed by user.
+[16.01.2025 16:22:24]Information>Startup>starting Application
+[16.01.2025 16:22:24]Information>Startup>DB - Param count = 3
+[16.01.2025 16:22:24]Information>Startup>DB - ODBC-DataSource= db_dmams
+[16.01.2025 16:22:24]Information>Startup>DB - UserID= mams
+[16.01.2025 16:22:24]Information>Startup>DB - Connection Password is given
+[16.01.2025 16:22:24]Information>Startup>connecting to DB at startup
+[16.01.2025 16:22:24]Information>Startup>Connected to DB.
+[16.01.2025 16:22:27]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+[16.01.2025 16:22:27]Information>DB>Get data of all targets of selected magazine
+[16.01.2025 16:22:27]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA250114"
+[16.01.2025 16:22:27]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 14574.1.344
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 14576.1.145
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 36704.1.216
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 62284.1.174
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 62285.1.161
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 15182.72.1
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 15182.73.1
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 75076.1.1
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 75089.1.1
+[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 75096.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75098.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75158.1.6
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75158.1.7
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75159.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75159.1.2
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73639.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73942.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73953.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75062.1.6
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75062.1.13
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75062.1.18
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74143.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74144.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74145.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74146.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73982.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73983.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73984.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74627.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74628.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74629.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73985.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73643.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73954.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73955.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73956.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73957.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73958.1.1
+[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74175.1.1
+[16.01.2025 16:22:34]Information>DB>Get data of all targets of selected magazine
+[16.01.2025 16:22:34]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250117ICOS"
+[16.01.2025 16:22:36]Information>DB>Get data of all targets of selected magazine
+[16.01.2025 16:22:36]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA250120"
+[16.01.2025 16:22:38]Information>DB>Get data of all targets of selected magazine
+[16.01.2025 16:22:38]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250120RF"
+[16.01.2025 16:22:40]Information>DB>Get data of all targets of selected magazine
+[16.01.2025 16:22:40]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250120RF"
+[16.01.2025 16:22:40]Information>DB>Get data of all targets of selected magazine
+[16.01.2025 16:22:40]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA190401"
+[16.01.2025 16:22:41]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
+[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
+[16.01.2025 16:22:45]Information>Closeup>SAMS closed by user.
+[17.01.2025 15:17:55]Information>Startup>starting Application
+[17.01.2025 15:17:55]Information>Startup>DB - Param count = 3
+[17.01.2025 15:17:55]Information>Startup>DB - ODBC-DataSource= db_dmams
+[17.01.2025 15:17:55]Information>Startup>DB - UserID= mams
+[17.01.2025 15:17:55]Information>Startup>DB - Connection Password is given
+[17.01.2025 15:17:55]Information>Startup>connecting to DB at startup
+[17.01.2025 15:17:55]Information>Startup>Connected to DB.
+[17.01.2025 15:18:46]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=39501 AND prep_nr=1 AND target_nr=2;
+[17.01.2025 15:19:23]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=39501 AND prep_nr=1 AND target_nr=2;
+[17.01.2025 15:19:25]Information>Closeup>SAMS closed by user.
+[04.02.2025 17:33:09]Information>Startup>starting Application
+[04.02.2025 17:33:09]Information>Startup>DB - Param count = 3
+[04.02.2025 17:33:09]Information>Startup>DB - ODBC-DataSource= db_dmams
+[04.02.2025 17:33:09]Information>Startup>DB - UserID= mams
+[04.02.2025 17:33:09]Information>Startup>DB - Connection Password is given
+[04.02.2025 17:33:09]Information>Startup>connecting to DB at startup
+[04.02.2025 17:33:09]Information>Startup>Connected to DB.
+[04.02.2025 17:33:17]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10274";
+[04.02.2025 17:33:20]Error>Exception>UnitName: System.SysUtils -- ClassName: ERangeError -- StackTrace:  -- Message: Range check error
+[04.02.2025 17:33:25]Error>Exception>UnitName: System.SysUtils -- ClassName: ERangeError -- StackTrace:  -- Message: Range check error
+[04.02.2025 17:33:30]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[04.02.2025 17:35:21]Information>Closeup>SAMS closed by user.
+[04.02.2025 17:38:04]Information>Startup>starting Application
+[04.02.2025 17:38:04]Information>Startup>DB - Param count = 3
+[04.02.2025 17:38:04]Information>Startup>DB - ODBC-DataSource= db_dmams
+[04.02.2025 17:38:04]Information>Startup>DB - UserID= mams
+[04.02.2025 17:38:04]Information>Startup>DB - Connection Password is given
+[04.02.2025 17:38:04]Information>Startup>connecting to DB at startup
+[04.02.2025 17:38:04]Information>Startup>Connected to DB.
+[04.02.2025 17:40:32]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10274";
+[04.02.2025 17:40:37]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=899 ORDER BY in_date DESC;
+[04.02.2025 17:47:54]Information>Closeup>SAMS closed by user.
+[10.02.2025 16:33:24]Information>Startup>starting Application
+[10.02.2025 16:33:24]Information>Startup>DB - Param count = 3
+[10.02.2025 16:33:24]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 16:33:24]Information>Startup>DB - UserID= mams
+[10.02.2025 16:33:24]Information>Startup>DB - Connection Password is given
+[10.02.2025 16:33:24]Information>Startup>connecting to DB at startup
+[10.02.2025 16:33:24]Information>Startup>Connected to DB.
+[10.02.2025 16:41:04]Information>Closeup>SAMS closed by user.
+[10.02.2025 16:41:11]Information>Startup>starting Application
+[10.02.2025 16:41:11]Information>Startup>DB - Param count = 3
+[10.02.2025 16:41:11]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 16:41:11]Information>Startup>DB - UserID= mams
+[10.02.2025 16:41:11]Information>Startup>DB - Connection Password is given
+[10.02.2025 16:41:11]Information>Startup>connecting to DB at startup
+[10.02.2025 16:41:11]Information>Startup>Connected to DB.
+[10.02.2025 16:41:16]Error>DB>Run DoSampleInfo
+[10.02.2025 16:41:16]Error>DB>reformat number of digits
+[10.02.2025 16:41:33]Error>DB>Run DoSampleInfo
+[10.02.2025 16:41:33]Error>DB>reformat number of digits
+[10.02.2025 16:41:51]Error>DB>Run DoSampleInfo
+[10.02.2025 16:41:51]Error>DB>reformat number of digits
+[10.02.2025 16:42:13]Error>DB>Run DoSampleInfo
+[10.02.2025 16:42:14]Error>DB>reformat number of digits
+[10.02.2025 16:43:32]Error>DB>Run DoSampleInfo
+[10.02.2025 16:43:32]Error>DB>reformat number of digits
+[10.02.2025 16:43:58]Error>DB>Run DoSampleInfo
+[10.02.2025 16:43:58]Error>DB>reformat number of digits
+[10.02.2025 16:44:08]Information>Closeup>SAMS closed by user.
+[10.02.2025 16:48:19]Information>Startup>starting Application
+[10.02.2025 16:48:19]Information>Startup>DB - Param count = 3
+[10.02.2025 16:48:19]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 16:48:19]Information>Startup>DB - UserID= mams
+[10.02.2025 16:48:19]Information>Startup>DB - Connection Password is given
+[10.02.2025 16:48:19]Information>Startup>connecting to DB at startup
+[10.02.2025 16:48:19]Information>Startup>Connected to DB.
+[10.02.2025 16:48:23]Error>DB>Run DoSampleInfo
+[10.02.2025 16:48:23]Error>DB>reformat number of digits
+[10.02.2025 16:48:30]Error>DB>Run DoSampleInfo
+[10.02.2025 16:48:30]Error>DB>reformat number of digits
+[10.02.2025 16:48:37]Error>DB>Run DoSampleInfo
+[10.02.2025 16:48:37]Error>DB>reformat number of digits
+[10.02.2025 16:48:47]Information>Closeup>SAMS closed by user.
+[10.02.2025 16:52:48]Information>Startup>starting Application
+[10.02.2025 16:52:48]Information>Startup>DB - Param count = 3
+[10.02.2025 16:52:48]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 16:52:48]Information>Startup>DB - UserID= mams
+[10.02.2025 16:52:48]Information>Startup>DB - Connection Password is given
+[10.02.2025 16:52:48]Information>Startup>connecting to DB at startup
+[10.02.2025 16:52:48]Information>Startup>Connected to DB.
+[10.02.2025 16:53:49]Information>Closeup>SAMS closed by user.
+[10.02.2025 16:54:22]Information>Startup>starting Application
+[10.02.2025 16:54:22]Information>Startup>DB - Param count = 3
+[10.02.2025 16:54:22]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 16:54:22]Information>Startup>DB - UserID= mams
+[10.02.2025 16:54:22]Information>Startup>DB - Connection Password is given
+[10.02.2025 16:54:22]Information>Startup>connecting to DB at startup
+[10.02.2025 16:54:22]Information>Startup>Connected to DB.
+[10.02.2025 16:58:43]Information>Startup>starting Application
+[10.02.2025 16:58:43]Information>Startup>DB - Param count = 3
+[10.02.2025 16:58:43]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 16:58:43]Information>Startup>DB - UserID= mams
+[10.02.2025 16:58:43]Information>Startup>DB - Connection Password is given
+[10.02.2025 16:58:43]Information>Startup>connecting to DB at startup
+[10.02.2025 16:58:43]Information>Startup>Connected to DB.
+[10.02.2025 16:58:49]Information>Pending Reports>Query DB for pending reports...
+[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... finished
+[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[10.02.2025 16:58:51]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[10.02.2025 16:58:58]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10655";
+[10.02.2025 16:59:00]Error>DB>Run DoSampleInfo
+[10.02.2025 16:59:00]Error>DB>reformat number of digits
+[10.02.2025 16:59:03]Error>DB>Run DoSampleInfo
+[10.02.2025 16:59:03]Error>DB>reformat number of digits
+[10.02.2025 16:59:05]Information>Closeup>SAMS closed by user.
+[10.02.2025 17:01:35]Information>Startup>starting Application
+[10.02.2025 17:01:35]Information>Startup>DB - Param count = 3
+[10.02.2025 17:01:35]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 17:01:35]Information>Startup>DB - UserID= mams
+[10.02.2025 17:01:35]Information>Startup>DB - Connection Password is given
+[10.02.2025 17:01:35]Information>Startup>connecting to DB at startup
+[10.02.2025 17:01:35]Information>Startup>Connected to DB.
+[10.02.2025 17:01:38]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
+[10.02.2025 17:01:40]Information>Pending Reports>Query DB for pending reports...
+[10.02.2025 17:01:41]Information>Pending Reports>Query DB for pending reports... finished
+[10.02.2025 17:01:41]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[10.02.2025 17:01:41]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[10.02.2025 17:01:42]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[10.02.2025 17:01:42]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[10.02.2025 17:02:05]Information>Closeup>SAMS closed by user.
+[10.02.2025 17:05:55]Information>Startup>starting Application
+[10.02.2025 17:05:55]Information>Startup>DB - Param count = 3
+[10.02.2025 17:05:55]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 17:05:55]Information>Startup>DB - UserID= mams
+[10.02.2025 17:05:55]Information>Startup>DB - Connection Password is given
+[10.02.2025 17:05:55]Information>Startup>connecting to DB at startup
+[10.02.2025 17:05:55]Information>Startup>Connected to DB.
+[10.02.2025 17:05:59]Error>DB>Run DoSampleInfo
+[10.02.2025 17:05:59]Error>DB>reformat number of digits
+[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:06]Error>DB>reformat number of digits
+[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:06]Error>DB>reformat number of digits
+[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:06]Error>DB>reformat number of digits
+[10.02.2025 17:06:07]Error>DB>reformat number of digits
+[10.02.2025 17:06:07]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:07]Error>DB>reformat number of digits
+[10.02.2025 17:06:07]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:07]Error>DB>reformat number of digits
+[10.02.2025 17:06:07]Error>DB>reformat number of digits
+[10.02.2025 17:06:15]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:15]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:15]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:15]Error>DB>reformat number of digits
+[10.02.2025 17:06:15]Error>DB>reformat number of digits
+[10.02.2025 17:06:16]Error>DB>reformat number of digits
+[10.02.2025 17:06:27]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:28]Error>DB>reformat number of digits
+[10.02.2025 17:06:31]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:31]Error>DB>reformat number of digits
+[10.02.2025 17:06:34]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:34]Error>DB>reformat number of digits
+[10.02.2025 17:06:38]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:39]Error>DB>reformat number of digits
+[10.02.2025 17:06:42]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:42]Error>DB>reformat number of digits
+[10.02.2025 17:06:43]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:43]Error>DB>reformat number of digits
+[10.02.2025 17:06:43]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:43]Error>DB>reformat number of digits
+[10.02.2025 17:06:48]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:48]Error>DB>reformat number of digits
+[10.02.2025 17:06:50]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:50]Error>DB>reformat number of digits
+[10.02.2025 17:06:53]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:53]Error>DB>reformat number of digits
+[10.02.2025 17:06:55]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:55]Error>DB>reformat number of digits
+[10.02.2025 17:06:56]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:56]Error>DB>reformat number of digits
+[10.02.2025 17:06:57]Error>DB>Run DoSampleInfo
+[10.02.2025 17:06:57]Error>DB>reformat number of digits
+[10.02.2025 17:07:01]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:01]Error>DB>reformat number of digits
+[10.02.2025 17:07:04]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:04]Error>DB>reformat number of digits
+[10.02.2025 17:07:13]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:13]Error>DB>reformat number of digits
+[10.02.2025 17:07:15]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:15]Error>DB>reformat number of digits
+[10.02.2025 17:07:22]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:22]Error>DB>reformat number of digits
+[10.02.2025 17:07:23]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:23]Error>DB>reformat number of digits
+[10.02.2025 17:07:28]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:28]Error>DB>reformat number of digits
+[10.02.2025 17:07:30]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:31]Error>DB>reformat number of digits
+[10.02.2025 17:07:44]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:44]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:45]Error>DB>reformat number of digits
+[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:46]Error>DB>reformat number of digits
+[10.02.2025 17:07:46]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:46]Error>DB>reformat number of digits
+[10.02.2025 17:07:46]Error>DB>Run DoSampleInfo
+[10.02.2025 17:07:46]Error>DB>reformat number of digits
+[10.02.2025 17:07:49]Information>Closeup>SAMS closed by user.
+[10.02.2025 17:10:23]Information>Startup>starting Application
+[10.02.2025 17:10:23]Information>Startup>DB - Param count = 3
+[10.02.2025 17:10:23]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 17:10:23]Information>Startup>DB - UserID= mams
+[10.02.2025 17:10:23]Information>Startup>DB - Connection Password is given
+[10.02.2025 17:10:23]Information>Startup>connecting to DB at startup
+[10.02.2025 17:10:23]Information>Startup>Connected to DB.
+[10.02.2025 17:10:27]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:27]Error>DB>reformat number of digits
+[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:33]Error>DB>reformat number of digits
+[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:33]Error>DB>reformat number of digits
+[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:33]Error>DB>reformat number of digits
+[10.02.2025 17:10:33]Error>DB>reformat number of digits
+[10.02.2025 17:10:34]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:34]Error>DB>reformat number of digits
+[10.02.2025 17:10:34]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:34]Error>DB>reformat number of digits
+[10.02.2025 17:10:34]Error>DB>reformat number of digits
+[10.02.2025 17:10:39]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:39]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:39]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:39]Error>DB>reformat number of digits
+[10.02.2025 17:10:39]Error>DB>reformat number of digits
+[10.02.2025 17:10:39]Error>DB>reformat number of digits
+[10.02.2025 17:10:47]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:47]Error>DB>reformat number of digits
+[10.02.2025 17:10:49]Error>DB>Run DoSampleInfo
+[10.02.2025 17:10:49]Error>DB>reformat number of digits
+[10.02.2025 17:11:14]Information>Closeup>SAMS closed by user.
+[10.02.2025 17:13:54]Information>Startup>starting Application
+[10.02.2025 17:13:54]Information>Startup>DB - Param count = 3
+[10.02.2025 17:13:54]Information>Startup>DB - ODBC-DataSource= db_dmams
+[10.02.2025 17:13:54]Information>Startup>DB - UserID= mams
+[10.02.2025 17:13:54]Information>Startup>DB - Connection Password is given
+[10.02.2025 17:13:54]Information>Startup>connecting to DB at startup
+[10.02.2025 17:13:54]Information>Startup>Connected to DB.
+[10.02.2025 17:13:57]Information>Closeup>SAMS closed by user.

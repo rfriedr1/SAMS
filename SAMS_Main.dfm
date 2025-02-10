@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = grdSamplesOfProject
+  ActiveControl = DBMemo_LabComment
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1556
@@ -302,7 +302,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1556
     Height = 873
-    ActivePage = tbsProjectsOfUser
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -343,6 +343,8 @@ object frmMAMS: TfrmMAMS
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
+        ExplicitWidth = 1546
+        ExplicitHeight = 835
         DesignSize = (
           1548
           843)
@@ -369,6 +371,8 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select user'
           OnEnterPage = wizStartPageEnterPage
           OnBackButtonClick = wizStartPageBackButtonClick
+          ExplicitWidth = 1401
+          ExplicitHeight = 783
           object Panel4: TPanel
             Left = 0
             Top = 70
@@ -382,6 +386,7 @@ object frmMAMS: TfrmMAMS
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            ExplicitWidth = 1401
             object Label14: TLabel
               Left = 120
               Top = 18
@@ -442,6 +447,7 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
+            ExplicitHeight = 607
             ColWidths = (
               64
               64)
@@ -1063,6 +1069,7 @@ object frmMAMS: TfrmMAMS
           HotTrackFont.Height = -12
           HotTrackFont.Name = 'Segoe UI'
           HotTrackFont.Style = [fsUnderline]
+          ExplicitHeight = 783
         end
       end
     end
@@ -2534,7 +2541,7 @@ object frmMAMS: TfrmMAMS
             object lblFilterSampleType: TLabel
               Left = 21
               Top = 15
-              Width = 27
+              Width = 28
               Height = 15
               Caption = 'Type:'
             end
@@ -2954,7 +2961,7 @@ object frmMAMS: TfrmMAMS
           object Label18: TLabel
             Left = 20
             Top = 41
-            Width = 48
+            Width = 49
             Height = 15
             CustomHint = BalloonHint1
             Caption = 'Template'
@@ -2984,7 +2991,7 @@ object frmMAMS: TfrmMAMS
           object Label109: TLabel
             Left = 20
             Top = 153
-            Width = 131
+            Width = 130
             Height = 15
             CustomHint = BalloonHint1
             Caption = 'file name (no extension):'
@@ -3075,7 +3082,7 @@ object frmMAMS: TfrmMAMS
           object Jahr: TLabel
             Left = 143
             Top = 116
-            Width = 12
+            Width = 13
             Height = 15
             Caption = 'To'
           end
@@ -3125,7 +3132,7 @@ object frmMAMS: TfrmMAMS
           object Label48: TLabel
             Left = 143
             Top = 143
-            Width = 12
+            Width = 13
             Height = 15
             Caption = 'To'
           end
@@ -3406,7 +3413,6 @@ object frmMAMS: TfrmMAMS
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1546
         object btnIncSampleNr: TSpinButton
           Left = 190
           Top = 18
@@ -3509,7 +3515,7 @@ object frmMAMS: TfrmMAMS
           object lbTarget: TLabel
             Left = 18
             Top = 14
-            Width = 51
+            Width = 52
             Height = 15
             Caption = 'Target Nr.'
             Transparent = True
@@ -3686,7 +3692,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 3
-        ExplicitHeight = 756
         object Label103: TLabel
           Left = 11
           Top = 526
@@ -3957,7 +3962,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesGraphClick
-          ExplicitTop = 712
         end
         object btnFillDateToday: TButton
           Left = 183
@@ -4199,7 +4203,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 4
-        ExplicitHeight = 756
         object Label28: TLabel
           Left = 36
           Top = 206
@@ -4501,7 +4504,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesAdminClick
-          ExplicitTop = 712
         end
         object dbchkFreeOfCharge2: TDBCheckBox
           Left = 20
@@ -4656,7 +4658,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 5
-        ExplicitHeight = 756
         object Label2: TLabel
           Left = 50
           Top = 205
@@ -4958,7 +4959,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        ExplicitHeight = 756
         object Label30: TLabel
           Left = 16
           Top = 27
@@ -5025,7 +5025,7 @@ object frmMAMS: TfrmMAMS
         object Ta: TLabel
           Left = 16
           Top = 229
-          Width = 24
+          Width = 25
           Height = 15
           Caption = 'Type'
         end
@@ -5348,7 +5348,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesUserSuppliedInfoClick
-          ExplicitTop = 712
         end
         object DBMemo_LabComment: TDBMemo
           Left = 0
@@ -5426,7 +5425,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 2
-        ExplicitHeight = 756
         object Label102: TLabel
           Left = 6
           Top = 526
@@ -5577,7 +5575,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesPrepClick
-          ExplicitTop = 712
         end
         object chkPrepDiscarded: TDBCheckBox
           Left = 118
@@ -7623,7 +7620,7 @@ object frmMAMS: TfrmMAMS
             Width = 328
             Height = 23
             CustomHint = BalloonHint1
-            EditLabel.Width = 15
+            EditLabel.Width = 16
             EditLabel.Height = 23
             EditLabel.Caption = 'To:'
             LabelPosition = lpLeft
@@ -7649,7 +7646,7 @@ object frmMAMS: TfrmMAMS
             Width = 328
             Height = 23
             CustomHint = BalloonHint1
-            EditLabel.Width = 33
+            EditLabel.Width = 34
             EditLabel.Height = 23
             EditLabel.Caption = 'SMTP:'
             LabelPosition = lpLeft
@@ -7728,7 +7725,7 @@ object frmMAMS: TfrmMAMS
         object Label99: TLabel
           Left = 881
           Top = 26
-          Width = 241
+          Width = 231
           Height = 90
           Caption = 
             'Use regular SQL syntax in query. First column will be plotted as' +
@@ -8829,7 +8826,7 @@ object frmMAMS: TfrmMAMS
         object Label122: TLabel
           Left = 310
           Top = 9
-          Width = 32
+          Width = 33
           Height = 15
           Caption = 'Target'
         end
@@ -11573,7 +11570,7 @@ object frmMAMS: TfrmMAMS
   end
   object ExcelExport: TJvDBGridExcelExport
     Caption = 'Exporting to MS Excel...'
-    FileName = 'c:\temp\report.xls'
+    Silent = False
     Visible = True
     AutoFit = False
     Left = 752
