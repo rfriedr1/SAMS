@@ -1,797 +1,1001 @@
-[07.01.2025 10:26:49]Information>Startup>starting Application
-[07.01.2025 10:26:49]Information>Startup>DB - Param count = 3
-[07.01.2025 10:26:49]Information>Startup>DB - ODBC-DataSource= db_dmams
-[07.01.2025 10:26:49]Information>Startup>DB - UserID= mams
-[07.01.2025 10:26:49]Information>Startup>DB - Connection Password is given
-[07.01.2025 10:26:49]Information>Startup>connecting to DB at startup
-[07.01.2025 10:26:49]Information>Startup>Connected to DB.
-[10.01.2025 16:43:38]Information>Startup>starting Application
-[10.01.2025 16:43:38]Information>Startup>DB - Param count = 3
-[10.01.2025 16:43:38]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.01.2025 16:43:38]Information>Startup>DB - UserID= mams
-[10.01.2025 16:43:38]Information>Startup>DB - Connection Password is given
-[10.01.2025 16:43:38]Information>Startup>connecting to DB at startup
-[10.01.2025 16:43:38]Information>Startup>Connected to DB.
-[10.01.2025 16:43:41]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[10.01.2025 16:43:41]Information>DB>Get data of all targets of selected magazine
-[10.01.2025 16:43:41]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250109"
-[10.01.2025 16:43:41]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:41]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:41]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:42]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:43:42]Information>DB>fill string grid with data from query
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 14573.1.255
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 62284.1.167
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 62285.1.156
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 15181.46.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74710.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74711.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74806.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74809.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74817.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74818.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74819.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 74823.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73819.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73820.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73821.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73822.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 75062.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 75062.1.3
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73852.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73853.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73854.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73855.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73689.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73690.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73691.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73692.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73693.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73694.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73695.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73696.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73697.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73698.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73699.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73700.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73701.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73702.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73823.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73824.1.1
-[10.01.2025 16:43:47]Information>DB>transfer LE and HE Currents to target_t: 73825.1.1
-[10.01.2025 16:43:50]Information>DB>Get data of all targets of selected magazine
-[10.01.2025 16:43:50]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250115RF"
-[10.01.2025 16:43:54]Information>DB>Get data of all targets of selected magazine
-[10.01.2025 16:43:54]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250110ICOS"
-[10.01.2025 16:43:55]Information>DB>Get data of all targets of selected magazine
-[10.01.2025 16:43:55]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250115RF"
-[10.01.2025 16:44:03]Information>DB>Get data of all targets of selected magazine
-[10.01.2025 16:44:03]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250106RF"
-[10.01.2025 16:44:03]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[10.01.2025 16:44:03]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:03]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:03]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:03]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:04]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:04]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:05]Information>DB>raw database to use = db_ac14
-[10.01.2025 16:44:05]Information>DB>fill string grid with data from query
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 14573.8.5
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 14574.1.345
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 62284.1.173
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 62285.1.160
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 74839.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75108.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75099.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75102.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75136.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75136.1.2
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75158.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 75158.1.2
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 53941.83.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 53941.84.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 38350.100.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 48568.4.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 49870.32.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73517.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73518.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73519.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73520.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73521.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73522.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73523.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73524.1.1
-[10.01.2025 16:44:08]Information>DB>transfer LE and HE Currents to target_t: 73525.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73526.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73527.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73528.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73529.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73530.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73531.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73532.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73533.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73534.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73535.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73542.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73544.1.1
-[10.01.2025 16:44:09]Information>DB>transfer LE and HE Currents to target_t: 73563.1.1
-[10.01.2025 16:45:25]Information>Closeup>SAMS closed by user.
-[16.01.2025 16:22:24]Information>Startup>starting Application
-[16.01.2025 16:22:24]Information>Startup>DB - Param count = 3
-[16.01.2025 16:22:24]Information>Startup>DB - ODBC-DataSource= db_dmams
-[16.01.2025 16:22:24]Information>Startup>DB - UserID= mams
-[16.01.2025 16:22:24]Information>Startup>DB - Connection Password is given
-[16.01.2025 16:22:24]Information>Startup>connecting to DB at startup
-[16.01.2025 16:22:24]Information>Startup>Connected to DB.
-[16.01.2025 16:22:27]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[16.01.2025 16:22:27]Information>DB>Get data of all targets of selected magazine
-[16.01.2025 16:22:27]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA250114"
-[16.01.2025 16:22:27]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:27]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:27]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:28]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:28]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:29]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:29]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 14574.1.344
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 14576.1.145
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 36704.1.216
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 62284.1.174
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 62285.1.161
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 15182.72.1
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 15182.73.1
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 75076.1.1
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 75089.1.1
-[16.01.2025 16:22:32]Information>DB>transfer LE and HE Currents to target_t: 75096.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75098.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75158.1.6
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75158.1.7
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75159.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75159.1.2
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73639.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73942.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73953.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75062.1.6
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75062.1.13
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 75062.1.18
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74143.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74144.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74145.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74146.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73982.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73983.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73984.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74627.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74628.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74629.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73985.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73643.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73954.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73955.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73956.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73957.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 73958.1.1
-[16.01.2025 16:22:33]Information>DB>transfer LE and HE Currents to target_t: 74175.1.1
-[16.01.2025 16:22:34]Information>DB>Get data of all targets of selected magazine
-[16.01.2025 16:22:34]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250117ICOS"
-[16.01.2025 16:22:36]Information>DB>Get data of all targets of selected magazine
-[16.01.2025 16:22:36]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA250120"
-[16.01.2025 16:22:38]Information>DB>Get data of all targets of selected magazine
-[16.01.2025 16:22:38]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250120RF"
-[16.01.2025 16:22:40]Information>DB>Get data of all targets of selected magazine
-[16.01.2025 16:22:40]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB250120RF"
-[16.01.2025 16:22:40]Information>DB>Get data of all targets of selected magazine
-[16.01.2025 16:22:40]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA190401"
-[16.01.2025 16:22:41]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:41]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:41]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:42]Information>DB>raw database to use = db_dc14
-[16.01.2025 16:22:42]Information>DB>fill string grid with data from query
-[16.01.2025 16:22:45]Information>Closeup>SAMS closed by user.
-[17.01.2025 15:17:55]Information>Startup>starting Application
-[17.01.2025 15:17:55]Information>Startup>DB - Param count = 3
-[17.01.2025 15:17:55]Information>Startup>DB - ODBC-DataSource= db_dmams
-[17.01.2025 15:17:55]Information>Startup>DB - UserID= mams
-[17.01.2025 15:17:55]Information>Startup>DB - Connection Password is given
-[17.01.2025 15:17:55]Information>Startup>connecting to DB at startup
-[17.01.2025 15:17:55]Information>Startup>Connected to DB.
-[17.01.2025 15:18:46]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=39501 AND prep_nr=1 AND target_nr=2;
-[17.01.2025 15:19:23]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=39501 AND prep_nr=1 AND target_nr=2;
-[17.01.2025 15:19:25]Information>Closeup>SAMS closed by user.
-[04.02.2025 17:33:09]Information>Startup>starting Application
-[04.02.2025 17:33:09]Information>Startup>DB - Param count = 3
-[04.02.2025 17:33:09]Information>Startup>DB - ODBC-DataSource= db_dmams
-[04.02.2025 17:33:09]Information>Startup>DB - UserID= mams
-[04.02.2025 17:33:09]Information>Startup>DB - Connection Password is given
-[04.02.2025 17:33:09]Information>Startup>connecting to DB at startup
-[04.02.2025 17:33:09]Information>Startup>Connected to DB.
-[04.02.2025 17:33:17]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10274";
-[04.02.2025 17:33:20]Error>Exception>UnitName: System.SysUtils -- ClassName: ERangeError -- StackTrace:  -- Message: Range check error
-[04.02.2025 17:33:25]Error>Exception>UnitName: System.SysUtils -- ClassName: ERangeError -- StackTrace:  -- Message: Range check error
-[04.02.2025 17:33:30]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
-[04.02.2025 17:35:21]Information>Closeup>SAMS closed by user.
-[04.02.2025 17:38:04]Information>Startup>starting Application
-[04.02.2025 17:38:04]Information>Startup>DB - Param count = 3
-[04.02.2025 17:38:04]Information>Startup>DB - ODBC-DataSource= db_dmams
-[04.02.2025 17:38:04]Information>Startup>DB - UserID= mams
-[04.02.2025 17:38:04]Information>Startup>DB - Connection Password is given
-[04.02.2025 17:38:04]Information>Startup>connecting to DB at startup
-[04.02.2025 17:38:04]Information>Startup>Connected to DB.
-[04.02.2025 17:40:32]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10274";
-[04.02.2025 17:40:37]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=899 ORDER BY in_date DESC;
-[04.02.2025 17:47:54]Information>Closeup>SAMS closed by user.
-[10.02.2025 16:33:24]Information>Startup>starting Application
-[10.02.2025 16:33:24]Information>Startup>DB - Param count = 3
-[10.02.2025 16:33:24]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 16:33:24]Information>Startup>DB - UserID= mams
-[10.02.2025 16:33:24]Information>Startup>DB - Connection Password is given
-[10.02.2025 16:33:24]Information>Startup>connecting to DB at startup
-[10.02.2025 16:33:24]Information>Startup>Connected to DB.
-[10.02.2025 16:41:04]Information>Closeup>SAMS closed by user.
-[10.02.2025 16:41:11]Information>Startup>starting Application
-[10.02.2025 16:41:11]Information>Startup>DB - Param count = 3
-[10.02.2025 16:41:11]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 16:41:11]Information>Startup>DB - UserID= mams
-[10.02.2025 16:41:11]Information>Startup>DB - Connection Password is given
-[10.02.2025 16:41:11]Information>Startup>connecting to DB at startup
-[10.02.2025 16:41:11]Information>Startup>Connected to DB.
-[10.02.2025 16:41:16]Error>DB>Run DoSampleInfo
-[10.02.2025 16:41:16]Error>DB>reformat number of digits
-[10.02.2025 16:41:33]Error>DB>Run DoSampleInfo
-[10.02.2025 16:41:33]Error>DB>reformat number of digits
-[10.02.2025 16:41:51]Error>DB>Run DoSampleInfo
-[10.02.2025 16:41:51]Error>DB>reformat number of digits
-[10.02.2025 16:42:13]Error>DB>Run DoSampleInfo
-[10.02.2025 16:42:14]Error>DB>reformat number of digits
-[10.02.2025 16:43:32]Error>DB>Run DoSampleInfo
-[10.02.2025 16:43:32]Error>DB>reformat number of digits
-[10.02.2025 16:43:58]Error>DB>Run DoSampleInfo
-[10.02.2025 16:43:58]Error>DB>reformat number of digits
-[10.02.2025 16:44:08]Information>Closeup>SAMS closed by user.
-[10.02.2025 16:48:19]Information>Startup>starting Application
-[10.02.2025 16:48:19]Information>Startup>DB - Param count = 3
-[10.02.2025 16:48:19]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 16:48:19]Information>Startup>DB - UserID= mams
-[10.02.2025 16:48:19]Information>Startup>DB - Connection Password is given
-[10.02.2025 16:48:19]Information>Startup>connecting to DB at startup
-[10.02.2025 16:48:19]Information>Startup>Connected to DB.
-[10.02.2025 16:48:23]Error>DB>Run DoSampleInfo
-[10.02.2025 16:48:23]Error>DB>reformat number of digits
-[10.02.2025 16:48:30]Error>DB>Run DoSampleInfo
-[10.02.2025 16:48:30]Error>DB>reformat number of digits
-[10.02.2025 16:48:37]Error>DB>Run DoSampleInfo
-[10.02.2025 16:48:37]Error>DB>reformat number of digits
-[10.02.2025 16:48:47]Information>Closeup>SAMS closed by user.
-[10.02.2025 16:52:48]Information>Startup>starting Application
-[10.02.2025 16:52:48]Information>Startup>DB - Param count = 3
-[10.02.2025 16:52:48]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 16:52:48]Information>Startup>DB - UserID= mams
-[10.02.2025 16:52:48]Information>Startup>DB - Connection Password is given
-[10.02.2025 16:52:48]Information>Startup>connecting to DB at startup
-[10.02.2025 16:52:48]Information>Startup>Connected to DB.
-[10.02.2025 16:53:49]Information>Closeup>SAMS closed by user.
-[10.02.2025 16:54:22]Information>Startup>starting Application
-[10.02.2025 16:54:22]Information>Startup>DB - Param count = 3
-[10.02.2025 16:54:22]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 16:54:22]Information>Startup>DB - UserID= mams
-[10.02.2025 16:54:22]Information>Startup>DB - Connection Password is given
-[10.02.2025 16:54:22]Information>Startup>connecting to DB at startup
-[10.02.2025 16:54:22]Information>Startup>Connected to DB.
-[10.02.2025 16:58:43]Information>Startup>starting Application
-[10.02.2025 16:58:43]Information>Startup>DB - Param count = 3
-[10.02.2025 16:58:43]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 16:58:43]Information>Startup>DB - UserID= mams
-[10.02.2025 16:58:43]Information>Startup>DB - Connection Password is given
-[10.02.2025 16:58:43]Information>Startup>connecting to DB at startup
-[10.02.2025 16:58:43]Information>Startup>Connected to DB.
-[10.02.2025 16:58:49]Information>Pending Reports>Query DB for pending reports...
-[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... finished
-[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.02.2025 16:58:50]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.02.2025 16:58:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.02.2025 16:58:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.02.2025 16:58:51]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.02.2025 16:58:58]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10655";
-[10.02.2025 16:59:00]Error>DB>Run DoSampleInfo
-[10.02.2025 16:59:00]Error>DB>reformat number of digits
-[10.02.2025 16:59:03]Error>DB>Run DoSampleInfo
-[10.02.2025 16:59:03]Error>DB>reformat number of digits
-[10.02.2025 16:59:05]Information>Closeup>SAMS closed by user.
-[10.02.2025 17:01:35]Information>Startup>starting Application
-[10.02.2025 17:01:35]Information>Startup>DB - Param count = 3
-[10.02.2025 17:01:35]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 17:01:35]Information>Startup>DB - UserID= mams
-[10.02.2025 17:01:35]Information>Startup>DB - Connection Password is given
-[10.02.2025 17:01:35]Information>Startup>connecting to DB at startup
-[10.02.2025 17:01:35]Information>Startup>Connected to DB.
-[10.02.2025 17:01:38]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[10.02.2025 17:01:40]Information>Pending Reports>Query DB for pending reports...
-[10.02.2025 17:01:41]Information>Pending Reports>Query DB for pending reports... finished
-[10.02.2025 17:01:41]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
-[10.02.2025 17:01:41]Information>Pending Reports>Query DB for pending reports... setting column widths manually
-[10.02.2025 17:01:42]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
-[10.02.2025 17:01:42]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
-[10.02.2025 17:01:42]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
-[10.02.2025 17:02:05]Information>Closeup>SAMS closed by user.
-[10.02.2025 17:05:55]Information>Startup>starting Application
-[10.02.2025 17:05:55]Information>Startup>DB - Param count = 3
-[10.02.2025 17:05:55]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 17:05:55]Information>Startup>DB - UserID= mams
-[10.02.2025 17:05:55]Information>Startup>DB - Connection Password is given
-[10.02.2025 17:05:55]Information>Startup>connecting to DB at startup
-[10.02.2025 17:05:55]Information>Startup>Connected to DB.
-[10.02.2025 17:05:59]Error>DB>Run DoSampleInfo
-[10.02.2025 17:05:59]Error>DB>reformat number of digits
-[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:06]Error>DB>reformat number of digits
-[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:06]Error>DB>reformat number of digits
-[10.02.2025 17:06:06]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:06]Error>DB>reformat number of digits
-[10.02.2025 17:06:07]Error>DB>reformat number of digits
-[10.02.2025 17:06:07]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:07]Error>DB>reformat number of digits
-[10.02.2025 17:06:07]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:07]Error>DB>reformat number of digits
-[10.02.2025 17:06:07]Error>DB>reformat number of digits
-[10.02.2025 17:06:15]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:15]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:15]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:15]Error>DB>reformat number of digits
-[10.02.2025 17:06:15]Error>DB>reformat number of digits
-[10.02.2025 17:06:16]Error>DB>reformat number of digits
-[10.02.2025 17:06:27]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:28]Error>DB>reformat number of digits
-[10.02.2025 17:06:31]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:31]Error>DB>reformat number of digits
-[10.02.2025 17:06:34]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:34]Error>DB>reformat number of digits
-[10.02.2025 17:06:38]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:39]Error>DB>reformat number of digits
-[10.02.2025 17:06:42]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:42]Error>DB>reformat number of digits
-[10.02.2025 17:06:43]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:43]Error>DB>reformat number of digits
-[10.02.2025 17:06:43]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:43]Error>DB>reformat number of digits
-[10.02.2025 17:06:48]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:48]Error>DB>reformat number of digits
-[10.02.2025 17:06:50]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:50]Error>DB>reformat number of digits
-[10.02.2025 17:06:53]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:53]Error>DB>reformat number of digits
-[10.02.2025 17:06:55]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:55]Error>DB>reformat number of digits
-[10.02.2025 17:06:56]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:56]Error>DB>reformat number of digits
-[10.02.2025 17:06:57]Error>DB>Run DoSampleInfo
-[10.02.2025 17:06:57]Error>DB>reformat number of digits
-[10.02.2025 17:07:01]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:01]Error>DB>reformat number of digits
-[10.02.2025 17:07:04]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:04]Error>DB>reformat number of digits
-[10.02.2025 17:07:13]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:13]Error>DB>reformat number of digits
-[10.02.2025 17:07:15]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:15]Error>DB>reformat number of digits
-[10.02.2025 17:07:22]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:22]Error>DB>reformat number of digits
-[10.02.2025 17:07:23]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:23]Error>DB>reformat number of digits
-[10.02.2025 17:07:28]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:28]Error>DB>reformat number of digits
-[10.02.2025 17:07:30]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:31]Error>DB>reformat number of digits
-[10.02.2025 17:07:44]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:44]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:45]Error>DB>reformat number of digits
-[10.02.2025 17:07:45]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:46]Error>DB>reformat number of digits
-[10.02.2025 17:07:46]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:46]Error>DB>reformat number of digits
-[10.02.2025 17:07:46]Error>DB>Run DoSampleInfo
-[10.02.2025 17:07:46]Error>DB>reformat number of digits
-[10.02.2025 17:07:49]Information>Closeup>SAMS closed by user.
-[10.02.2025 17:10:23]Information>Startup>starting Application
-[10.02.2025 17:10:23]Information>Startup>DB - Param count = 3
-[10.02.2025 17:10:23]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 17:10:23]Information>Startup>DB - UserID= mams
-[10.02.2025 17:10:23]Information>Startup>DB - Connection Password is given
-[10.02.2025 17:10:23]Information>Startup>connecting to DB at startup
-[10.02.2025 17:10:23]Information>Startup>Connected to DB.
-[10.02.2025 17:10:27]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:27]Error>DB>reformat number of digits
-[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:33]Error>DB>reformat number of digits
-[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:33]Error>DB>reformat number of digits
-[10.02.2025 17:10:33]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:33]Error>DB>reformat number of digits
-[10.02.2025 17:10:33]Error>DB>reformat number of digits
-[10.02.2025 17:10:34]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:34]Error>DB>reformat number of digits
-[10.02.2025 17:10:34]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:34]Error>DB>reformat number of digits
-[10.02.2025 17:10:34]Error>DB>reformat number of digits
-[10.02.2025 17:10:39]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:39]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:39]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:39]Error>DB>reformat number of digits
-[10.02.2025 17:10:39]Error>DB>reformat number of digits
-[10.02.2025 17:10:39]Error>DB>reformat number of digits
-[10.02.2025 17:10:47]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:47]Error>DB>reformat number of digits
-[10.02.2025 17:10:49]Error>DB>Run DoSampleInfo
-[10.02.2025 17:10:49]Error>DB>reformat number of digits
-[10.02.2025 17:11:14]Information>Closeup>SAMS closed by user.
-[10.02.2025 17:13:54]Information>Startup>starting Application
-[10.02.2025 17:13:54]Information>Startup>DB - Param count = 3
-[10.02.2025 17:13:54]Information>Startup>DB - ODBC-DataSource= db_dmams
-[10.02.2025 17:13:54]Information>Startup>DB - UserID= mams
-[10.02.2025 17:13:54]Information>Startup>DB - Connection Password is given
-[10.02.2025 17:13:54]Information>Startup>connecting to DB at startup
-[10.02.2025 17:13:54]Information>Startup>Connected to DB.
-[10.02.2025 17:13:57]Information>Closeup>SAMS closed by user.
+[17.02.2025 10:20:48]Error>DB>reformat number of digits
+[17.02.2025 10:20:48]Error>DB>Run DoSampleInfo
+[17.02.2025 10:20:48]Error>DB>reformat number of digits
+[17.02.2025 10:20:50]Error>DB>Run DoSampleInfo
+[17.02.2025 10:20:50]Error>DB>reformat number of digits
+[17.02.2025 10:20:50]Error>DB>Run DoSampleInfo
+[17.02.2025 10:20:50]Error>DB>reformat number of digits
+[17.02.2025 10:20:56]Error>DB>Run DoSampleInfo
+[17.02.2025 10:20:56]Error>DB>reformat number of digits
+[17.02.2025 10:23:46]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10689";
+[17.02.2025 10:24:00]Error>DB>Run DoSampleInfo
+[17.02.2025 10:24:00]Error>DB>reformat number of digits
+[17.02.2025 10:24:18]Error>DB>Run DoSampleInfo
+[17.02.2025 10:24:18]Error>DB>reformat number of digits
+[17.02.2025 11:08:51]Error>DB>Run DoSampleInfo
+[17.02.2025 11:08:51]Error>DB>reformat number of digits
+[17.02.2025 11:08:51]Error>DB>Run DoSampleInfo
+[17.02.2025 11:08:51]Error>DB>reformat number of digits
+[17.02.2025 11:08:54]Error>DB>Run DoSampleInfo
+[17.02.2025 11:08:54]Error>DB>reformat number of digits
+[17.02.2025 11:15:58]Information>Pending Reports>Query DB for pending reports...
+[17.02.2025 11:15:59]Information>Pending Reports>Query DB for pending reports... finished
+[17.02.2025 11:15:59]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[17.02.2025 11:15:59]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[17.02.2025 11:16:01]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[17.02.2025 11:16:01]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[17.02.2025 11:16:02]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[17.02.2025 11:16:02]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[17.02.2025 11:42:46]Information>Startup>starting Application
+[17.02.2025 11:42:46]Information>Startup>DB - Param count = 3
+[17.02.2025 11:42:46]Information>Startup>DB - ODBC-DataSource= db_dmams
+[17.02.2025 11:42:46]Information>Startup>DB - UserID= mams
+[17.02.2025 11:42:46]Information>Startup>DB - Connection Password is given
+[17.02.2025 11:42:46]Information>Startup>connecting to DB at startup
+[17.02.2025 11:42:46]Information>Startup>Connected to DB.
+[17.02.2025 11:43:15]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10301";
+[17.02.2025 11:43:20]Error>DB>Run DoSampleInfo
+[17.02.2025 11:43:20]Error>DB>reformat number of digits
+[17.02.2025 11:43:56]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[17.02.2025 11:43:58]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[17.02.2025 11:44:00]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[17.02.2025 11:44:02]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:02]Error>DB>reformat number of digits
+[17.02.2025 11:44:06]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:06]Error>DB>reformat number of digits
+[17.02.2025 11:44:07]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:07]Error>DB>reformat number of digits
+[17.02.2025 11:44:08]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:08]Error>DB>reformat number of digits
+[17.02.2025 11:44:09]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:09]Error>DB>reformat number of digits
+[17.02.2025 11:44:09]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:09]Error>DB>reformat number of digits
+[17.02.2025 11:44:10]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:10]Error>DB>reformat number of digits
+[17.02.2025 11:44:11]Error>DB>Run DoSampleInfo
+[17.02.2025 11:44:12]Error>DB>reformat number of digits
+[17.02.2025 11:44:32]Information>SQLQuery>UPDATE preparation_t SET prep_comment=NULL WHERE sample_nr=74195 AND prep_nr=1;
+[17.02.2025 11:46:41]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[17.02.2025 11:46:48]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10301";
+[17.02.2025 11:47:10]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[17.02.2025 11:47:16]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10301";
+[17.02.2025 11:47:24]Error>DB>Run DoSampleInfo
+[17.02.2025 11:47:24]Error>DB>reformat number of digits
+[17.02.2025 11:47:40]Error>DB>Run DoSampleInfo
+[17.02.2025 11:47:40]Error>DB>reformat number of digits
+[17.02.2025 11:47:57]Error>DB>Run DoSampleInfo
+[17.02.2025 11:47:57]Error>DB>reformat number of digits
+[17.02.2025 11:48:27]Error>DB>Run DoSampleInfo
+[17.02.2025 11:48:27]Error>DB>reformat number of digits
+[17.02.2025 11:48:47]Error>DB>Run DoSampleInfo
+[17.02.2025 11:48:47]Error>DB>reformat number of digits
+[17.02.2025 11:48:56]Error>DB>Run DoSampleInfo
+[17.02.2025 11:48:56]Error>DB>reformat number of digits
+[17.02.2025 11:49:15]Error>DB>Run DoSampleInfo
+[17.02.2025 11:49:16]Error>DB>reformat number of digits
+[17.02.2025 11:49:48]Error>DB>Run DoSampleInfo
+[17.02.2025 11:49:48]Error>DB>reformat number of digits
+[17.02.2025 11:49:55]Error>DB>Run DoSampleInfo
+[17.02.2025 11:49:55]Error>DB>reformat number of digits
+[17.02.2025 11:50:02]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:02]Error>DB>reformat number of digits
+[17.02.2025 11:50:05]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:05]Error>DB>reformat number of digits
+[17.02.2025 11:50:09]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:09]Error>DB>reformat number of digits
+[17.02.2025 11:50:13]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:13]Error>DB>reformat number of digits
+[17.02.2025 11:50:18]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:18]Error>DB>reformat number of digits
+[17.02.2025 11:50:20]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:20]Error>DB>reformat number of digits
+[17.02.2025 11:50:21]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:21]Error>DB>reformat number of digits
+[17.02.2025 11:50:25]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:25]Error>DB>reformat number of digits
+[17.02.2025 11:50:27]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:27]Error>DB>reformat number of digits
+[17.02.2025 11:50:30]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:30]Error>DB>reformat number of digits
+[17.02.2025 11:50:35]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:35]Error>DB>reformat number of digits
+[17.02.2025 11:50:45]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:45]Error>DB>reformat number of digits
+[17.02.2025 11:50:46]Error>DB>Run DoSampleInfo
+[17.02.2025 11:50:46]Error>DB>reformat number of digits
+[17.02.2025 12:06:29]Information>Closeup>SAMS closed by user.
+[17.02.2025 13:27:27]Information>Startup>starting Application
+[17.02.2025 13:27:27]Information>Startup>DB - Param count = 3
+[17.02.2025 13:27:27]Information>Startup>DB - ODBC-DataSource= db_dmams
+[17.02.2025 13:27:27]Information>Startup>DB - UserID= mams
+[17.02.2025 13:27:27]Information>Startup>DB - Connection Password is given
+[17.02.2025 13:27:27]Information>Startup>connecting to DB at startup
+[17.02.2025 13:27:27]Information>Startup>Connected to DB.
+[17.02.2025 13:27:47]Error>DB>Run DoSampleInfo
+[17.02.2025 13:27:47]Error>DB>reformat number of digits
+[17.02.2025 13:27:56]Error>DB>Run DoSampleInfo
+[17.02.2025 13:27:56]Error>DB>reformat number of digits
+[17.02.2025 13:27:56]Error>DB>Run DoSampleInfo
+[17.02.2025 13:27:56]Error>DB>reformat number of digits
+[17.02.2025 13:28:39]Error>DB>Run DoSampleInfo
+[17.02.2025 13:28:39]Error>DB>reformat number of digits
+[17.02.2025 13:29:50]Error>DB>Run DoSampleInfo
+[17.02.2025 13:29:50]Error>DB>reformat number of digits
+[17.02.2025 13:34:42]Information>Closeup>SAMS closed by user.
+[17.02.2025 18:07:46]Information>Startup>starting Application
+[17.02.2025 18:07:46]Information>Startup>DB - Param count = 3
+[17.02.2025 18:07:46]Information>Startup>DB - ODBC-DataSource= db_dmams
+[17.02.2025 18:07:46]Information>Startup>DB - UserID= mams
+[17.02.2025 18:07:46]Information>Startup>DB - Connection Password is given
+[17.02.2025 18:07:46]Information>Startup>connecting to DB at startup
+[17.02.2025 18:07:46]Information>Startup>Connected to DB.
+[17.02.2025 18:08:51]Information>Startup>starting Application
+[17.02.2025 18:08:51]Information>Startup>DB - Param count = 3
+[17.02.2025 18:08:51]Information>Startup>DB - ODBC-DataSource= db_dmams
+[17.02.2025 18:08:51]Information>Startup>DB - UserID= mams
+[17.02.2025 18:08:52]Information>Startup>DB - Connection Password is given
+[17.02.2025 18:08:52]Information>Startup>connecting to DB at startup
+[17.02.2025 18:08:52]Information>Startup>Connected to DB.
+[17.02.2025 18:09:35]Information>Startup>starting Application
+[17.02.2025 18:09:35]Information>Startup>DB - Param count = 3
+[17.02.2025 18:09:35]Information>Startup>DB - ODBC-DataSource= db_dmams
+[17.02.2025 18:09:35]Information>Startup>DB - UserID= mams
+[17.02.2025 18:09:35]Information>Startup>DB - Connection Password is given
+[17.02.2025 18:09:35]Information>Startup>connecting to DB at startup
+[17.02.2025 18:09:35]Information>Startup>Connected to DB.
+[18.02.2025 15:12:04]Information>Startup>starting Application
+[18.02.2025 15:12:04]Information>Startup>DB - Param count = 3
+[18.02.2025 15:12:04]Information>Startup>DB - ODBC-DataSource= db_dmams
+[18.02.2025 15:12:04]Information>Startup>DB - UserID= mams
+[18.02.2025 15:12:04]Information>Startup>DB - Connection Password is given
+[18.02.2025 15:12:04]Information>Startup>connecting to DB at startup
+[18.02.2025 15:12:04]Information>Startup>Connected to DB.
+[18.02.2025 15:12:09]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 15:12:10]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 15:12:10]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 15:12:10]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 15:12:11]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 15:12:11]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 15:12:11]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 15:12:13]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10181";
+[18.02.2025 15:12:16]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryProject: Dataset not in edit or insert mode
+[18.02.2025 15:12:22]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 0156D5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
+[18.02.2025 15:12:25]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10181";
+[18.02.2025 15:12:31]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryProject: Dataset not in edit or insert mode
+[18.02.2025 15:12:40]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 0156D5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
+[18.02.2025 15:12:43]Error>DB>Run DoSampleInfo
+[18.02.2025 15:12:43]Error>DB>reformat number of digits
+[18.02.2025 15:12:51]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 15:12:52]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 15:12:52]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 15:12:52]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 15:12:52]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 15:12:52]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 15:12:53]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 15:12:53]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 15:12:59]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10289";
+[18.02.2025 15:23:04]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 15:23:05]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 15:23:05]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 15:23:05]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 15:23:06]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 15:23:06]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 15:23:06]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 15:23:13]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10294";
+[18.02.2025 15:23:17]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:17]Error>DB>reformat number of digits
+[18.02.2025 15:23:20]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:20]Error>DB>reformat number of digits
+[18.02.2025 15:23:21]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:21]Error>DB>reformat number of digits
+[18.02.2025 15:23:38]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:38]Error>DB>reformat number of digits
+[18.02.2025 15:23:39]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:39]Error>DB>reformat number of digits
+[18.02.2025 15:23:44]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:44]Error>DB>reformat number of digits
+[18.02.2025 15:23:48]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:48]Error>DB>reformat number of digits
+[18.02.2025 15:23:49]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:49]Error>DB>reformat number of digits
+[18.02.2025 15:23:52]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:52]Error>DB>reformat number of digits
+[18.02.2025 15:23:54]Error>DB>Run DoSampleInfo
+[18.02.2025 15:23:55]Error>DB>reformat number of digits
+[18.02.2025 15:24:08]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:08]Error>DB>reformat number of digits
+[18.02.2025 15:24:09]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:09]Error>DB>reformat number of digits
+[18.02.2025 15:24:20]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:21]Error>DB>reformat number of digits
+[18.02.2025 15:24:24]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:24]Error>DB>reformat number of digits
+[18.02.2025 15:24:28]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:28]Error>DB>reformat number of digits
+[18.02.2025 15:24:29]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:29]Error>DB>reformat number of digits
+[18.02.2025 15:24:30]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:30]Error>DB>reformat number of digits
+[18.02.2025 15:24:31]Error>DB>Run DoSampleInfo
+[18.02.2025 15:24:31]Error>DB>reformat number of digits
+[18.02.2025 15:34:43]Error>DB>Run DoSampleInfo
+[18.02.2025 15:34:43]Error>DB>reformat number of digits
+[18.02.2025 15:34:44]Error>DB>Run DoSampleInfo
+[18.02.2025 15:34:44]Error>DB>reformat number of digits
+[18.02.2025 15:36:34]Error>DB>Run DoSampleInfo
+[18.02.2025 15:36:34]Error>DB>reformat number of digits
+[18.02.2025 15:36:35]Error>DB>Run DoSampleInfo
+[18.02.2025 15:36:35]Error>DB>reformat number of digits
+[18.02.2025 15:38:27]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 15:38:28]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 15:38:28]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 15:38:28]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 15:38:29]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 15:38:29]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 15:38:30]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 15:38:30]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 15:38:44]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10772";
+[18.02.2025 15:38:56]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=3052 ORDER BY in_date DESC;
+[18.02.2025 15:43:06]Error>DB>Run DoSampleInfo
+[18.02.2025 15:43:06]Error>DB>reformat number of digits
+[18.02.2025 15:45:42]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 15:45:43]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 15:45:43]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 15:45:43]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 15:45:44]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 15:45:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 15:45:44]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 15:45:54]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10766";
+[18.02.2025 15:46:00]Error>DB>Run DoSampleInfo
+[18.02.2025 15:46:00]Error>DB>reformat number of digits
+[18.02.2025 15:46:26]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10572";
+[18.02.2025 15:46:31]Error>DB>Run DoSampleInfo
+[18.02.2025 15:46:31]Error>DB>reformat number of digits
+[18.02.2025 15:46:41]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10568";
+[18.02.2025 15:46:43]Error>DB>Run DoSampleInfo
+[18.02.2025 15:46:43]Error>DB>reformat number of digits
+[18.02.2025 15:46:48]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10718";
+[18.02.2025 15:47:08]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2598 ORDER BY in_date DESC;
+[18.02.2025 18:00:37]Information>Startup>starting Application
+[18.02.2025 18:00:37]Information>Startup>DB - Param count = 3
+[18.02.2025 18:00:37]Information>Startup>DB - ODBC-DataSource= db_dmams
+[18.02.2025 18:00:37]Information>Startup>DB - UserID= mams
+[18.02.2025 18:00:37]Information>Startup>DB - Connection Password is given
+[18.02.2025 18:00:37]Information>Startup>connecting to DB at startup
+[18.02.2025 18:00:37]Information>Startup>Connected to DB.
+[18.02.2025 18:00:41]Error>DB>Run DoSampleInfo
+[18.02.2025 18:00:41]Error>DB>reformat number of digits
+[18.02.2025 18:00:41]Error>DB>Run DoSampleInfo
+[18.02.2025 18:00:41]Error>DB>reformat number of digits
+[18.02.2025 18:00:44]Error>DB>Run DoSampleInfo
+[18.02.2025 18:00:44]Error>DB>Run DoSampleInfo
+[18.02.2025 18:00:44]Error>DB>reformat number of digits
+[18.02.2025 18:00:44]Error>DB>reformat number of digits
+[18.02.2025 18:00:47]Error>DB>Run DoSampleInfo
+[18.02.2025 18:00:47]Error>DB>reformat number of digits
+[18.02.2025 18:01:32]Error>DB>Run DoSampleInfo
+[18.02.2025 18:01:32]Error>DB>reformat number of digits
+[18.02.2025 18:01:47]Error>DB>Run DoSampleInfo
+[18.02.2025 18:01:47]Error>DB>reformat number of digits
+[18.02.2025 18:01:49]Error>DB>Run DoSampleInfo
+[18.02.2025 18:01:49]Error>DB>reformat number of digits
+[18.02.2025 18:01:50]Error>DB>Run DoSampleInfo
+[18.02.2025 18:01:50]Error>DB>reformat number of digits
+[18.02.2025 18:01:53]Error>DB>Run DoSampleInfo
+[18.02.2025 18:01:53]Error>DB>reformat number of digits
+[18.02.2025 18:01:54]Error>DB>Run DoSampleInfo
+[18.02.2025 18:01:55]Error>DB>reformat number of digits
+[18.02.2025 18:02:00]Error>DB>Run DoSampleInfo
+[18.02.2025 18:02:00]Error>DB>reformat number of digits
+[18.02.2025 18:03:25]Error>DB>Run DoSampleInfo
+[18.02.2025 18:03:25]Error>DB>reformat number of digits
+[18.02.2025 18:05:23]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10466";
+[18.02.2025 18:07:22]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 18:07:23]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 18:07:23]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 18:07:23]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 18:07:24]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 18:07:24]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 18:07:24]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 18:07:37]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10655";
+[18.02.2025 18:07:47]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10772";
+[18.02.2025 18:07:51]Error>DB>Run DoSampleInfo
+[18.02.2025 18:07:51]Error>DB>reformat number of digits
+[18.02.2025 18:07:57]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 18:07:58]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 18:07:58]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 18:07:58]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 18:07:59]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 18:07:59]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 18:07:59]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 18:08:07]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10603";
+[18.02.2025 18:08:10]Error>DB>Run DoSampleInfo
+[18.02.2025 18:08:10]Error>DB>reformat number of digits
+[18.02.2025 18:08:21]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10409";
+[18.02.2025 18:08:26]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10415";
+[18.02.2025 18:08:30]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryProject: Dataset not in edit or insert mode
+[18.02.2025 18:08:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 0156D5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
+[18.02.2025 18:08:34]Error>DB>Run DoSampleInfo
+[18.02.2025 18:08:34]Error>DB>reformat number of digits
+[18.02.2025 18:08:42]Information>Pending Reports>Query DB for pending reports...
+[18.02.2025 18:08:43]Information>Pending Reports>Query DB for pending reports... finished
+[18.02.2025 18:08:43]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[18.02.2025 18:08:43]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[18.02.2025 18:08:44]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[18.02.2025 18:08:44]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[18.02.2025 18:08:44]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[18.02.2025 18:08:48]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10509";
+[18.02.2025 18:08:53]Error>DB>Run DoSampleInfo
+[18.02.2025 18:08:53]Error>DB>reformat number of digits
+[18.02.2025 18:09:03]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10568";
+[18.02.2025 18:09:10]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10572";
+[18.02.2025 18:09:21]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[18.02.2025 18:09:27]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10409";
+[18.02.2025 18:09:33]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10509";
+[18.02.2025 18:09:36]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10569";
+[18.02.2025 18:09:49]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10802";
+[18.02.2025 18:09:55]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10570";
+[18.02.2025 18:10:05]Error>DB>Run DoSampleInfo
+[18.02.2025 18:10:05]Error>DB>reformat number of digits
+[18.02.2025 18:10:09]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10571";
+[18.02.2025 18:10:15]Error>DB>Run DoSampleInfo
+[18.02.2025 18:10:15]Error>DB>reformat number of digits
+[18.02.2025 18:10:19]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10422";
+[18.02.2025 18:10:26]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10426";
+[18.02.2025 18:10:34]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10769";
+[18.02.2025 18:10:38]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10460";
+[18.02.2025 18:10:41]Error>DB>Run DoSampleInfo
+[18.02.2025 18:10:42]Error>DB>reformat number of digits
+[18.02.2025 18:10:48]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10461";
+[18.02.2025 18:10:58]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10808";
+[18.02.2025 18:11:18]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10520";
+[18.02.2025 18:11:48]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10509";
+[18.02.2025 18:12:01]Error>DB>Run DoSampleInfo
+[18.02.2025 18:12:01]Error>DB>reformat number of digits
+[18.02.2025 18:12:03]Error>DB>Run DoSampleInfo
+[18.02.2025 18:12:03]Error>DB>reformat number of digits
+[18.02.2025 18:12:17]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10655";
+[18.02.2025 18:12:23]Error>DB>Run DoSampleInfo
+[18.02.2025 18:12:23]Error>DB>Run DoSampleInfo
+[18.02.2025 18:12:23]Error>DB>reformat number of digits
+[18.02.2025 18:12:23]Error>DB>reformat number of digits
+[18.02.2025 18:12:59]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9275";
+[18.02.2025 18:13:02]Error>DB>Run DoSampleInfo
+[18.02.2025 18:13:02]Error>DB>reformat number of digits
+[18.02.2025 18:13:03]Error>DB>Run DoSampleInfo
+[18.02.2025 18:13:03]Error>DB>reformat number of digits
+[18.02.2025 18:13:20]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9275";
+[18.02.2025 18:13:22]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2842 ORDER BY in_date DESC;
+[24.02.2025 10:09:10]Information>Startup>starting Application
+[24.02.2025 10:09:10]Information>Startup>DB - Param count = 3
+[24.02.2025 10:09:10]Information>Startup>DB - ODBC-DataSource= db_dmams
+[24.02.2025 10:09:10]Information>Startup>DB - UserID= mams
+[24.02.2025 10:09:10]Information>Startup>DB - Connection Password is given
+[24.02.2025 10:09:10]Information>Startup>connecting to DB at startup
+[24.02.2025 10:09:10]Information>Startup>Connected to DB.
+[24.02.2025 10:09:13]Error>DB>Run DoSampleInfo
+[24.02.2025 10:09:13]Error>DB>reformat number of digits
+[24.02.2025 10:09:13]Error>DB>Run DoSampleInfo
+[24.02.2025 10:09:13]Error>DB>reformat number of digits
+[24.02.2025 10:09:17]Error>DB>Run DoSampleInfo
+[24.02.2025 10:09:17]Error>DB>reformat number of digits
+[24.02.2025 10:09:17]Error>DB>Run DoSampleInfo
+[24.02.2025 10:09:17]Error>DB>reformat number of digits
+[24.02.2025 10:11:00]Error>DB>Run DoSampleInfo
+[24.02.2025 10:11:00]Error>DB>reformat number of digits
+[24.02.2025 10:11:11]Error>DB>Run DoSampleInfo
+[24.02.2025 10:11:11]Error>DB>reformat number of digits
+[24.02.2025 10:12:49]Error>DB>Run DoSampleInfo
+[24.02.2025 10:12:49]Error>DB>reformat number of digits
+[24.02.2025 10:13:55]Error>DB>Run DoSampleInfo
+[24.02.2025 10:13:55]Error>DB>reformat number of digits
+[24.02.2025 10:27:35]Error>DB>Run DoSampleInfo
+[24.02.2025 10:27:35]Error>DB>Run DoSampleInfo
+[24.02.2025 10:27:35]Error>DB>reformat number of digits
+[24.02.2025 10:27:36]Error>DB>reformat number of digits
+[24.02.2025 10:27:36]Error>DB>Run DoSampleInfo
+[24.02.2025 10:27:36]Error>DB>reformat number of digits
+[24.02.2025 10:27:40]Error>DB>Run DoSampleInfo
+[24.02.2025 10:27:40]Error>DB>reformat number of digits
+[24.02.2025 10:27:59]Error>DB>Run DoSampleInfo
+[24.02.2025 10:27:59]Error>DB>reformat number of digits
+[24.02.2025 10:28:00]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:00]Error>DB>reformat number of digits
+[24.02.2025 10:28:03]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:04]Error>DB>reformat number of digits
+[24.02.2025 10:28:04]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:04]Error>DB>reformat number of digits
+[24.02.2025 10:28:04]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:05]Error>DB>reformat number of digits
+[24.02.2025 10:28:05]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:05]Error>DB>reformat number of digits
+[24.02.2025 10:28:06]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:06]Error>DB>reformat number of digits
+[24.02.2025 10:28:06]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:06]Error>DB>reformat number of digits
+[24.02.2025 10:28:10]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:10]Error>DB>reformat number of digits
+[24.02.2025 10:28:18]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:18]Error>DB>reformat number of digits
+[24.02.2025 10:28:22]Error>DB>Run DoSampleInfo
+[24.02.2025 10:28:22]Error>DB>reformat number of digits
+[24.02.2025 10:48:12]Information>Pending Reports>Query DB for pending reports...
+[24.02.2025 10:48:13]Information>Pending Reports>Query DB for pending reports... finished
+[24.02.2025 10:48:13]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[24.02.2025 10:48:13]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[24.02.2025 10:48:14]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[24.02.2025 10:48:14]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[24.02.2025 10:48:14]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[24.02.2025 10:48:21]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10290";
+[24.02.2025 10:48:25]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: qryProject: Dataset not in edit or insert mode
+[24.02.2025 10:48:29]Error>Exception>UnitName: System.SysUtils -- ClassName: EAccessViolation -- StackTrace:  -- Message: Access violation at address 0156D5EF in module 'SAMS_v1.exe' (offset 70D5EF). Write of address 00000018
+[24.02.2025 10:48:33]Error>DB>Run DoSampleInfo
+[24.02.2025 10:48:34]Error>DB>reformat number of digits
+[24.02.2025 10:48:48]Information>Pending Reports>Query DB for pending reports...
+[24.02.2025 10:48:49]Information>Pending Reports>Query DB for pending reports... finished
+[24.02.2025 10:48:49]Information>Pending Reports>Query DB for pending reports... 14 columns to display in grid
+[24.02.2025 10:48:49]Information>Pending Reports>Query DB for pending reports... setting column widths manually
+[24.02.2025 10:48:50]Information>Pending Reports>Query DB for pending reports... setting column widths automatically
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 0
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 1
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 2
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 3
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 4
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 5
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 6
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 7
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 8
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 9
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 10
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 11
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 12
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: find total width, operate on column: 13
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 0
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 1
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 2
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 3
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 4
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 5
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 6
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 7
+[24.02.2025 10:48:50]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 8
+[24.02.2025 10:48:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 9
+[24.02.2025 10:48:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 10
+[24.02.2025 10:48:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 11
+[24.02.2025 10:48:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 12
+[24.02.2025 10:48:51]Information>FixDBGridColumnsWidth>FixDBGridColumnsWidth: resize, operate on column: 13
+[24.02.2025 10:48:51]Information>Pending Reports>Query DB for pending reports... setting column widths automatically done!
+[24.02.2025 10:49:14]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10300";
+[24.02.2025 10:49:28]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10301";
+[24.02.2025 10:49:40]Error>DB>Run DoSampleInfo
+[24.02.2025 10:49:40]Error>DB>reformat number of digits
+[24.02.2025 10:50:46]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10409";
+[24.02.2025 10:50:59]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10875";
+[24.02.2025 10:51:04]Error>DB>Run DoSampleInfo
+[24.02.2025 10:51:04]Error>DB>reformat number of digits
+[24.02.2025 10:51:35]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10509";
+[24.02.2025 10:52:49]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10717";
+[24.02.2025 10:53:16]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10863";
+[24.02.2025 10:53:19]Error>DB>Run DoSampleInfo
+[24.02.2025 10:53:19]Error>DB>reformat number of digits
+[24.02.2025 10:53:55]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10517";
+[24.02.2025 10:53:58]Error>DB>Run DoSampleInfo
+[24.02.2025 10:53:58]Error>DB>reformat number of digits
+[24.02.2025 10:54:03]Error>DB>Run DoSampleInfo
+[24.02.2025 10:54:03]Error>DB>reformat number of digits
+[24.02.2025 10:54:07]Error>DB>Run DoSampleInfo
+[24.02.2025 10:54:07]Error>DB>reformat number of digits
+[24.02.2025 10:54:26]Information>SQLQuery>UPDATE preparation_t SET prep_comment=:PrepMemo  WHERE sample_nr=74991 AND prep_nr=1;
+[24.02.2025 10:54:29]Error>DB>Run DoSampleInfo
+[24.02.2025 10:54:29]Error>DB>reformat number of digits
+[24.02.2025 10:54:38]Information>SQLQuery>UPDATE preparation_t SET prep_comment=:PrepMemo  WHERE sample_nr=74992 AND prep_nr=1;
+[24.02.2025 10:54:42]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10517";
+[24.02.2025 10:56:22]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:22]Error>DB>reformat number of digits
+[24.02.2025 10:56:28]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:28]Error>DB>reformat number of digits
+[24.02.2025 10:56:29]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:29]Error>DB>reformat number of digits
+[24.02.2025 10:56:32]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:32]Error>DB>reformat number of digits
+[24.02.2025 10:56:33]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:33]Error>DB>reformat number of digits
+[24.02.2025 10:56:37]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:37]Error>DB>reformat number of digits
+[24.02.2025 10:56:39]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:39]Error>DB>reformat number of digits
+[24.02.2025 10:56:40]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:40]Error>DB>reformat number of digits
+[24.02.2025 10:56:40]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:41]Error>DB>reformat number of digits
+[24.02.2025 10:56:41]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:41]Error>DB>reformat number of digits
+[24.02.2025 10:56:42]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:42]Error>DB>reformat number of digits
+[24.02.2025 10:56:42]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:42]Error>DB>reformat number of digits
+[24.02.2025 10:56:43]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:43]Error>DB>reformat number of digits
+[24.02.2025 10:56:44]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:44]Error>DB>reformat number of digits
+[24.02.2025 10:56:44]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:44]Error>DB>reformat number of digits
+[24.02.2025 10:56:45]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:45]Error>DB>reformat number of digits
+[24.02.2025 10:56:45]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:46]Error>DB>reformat number of digits
+[24.02.2025 10:56:46]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:46]Error>DB>reformat number of digits
+[24.02.2025 10:56:47]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:47]Error>DB>reformat number of digits
+[24.02.2025 10:56:52]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:52]Error>DB>reformat number of digits
+[24.02.2025 10:56:55]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:55]Error>DB>reformat number of digits
+[24.02.2025 10:56:57]Error>DB>Run DoSampleInfo
+[24.02.2025 10:56:57]Error>DB>reformat number of digits
+[24.02.2025 10:57:02]Information>SQLQuery>UPDATE preparation_t SET prep_comment=:PrepMemo  WHERE sample_nr=48568 AND prep_nr=13;
+[24.02.2025 10:57:04]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:04]Error>DB>reformat number of digits
+[24.02.2025 10:57:07]Information>SQLQuery>UPDATE preparation_t SET prep_comment=:PrepMemo  WHERE sample_nr=48568 AND prep_nr=14;
+[24.02.2025 10:57:10]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:10]Error>DB>reformat number of digits
+[24.02.2025 10:57:15]Information>SQLQuery>UPDATE preparation_t SET prep_comment=:PrepMemo  WHERE sample_nr=48568 AND prep_nr=15;
+[24.02.2025 10:57:16]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:16]Error>DB>reformat number of digits
+[24.02.2025 10:57:17]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:17]Error>DB>reformat number of digits
+[24.02.2025 10:57:18]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:18]Error>DB>reformat number of digits
+[24.02.2025 10:57:18]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:18]Error>DB>reformat number of digits
+[24.02.2025 10:57:18]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:18]Error>DB>reformat number of digits
+[24.02.2025 10:57:43]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:43]Error>DB>reformat number of digits
+[24.02.2025 10:57:46]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:46]Error>DB>reformat number of digits
+[24.02.2025 10:57:55]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:55]Error>DB>reformat number of digits
+[24.02.2025 10:57:55]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:55]Error>DB>reformat number of digits
+[24.02.2025 10:57:56]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:56]Error>DB>reformat number of digits
+[24.02.2025 10:57:56]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:57]Error>DB>reformat number of digits
+[24.02.2025 10:57:59]Error>DB>Run DoSampleInfo
+[24.02.2025 10:57:59]Error>DB>reformat number of digits
+[24.02.2025 10:58:12]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:12]Error>DB>reformat number of digits
+[24.02.2025 10:58:15]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:16]Error>DB>reformat number of digits
+[24.02.2025 10:58:18]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:18]Error>DB>reformat number of digits
+[24.02.2025 10:58:19]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:19]Error>DB>reformat number of digits
+[24.02.2025 10:58:20]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:20]Error>DB>reformat number of digits
+[24.02.2025 10:58:20]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:20]Error>DB>reformat number of digits
+[24.02.2025 10:58:20]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:20]Error>DB>reformat number of digits
+[24.02.2025 10:58:29]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:29]Error>DB>reformat number of digits
+[24.02.2025 10:58:29]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:29]Error>DB>reformat number of digits
+[24.02.2025 10:58:41]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:41]Error>DB>reformat number of digits
+[24.02.2025 10:58:45]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:45]Error>DB>reformat number of digits
+[24.02.2025 10:58:50]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:50]Error>DB>reformat number of digits
+[24.02.2025 10:58:52]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:52]Error>DB>reformat number of digits
+[24.02.2025 10:58:54]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:54]Error>DB>reformat number of digits
+[24.02.2025 10:58:55]Error>DB>Run DoSampleInfo
+[24.02.2025 10:58:55]Error>DB>reformat number of digits
+[24.02.2025 21:15:44]Information>Closeup>SAMS closed by user.
+[25.02.2025 12:15:48]Information>Startup>starting Application
+[25.02.2025 12:15:48]Information>Startup>DB - Param count = 3
+[25.02.2025 12:15:48]Information>Startup>DB - ODBC-DataSource= db_dmams
+[25.02.2025 12:15:48]Information>Startup>DB - UserID= mams
+[25.02.2025 12:15:48]Information>Startup>DB - Connection Password is given
+[25.02.2025 12:15:48]Information>Startup>connecting to DB at startup
+[25.02.2025 12:15:48]Information>Startup>Connected to DB.
+[25.02.2025 12:16:01]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10879";
+[25.02.2025 12:16:04]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10657";
+[25.02.2025 12:16:05]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10521";
+[25.02.2025 12:16:07]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10368";
+[25.02.2025 12:16:16]Error>DB>Run DoSampleInfo
+[25.02.2025 12:16:16]Error>DB>reformat number of digits
+[25.02.2025 12:17:42]Error>DB>Run DoSampleInfo
+[25.02.2025 12:17:42]Error>DB>reformat number of digits
+[25.02.2025 12:17:50]Error>DB>Run DoSampleInfo
+[25.02.2025 12:17:50]Error>DB>reformat number of digits
+[25.02.2025 12:18:02]Error>DB>Run DoSampleInfo
+[25.02.2025 12:18:02]Error>DB>reformat number of digits
+[25.02.2025 12:18:05]Error>DB>Run DoSampleInfo
+[25.02.2025 12:18:06]Error>DB>reformat number of digits
+[25.02.2025 12:19:13]Error>DB>Run DoSampleInfo
+[25.02.2025 12:19:14]Error>DB>reformat number of digits
+[25.02.2025 12:19:25]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10296";
+[25.02.2025 12:19:28]Error>DB>Run DoSampleInfo
+[25.02.2025 12:19:28]Error>DB>reformat number of digits
+[25.02.2025 12:19:35]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10101";
+[25.02.2025 12:19:37]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9773";
+[25.02.2025 12:19:38]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9843";
+[25.02.2025 12:19:40]Error>DB>Run DoSampleInfo
+[25.02.2025 12:19:40]Error>DB>reformat number of digits
+[25.02.2025 12:20:12]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10879";
+[25.02.2025 12:20:15]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10879";
+[25.02.2025 12:20:16]Error>DB>Run DoSampleInfo
+[25.02.2025 12:20:16]Error>DB>reformat number of digits
+[25.02.2025 12:20:59]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10657";
+[25.02.2025 12:21:01]Error>DB>Run DoSampleInfo
+[25.02.2025 12:21:01]Error>DB>reformat number of digits
+[25.02.2025 12:21:05]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10521";
+[25.02.2025 12:21:07]Error>DB>Run DoSampleInfo
+[25.02.2025 12:21:07]Error>DB>reformat number of digits
+[25.02.2025 12:21:16]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10368";
+[25.02.2025 12:21:18]Error>DB>Run DoSampleInfo
+[25.02.2025 12:21:18]Error>DB>reformat number of digits
+[25.02.2025 12:21:32]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10879";
+[25.02.2025 12:21:33]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10879";
+[25.02.2025 12:21:34]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10879";
+[25.02.2025 12:21:37]Error>DB>Run DoSampleInfo
+[25.02.2025 12:21:37]Error>DB>reformat number of digits
+[25.02.2025 12:21:41]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10657";
+[25.02.2025 12:21:43]Error>DB>Run DoSampleInfo
+[25.02.2025 12:21:43]Error>DB>reformat number of digits
+[25.02.2025 12:21:47]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10521";
+[25.02.2025 12:21:50]Error>DB>Run DoSampleInfo
+[25.02.2025 12:21:50]Error>DB>reformat number of digits
+[25.02.2025 12:22:01]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10368";
+[25.02.2025 12:22:04]Error>DB>Run DoSampleInfo
+[25.02.2025 12:22:04]Error>DB>reformat number of digits
+[25.02.2025 12:22:06]Error>DB>Run DoSampleInfo
+[25.02.2025 12:22:06]Error>DB>reformat number of digits
+[25.02.2025 12:22:55]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10296";
+[25.02.2025 12:22:57]Error>DB>Run DoSampleInfo
+[25.02.2025 12:22:57]Error>DB>reformat number of digits
+[25.02.2025 12:23:13]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10101";
+[25.02.2025 12:23:15]Error>DB>Run DoSampleInfo
+[25.02.2025 12:23:15]Error>DB>reformat number of digits
+[25.02.2025 12:23:18]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10368";
+[25.02.2025 12:23:21]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10521";
+[25.02.2025 12:23:22]Error>DB>Run DoSampleInfo
+[25.02.2025 12:23:23]Error>DB>reformat number of digits
+[25.02.2025 12:24:17]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10296";
+[25.02.2025 12:24:19]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10101";
+[25.02.2025 12:24:20]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9843";
+[25.02.2025 12:24:23]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9773";
+[25.02.2025 12:24:25]Error>DB>Run DoSampleInfo
+[25.02.2025 12:24:25]Error>DB>reformat number of digits
+[25.02.2025 12:24:28]Error>DB>Run DoSampleInfo
+[25.02.2025 12:24:28]Error>DB>reformat number of digits
+[25.02.2025 12:24:48]Error>DB>Run DoSampleInfo
+[25.02.2025 12:24:48]Error>DB>reformat number of digits
+[25.02.2025 12:24:54]Error>DB>Run DoSampleInfo
+[25.02.2025 12:24:54]Error>DB>reformat number of digits
+[25.02.2025 12:32:26]Error>DB>Run DoSampleInfo
+[25.02.2025 12:32:26]Error>DB>reformat number of digits
+[25.02.2025 12:32:29]Error>DB>Run DoSampleInfo
+[25.02.2025 12:32:29]Error>DB>reformat number of digits
+[25.02.2025 12:32:30]Error>DB>Run DoSampleInfo
+[25.02.2025 12:32:31]Error>DB>reformat number of digits
+[25.02.2025 12:32:34]Error>DB>Run DoSampleInfo
+[25.02.2025 12:32:34]Error>DB>reformat number of digits
+[25.02.2025 12:32:36]Error>DB>Run DoSampleInfo
+[25.02.2025 12:32:37]Error>DB>reformat number of digits
+[25.02.2025 12:32:51]Error>DB>Run DoSampleInfo
+[25.02.2025 12:32:51]Error>DB>reformat number of digits
+[25.02.2025 12:35:37]Information>Closeup>SAMS closed by user.
+[25.02.2025 13:35:17]Information>Startup>starting Application
+[25.02.2025 13:35:17]Information>Startup>DB - Param count = 3
+[25.02.2025 13:35:17]Information>Startup>DB - ODBC-DataSource= db_dmams
+[25.02.2025 13:35:17]Information>Startup>DB - UserID= mams
+[25.02.2025 13:35:17]Information>Startup>DB - Connection Password is given
+[25.02.2025 13:35:17]Information>Startup>connecting to DB at startup
+[25.02.2025 13:35:17]Information>Startup>Connected to DB.
+[25.02.2025 13:35:21]Error>DB>Run DoSampleInfo
+[25.02.2025 13:35:21]Error>DB>reformat number of digits
+[25.02.2025 13:35:40]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10678";
+[25.02.2025 13:35:43]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2812 ORDER BY in_date DESC;
+[25.02.2025 13:35:51]Information>SQLQuery>SELECT first_name, last_name, organisation, institute, address_1, address_2, town, postcode, country, email FROM user_t WHERE user_nr=2812;
+[25.02.2025 13:36:16]Information>Closeup>SAMS closed by user.
+[25.02.2025 13:38:52]Information>Startup>starting Application
+[25.02.2025 13:38:52]Information>Startup>DB - Param count = 3
+[25.02.2025 13:38:52]Information>Startup>DB - ODBC-DataSource= db_dmams
+[25.02.2025 13:38:52]Information>Startup>DB - UserID= mams
+[25.02.2025 13:38:52]Information>Startup>DB - Connection Password is given
+[25.02.2025 13:38:52]Information>Startup>connecting to DB at startup
+[25.02.2025 13:38:52]Information>Startup>Connected to DB.
+[25.02.2025 13:38:57]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[25.02.2025 13:40:16]Information>Closeup>SAMS closed by user.
+[25.02.2025 13:40:31]Information>Startup>starting Application
+[25.02.2025 13:40:31]Information>Startup>DB - Param count = 3
+[25.02.2025 13:40:31]Information>Startup>DB - ODBC-DataSource= db_dmams
+[25.02.2025 13:40:31]Information>Startup>DB - UserID= mams
+[25.02.2025 13:40:31]Information>Startup>DB - Connection Password is given
+[25.02.2025 13:40:31]Information>Startup>connecting to DB at startup
+[25.02.2025 13:40:31]Information>Startup>Connected to DB.
+[25.02.2025 13:40:34]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+
+[25.02.2025 13:40:47]Error>DB>Run DoSampleInfo
+[25.02.2025 13:40:47]Error>DB>reformat number of digits
+[25.02.2025 13:40:55]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="10678";
+
+[25.02.2025 13:40:57]Information>SQLQuery>SELECT project_nr, project, in_date FROM project_t WHERE user_nr=2812 ORDER BY in_date DESC;
+
+[25.02.2025 13:40:58]Information>SQLQuery>SELECT first_name, last_name, organisation, institute, address_1, address_2, town, postcode, country, email FROM user_t WHERE user_nr=2812;
+
+[25.02.2025 13:43:09]Information>Closeup>SAMS closed by user.

@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils;
 
 const
-  myVersion = '1.9.9 Built: Feb-10-2025';
+  myVersion = '1.9.9 Built: Feb-25-2025';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -7848,25 +7848,25 @@ begin
     begin
       Name := grdReportHeadings.cells[2, 2];
       DataType := ftString;
-      Size := 40;
+      Size := 100;
     end;
     with AddFieldDef do
     begin
       Name := grdReportHeadings.cells[2, 3];
       DataType := ftString;
-      Size := 40;
+      Size := 60;
     end;
     with AddFieldDef do
     begin
       Name := grdReportHeadings.cells[2, 4];
       DataType := ftString;
-      Size := 40;
+      Size := 60;
     end;
     with AddFieldDef do
     begin
       Name := grdReportHeadings.cells[2, 5];
       DataType := ftString;
-      Size := 40;
+      Size := 60;
     end;
     with AddFieldDef do
     begin
