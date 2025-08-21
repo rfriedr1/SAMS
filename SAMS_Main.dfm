@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = DBGrid1
+  ActiveControl = DBMemo_LabComment
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1556
@@ -302,7 +302,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1556
     Height = 873
-    ActivePage = tbsOptions
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -316,7 +316,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1548
         Height = 843
-        ActivePage = wizStartPage
+        ActivePage = wizSelectType
         ButtonBarHeight = 52
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -860,6 +860,7 @@ object frmMAMS: TfrmMAMS
             Align = alLeft
             ColCount = 10
             DefaultRowHeight = 20
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goFixedRowDefAlign]
             TabOrder = 0
             OnDragDrop = grdPreviewSamplesDragDrop
             OnDragOver = grdPreviewSamplesDragOver
@@ -869,6 +870,7 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
+            ExplicitLeft = 1
             ColWidths = (
               64
               64
@@ -951,9 +953,9 @@ object frmMAMS: TfrmMAMS
           Caption = 'Select type'
           OnEnterPage = wizSelectTypeEnterPage
           object pnlSetType: TPanel
-            Left = 1274
+            Left = 835
             Top = 70
-            Width = 129
+            Width = 568
             Height = 721
             Align = alRight
             Caption = 'pnlSetType'
@@ -961,13 +963,15 @@ object frmMAMS: TfrmMAMS
             object lbxTypes: TListBox
               Left = 1
               Top = 1
-              Width = 127
+              Width = 566
               Height = 719
               Align = alClient
               ItemHeight = 15
               TabOrder = 0
               OnDblClick = lbxTypesDblClick
               OnMouseDown = lbxTypesMouseDown
+              ExplicitLeft = 33
+              ExplicitTop = 0
             end
           end
         end
@@ -3406,7 +3410,6 @@ object frmMAMS: TfrmMAMS
         Caption = 'Sample Identification'
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1546
         object btnIncSampleNr: TSpinButton
           Left = 190
           Top = 18
@@ -3686,7 +3689,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 3
-        ExplicitHeight = 756
         object Label103: TLabel
           Left = 11
           Top = 526
@@ -3957,7 +3959,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesGraphClick
-          ExplicitTop = 712
         end
         object btnFillDateToday: TButton
           Left = 183
@@ -4199,7 +4200,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 4
-        ExplicitHeight = 756
         object Label28: TLabel
           Left = 36
           Top = 206
@@ -4501,7 +4501,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesAdminClick
-          ExplicitTop = 712
         end
         object dbchkFreeOfCharge2: TDBCheckBox
           Left = 20
@@ -4656,7 +4655,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 5
-        ExplicitHeight = 756
         object Label2: TLabel
           Left = 50
           Top = 205
@@ -4929,6 +4927,7 @@ object frmMAMS: TfrmMAMS
           DataField = 'he_curr'
           DataSource = dm.dsSampleInfo
           TabOrder = 14
+          OnChange = DBedtHECurrentChange
         end
         object Button2: TButton
           Left = 0
@@ -4958,7 +4957,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 0
-        ExplicitHeight = 756
         object Label30: TLabel
           Left = 16
           Top = 27
@@ -5348,7 +5346,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesUserSuppliedInfoClick
-          ExplicitTop = 712
         end
         object DBMemo_LabComment: TDBMemo
           Left = 0
@@ -5426,7 +5423,6 @@ object frmMAMS: TfrmMAMS
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 2
-        ExplicitHeight = 756
         object Label102: TLabel
           Left = 6
           Top = 526
@@ -5577,7 +5573,6 @@ object frmMAMS: TfrmMAMS
           TabStop = False
           WordWrap = True
           OnClick = btnSaveChangesPrepClick
-          ExplicitTop = 712
         end
         object chkPrepDiscarded: TDBCheckBox
           Left = 118
@@ -8271,6 +8266,8 @@ object frmMAMS: TfrmMAMS
             Value = 13.995954369693560000
           end>
         TabOrder = 0
+        ExplicitWidth = 1546
+        ExplicitHeight = 782
         object gpxHomeOxasBlanks: TGroupBox
           Left = 16
           Top = 16
@@ -8295,6 +8292,8 @@ object frmMAMS: TfrmMAMS
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
+          ExplicitWidth = 494
+          ExplicitHeight = 533
           object pnlHomeNumberOfOxas: TPanel
             AlignWithMargins = True
             Left = 9
@@ -8320,6 +8319,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 476
           end
           object pnlHomeNumberOfBlanks: TPanel
             AlignWithMargins = True
@@ -8346,6 +8346,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 476
           end
           object pnlHomeNumberOfC6: TPanel
             AlignWithMargins = True
@@ -8372,6 +8373,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 2
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 476
           end
           object pnlHomeNumberOfC7: TPanel
             AlignWithMargins = True
@@ -8398,6 +8400,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 3
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 476
           end
           object pnlHomeNumberOfC8: TPanel
             AlignWithMargins = True
@@ -8424,6 +8427,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 4
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 476
           end
           object pnlHomeNumberOfPferde: TPanel
             AlignWithMargins = True
@@ -8450,6 +8454,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 5
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 476
           end
         end
         object gbxHomeProjectsDue: TGroupBox
@@ -8474,6 +8479,9 @@ object frmMAMS: TfrmMAMS
           Padding.Bottom = 5
           ParentFont = False
           TabOrder = 1
+          ExplicitLeft = 526
+          ExplicitWidth = 494
+          ExplicitHeight = 533
           object pnlHomeNumberofUnprepdSamples: TPanel
             AlignWithMargins = True
             Left = 10
@@ -8499,6 +8507,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 0
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 474
           end
           object pnlHomeNumberofReadyForGraph: TPanel
             AlignWithMargins = True
@@ -8525,6 +8534,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 1
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 474
           end
           object pnlNumberofSamplesReadyForMeas: TPanel
             AlignWithMargins = True
@@ -8551,6 +8561,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 2
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 474
           end
           object pnlHomeNumberOfSamplesInPrep: TPanel
             AlignWithMargins = True
@@ -8577,6 +8588,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 3
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 474
           end
           object pnlHomeNumberofUnprepdSamplesBone: TPanel
             AlignWithMargins = True
@@ -8603,6 +8615,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 4
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 474
           end
           object pnlHomeNumberofUnprepdSamplesTeeth: TPanel
             AlignWithMargins = True
@@ -8629,6 +8642,7 @@ object frmMAMS: TfrmMAMS
             ShowHint = True
             TabOrder = 5
             StyleElements = [seFont, seBorder]
+            ExplicitWidth = 474
           end
         end
         object gpxHomeExpress: TGroupBox
@@ -8649,6 +8663,8 @@ object frmMAMS: TfrmMAMS
           Padding.Bottom = 5
           ParentFont = False
           TabOrder = 2
+          ExplicitLeft = 1036
+          ExplicitHeight = 424
           object pnlHomeNumberofExpress: TPanel
             AlignWithMargins = True
             Left = 10

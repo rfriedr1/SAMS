@@ -41,7 +41,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.ValEdit, Math, Vcl.WinXCtrls, FormCamera, vFrames, iniFiles, Vcl.ExtDlgs,
   Vcl.Touch.Keyboard, IPPeerServer, Vcl.OleCtrls, SHDocVw,
   Datasnap.DSCommonServer, Datasnap.DSHTTP, Datasnap.DSHTTPWebBroker, JvLogFile, JvLogClasses,
-  Vcl.AppEvnts, SysUtils;
+  Vcl.AppEvnts, SysUtils, JvSplitter;
 
 const
   myVersion = '1.9.9 Built: Feb-25-2025';
@@ -1324,6 +1324,7 @@ type
     procedure JvDBDateTimePicker2Click(Sender: TObject);
     procedure JvDBDateTimePicker1Click(Sender: TObject);
     procedure JvDBDateTimePicker3Click(Sender: TObject);
+    procedure DBedtHECurrentChange(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -9593,6 +9594,12 @@ procedure TfrmMAMS.DBEditWeightMediumChange(Sender: TObject);
 begin
   WeightsChanged := true;
   CalculateNetWeightEnd;
+end;
+
+procedure TfrmMAMS.DBedtHECurrentChange(Sender: TObject);
+begin
+// change background color when value below threshold
+  //if (Sender as TDBEdit).DataSource.DataSet.FieldByName('he_curr').Value < 20 then (Sender as TDBEdit).Color := clRed;
 end;
 
 procedure TfrmMAMS.dbedtprepStorLocChange(Sender: TObject);

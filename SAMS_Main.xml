@@ -5420,6 +5420,11 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
+      <procedure name="DBedtHECurrentChange" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
       <field name="AcceptCol" type="Integer" visibility="private" size="4" offset="4492" />
       <field name="DragSource" type="TDragSource" visibility="private" size="1" offset="4496" />
       <field name="DSN" type="string" visibility="private" size="4" offset="4500" />

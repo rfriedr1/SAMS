@@ -204,6 +204,7 @@
   <contains name="JvLogForm" />
   <contains name="JvLogFile" />
   <contains name="JvLogClasses" />
+  <contains name="JvSplitter" />
   <contains name="Datasnap.Midas" />
   <contains name="JvExExtCtrls" />
   <contains name="JvNetscapeSplitter" />
