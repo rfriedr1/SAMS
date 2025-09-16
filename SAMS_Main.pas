@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils, JvSplitter;
 
 const
-  myVersion = '1.9.9 Built: Feb-25-2025';
+  myVersion = '1.9.9 Built: Sept-15-2025';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -10794,7 +10794,7 @@ begin
   wizInputProject.EnableButton(bkNext, false);
   edtProjectName.Text := ProjectName;
   edtInDate.Date := Date;
-  edtDesiredDate.Date := Date + 90;
+  edtDesiredDate.Date := Date + 60;
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
   if ProjectExists then ShowMessage('Project already exists! Samples will be added to the project! ');
