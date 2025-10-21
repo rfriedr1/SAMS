@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils, JvSplitter;
 
 const
-  myVersion = '1.9.9 Built: Sept-15-2025';
+  myVersion = '1.9.9 Built: Oct-21-2025';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -917,6 +917,9 @@ type
     ActivityIndicatorDBInfo: TActivityIndicator;
     GroupBox_Transfer_Filter: TGroupBox;
     edtTransferMagazinFilter: TLabeledEdit;
+    lblCAbsWeight: TLabel;
+    LabeledEdit1: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1325,6 +1328,7 @@ type
     procedure JvDBDateTimePicker1Click(Sender: TObject);
     procedure JvDBDateTimePicker3Click(Sender: TObject);
     procedure DBedtHECurrentChange(Sender: TObject);
+    procedure edtSampleCPercentChange(Sender: TObject);
 
   private
     AcceptCol: integer; //for drag drop
@@ -1432,6 +1436,7 @@ type
     procedure SetCheckBoxTouchPrepArchived;
     procedure DisplayArchiveWarning;
     procedure DisplayArchiveWarningPrep;
+    procedure CalculateCAbsWeight;
 
   public
     SampleModified: boolean;
@@ -5438,6 +5443,11 @@ begin
 btnReport.Enabled:=true;
 end;
 
+procedure TfrmMAMS.edtSampleCPercentChange(Sender: TObject);
+begin
+  CalculateCAbsWeight;
+end;
+
 procedure TfrmMAMS.edtSampleInfoDesiredDateClick(Sender: TObject);
 begin
   // if no date is set, set it to today
@@ -5742,6 +5752,7 @@ begin
   LogWindow.addLogEntry('edtWeightEndChange');
   WeightsChanged := true;
   CalculateYield; // calculate the yield from the weights
+  //showmessage(TPath.Combine(TPath.GetHomePath, 'MyAppConfig.ini'));
 end;
 
 procedure TfrmMAMS.edtWeightEndExit(Sender: TObject);
@@ -7986,6 +7997,7 @@ end;
 procedure TfrmMAMS.edtWeightCombustionChange(Sender: TObject);
 begin
   WeightsChanged := true;
+  CalculateCAbsWeight;
 end;
 
 procedure TfrmMAMS.edtWeightCombustionClick(Sender: TObject);
@@ -10395,6 +10407,45 @@ begin
  // tell App to show excption
  Application.ShowException(E);
 
+end;
+
+procedure TfrmMAMS.CalculateCAbsWeight;
+// calulcate and display the absolute amount of carbon when C% and weight_start is known
+VAR CAbsWeight: double;
+begin
+  LogWindow.addLogEntry('CalculateCAbsWeight');
+  if not (edtWeightCombustion.Text = '') AND not (edtSampleCPercent.Text = '') then
+  begin
+    CAbsWeight := SimpleRoundTo((strtofloat(edtWeightCombustion.Text) * strtofloat(edtSampleCPercent.text)/100),-2);
+    lblCAbsWeight.Caption := floattostr(CAbsWeight) + ' mg';
+
+    if CAbsWeight < 0.2 then
+      begin
+        // set fontsytle to bold
+        lblCAbsWeight.Font.Style := lblCAbsWeight.Font.Style + [fsBold];
+        // remove the themed font color first
+        lblCAbsWeight.StyleElements := lblCAbsWeight.StyleElements - [seFont];
+        // set the new font color
+        lblCAbsWeight.Font.Color := clRed;
+      end
+      else
+      begin
+        // remove the fontsytle bold
+        lblCAbsWeight.Font.Style := lblCAbsWeight.Font.Style - [fsBold];
+        // reset the default themed font color
+        lblCAbsWeight.StyleElements := lblCAbsWeight.StyleElements + [seFont];
+      end;
+  end
+  else
+  //display yield in percent from weights and round
+  begin
+    lblCAbsWeight.Caption := '... mg';
+
+    // remove the fontsytle bold
+    lblCAbsWeight.Font.Style := lblCAbsWeight.Font.Style - [fsBold];
+    // reset the default themed font color
+    lblCAbsWeight.StyleElements := lblCAbsWeight.StyleElements + [seFont];
+  end;
 end;
 
 procedure TfrmMAMS.CalculateYield;
