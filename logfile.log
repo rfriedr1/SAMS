@@ -1,779 +1,3 @@
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:37]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:37]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:38]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:38]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:38]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:38]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:38]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:38]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:38]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:38]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:38]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:38]Information>DB>raw database to use = db_dc14
-[13.10.2025 17:10:38]Information>DB>fill string grid with data from query
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 14574.1.452
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 62284.1.313
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 62285.1.288
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 15180.68.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82045.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82046.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82047.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82296.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82297.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82298.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82299.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 82300.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 81459.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 81460.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 81461.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 64161.37.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 81328.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 81329.1.1
-[13.10.2025 17:10:45]Information>DB>transfer LE and HE Currents to target_t: 81653.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81438.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81439.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81440.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81441.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81442.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81443.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81359.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81360.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81361.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81362.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81363.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81330.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81331.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81188.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81312.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81317.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81327.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81333.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81334.1.1
-[13.10.2025 17:10:46]Information>DB>transfer LE and HE Currents to target_t: 81336.1.1
-[13.10.2025 17:10:54]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=64161;
-[13.10.2025 17:11:00]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=15180;
-[13.10.2025 17:11:06]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=64161;
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 14574.1.452
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 62284.1.313
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 62285.1.288
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 15180.68.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82045.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82046.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82047.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82296.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82297.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82298.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82299.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 82300.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81459.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81460.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81461.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 64161.37.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81328.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81329.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81653.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81438.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81439.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81440.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81441.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81442.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81443.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81359.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81360.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81361.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81362.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81363.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81330.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81331.1.1
-[13.10.2025 17:11:10]Information>DB>transfer LE and HE Currents to target_t: 81188.1.1
-[13.10.2025 17:11:11]Information>DB>transfer LE and HE Currents to target_t: 81312.1.1
-[13.10.2025 17:11:11]Information>DB>transfer LE and HE Currents to target_t: 81317.1.1
-[13.10.2025 17:11:11]Information>DB>transfer LE and HE Currents to target_t: 81327.1.1
-[13.10.2025 17:11:11]Information>DB>transfer LE and HE Currents to target_t: 81333.1.1
-[13.10.2025 17:11:11]Information>DB>transfer LE and HE Currents to target_t: 81334.1.1
-[13.10.2025 17:11:11]Information>DB>transfer LE and HE Currents to target_t: 81336.1.1
-[13.10.2025 17:11:12]Information>Closeup>SAMS closed by user.
-[15.10.2025 10:35:42]Information>Startup>starting Application
-[15.10.2025 10:35:42]Information>Startup>DB - Param count = 3
-[15.10.2025 10:35:42]Information>Startup>DB - ODBC-DataSource= db_dmams
-[15.10.2025 10:35:43]Information>Startup>DB - UserID= mams
-[15.10.2025 10:35:43]Information>Startup>DB - Connection Password is given
-[15.10.2025 10:35:43]Information>Startup>connecting to DB at startup
-[15.10.2025 10:35:43]Information>Startup>Connected to DB.
-[15.10.2025 10:35:49]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[15.10.2025 10:35:49]Information>DB>Get data of all targets of selected magazine
-[15.10.2025 10:35:49]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA251013"
-[15.10.2025 10:35:50]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:50]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:50]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:51]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:51]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:52]Information>DB>raw database to use = db_dc14
-[15.10.2025 10:35:52]Information>DB>fill string grid with data from query
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 14574.1.453
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 62284.1.314
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 62285.1.289
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 15185.90.2
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82048.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82301.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82302.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82314.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82315.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82316.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82335.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 82347.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 81462.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 81463.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 81464.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 81465.1.1
-[15.10.2025 10:35:55]Information>DB>transfer LE and HE Currents to target_t: 81466.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81467.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81468.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81469.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81470.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81471.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81472.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81473.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81474.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81475.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81476.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81477.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81478.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81479.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81480.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81481.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81482.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81483.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81484.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81485.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81486.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81487.1.1
-[15.10.2025 10:35:56]Information>DB>transfer LE and HE Currents to target_t: 81491.1.1
-[15.10.2025 10:35:57]Information>Closeup>SAMS closed by user.
-[15.10.2025 11:50:54]Information>Startup>starting Application
-[15.10.2025 11:50:54]Information>Startup>DB - Param count = 3
-[15.10.2025 11:50:54]Information>Startup>DB - ODBC-DataSource= db_dmams
-[15.10.2025 11:50:54]Information>Startup>DB - UserID= mams
-[15.10.2025 11:50:54]Information>Startup>DB - Connection Password is given
-[15.10.2025 11:50:54]Information>Startup>connecting to DB at startup
-[15.10.2025 11:50:54]Information>Startup>Connected to DB.
-[15.10.2025 11:51:19]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="7438";
-[15.10.2025 11:51:23]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="7438";
-[15.10.2025 11:51:32]Error>DB>Run DoSampleInfo
-[15.10.2025 11:51:32]Error>DB>reformat number of digits
-[15.10.2025 11:51:37]Error>DB>Run DoSampleInfo
-[15.10.2025 11:51:37]Error>DB>reformat number of digits
-[15.10.2025 11:51:37]Error>DB>Run DoSampleInfo
-[15.10.2025 11:51:37]Error>DB>reformat number of digits
-[15.10.2025 11:53:49]Error>DB>Run DoSampleInfo
-[15.10.2025 11:53:49]Error>DB>reformat number of digits
-[15.10.2025 11:53:49]Error>DB>Run DoSampleInfo
-[15.10.2025 11:53:49]Error>DB>reformat number of digits
-[15.10.2025 11:53:53]Error>DB>Run DoSampleInfo
-[15.10.2025 11:53:53]Error>DB>reformat number of digits
-[15.10.2025 11:53:53]Error>DB>Run DoSampleInfo
-[15.10.2025 11:53:53]Error>DB>reformat number of digits
-[17.10.2025 17:11:57]Error>Exception>UnitName: System.Win.ComObj -- ClassName: EOleException -- StackTrace:  -- Message: [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.11.2-MariaDB]
-[17.10.2025 17:12:01]Information>Closeup>SAMS closed by user.
-[17.10.2025 17:12:03]Information>Startup>starting Application
-[17.10.2025 17:12:03]Information>Startup>DB - Param count = 3
-[17.10.2025 17:12:03]Information>Startup>DB - ODBC-DataSource= db_dmams
-[17.10.2025 17:12:03]Information>Startup>DB - UserID= mams
-[17.10.2025 17:12:03]Information>Startup>DB - Connection Password is given
-[17.10.2025 17:12:03]Information>Startup>connecting to DB at startup
-[17.10.2025 17:12:03]Information>Startup>Connected to DB.
-[17.10.2025 17:13:15]Error>DB>Run DoSampleInfo
-[17.10.2025 17:13:15]Error>DB>reformat number of digits
-[17.10.2025 17:13:15]Error>DB>Run DoSampleInfo
-[17.10.2025 17:13:15]Error>DB>reformat number of digits
-[17.10.2025 17:13:20]Error>DB>Run DoSampleInfo
-[17.10.2025 17:13:20]Error>DB>reformat number of digits
-[17.10.2025 17:13:21]Error>DB>Run DoSampleInfo
-[17.10.2025 17:13:21]Error>DB>reformat number of digits
-[17.10.2025 17:17:31]Error>DB>Run DoSampleInfo
-[17.10.2025 17:17:31]Error>DB>reformat number of digits
-[17.10.2025 17:17:31]Error>DB>Run DoSampleInfo
-[17.10.2025 17:17:31]Error>DB>reformat number of digits
-[17.10.2025 17:20:43]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:43]Error>DB>reformat number of digits
-[17.10.2025 17:20:43]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:43]Error>DB>reformat number of digits
-[17.10.2025 17:20:44]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:44]Error>DB>reformat number of digits
-[17.10.2025 17:20:48]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:48]Error>DB>reformat number of digits
-[17.10.2025 17:20:48]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:48]Error>DB>reformat number of digits
-[17.10.2025 17:20:49]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:49]Error>DB>reformat number of digits
-[17.10.2025 17:20:49]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:49]Error>DB>reformat number of digits
-[17.10.2025 17:20:49]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:49]Error>DB>reformat number of digits
-[17.10.2025 17:20:49]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:49]Error>DB>reformat number of digits
-[17.10.2025 17:20:50]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:50]Error>DB>reformat number of digits
-[17.10.2025 17:20:50]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:50]Error>DB>reformat number of digits
-[17.10.2025 17:20:50]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:51]Error>DB>reformat number of digits
-[17.10.2025 17:20:51]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:51]Error>DB>reformat number of digits
-[17.10.2025 17:20:51]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:51]Error>DB>reformat number of digits
-[17.10.2025 17:20:51]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:51]Error>DB>reformat number of digits
-[17.10.2025 17:20:52]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:52]Error>DB>reformat number of digits
-[17.10.2025 17:20:52]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:52]Error>DB>reformat number of digits
-[17.10.2025 17:20:52]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:52]Error>DB>reformat number of digits
-[17.10.2025 17:20:52]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:53]Error>DB>reformat number of digits
-[17.10.2025 17:20:53]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:53]Error>DB>reformat number of digits
-[17.10.2025 17:20:53]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:53]Error>DB>reformat number of digits
-[17.10.2025 17:20:54]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:54]Error>DB>reformat number of digits
-[17.10.2025 17:20:54]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:54]Error>DB>reformat number of digits
-[17.10.2025 17:20:54]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:54]Error>DB>reformat number of digits
-[17.10.2025 17:20:54]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:54]Error>DB>reformat number of digits
-[17.10.2025 17:20:55]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:55]Error>DB>reformat number of digits
-[17.10.2025 17:20:55]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:55]Error>DB>reformat number of digits
-[17.10.2025 17:20:56]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:56]Error>DB>reformat number of digits
-[17.10.2025 17:20:56]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:56]Error>DB>reformat number of digits
-[17.10.2025 17:20:57]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:57]Error>DB>reformat number of digits
-[17.10.2025 17:20:57]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:57]Error>DB>reformat number of digits
-[17.10.2025 17:20:57]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:57]Error>DB>reformat number of digits
-[17.10.2025 17:20:57]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:57]Error>DB>reformat number of digits
-[17.10.2025 17:20:58]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:58]Error>DB>reformat number of digits
-[17.10.2025 17:20:58]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:58]Error>DB>reformat number of digits
-[17.10.2025 17:20:58]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:59]Error>DB>reformat number of digits
-[17.10.2025 17:20:59]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:59]Error>DB>reformat number of digits
-[17.10.2025 17:20:59]Error>DB>Run DoSampleInfo
-[17.10.2025 17:20:59]Error>DB>reformat number of digits
-[17.10.2025 17:21:00]Error>DB>Run DoSampleInfo
-[17.10.2025 17:21:00]Error>DB>reformat number of digits
-[17.10.2025 17:21:15]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=64161 AND prep_nr=1 AND target_nr=1;
-[17.10.2025 17:21:42]Error>DB>Run DoSampleInfo
-[17.10.2025 17:21:42]Error>DB>reformat number of digits
-[17.10.2025 17:22:01]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=64161 AND prep_nr=2 AND target_nr=1;
-[17.10.2025 17:22:56]Error>DB>Run DoSampleInfo
-[17.10.2025 17:22:56]Error>DB>Run DoSampleInfo
-[17.10.2025 17:22:56]Error>DB>reformat number of digits
-[17.10.2025 17:22:57]Error>DB>reformat number of digits
-[17.10.2025 17:22:57]Error>DB>Run DoSampleInfo
-[17.10.2025 17:22:57]Error>DB>reformat number of digits
-[17.10.2025 17:23:06]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:06]Error>DB>reformat number of digits
-[17.10.2025 17:23:06]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:06]Error>DB>reformat number of digits
-[17.10.2025 17:23:06]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:06]Error>DB>reformat number of digits
-[17.10.2025 17:23:16]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=62284 AND prep_nr=1 AND target_nr=131;
-[17.10.2025 17:23:21]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:21]Error>DB>reformat number of digits
-[17.10.2025 17:23:21]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:21]Error>DB>reformat number of digits
-[17.10.2025 17:23:21]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:21]Error>DB>reformat number of digits
-[17.10.2025 17:23:22]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:22]Error>DB>reformat number of digits
-[17.10.2025 17:23:22]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:22]Error>DB>reformat number of digits
-[17.10.2025 17:23:23]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:23]Error>DB>reformat number of digits
-[17.10.2025 17:23:23]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:23]Error>DB>reformat number of digits
-[17.10.2025 17:23:24]Error>DB>Run DoSampleInfo
-[17.10.2025 17:23:24]Error>DB>reformat number of digits
-[17.10.2025 17:23:33]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=62284 AND prep_nr=1 AND target_nr=139;
-[17.10.2025 17:24:00]Error>DB>Run DoSampleInfo
-[17.10.2025 17:24:00]Error>DB>reformat number of digits
-[17.10.2025 17:24:01]Error>DB>Run DoSampleInfo
-[17.10.2025 17:24:01]Error>DB>reformat number of digits
-[17.10.2025 17:24:01]Error>DB>Run DoSampleInfo
-[17.10.2025 17:24:01]Error>DB>reformat number of digits
-[17.10.2025 17:24:05]Information>SQLQuery>UPDATE target_t SET target_comment=:TargetMemo WHERE sample_nr=62284 AND prep_nr=1 AND target_nr=269;
-[17.10.2025 17:24:17]Information>Closeup>SAMS closed by user.
-[17.10.2025 17:25:23]Information>Startup>starting Application
-[17.10.2025 17:25:23]Information>Startup>DB - Param count = 3
-[17.10.2025 17:25:23]Information>Startup>DB - ODBC-DataSource= db_dmams
-[17.10.2025 17:25:23]Information>Startup>DB - UserID= mams
-[17.10.2025 17:25:24]Information>Startup>DB - Connection Password is given
-[17.10.2025 17:25:24]Information>Startup>connecting to DB at startup
-[17.10.2025 17:25:24]Information>Startup>Connected to DB.
-[17.10.2025 17:25:26]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[17.10.2025 17:25:26]Information>DB>Get data of all targets of selected magazine
-[17.10.2025 17:25:26]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA251015"
-[17.10.2025 17:25:26]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[17.10.2025 17:25:26]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:27]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:27]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:28]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:28]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:29]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:29]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:29]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:29]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:29]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:29]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:25:29]Information>DB>fill string grid with data from query
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 14574.1.454
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 62284.1.320
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82303.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82305.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82334.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82336.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82351.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82363.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82548.1.1
-[17.10.2025 17:25:31]Information>DB>transfer LE and HE Currents to target_t: 82550.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81488.1.2
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81489.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81490.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81492.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81493.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81494.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81495.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81496.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81497.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81498.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81499.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81500.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 82641.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81655.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81656.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81657.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81658.1.2
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81517.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81519.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81520.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81616.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81659.1.2
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81661.1.2
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81662.1.2
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81664.1.2
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81760.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 81761.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 82245.1.1
-[17.10.2025 17:25:32]Information>DB>transfer LE and HE Currents to target_t: 82246.1.1
-[17.10.2025 17:25:33]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81488;
-[17.10.2025 17:25:37]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81658;
-[17.10.2025 17:25:41]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81659;
-[17.10.2025 17:25:46]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81661;
-[17.10.2025 17:25:50]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81662;
-[17.10.2025 17:25:54]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81664;
-[17.10.2025 17:25:58]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81659;
-[17.10.2025 17:25:58]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=81659;
-[17.10.2025 17:26:01]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:02]Error>DB>reformat number of digits
-[17.10.2025 17:26:02]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:02]Error>DB>reformat number of digits
-[17.10.2025 17:26:10]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[17.10.2025 17:26:10]Information>DB>Get data of all targets of selected magazine
-[17.10.2025 17:26:10]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA251015"
-[17.10.2025 17:26:10]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:10]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:10]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:10]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:10]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:10]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:10]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:10]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:11]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:11]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:12]Information>DB>raw database to use = db_dc14
-[17.10.2025 17:26:12]Information>DB>fill string grid with data from query
-[17.10.2025 17:26:14]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:14]Error>DB>reformat number of digits
-[17.10.2025 17:26:16]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:16]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:16]Error>DB>reformat number of digits
-[17.10.2025 17:26:17]Error>DB>reformat number of digits
-[17.10.2025 17:26:17]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:17]Error>DB>reformat number of digits
-[17.10.2025 17:26:17]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:17]Error>DB>reformat number of digits
-[17.10.2025 17:26:23]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:23]Error>DB>reformat number of digits
-[17.10.2025 17:26:24]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:24]Error>DB>reformat number of digits
-[17.10.2025 17:26:25]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:25]Error>DB>reformat number of digits
-[17.10.2025 17:26:28]Error>DB>Run DoSampleInfo
-[17.10.2025 17:26:28]Error>DB>reformat number of digits
-[17.10.2025 17:26:30]Information>Closeup>SAMS closed by user.
-[17.10.2025 17:26:54]Information>Startup>starting Application
-[17.10.2025 17:26:54]Information>Startup>DB - Param count = 3
-[17.10.2025 17:26:55]Information>Startup>DB - ODBC-DataSource= db_dmams
-[17.10.2025 17:26:55]Information>Startup>DB - UserID= mams
-[17.10.2025 17:26:55]Information>Startup>DB - Connection Password is given
-[17.10.2025 17:26:55]Information>Startup>connecting to DB at startup
-[17.10.2025 17:26:55]Information>Startup>Connected to DB.
-[17.10.2025 17:27:58]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[17.10.2025 17:27:58]Information>DB>Get data of all targets of selected magazine
-[17.10.2025 17:27:58]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MB251015RF"
-[17.10.2025 17:27:58]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[17.10.2025 17:27:58]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:58]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:58]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:58]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:27:59]Information>DB>fill string grid with data from query
-[17.10.2025 17:27:59]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:00]Information>DB>raw database to use = db_ac14
-[17.10.2025 17:28:00]Information>DB>fill string grid with data from query
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 14573.1.292
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 62284.1.321
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 62285.1.296
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 80437.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 82307.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 82308.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 82338.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 82339.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 82340.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 82551.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 53941.125.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 53941.126.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 38350.127.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 48568.68.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 48568.69.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81902.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81903.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81904.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81905.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81906.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81907.1.1
-[17.10.2025 17:28:03]Information>DB>transfer LE and HE Currents to target_t: 81908.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81909.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81910.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81911.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81957.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81958.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81959.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81960.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81961.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81962.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81963.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81964.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81965.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81966.1.1
-[17.10.2025 17:28:04]Information>DB>transfer LE and HE Currents to target_t: 81976.1.1
-[17.10.2025 17:28:11]Information>SQLQuery>SELECT sample_nr, prep_nr, target_nr, magazine, c14_age, c14_age_sig, dc13 FROM target_t WHERE sample_nr=48568;
-[17.10.2025 17:28:18]Error>DB>Run DoSampleInfo
-[17.10.2025 17:28:18]Error>DB>reformat number of digits
-[17.10.2025 17:28:18]Error>DB>Run DoSampleInfo
-[17.10.2025 17:28:18]Error>DB>reformat number of digits
-[17.10.2025 17:28:21]Error>DB>Run DoSampleInfo
-[17.10.2025 17:28:21]Error>DB>reformat number of digits
-[17.10.2025 17:28:21]Error>DB>Run DoSampleInfo
 [17.10.2025 17:28:21]Error>DB>reformat number of digits
 [17.10.2025 17:28:21]Error>DB>Run DoSampleInfo
 [17.10.2025 17:28:21]Error>DB>reformat number of digits
@@ -1394,3 +618,588 @@
 [21.10.2025 18:41:59]Error>DB>Run DoSampleInfo
 [21.10.2025 18:41:59]Error>DB>reformat number of digits
 [21.10.2025 18:41:59]Information>Closeup>SAMS closed by user.
+[21.10.2025 18:59:09]Information>Startup>starting Application
+[21.10.2025 18:59:09]Information>Startup>DB - Param count = 3
+[21.10.2025 18:59:09]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 18:59:09]Information>Startup>DB - UserID= mams
+[21.10.2025 18:59:09]Information>Startup>DB - Connection Password is given
+[21.10.2025 18:59:09]Information>Startup>connecting to DB at startup
+[21.10.2025 18:59:09]Information>Startup>Connected to DB.
+[21.10.2025 18:59:13]Error>DB>Run DoSampleInfo
+[21.10.2025 18:59:14]Error>DB>reformat number of digits
+[21.10.2025 18:59:28]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:07:36]Information>Startup>starting Application
+[21.10.2025 19:07:36]Information>Startup>DB - Param count = 3
+[21.10.2025 19:07:36]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:07:36]Information>Startup>DB - UserID= mams
+[21.10.2025 19:07:36]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:07:36]Information>Startup>connecting to DB at startup
+[21.10.2025 19:07:36]Information>Startup>Connected to DB.
+[21.10.2025 19:07:41]Error>DB>Run DoSampleInfo
+[21.10.2025 19:07:41]Error>DB>reformat number of digits
+[21.10.2025 19:07:43]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:08:02]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:08:20]Information>Startup>starting Application
+[21.10.2025 19:08:20]Information>Startup>DB - Param count = 3
+[21.10.2025 19:08:20]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:08:20]Information>Startup>DB - UserID= mams
+[21.10.2025 19:08:20]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:08:20]Information>Startup>connecting to DB at startup
+[21.10.2025 19:08:20]Information>Startup>Connected to DB.
+[21.10.2025 19:08:25]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:08:52]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:12:51]Information>Startup>starting Application
+[21.10.2025 19:12:51]Information>Startup>DB - Param count = 3
+[21.10.2025 19:12:51]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:12:51]Information>Startup>DB - UserID= mams
+[21.10.2025 19:12:51]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:12:51]Information>Startup>connecting to DB at startup
+[21.10.2025 19:12:51]Information>Startup>Connected to DB.
+[21.10.2025 19:15:39]Information>Startup>starting Application
+[21.10.2025 19:15:39]Information>Startup>DB - Param count = 3
+[21.10.2025 19:15:39]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:15:39]Information>Startup>DB - UserID= mams
+[21.10.2025 19:15:39]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:15:39]Information>Startup>connecting to DB at startup
+[21.10.2025 19:15:39]Information>Startup>Connected to DB.
+[21.10.2025 19:15:42]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:16:02]Information>Startup>starting Application
+[21.10.2025 19:16:02]Information>Startup>DB - Param count = 3
+[21.10.2025 19:16:02]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:16:02]Information>Startup>DB - UserID= mams
+[21.10.2025 19:16:02]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:16:02]Information>Startup>connecting to DB at startup
+[21.10.2025 19:16:02]Information>Startup>Connected to DB.
+[21.10.2025 19:16:06]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:16:42]Information>Startup>starting Application
+[21.10.2025 19:16:42]Information>Startup>DB - Param count = 3
+[21.10.2025 19:16:42]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:16:42]Information>Startup>DB - UserID= mams
+[21.10.2025 19:16:42]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:16:42]Information>Startup>connecting to DB at startup
+[21.10.2025 19:16:42]Information>Startup>Connected to DB.
+[21.10.2025 19:16:46]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:17:10]Information>Startup>starting Application
+[21.10.2025 19:17:10]Information>Startup>DB - Param count = 3
+[21.10.2025 19:17:10]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:17:10]Information>Startup>DB - UserID= mams
+[21.10.2025 19:17:10]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:17:10]Information>Startup>connecting to DB at startup
+[21.10.2025 19:17:10]Information>Startup>Connected to DB.
+[21.10.2025 19:17:15]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:17:20]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:19:38]Information>Startup>starting Application
+[21.10.2025 19:19:38]Information>Startup>DB - Param count = 3
+[21.10.2025 19:19:38]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:19:38]Information>Startup>DB - UserID= mams
+[21.10.2025 19:19:38]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:19:38]Information>Startup>connecting to DB at startup
+[21.10.2025 19:19:38]Information>Startup>Connected to DB.
+[21.10.2025 19:19:45]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:19:52]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:20:22]Information>Startup>starting Application
+[21.10.2025 19:20:22]Information>Startup>DB - Param count = 3
+[21.10.2025 19:20:22]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:20:22]Information>Startup>DB - UserID= mams
+[21.10.2025 19:20:22]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:20:22]Information>Startup>connecting to DB at startup
+[21.10.2025 19:20:22]Information>Startup>Connected to DB.
+[21.10.2025 19:20:28]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:20:34]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:26:50]Information>Startup>starting Application
+[21.10.2025 19:26:50]Information>Startup>DB - Param count = 3
+[21.10.2025 19:26:50]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:26:50]Information>Startup>DB - UserID= mams
+[21.10.2025 19:26:50]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:26:50]Information>Startup>connecting to DB at startup
+[21.10.2025 19:26:50]Information>Startup>Connected to DB.
+[21.10.2025 19:26:53]Error>DB>Run DoSampleInfo
+[21.10.2025 19:26:53]Error>DB>reformat number of digits
+[21.10.2025 19:26:57]Error>DB>Run DoSampleInfo
+[21.10.2025 19:26:57]Error>DB>reformat number of digits
+[21.10.2025 19:26:57]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:01]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:01]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:02]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:03]Error>DB>reformat number of digits
+[21.10.2025 19:27:03]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:04]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:13]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:26]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:27]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:28]Error>DB>reformat number of digits
+[21.10.2025 19:27:28]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:28]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:29]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:31]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:33]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:33]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:33]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:34]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:35]Error>DB>reformat number of digits
+[21.10.2025 19:27:35]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:36]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:36]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:39]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:41]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:41]Error>DB>reformat number of digits
+[21.10.2025 19:27:41]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:42]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:43]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:43]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:44]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:44]Error>DB>reformat number of digits
+[21.10.2025 19:27:44]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:45]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:46]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:47]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:48]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:48]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:48]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:49]Error>DB>reformat number of digits
+[21.10.2025 19:27:49]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:50]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:50]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:53]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:54]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:55]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:55]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:55]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:55]Error>DB>reformat number of digits
+[21.10.2025 19:27:55]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:56]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:56]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:56]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:57]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:57]Error>DB>Run DoSampleInfo
+[21.10.2025 19:27:57]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:58]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:58]Error>DB>reformat number of digits
+[21.10.2025 19:27:58]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:58]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:59]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:27:59]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:00]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:01]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:01]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:01]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:02]Error>DB>reformat number of digits
+[21.10.2025 19:28:02]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:02]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:02]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:03]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:04]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:05]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:05]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:05]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:06]Error>DB>reformat number of digits
+[21.10.2025 19:28:06]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:06]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:06]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:07]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:08]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:08]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:08]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:08]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:09]Error>DB>reformat number of digits
+[21.10.2025 19:28:09]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:09]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:09]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:10]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:10]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:10]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:10]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:11]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:11]Error>DB>reformat number of digits
+[21.10.2025 19:28:11]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:12]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:12]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:12]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:13]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:14]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:14]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:14]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:15]Error>DB>reformat number of digits
+[21.10.2025 19:28:15]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:15]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:16]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:17]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:17]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:18]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:18]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:18]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:19]Error>DB>reformat number of digits
+[21.10.2025 19:28:19]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:19]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:20]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:26]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:27]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:28]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:28]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:29]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:29]Error>DB>reformat number of digits
+[21.10.2025 19:28:29]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:30]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:31]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:33]Error>DB>Run DoSampleInfo
+[21.10.2025 19:28:33]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:33]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:34]Error>DB>reformat number of digits
+[21.10.2025 19:28:34]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:34]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:35]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:35]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:28:36]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:29:21]Information>Startup>starting Application
+[21.10.2025 19:29:21]Information>Startup>DB - Param count = 3
+[21.10.2025 19:29:21]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:29:21]Information>Startup>DB - UserID= mams
+[21.10.2025 19:29:21]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:29:21]Information>Startup>connecting to DB at startup
+[21.10.2025 19:29:21]Information>Startup>Connected to DB.
+[21.10.2025 19:29:25]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:25]Error>DB>reformat number of digits
+[21.10.2025 19:29:27]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:29:49]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:49]Error>DB>reformat number of digits
+[21.10.2025 19:29:52]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:52]Error>DB>reformat number of digits
+[21.10.2025 19:29:53]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:53]Error>DB>reformat number of digits
+[21.10.2025 19:29:53]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:53]Error>DB>reformat number of digits
+[21.10.2025 19:29:55]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:55]Error>DB>reformat number of digits
+[21.10.2025 19:29:56]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:56]Error>DB>reformat number of digits
+[21.10.2025 19:29:57]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:57]Error>DB>reformat number of digits
+[21.10.2025 19:29:58]Error>DB>Run DoSampleInfo
+[21.10.2025 19:29:58]Error>DB>reformat number of digits
+[21.10.2025 19:30:02]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:30:08]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:08]Error>DB>reformat number of digits
+[21.10.2025 19:30:11]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:11]Error>DB>reformat number of digits
+[21.10.2025 19:30:12]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:12]Error>DB>reformat number of digits
+[21.10.2025 19:30:13]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:13]Error>DB>reformat number of digits
+[21.10.2025 19:30:14]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:14]Error>DB>reformat number of digits
+[21.10.2025 19:30:15]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:15]Error>DB>reformat number of digits
+[21.10.2025 19:30:16]Error>DB>Run DoSampleInfo
+[21.10.2025 19:30:16]Error>DB>reformat number of digits
+[21.10.2025 19:30:28]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:31:13]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '' is not a valid floating point value
+[21.10.2025 19:31:14]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '' is not a valid floating point value
+[21.10.2025 19:31:14]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:33:39]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '' is not a valid floating point value
+[21.10.2025 19:33:41]Information>Startup>starting Application
+[21.10.2025 19:33:41]Information>Startup>DB - Param count = 3
+[21.10.2025 19:33:41]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:33:41]Information>Startup>DB - UserID= mams
+[21.10.2025 19:33:41]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:33:41]Information>Startup>connecting to DB at startup
+[21.10.2025 19:33:41]Information>Startup>Connected to DB.
+[21.10.2025 19:33:45]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:33:52]Error>DB>Run DoSampleInfo
+[21.10.2025 19:34:05]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '' is not a valid floating point value
+[21.10.2025 19:34:06]Information>Startup>starting Application
+[21.10.2025 19:34:06]Information>Startup>DB - Param count = 3
+[21.10.2025 19:34:06]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:34:06]Information>Startup>DB - UserID= mams
+[21.10.2025 19:34:06]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:34:06]Information>Startup>connecting to DB at startup
+[21.10.2025 19:34:06]Information>Startup>Connected to DB.
+[21.10.2025 19:34:09]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:34:15]Error>DB>Run DoSampleInfo
+[21.10.2025 19:34:32]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '' is not a valid floating point value
+[21.10.2025 19:34:52]Information>Startup>starting Application
+[21.10.2025 19:34:52]Information>Startup>DB - Param count = 3
+[21.10.2025 19:34:52]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:34:52]Information>Startup>DB - UserID= mams
+[21.10.2025 19:34:52]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:34:52]Information>Startup>connecting to DB at startup
+[21.10.2025 19:34:52]Information>Startup>Connected to DB.
+[21.10.2025 19:34:54]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:35:18]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:35:38]Information>Startup>starting Application
+[21.10.2025 19:35:38]Information>Startup>DB - Param count = 3
+[21.10.2025 19:35:38]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:35:38]Information>Startup>DB - UserID= mams
+[21.10.2025 19:35:38]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:35:38]Information>Startup>connecting to DB at startup
+[21.10.2025 19:35:38]Information>Startup>Connected to DB.
+[21.10.2025 19:35:41]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:41]Error>DB>reformat number of digits
+[21.10.2025 19:35:43]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:43]Error>DB>reformat number of digits
+[21.10.2025 19:35:44]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:44]Error>DB>reformat number of digits
+[21.10.2025 19:35:45]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:45]Error>DB>reformat number of digits
+[21.10.2025 19:35:46]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:46]Error>DB>reformat number of digits
+[21.10.2025 19:35:46]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:46]Error>DB>reformat number of digits
+[21.10.2025 19:35:47]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:47]Error>DB>reformat number of digits
+[21.10.2025 19:35:49]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:35:55]Error>DB>Run DoSampleInfo
+[21.10.2025 19:35:55]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:35:57]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:35:58]Error>DB>reformat number of digits
+[21.10.2025 19:35:58]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:35:59]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:35:59]Error>Exception>UnitName: System.SysUtils -- ClassName: EConvertError -- StackTrace:  -- Message: '0.2' is not a valid floating point value
+[21.10.2025 19:36:02]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:36:12]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:12]Error>DB>reformat number of digits
+[21.10.2025 19:36:14]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:14]Error>DB>reformat number of digits
+[21.10.2025 19:36:15]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:15]Error>DB>reformat number of digits
+[21.10.2025 19:36:15]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:16]Error>DB>reformat number of digits
+[21.10.2025 19:36:16]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:16]Error>DB>reformat number of digits
+[21.10.2025 19:36:17]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:18]Error>DB>reformat number of digits
+[21.10.2025 19:36:18]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:18]Error>DB>reformat number of digits
+[21.10.2025 19:36:19]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:19]Error>DB>reformat number of digits
+[21.10.2025 19:36:19]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:19]Error>DB>reformat number of digits
+[21.10.2025 19:36:20]Error>DB>Run DoSampleInfo
+[21.10.2025 19:36:20]Error>DB>reformat number of digits
+[21.10.2025 19:40:17]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:43:45]Information>Startup>starting Application
+[21.10.2025 19:43:45]Information>Startup>DB - Param count = 3
+[21.10.2025 19:43:45]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:43:45]Information>Startup>DB - UserID= mams
+[21.10.2025 19:43:45]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:43:45]Information>Startup>connecting to DB at startup
+[21.10.2025 19:43:45]Information>Startup>Connected to DB.
+[21.10.2025 19:43:48]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:44:02]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:44:57]Information>Startup>starting Application
+[21.10.2025 19:44:57]Information>Startup>DB - Param count = 3
+[21.10.2025 19:44:57]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:44:57]Information>Startup>DB - UserID= mams
+[21.10.2025 19:44:57]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:44:57]Information>Startup>connecting to DB at startup
+[21.10.2025 19:44:57]Information>Startup>Connected to DB.
+[21.10.2025 19:45:01]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:45:46]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:47:21]Information>Startup>starting Application
+[21.10.2025 19:47:21]Information>Startup>DB - Param count = 3
+[21.10.2025 19:47:21]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:47:21]Information>Startup>DB - UserID= mams
+[21.10.2025 19:47:21]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:47:21]Information>Startup>connecting to DB at startup
+[21.10.2025 19:47:21]Information>Startup>Connected to DB.
+[21.10.2025 19:47:26]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:47:34]Error>DB>Run DoSampleInfo
+[21.10.2025 19:47:34]Error>DB>reformat number of digits
+[21.10.2025 19:47:37]Error>DB>Run DoSampleInfo
+[21.10.2025 19:47:37]Error>DB>reformat number of digits
+[21.10.2025 19:47:38]Error>DB>Run DoSampleInfo
+[21.10.2025 19:47:38]Error>DB>reformat number of digits
+[21.10.2025 19:47:39]Error>DB>Run DoSampleInfo
+[21.10.2025 19:47:39]Error>DB>reformat number of digits
+[21.10.2025 19:47:39]Error>DB>Run DoSampleInfo
+[21.10.2025 19:47:39]Error>DB>reformat number of digits
+[21.10.2025 19:47:40]Error>DB>Run DoSampleInfo
+[21.10.2025 19:47:40]Error>DB>reformat number of digits
+[21.10.2025 19:47:41]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:47:49]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:48:17]Information>Startup>starting Application
+[21.10.2025 19:48:17]Information>Startup>DB - Param count = 3
+[21.10.2025 19:48:17]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:48:17]Information>Startup>DB - UserID= mams
+[21.10.2025 19:48:17]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:48:17]Information>Startup>connecting to DB at startup
+[21.10.2025 19:48:17]Information>Startup>Connected to DB.
+[21.10.2025 19:48:20]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:48:22]Error>DB>Run DoSampleInfo
+[21.10.2025 19:48:23]Error>DB>reformat number of digits
+[21.10.2025 19:48:24]Error>DB>Run DoSampleInfo
+[21.10.2025 19:48:24]Error>DB>reformat number of digits
+[21.10.2025 19:48:25]Error>DB>Run DoSampleInfo
+[21.10.2025 19:48:25]Error>DB>reformat number of digits
+[21.10.2025 19:48:26]Error>DB>Run DoSampleInfo
+[21.10.2025 19:48:26]Error>DB>reformat number of digits
+[21.10.2025 19:48:26]Error>DB>Run DoSampleInfo
+[21.10.2025 19:48:26]Error>DB>reformat number of digits
+[21.10.2025 19:48:27]Error>DB>Run DoSampleInfo
+[21.10.2025 19:48:27]Error>DB>reformat number of digits
+[21.10.2025 19:48:29]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:50:32]Information>Startup>starting Application
+[21.10.2025 19:50:32]Information>Startup>DB - Param count = 3
+[21.10.2025 19:50:32]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:50:32]Information>Startup>DB - UserID= mams
+[21.10.2025 19:50:32]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:50:32]Information>Startup>connecting to DB at startup
+[21.10.2025 19:50:32]Information>Startup>Connected to DB.
+[21.10.2025 19:50:36]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:52:03]Information>Startup>starting Application
+[21.10.2025 19:52:03]Information>Startup>DB - Param count = 3
+[21.10.2025 19:52:03]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:52:03]Information>Startup>DB - UserID= mams
+[21.10.2025 19:52:03]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:52:03]Information>Startup>connecting to DB at startup
+[21.10.2025 19:52:03]Information>Startup>Connected to DB.
+[21.10.2025 19:52:09]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:10]Error>DB>reformat number of digits
+[21.10.2025 19:52:19]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:21]Error>DB>reformat number of digits
+[21.10.2025 19:52:24]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:25]Error>DB>reformat number of digits
+[21.10.2025 19:52:38]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:38]Error>DB>reformat number of digits
+[21.10.2025 19:52:40]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:40]Error>DB>reformat number of digits
+[21.10.2025 19:52:42]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:43]Error>DB>reformat number of digits
+[21.10.2025 19:52:45]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:45]Error>DB>reformat number of digits
+[21.10.2025 19:52:47]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:47]Error>DB>reformat number of digits
+[21.10.2025 19:52:49]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:49]Error>DB>reformat number of digits
+[21.10.2025 19:52:51]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:51]Error>DB>reformat number of digits
+[21.10.2025 19:52:54]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:54]Error>DB>reformat number of digits
+[21.10.2025 19:52:57]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:57]Error>DB>reformat number of digits
+[21.10.2025 19:52:58]Error>DB>Run DoSampleInfo
+[21.10.2025 19:52:59]Error>DB>reformat number of digits
+[21.10.2025 19:53:03]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:04]Error>DB>reformat number of digits
+[21.10.2025 19:53:06]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:07]Error>DB>reformat number of digits
+[21.10.2025 19:53:09]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:10]Error>DB>reformat number of digits
+[21.10.2025 19:53:13]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:14]Error>DB>reformat number of digits
+[21.10.2025 19:53:18]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:19]Error>DB>reformat number of digits
+[21.10.2025 19:53:22]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:23]Error>DB>reformat number of digits
+[21.10.2025 19:53:26]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:27]Error>DB>reformat number of digits
+[21.10.2025 19:53:30]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:30]Error>DB>reformat number of digits
+[21.10.2025 19:53:36]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:37]Error>DB>reformat number of digits
+[21.10.2025 19:53:43]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:44]Error>DB>reformat number of digits
+[21.10.2025 19:53:51]Error>DB>Run DoSampleInfo
+[21.10.2025 19:53:51]Error>DB>reformat number of digits
+[21.10.2025 19:54:47]Information>Startup>starting Application
+[21.10.2025 19:54:47]Information>Startup>DB - Param count = 3
+[21.10.2025 19:54:47]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:54:47]Information>Startup>DB - UserID= mams
+[21.10.2025 19:54:47]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:54:47]Information>Startup>connecting to DB at startup
+[21.10.2025 19:54:47]Information>Startup>Connected to DB.
+[21.10.2025 19:54:51]Error>DB>Run DoSampleInfo
+[21.10.2025 19:54:51]Error>DB>reformat number of digits
+[21.10.2025 19:54:53]Error>DB>Run DoSampleInfo
+[21.10.2025 19:54:53]Error>DB>reformat number of digits
+[21.10.2025 19:54:56]Error>DB>Run DoSampleInfo
+[21.10.2025 19:54:56]Error>DB>reformat number of digits
+[21.10.2025 19:55:03]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:03]Error>DB>reformat number of digits
+[21.10.2025 19:55:04]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:04]Error>DB>reformat number of digits
+[21.10.2025 19:55:05]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:05]Error>DB>reformat number of digits
+[21.10.2025 19:55:05]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:06]Error>DB>reformat number of digits
+[21.10.2025 19:55:09]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:55:12]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:55:30]Information>Startup>starting Application
+[21.10.2025 19:55:30]Information>Startup>DB - Param count = 3
+[21.10.2025 19:55:30]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:55:30]Information>Startup>DB - UserID= mams
+[21.10.2025 19:55:30]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:55:30]Information>Startup>connecting to DB at startup
+[21.10.2025 19:55:30]Information>Startup>Connected to DB.
+[21.10.2025 19:55:34]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:34]Error>DB>reformat number of digits
+[21.10.2025 19:55:37]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:38]Error>DB>reformat number of digits
+[21.10.2025 19:55:38]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:38]Error>DB>reformat number of digits
+[21.10.2025 19:55:40]Information>Closeup>SAMS closed by user.
+[21.10.2025 19:55:54]Information>Startup>starting Application
+[21.10.2025 19:55:54]Information>Startup>DB - Param count = 3
+[21.10.2025 19:55:54]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 19:55:54]Information>Startup>DB - UserID= mams
+[21.10.2025 19:55:54]Information>Startup>DB - Connection Password is given
+[21.10.2025 19:55:54]Information>Startup>connecting to DB at startup
+[21.10.2025 19:55:54]Information>Startup>Connected to DB.
+[21.10.2025 19:55:58]Error>DB>Run DoSampleInfo
+[21.10.2025 19:55:58]Error>DB>reformat number of digits
+[21.10.2025 19:56:00]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:56:09]Error>DB>Run DoSampleInfo
+[21.10.2025 19:56:09]Error>DB>reformat number of digits
+[21.10.2025 19:56:11]Error>DB>Run DoSampleInfo
+[21.10.2025 19:56:11]Error>DB>reformat number of digits
+[21.10.2025 19:56:12]Error>DB>Run DoSampleInfo
+[21.10.2025 19:56:12]Error>DB>reformat number of digits
+[21.10.2025 19:56:15]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 19:56:28]Information>Closeup>SAMS closed by user.
+[21.10.2025 20:09:03]Information>Startup>starting Application
+[21.10.2025 20:09:03]Information>Startup>DB - Param count = 3
+[21.10.2025 20:09:04]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 20:09:04]Information>Startup>DB - UserID= mams
+[21.10.2025 20:09:04]Information>Startup>DB - Connection Password is given
+[21.10.2025 20:09:04]Information>Startup>connecting to DB at startup
+[21.10.2025 20:09:04]Information>Startup>Connected to DB.
+[21.10.2025 20:09:08]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:09:58]Information>Closeup>SAMS closed by user.
+[21.10.2025 20:10:03]Information>Startup>starting Application
+[21.10.2025 20:10:03]Information>Startup>DB - Param count = 3
+[21.10.2025 20:10:03]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 20:10:03]Information>Startup>DB - UserID= mams
+[21.10.2025 20:10:03]Information>Startup>DB - Connection Password is given
+[21.10.2025 20:10:03]Information>Startup>connecting to DB at startup
+[21.10.2025 20:10:03]Information>Startup>Connected to DB.
+[21.10.2025 20:10:38]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:11:01]Information>Closeup>SAMS closed by user.
+[21.10.2025 20:12:48]Information>Startup>starting Application
+[21.10.2025 20:12:48]Information>Startup>DB - Param count = 3
+[21.10.2025 20:12:48]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 20:12:48]Information>Startup>DB - UserID= mams
+[21.10.2025 20:12:48]Information>Startup>DB - Connection Password is given
+[21.10.2025 20:12:48]Information>Startup>connecting to DB at startup
+[21.10.2025 20:12:48]Information>Startup>Connected to DB.
+[21.10.2025 20:12:51]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:13:39]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:13:40]Error>DB>Run DoSampleInfo
+[21.10.2025 20:13:40]Error>DB>reformat number of digits
+[21.10.2025 20:13:41]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:13:58]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:14:02]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:14:24]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+[21.10.2025 20:14:28]Information>Closeup>SAMS closed by user.
+[21.10.2025 20:18:06]Information>Startup>starting Application
+[21.10.2025 20:18:06]Information>Startup>DB - Param count = 3
+[21.10.2025 20:18:06]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 20:18:06]Information>Startup>DB - UserID= mams
+[21.10.2025 20:18:06]Information>Startup>DB - Connection Password is given
+[21.10.2025 20:18:06]Information>Startup>connecting to DB at startup
+[21.10.2025 20:18:06]Information>Startup>Connected to DB.
+[21.10.2025 20:18:11]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
+
+[21.10.2025 20:18:45]Information>Closeup>SAMS closed by user.

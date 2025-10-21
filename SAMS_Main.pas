@@ -918,8 +918,8 @@ type
     GroupBox_Transfer_Filter: TGroupBox;
     edtTransferMagazinFilter: TLabeledEdit;
     lblCAbsWeight: TLabel;
-    LabeledEdit1: TLabeledEdit;
-    LabeledEdit2: TLabeledEdit;
+    edtOptionsTurnover: TLabeledEdit;
+    edtOptionsMinCAmount: TLabeledEdit;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -3618,7 +3618,7 @@ end;
 procedure TfrmMAMS.btnSaveOptionsClick(Sender: TObject);
 begin
 // save settings to JvFormStorage
-JvFormStorage1.SaveFormPlacement;
+JvFormStorageOptions.SaveFormPlacement;
 end;
 
 procedure TfrmMAMS.actTablesExecute(Sender: TObject);
@@ -5752,7 +5752,6 @@ begin
   LogWindow.addLogEntry('edtWeightEndChange');
   WeightsChanged := true;
   CalculateYield; // calculate the yield from the weights
-  //showmessage(TPath.Combine(TPath.GetHomePath, 'MyAppConfig.ini'));
 end;
 
 procedure TfrmMAMS.edtWeightEndExit(Sender: TObject);
@@ -10411,15 +10410,21 @@ end;
 
 procedure TfrmMAMS.CalculateCAbsWeight;
 // calulcate and display the absolute amount of carbon when C% and weight_start is known
-VAR CAbsWeight: double;
+VAR CAbsWeight, MinCAllowed: double;
 begin
   LogWindow.addLogEntry('CalculateCAbsWeight');
+
+  // read from the OptionsTab (iniFile)
+  MinCAllowed := StrToInt(edtOptionsMinCAmount.Text)/1000;
+  LogWindow.addLogEntry('CalculateCAbsWeight -- MinCAllowed = ' + edtOptionsMinCAmount.Text + ' ug');
+  //showmessage(MinCAllowed.ToString);
+
   if not (edtWeightCombustion.Text = '') AND not (edtSampleCPercent.Text = '') then
   begin
     CAbsWeight := SimpleRoundTo((strtofloat(edtWeightCombustion.Text) * strtofloat(edtSampleCPercent.text)/100),-2);
     lblCAbsWeight.Caption := floattostr(CAbsWeight) + ' mg';
 
-    if CAbsWeight < 0.2 then
+    if CAbsWeight < MinCAllowed then
       begin
         // set fontsytle to bold
         lblCAbsWeight.Font.Style := lblCAbsWeight.Font.Style + [fsBold];
@@ -10845,7 +10850,7 @@ begin
   wizInputProject.EnableButton(bkNext, false);
   edtProjectName.Text := ProjectName;
   edtInDate.Date := Date;
-  edtDesiredDate.Date := Date + 60;
+  edtDesiredDate.Date := Date + strtoint(edtOptionsTurnover.Text); // this value is taken from the options tab
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
   if ProjectExists then ShowMessage('Project already exists! Samples will be added to the project! ');

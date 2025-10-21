@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = DBGrid1
+  ActiveControl = DBMemo_LabComment
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1652
@@ -299,7 +299,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1652
     Height = 873
-    ActivePage = tbsOptions
+    ActivePage = tbsSampleInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -311,7 +311,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1644
         Height = 843
-        ActivePage = wizStartPage
+        ActivePage = wizInputProject
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
@@ -338,6 +338,7 @@ object frmMAMS: TfrmMAMS
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
+        ExplicitTop = -2
         DesignSize = (
           1644
           843)
@@ -546,6 +547,7 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
+            ExplicitLeft = 6
             ColWidths = (
               64
               64)
@@ -6496,7 +6498,7 @@ object frmMAMS: TfrmMAMS
               Caption = 'general program settings'
               TabOrder = 0
             end
-            object LabeledEdit1: TLabeledEdit
+            object edtOptionsTurnover: TLabeledEdit
               Left = 294
               Top = 79
               Width = 121
@@ -6509,22 +6511,22 @@ object frmMAMS: TfrmMAMS
               LabelPosition = lpLeft
               NumbersOnly = True
               TabOrder = 1
-              Text = '70'
+              Text = '60'
             end
-            object LabeledEdit2: TLabeledEdit
+            object edtOptionsMinCAmount: TLabeledEdit
               Left = 294
               Top = 119
               Width = 121
               Height = 23
               Hint = 'used for automatically setting the desired date'
               Alignment = taRightJustify
-              EditLabel.Width = 186
+              EditLabel.Width = 182
               EditLabel.Height = 23
-              EditLabel.Caption = 'minimum absolute C amount (mg)'
+              EditLabel.Caption = 'minimum absolute C amount (ug)'
               LabelPosition = lpLeft
               NumbersOnly = True
               TabOrder = 2
-              Text = '0.2'
+              Text = '200'
             end
           end
           object TabDatabase: TTabSheet
@@ -11545,9 +11547,6 @@ object frmMAMS: TfrmMAMS
       'edtSMTPServer.Text'
       'MemoDBPlotQuery.Lines'
       'chkSendCopyToSender.Checked'
-      'edtSaveReportToFolder.Text'
-      'JvDirEdt_Server_Image_Path.Text'
-      'JvDirEdt_Server_Report_Path.Text'
       'edtMailCC.Text'
       'edtTouchWeightsMAMS.Value'
       'CheckBoxTouchPrepWeightsAutoConversion.Checked'
@@ -11556,11 +11555,10 @@ object frmMAMS: TfrmMAMS
       'edtFilenamePrepDocTemplate.Text'
       'JvDirEdt_PrepBatch_Path.Text'
       'edtNewSamplesFilename.Text'
-      'edtWordTemplate.Text'
       'edtLimitTransferMA.Text')
     StoredValues = <>
-    Left = 424
-    Top = 80
+    Left = 272
+    Top = 72
   end
   object JvAppIniFileStorage1: TJvAppIniFileStorage
     StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
@@ -11568,7 +11566,7 @@ object frmMAMS: TfrmMAMS
     FileName = 'Persistent.ini'
     DefaultSection = 'NewSamplesInput'
     SubStorages = <>
-    Left = 256
+    Left = 272
     Top = 8
   end
   object WordExport: TJvDBGridWordExport
@@ -28008,8 +28006,8 @@ object frmMAMS: TfrmMAMS
     FileName = 'logfile.log'
     AutoSave = True
     SizeLimit = 100000
-    Left = 219
-    Top = 55
+    Left = 147
+    Top = 79
   end
   object ApplicationEvents: TApplicationEvents
     OnException = ApplicationEventsException
@@ -28027,7 +28025,12 @@ object frmMAMS: TfrmMAMS
   object JvAppIniFileStorageOptions: TJvAppIniFileStorage
     StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
     StorageOptions.BooleanStringFalseValues = 'FALSE, NO, N'
-    FileName = 'options.ini'
+    StorageOptions.BackupType = afsbtRenameAfter
+    StorageOptions.BackupHistoryCount = 2
+    StorageOptions.BackupHistoryType = afsbht1Month
+    AutoFlush = True
+    FileName = 'SAMS_options.ini'
+    Location = flUserFolder
     SubStorages = <>
     Left = 440
     Top = 456
@@ -28035,6 +28038,14 @@ object frmMAMS: TfrmMAMS
   object JvFormStorageOptions: TJvFormStorage
     AppStorage = JvAppIniFileStorageOptions
     AppStoragePath = '%FORM_NAME%\'
+    Options = []
+    StoredProps.Strings = (
+      'edtOptionsTurnover.Text'
+      'edtOptionsMinCAmount.Text'
+      'JvDirEdt_Server_Image_Path.Text'
+      'JvDirEdt_Server_Report_Path.Text'
+      'edtWordTemplate.Text'
+      'edtSaveReportToFolder.Text')
     StoredValues = <>
     Left = 440
     Top = 520

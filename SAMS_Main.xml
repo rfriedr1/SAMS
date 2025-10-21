@@ -3515,8 +3515,8 @@
       <field name="GroupBox_Transfer_Filter" type="TGroupBox" visibility="published" size="4" offset="4484" />
       <field name="edtTransferMagazinFilter" type="TLabeledEdit" visibility="published" size="4" offset="4488" />
       <field name="lblCAbsWeight" type="TLabel" visibility="published" size="4" offset="4492" />
-      <field name="LabeledEdit1" type="TLabeledEdit" visibility="published" size="4" offset="4496" />
-      <field name="LabeledEdit2" type="TLabeledEdit" visibility="published" size="4" offset="4500" />
+      <field name="edtOptionsTurnover" type="TLabeledEdit" visibility="published" size="4" offset="4496" />
+      <field name="edtOptionsMinCAmount" type="TLabeledEdit" visibility="published" size="4" offset="4500" />
       <procedure name="grdSamplesOfProjectMouseWheel" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
