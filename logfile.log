@@ -1,22 +1,3 @@
-[17.10.2025 17:28:21]Error>DB>reformat number of digits
-[17.10.2025 17:28:21]Error>DB>Run DoSampleInfo
-[17.10.2025 17:28:21]Error>DB>reformat number of digits
-[17.10.2025 17:28:28]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6536";
-[17.10.2025 17:28:35]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="6536";
-[17.10.2025 17:29:07]Error>Exception>UnitName: Data.DB -- ClassName: EDatabaseError -- StackTrace:  -- Message: [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.11.2-MariaDB]You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '..`project_t` SET `project`=? WHERE `project_nr`=? AND `project`=?' at line 1
-[17.10.2025 17:29:10]Information>Closeup>SAMS closed by user.
-[20.10.2025 17:29:07]Information>Startup>starting Application
-[20.10.2025 17:29:07]Information>Startup>DB - Param count = 3
-[20.10.2025 17:29:07]Information>Startup>DB - ODBC-DataSource= db_dmams
-[20.10.2025 17:29:07]Information>Startup>DB - UserID= mams
-[20.10.2025 17:29:07]Information>Startup>DB - Connection Password is given
-[20.10.2025 17:29:07]Information>Startup>connecting to DB at startup
-[20.10.2025 17:29:07]Information>Startup>Connected to DB.
-[20.10.2025 17:29:10]Information>SQLQuery>SELECT name as magazine from magazine_t   WHERE name LIKE "%%" order by last_changed desc  LIMIT 200;
-[20.10.2025 17:29:10]Information>DB>Get data of all targets of selected magazine
-[20.10.2025 17:29:10]Information>SQLQuery>SELECT sample_t.sample_nr, target_t.prep_nr, target_t.target_nr FROM sample_t  INNER JOIN target_t ON sample_t.sample_nr=target_t.sample_nr  WHERE target_t.magazine = "MA251017"
-[20.10.2025 17:29:11]Information>DB>query raw DB (db_dc14 or db_ac14) for LE and HE Currents
-[20.10.2025 17:29:11]Information>DB>raw database to use = db_dc14
 [20.10.2025 17:29:11]Information>DB>fill string grid with data from query
 [20.10.2025 17:29:11]Information>DB>raw database to use = db_dc14
 [20.10.2025 17:29:11]Information>DB>fill string grid with data from query
@@ -1201,5 +1182,36 @@
 [21.10.2025 20:18:06]Information>Startup>connecting to DB at startup
 [21.10.2025 20:18:06]Information>Startup>Connected to DB.
 [21.10.2025 20:18:11]Information>SQLQuery>SELECT sample_t.sample_nr, user_label,user_label_nr,user_desc1,user_desc2, target_t.C14_age, target_t.C14_age_sig, av_dc13 as dc13, conc_c, conc_c/conc_n as cn_ratio, weight_end/weight_start as collpc, av_fm, av_fm_sig, material FROM sample_t INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr WHERE sample_t.sample_nr=1;
-
 [21.10.2025 20:18:45]Information>Closeup>SAMS closed by user.
+[21.10.2025 20:20:31]Information>Startup>starting Application
+[21.10.2025 20:20:31]Information>Startup>DB - Param count = 3
+[21.10.2025 20:20:31]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 20:20:31]Information>Startup>DB - UserID= mams
+[21.10.2025 20:20:31]Information>Startup>DB - Connection Password is given
+[21.10.2025 20:20:31]Information>Startup>connecting to DB at startup
+[21.10.2025 20:20:31]Information>Startup>Connected to DB.
+[21.10.2025 20:20:34]Information>Closeup>SAMS closed by user.
+[21.10.2025 20:32:02]Information>Startup>starting Application
+[21.10.2025 20:32:02]Information>Startup>DB - Param count = 3
+[21.10.2025 20:32:02]Information>Startup>DB - ODBC-DataSource= db_dmams
+[21.10.2025 20:32:02]Information>Startup>DB - UserID= mams
+[21.10.2025 20:32:02]Information>Startup>DB - Connection Password is given
+[21.10.2025 20:32:02]Information>Startup>connecting to DB at startup
+[21.10.2025 20:32:02]Information>Startup>Connected to DB.
+[21.10.2025 20:32:06]Error>DB>Run DoSampleInfo
+[21.10.2025 20:32:06]Error>DB>reformat number of digits
+[21.10.2025 20:32:09]Error>DB>Run DoSampleInfo
+[21.10.2025 20:32:09]Error>DB>reformat number of digits
+[21.10.2025 20:32:13]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9467";
+
+[21.10.2025 20:32:27]Error>DB>Run DoSampleInfo
+[21.10.2025 20:32:27]Error>DB>reformat number of digits
+[21.10.2025 20:35:01]Error>DB>Run DoSampleInfo
+[21.10.2025 20:35:01]Error>DB>reformat number of digits
+[21.10.2025 20:35:06]Information>SQLQuery>SELECT sample_nr, user_label, user_label_nr, user_desc1, user_desc2, ROUND(c14_age) AS age  FROM sample_t INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr INNER JOIN user_t ON user_t.user_nr=project_t.user_nr WHERE project_t.project_nr="9263";
+
+[21.10.2025 20:35:12]Error>DB>Run DoSampleInfo
+[21.10.2025 20:35:12]Error>DB>reformat number of digits
+[21.10.2025 20:35:52]Error>DB>Run DoSampleInfo
+[21.10.2025 20:35:52]Error>DB>reformat number of digits
+[21.10.2025 20:57:23]Information>Closeup>SAMS closed by user.

@@ -10415,7 +10415,7 @@ begin
   LogWindow.addLogEntry('CalculateCAbsWeight');
 
   // read from the OptionsTab (iniFile)
-  MinCAllowed := StrToInt(edtOptionsMinCAmount.Text)/1000;
+  MinCAllowed := StrToIntDef(edtOptionsMinCAmount.Text, 200)/1000;   // convert string to int, if it fails use 200 as default
   LogWindow.addLogEntry('CalculateCAbsWeight -- MinCAllowed = ' + edtOptionsMinCAmount.Text + ' ug');
   //showmessage(MinCAllowed.ToString);
 
@@ -10850,7 +10850,7 @@ begin
   wizInputProject.EnableButton(bkNext, false);
   edtProjectName.Text := ProjectName;
   edtInDate.Date := Date;
-  edtDesiredDate.Date := Date + strtoint(edtOptionsTurnover.Text); // this value is taken from the options tab
+  edtDesiredDate.Date := Date + strtointdef(edtOptionsTurnover.Text, 90); // this value is taken from the options tab, if conversion fails use 90 days as default
   if Length(edtProjectName.Text) > 0 then wizInputProject.EnableButton(bkNext, true);
   CheckProjectExists;
   if ProjectExists then ShowMessage('Project already exists! Samples will be added to the project! ');

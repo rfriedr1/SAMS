@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = DBMemo_LabComment
+  ActiveControl = edtProjectName
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1652
@@ -299,7 +299,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1652
     Height = 873
-    ActivePage = tbsSampleInfo
+    ActivePage = tbsInsertSamples
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -338,7 +338,6 @@ object frmMAMS: TfrmMAMS
         ShowRouteMap = True
         OnBackButtonClick = wizInputSamplesBackButtonClick
         OnCancelButtonClick = wizInputSamplesCancelButtonClick
-        ExplicitTop = -2
         DesignSize = (
           1644
           843)
@@ -547,7 +546,6 @@ object frmMAMS: TfrmMAMS
             FixedFont.Height = -11
             FixedFont.Name = 'Tahoma'
             FixedFont.Style = []
-            ExplicitLeft = 6
             ColWidths = (
               64
               64)
