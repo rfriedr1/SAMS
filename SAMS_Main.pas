@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils, JvSplitter;
 
 const
-  myVersion = '1.9.9 Built: Oct-21-2025';
+  myVersion = '1.9.9 Built: Nov-05-2025';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -7308,7 +7308,7 @@ begin
   if grdPretreatment.SelectedField = dm.tblMethoddescr then
   begin
     try
-      value := InputBox('Test program', 'Please type your town', dm.tblMethoddescr.AsString);
+      value := InputBox('Method Description', 'Description', dm.tblMethoddescr.AsString);
       dm.tblMethod.Edit;
       dm.tblMethoddescr.AsString := value;
     finally

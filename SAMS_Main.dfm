@@ -1,7 +1,7 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = edtProjectName
+  ActiveControl = grdPretreatment
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1652
@@ -299,7 +299,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1652
     Height = 873
-    ActivePage = tbsInsertSamples
+    ActivePage = tbsTypesMat
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -311,7 +311,7 @@ object frmMAMS: TfrmMAMS
         Top = 0
         Width = 1644
         Height = 843
-        ActivePage = wizInputProject
+        ActivePage = wizStartPage
         ButtonBarHeight = 42
         ButtonStart.Caption = 'To &Start Page'
         ButtonStart.NumGlyphs = 1
