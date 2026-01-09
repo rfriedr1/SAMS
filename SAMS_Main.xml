@@ -3517,6 +3517,11 @@
       <field name="lblCAbsWeight" type="TLabel" visibility="published" size="4" offset="4492" />
       <field name="edtOptionsTurnover" type="TLabeledEdit" visibility="published" size="4" offset="4496" />
       <field name="edtOptionsMinCAmount" type="TLabeledEdit" visibility="published" size="4" offset="4500" />
+      <field name="MagazinePageControl" type="TPageControl" visibility="published" size="4" offset="4504" />
+      <field name="MagazineTabSheet1" type="TTabSheet" visibility="published" size="4" offset="4508" />
+      <field name="MagazineTabSheet2" type="TTabSheet" visibility="published" size="4" offset="4512" />
+      <field name="dbGridMagazinesWaitingToMeas" type="TDBGrid" visibility="published" size="4" offset="4516" />
+      <field name="btnMagazinesReload" type="TButton" visibility="published" size="4" offset="4520" />
       <procedure name="grdSamplesOfProjectMouseWheel" visibility="published">
         <parameters>
           <parameter name="Sender" type="TObject" />
@@ -5433,54 +5438,64 @@
           <parameter name="Sender" type="TObject" />
         </parameters>
       </procedure>
-      <field name="AcceptCol" type="Integer" visibility="private" size="4" offset="4504" />
-      <field name="DragSource" type="TDragSource" visibility="private" size="1" offset="4508" />
-      <field name="DSN" type="string" visibility="private" size="4" offset="4512" />
-      <field name="dbClosed" type="Boolean" visibility="private" size="1" offset="4516" />
-      <field name="SampleTrans" type=":TfrmMAMS.:1" visibility="private" size="4" offset="4520" />
-      <field name="CurrentFraction" type="string" visibility="private" size="4" offset="4524" />
-      <field name="CurrentMethod" type="string" visibility="private" size="4" offset="4528" />
-      <field name="CurrentMaterial" type="string" visibility="private" size="4" offset="4532" />
-      <field name="CurrentType" type="string" visibility="private" size="4" offset="4536" />
-      <field name="CurrentPrep" type="string" visibility="private" size="4" offset="4540" />
-      <field name="Prep" type="string" visibility="private" size="4" offset="4544" />
-      <field name="DragCol" type="Integer" visibility="private" size="4" offset="4548" />
-      <field name="DragRow" type="Integer" visibility="private" size="4" offset="4552" />
-      <field name="FFileName" type="string" visibility="private" size="4" offset="4556" />
-      <field name="FCheck" type="TBitmap" visibility="private" size="4" offset="4560" />
-      <field name="FNoCheck" type="TBitmap" visibility="private" size="4" offset="4564" />
-      <field name="GlbSampleNr" type="Integer" visibility="private" size="4" offset="4568" />
-      <field name="GlbPrepNr" type="Integer" visibility="private" size="4" offset="4572" />
-      <field name="ProjectName" type="string" visibility="private" size="4" offset="4576" />
-      <field name="MANummer" type="Integer" visibility="private" size="4" offset="4580" />
-      <field name="OrderNr" type="Integer" visibility="private" size="4" offset="4584" />
-      <field name="ProjectNameReport" type="string" visibility="private" size="4" offset="4588" />
-      <field name="ProjectInDate" type="string" visibility="private" size="4" offset="4592" />
-      <field name="OneDateInMean" type="Boolean" visibility="private" size="1" offset="4596" />
-      <field name="TransferPrepNr" type="Integer" visibility="private" size="4" offset="4600" />
-      <field name="TransferTargetNr" type="Integer" visibility="private" size="4" offset="4604" />
-      <field name="SetCurrentToAll" type="Boolean" visibility="private" size="1" offset="4608" />
-      <field name="ProjectExists" type="Boolean" visibility="private" size="1" offset="4609" />
-      <field name="UserExists" type="Boolean" visibility="private" size="1" offset="4610" />
-      <field name="UserNeedsUpdate" type="Boolean" visibility="private" size="1" offset="4611" />
-      <field name="InvoiceExists" type="Boolean" visibility="private" size="1" offset="4612" />
-      <field name="SameAddressForInvoice" type="Boolean" visibility="private" size="1" offset="4613" />
-      <field name="FUseWordVersion" type="TWordVersion" visibility="private" size="1" offset="4614" />
-      <field name="FWord" type="TWordDriver" visibility="private" size="4" offset="4616" />
-      <field name="FDataset" type="TDataSet" visibility="private" size="4" offset="4620" />
-      <field name="FValues" type="TStrings" visibility="private" size="4" offset="4624" />
-      <field name="Invoice" type="TInvoice" visibility="private" size="60" offset="4628" />
-      <field name="glbUserNr" type="Integer" visibility="private" size="4" offset="4688" />
-      <field name="glbInvoiceNr" type="Integer" visibility="private" size="4" offset="4692" />
-      <field name="User" type="TUser" visibility="private" size="60" offset="4696" />
-      <field name="KTLsupervisor" type="Boolean" visibility="private" size="1" offset="4756" />
-      <field name="WeightsChanged" type="Boolean" visibility="private" size="1" offset="4757" />
-      <field name="TargetDataChanged" type="Boolean" visibility="private" size="1" offset="4758" />
-      <field name="ServerRoot" type="string" visibility="private" size="4" offset="4760" />
-      <field name="GridOriginalOptions" type="TDBGridOptions" visibility="private" size="2" offset="4764" />
-      <field name="fVideoImage" type="TVideoImage" visibility="private" size="4" offset="4768" />
-      <field name="sStorLocSuggestion" type="string" visibility="private" size="4" offset="4772" />
-      <field name="prepStorLocSuggestion" type="string" visibility="private" size="4" offset="4776" />
+      <procedure name="btnMagazinesReloadClick" visibility="published">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="dbGridMagazinesWaitingToMeasTitleClick" visibility="published">
+        <parameters>
+          <parameter name="Column" type="TColumn" />
+        </parameters>
+      </procedure>
+      <field name="AcceptCol" type="Integer" visibility="private" size="4" offset="4524" />
+      <field name="DragSource" type="TDragSource" visibility="private" size="1" offset="4528" />
+      <field name="DSN" type="string" visibility="private" size="4" offset="4532" />
+      <field name="dbClosed" type="Boolean" visibility="private" size="1" offset="4536" />
+      <field name="SampleTrans" type=":TfrmMAMS.:1" visibility="private" size="4" offset="4540" />
+      <field name="CurrentFraction" type="string" visibility="private" size="4" offset="4544" />
+      <field name="CurrentMethod" type="string" visibility="private" size="4" offset="4548" />
+      <field name="CurrentMaterial" type="string" visibility="private" size="4" offset="4552" />
+      <field name="CurrentType" type="string" visibility="private" size="4" offset="4556" />
+      <field name="CurrentPrep" type="string" visibility="private" size="4" offset="4560" />
+      <field name="Prep" type="string" visibility="private" size="4" offset="4564" />
+      <field name="DragCol" type="Integer" visibility="private" size="4" offset="4568" />
+      <field name="DragRow" type="Integer" visibility="private" size="4" offset="4572" />
+      <field name="FFileName" type="string" visibility="private" size="4" offset="4576" />
+      <field name="FCheck" type="TBitmap" visibility="private" size="4" offset="4580" />
+      <field name="FNoCheck" type="TBitmap" visibility="private" size="4" offset="4584" />
+      <field name="GlbSampleNr" type="Integer" visibility="private" size="4" offset="4588" />
+      <field name="GlbPrepNr" type="Integer" visibility="private" size="4" offset="4592" />
+      <field name="ProjectName" type="string" visibility="private" size="4" offset="4596" />
+      <field name="MANummer" type="Integer" visibility="private" size="4" offset="4600" />
+      <field name="OrderNr" type="Integer" visibility="private" size="4" offset="4604" />
+      <field name="ProjectNameReport" type="string" visibility="private" size="4" offset="4608" />
+      <field name="ProjectInDate" type="string" visibility="private" size="4" offset="4612" />
+      <field name="OneDateInMean" type="Boolean" visibility="private" size="1" offset="4616" />
+      <field name="TransferPrepNr" type="Integer" visibility="private" size="4" offset="4620" />
+      <field name="TransferTargetNr" type="Integer" visibility="private" size="4" offset="4624" />
+      <field name="SetCurrentToAll" type="Boolean" visibility="private" size="1" offset="4628" />
+      <field name="ProjectExists" type="Boolean" visibility="private" size="1" offset="4629" />
+      <field name="UserExists" type="Boolean" visibility="private" size="1" offset="4630" />
+      <field name="UserNeedsUpdate" type="Boolean" visibility="private" size="1" offset="4631" />
+      <field name="InvoiceExists" type="Boolean" visibility="private" size="1" offset="4632" />
+      <field name="SameAddressForInvoice" type="Boolean" visibility="private" size="1" offset="4633" />
+      <field name="FUseWordVersion" type="TWordVersion" visibility="private" size="1" offset="4634" />
+      <field name="FWord" type="TWordDriver" visibility="private" size="4" offset="4636" />
+      <field name="FDataset" type="TDataSet" visibility="private" size="4" offset="4640" />
+      <field name="FValues" type="TStrings" visibility="private" size="4" offset="4644" />
+      <field name="Invoice" type="TInvoice" visibility="private" size="60" offset="4648" />
+      <field name="glbUserNr" type="Integer" visibility="private" size="4" offset="4708" />
+      <field name="glbInvoiceNr" type="Integer" visibility="private" size="4" offset="4712" />
+      <field name="User" type="TUser" visibility="private" size="60" offset="4716" />
+      <field name="KTLsupervisor" type="Boolean" visibility="private" size="1" offset="4776" />
+      <field name="WeightsChanged" type="Boolean" visibility="private" size="1" offset="4777" />
+      <field name="TargetDataChanged" type="Boolean" visibility="private" size="1" offset="4778" />
+      <field name="ServerRoot" type="string" visibility="private" size="4" offset="4780" />
+      <field name="GridOriginalOptions" type="TDBGridOptions" visibility="private" size="2" offset="4784" />
+      <field name="fVideoImage" type="TVideoImage" visibility="private" size="4" offset="4788" />
+      <field name="sStorLocSuggestion" type="string" visibility="private" size="4" offset="4792" />
+      <field name="prepStorLocSuggestion" type="string" visibility="private" size="4" offset="4796" />
       <procedure name="ToggleCheckbox" visibility="private">
         <parameters>
           <parameter name="acol" type="Integer" />
@@ -5694,7 +5709,7 @@
       </procedure>
       <procedure name="CalculateCAbsWeight" visibility="private">
       </procedure>
-      <field name="SampleModified" type="Boolean" visibility="public" size="1" offset="4780" />
+      <field name="SampleModified" type="Boolean" visibility="public" size="1" offset="4800" />
       <property name="FileName" visibility="public" read="GetFileName" write="SetFileName" type="string" default="0" />
       <property name="Dataset" visibility="public" read="FDataset" write="FDataset" type="TDataSet" />
       <property name="Values" visibility="public" read="FValues" write="SetValues" type="TStrings" />

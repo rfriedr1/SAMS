@@ -920,6 +920,11 @@ type
     lblCAbsWeight: TLabel;
     edtOptionsTurnover: TLabeledEdit;
     edtOptionsMinCAmount: TLabeledEdit;
+    MagazinePageControl: TPageControl;
+    MagazineTabSheet1: TTabSheet;
+    MagazineTabSheet2: TTabSheet;
+    dbGridMagazinesWaitingToMeas: TDBGrid;
+    btnMagazinesReload: TButton;
     procedure grdSamplesOfProjectMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure grdSamplesOfProjectKeyUp(Sender: TObject; var Key: Word;
@@ -1329,6 +1334,8 @@ type
     procedure JvDBDateTimePicker3Click(Sender: TObject);
     procedure DBedtHECurrentChange(Sender: TObject);
     procedure edtSampleCPercentChange(Sender: TObject);
+    procedure btnMagazinesReloadClick(Sender: TObject);
+    procedure dbGridMagazinesWaitingToMeasTitleClick(Column: TColumn);
 
   private
     AcceptCol: integer; //for drag drop
@@ -5245,6 +5252,13 @@ begin
      end;
     end;
 
+procedure TfrmMAMS.btnMagazinesReloadClick(Sender: TObject);
+begin
+  // query db to fill tabel with unmeasured targets
+  dm.GetAllWaitingForMeasAll;
+  FixDBGridColumnsWidth(dbGridMagazinesWaitingToMeas);
+end;
+
 procedure TfrmMAMS.btnMonthStatClick(Sender: TObject);
 var
   i, n_graph, n_meas, sum_graph, sum_meas, n_recvd, sum_recvd: integer;
@@ -8046,6 +8060,30 @@ begin
   AlternateRowColors(Sender, State);
 end;
 
+procedure TfrmMAMS.dbGridMagazinesWaitingToMeasTitleClick(Column: TColumn);
+//sort by selected column
+{$J+}
+const PreviousColumnIndex: integer = -1;
+{$J-}
+begin
+  if grdTypes.DataSource.DataSet is TCustomADODataSet then
+    with TCustomADODataSet(grdPendingReports.DataSource.DataSet) do
+    begin
+      try
+        grdTypes.Columns[PreviousColumnIndex].title.Font.Style :=
+          grdTypes.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+      except
+      end;
+      Column.title.Font.Style := Column.title.Font.Style + [fsBold];
+      PreviousColumnIndex := Column.Index;
+      if (Pos(WideString(Column.Field.FieldName), Sort) = 1)
+        and (Pos(WideString(' DESC'), Sort) = 0) then
+        Sort := Column.Field.FieldName + ' DESC'
+      else
+        Sort := Column.Field.FieldName + ' ASC';
+    end;
+end;
+
 procedure TfrmMAMS.DBGridSampleExchangeCellClick(Column: TColumn);
 begin
 // toggle checkboxes
@@ -9966,6 +10004,13 @@ end;
 procedure TfrmMAMS.ToolButtonPressClick(Sender: TObject);
 begin
   pgtMain.ActivePage := tbsMagazine;
+  // Tab 1
+  // query db to fill tabel with unmeasured targets
+  dm.GetAllWaitingForMeasAll;
+  FixDBGridColumnsWidth(dbGridMagazinesWaitingToMeas);
+  // dbGridMagazinesWaitingToMeasTitleClick(dbGridMagazinesWaitingToMeas.Columns[4]);
+  // Tab 2
+  // query DB to find all magazines and fill tables
     GetListOfUnpressedMagazines(1);
     grdMagazinesUnpressed.Columns[0].Width:=grdMagazinesUnpressed.Width; //adjust column width to match table width
 end;

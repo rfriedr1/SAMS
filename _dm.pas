@@ -177,6 +177,8 @@ type
     tblMethodmethod: TStringField;
     tblMethoddescr: TMemoField;
     tblMethodindexnr: TIntegerField;
+    qryWaitingForMeasAll: TADOQuery;
+    dsWaitingForMeasAll: TDataSource;
     procedure adoConnKTLExecuteComplete(Connection: TADOConnection;
       RecordsAffected: Integer; const Error: Error;
       var EventStatus: TEventStatus; const Command: _Command;
@@ -201,6 +203,7 @@ type
     function GetAllPlanned(ShowOnHold : boolean; material: string = 'none') : integer;
     function GetAllWaitingForGraph : integer;
     function GetAllWaitingForMeas : integer;
+    function GetAllWaitingForMeasAll : integer;
     function GetWaitingExpress : integer;
     function GetArchSamplesOfMonth(Year, Month : word) : integer;
     function GetAllSamplesOfMonth(Year, Month : word; flag: integer) : integer;
@@ -938,27 +941,35 @@ end;
 
 function Tdm.GetAllWaitingForMeas : integer;
 // get all samples that are graphitized but not measured
+// but exlude internal samples and standards
 var
   s : string;
 begin
   with qryWaitingForMeas do
   begin
      Close;
-     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.desired_date ' +
-                   ' FROM sample_t ' +
-                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
-                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
-                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
-                   'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
-                   ' WHERE preparation_t.prep_end IS NOT NULL and target_t.graphitized IS NOT NULL ' +
-                   ' and target_t.target_pressed IS NOT NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
-                   ' and preparation_t.stop=0 and  target_t.stop=0 ' +
-                   ' and project_t.out_date IS NULL ' +
-                   ' and target_t.fm is NULL' +
-                   ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
-                   ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
-                   ' and user_label NOT LIKE ' + #34 + 'HEI_%' + #34 +
-                   ' ORDER BY sample_t.sample_nr;' ;
+//     SQL.Text :=   'SELECT DISTINCT sample_t.sample_nr, user_label, project_t.project, user_t.last_name, project_t.desired_date ' +
+//                   ' FROM sample_t ' +
+//                   'INNER JOIN project_t ON project_t.project_nr=sample_t.project_nr ' +
+//                   'INNER JOIN user_t ON user_t.user_nr=project_t.user_nr ' +
+//                   'INNER JOIN preparation_t ON preparation_t.sample_nr=sample_t.sample_nr ' +
+//                   'INNER JOIN target_t ON target_t.sample_nr=sample_t.sample_nr ' +
+//                   ' WHERE preparation_t.prep_end IS NOT NULL and target_t.graphitized IS NOT NULL ' +
+//                   ' and target_t.target_pressed IS NOT NULL and target_t.calcset is NULL and sample_t.not_tobedated=0' +
+//                   ' and preparation_t.stop=0 and  target_t.stop=0 ' +
+//                   ' and project_t.out_date IS NULL ' +
+//                   ' and target_t.fm is NULL' +
+//                   ' and sample_t.type NOT LIKE ' + #34 + 'blank%' + #34 +
+//                   ' and sample_t.type NOT LIKE ' + #34 + 'oxa%' + #34 +
+//                   ' and user_label NOT LIKE ' + #34 + 'HEI_%' + #34 +
+//                   ' ORDER BY sample_t.sample_nr;' ;
+
+     SQL.Text := 'SELECT target_id, type, user_label, user_label_nr, last_name, target_comment, co2_final, desired_date, datediff(curdate(), desired_date) as "days to deadline" ' +
+     'FROM target_p ' +
+     'WHERE target_p.sample_nr >= 10000 AND graphitized IS NOT NULL AND magazine IS NULL AND target_stop = 0 AND not_tobedated = 0 ' +
+     'AND project_nr NOT IN ("798", "129", "767", "795", "1032", "1083", "1174","1658","1759","2295") ' +
+     'AND type not in ("oxa2", "blank", "C1", "C2", "C3", "C6", "C7", "C8") ' ;
+
      s := SQL.Text;
 //     ClipBoard.SetTextBuf(PChar(s));
      IF dm.adoConnKTL.Connected THEN
@@ -982,6 +993,47 @@ begin
                 End;
   end;
   Result := qryWaitingForMeas.RecordCount;
+end;
+
+function Tdm.GetAllWaitingForMeasAll : integer;
+// get all samples that are graphitized but not measured
+// inlcusing internal samples and standards
+//but not ICOS
+var
+  s : string;
+begin
+  with qryWaitingForMeasAll do
+  begin
+     //Close;
+
+     SQL.Text := 'SELECT target_id, type, user_label, user_label_nr, last_name, target_comment, co2_final, desired_date, datediff(curdate(), desired_date) as "days to deadline" ' +
+     'FROM target_p ' +
+     'WHERE target_p.sample_nr >= 10000 AND graphitized IS NOT NULL AND magazine IS NULL AND target_stop = 0 AND not_tobedated = 0 ' +
+     'AND project_nr not in ("798")' ;
+
+     s := SQL.Text;
+//     ClipBoard.SetTextBuf(PChar(s));
+     IF dm.adoConnKTL.Connected THEN
+                Begin
+                  Try
+                    Open;
+                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                  Except
+                    // connections is closed, reconnect by setting connected to true and test again
+                    LogWindow.addLogEntry('DB -- connection is closed, reconnecting...');
+                    Try
+                      dm.DBreconnect;
+                      LogWindow.addLogEntry('DB -- execute query again');
+                      Open;
+                    Except
+                       LogWindow.addLogEntry('DB -- can not reconnect');
+                    End;
+                    Open;
+                    //ShowMessage('Database connection is closed.');
+                  End;
+                End;
+  end;
+  Result := qryWaitingForMeasAll.RecordCount;
 end;
 
 function Tdm.GetWaitingExpress : integer;

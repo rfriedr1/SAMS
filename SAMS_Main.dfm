@@ -1,7 +1,6 @@
 object frmMAMS: TfrmMAMS
   Left = 0
   Top = 322
-  ActiveControl = grdPretreatment
   Caption = 'SAMS '
   ClientHeight = 944
   ClientWidth = 1652
@@ -299,7 +298,7 @@ object frmMAMS: TfrmMAMS
     Top = 47
     Width = 1652
     Height = 873
-    ActivePage = tbsTypesMat
+    ActivePage = tbsDBInfo
     Align = alClient
     TabOrder = 2
     OnChange = pgtMainChange
@@ -10538,76 +10537,118 @@ object frmMAMS: TfrmMAMS
       BorderWidth = 20
       Caption = 'tbsMagazine'
       ImageIndex = 19
-      object Label150: TLabel
+      object MagazinePageControl: TPageControl
         Left = 0
         Top = 0
         Width = 1604
-        Height = 15
-        Margins.Left = 10
-        Margins.Top = 20
-        Margins.Bottom = 20
-        Align = alTop
-        Caption = 
-          'Set press date for the selected magazine. Do this after pressing' +
-          ' has finished. '
-        ExplicitWidth = 399
-      end
-      object grdMagazinesUnpressed: TDBGrid
-        Left = 0
-        Top = 15
-        Width = 241
-        Height = 788
-        Margins.Top = 20
-        Margins.Right = 10
-        Align = alLeft
-        DataSource = dm.dsMagazinesUnpressed
+        Height = 803
+        ActivePage = MagazineTabSheet1
+        Align = alClient
         TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -12
-        TitleFont.Name = 'Segoe UI'
-        TitleFont.Style = []
-        OnCellClick = grdMagazinesUnpressedCellClick
-      end
-      object DBGridSamplesOfUnpressedMagazine: TDBGrid
-        Left = 241
-        Top = 15
-        Width = 488
-        Height = 788
-        Margins.Left = 10
-        Align = alLeft
-        DataSource = dm.dsSamplesOfUnpressedMagazine
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        ReadOnly = True
-        TabOrder = 1
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -12
-        TitleFont.Name = 'Segoe UI'
-        TitleFont.Style = []
-        OnDrawColumnCell = DBGridSamplesOfUnpressedMagazineDrawColumnCell
-      end
-      object GroupBox10: TGroupBox
-        Left = 760
-        Top = 13
-        Width = 185
-        Height = 452
-        Caption = 'Tools'
-        TabOrder = 2
-        object btnMagazinePressedDateToday: TButton
-          Left = 2
-          Top = 17
-          Width = 181
-          Height = 46
-          Hint = 
-            'set the pressed date of all targets in this magazine to todyas d' +
-            'ate'
-          Align = alTop
-          Caption = 'pressed date > today'
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 0
-          OnClick = btnMagazinePressedDateTodayClick
+        object MagazineTabSheet1: TTabSheet
+          Caption = 'Targets Ready to Measure'
+          object dbGridMagazinesWaitingToMeas: TDBGrid
+            Left = 0
+            Top = 64
+            Width = 1596
+            Height = 709
+            Align = alBottom
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            DataSource = dm.dsWaitingForMeasAll
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+            OnTitleClick = dbGridMagazinesWaitingToMeasTitleClick
+          end
+          object btnMagazinesReload: TButton
+            Left = 24
+            Top = 12
+            Width = 75
+            Height = 46
+            Caption = 'Reload'
+            TabOrder = 1
+            OnClick = btnMagazinesReloadClick
+          end
+        end
+        object MagazineTabSheet2: TTabSheet
+          Caption = 'Set Pressed Date'
+          ImageIndex = 1
+          object Label150: TLabel
+            Left = 0
+            Top = 0
+            Width = 1596
+            Height = 15
+            Margins.Left = 10
+            Margins.Top = 20
+            Margins.Bottom = 20
+            Align = alTop
+            Caption = 
+              'Set press date for the selected magazine. Do this after pressing' +
+              ' has finished. '
+            ExplicitWidth = 399
+          end
+          object grdMagazinesUnpressed: TDBGrid
+            Left = 0
+            Top = 15
+            Width = 241
+            Height = 758
+            Margins.Top = 20
+            Margins.Right = 10
+            Align = alLeft
+            DataSource = dm.dsMagazinesUnpressed
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+            OnCellClick = grdMagazinesUnpressedCellClick
+          end
+          object DBGridSamplesOfUnpressedMagazine: TDBGrid
+            Left = 241
+            Top = 15
+            Width = 504
+            Height = 758
+            Margins.Left = 10
+            Align = alLeft
+            DataSource = dm.dsSamplesOfUnpressedMagazine
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ReadOnly = True
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+            OnDrawColumnCell = DBGridSamplesOfUnpressedMagazineDrawColumnCell
+          end
+          object GroupBox10: TGroupBox
+            Left = 760
+            Top = 13
+            Width = 185
+            Height = 452
+            Caption = 'Tools'
+            TabOrder = 2
+            object btnMagazinePressedDateToday: TButton
+              Left = 2
+              Top = 17
+              Width = 181
+              Height = 46
+              Hint = 
+                'set the pressed date of all targets in this magazine to todyas d' +
+                'ate'
+              Align = alTop
+              Caption = 'pressed date > today'
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              OnClick = btnMagazinePressedDateTodayClick
+            end
+          end
         end
       end
     end
@@ -11516,8 +11557,8 @@ object frmMAMS: TfrmMAMS
     Filter = 
       'Pretreatment batches (*.pbt)|*.pbt|Graphitisation batches|*.gbt|' +
       'All Files (*.*)|*.*'
-    Left = 840
-    Top = 48
+    Left = 832
+    Top = 64
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList1
@@ -11606,7 +11647,7 @@ object frmMAMS: TfrmMAMS
     Visible = True
     AutoFit = False
     Left = 752
-    Top = 40
+    Top = 72
   end
   object ImageList2: TImageList
     DrawingStyle = dsTransparent
@@ -27908,12 +27949,12 @@ object frmMAMS: TfrmMAMS
     Aggregates = <>
     Params = <>
     Left = 952
-    Top = 48
+    Top = 56
   end
   object dsExport: TDataSource
     DataSet = cdsExport
-    Left = 1000
-    Top = 48
+    Left = 1016
+    Top = 56
   end
   object smtpSendMail: TIdSMTP
     OnStatus = smtpSendMailStatus
@@ -28005,7 +28046,7 @@ object frmMAMS: TfrmMAMS
     AutoSave = True
     SizeLimit = 100000
     Left = 147
-    Top = 79
+    Top = 63
   end
   object ApplicationEvents: TApplicationEvents
     OnException = ApplicationEventsException

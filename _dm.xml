@@ -503,6 +503,8 @@
       <field name="tblMethodmethod" type="TStringField" visibility="published" size="4" offset="672" />
       <field name="tblMethoddescr" type="TMemoField" visibility="published" size="4" offset="676" />
       <field name="tblMethodindexnr" type="TIntegerField" visibility="published" size="4" offset="680" />
+      <field name="qryWaitingForMeasAll" type="TADOQuery" visibility="published" size="4" offset="684" />
+      <field name="dsWaitingForMeasAll" type="TDataSource" visibility="published" size="4" offset="688" />
       <procedure name="adoConnKTLExecuteComplete" visibility="published">
         <devnotes>
           /sends the string to the log window if the window is open
@@ -614,6 +616,11 @@
         </parameters>
       </function>
       <function name="GetAllWaitingForMeas" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetAllWaitingForMeasAll" visibility="public">
         <parameters>
           <retval type="Integer" />
         </parameters>
