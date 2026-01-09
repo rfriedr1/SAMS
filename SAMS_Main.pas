@@ -44,7 +44,7 @@ uses Windows, Classes, Graphics, Forms, Controls, Menus,
   Vcl.AppEvnts, SysUtils, JvSplitter;
 
 const
-  myVersion = '1.9.9 Built: Nov-05-2025';
+  myVersion = '1.9.9 Built: Jan-09-2026';
 
 type
   TDragSource = (drgMaterial, drgFraction, drgType, drgPrep);
@@ -7237,12 +7237,12 @@ procedure TfrmMAMS.grdPendingReportsTitleClick(Column: TColumn);
 const PreviousColumnIndex: integer = -1;
 {$J-}
 begin
-  if grdTypes.DataSource.DataSet is TCustomADODataSet then
+  if grdPendingReports.DataSource.DataSet is TCustomADODataSet then
     with TCustomADODataSet(grdPendingReports.DataSource.DataSet) do
     begin
       try
-        grdTypes.Columns[PreviousColumnIndex].title.Font.Style :=
-          grdTypes.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+        grdPendingReports.Columns[PreviousColumnIndex].title.Font.Style :=
+          grdPendingReports.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
       except
       end;
       Column.title.Font.Style := Column.title.Font.Style + [fsBold];
@@ -8066,12 +8066,12 @@ procedure TfrmMAMS.dbGridMagazinesWaitingToMeasTitleClick(Column: TColumn);
 const PreviousColumnIndex: integer = -1;
 {$J-}
 begin
-  if grdTypes.DataSource.DataSet is TCustomADODataSet then
-    with TCustomADODataSet(grdPendingReports.DataSource.DataSet) do
+  if dbGridMagazinesWaitingToMeas.DataSource.DataSet is TCustomADODataSet then
+    with TCustomADODataSet(dbGridMagazinesWaitingToMeas.DataSource.DataSet) do
     begin
       try
-        grdTypes.Columns[PreviousColumnIndex].title.Font.Style :=
-          grdTypes.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+        dbGridMagazinesWaitingToMeas.Columns[PreviousColumnIndex].title.Font.Style :=
+          dbGridMagazinesWaitingToMeas.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
       except
       end;
       Column.title.Font.Style := Column.title.Font.Style + [fsBold];
@@ -10008,7 +10008,7 @@ begin
   // query db to fill tabel with unmeasured targets
   dm.GetAllWaitingForMeasAll;
   FixDBGridColumnsWidth(dbGridMagazinesWaitingToMeas);
-  // dbGridMagazinesWaitingToMeasTitleClick(dbGridMagazinesWaitingToMeas.Columns[4]);
+  dbGridMagazinesWaitingToMeasTitleClick(dbGridMagazinesWaitingToMeas.Columns[7]);
   // Tab 2
   // query DB to find all magazines and fill tables
     GetListOfUnpressedMagazines(1);
